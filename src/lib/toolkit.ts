@@ -14,12 +14,13 @@ export interface Emergency {
 export interface TaxFree {
   summary: string; effective: string;
   rules: { title: string; text: string }[]; steps: { title: string; text: string }[]; faq: { q: string; a: string }[];
+  taxRates?: { rate: number; label: string; items: string; note?: string }[];
   calculator: { taxRate: number; reducedRate: number; minPurchase: number | null; note: string };
   sources?: Src[];
 }
 export interface Checklist { groups: { id: string; title: string; items: { id: string; text: string; detail?: string; url?: string }[] }[]; sources?: Src[] }
 export interface Transport {
-  airports: { id: string; name: string; code: string; city: string; options: { name: string; to: string; time: string; price: string; note?: string }[] }[];
+  airports: { id: string; name: string; code: string; city: string; options: { name: string; to: string; time: string; price: string; note?: string; url?: string }[] }[];
   tips: { title: string; text: string }[];
   passes: { name: string; price: string; text: string }[];
   sources?: Src[];

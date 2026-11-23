@@ -1,0 +1,303 @@
+{
+  "groups": [
+    {
+      "id": "docs",
+      "title": "证件与签证",
+      "items": [
+        {
+          "id": "passport",
+          "text": "护照有效期覆盖全程，首页拍照存手机和云盘",
+          "detail": "办签证时对护照剩余有效期有要求，快到期的先换新。万一丢了，照片和复印件能让补办快很多。"
+        },
+        {
+          "id": "visa",
+          "text": "中国大陆护照赴日要提前办签证，留足办理时间",
+          "detail": "通过日本驻华使领馆指定的渠道申请。签证类型、材料和停留天数以使领馆最新公告为准，别信来路不明的代办。",
+          "url": "https://www.japan.travel/en/plan/visa-info/"
+        },
+        {
+          "id": "visit-japan-web",
+          "text": "出发前在 Visit Japan Web 填好入境和海关信息",
+          "detail": "要准备护照、机票和邮箱。落地后在入境审查和海关出示二维码；必须在手机上出示，电脑上填好也要用手机打开。",
+          "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/"
+        },
+        {
+          "id": "taxfree-qr",
+          "text": "顺手登记免税二维码，购物和出境退税都更省事",
+          "detail": "登记护照信息和入境许可贴纸信息后，可以生成免税二维码；7 个主要机场还能用它在线办出境海关确认。",
+          "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/guide/"
+        },
+        {
+          "id": "insurance",
+          "text": "买带医疗和免垫付的境外旅行保险",
+          "detail": "游客在日本看病全自费，住院手术可能上百万日元。记下保险公司的 24 小时救援电话。",
+          "url": "https://www.jnto.go.jp/emergency/chc/mi_guide.html"
+        },
+        {
+          "id": "booking-copies",
+          "text": "机票、酒店订单存一份离线版",
+          "detail": "入境时可能被问到住址和行程；没网时也能把酒店地址给出租车司机看。"
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "title": "钱与支付",
+      "items": [
+        {
+          "id": "cash",
+          "text": "带一些日元现金，小店、乡下和温泉旅馆常只收现金",
+          "detail": "城市里刷卡越来越方便，但小餐馆、神社寺庙、部分巴士和民宿仍只收现金。",
+          "url": "https://www.japan.travel/en/plan/cashless-payments-in-japan/"
+        },
+        {
+          "id": "credit-card",
+          "text": "带一张 Visa、Mastercard 或 JCB 信用卡",
+          "detail": "这三种在日本最通用；大商场、连锁店、便利店、新干线都能刷。最好再带一张备用卡。",
+          "url": "https://www.japan.travel/en/plan/credit-cards/"
+        },
+        {
+          "id": "unionpay",
+          "text": "银联卡能在 7-Eleven 的 ATM 取日元",
+          "detail": "7-Eleven 店里的 Seven Bank ATM 支持银联、Visa、Mastercard 等境外卡，机场也有。邮储银行 ATM 也接受境外卡。手续费看发卡行。",
+          "url": "https://www.sevenbank.co.jp/intlcard/"
+        },
+        {
+          "id": "alipay-wechat",
+          "text": "支付宝、微信支付能用，但别只靠它们",
+          "detail": "药妆店、电器店、百货等大店多支持，小店不一定。看收银台贴的标志，付款前先问一句。"
+        },
+        {
+          "id": "card-hotline",
+          "text": "记下各张卡的挂失电话，和卡分开放",
+          "detail": "丢卡后第一时间挂失，比报警还急。"
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "title": "网络与手机",
+      "items": [
+        {
+          "id": "data",
+          "text": "提前买好 eSIM、日本流量卡或随身 WiFi",
+          "detail": "eSIM 最省事；多人同行、要给多台设备上网可以租随身 WiFi，机场能取还。先确认手机支持 eSIM。"
+        },
+        {
+          "id": "roaming-note",
+          "text": "用国内卡漫游时，Google 等服务可能打不开",
+          "detail": "漫游流量走国内网络。要用 Google 地图、Gmail 的，选日本本地 eSIM 或流量卡更稳。"
+        },
+        {
+          "id": "map-app",
+          "text": "装好地图 App，提前下载离线地图",
+          "detail": "Google 地图在日本查公交、步行、营业时间都很全；收藏好酒店和要去的地方。"
+        },
+        {
+          "id": "transit-app",
+          "text": "装一个换乘 App，查站台、票价和末班车",
+          "detail": "同名车站可能分属 JR 和不同地铁公司，按 App 认准公司和出口。"
+        },
+        {
+          "id": "translate-app",
+          "text": "装翻译 App，并下载日语离线包",
+          "detail": "拍照翻译菜单、对话翻译很好用；再配合本站的「给店员看」大字卡。"
+        },
+        {
+          "id": "safety-tips",
+          "text": "装观光厅的「Safety tips」，接收地震和海啸警报",
+          "detail": "有简体中文，会推送地震速报、海啸警报和气象警报。",
+          "url": "https://www.jnto.go.jp/safety-tips/chc/app.html"
+        },
+        {
+          "id": "power",
+          "text": "带充电宝和够长的数据线",
+          "detail": "整天导航、拍照很耗电；遇到灾害时手机就是生命线。"
+        }
+      ]
+    },
+    {
+      "id": "transport",
+      "title": "交通卡",
+      "items": [
+        {
+          "id": "ic-card",
+          "text": "交通 IC 卡全国通用，城市里坐车、便利店都能刷",
+          "detail": "Suica、PASMO、ICOCA 等全国互通，去哪个城市都能用。乡下线路可能不能刷，出发前查一下。",
+          "url": "https://www.japan.travel/en/plan/cashless-payments-in-japan/"
+        },
+        {
+          "id": "apple-pay-suica",
+          "text": "iPhone 可以直接在钱包里加 Suica，刷手机进站",
+          "detail": "加卡后用钱包里的卡充值；充不上时可以在车站或便利店用现金充。安卓机型不一定支持。"
+        },
+        {
+          "id": "welcome-suica",
+          "text": "不想用手机，就买游客专用的 Welcome Suica 或 TOURIST PASMO",
+          "detail": "免押金，但有使用期限，余额不退，按需少量充。TOURIST PASMO 在成田、羽田机场有售。",
+          "url": "https://www.japan.travel/en/japan-magazine/navigating-japans-transportation-system-steps-tips-and-whats-new/"
+        },
+        {
+          "id": "contactless",
+          "text": "部分线路可以直接刷信用卡进站",
+          "detail": "只限部分铁路公司和线路，用之前确认闸机上有感应标志。"
+        },
+        {
+          "id": "jr-pass",
+          "text": "全国 JR Pass 只在跨区长途来回时才可能划算",
+          "detail": "7 天普通车约 50,000 日元起。只玩东京或关西一地通常不划算，先按行程算单程票总价再决定。",
+          "url": "https://japanrailpass.net/en/purchase/price/"
+        },
+        {
+          "id": "big-luggage",
+          "text": "带大箱子坐东海道、山阳、九州新干线要订行李位",
+          "detail": "三边和超过 160 cm（最多 250 cm）的箱子，要订带「特大行李放置处」的座位，没订要交手续费。",
+          "url": "https://global.jr-central.co.jp/en/info/oversized-baggage/"
+        }
+      ]
+    },
+    {
+      "id": "packing",
+      "title": "行李",
+      "items": [
+        {
+          "id": "plug",
+          "text": "日本是 A 型两扁脚插头、100V，三脚插头要带转换头",
+          "detail": "国内两扁脚插头能直接插。手机、电脑充电器多支持 100–240V；只标 220V 的吹风机、卷发棒别带。",
+          "url": "https://www.japan.travel/en/faq/"
+        },
+        {
+          "id": "power-bank",
+          "text": "充电宝只能随身带，不能托运",
+          "detail": "日本出发的航班：每人最多 2 个、160Wh 以下，不放头顶行李架，机上不能用也不能充。国内航司另有规定，以航司为准。",
+          "url": "https://www.gov-online.go.jp/article/201412/entry-7500.html"
+        },
+        {
+          "id": "no-meat",
+          "text": "肉干、香肠、火腿、肉松等肉制品别带进日本",
+          "detail": "多数肉制品禁止入境，加工过的也不行。违规最高可罚 300 万日元或判 3 年以下拘禁。",
+          "url": "https://www.maff.go.jp/aqs/tetuzuki/product/aq2.html"
+        },
+        {
+          "id": "no-fruit",
+          "text": "新鲜水果、蔬菜、种子、带土植物也别带",
+          "detail": "没有出口国政府的植物检疫证明不能入境，入境时要在植物检疫柜台申报。",
+          "url": "https://www.maff.go.jp/pps/j/trip/keikouhin.html"
+        },
+        {
+          "id": "medicine",
+          "text": "常用药带够，记下药名和剂量",
+          "detail": "在日本买处方药要先看医生；带着药品说明或药名，药剂师才好帮你找替代药。"
+        },
+        {
+          "id": "shoes",
+          "text": "穿好走的鞋，带一双容易穿脱的",
+          "detail": "一天走两三万步很常见；寺庙、旅馆、部分餐厅要脱鞋进门。"
+        }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "title": "礼仪",
+      "items": [
+        {
+          "id": "trash",
+          "text": "街上垃圾桶很少，带个袋子装自己的垃圾",
+          "detail": "便利店门口的垃圾桶按可燃、塑料瓶、罐子分好再丢。酒店房间里按房间里的说明分类。",
+          "url": "https://www.japan.travel/en/faq/"
+        },
+        {
+          "id": "train-quiet",
+          "text": "电车和巴士上不打电话，说话小声",
+          "detail": "手机调静音。排队上车，先下后上；优先座附近别大声说话。"
+        },
+        {
+          "id": "tattoo",
+          "text": "有纹身的话，泡温泉前先确认能不能进",
+          "detail": "不少温泉、公共浴场和泳池限制纹身入场。小纹身可以问能不能贴遮盖贴，或选包场、带私汤的房间。"
+        },
+        {
+          "id": "onsen-rules",
+          "text": "泡温泉先冲洗身体，毛巾别放进池子",
+          "detail": "浴池里不穿泳衣（另有规定的除外），长发扎起来，别在池里搓洗。"
+        },
+        {
+          "id": "no-tip",
+          "text": "日本没有小费文化，按账单付就行",
+          "detail": "餐厅、酒店、出租车都不用给小费，硬塞反而会让对方为难。"
+        },
+        {
+          "id": "smoking",
+          "text": "很多城市街上禁烟，要到指定吸烟区抽",
+          "detail": "边走边抽在不少地区会被罚款；找有烟灰缸、标着吸烟区的地方。"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "JNTO FAQ（电压插头、小费、现金、纹身、垃圾与电车礼仪、SIM/WiFi）",
+      "url": "https://www.japan.travel/en/faq/"
+    },
+    {
+      "title": "JNTO 签证与入境信息",
+      "url": "https://www.japan.travel/en/plan/visa-info/"
+    },
+    {
+      "title": "JNTO Cashless Payments in Japan",
+      "url": "https://www.japan.travel/en/plan/cashless-payments-in-japan/"
+    },
+    {
+      "title": "JNTO Credit Cards in Japan（邮储银行、Seven Bank ATM）",
+      "url": "https://www.japan.travel/en/plan/credit-cards/"
+    },
+    {
+      "title": "JNTO 日本交通系统指南（Welcome Suica、TOURIST PASMO、信用卡乘车）",
+      "url": "https://www.japan.travel/en/japan-magazine/navigating-japans-transportation-system-steps-tips-and-whats-new/"
+    },
+    {
+      "title": "数字厅 Visit Japan Web（简体中文）",
+      "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/"
+    },
+    {
+      "title": "数字厅 Visit Japan Web 使用方法",
+      "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/guide/"
+    },
+    {
+      "title": "Seven Bank 境外发行卡取款（含银联）",
+      "url": "https://www.sevenbank.co.jp/intlcard/"
+    },
+    {
+      "title": "观光厅 身体不适时的应急指南（医疗费用与保险）",
+      "url": "https://www.jnto.go.jp/emergency/chc/mi_guide.html"
+    },
+    {
+      "title": "观光厅 Safety tips 应用",
+      "url": "https://www.jnto.go.jp/safety-tips/chc/app.html"
+    },
+    {
+      "title": "日本政府广报 飞机上不能带的东西（2026 年版，充电宝规则）",
+      "url": "https://www.gov-online.go.jp/article/201412/entry-7500.html"
+    },
+    {
+      "title": "国土交通省 机内携带与托运限制品目",
+      "url": "https://www.mlit.go.jp/koku/koku_fr2_000007.html"
+    },
+    {
+      "title": "农林水产省动物检疫所 肉制品等伴手礼入境",
+      "url": "https://www.maff.go.jp/aqs/tetuzuki/product/aq2.html"
+    },
+    {
+      "title": "农林水产省植物防疫所 旅行者携带植物",
+      "url": "https://www.maff.go.jp/pps/j/trip/keikouhin.html"
+    },
+    {
+      "title": "JAPAN RAIL PASS 官网 价格",
+      "url": "https://japanrailpass.net/en/purchase/price/"
+    },
+    {
+      "title": "JR 东海 新干线特大行李规定",
+      "url": "https://global.jr-central.co.jp/en/info/oversized-baggage/"
+    }
+  ]
+}

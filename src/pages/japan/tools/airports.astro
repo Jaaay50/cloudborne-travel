@@ -17,6 +17,7 @@ const airports = transport?.airports ?? [];
             <div class="opt-hd"><b>{o.name}</b><span class="to">→ {o.to}</span></div>
             <div class="opt-nums"><span>⏱ {o.time}</span><span>¥ {o.price}</span></div>
             {o.note && <p>{o.note}</p>}
+            {o.url && <a class="opt-link" href={o.url} target="_blank" rel="noopener nofollow">运营方官网 →</a>}
           </div>
         ))}
       </div>
@@ -38,6 +39,7 @@ const airports = transport?.airports ?? [];
   .opt-nums { display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap; }
   .opt-nums span { background: var(--paper-2); border-radius: 8px; padding: 2px 9px; font-size: 13.5px; font-weight: 600; }
   .opt p { color: var(--ink-2); font-size: 13.5px; line-height: 1.65; }
+  .opt-link { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--indigo); }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
   @media (max-width: 640px) { .ap-opts { grid-template-columns: 1fr; } }
 </style>

@@ -23,7 +23,7 @@ const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase:
       <p id="tax-cny" class="cny">约 ¥0</p>
       <p id="tax-hint" class="hint"></p>
     </div>
-    {c.note && <p class="calc-note">{c.note}</p>}
+    <p class="calc-note">按同一店、同一天的税前合计判断是否满 {c.minPurchase?.toLocaleString('zh-CN') ?? '—'} 日元，食品和其他商品可以合并凑数。算出来的是消费税全额，实际到手要减去退税公司的手续费（各家不同）。</p>
   </section>
 
   {taxfree && (
@@ -32,6 +32,16 @@ const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase:
         <h2>怎么退</h2>
         <ol class="steps">{taxfree.steps.map((s, i) => <li><span>{i + 1}</span><div><b>{s.title}</b><p>{s.text}</p></div></li>)}</ol>
       </section>
+      {taxfree.taxRates && (
+        <section class="tool-sec">
+          <h2>哪些是 8%，哪些是 10%</h2>
+          <div class="rates">
+            {taxfree.taxRates.map((r) => (
+              <div class="tcard rate"><span class="pct">{Math.round(r.rate * 100)}%</span><div><b>{r.label}</b><p>{r.items}</p>{r.note && <p class="rnote">{r.note}</p>}</div></div>
+            ))}
+          </div>
+        </section>
+      )}
       <section class="tool-sec">
         <h2>规则要点</h2>
         <div class="rules">{taxfree.rules.map((r) => <div class="tcard"><b>{r.title}</b><p>{r.text}</p></div>)}</div>
@@ -61,6 +71,10 @@ const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase:
   .steps li { display: flex; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
   .steps li > span { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: var(--vermilion); color: #fff; display: grid; place-items: center; font: 600 14px var(--serif); }
   .steps p { color: var(--ink-2); font-size: 14.5px; margin-top: 2px; }
+  .rates { display: grid; gap: 10px; }
+  .rate { display: flex; gap: 14px; align-items: flex-start; }
+  .pct { font: 600 26px/1 var(--serif); color: var(--vermilion); min-width: 58px; padding-top: 2px; }
+  .rnote { font-size: 13px !important; color: var(--mut) !important; }
   .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .faq { display: grid; gap: 8px; }
   details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 16px; transition: box-shadow var(--t-fast); }

@@ -210,9 +210,15 @@ const id = `map-${mode}-${focusPref ?? focusRegion ?? 'all'}`;
       .map((t) => t.getBoundingClientRect())
       .filter((r) => r.width > 0);
     const hit = (a: DOMRect, b: DOMRect) => !(a.right + 2 < b.left || b.right + 2 < a.left || a.bottom + 1 < b.top || b.bottom + 1 < a.top);
+    // Other pins' dots count as obstacles too, so no label sits under a neighbour's dot.
+    const dots = cands.map((p) => [p, p.querySelector('circle')!.getBoundingClientRect()] as const);
     for (const p of cands) {
       const r = p.querySelector('text')!.getBoundingClientRect();
-      if (kept.some((k) => hit(k, r))) p.classList.add('nolabel');
+      const covers = ([q, d]: readonly [SVGGElement, DOMRect]) => {
+        const cx = d.left + d.width / 2, cy = d.top + d.height / 2;
+        return q !== p && cx > r.left && cx < r.right && cy > r.top && cy < r.bottom;
+      };
+      if (kept.some((k) => hit(k, r)) || dots.some(covers)) p.classList.add('nolabel');
       else kept.push(r);
     }
   }

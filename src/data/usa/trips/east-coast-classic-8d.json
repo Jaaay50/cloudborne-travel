@@ -1,0 +1,96 @@
+{
+  "id": "east-coast-classic-8d",
+  "country": "usa",
+  "title": "美东经典 · 纽约费城华盛顿 8 天",
+  "region": "northeast",
+  "daysCount": 8,
+  "for": "第一次来美国、不想自驾，想看大城市和博物馆的人",
+  "season": "4–6 月或 9–11 月",
+  "summary": "纽约进、华盛顿出，全程坐火车不用开车。纽约住 4 晚，按下城、上东区、中城分片走；第五天坐 Amtrak 到费城看独立厅，第六天再去华盛顿，最后两天看国家广场和免费博物馆。独立厅、国会大厦和热门观景台都要提前订票。",
+  "bases": ["纽约 4 晚", "费城 1 晚", "华盛顿 2 晚"],
+  "days": [
+    {
+      "title": "抵达纽约",
+      "stay": "纽约",
+      "items": [
+        { "note": "到 JFK 后坐 AirTrain 换地铁进城，先放行李" },
+        { "pref": "new-york", "food": "ny-pizza-slice" },
+        { "pref": "new-york", "spot": "times-square-broadway" }
+      ],
+      "move": "JFK 到曼哈顿地铁约 1 小时；第一晚早点睡倒时差"
+    },
+    {
+      "title": "自由女神与布鲁克林",
+      "stay": "纽约",
+      "items": [
+        { "pref": "new-york", "spot": "statue-of-liberty" },
+        { "pref": "new-york", "food": "pastrami-sandwich" },
+        { "pref": "new-york", "spot": "brooklyn-bridge-dumbo" }
+      ],
+      "move": "早上第一班渡轮从炮台公园出发；傍晚步行过桥回曼哈顿"
+    },
+    {
+      "title": "中央公园与大都会",
+      "stay": "纽约",
+      "items": [
+        { "pref": "new-york", "food": "bagel-lox" },
+        { "pref": "new-york", "spot": "central-park" },
+        { "pref": "new-york", "spot": "the-met" }
+      ],
+      "move": "大都会周三闭馆，这一天别排在周三"
+    },
+    {
+      "title": "中城艺术与观景台",
+      "stay": "纽约",
+      "items": [
+        { "pref": "new-york", "spot": "moma" },
+        { "pref": "new-york", "food": "chicken-over-rice" },
+        { "pref": "new-york", "spot": "high-line" },
+        { "pref": "new-york", "spot": "empire-state-building" }
+      ],
+      "move": "地铁加步行；观景台按日落时间订票"
+    },
+    {
+      "title": "火车去费城",
+      "stay": "费城",
+      "items": [
+        { "pref": "pennsylvania", "spot": "independence-hall" },
+        { "pref": "pennsylvania", "spot": "liberty-bell" },
+        { "pref": "pennsylvania", "spot": "reading-terminal-market" },
+        { "pref": "pennsylvania", "food": "philly-cheesesteak" }
+      ],
+      "move": "纽约到费城 Amtrak 约 1–1.5 小时；独立厅限时票提前订"
+    },
+    {
+      "title": "洛奇台阶到林肯像",
+      "stay": "华盛顿",
+      "items": [
+        { "pref": "pennsylvania", "spot": "philadelphia-museum-of-art" },
+        { "note": "中午坐 Amtrak 去华盛顿，入住后休息一下" },
+        { "pref": "washington-dc", "spot": "lincoln-memorial" }
+      ],
+      "move": "费城到华盛顿 Amtrak 约 1.5–2 小时"
+    },
+    {
+      "title": "国家广场一整天",
+      "stay": "华盛顿",
+      "items": [
+        { "pref": "washington-dc", "spot": "us-capitol" },
+        { "pref": "washington-dc", "spot": "smithsonian-museums" },
+        { "pref": "washington-dc", "spot": "national-mall" },
+        { "pref": "washington-dc", "food": "half-smoke" }
+      ],
+      "move": "国会大厦、航空航天馆和纪念碑电梯都提前约免费限时票"
+    },
+    {
+      "title": "乔治城后回国",
+      "stay": "回国",
+      "items": [
+        { "pref": "washington-dc", "spot": "georgetown" },
+        { "pref": "washington-dc", "food": "maryland-crab-cake" },
+        { "note": "下午坐地铁银线去杜勒斯机场，国际航班提前 3 小时到" }
+      ],
+      "move": "市区到杜勒斯机场地铁约 1 小时"
+    }
+  ]
+}

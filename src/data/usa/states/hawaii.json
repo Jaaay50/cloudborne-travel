@@ -1,0 +1,234 @@
+{
+  "slug": "hawaii",
+  "country": "usa",
+  "name": "夏威夷",
+  "local": "Hawaii",
+  "abbr": "HI",
+  "region": "hawaii",
+  "tagline": "海滩之外，还有火山、峡谷和日出",
+  "intro": [
+    "夏威夷在太平洋正中，由几座大岛组成，每座岛性格不同：欧胡岛有檀香山、威基基和珍珠港，最方便；茂宜岛看哈雷阿卡拉日出和哈纳公路；夏威夷大岛有活火山和茂纳凯阿星空；考艾岛是峡谷和纳帕利海岸。第一次去一般选欧胡加一座外岛，7–8 天刚好。",
+    "这里不是只适合躺海滩。很多热门景点现在实行预约制，钻石头山、恐龙湾、珍珠港亚利桑那号纪念馆、哈雷阿卡拉日出都要提前在网上抢，放票时间按夏威夷时间算，比北京晚 18 小时，最好设好闹钟。",
+    "除了威基基一带，各岛基本都要租车。岛间航班 1 小时以内，但要算上去机场、还车的时间，换岛那天别排太满。夏威夷物价和酒店税费都高，预算比美国本土多留一些。"
+  ],
+  "days": "7–10 天",
+  "seasons": {
+    "months": [4, 5, 6, 9, 10],
+    "note": "全年都能去；4–5 月和 9–10 月人少价低；12–3 月茂宜岛海域看座头鲸，北岸冬季浪大不宜下水。"
+  },
+  "stay": "欧胡岛住威基基，吃饭、海滩和公交都方便；茂宜岛住南边的基黑、怀雷阿或西边的卡阿纳帕利；大岛看火山住希洛或火山村，玩海住科纳。",
+  "access": [
+    { "from": "中国大陆", "how": "目前没有直飞，常见经东京、大阪或首尔转机，东京到檀香山约 7–8 小时；也可经洛杉矶、旧金山转。" },
+    { "from": "美国西海岸", "how": "洛杉矶、旧金山、西雅图飞檀香山约 5.5–6.5 小时，部分航班直飞茂宜、科纳和考艾。" },
+    { "from": "岛间", "how": "檀香山飞茂宜、科纳、希洛、利胡埃约 35–50 分钟，航班多，提前订价格更低。" }
+  ],
+  "spots": [
+    {
+      "id": "waikiki",
+      "name": "威基基海滩",
+      "local": "Waikiki Beach",
+      "kind": "beach",
+      "ll": [-157.8270, 21.2765],
+      "text": "檀香山的城市海滩，酒店、商场和餐馆沿着海边一字排开，浪小，适合第一次学冲浪和立式桨板，海边就有租板和教学。傍晚坐在沙滩上看日落最舒服，东头的卡皮欧拉尼公园人少一些，能看到钻石头山。",
+      "time": "半天–1 天",
+      "tip": "海龟上岸休息时别靠近，至少保持约 3 米；贵重物品别留在沙滩上。",
+      "fee": "免费",
+      "themes": ["sea", "city", "family"],
+      "photo": "Waikiki Beach on a calm sunny morning seen from the sand near Kapiolani Park: a gentle curve of golden sand and turquoise water, small surfers far out on low waves, a line of hotel towers and palm trees, and the green crater ridge of Diamond Head rising on the right."
+    },
+    {
+      "id": "diamond-head",
+      "name": "钻石头山",
+      "local": "Diamond Head State Monument",
+      "kind": "hiking",
+      "ll": [-157.8058, 21.2620],
+      "text": "威基基东边的火山口，从火山口内侧爬到山顶旧炮台，单程约 1.3 公里，有台阶和一段隧道，山顶能俯看整个威基基海岸线。非夏威夷居民必须提前在州立公园官网预约入场时段，约提前 30 天开放；日出前后的早场最抢手。",
+      "time": "1.5–2 小时",
+      "tip": "上午 10 点后山上暴晒、几乎没树荫，带够水，穿运动鞋。",
+      "fee": "每人约 5 美元，停车每车约 10 美元",
+      "themes": ["nature", "heritage"],
+      "photo": "View from the summit of Diamond Head crater in early morning: the dry, grassy rim of the crater in the foreground, the long curve of Waikiki Beach and the Honolulu high-rise skyline beyond, the green Koolau mountains behind, a deep blue ocean with a lighter reef edge."
+    },
+    {
+      "id": "hanauma-bay",
+      "name": "恐龙湾",
+      "local": "Hanauma Bay Nature Preserve",
+      "kind": "beach",
+      "ll": [-157.6938, 21.2690],
+      "text": "火山口塌陷形成的半圆形海湾，湾内是珊瑚礁保护区，浮潜就能看到热带鱼，运气好有海龟。非居民需在入园两天前的早上 7 点（夏威夷时间）网上抢票，只在周三到周日开放，入园前要先看一段保护教育短片。",
+      "time": "半天",
+      "tip": "一定要用不含氧苯酮的防晒；退潮时别站在珊瑚上。",
+      "fee": "13 岁以上约 25 美元，停车约 3 美元现金",
+      "themes": ["sea", "wildlife", "family"],
+      "photo": "Hanauma Bay seen from the lookout above on a sunny morning: a horseshoe-shaped bay inside an old volcanic crater, clear turquoise water with dark coral reef patches, a narrow strip of pale sand lined with palm trees, green crater walls around it, tiny swimmers in the water."
+    },
+    {
+      "id": "pearl-harbor",
+      "name": "珍珠港国家纪念地",
+      "local": "Pearl Harbor National Memorial",
+      "kind": "museum",
+      "ll": [-157.9393, 21.3678],
+      "text": "1941 年日本偷袭珍珠港的历史现场。国家公园的亚利桑那号纪念馆免费，含纪录片和坐船去沉舰上方白色纪念馆，约 75 分钟；纪念馆下方的沉舰至今还在渗油。旁边的密苏里号战列舰和航空博物馆另外买票。",
+      "time": "半天",
+      "tip": "园区禁止带包进入，门口有收费寄存；纪念馆现场不再发当天免费票。",
+      "fee": "免费，网上预约收约 1 美元手续费",
+      "themes": ["heritage"],
+      "photo": "The white USS Arizona Memorial in Pearl Harbor seen from a shuttle boat on a calm morning: a long white structure with a sagging center spanning the water, a flagpole with the US flag, the faint dark outline of the sunken battleship below the surface, green hills in the distance."
+    },
+    {
+      "id": "north-shore",
+      "name": "欧胡岛北岸",
+      "local": "North Shore, Oahu",
+      "kind": "beach",
+      "ll": [-158.0640, 21.6418],
+      "text": "从威基基开车约 1 小时，北岸节奏慢很多。冬季 12–2 月常有几米高的大浪，是世界级冲浪比赛的地方，夏天反而风平浪静适合游泳浮潜。Haleiwa 小镇有刨冰和蒜蓉虾餐车，Laniakea 海滩常能看到海龟上岸晒太阳。",
+      "time": "半天–1 天",
+      "tip": "冬季北岸浪大流急，看到红旗或警示牌就别下水。",
+      "fee": "免费",
+      "themes": ["sea", "wildlife", "roadtrip"],
+      "photo": "Waimea Bay on Oahu's North Shore on a sunny summer afternoon: a wide crescent of pale golden sand, calm deep blue water, a large dark lava rock jutting out near the shore, dense green trees and hills around the bay, a few distant swimmers."
+    },
+    {
+      "id": "haleakala",
+      "name": "哈雷阿卡拉日出",
+      "local": "Haleakalā National Park",
+      "kind": "national-park",
+      "ll": [-156.2500, 20.7144],
+      "text": "茂宜岛最高峰约 3,055 米，山顶是一片红褐色的火山渣荒原。清晨站在云海之上看日出，是茂宜岛最出名的体验。从卡胡卢伊开车上山约 2 小时，凌晨 3–7 点进园需提前预约，最早约提前 60 天放票，出发前两天还会放一部分。看日落和白天进园不用预约。",
+      "time": "半天",
+      "tip": "山顶日出前常在 0°C 上下还有大风，带羽绒服、帽子和手套。",
+      "fee": "每车约 30 美元，日出预约另收约 1 美元",
+      "themes": ["nature"],
+      "photo": "Sunrise from the summit of Haleakala: a sea of white clouds below the viewpoint glowing orange and pink, the rust-red and brown cinder cones of the vast volcanic crater in the foreground, a clear sky fading from gold to blue, small silhouettes of distant onlookers on the ridge."
+    },
+    {
+      "id": "road-to-hana",
+      "name": "哈纳公路",
+      "local": "Road to Hana",
+      "kind": "drive",
+      "ll": [-156.0029, 20.7880],
+      "text": "茂宜岛东北海岸的山路，从帕伊亚到哈纳约 80 公里，几百个弯道和几十座单车道桥，一路是雨林、瀑布和海崖。不停车也要 2.5–3 小时，加上停留往返就是一整天。途中的怀阿纳帕纳帕州立公园有黑沙滩，非居民须提前预约入园和停车。",
+      "time": "1 天",
+      "tip": "早上 7 点前出发；不要在路边违停或闯私人土地，多数租车合同不允许走哈纳以南的颠簸路段。",
+      "fee": "黑沙滩每人约 5 美元，停车约 10 美元",
+      "themes": ["roadtrip", "nature", "sea"],
+      "photo": "The black sand beach at Waianapanapa State Park on Maui on a bright morning: a small cove of jet-black volcanic sand, rugged black lava rocks along the shore, white surf, dense green jungle and naupaka shrubs on the cliffs, turquoise and deep blue water."
+    },
+    {
+      "id": "hawaii-volcanoes",
+      "name": "夏威夷火山国家公园",
+      "local": "Hawaiʻi Volcanoes National Park",
+      "kind": "national-park",
+      "ll": [-155.2577, 19.4294],
+      "text": "大岛东南部，基拉韦厄是世界上最活跃的火山之一。沿火山口环路能看冒着蒸汽的哈雷茂茂火山口，钻一段瑟斯顿熔岩管，再沿火山口链路一路下到海边看熔岩冲出的海蚀拱。能不能看到熔岩完全看当时的火山活动，出发前查美国地质调查局的夏威夷火山观测站。",
+      "time": "1 天",
+      "tip": "部分区域会因火山气体或喷发封闭，有心肺疾病、孕妇和带婴儿的要留意空气质量提示。",
+      "fee": "每车约 30 美元",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Halemaumau crater at Kilauea seen from the rim at dusk: a vast steep-walled pit with layered grey and brown rock, white volcanic steam rising from the crater floor with a faint orange glow, sparse ohia trees on the rim, a dim purple sky."
+    },
+    {
+      "id": "mauna-kea",
+      "name": "茂纳凯阿观星",
+      "local": "Maunakea",
+      "kind": "viewpoint",
+      "ll": [-155.4756, 19.7613],
+      "text": "海拔约 4,207 米的山顶上排着十几座大型天文望远镜，是全球最好的观星地之一，对夏威夷原住民来说也是圣山。一般开车到约 2,800 米的游客信息站，适应高度、看日落和星空即可。往上是陡峭碎石路，规定只能开四驱车，日落后 30 分钟要下山，很多人选择报团上山顶。",
+      "time": "半天",
+      "tip": "13 岁以下儿童、孕妇和身体不适者别去游客站以上；多数租车合同不允许开上山顶。",
+      "fee": "游客站免费",
+      "themes": ["aurora", "nature"],
+      "photo": "Summit of Maunakea at sunset: white and silver telescope domes standing on reddish cinder ridges far above a thick sea of clouds, the long shadow of the mountain stretching across the cloud layer, the sky turning orange to deep blue, the distant peak of another volcano poking through."
+    },
+    {
+      "id": "kauai-napali",
+      "name": "考艾岛峡谷与纳帕利海岸",
+      "local": "Waimea Canyon & Nāpali Coast, Kauaʻi",
+      "kind": "nature",
+      "ll": [-159.6503, 22.1515],
+      "text": "考艾岛西边的威美亚峡谷红土层层叠叠，沿公路上山有好几个观景台；尽头的卡拉劳观景台俯看纳帕利海岸，锯齿状的绿色山脊直插海里。看纳帕利海岸也可以坐船或直升机；北边的哈埃纳州立公园能走一段卡拉劳步道，非居民须提前 30 天内预约。",
+      "time": "1–2 天",
+      "tip": "卡拉劳观景台午后常起云雾，上午去更容易看清；夏季海况平稳，坐船更舒服。",
+      "fee": "非居民每人约 5 美元，停车约 10 美元",
+      "themes": ["nature", "sea", "roadtrip"],
+      "photo": "View from the Kalalau Lookout on Kauai on a clear morning: steep, fluted green ridges of the Napali Coast plunging into a deep valley that opens to the blue Pacific, wisps of white cloud drifting below the cliff edge, red earth showing on the slopes."
+    }
+  ],
+  "foods": [
+    {
+      "id": "poke",
+      "name": "生鱼丁拌饭",
+      "local": "Poke",
+      "text": "夏威夷最家常的海鲜：金枪鱼或三文鱼切丁，用酱油、芝麻油、海盐、海藻和洋葱拌好，配白饭就是一碗。超市熟食柜现拌现卖，比餐厅新鲜又便宜，海边野餐最合适。",
+      "where": "各岛超市熟食柜和专门的生鱼丁小店。",
+      "price": "一碗约 15–22 美元",
+      "photo": "A poke bowl with glistening cubes of raw red ahi tuna mixed with sesame seeds, green onion and seaweed over white rice, a side of pickled ginger, in a paper bowl on a picnic table near the beach, bright daylight, top-down view."
+    },
+    {
+      "id": "loco-moco",
+      "name": "米饭汉堡肉盖饭",
+      "local": "Loco Moco & Plate Lunch",
+      "text": "夏威夷「盒饭」文化的代表：两球白饭、一勺通心粉沙拉，加一份主菜。洛可摩可是白饭上盖汉堡肉饼和煎蛋，淋满肉汁，一盘下去很顶饱；也可以选照烧鸡、烤肉或卡鲁阿烤猪。",
+      "where": "各岛的盒饭店和本地小餐馆。",
+      "price": "一份约 14–20 美元",
+      "photo": "A loco moco on a styrofoam plate: two scoops of white rice topped with a grilled hamburger patty, a sunny-side-up fried egg and rich brown gravy, a scoop of macaroni salad beside it, on an outdoor wooden table, 45-degree angle."
+    },
+    {
+      "id": "shave-ice",
+      "name": "夏威夷刨冰",
+      "local": "Shave Ice",
+      "text": "冰块刨得像雪一样细，淋上几种颜色的果味糖浆，底下可以加冰淇淋或红豆，上面还能浇一层炼乳。比刨冰机打的碎冰绵软，入口即化，热天来一碗最舒服。",
+      "where": "北岸 Haleiwa 小镇和各岛海滩附近的刨冰店。",
+      "price": "一份约 6–10 美元",
+      "photo": "A tall mound of finely shaved ice drenched in bright red, yellow and blue fruit syrups, drizzled with condensed milk, in a paper cup held in front of a blurred sunny street with palm trees."
+    },
+    {
+      "id": "spam-musubi",
+      "name": "午餐肉饭团",
+      "local": "Spam Musubi",
+      "text": "一片煎过的午餐肉刷上甜咸照烧酱，压在长方形饭团上，用一条海苔包住。二战后传开的本地吃法，便利店和超市里随处都有，适合当早餐或者徒步路上的干粮。",
+      "where": "各岛便利店、超市和盒饭店。",
+      "price": "一个约 2–4 美元",
+      "photo": "Three spam musubi lined up on a small wooden board: rectangular blocks of white rice topped with glossy pan-fried slices of luncheon meat, each wrapped with a band of dark nori seaweed, soft natural light, 45-degree angle."
+    },
+    {
+      "id": "kona-coffee",
+      "name": "科纳咖啡",
+      "local": "Kona Coffee",
+      "text": "大岛西侧科纳山坡上种的咖啡，是美国少有的本土咖啡产区，口感柔和、酸度低。科纳一带的咖啡农场可以参观、试喝；买豆子注意看包装，「科纳混合」可能只有一成科纳豆。",
+      "where": "大岛科纳一带的咖啡农场和各岛咖啡馆。",
+      "price": "一杯约 5–7 美元",
+      "photo": "A cup of black coffee on a wooden railing of a farm veranda on a green hillside, rows of glossy-leaved coffee shrubs with red coffee cherries below, the ocean faint in the distance, soft morning light."
+    }
+  ],
+  "tips": [
+    "酒店房价外要加约 18–19% 的各项税，不少度假酒店还收每晚几十美元的度假村费，比价时看清总价。",
+    "钻石头山、恐龙湾、珍珠港、哈雷阿卡拉日出都要提前网上预约，放票按夏威夷时间（比北京晚 18 小时）。",
+    "夏威夷对外国驾照的要求比加州严，中国驾照办不了国际驾照；带护照、驾照和认证英文翻译件，出发前查州交通部门并问清租车公司。",
+    "只在有救生员的海滩下水；看到海龟保持约 3 米，僧海豹至少约 15 米，不摸不喂。",
+    "当地禁售含氧苯酮等成分的防晒，从国内带的防晒先看成分。"
+  ],
+  "nearby": ["california", "washington", "alaska"],
+  "climate": { "city": "檀香山", "ll": [-157.8583, 21.3069] },
+  "cover": {
+    "scene": "Wide aerial-style view from a high point above Waikiki on a clear morning: the green, ridged crater of Diamond Head in the foreground, the curved shoreline of Waikiki Beach with turquoise reef water and white surf lines, a row of hotel towers and palm trees along the shore, and the blue Pacific Ocean filling the horizon.",
+    "alt": "钻石头山与威基基海岸"
+  },
+  "sources": [
+    { "title": "Hawaiʻi DLNR：Diamond Head State Monument", "url": "https://dlnr.hawaii.gov/dsp/parks/oahu/diamond-head-state-monument/" },
+    { "title": "City & County of Honolulu：Hanauma Bay Nature Preserve", "url": "https://www.honolulu.gov/dpr/hanauma-bay-nature-preserve/" },
+    { "title": "NPS Pearl Harbor：Fees & Passes", "url": "https://www.nps.gov/valr/planyourvisit/fees.htm" },
+    { "title": "Recreation.gov：USS Arizona Memorial Program", "url": "https://www.recreation.gov/ticket/facility/233338" },
+    { "title": "NPS Haleakalā：Sunrise Reservations", "url": "https://www.nps.gov/hale/planyourvisit/sunrise.htm" },
+    { "title": "NPS Haleakalā：Fees & Passes", "url": "https://www.nps.gov/hale/planyourvisit/fees.htm" },
+    { "title": "Hawaiʻi DLNR：Waiʻānapanapa State Park", "url": "https://dlnr.hawaii.gov/dsp/parks/maui/waianapanapa-state-park/" },
+    { "title": "NPS Hawaiʻi Volcanoes：Fees & Passes", "url": "https://www.nps.gov/havo/planyourvisit/fees.htm" },
+    { "title": "University of Hawaiʻi at Hilo：Maunakea Visitor Information Station", "url": "https://hilo.hawaii.edu/maunakea/visitor-information/station" },
+    { "title": "Hawaiʻi DLNR：Hāʻena State Park", "url": "https://dlnr.hawaii.gov/dsp/parks/kauai/haena-state-park/" },
+    { "title": "Hawaiʻi DLNR：Waimea Canyon State Park", "url": "https://dlnr.hawaii.gov/dsp/parks/kauai/waimea-canyon-state-park/" },
+    { "title": "Hawaiʻi DOT：Driver's License", "url": "https://hidot.hawaii.gov/driverslicense/" },
+    { "title": "Hawaiʻi Department of Taxation：Form TA-2 Instructions（Act 96）", "url": "https://files.hawaii.gov/tax/forms/current/ta2ins.pdf" },
+    { "title": "FlightConnections：HNL 直飞航线", "url": "https://www.flightconnections.com/flights-from-honolulu-hnl" }
+  ],
+  "checked": "2026-11"
+}

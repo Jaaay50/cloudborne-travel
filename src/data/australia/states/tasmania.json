@@ -1,0 +1,192 @@
+{
+  "slug": "tasmania",
+  "country": "australia",
+  "name": "塔斯马尼亚",
+  "local": "Tasmania",
+  "abbr": "TAS",
+  "region": "tasmania",
+  "tagline": "开车绕岛，看山海、袋熊和生蚝",
+  "intro": [
+    "塔斯马尼亚是澳洲南边的一座大岛，差不多五分之二的土地是国家公园和保护区。这里看的是空气、山和海：摇篮山的冰川湖、酒杯湾的弧形海湾、火焰湾橙色苔藓覆盖的花岗岩，路上随时会冒出袋熊、沙袋鼠和针鼹。",
+    "最适合自驾。最常见的路线是从霍巴特进、朗塞斯顿出（或者反过来），一周左右：霍巴特和周边两三天，再沿东海岸北上到菲欣纳和火焰湾，最后往西进摇篮山。岛不大，但山路弯多，每天开车别超过三四个小时。",
+    "霍巴特本身也值得多待：周六的萨拉曼卡市场、坐船去 MONA 看当代艺术、开车上惠灵顿山看全城。吃的方面，生蚝、扇贝、奶酪、威士忌和冷凉产区葡萄酒都很出色，岛上的小农场直接卖给游客。"
+  ],
+  "days": "6–8 天",
+  "seasons": {
+    "months": [12, 1, 2, 3, 4],
+    "note": "12–3 月最暖、白天长；4 月下旬–5 月初摇篮山落叶山毛榉变金黄；6–8 月冷，山区常下雪。"
+  },
+  "stay": "霍巴特住滨水区或萨拉曼卡、巴特里角一带，走路吃饭逛市场。东海岸住科尔斯湾或比切诺；摇篮山住公园门口的度假村，清早晚上更容易看到袋熊。",
+  "access": [
+    { "from": "中国大陆", "how": "没有直飞；先飞墨尔本或悉尼（约 9–12 小时），再转国内航班到霍巴特或朗塞斯顿。" },
+    { "from": "墨尔本", "how": "飞霍巴特约 1 小时 15 分钟，飞朗塞斯顿约 1 小时；也可从吉朗坐渡轮带车到德文波特，约 10–11 小时。" },
+    { "from": "悉尼", "how": "飞霍巴特约 1 小时 45 分钟，飞朗塞斯顿约 1.5 小时。" },
+    { "from": "布里斯班", "how": "飞霍巴特约 2.5 小时，航班比悉尼、墨尔本少。" }
+  ],
+  "spots": [
+    {
+      "id": "kunanyi-mount-wellington",
+      "name": "惠灵顿山",
+      "local": "kunanyi / Mount Wellington",
+      "kind": "viewpoint",
+      "ll": [147.2373, -42.8960],
+      "text": "霍巴特背后海拔约 1,270 米的山，从市中心开车约 30 分钟就能到山顶。站在观景台上，整座城市、德文特河和远处的半岛一眼看全；山顶是成片的粗大辉绿岩石柱和巨石堆。体力好可以从半山的泉水区（The Springs）走一段步道。",
+      "time": "1–2 小时",
+      "tip": "山顶比市区冷十几度，任何月份都可能下雪，带厚外套；遇大风雪会封路。",
+      "fee": "免费",
+      "themes": ["nature", "city", "snow"],
+      "photo": "View from the summit lookout of kunanyi / Mount Wellington on a clear morning: grey dolerite boulders and low alpine shrubs in the foreground, the city of Hobart spread along the wide Derwent River estuary far below, peninsulas and bays stretching to the horizon, crisp blue sky."
+    },
+    {
+      "id": "salamanca-market",
+      "name": "萨拉曼卡市场",
+      "local": "Salamanca Market & Battery Point",
+      "kind": "market",
+      "ll": [147.3321, -42.8866],
+      "text": "每周六在萨拉曼卡广场的砂岩仓库前摆开几百个摊位，有本地蔬果、奶酪、蜂蜜、木工和手作，也有很多小吃。仓库是 19 世纪捕鲸时代留下的，现在改成画廊和餐馆。逛完往山坡上走就是巴特里角，殖民时期的小屋和窄巷很适合散步。",
+      "time": "2–3 小时",
+      "tip": "只在周六 8:30–15:00 营业，上午去选择多；平日来就逛仓库和巴特里角。",
+      "fee": "免费",
+      "themes": ["city"],
+      "photo": "Saturday morning at Salamanca Market in Hobart: rows of white-canopied stalls selling fresh produce and crafts in front of old honey-coloured sandstone warehouses, tall plane trees, shoppers as small figures in the distance, the slopes of kunanyi behind, clear summer light."
+    },
+    {
+      "id": "mona",
+      "name": "MONA 古今艺术博物馆",
+      "local": "Mona (Museum of Old and New Art)",
+      "kind": "museum",
+      "ll": [147.2612, -42.8127],
+      "text": "私人收藏家挖进河边砂岩崖里修的地下美术馆，展品从古埃及文物到挑衅意味很强的当代装置都有，部分作品不适合小孩。最好的去法是从霍巴特布鲁克街码头坐它家的快船，约 30 分钟，下船沿台阶爬上去。馆里有酒庄和餐厅，可以待大半天。",
+      "time": "半天",
+      "tip": "周四到周一开放，周二、周三闭馆；外地成人约 45 澳元，建议提前订票和船票。",
+      "fee": "外地成人约 45 澳元",
+      "themes": ["art"],
+      "photo": "Exterior of a modern museum carved into a sandstone peninsula on the Derwent River near Hobart: rusted corten steel and concrete walls, a terrace with lawn and timber seating, a sleek catamaran ferry at the jetty below, calm river water and hills behind, sunny afternoon."
+    },
+    {
+      "id": "port-arthur",
+      "name": "亚瑟港监狱遗址",
+      "local": "Port Arthur Historic Site",
+      "kind": "landmark",
+      "ll": [147.8503, -43.1480],
+      "text": "19 世纪流放犯监狱遗址，世界遗产。最醒目的是没了屋顶的四层砂岩监狱大楼，园区里还有教堂、军官宅邸、精神病院和单独关押犯人的「隔离监狱」，草坪一直铺到海湾边。离霍巴特约 1.5 小时车程，路上可以停塔斯曼半岛的海蚀拱和喷水洞。",
+      "time": "半天–1 天",
+      "tip": "每天 9:00–17:00 开放；晚上的提灯鬼故事导览约 35 澳元，周三到周日有场次。",
+      "fee": "成人约 55 澳元",
+      "themes": ["roadtrip"],
+      "photo": "The roofless four-storey sandstone penitentiary ruin at Port Arthur on a calm morning, rows of empty arched window openings, wide green lawns sloping down to a still blue bay, large old oak trees, forested hills behind, soft early autumn light."
+    },
+    {
+      "id": "bruny-island",
+      "name": "布鲁尼岛",
+      "local": "Bruny Island",
+      "kind": "island",
+      "ll": [147.3488, -43.2694],
+      "text": "霍巴特南边约 40 分钟车程到凯特灵，坐汽车渡轮 20 分钟上岛。南北两半岛之间只靠一条细长的沙颈相连，爬上旁边的观景台看两侧海湾最壮观。岛上的玩法就是吃：现开生蚝、奶酪、蜂蜜和浆果，还可以坐快艇沿南端悬崖看海豹。夜里天晴，岛南常有人守着看南极光。",
+      "time": "1 天",
+      "tip": "渡轮约每 20 分钟一班，小车往返约 59 澳元起，先到先上；岛上碎石路多，慢开。",
+      "themes": ["sea", "wildlife", "aurora"],
+      "photo": "View from the Truganini Lookout over The Neck on Bruny Island: a long narrow sandy isthmus with ocean beach on one side and a calm bay on the other, a timber staircase in the foreground, coastal heath, deep blue water, clear summer afternoon."
+    },
+    {
+      "id": "wineglass-bay",
+      "name": "菲欣纳国家公园与酒杯湾",
+      "local": "Freycinet National Park & Wineglass Bay",
+      "kind": "national-park",
+      "ll": [148.2936, -42.1549],
+      "text": "塔斯马尼亚最有名的风景：粉红色花岗岩山之间夹着一道完美弧形的白沙海湾。从停车场走到酒杯湾观景台往返约 2.6 公里、1–1.5 小时，上坡不少；想下到海滩，再接上海泽兹海滩环线，全程约 11 公里、4–5 小时。离霍巴特或朗塞斯顿都是 2.5–3 小时车程。",
+      "time": "半天–1 天",
+      "tip": "需要国家公园通行证；夏天中午停车场易满，早上 9 点前到。",
+      "themes": ["nature", "sea"],
+      "photo": "View from the Wineglass Bay lookout: a perfect crescent of white sand curving around a bay of clear turquoise and deep blue water, pink granite mountains and dense green bushland on both sides, orange lichen on boulders in the foreground, clear summer morning."
+    },
+    {
+      "id": "bay-of-fires",
+      "name": "火焰湾",
+      "local": "Bay of Fires",
+      "kind": "beach",
+      "ll": [148.3122, -41.2490],
+      "text": "东北海岸从比纳隆湾往北的一长段海岸，白沙、透明的海水，海边堆满被橙红色地衣染色的花岗岩巨石，阳光一照像着了火。比纳隆湾小镇就在南端，开车沿海边慢慢找没人的小海湾。从圣海伦斯过来约 15 分钟，一路都免费。",
+      "time": "半天",
+      "tip": "海水全年偏凉；没有救生员的海滩下水要小心暗流，以玩水为主。",
+      "fee": "免费",
+      "themes": ["sea", "roadtrip", "nature"],
+      "photo": "Bay of Fires coastline at Binalong Bay on a sunny afternoon: large rounded granite boulders covered in bright orange lichen at the water's edge, crystal-clear turquoise water over white sand, a curving beach and green coastal scrub beyond, clear blue sky."
+    },
+    {
+      "id": "cradle-mountain",
+      "name": "摇篮山与鸽子湖",
+      "local": "Cradle Mountain & Dove Lake",
+      "kind": "national-park",
+      "ll": [145.9614, -41.6604],
+      "text": "世界遗产荒野区的门面：锯齿状的辉绿岩山峰倒映在鸽子湖里，湖边有一座老木船屋。绕湖一圈约 6 公里、2–3 小时，中途穿过长满苔藓的冷温带雨林。旺季私家车不能开进湖边，要在游客中心换乘接驳车，单程约 20 分钟。傍晚在朗尼溪草地上很容易看到袋熊。",
+      "time": "1–2 天",
+      "tip": "一年四季都可能下雪，带防风防水外套；单日摇篮山门票含接驳车，假期通行证不含。",
+      "fee": "单日成人约 30.7 澳元",
+      "themes": ["nature", "wildlife", "snow"],
+      "photo": "Early-morning view across the still waters of Dove Lake to the jagged dolerite peaks of Cradle Mountain, an old weathered timber boatshed on the pebbly shore in the foreground, golden buttongrass and low alpine scrub, light mist on the lake, soft autumn light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "tasmanian-oysters",
+      "name": "塔斯马尼亚生蚝",
+      "local": "Tasmanian Oysters",
+      "text": "塔斯马尼亚东南部的河口海水冷而干净，养出的太平洋生蚝肥厚、带清爽的海水咸味。布鲁尼岛和东海岸都有养殖场直接开店，现撬现吃，挤点柠檬就行；价格比大城市餐厅便宜得多。",
+      "where": "布鲁尼岛、东海岸科尔斯湾一带的养殖场小店",
+      "price": "一打约 20–30 澳元",
+      "photo": "A dozen freshly shucked oysters on a tray of crushed ice on an outdoor timber picnic table by a calm bay, plump glistening oysters in rough shells, lemon halves, oyster farm racks in the water behind, overcast soft daylight, 45-degree angle."
+    },
+    {
+      "id": "scallop-pie",
+      "name": "扇贝派",
+      "local": "Tasmanian Scallop Pie",
+      "text": "塔斯马尼亚特有的派：酥皮里不是碎牛肉，而是整颗的扇贝，常用淡淡的咖喱奶油酱汁煮过。岛上很多面包店都有，自驾路上停下来买一个热的当午饭，是本地人推荐最多的小吃之一。",
+      "where": "霍巴特和沿途小镇的面包店",
+      "price": "一个约 10–14 澳元",
+      "photo": "A golden flaky individual pie cut open on a paper bag, revealing whole plump scallops in a creamy yellow curry sauce, on a small wooden counter of a country bakery, warm morning light, 45-degree angle."
+    },
+    {
+      "id": "leatherwood-honey",
+      "name": "革木蜂蜜",
+      "local": "Leatherwood Honey",
+      "text": "革木是只长在塔斯马尼亚西部雨林里的树，蜜蜂采它的花酿出的蜂蜜香气浓、带一点辛辣花香，口感厚。市场和农场商店常让你先尝再买，也有加进冰淇淋和蜂蜜酒里的。买了带回国前先查好中国海关的入境规定。",
+      "where": "萨拉曼卡市场、西北部的蜂蜜农场商店",
+      "photo": "Glass jars of amber leatherwood honey on a rustic wooden shelf at a farm shop, one open jar with a wooden dipper dripping thick honey, white leatherwood blossoms beside it, soft window light, 45-degree angle."
+    },
+    {
+      "id": "tasmanian-whisky",
+      "name": "塔斯马尼亚威士忌",
+      "local": "Tasmanian Whisky",
+      "text": "塔斯马尼亚冷凉的气候、干净的水和本地大麦，让这里成了澳洲威士忌的大本营，岛上有几十家小型蒸馏厂。霍巴特滨水区就有品酒吧，可以一次比较好几家的单一麦芽。自驾的人记得把品酒留到晚上。",
+      "where": "霍巴特滨水区的品酒吧和周边蒸馏厂",
+      "photo": "A tasting flight of four small glasses of whisky in shades from pale gold to deep amber on a long timber bar, copper pot stills softly blurred in the background, warm low lighting, 45-degree angle."
+    }
+  ],
+  "tips": [
+    "国家公园都要通行证，自驾买「假期车辆通行证」约 98 澳元，两个月内一车最多 8 人通用。",
+    "塔州检疫严格，从澳洲本土带入新鲜水果蔬菜会被没收，飞机落地前吃完或扔进检疫箱。",
+    "黄昏和夜里路上野生动物极多，尽量天黑前到住处；自驾靠左，弯道慢开。",
+    "中国驾照要带国际驾照或认证译员的英文翻译件，细则看塔州交通部门官网。",
+    "天气变化快，夏天也带抓绒和雨衣；天晴无月的夜里可以看看南极光预报。"
+  ],
+  "nearby": ["victoria", "new-south-wales"],
+  "climate": { "city": "霍巴特", "ll": [147.3272, -42.8821] },
+  "cover": {
+    "scene": "Wide early-morning view across the still waters of Dove Lake toward the jagged dolerite peaks of Cradle Mountain, an old weathered timber boatshed on the stony shoreline at left, golden buttongrass and low alpine heath in the foreground, light mist drifting over the lake, soft blue sky with a few clouds.",
+    "alt": "鸽子湖畔的摇篮山与老船屋"
+  },
+  "sources": [
+    { "title": "Parks and Wildlife Service Tasmania：Park passes and entry fees", "url": "https://parks.tas.gov.au/explore-our-parks/know-before-you-go/park-passes-and-entry-fees" },
+    { "title": "Parks and Wildlife Service Tasmania：Cradle Mountain", "url": "https://parks.tas.gov.au/explore-our-parks/cradle-mountain" },
+    { "title": "Parks and Wildlife Service Tasmania：Cradle Mountain shuttle bus", "url": "https://parks.tas.gov.au/explore-our-parks/cradle-mountain/cradle-mountain-shuttle-bus-information" },
+    { "title": "Parks and Wildlife Service Tasmania：Freycinet National Park", "url": "https://parks.tas.gov.au/explore-our-parks/freycinet-national-park" },
+    { "title": "Mona：Visit and getting here", "url": "https://www.mona.net.au/visit/getting-here" },
+    { "title": "Port Arthur Historic Site", "url": "https://portarthur.org.au/" },
+    { "title": "Island Connections：Bruny Island ferry", "url": "https://www.islandconnections.com.au/bruny-island/" },
+    { "title": "Salamanca Market", "url": "https://www.salamancamarket.com.au/" },
+    { "title": "Wellington Park：kunanyi / Mount Wellington", "url": "https://www.wellingtonpark.org.au/" },
+    { "title": "Transport Tasmania：Driving in Tasmania on an overseas licence", "url": "https://www.transport.tas.gov.au/licensing/interstate_or_overseas_licences/driving_in_tasmania_on_an_interstate_or_overseas_licence" }
+  ],
+  "checked": "2026-11"
+}

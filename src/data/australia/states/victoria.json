@@ -1,0 +1,222 @@
+{
+  "slug": "victoria",
+  "country": "australia",
+  "name": "维多利亚",
+  "local": "Victoria",
+  "abbr": "VIC",
+  "region": "victoria",
+  "tagline": "咖啡巷子、大洋路和小企鹅",
+  "intro": [
+    "维多利亚面积不大，玩法却很集中：墨尔本是澳洲最会吃、最会喝咖啡的城市，开车两三个小时就能到大洋路的十二门徒、菲利普岛的企鹅归巢和格兰屿的山岩。适合喜欢城市生活、又想自驾看海岸风景的人。",
+    "墨尔本本身值得留 2–3 天：白天钻市中心的巷子喝咖啡、看涂鸦，逛维多利亚女王市场和国立美术馆，傍晚去菲利普岛看企鹅。大洋路最好分两天走，在阿波罗湾或坎贝尔港住一晚，第二天清早去十二门徒，人少光也好。",
+    "再多两三天，可以去亚拉河谷酒庄和动物保护区，或者往西北去格兰屿国家公园登山看袋鼠，往东南去威尔逊岬看袋熊和白沙滩。出了墨尔本基本都要自驾或跟团，公共交通只能到镇上。"
+  ],
+  "days": "5–7 天",
+  "seasons": {
+    "months": [11, 12, 2, 3, 4],
+    "note": "11–4 月白天长、适合走大洋路；1 月暑假最挤；6–8 月阴冷多雨，12–2 月要留意山火。"
+  },
+  "stay": "第一次住墨尔本市中心或南岸，在免费电车区内走路坐车都方便。大洋路在阿波罗湾或坎贝尔港住一晚；格兰屿住霍尔斯加普，亚拉河谷当天往返即可。",
+  "access": [
+    { "from": "中国大陆", "how": "北京、上海、广州、深圳、成都、厦门、海口等有直飞墨尔本，约 9.5–12 小时。" },
+    { "from": "悉尼", "how": "飞机约 1.5 小时，航班很密；开车约 9 小时。" },
+    { "from": "塔斯马尼亚", "how": "飞霍巴特或朗塞斯顿约 1–1.5 小时；也可从吉朗坐「塔斯马尼亚精神号」渡轮到德文波特，约 10–11 小时。" },
+    { "from": "阿德莱德", "how": "飞机约 1 小时 15 分钟；沿海岸自驾大洋路约 2–3 天。" }
+  ],
+  "spots": [
+    {
+      "id": "melbourne-laneways",
+      "name": "墨尔本巷弄与涂鸦街",
+      "local": "Melbourne Laneways & Hosier Lane",
+      "kind": "street",
+      "ll": [144.9690, -37.8162],
+      "text": "墨尔本最好的部分藏在市中心的小巷里。从联邦广场过马路就是满墙涂鸦的霍西尔巷，几乎每周都有新作品；德格雷夫斯街挤满了咖啡馆和小餐馆，旁边的街区拱廊是 19 世纪的玻璃顶商场。按「喝一杯咖啡，再钻一条巷子」的节奏逛，半天很快。",
+      "time": "半天",
+      "tip": "免费电车区内坐电车不用买票，边逛边跳上跳下最省力。",
+      "fee": "免费",
+      "themes": ["city", "art"],
+      "photo": "A narrow cobblestone laneway in central Melbourne with every brick wall covered in layered colourful street art and murals, overhead cables, a few distant pedestrians walking through, soft overcast daylight evenly lighting the walls, view down the lane."
+    },
+    {
+      "id": "queen-victoria-market",
+      "name": "维多利亚女王市场",
+      "local": "Queen Victoria Market",
+      "kind": "market",
+      "ll": [144.9574, -37.8074],
+      "text": "开了一百四十多年的露天市场，肉类、海鲜大厅和熟食区是老建筑，外面一长排棚子卖水果蔬菜、杂货和纪念品。早上来吃现炸果酱甜甜圈、喝咖啡，买点奶酪和水果当野餐。夏季和冬季有些周三晚上办夜市，小吃摊和现场音乐很热闹。",
+      "time": "1.5–2 小时",
+      "tip": "周一、周三不开市；周六人最多，收市前蔬果常打折。",
+      "fee": "免费",
+      "themes": ["city"],
+      "photo": "Inside the historic delicatessen hall of a Melbourne market in the morning: long glass counters filled with cheeses and cured meats, old iron columns and timber ceiling, shoppers browsing in the distance, warm interior light mixed with daylight from high windows."
+    },
+    {
+      "id": "ngv-international",
+      "name": "维多利亚国立美术馆",
+      "local": "NGV International",
+      "kind": "museum",
+      "ll": [144.9687, -37.8229],
+      "text": "澳洲最老、参观人数最多的美术馆，常设展免费。入口是一面流水的玻璃墙，大厅抬头是一整片彩色玻璃天花板，很多人干脆躺在地上看。藏品从欧洲古典油画到当代设计都有；本土和原住民艺术在联邦广场的伊恩·波特中心。",
+      "time": "2–3 小时",
+      "tip": "每天 10:00–17:00 开放；大背包要先寄存，特展另收费。",
+      "fee": "常设展免费",
+      "themes": ["art", "city"],
+      "photo": "Visitors as tiny figures lying on the carpet of a great hall looking up at a vast stained-glass ceiling made of hundreds of coloured glass panels in red, blue, yellow and green, light pouring through, wide angle from floor level."
+    },
+    {
+      "id": "great-ocean-road",
+      "name": "大洋路自驾",
+      "local": "Great Ocean Road",
+      "kind": "drive",
+      "ll": [143.8589, -38.6677],
+      "text": "从托基到瓦南布尔附近，约 240 公里，一战老兵修的海边公路。前半段贴着悬崖和海湾走，过纪念拱门、洛恩、肯尼特河时抬头找桉树上的野生考拉；阿波罗湾以后转进奥特威雨林，再出来就是十二门徒所在的海蚀柱海岸。别想一天走完，住一晚最舒服。",
+      "time": "2 天",
+      "tip": "弯多路窄，靠左慢开，进观景点再停车；黄昏后小心袋鼠横穿。",
+      "themes": ["roadtrip", "sea", "wildlife"],
+      "photo": "The Great Ocean Road winding along the base of green coastal hills high above the Southern Ocean near Kennett River, white surf breaking on rocky shore below, a few small cars on the road, eucalyptus forest on the slopes, clear late-spring afternoon."
+    },
+    {
+      "id": "twelve-apostles",
+      "name": "十二门徒与洛克阿德峡",
+      "local": "Twelve Apostles & Loch Ard Gorge",
+      "kind": "viewpoint",
+      "ll": [143.0934, -38.6603],
+      "text": "南大洋里一根根立着的石灰岩海蚀柱，现在剩下的不到十二根，还在被海浪慢慢啃掉。游客中心停车后走地下通道到崖边观景台；往西几分钟车程是洛克阿德峡，1878 年一艘移民船在这里沉没，峡湾下方的小海滩可以走下去，但别下水。也可以坐直升机从空中看。",
+      "time": "1.5–3 小时",
+      "tip": "日出或日落前后去，光线最好、旅行团少；景区在建新游客中心，现场按指示走。",
+      "fee": "免费",
+      "themes": ["sea", "nature", "roadtrip"],
+      "photo": "Sunset view from the clifftop boardwalk of the Twelve Apostles: tall golden limestone sea stacks standing in the Southern Ocean, sheer orange cliffs curving along the coast, white surf around the bases of the stacks, warm low sun and pastel sky."
+    },
+    {
+      "id": "penguin-parade",
+      "name": "菲利普岛企鹅归巢",
+      "local": "Penguin Parade, Phillip Island",
+      "kind": "wildlife",
+      "ll": [145.1481, -38.5076],
+      "text": "世界上最小的企鹅每天日落后成群从海里上岸，摇摇摆摆穿过沙滩回到沙丘里的巢穴。看台就在沙滩边，还有更近的地下观景室和小团导览。离墨尔本约 2 小时车程，常和岛上的考拉保护区、诺比斯海角连成一天。",
+      "time": "半天",
+      "tip": "全程禁止拍照摄像，手机也不行；12–1 月和假期必须提前订票，晚上海边风冷带厚外套。",
+      "fee": "普通看台约 34 澳元",
+      "themes": ["wildlife", "family", "sea"],
+      "photo": "Dusk at a sandy beach on Phillip Island: a small group of little blue penguins with slate-blue backs and white bellies waddling out of the surf onto the sand, low dunes covered in coastal grass behind, soft fading blue-hour light, no flash."
+    },
+    {
+      "id": "puffing-billy",
+      "name": "普芬比利蒸汽小火车",
+      "local": "Puffing Billy Railway",
+      "kind": "nature",
+      "ll": [145.3566, -37.9077],
+      "text": "百年前的窄轨蒸汽火车，从墨尔本东边丹德农山脚的贝尔格雷夫出发，穿过高大的山梣林和蕨类山谷，过一座木栈桥。敞窗车厢里探出身子吹风看林子，是孩子最喜欢的环节。可以只坐到湖畔站来回，再去丹德农山的小镇喝下午茶。",
+      "time": "半天",
+      "tip": "从弗林德斯街坐城铁到贝尔格雷夫约 1 小时；周末假期提前订票，全面禁火日可能改柴油车或停运。",
+      "themes": ["family", "nature"],
+      "photo": "A small black steam locomotive with red trim pulling maroon open-sided carriages across an old timber trestle bridge through tall mountain ash forest and tree ferns, white steam drifting into the trees, soft morning light filtering through the canopy."
+    },
+    {
+      "id": "yarra-valley",
+      "name": "亚拉河谷酒庄",
+      "local": "Yarra Valley",
+      "kind": "winery",
+      "ll": [145.3744, -37.6573],
+      "text": "墨尔本东北约 1 小时车程的冷凉产区，起伏的山坡上全是葡萄园，黑皮诺、霞多丽和起泡酒最出名。在酒庄品酒、吃午餐是标准玩法，还可以凌晨坐热气球看日出。附近的希尔斯维尔动物保护区专门养澳洲本土动物，鸭嘴兽和鸟类飞行表演都值得看。",
+      "time": "1 天",
+      "tip": "要喝酒就跟品酒团或包车；保护区每天 9:00–17:00 开放。",
+      "themes": ["wine", "wildlife", "roadtrip"],
+      "photo": "Rolling hills of neat green vineyard rows in the Yarra Valley at sunrise, a few hot-air balloons floating above, mist settled in the valley floor, distant blue forested ranges, dew on the grass, soft golden autumn light."
+    },
+    {
+      "id": "grampians",
+      "name": "格兰屿国家公园",
+      "local": "Grampians (Gariwerd) National Park",
+      "kind": "national-park",
+      "ll": [142.5202, -37.1418],
+      "text": "墨尔本西北约 3 小时，一列砂岩山脊突然从平原上立起来。住在山脚的霍尔斯加普，早晚草地上就有成群袋鼠。经典步道是登顶尖峰观景台（Pinnacle），俯看整个山谷；开车能到博罗卡和里德观景台。9–10 月野花开得最好，布兰巴克文化中心讲原住民的故事。",
+      "time": "1–2 天",
+      "tip": "麦肯齐瀑布 2026 年 2 月起封闭施工至年底；2024–25 年山火后部分步道仍关闭，出发前查公园通告。",
+      "themes": ["nature", "wildlife", "flowers"],
+      "photo": "View from the Pinnacle lookout in the Grampians on a clear spring morning: jagged sandstone ridges and rock ledges in the foreground, a wide valley of eucalyptus forest below with the small town of Halls Gap and a lake, layered blue ranges in the distance."
+    },
+    {
+      "id": "wilsons-promontory",
+      "name": "威尔逊岬",
+      "local": "Wilsons Promontory National Park",
+      "kind": "national-park",
+      "ll": [146.3218, -39.0303],
+      "text": "澳洲大陆最南端，墨尔本东南约 3 小时。花岗岩巨石散落在白沙海滩上，吱吱海滩（Squeaky Beach）的细沙踩上去真的会响。营地潮汐河一带傍晚常见袋熊、袋鼠和鸸鹋。体力好就爬奥伯伦山，看半岛和海湾的全景，日落时最美。",
+      "time": "1–2 天",
+      "tip": "12–1 月和长周末营地早订满；半岛上没有加油站和大超市，进来前备好。",
+      "themes": ["nature", "sea", "wildlife"],
+      "photo": "Squeaky Beach at Wilsons Promontory in late afternoon: very fine white sand, large rounded orange-lichen-covered granite boulders at the water's edge, clear turquoise water and gentle waves, green coastal scrub on the hills behind, warm summer light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "flat-white",
+      "name": "澳白咖啡",
+      "local": "Flat White",
+      "text": "墨尔本人对咖啡的讲究全澳出名。澳白是浓缩咖啡加一层薄薄的细腻奶泡，比拿铁奶少、咖啡味更足。很多小店自己烘豆，菜单上写着豆子产地和风味，点「single origin」能喝到不同庄园的豆子。",
+      "where": "市中心巷子、菲茨罗伊和科林伍德的独立咖啡馆",
+      "price": "一杯约 5–6 澳元",
+      "photo": "A flat white in a small matte ceramic cup on a saucer, glossy microfoam with a neat rosetta pattern, on a narrow timber bench in a laneway cafe, exposed brick wall blurred behind, soft morning light, 45-degree angle."
+    },
+    {
+      "id": "hot-jam-doughnuts",
+      "name": "现炸果酱甜甜圈",
+      "local": "Hot Jam Doughnuts",
+      "text": "维多利亚女王市场外那辆老餐车卖了几十年的招牌小吃：面团现炸，滚满白糖，里面灌着烫嘴的红果酱。一口下去很容易被果酱烫到，拿到手先等半分钟。逛市场的时候排一下队，几乎是墨尔本的仪式。",
+      "where": "维多利亚女王市场外的老餐车，开市日营业",
+      "photo": "Freshly fried round doughnuts coated in white sugar in a paper bag, one torn open showing hot red jam inside, held at a market stall counter with a vintage food van blurred behind, bright morning daylight, close angle."
+    },
+    {
+      "id": "souvlaki",
+      "name": "希腊烤肉卷",
+      "local": "Souvlaki",
+      "text": "墨尔本是希腊本土以外希腊裔人口最多的城市之一，希腊菜在这里就是家常菜。烤羊肉或鸡肉切片，加洋葱、番茄和酸奶黄瓜酱，用皮塔饼一卷就是一顿。夜里喝完酒来一个，是本地人的老习惯。",
+      "where": "市中心朗斯代尔街一带、奥克利（Oakleigh）的希腊餐馆",
+      "price": "一个约 15–20 澳元",
+      "photo": "A lamb souvlaki wrapped in warm pita bread and paper, sliced grilled lamb, tomato, red onion and creamy tzatziki visible at the open end, a few chips on the side, simple restaurant counter, warm evening light, 45-degree angle."
+    },
+    {
+      "id": "chicken-parma",
+      "name": "帕尔玛炸鸡排",
+      "local": "Chicken Parma",
+      "text": "澳洲酒吧的国民菜，墨尔本人最爱：大块鸡胸裹面包糠炸脆，铺番茄酱、火腿和融化的奶酪，旁边配薯条和沙拉。分量大，一人一份通常吃不完。不少老酒吧每周有固定的「帕尔玛之夜」特价。",
+      "where": "市中心和内城区的老派酒吧（pub）",
+      "price": "一份约 25–32 澳元",
+      "photo": "A large crumbed chicken parmigiana topped with tomato sauce, ham and bubbling golden melted cheese, served on an oval white plate with a pile of chips and green salad, on a dark timber pub table, warm interior light, 45-degree angle."
+    },
+    {
+      "id": "yarra-valley-pinot",
+      "name": "亚拉河谷黑皮诺",
+      "local": "Yarra Valley Pinot Noir",
+      "text": "亚拉河谷气候凉爽，酿出的黑皮诺颜色浅、果香细，带樱桃和森林的气息，霞多丽和起泡酒也很出色。酒庄品酒一般收少量费用，买酒可抵。配一份庄园午餐的奶酪拼盘，就是亚拉河谷最典型的一天。",
+      "where": "亚拉河谷各酒庄的品酒室和餐厅",
+      "photo": "A glass of translucent ruby pinot noir beside a board of local cheeses, crackers and grapes on an outdoor terrace table at a winery, rows of vines and rolling hills blurred in the background, soft afternoon autumn light."
+    }
+  ],
+  "tips": [
+    "墨尔本「一天四季」，1 月也可能骤降到十几度，随身带件外套。",
+    "市中心免费电车区内坐电车不收费，出了范围要刷 myki，跳上车前看清站牌。",
+    "自驾靠左；中国驾照要带英文翻译件（常用 NAATI 认证译员），细则以 VicRoads 为准。",
+    "大洋路海滩暗流强，只在有救生员的红黄旗之间游泳；悬崖观景台别越过护栏。",
+    "12–2 月山火季，出发前看 VicEmergency 的火情和封路，全面禁火日不能生火。"
+  ],
+  "nearby": ["new-south-wales", "south-australia", "tasmania", "australian-capital-territory"],
+  "climate": { "city": "墨尔本", "ll": [144.9631, -37.8136] },
+  "cover": {
+    "scene": "Wide clifftop view of the Twelve Apostles on the Great Ocean Road at golden hour: tall weathered limestone sea stacks rising from the Southern Ocean, a long line of sheer orange-gold cliffs curving into the distance, white surf foaming at their bases, a soft pastel sky with the low sun over the water.",
+    "alt": "金色夕阳下的十二门徒"
+  },
+  "sources": [
+    { "title": "Phillip Island Nature Parks：Penguin Parade", "url": "https://www.penguins.org.au/attractions/penguin-parade/" },
+    { "title": "Queen Victoria Market：Visit", "url": "https://qvm.com.au/visit/" },
+    { "title": "NGV：Visit", "url": "https://www.ngv.vic.gov.au/visit/" },
+    { "title": "Parks Victoria：Grampians (Gariwerd) National Park", "url": "https://www.parks.vic.gov.au/places-to-see/parks/grampians-national-park" },
+    { "title": "Parks Victoria：Wilsons Promontory National Park", "url": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park" },
+    { "title": "Great Ocean Road Coast and Parks Authority：Port Campbell National Park", "url": "https://www.greatoceanroadauthority.vic.gov.au/Land-We-Manage/National-Parks/Port-Campbell-National-Park" },
+    { "title": "Zoos Victoria：Healesville Sanctuary", "url": "https://www.zoo.org.au/healesville/" },
+    { "title": "VicRoads：Driving with your overseas licence", "url": "https://www.vicroads.vic.gov.au/licences/convert-your-licence/driving-with-your-overseas-licence" }
+  ],
+  "checked": "2026-11"
+}

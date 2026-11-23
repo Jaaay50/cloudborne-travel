@@ -1,0 +1,92 @@
+{
+  "id": "california-coast-8d",
+  "country": "usa",
+  "title": "加州海岸与优胜美地 · 8 天",
+  "region": "west-coast",
+  "daysCount": 8,
+  "for": "第一次来美国西海岸、能自驾、想城市和自然都看的人",
+  "season": "4–6 月或 9–10 月",
+  "summary": "旧金山进、洛杉矶出，中间绕进优胜美地，再沿 1 号公路大苏尔段南下。前两天在旧金山不用开车，第三天才取车。优胜美地停车难，两天都要早出门；大苏尔一段别赶，留一整天边开边停。最后一天在洛杉矶看海和夜景，晚上从洛杉矶机场回国。",
+  "bases": ["旧金山 2 晚", "优胜美地周边 2 晚", "蒙特雷 1 晚", "坎布里亚或圣路易斯奥比斯波 1 晚", "洛杉矶 1 晚"],
+  "days": [
+    {
+      "title": "旧金山：金门大桥",
+      "stay": "旧金山",
+      "items": [
+        { "pref": "california", "spot": "golden-gate-bridge" },
+        { "pref": "california", "food": "clam-chowder" },
+        { "note": "傍晚坐叮当车回联合广场，倒时差早点休息" }
+      ],
+      "move": "市内坐公交和叮当车，先不租车"
+    },
+    {
+      "title": "旧金山：恶魔岛",
+      "stay": "旧金山",
+      "items": [
+        { "pref": "california", "spot": "alcatraz" },
+        { "pref": "california", "food": "dungeness-crab" },
+        { "pref": "california", "food": "mission-burrito" }
+      ],
+      "move": "恶魔岛渡轮从 33 号码头出发，往返约 3 小时"
+    },
+    {
+      "title": "开进优胜美地",
+      "stay": "优胜美地周边",
+      "items": [
+        { "note": "早上取车，避开湾区早高峰出城" },
+        { "pref": "california", "spot": "yosemite" },
+        { "note": "傍晚在隧道观景点看谷地夕阳" }
+      ],
+      "move": "旧金山到优胜美地谷约 300 公里，开车约 4–5 小时"
+    },
+    {
+      "title": "优胜美地一整天",
+      "stay": "优胜美地周边",
+      "items": [
+        { "pref": "california", "spot": "yosemite" },
+        { "note": "上午走优胜美地瀑布下段步道，下午去巨杉林" },
+        { "note": "夏秋冰川点路开放时，日落去冰川点俯看半圆顶" }
+      ],
+      "move": "谷内可坐免费接驳车，停车位早上 8 点前最好找"
+    },
+    {
+      "title": "下山到蒙特雷",
+      "stay": "蒙特雷",
+      "items": [
+        { "note": "早上离开优胜美地，一路往西开到海边" },
+        { "note": "下午逛蒙特雷渔人码头和卡梅尔小镇" }
+      ],
+      "move": "优胜美地到蒙特雷约 330 公里，开车约 4–4.5 小时"
+    },
+    {
+      "title": "1 号公路大苏尔",
+      "stay": "坎布里亚",
+      "items": [
+        { "pref": "california", "spot": "big-sur" },
+        { "note": "过了 San Simeon 留意路边的象海豹观景点" }
+      ],
+      "move": "蒙特雷到坎布里亚约 160 公里，不停车约 3 小时，按停留算一整天"
+    },
+    {
+      "title": "南下洛杉矶看海",
+      "stay": "洛杉矶",
+      "items": [
+        { "note": "中午可在圣巴巴拉停下吃饭、逛海边" },
+        { "pref": "california", "spot": "santa-monica-pier" },
+        { "pref": "california", "food": "fish-tacos" }
+      ],
+      "move": "坎布里亚到圣莫尼卡约 340 公里，开车约 4.5–5 小时，进洛杉矶常堵车"
+    },
+    {
+      "title": "洛杉矶夜景后返程",
+      "stay": "洛杉矶",
+      "items": [
+        { "note": "白天自由安排，多留一天可去迪士尼或环球影城" },
+        { "pref": "california", "spot": "griffith-observatory" },
+        { "pref": "california", "food": "ktown-bbq" },
+        { "note": "深夜航班回国，还车留足 2 小时" }
+      ],
+      "move": "市内自驾；天文台到洛杉矶机场约 40–60 分钟"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "slug": "alaska",
+  "country": "usa",
+  "name": "阿拉斯加",
+  "local": "Alaska",
+  "abbr": "AK",
+  "region": "alaska",
+  "tagline": "夏天看冰川和棕熊，冬天看极光",
+  "intro": [
+    "阿拉斯加是美国面积最大的州，大半在荒野里，城镇之间常常只有一条公路相连。一年有两种玩法：5–9 月是旅游季，看德纳里雪山、峡湾冰川、鲸鱼和棕熊；8 月下旬到次年 4 月是极光季，主要去北边的费尔班克斯。",
+    "夏季最常见的路线以安克雷奇为起点：往南去西沃德坐船看冰川，往北去德纳里国家公园坐巴士进园，再到费尔班克斯，7–9 天。自驾、阿拉斯加铁路和旅游大巴都能串起来。东南部的朱诺和冰川湾不通公路，要坐飞机、渡轮或邮轮。",
+    "这里的物价比美国本土高，旅游季住宿紧张，热门日期提前几个月就订满；野外天气变化快，蚊子也多。要的是耐心和时间，不是赶景点打卡。"
+  ],
+  "days": "7–10 天",
+  "seasons": {
+    "months": [
+      6,
+      7,
+      8,
+      9,
+      2,
+      3
+    ],
+    "note": "6–8 月白天长、各线全开；9 月初有秋色且开始见极光；极光季约 8 月下旬–4 月中，2–3 月天黑够长又没那么冷。"
+  },
+  "stay": "安克雷奇住市中心，去机场、火车站方便；德纳里住公园入口附近的 Glitter Gulch 一带；看冰川住西沃德港口；冬季看极光住费尔班克斯郊外的山坡木屋，远离城市光污染。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "没有直飞，一般经西雅图转机，西雅图飞安克雷奇约 3.5 小时；也可经洛杉矶、旧金山或东京等地中转。"
+    },
+    {
+      "from": "安克雷奇—德纳里",
+      "how": "自驾约 4 小时；阿拉斯加铁路夏季约 7.5–8 小时，沿途风景好。"
+    },
+    {
+      "from": "安克雷奇—西沃德",
+      "how": "自驾约 2.5 小时，沿海湾的西沃德公路风景很好；夏季也有火车。"
+    },
+    {
+      "from": "朱诺",
+      "how": "不通公路，从西雅图或安克雷奇飞约 2 小时，或坐邮轮、州营渡轮。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "anchorage",
+      "name": "安克雷奇",
+      "local": "Anchorage",
+      "kind": "city",
+      "ll": [
+        -149.9003,
+        61.2181
+      ],
+      "text": "阿拉斯加最大的城市，大多数行程的起点。市中心不大，阿拉斯加原住民文化中心和安克雷奇博物馆值得半天，海边的托尼·诺尔斯沿海步道可以骑车看库克湾和远处雪山。往南开出城的西沃德公路贴着特纳根湾，路边常能看到白大角羊和白鲸。",
+      "time": "1 天",
+      "tip": "夏天晚上 11 点天还亮，遮光眼罩很有用；市区偶有驼鹿出没，别靠近。",
+      "themes": [
+        "city",
+        "wildlife",
+        "roadtrip"
+      ],
+      "photo": "The Turnagain Arm along the Seward Highway south of Anchorage on a clear summer evening: a two-lane road hugging the shore of a wide grey tidal inlet, steep green mountains with patches of snow rising from the water, low golden light."
+    },
+    {
+      "id": "denali",
+      "name": "德纳里国家公园",
+      "local": "Denali National Park and Preserve",
+      "kind": "national-park",
+      "ll": [
+        -149.0024,
+        63.73
+      ],
+      "text": "北美最高峰德纳里山约 6,190 米，常年被云遮住，能看到全貌算运气好。私家车只能开到第 15 英里的萨维奇河，再往里要坐公园巴士。普雷蒂罗克斯塌方段的新桥 2026 年 9 月完工，但当季巴士只到约第 43 英里的东福克，预计 2027 年恢复全线；沿途常见棕熊、驯鹿和驼鹿。",
+      "time": "2–3 天",
+      "tip": "巴士约 5 月中–9 月中运行，官网预订，短期停留一定提前订；带午餐和水。",
+      "fee": "每人约 15 美元，7 天有效",
+      "themes": [
+        "nature",
+        "wildlife"
+      ],
+      "photo": "The Denali Park Road winding through open tundra in early September: a gravel road crossing low hills covered in red and gold autumn shrubs, a distant grizzly bear in the brush, and the massive snow-covered peak of Denali rising above the clouds on the horizon.",
+      "open": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "kenai-fjords",
+      "name": "基奈峡湾与西沃德",
+      "local": "Kenai Fjords National Park & Seward",
+      "kind": "national-park",
+      "ll": [
+        -149.6496,
+        59.9093
+      ],
+      "text": "从西沃德港坐峡湾游船，6–9 小时的航线能开到潮水冰川跟前，看冰块崩落入海，路上常见海獭、海狮、座头鲸和虎鲸。公园不收门票，陆上能去的是出口冰川，从停车场步行约 30 分钟到冰川前，沿路的年份牌标出冰川一路后退的位置。",
+      "time": "1–2 天",
+      "tip": "游船遇风浪会改短线，容易晕船的提前吃药；7–8 月提前订船和住宿。",
+      "fee": "公园免费，游船另付",
+      "themes": [
+        "sea",
+        "wildlife",
+        "nature"
+      ],
+      "photo": "A tidewater glacier in Kenai Fjords seen from a boat deck on a calm overcast summer day: a wall of blue and white fractured ice meeting dark green water, floating chunks of ice in the foreground, steep rocky mountains with snowfields on both sides of the fjord, a few sea otters floating nearby."
+    },
+    {
+      "id": "fairbanks-aurora",
+      "name": "费尔班克斯极光",
+      "local": "Fairbanks Aurora",
+      "kind": "viewpoint",
+      "ll": [
+        -147.7164,
+        64.8378
+      ],
+      "text": "费尔班克斯在北极圈以南约 200 公里，正好在极光带下方，内陆天气干燥晴天多，是美国看极光最稳的地方。官方极光季约 8 月 21 日到 4 月 21 日，住 3 晚以上、晚上 10 点到凌晨 2 点在郊外守候，见到的机会很大。城北的切纳温泉可以泡露天温泉等极光。",
+      "time": "3–4 晚",
+      "tip": "12–2 月常低到零下 30°C，手机和电池掉电快，衣服和暖宝宝要准备够。",
+      "themes": [
+        "aurora",
+        "snow"
+      ],
+      "photo": "Green and faint purple aurora borealis curtains swirling across a starry night sky over a snowy boreal forest near Fairbanks, black spruce trees frosted white in the foreground, a small log cabin with a warm lit window, deep snow on the ground."
+    },
+    {
+      "id": "mendenhall-glacier",
+      "name": "门登霍尔冰川",
+      "local": "Mendenhall Glacier",
+      "kind": "nature",
+      "ll": [
+        -134.5455,
+        58.4166
+      ],
+      "text": "首府朱诺城外约 20 分钟车程的冰川，从游客中心就能隔着冰湖看到蓝白色的冰舌。最受欢迎的是去 Nugget 瀑布的步道，往返约 3 公里，平缓好走，能走到瀑布脚下，从侧面看冰川。7–9 月在溪边观景栈道常能看到黑熊捉三文鱼。",
+      "time": "半天",
+      "tip": "邮轮靠港的白天人最多，傍晚去清静；看到熊保持距离，跟着护林员指示走。",
+      "fee": "游客中心夏季每人约 5 美元",
+      "themes": [
+        "nature",
+        "wildlife"
+      ],
+      "photo": "Mendenhall Glacier near Juneau on a partly cloudy summer day: a wide river of blue-white ice flowing down between dark forested mountains into a grey lake dotted with small icebergs, Nugget Falls pouring down a rocky cliff to the right, a gravel shoreline in front."
+    },
+    {
+      "id": "glacier-bay",
+      "name": "冰川湾国家公园",
+      "local": "Glacier Bay National Park and Preserve",
+      "kind": "national-park",
+      "ll": [
+        -136.8996,
+        58.4556
+      ],
+      "text": "朱诺西北边一片被冰川刻出来的峡湾，200 多年前整个海湾还被冰川覆盖。不收门票，但没有公路，大多数人跟着邮轮在甲板上看，护林员会上船讲解；自由行可以从朱诺飞到古斯塔夫斯，住巴特利特湾的度假屋，坐公园的一日游船到冰川前。",
+      "time": "1–2 天",
+      "tip": "一日游船和度假屋只在夏季开，名额少，提前几个月订。",
+      "fee": "免费",
+      "themes": [
+        "sea",
+        "nature",
+        "wildlife"
+      ],
+      "photo": "Margerie Glacier in Glacier Bay seen from a ship's deck on a clear summer morning: a tall jagged face of white and blue ice rising from calm teal water, scattered floating ice, snow-capped peaks of the Fairweather Range behind, a few seabirds over the water.",
+      "open": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "foods": [
+    {
+      "id": "wild-salmon",
+      "name": "野生三文鱼",
+      "local": "Wild Alaska Salmon",
+      "text": "阿拉斯加的三文鱼几乎都是野生的，夏季按鱼种分批洄游：国王鲑最肥，红鲑颜色最红、味道最浓，银鲑清爽。餐厅常做炭烤或雪松板烤，也有三文鱼塔可和熏鱼。菜单会写明鱼种和产地。",
+      "where": "安克雷奇、西沃德、朱诺的海鲜餐厅和港口小店。",
+      "price": "一份约 30–45 美元（不含小费）",
+      "photo": "A grilled fillet of deep red sockeye salmon with crisp skin on a white plate, with roasted potatoes, a lemon wedge and green salad, on a wooden table by a window overlooking a harbor with fishing boats, 45-degree angle."
+    },
+    {
+      "id": "king-crab",
+      "name": "帝王蟹腿",
+      "local": "Alaskan King Crab Legs",
+      "text": "白令海捕捞的帝王蟹，蟹腿又长又粗，壳里的肉一整条抽出来，蘸热黄油吃，甜而有弹性。价格不便宜，按磅计价，多数是冷冻后加热，现捞的很少见。点之前问清是一磅还是一整只。",
+      "where": "朱诺、安克雷奇的海鲜餐馆和港口餐车。",
+      "price": "按磅计价，约 60–100 美元起",
+      "photo": "A pile of thick, spiky red-orange king crab legs split open to show white meat, on a metal tray with a cup of melted butter and lemon halves, on a picnic table at a waterfront seafood shack, bright overcast light, top-down view."
+    },
+    {
+      "id": "halibut-fish-chips",
+      "name": "大比目鱼炸鱼薯条",
+      "local": "Halibut Fish and Chips",
+      "text": "阿拉斯加的炸鱼薯条多用大比目鱼，肉厚雪白、不容易散，裹薄面糊炸得酥脆，配薯条和塔塔酱。荷马和西沃德一带港口小店现炸现卖，是游船回港后最常见的一顿。",
+      "where": "西沃德、荷马港口和安克雷奇的海鲜小店。",
+      "price": "一份约 22–32 美元",
+      "photo": "Golden beer-battered halibut pieces stacked on thick-cut fries in a paper-lined basket, with a small cup of tartar sauce and a lemon wedge, on a weathered wooden picnic table by a harbor, natural daylight, 45-degree angle."
+    },
+    {
+      "id": "reindeer-sausage",
+      "name": "驯鹿肉肠",
+      "local": "Reindeer Sausage",
+      "text": "阿拉斯加的街头小吃，驯鹿肉混猪肉或牛肉做成的熏肠，烤好夹进面包，加炒洋葱和芥末。味道比普通热狗更浓、略带野味，早餐店也常配煎蛋和土豆。",
+      "where": "安克雷奇市中心的热狗摊和早餐店。",
+      "price": "一份约 8–12 美元",
+      "photo": "A grilled reindeer sausage in a toasted bun topped with caramelized onions and a line of yellow mustard, held in a paper wrapper in front of a blurred street food cart on a cool sunny day."
+    }
+  ],
+  "tips": [
+    "阿拉斯加允许外国游客用本国驾照开车最长约 90 天，非英文驾照要带官方翻译件；同时带护照。",
+    "安克雷奇以外很多路段几十公里没加油站和信号，油箱过半就加，提前下载离线地图。",
+    "徒步遇熊别跑，大声说话慢慢后退；进熊区可以买防熊喷雾，但不能带上飞机。",
+    "6–7 月几乎没有黑夜，看不到极光；想看极光要等 8 月下旬以后。",
+    "旅游季德纳里、西沃德一带住宿和游船很早订满，订好再出发。"
+  ],
+  "nearby": [
+    "washington",
+    "hawaii"
+  ],
+  "climate": {
+    "city": "安克雷奇",
+    "ll": [
+      -149.9003,
+      61.2181
+    ]
+  },
+  "cover": {
+    "scene": "Wide view across a calm lake in Denali National Park on a clear late-summer evening: the enormous snow-covered massif of Denali reflected in still water, rolling tundra in the foreground turning red and gold, scattered dark spruce trees, a pale blue sky with a few soft clouds catching pink light.",
+    "alt": "德纳里雪山与湖中倒影"
+  },
+  "sources": [
+    {
+      "title": "NPS Denali：Pretty Rocks Bridge Complete（2026-09-02）",
+      "url": "https://www.nps.gov/dena/learn/news/pretty-rocks-bridge-complete-090226.htm"
+    },
+    {
+      "title": "NPS Denali：Visiting Denali",
+      "url": "https://www.nps.gov/dena/planyourvisit/visiting-denali.htm"
+    },
+    {
+      "title": "NPS Denali：Fees & Passes",
+      "url": "https://www.nps.gov/dena/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS Kenai Fjords：Fees & Passes",
+      "url": "https://www.nps.gov/kefj/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS Glacier Bay：Fees & Passes",
+      "url": "https://www.nps.gov/glba/planyourvisit/fees.htm"
+    },
+    {
+      "title": "USDA Forest Service：Mendenhall Glacier Fees and Passes",
+      "url": "https://www.fs.usda.gov/r10/tongass/offices/mendenhall-fees-and-passes"
+    },
+    {
+      "title": "Explore Fairbanks：Aurora Season",
+      "url": "https://www.explorefairbanks.com/aurora/"
+    },
+    {
+      "title": "Alaska DMV：Visiting or New to Alaska",
+      "url": "https://dmv.alaska.gov/general-information/visiting-or-new-to-alaska/"
+    }
+  ],
+  "checked": "2026-11"
+}

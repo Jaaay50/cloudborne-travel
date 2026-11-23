@@ -1,0 +1,304 @@
+{
+  "slug": "florida",
+  "country": "usa",
+  "name": "佛罗里达",
+  "local": "Florida",
+  "abbr": "FL",
+  "region": "south",
+  "tagline": "乐园、火箭、海滩和沼泽，冬天也是夏天",
+  "intro": [
+    "佛罗里达是美国人带孩子度假的首选。中部的奥兰多集中了迪士尼世界和环球影城两大乐园群，环球的新园区史诗宇宙 2025 年开业；往东开车一小时是肯尼迪航天中心，运气好能看到火箭发射。乐园加航天中心，一家人很容易玩满四五天。",
+    "往南是另一种佛州：迈阿密海滩的装饰艺术老楼、古巴街区小哈瓦那的咖啡和三明治，再往南是大沼泽国家公园的鳄鱼和水鸟。沿跨海公路一座桥接一座桥开到基韦斯特，是美国最有名的自驾路线之一。",
+    "这里景点分散，除了奥兰多到迈阿密有高速火车，基本都要自驾。6–11 月是飓风季，夏天几乎每天下午都有雷阵雨；11 月到次年 4 月干燥舒服，也是房价最贵的时候。"
+  ],
+  "days": "5–8 天",
+  "seasons": {
+    "months": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "11–4 月干燥舒适但最贵，3 月春假乐园最挤；6–11 月飓风季，8–10 月风险最高，夏天湿热多雷雨。"
+  },
+  "stay": "乐园行程住奥兰多迪士尼或环球园区周边，有接驳车省去停车费；迈阿密住南海滩或市中心布里克尔，基韦斯特房价高，至少提前一个月订。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "没有直飞佛罗里达的航班，通常经洛杉矶、旧金山、纽约、达拉斯或底特律转机到奥兰多（MCO）或迈阿密（MIA），全程约 18–24 小时。"
+    },
+    {
+      "from": "纽约",
+      "how": "飞奥兰多或迈阿密约 2.5–3 小时，廉价航空班次多。"
+    },
+    {
+      "from": "奥兰多到迈阿密",
+      "how": "Brightline 高速火车约 3.5 小时，奥兰多机场有车站；开车约 3.5–4 小时，沿途收费公路多。"
+    },
+    {
+      "from": "迈阿密到基韦斯特",
+      "how": "沿 1 号公路跨海公路开车约 3.5–4.5 小时；也可以飞，约 1 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "walt-disney-world",
+      "name": "奥兰多迪士尼世界",
+      "local": "Walt Disney World Resort",
+      "kind": "theme-park",
+      "ll": [
+        -81.5812,
+        28.4177
+      ],
+      "text": "全球最大的迪士尼度假区，有魔法王国、未来世界、好莱坞影城和动物王国四个主题乐园，外加两个水上乐园。第一次来至少玩三天：魔法王国看城堡和烟花，动物王国坐非洲草原越野车，好莱坞影城玩星战和玩具总动员园区。",
+      "time": "2–4 天",
+      "tip": "票价按日期浮动，多日票摊下来便宜；热门项目可加买闪电通道，开园就进。",
+      "fee": "一日票约 140–210 美元（不含税）",
+      "themes": [
+        "family"
+      ],
+      "photo": "View down a wide Victorian-style main street lined with pastel shopfronts toward a tall fairy-tale castle with blue spires and gold trim, palm trees, a clear blue sky, crowds as small distant figures, bright morning light."
+    },
+    {
+      "id": "universal-orlando",
+      "name": "环球影城与史诗宇宙",
+      "local": "Universal Orlando Resort & Epic Universe",
+      "kind": "theme-park",
+      "ll": [
+        -81.4678,
+        28.4743
+      ],
+      "text": "环球奥兰多现在有三个乐园：环球影城和冒险岛之间坐霍格沃茨特快列车来回，两边各有一片哈利·波特园区；2025 年开业的史诗宇宙有超级任天堂世界、驯龙高手和魔法部园区，是目前最新的项目。刺激类游乐设施比迪士尼多，更适合大孩子和成人。",
+      "time": "2–3 天",
+      "tip": "史诗宇宙不含在原两园门票里，按日期另买；坐霍格沃茨列车要两园通票。",
+      "fee": "按日期浮动，官网购票",
+      "themes": [
+        "family"
+      ],
+      "photo": "Elevated view over a new theme park at dusk: a wide circular landscaped park with fountains and walkways at the centre, themed lands radiating around it with fantasy castle towers, rocky mountains and colourful buildings, lights starting to glow, a clear twilight sky."
+    },
+    {
+      "id": "kennedy-space-center",
+      "name": "肯尼迪航天中心",
+      "local": "Kennedy Space Center Visitor Complex",
+      "kind": "museum",
+      "ll": [
+        -80.6819,
+        28.5235
+      ],
+      "text": "美国载人航天的发射场，游客中心里能看到真的亚特兰蒂斯号航天飞机，门票包含坐大巴进基地参观土星五号火箭中心，那枚躺着的巨型火箭有 110 米长。出发前查发射日程，赶上发射可以在附近海滩看火箭升空。从奥兰多开车约 1 小时。",
+      "time": "1 天",
+      "tip": "早点到，先去坐大巴看土星五号，下午排队的人多很多；停车另付。",
+      "fee": "一日票约 77 美元（3–11 岁约 67 美元）",
+      "themes": [
+        "family",
+        "art"
+      ],
+      "photo": "Interior of a huge exhibition hall where a full-size white space shuttle orbiter is displayed tilted as if in flight, its cargo bay doors open and a robotic arm extended, black heat tiles on its underside, dramatic soft lighting, a few small distant visitors below."
+    },
+    {
+      "id": "miami-beach-art-deco",
+      "name": "迈阿密海滩装饰艺术区",
+      "local": "Miami Beach Art Deco Historic District",
+      "kind": "beach",
+      "ll": [
+        -80.13,
+        25.7805
+      ],
+      "text": "南海滩的海洋大道一边是白沙滩和救生员小屋，另一边是 1930–40 年代的装饰艺术老楼，粉色、薄荷绿、淡黄色外墙配霓虹灯，晚上最热闹。白天在海滩游泳晒太阳，傍晚沿着科林斯大道和海洋大道慢慢走着看老楼。",
+      "time": "半天",
+      "tip": "海洋大道的餐厅常把服务费直接加进账单，结账前看清楚再给小费。",
+      "fee": "免费",
+      "themes": [
+        "sea",
+        "art",
+        "city"
+      ],
+      "photo": "Pastel Art Deco hotels along a beachfront avenue at dusk, curved corners, horizontal stripes and porthole windows in pink, mint green and cream, neon tubes glowing without legible text, tall palm trees and a sliver of beach on the right, warm sunset light."
+    },
+    {
+      "id": "wynwood-walls",
+      "name": "温伍德涂鸦区",
+      "local": "Wynwood Walls",
+      "kind": "street",
+      "ll": [
+        -80.1993,
+        25.801
+      ],
+      "text": "原来是仓库区，现在几乎每栋楼的外墙都画满了大幅涂鸦，是迈阿密拍照最出片的地方。核心的温伍德墙园区要买票，周边几条街的墙绘免费看，还有不少画廊、咖啡馆和精酿酒吧。可以和小哈瓦那安排在同一天。",
+      "time": "2–3 小时",
+      "tip": "白天去，晚上部分街道冷清；夏天中午很晒，早上或傍晚最好。",
+      "themes": [
+        "art",
+        "city"
+      ],
+      "photo": "A street of low former warehouse buildings covered entirely in large bold murals of abstract shapes, faces and geometric patterns in vivid colours, palm trees and a clear blue sky, a few small distant pedestrians, bright afternoon light."
+    },
+    {
+      "id": "everglades",
+      "name": "大沼泽国家公园",
+      "local": "Everglades National Park",
+      "kind": "national-park",
+      "ll": [
+        -80.6098,
+        25.382
+      ],
+      "text": "美国本土最大的亚热带湿地，一片看不到边的锯齿草「草河」，鳄鱼、苍鹭、白鹭随处可见。最好走的是皇家棕榈区的蛇鹈步道，木栈道上就能看到晒太阳的短吻鳄；北边的鲨鱼谷有游览小火车和观景塔。12–4 月旱季动物最集中，蚊子也少。",
+      "time": "半天–1 天",
+      "tip": "和鳄鱼保持至少约 4.5 米距离；公园不收现金，只能刷卡。",
+      "fee": "每车 35 美元；非美国居民 16 岁起每人另加 100 美元",
+      "themes": [
+        "nature",
+        "wildlife"
+      ],
+      "photo": "A wooden boardwalk crossing a sawgrass marsh in the dry season, an American alligator basking on the muddy bank beside dark water, a white egret wading nearby, scattered cypress and palm trees, wide blue sky with low clouds, soft morning light."
+    },
+    {
+      "id": "overseas-highway",
+      "name": "跨海公路",
+      "local": "Overseas Highway (US 1)",
+      "kind": "drive",
+      "ll": [
+        -81.169,
+        24.706
+      ],
+      "text": "1 号公路从基拉戈一路串起佛罗里达群岛开到基韦斯特，四十多座桥连着海面，两边是蓝绿色的浅海。最有名的一段是约 11 公里长的七英里桥，旁边那座废弃的老桥是当年的铁路桥。路上可以在巴伊亚洪达州立公园游泳，看看沙滩和老桥。",
+      "time": "1 天",
+      "tip": "全程单车道居多、限速低，周末往返常堵车，早出发；在加油站提前加满油。",
+      "themes": [
+        "roadtrip",
+        "sea"
+      ],
+      "photo": "Aerial-style view of a long two-lane concrete bridge stretching across shallow turquoise and emerald water toward small mangrove islands, a parallel old steel railway bridge with a missing span beside it, a few cars, bright midday sun and scattered clouds."
+    },
+    {
+      "id": "key-west",
+      "name": "基韦斯特",
+      "local": "Key West",
+      "kind": "island",
+      "ll": [
+        -81.807,
+        24.5594
+      ],
+      "text": "美国本土最南端的小岛，离古巴约 145 公里。老城里是木结构白房子和鸡满街跑，杜瓦尔街酒吧林立，海明威故居里住着几十只六趾猫。傍晚到马洛里广场看日落和街头表演。时间充足可以坐渡轮去更远的干龟国家公园看海上古堡、浮潜。",
+      "time": "1–2 天",
+      "tip": "干龟群岛渡轮名额少，提前几个月订；岛上停车难，租辆自行车更方便。",
+      "themes": [
+        "sea",
+        "heritage"
+      ],
+      "photo": "Sunset at a waterfront square on a small tropical island: the sun sinking into calm golden sea, a tall sailing schooner silhouetted offshore, palm trees and a brick waterfront edge in the foreground, small distant figures watching, warm orange sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "cuban-sandwich",
+      "name": "古巴三明治",
+      "local": "Cuban Sandwich",
+      "text": "古巴面包夹烤猪肉、火腿、瑞士芝士、酸黄瓜和黄芥末，用压板压得扁扁的烤到酥脆。迈阿密的古巴移民把它带成了佛州招牌，配一杯古巴咖啡就是一顿地道午饭。",
+      "where": "迈阿密小哈瓦那的第八街，以及坦帕的老古巴街区伊博城。",
+      "price": "一个约 10–15 美元",
+      "photo": "A pressed Cuban sandwich cut diagonally on a white plate, crisp flattened golden bread, layers of roast pork, ham, melted Swiss cheese and pickles visible, a small paper cup of yellow mustard, a cafe counter behind, daylight."
+    },
+    {
+      "id": "cafecito",
+      "name": "古巴咖啡",
+      "local": "Cafecito",
+      "text": "小小一杯，浓缩咖啡里打进了蔗糖，表面有一层浅色糖泡，又浓又甜。迈阿密人在街边窗口站着喝，还有分装成几个小杯一起分的大份，加牛奶的叫 cortadito。",
+      "where": "小哈瓦那和全市古巴餐馆外的外卖小窗口。",
+      "price": "一杯约 2–4 美元",
+      "photo": "Several tiny white plastic cups of dark Cuban espresso topped with a pale sugar foam, beside a small styrofoam cup holding more, on the ledge of a street-side walk-up cafe window, bright Miami daylight."
+    },
+    {
+      "id": "key-lime-pie",
+      "name": "青柠派",
+      "local": "Key Lime Pie",
+      "text": "用佛罗里达群岛的小青柠、炼乳和蛋黄做馅，全麦饼干底，口感酸甜绵密，馅料是淡黄色而不是绿色。有的店顶上加打发奶油，有的加蛋白霜。到基韦斯特一定要吃一块。",
+      "where": "基韦斯特老城的甜品店，以及群岛沿线的海鲜餐厅。",
+      "price": "一块约 8–10 美元",
+      "photo": "A slice of key lime pie on a small plate, pale yellow smooth custard filling on a golden graham cracker crust, topped with whipped cream and a thin lime slice, outdoor table with a blurred tropical garden behind, soft daylight."
+    },
+    {
+      "id": "stone-crab",
+      "name": "石蟹钳",
+      "local": "Stone Crab Claws",
+      "text": "佛州特产，只取蟹钳、蟹放回海里还能再长。煮熟后冰镇着吃，肉质紧实清甜，配芥末酱。季节约 10 月中到次年 5 月初，其余时间吃到的多是冷冻货。按大小论价，不便宜。",
+      "where": "迈阿密海滩南端的老牌海鲜馆和群岛海鲜餐厅。",
+      "price": "按大小计价，一份常要 50 美元以上",
+      "photo": "A platter of chilled stone crab claws with glossy black-tipped shells cracked open to show white meat, on crushed ice with lemon wedges and a small bowl of creamy mustard sauce, on a white tablecloth, soft daylight."
+    },
+    {
+      "id": "conch-fritters",
+      "name": "海螺炸丸",
+      "local": "Conch Fritters",
+      "text": "佛罗里达群岛的街头小吃：切碎的大海螺肉拌进面糊里炸成丸子，外脆里软，蘸酸甜辣酱吃。佛州禁捕海螺，肉多从加勒比海地区进口，但吃法是群岛的老传统。",
+      "where": "基韦斯特和群岛沿线的海鲜小店、酒吧。",
+      "price": "一份约 12–16 美元",
+      "photo": "A paper-lined basket of round golden-brown fried conch fritters with flecks of pepper visible inside one broken open, a small cup of orange dipping sauce and a lime wedge, on a wooden table on an open-air deck, bright daylight."
+    }
+  ],
+  "tips": [
+    "6–11 月飓风季出行买含天气取消的保险，飓风预警时听从当地疏散通知，别去海边看浪。",
+    "高速和跨海公路多是电子收费，租车时问清收费方案，否则账单上会加手续费。",
+    "佛州认可外国人持本国有效驾照自驾，但中文驾照最好带翻译件；租车前向公司确认。",
+    "湖泊和河沟可能有短吻鳄，别在非指定区域下水，也不要带小孩和宠物靠近水边。",
+    "佛州销售税 6%，多数县另加 0.5–1.5%；酒店还有旅游税，标价都不含。"
+  ],
+  "nearby": [],
+  "climate": {
+    "city": "迈阿密",
+    "ll": [
+      -80.1918,
+      25.7617
+    ]
+  },
+  "cover": {
+    "scene": "Wide early-morning view along South Beach in Miami: a long stretch of pale sand with a colourful wooden lifeguard tower in the foreground, calm turquoise water, tall palm trees and a row of pastel Art Deco hotels set back behind a green strip of park, soft pink sunrise light and a clear sky.",
+    "alt": "清晨的迈阿密南海滩与救生员小屋"
+  },
+  "sources": [
+    {
+      "title": "NPS · Everglades Fees & Passes",
+      "url": "https://www.nps.gov/ever/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS · Everglades Safety",
+      "url": "https://www.nps.gov/ever/planyourvisit/safety.htm"
+    },
+    {
+      "title": "NPS · Entrance Fee Prices (nonresident fee)",
+      "url": "https://www.nps.gov/aboutus/entrance-fee-prices.htm"
+    },
+    {
+      "title": "NPS · Dry Tortugas Fees",
+      "url": "https://www.nps.gov/drto/planyourvisit/fees.htm"
+    },
+    {
+      "title": "Kennedy Space Center Visitor Complex · Tickets",
+      "url": "https://www.kennedyspacecenter.com/info/tickets"
+    },
+    {
+      "title": "Walt Disney World · Tickets",
+      "url": "https://disneyworld.disney.go.com/admission/tickets/"
+    },
+    {
+      "title": "Universal Orlando · Epic Universe",
+      "url": "https://www.universalorlando.com/web/en/us/theme-parks/epic-universe"
+    },
+    {
+      "title": "Brightline",
+      "url": "https://www.gobrightline.com/"
+    },
+    {
+      "title": "FLHSMV · Visiting Florida FAQs",
+      "url": "https://www.flhsmv.gov/driver-licenses-id-cards/visiting-florida-faqs/"
+    },
+    {
+      "title": "NOAA National Hurricane Center",
+      "url": "https://www.nhc.noaa.gov/"
+    }
+  ],
+  "checked": "2026-11"
+}

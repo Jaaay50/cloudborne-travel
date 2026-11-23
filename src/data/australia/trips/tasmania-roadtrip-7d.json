@@ -1,0 +1,79 @@
+{
+  "id": "tasmania-roadtrip-7d",
+  "country": "australia",
+  "title": "塔斯马尼亚环岛自驾 · 7 天",
+  "region": "tasmania",
+  "daysCount": 7,
+  "for": "能自驾、喜欢徒步、野生动物和海鲜的人",
+  "season": "12–4 月最暖、白天最长",
+  "summary": "霍巴特进、朗塞斯顿出，一路只往北走不回头。前三天住霍巴特：市场、MONA、惠灵顿山、亚瑟港和布鲁尼岛。然后沿东海岸去菲欣纳爬酒杯湾，再到火焰湾，最后进摇篮山住一晚看袋熊。出发前买好国家公园假期车辆通行证。",
+  "bases": ["霍巴特 3 晚", "科尔斯湾 1 晚", "圣海伦斯 1 晚", "摇篮山 1 晚"],
+  "days": [
+    {
+      "title": "霍巴特·上惠灵顿山",
+      "stay": "霍巴特",
+      "items": [
+        { "note": "机场取车，进城约 20 分钟，住滨水区一带" },
+        { "pref": "tasmania", "spot": "kunanyi-mount-wellington" },
+        { "pref": "tasmania", "food": "tasmanian-whisky" }
+      ],
+      "move": "市区开车上山顶约 30 分钟；山顶风大，带厚外套"
+    },
+    {
+      "title": "萨拉曼卡与 MONA",
+      "stay": "霍巴特",
+      "items": [
+        { "pref": "tasmania", "spot": "salamanca-market" },
+        { "pref": "tasmania", "spot": "mona" }
+      ],
+      "move": "布鲁克街码头坐 MONA 快船约 30 分钟；市场只在周六，按日子调整"
+    },
+    {
+      "title": "布鲁尼岛美食",
+      "stay": "霍巴特",
+      "items": [
+        { "pref": "tasmania", "spot": "bruny-island" },
+        { "pref": "tasmania", "food": "tasmanian-oysters" },
+        { "pref": "tasmania", "food": "leatherwood-honey" }
+      ],
+      "move": "霍巴特→凯特灵约 40 分钟，渡轮 20 分钟；岛上碎石路慢开"
+    },
+    {
+      "title": "亚瑟港·北上东海岸",
+      "stay": "科尔斯湾",
+      "items": [
+        { "pref": "tasmania", "spot": "port-arthur" },
+        { "pref": "tasmania", "food": "scallop-pie" },
+        { "note": "下午沿东海岸开往科尔斯湾，天黑前到" }
+      ],
+      "move": "霍巴特→亚瑟港约 1.5 小时；亚瑟港→科尔斯湾约 3 小时"
+    },
+    {
+      "title": "爬酒杯湾观景台",
+      "stay": "圣海伦斯",
+      "items": [
+        { "pref": "tasmania", "spot": "wineglass-bay" },
+        { "note": "傍晚在比切诺海边看小企鹅归巢的团（可选）" }
+      ],
+      "move": "早上 9 点前到停车场；科尔斯湾→圣海伦斯约 1.5–2 小时"
+    },
+    {
+      "title": "火焰湾·西进摇篮山",
+      "stay": "摇篮山",
+      "items": [
+        { "pref": "tasmania", "spot": "bay-of-fires" },
+        { "note": "中午经朗塞斯顿补给，再往西开进山" }
+      ],
+      "move": "圣海伦斯→摇篮山经朗塞斯顿约 4–4.5 小时，当天车程最长"
+    },
+    {
+      "title": "鸽子湖环湖",
+      "stay": "返程",
+      "items": [
+        { "pref": "tasmania", "spot": "cradle-mountain" },
+        { "note": "下午开到朗塞斯顿还车、搭飞机" }
+      ],
+      "move": "游客中心换乘接驳车到鸽子湖约 20 分钟；摇篮山→朗塞斯顿机场约 2.5 小时"
+    }
+  ]
+}

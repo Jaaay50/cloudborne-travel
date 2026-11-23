@@ -1,0 +1,191 @@
+{
+  "slug": "western-australia",
+  "country": "australia",
+  "name": "西澳",
+  "local": "Western Australia",
+  "abbr": "WA",
+  "region": "western-australia",
+  "tagline": "印度洋海岸、矮袋鼠和酒庄公路",
+  "intro": [
+    "西澳占了澳洲三分之一的面积，人却大多住在首府珀斯。这里看的是海岸线和荒野：罗特尼斯岛上的短尾矮袋鼠、尖峰石阵的石林、玛格丽特河的酒庄和冲浪海滩，再往北是能和鲸鲨同游的宁格鲁礁。",
+    "景点之间动辄几百公里，第一次来建议以珀斯为中心：市区和弗里曼特尔一两天，罗特尼斯岛一天，北上尖峰石阵一天，南下玛格丽特河两三天。想去宁格鲁或埃斯佩兰斯，最好先飞过去再租车，比一路开过去省时间。",
+    "珀斯和北京没有时差，广州还有直飞，是澳洲离中国最「近」的城市之一。这里节奏慢、人少，适合喜欢自驾和户外的人；如果只想逛大城市、看歌剧院，悉尼和墨尔本更合适。"
+  ],
+  "days": "6–10 天",
+  "seasons": {
+    "months": [9, 10, 11, 3, 4, 5],
+    "note": "9–11 月野花开、不冷不热，3–5 月也舒服；12–2 月珀斯常超 35°C。北部宁格鲁约 3–8 月看鲸鲨。"
+  },
+  "stay": "第一次住珀斯市中心或北桥一带，去机场、码头、火车站都方便；想慢一点可以住弗里曼特尔。南下玩酒庄住玛格丽特河镇或邓斯伯勒（Dunsborough）。",
+  "access": [
+    { "from": "中国大陆", "how": "广州有南航全年直飞珀斯，每周约 3–4 班，约 8 小时；其他城市经新加坡、香港或悉尼、墨尔本转机。" },
+    { "from": "悉尼 / 墨尔本", "how": "国内航班约 4–5 小时（往西飞更久）；东部实行夏令时期间和珀斯差 3 小时。" },
+    { "from": "新加坡", "how": "飞机约 5 小时，航班多，适合从国内其他城市中转。" },
+    { "from": "阿德莱德", "how": "飞机约 3 小时；也可以坐横贯大陆的 Indian Pacific 火车，车上过两晚。" }
+  ],
+  "spots": [
+    {
+      "id": "kings-park",
+      "name": "国王公园",
+      "local": "Kings Park and Botanic Garden",
+      "kind": "park",
+      "ll": [115.8326, -31.9622],
+      "text": "市中心西边山坡上的大公园，比纽约中央公园还大，一半是原生林地。在战争纪念碑旁的观景台能同时看到天鹅河和珀斯天际线，傍晚最好看。植物园里种着几千种西澳本土植物，9 月野花季开得最热闹。",
+      "time": "1–2 小时",
+      "tip": "日落前半小时到观景台；植物园里有一段穿过树冠的空中栈桥。",
+      "fee": "免费",
+      "themes": ["city", "flowers"],
+      "photo": "View from the Kings Park lookout near the war memorial at golden hour: the wide blue Swan River curving past the Perth city skyline of glass towers, tall lemon-scented gum trees framing the foreground, a paved terrace with a few tiny distant people, warm low sun and a clear sky."
+    },
+    {
+      "id": "fremantle",
+      "name": "弗里曼特尔",
+      "local": "Fremantle",
+      "kind": "city",
+      "ll": [115.7496, -32.0560],
+      "text": "珀斯的老港口，19 世纪的石灰岩老楼保存得很完整，街上咖啡馆和小酒馆多，比市中心更有生活气。世界遗产弗里曼特尔监狱可以跟导览进去看；周五到周日开的弗里曼特尔市场适合边逛边吃，傍晚去渔船港吃炸鱼薯条。从珀斯坐火车约 30 分钟。",
+      "time": "半天–1 天",
+      "tip": "市场只在周五、周六、周日和公众假期的周一营业。",
+      "themes": ["city", "sea"],
+      "photo": "A sunny street in the Fremantle West End: two-storey limestone and red-brick Victorian buildings with ornate verandas and iron lace balconies, outdoor cafe tables on wide footpaths, tall Norfolk Island pines in the distance, deep blue sky, a few small figures walking far away."
+    },
+    {
+      "id": "rottnest-island",
+      "name": "罗特尼斯岛",
+      "local": "Rottnest Island (Wadjemup)",
+      "kind": "island",
+      "ll": [115.5497, -32.0023],
+      "text": "离弗里曼特尔约 30 分钟船程的小岛，岛上不能开私家车，租辆自行车沿环岛路骑，一路是白沙小海湾和透亮的浅绿色海水。最出名的是短尾矮袋鼠（quokka），嘴角上翘像在笑，在码头附近的定居点就很常见。",
+      "time": "1 天",
+      "tip": "不能摸、不能喂矮袋鼠，被抓到会罚款；岛上补给少，带足水和防晒。",
+      "fee": "弗里曼特尔往返约 88 澳元（含上岛费）",
+      "themes": ["sea", "wildlife", "family"],
+      "photo": "A small sheltered bay on Rottnest Island on a calm summer morning: very clear turquoise water over pale sand and dark limestone reef, low rocky headlands covered in coastal scrub, a bicycle leaning on a timber rail beside the cliff-top path, bright sun and a cloudless sky."
+    },
+    {
+      "id": "pinnacles",
+      "name": "尖峰石阵",
+      "local": "The Pinnacles, Nambung National Park",
+      "kind": "national-park",
+      "ll": [115.1574, -30.6020],
+      "text": "成千上万根黄色石灰岩柱从沙地里冒出来，高的有好几米，像外星地貌。车可以开进约 4 公里的单向环路，也能下车走约 1.2 公里的步道。从珀斯往北开约 2.5 小时，路上可以在兰斯林（Lancelin）的白沙丘滑沙，日落和入夜后的星空都很好。",
+      "time": "2–3 小时",
+      "tip": "园内没有树荫，夏天别中午去；日落后回程注意路上的袋鼠。",
+      "fee": "按车收费，约 17 澳元 / 车",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Late afternoon in the Pinnacles Desert: hundreds of weathered yellow limestone pillars of different heights standing in rippled golden sand, long shadows stretching across the ground, low grey-green coastal scrub on distant dunes, a clear deep blue sky."
+    },
+    {
+      "id": "margaret-river",
+      "name": "玛格丽特河",
+      "local": "Margaret River Region",
+      "kind": "winery",
+      "ll": [115.0769, -33.9532],
+      "text": "珀斯往南约 3 小时的酒乡，也是冲浪海滩和高大森林的所在。白天在酒庄吃午餐、品酒，钻进猛犸洞、湖洞这些钟乳石溶洞，或去卢因角灯塔看印度洋和南大洋交汇；路上的巴瑟尔顿栈桥伸进海里将近 2 公里。至少住两晚。",
+      "time": "2–3 天",
+      "tip": "酒庄之间都要开车，安排一个不喝酒的司机，或者报酒庄一日团。",
+      "themes": ["wine", "sea", "roadtrip"],
+      "photo": "Rows of grapevines with autumn-yellow leaves on gently rolling hills in the Margaret River region, a low timber and stone winery building with a wide veranda at the end of the rows, tall karri and marri trees behind, soft late-afternoon light and scattered white clouds."
+    },
+    {
+      "id": "ningaloo-coral-bay",
+      "name": "宁格鲁礁与珊瑚湾",
+      "local": "Ningaloo Reef & Coral Bay",
+      "kind": "beach",
+      "ll": [113.7702, -23.1437],
+      "text": "世界遗产宁格鲁礁紧贴海岸，在珊瑚湾从沙滩走几步就能浮潜看珊瑚和鱼群。约 3–8 月可以跟船出海与鲸鲨同游，6–11 月有座头鲸。离珀斯一千多公里，一般先飞埃克斯茅斯再租车，珊瑚湾和角岭国家公园的绿松石湾都在附近。",
+      "time": "3–4 天",
+      "tip": "绿松石湾有沿岸水流，浮潜前看清告示，体力一般别游太远。",
+      "fee": "海洋公园免费，出海团另付",
+      "themes": ["sea", "wildlife"],
+      "photo": "The shallow lagoon at Coral Bay on a still morning: bright turquoise water over white sand and patches of brown and cream coral close to shore, a long curved beach backed by low red-orange dunes and sparse scrub, a few small snorkellers far out, a cloudless sky."
+    },
+    {
+      "id": "kalbarri",
+      "name": "卡尔巴里国家公园",
+      "local": "Kalbarri National Park",
+      "kind": "national-park",
+      "ll": [114.4343, -27.5547],
+      "text": "默奇森河在红色砂岩里切出一条长峡谷，「自然之窗」这道岩石拱门正好框住下面的河湾，伸出崖外的悬空观景台可以往下看峡谷。海边一段是被海浪切开的高崖和天然石桥。从珀斯开车约 6–7 小时，可以和尖峰石阵、粉红湖连成一条北上路线。",
+      "time": "1–2 天",
+      "tip": "峡谷区夏天常超 40°C，徒步要早上出发；7–10 月野花最多。",
+      "fee": "按车收费，约 17 澳元 / 车",
+      "themes": ["nature", "roadtrip", "flowers"],
+      "photo": "Nature's Window in Kalbarri National Park in the morning: a natural arch of layered red and cream sandstone framing a view of the winding Murchison River gorge below, flat rocky ledges in the foreground, sparse grey-green shrubs, strong sunlight and a pale blue sky."
+    },
+    {
+      "id": "lucky-bay",
+      "name": "幸运湾",
+      "local": "Lucky Bay, Cape Le Grand National Park",
+      "kind": "beach",
+      "ll": [122.2443, -33.9950],
+      "text": "西澳南岸埃斯佩兰斯附近的海湾，沙子白得发亮，海水一层层从浅绿过渡到深蓝。最出名的是常在沙滩上晒太阳的袋鼠。离珀斯约 700 公里，一般飞到埃斯佩兰斯再开车约 1 小时，周边还有地狱火湾等几片同样漂亮的海滩。",
+      "time": "半天–1 天",
+      "tip": "别给袋鼠喂面包和零食，会让它们生病；拍照保持距离。",
+      "fee": "按车收费，约 17 澳元 / 车",
+      "themes": ["sea", "wildlife", "roadtrip"],
+      "photo": "Lucky Bay on a sunny morning: a long curve of brilliant white sand meeting layered turquoise and deep blue water, granite headlands and low green coastal heath behind the beach, two kangaroos resting on the sand in the middle distance, a clear sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "western-rock-lobster",
+      "name": "西澳岩龙虾",
+      "local": "Western Rock Lobster",
+      "text": "西澳最重要的海产之一，多是整只或对半切开烤，配蒜香黄油或柠檬。北上看尖峰石阵时，海边小镇瑟万提斯（Cervantes）是吃龙虾最顺路的地方，价格按当天时价。",
+      "where": "瑟万提斯、兰斯林等海边小镇，弗里曼特尔渔船港一带。",
+      "photo": "A grilled western rock lobster split in half on a white oval plate, red shell and white meat glistening with garlic butter, lemon wedges and a small green salad beside it, on a weathered timber table outdoors, bright daylight, shot from 45 degrees."
+    },
+    {
+      "id": "fish-and-chips",
+      "name": "炸鱼薯条",
+      "local": "Fish and Chips",
+      "text": "西澳海边的标配。现炸的白肉鱼外皮酥脆，配粗薯条、柠檬和塔塔酱，坐在港口边吃最对味。鱼的种类每家不同，点之前可以问问当天是什么鱼；吃的时候小心海鸥来抢。",
+      "where": "弗里曼特尔渔船港（Fishing Boat Harbour）沿岸的店。",
+      "price": "一份约 20–30 澳元",
+      "photo": "Golden battered fish fillets and thick-cut chips served in a paper-lined cardboard tray with lemon wedges and a small pot of tartar sauce, on a timber bench by a harbour with moored fishing boats softly blurred behind, sunny afternoon, shot from above at an angle."
+    },
+    {
+      "id": "margaret-river-wine",
+      "name": "玛格丽特河葡萄酒",
+      "local": "Margaret River Wine",
+      "text": "玛格丽特河以赤霞珠和霞多丽出名，产量不大但品质稳定。大多数酒庄有酒窖门店（cellar door），先品几款再决定买不买，很多还带餐厅，午餐配酒是这里的标准玩法。",
+      "where": "玛格丽特河镇周边和 Caves Road 沿线的酒庄。",
+      "price": "品鉴约 10–30 澳元",
+      "photo": "Four wine tasting glasses with small pours of white and red wine lined up on a pale timber bar of a winery cellar door, vineyard rows visible through a large window behind, soft natural light, shallow depth of field."
+    },
+    {
+      "id": "marron",
+      "name": "马龙虾",
+      "local": "Marron",
+      "text": "西澳西南部特有的淡水螯虾，个头比小龙虾大得多，壳带蓝黑色，肉质清甜。玛格丽特河、彭伯顿一带有养殖场和餐厅，常见做法是烤或白灼后冷吃。",
+      "where": "玛格丽特河、彭伯顿（Pemberton）一带的餐厅和养殖场。",
+      "photo": "Two cooked marron halves on a dark slate plate, bright orange-red shells and white tail meat, drizzled with herb butter and served with charred lemon and fresh herbs, on a rustic restaurant table, soft window light, shot from 45 degrees."
+    }
+  ],
+  "tips": [
+    "珀斯和北京没有时差，西澳也不实行夏令时，倒时差最轻松。",
+    "用中国驾照自驾要带认可的英文翻译件；澳洲靠左行驶，出发前查西澳交通部官网。",
+    "郊外黄昏和夜里袋鼠多，长途尽量白天开；加油站之间可能很远，见到就加满。",
+    "要去好几个国家公园，可以在 DBCA 官网买西澳公园通票，比每次付门票省。",
+    "12–2 月苍蝇多、紫外线极强，带防蝇网罩、帽子和 SPF50 防晒霜。"
+  ],
+  "nearby": ["south-australia", "northern-territory"],
+  "climate": { "city": "珀斯", "ll": [115.8606, -31.9559] },
+  "cover": {
+    "scene": "Late afternoon at the Pinnacles Desert in Nambung National Park: hundreds of pale yellow limestone pillars of varied heights rising from rippled golden sand, long shadows stretching east, a narrow sandy track curving between the pillars with a few tiny distant visitors for scale, low coastal scrub and dunes on the horizon, a deep blue cloudless sky, wide landscape framing.",
+    "alt": "黄昏时的尖峰石阵"
+  },
+  "sources": [
+    { "title": "Parks and Wildlife Service WA: Park entry fees", "url": "https://exploreparks.dbca.wa.gov.au/park-entry-fees" },
+    { "title": "Explore Parks WA: Nambung National Park", "url": "https://exploreparks.dbca.wa.gov.au/park/nambung-national-park" },
+    { "title": "Explore Parks WA: Ningaloo Marine Park", "url": "https://exploreparks.dbca.wa.gov.au/park/ningaloo-marine-park" },
+    { "title": "Explore Parks WA: Kalbarri National Park", "url": "https://exploreparks.dbca.wa.gov.au/park/kalbarri-national-park" },
+    { "title": "Explore Parks WA: Cape Le Grand National Park", "url": "https://exploreparks.dbca.wa.gov.au/park/cape-le-grand-national-park" },
+    { "title": "Rottnest Express: Ferry fares (incl. island admission fee)", "url": "https://rottnestexpress.com.au/ferry-information/fares/" },
+    { "title": "Fremantle Markets: Opening hours", "url": "https://www.fremantlemarkets.com.au/" },
+    { "title": "Department of Transport WA: Visiting from overseas or interstate", "url": "https://www.transport.wa.gov.au/licensing/drivers-licence/visit-move-wa/visiting-overseas-interstate" },
+    { "title": "Karryon: China Southern year-round Perth and Adelaide flights", "url": "https://karryon.com.au/industry-news/airline/china-southern-year-round-adl-per/" }
+  ],
+  "checked": "2026-11"
+}

@@ -3,3 +3,6 @@ dist/
 .astro/
 art-src/
 .DS_Store
+
+# climate API cache (re-creatable with npm run climate)
+research/climate-cache/

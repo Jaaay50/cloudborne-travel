@@ -1,0 +1,73 @@
+{
+  "id": "yellowstone-teton-6d",
+  "country": "usa",
+  "title": "黄石与大提顿 · 6 天",
+  "region": "mountain-west",
+  "daysCount": 6,
+  "for": "想看间歇泉、雪山和野生动物，能自驾的人",
+  "season": "6–9 月，园内道路全通",
+  "summary": "飞杰克逊霍尔进出，先在大提顿看一天雪峰，再从南门进黄石，按「间歇泉—猛犸—拉马尔谷—大峡谷」逆时针绕一圈，每晚换一个园区住，省掉来回跑。看动物放在清晨，地热区放在白天。园内住宿要提前很久订，订不到就改住西黄石或加德纳。",
+  "bases": ["杰克逊 2 晚", "老忠实 1 晚", "加德纳 1 晚", "峡谷村 1 晚"],
+  "days": [
+    {
+      "title": "抵达杰克逊",
+      "stay": "杰克逊",
+      "items": [
+        { "note": "杰克逊霍尔机场取车，到镇上约 20 分钟" },
+        { "pref": "wyoming", "spot": "jackson" },
+        { "pref": "wyoming", "food": "bison-burger" }
+      ],
+      "move": "机场→杰克逊镇约 15 公里、20 分钟"
+    },
+    {
+      "title": "大提顿一日",
+      "stay": "杰克逊",
+      "items": [
+        { "pref": "wyoming", "spot": "mormon-row" },
+        { "pref": "wyoming", "spot": "jenny-lake" },
+        { "note": "傍晚去牛轭湾看莫兰山倒影，留意驼鹿" },
+        { "pref": "wyoming", "food": "cutthroat-trout" }
+      ],
+      "move": "杰克逊→摩门街约 25 分钟，→珍妮湖约 30 分钟"
+    },
+    {
+      "title": "南门进黄石·间歇泉",
+      "stay": "老忠实",
+      "items": [
+        { "note": "南门进园，顺路看湖边的西拇指间歇泉盆地" },
+        { "pref": "wyoming", "spot": "old-faithful" },
+        { "pref": "wyoming", "food": "huckleberry" }
+      ],
+      "move": "杰克逊→老忠实约 155 公里、2.5–3 小时，野牛过路会更久"
+    },
+    {
+      "title": "大棱镜到猛犸温泉",
+      "stay": "加德纳",
+      "items": [
+        { "pref": "wyoming", "spot": "grand-prismatic" },
+        { "note": "途经诺里斯间歇泉盆地，可停 1 小时" },
+        { "pref": "wyoming", "spot": "mammoth-hot-springs" }
+      ],
+      "move": "老忠实→大棱镜约 20 分钟；大棱镜→猛犸约 70 公里、1.5–2 小时"
+    },
+    {
+      "title": "拉马尔谷看动物",
+      "stay": "峡谷村",
+      "items": [
+        { "pref": "wyoming", "spot": "lamar-valley" },
+        { "pref": "wyoming", "spot": "grand-canyon-yellowstone" },
+        { "note": "傍晚去海登谷再找一次野牛和熊" }
+      ],
+      "move": "天亮前从加德纳出发约 1 小时到拉马尔谷；再经邓雷文垭口到峡谷村约 1.5 小时"
+    },
+    {
+      "title": "沿湖南下返程",
+      "stay": "返程",
+      "items": [
+        { "note": "沿黄石湖南下，在湖边最后停一停" },
+        { "note": "出南门穿过大提顿，到机场还车" }
+      ],
+      "move": "峡谷村→杰克逊霍尔机场约 170 公里、3–3.5 小时"
+    }
+  ]
+}

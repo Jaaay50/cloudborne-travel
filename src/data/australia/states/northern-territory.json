@@ -1,0 +1,304 @@
+{
+  "slug": "northern-territory",
+  "country": "australia",
+  "name": "北领地",
+  "local": "Northern Territory",
+  "abbr": "NT",
+  "region": "northern-territory",
+  "tagline": "红土中心和热带北端，两种澳洲",
+  "intro": [
+    "北领地有两块完全不同的地方。南边是「红土中心」：乌鲁鲁巨石、卡塔丘塔的圆顶群、国王峡谷，周围几百公里都是红色沙漠；北边的「顶端」以首府达尔文为中心，是卡卡杜、利奇菲尔德这些湿地、瀑布和鳄鱼出没的热带国家公园。",
+    "两块之间隔着约 1,500 公里，一次旅行通常只选一块，或者中间坐飞机。红土中心一般飞到艾尔斯岩机场或爱丽斯泉，玩 3–5 天；顶端从达尔文出发租车，玩 3–5 天。这里不适合赶景点，开车、徒步、看日出日落本身就是主要内容。",
+    "乌鲁鲁是阿南古人的圣地，2019 年 10 月起永久禁止攀登，现在看的是环绕巨石的步道和它在早晚光线里的颜色变化。进乌鲁鲁和卡卡杜要买国家公园门票，北领地政府管的其他公园另有游客通票。"
+  ],
+  "days": "4–8 天",
+  "seasons": {
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "note": "5–9 月旱季最好。顶端约 11–4 月雨季，不少路和瀑布关闭；红土中心 11–3 月常超 40°C，6–7 月夜里会到 0°C 左右。"
+  },
+  "stay": "看乌鲁鲁只能住艾尔斯岩度假村所在的尤拉拉镇，旺季提前几个月订；国王峡谷住峡谷旁的度假村。达尔文住市中心或海滨区，去卡卡杜可以在贾比鲁或黄水附近住一两晚。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "南航广州—达尔文直飞 2026 年 12 月 3 日后停飞；一般经新加坡飞达尔文（约 4.5 小时），或经悉尼、墨尔本转机。"
+    },
+    {
+      "from": "悉尼 / 墨尔本",
+      "how": "有航班直飞艾尔斯岩机场（乌鲁鲁）和爱丽斯泉，约 3 小时；飞达尔文约 4–4.5 小时。"
+    },
+    {
+      "from": "阿德莱德",
+      "how": "飞爱丽斯泉约 2 小时；也可以坐 The Ghan 火车经爱丽斯泉到达尔文，全程约 3 天。"
+    },
+    {
+      "from": "达尔文",
+      "how": "飞爱丽斯泉约 2 小时；开车要两天以上，一般不建议。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "uluru",
+      "name": "乌鲁鲁",
+      "local": "Uluru, Uluru-Kata Tjuta National Park",
+      "kind": "national-park",
+      "ll": [
+        131.037,
+        -25.3456
+      ],
+      "text": "从平地拔起约 350 米的整块红色砂岩，是澳洲最有名的地标。最好的玩法是看一次日出、一次日落，再沿约 10 公里的环岩步道走一圈或走其中一段，看岩壁上的洞穴、水潭和岩画。先去文化中心了解阿南古人的故事，再看巨石会有不一样的感觉。",
+      "time": "1–2 天",
+      "tip": "部分圣地有标牌禁止拍照，请遵守；公园早上 5–6:30 开门，按月份不同。",
+      "fee": "成人约 38 澳元 / 3 天，18 岁以下免费",
+      "themes": [
+        "nature",
+        "art"
+      ],
+      "photo": "Uluru at sunset seen from the sunset viewing area: the massive smooth sandstone monolith glowing deep red and orange, its weathered vertical grooves visible, red sand dunes and clumps of spinifex and desert oaks in the foreground, a clear sky fading from blue to pink."
+    },
+    {
+      "id": "kata-tjuta",
+      "name": "卡塔丘塔",
+      "local": "Kata Tjuta, Uluru-Kata Tjuta National Park",
+      "kind": "hiking",
+      "ll": [
+        130.7406,
+        -25.2993
+      ],
+      "text": "离乌鲁鲁约 50 公里车程的 36 个红色圆顶岩丘，最高处比乌鲁鲁还高。风之谷步道全程约 7.4 公里、约 4 小时，在岩丘之间上下穿行，第一个观景台往返约 2.2 公里就很值。和乌鲁鲁用同一张公园门票，很多人觉得这里比乌鲁鲁更好走、更出片。",
+      "time": "半天",
+      "tip": "预报或实测 36°C 以上时，风之谷从上午 11 点起只开放到第一个观景台。",
+      "fee": "含在乌鲁鲁公园门票内",
+      "themes": [
+        "nature"
+      ],
+      "photo": "A hiking path through the Valley of the Winds at Kata Tjuta in the morning: huge rounded domes of red conglomerate rock rising on both sides, a narrow gravel track winding between green shrubs and spinifex, a few tiny hikers in the distance, strong sunlight and a deep blue sky."
+    },
+    {
+      "id": "kings-canyon",
+      "name": "国王峡谷",
+      "local": "Kings Canyon, Watarrka National Park",
+      "kind": "hiking",
+      "ll": [
+        131.5708,
+        -24.2553
+      ],
+      "text": "从乌鲁鲁开车约 3.5 小时，峡谷两侧是 100 多米高的红色砂岩崖壁。经典走法是约 6 公里、约 3 小时的峡谷边缘环线：开头一段陡坡台阶最累，上去后沿着崖顶走，中途下到一片绿洲水潭「伊甸园」。不想爬坡可以走谷底的短步道。",
+      "time": "半天",
+      "tip": "预报 36°C 以上时，环线必须在上午 9 点前出发；伊甸园水潭禁止游泳。",
+      "fee": "需北领地公园游客通票",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "View from the rim of Kings Canyon in the early morning: sheer red sandstone cliffs dropping into a deep gorge, the flat rim covered in weathered beehive-shaped rock domes, a few ghost gums clinging to ledges, a small hiker standing far from the edge, long shadows and a clear blue sky."
+    },
+    {
+      "id": "west-macdonnell-ranges",
+      "name": "西麦克唐奈山脉",
+      "local": "Tjoritja / West MacDonnell National Park",
+      "kind": "drive",
+      "ll": [
+        132.7264,
+        -23.6323
+      ],
+      "text": "从爱丽斯泉往西一字排开的山脉，沿公路一路是峡谷和水潭：辛普森峡谷常能看到岩袋鼠，斯坦利峡谷中午阳光直射时两壁发红，最远的奥米斯顿峡谷有一片可以游泳的水潭（水很冷）。开车一天往返，适合作为红土中心路线的第一天或最后一天。",
+      "time": "1 天",
+      "tip": "斯坦利峡谷由原住民社区经营，单独收费；其他点需北领地公园通票。",
+      "themes": [
+        "nature",
+        "roadtrip",
+        "wildlife"
+      ],
+      "photo": "Ormiston Gorge in the West MacDonnell Ranges in the morning: tall red and purple quartzite cliffs reflected in a still waterhole, a white sandy creek bed with smooth river stones in the foreground, a few white-trunked ghost gums along the bank, clear sky and soft golden light."
+    },
+    {
+      "id": "mindil-beach",
+      "name": "明迪尔海滩日落市集",
+      "local": "Mindil Beach Sunset Market, Darwin",
+      "kind": "market",
+      "ll": [
+        130.8305,
+        -12.4453
+      ],
+      "text": "达尔文旱季最热闹的夜市，海滩边几百个小摊卖东南亚、希腊、本地各种小吃，还有手工艺品和街头表演。买份吃的坐到沙滩上，看太阳落进帝汶海，是达尔文人的周末日常。离市中心约 2 公里，打车或坐公交都方便。",
+      "time": "2–3 小时",
+      "tip": "只在约 4 月底到 10 月底的周四、周日傍晚 4–9 点开；别下海游泳。",
+      "fee": "免费入场",
+      "themes": [
+        "city",
+        "sea"
+      ],
+      "photo": "Sunset at Mindil Beach in Darwin: the sun dropping into a calm sea, the sky glowing orange, a wide beach with small distant figures sitting on the sand, tall coconut palms silhouetted along the shore, glowing market stalls and string lights at the edge of the frame.",
+      "open": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "kakadu",
+      "name": "卡卡杜国家公园",
+      "local": "Kakadu National Park",
+      "kind": "national-park",
+      "ll": [
+        132.9562,
+        -12.4097
+      ],
+      "text": "澳洲最大的国家公园，自然和文化双遗产。乌比尔岩的岩画有几千年历史，傍晚爬上岩顶看漫无边际的湿地日落；黄水湿地的游船能近距离看咸水鳄和大群水鸟，全年都开。离达尔文约 3 小时车程，至少住一晚。",
+      "time": "2–3 天",
+      "tip": "吉姆吉姆瀑布只在旱季通四驱车；出发前查公园官网的每日路况。",
+      "fee": "成人约 25–40 澳元（按季节，7 天有效）",
+      "themes": [
+        "nature",
+        "wildlife",
+        "art"
+      ],
+      "photo": "Sunset view from the top of Ubirr rock in Kakadu: a vast green floodplain wetland stretching to the horizon, scattered pandanus and paperbark trees, rugged sandstone outcrops in the foreground lit warm orange, a hazy golden sky, a few small figures sitting on the rocks."
+    },
+    {
+      "id": "litchfield",
+      "name": "利奇菲尔德国家公园",
+      "local": "Litchfield National Park",
+      "kind": "national-park",
+      "ll": [
+        130.7835,
+        -13.0991
+      ],
+      "text": "达尔文往南约 1.5–2 小时，全程柏油路，是顶端最好玩的一日游。佛罗伦萨瀑布和旺吉瀑布底下有天然泳池，旱季可以下水；路边还有一片朝向南北排列、像墓碑一样的磁力白蚁丘。比卡卡杜近，节奏更轻松。",
+      "time": "1 天",
+      "tip": "能不能游泳看现场告示：雨季常因水流和鳄鱼风险关闭水潭。",
+      "fee": "需北领地公园游客通票，1 天约 10 澳元",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Florence Falls in Litchfield National Park during the dry season: twin waterfalls pouring from a red sandstone escarpment into a round dark-green plunge pool, monsoon forest and palms around the edges, a few tiny swimmers in the pool, soft morning light filtering through."
+    },
+    {
+      "id": "nitmiluk",
+      "name": "尼特米卢克峡谷",
+      "local": "Nitmiluk (Katherine Gorge) National Park",
+      "kind": "national-park",
+      "ll": [
+        132.4161,
+        -14.3255
+      ],
+      "text": "凯瑟琳镇附近的一串砂岩峡谷，河水在红色崖壁之间拐来拐去。最常见的是坐游船进峡谷，也可以租独木舟自己划，或者走到崖顶的观景台往下看。离达尔文约 3–3.5 小时，可以和利奇菲尔德或卡卡杜连成一条环线。",
+      "time": "半天–1 天",
+      "tip": "雨季水位高时游船路线会缩短或改坐快艇；划船前听清鳄鱼安全说明。",
+      "fee": "需北领地公园游客通票，游船另付",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Katherine Gorge in Nitmiluk National Park on a calm dry-season morning: a dark green river winding between towering red and orange sandstone cliffs, a small tour boat far away on the water, sparse trees clinging to the rock ledges, clear blue sky and still reflections."
+    }
+  ],
+  "foods": [
+    {
+      "id": "barramundi",
+      "name": "尖吻鲈",
+      "local": "Barramundi",
+      "text": "北领地最有代表性的鱼，澳洲人叫它「巴拉蒙迪」。肉厚、刺少，常见做法是带皮香煎，皮煎得脆脆的，配沙拉或薯条。达尔文的海边餐厅几乎都有，和东南亚口味的酱汁也很配。",
+      "where": "达尔文海滨区和市中心的餐厅，卡卡杜度假村餐厅。",
+      "price": "一份约 30–45 澳元",
+      "photo": "A pan-seared barramundi fillet with crisp golden skin on a white plate, served with a fresh green salad and a lemon wedge, on a timber table on an open-air terrace with blurred tropical palms behind, warm evening light, shot from 45 degrees."
+    },
+    {
+      "id": "darwin-laksa",
+      "name": "达尔文叻沙",
+      "local": "Darwin Laksa",
+      "text": "达尔文离东南亚比离悉尼还近，椰汁咖喱汤底的叻沙是这里的城市味道，配粗米粉、虾、鸡肉和豆腐泡，辣度可以选。早市和夜市都能吃到，很多当地人有自己认定的那一摊。",
+      "where": "帕拉普周六早市、明迪尔日落市集的亚洲小吃摊。",
+      "price": "一碗约 15–20 澳元",
+      "photo": "A deep bowl of laksa with orange coconut curry broth, thick rice noodles, prawns, sliced chicken, tofu puffs, bean sprouts and fresh herbs, on a plastic market table outdoors, soft morning light, shot from above at an angle."
+    },
+    {
+      "id": "bush-meats",
+      "name": "袋鼠肉与鳄鱼肉",
+      "local": "Kangaroo & Crocodile Meat",
+      "text": "在北领地可以试试澳洲特色肉类：袋鼠肉是低脂红肉，煎到三四分熟口感最好；鳄鱼肉颜色白、口感像鸡肉，常做成烤串或汉堡。不少餐厅有拼盘，一次能尝好几种。",
+      "where": "爱丽斯泉、尤拉拉和达尔文的餐厅、酒馆。",
+      "photo": "A sliced medium-rare kangaroo fillet fanned on a dark plate next to two grilled crocodile skewers, with roasted vegetables and a small dish of bush-tomato relish, on a rustic timber table in a casual restaurant, warm light, shot from 45 degrees."
+    },
+    {
+      "id": "damper",
+      "name": "丛林面包",
+      "local": "Damper",
+      "text": "澳洲内陆的传统面包，面粉、水和一点盐，埋在篝火炭里烤出来，外皮硬、里面扎实。现在常配黄油和金色糖浆吃。红土中心的星空晚餐、丛林体验活动里常能吃到现烤的。",
+      "where": "尤拉拉、爱丽斯泉的户外晚餐和丛林体验活动。",
+      "photo": "A round loaf of damper bread broken open on a rough timber board beside a campfire, steaming soft interior and floury crust, a small dish of butter and a jar of golden syrup nearby, red desert sand under the board, warm firelight at dusk."
+    }
+  ],
+  "tips": [
+    "北领地比北京快 1.5 小时，不实行夏令时；10 月到次年 4 月和悉尼、墨尔本差 1.5 小时。",
+    "顶端的河流、水潭和海边都可能有咸水鳄，只在告示允许的地方下水；达尔文海滩约 10–5 月有箱水母。",
+    "红土中心苍蝇多，带防蝇网罩；徒步每小时约喝 1 升水，热天别中午走。",
+    "很多租车合同不允许走土路和夜间行车，长途前查北领地路况网站 roadreport.nt.gov.au。",
+    "用中国驾照开车要带 NAATI 认证英文翻译件；靠左行驶，出发前查北领地政府官网。"
+  ],
+  "nearby": [
+    "south-australia",
+    "western-australia",
+    "queensland"
+  ],
+  "climate": {
+    "city": "爱丽斯泉",
+    "ll": [
+      133.8813,
+      -23.6984
+    ]
+  },
+  "cover": {
+    "scene": "Uluru at sunrise seen from a dune-top viewing platform: the enormous sandstone monolith rising from a flat red desert plain, its face shifting from dark purple to glowing orange as the sun rises, low desert oaks and spinifex grass in the foreground, a soft pink and pale blue sky with a few thin clouds, tiny distant figures on the platform rail, wide landscape framing.",
+    "alt": "日出时的乌鲁鲁"
+  },
+  "sources": [
+    {
+      "title": "Parks Australia: Uluru-Kata Tjuta park passes",
+      "url": "https://parksaustralia.gov.au/uluru/plan/passes/"
+    },
+    {
+      "title": "Parks Australia: Uluru-Kata Tjuta opening hours",
+      "url": "https://parksaustralia.gov.au/uluru/about/opening-hours/"
+    },
+    {
+      "title": "Parks Australia: Uluru climb closure",
+      "url": "https://parksaustralia.gov.au/uluru/discover/culture/uluru-climb/"
+    },
+    {
+      "title": "Parks Australia: Valley of the Winds walks",
+      "url": "https://parksaustralia.gov.au/uluru/things-do/activities/walks/kata-tjuta-walks/valley-winds-walks/"
+    },
+    {
+      "title": "Parks Australia: Kakadu park passes",
+      "url": "https://parksaustralia.gov.au/kakadu/plan/passes/"
+    },
+    {
+      "title": "Parks Australia: Kakadu seasons",
+      "url": "https://parksaustralia.gov.au/kakadu/plan/when-come/seasons/"
+    },
+    {
+      "title": "Tourism NT: Kings Canyon Rim Walk (heat rule and NT Parks Visitor Pass prices)",
+      "url": "https://northernterritory.com/us/en/uluru-and-surrounds/see-and-do/kings-canyon-rim-walk"
+    },
+    {
+      "title": "Mindil Beach Sunset Market: Opening days and season",
+      "url": "https://www.mindil.com.au/"
+    },
+    {
+      "title": "ABC News: China Southern backs out of Darwin after one year",
+      "url": "https://www.abc.net.au/news/2026-11-04/china-southern-airline-backs-out-of-darwin-after-one-year/107345298"
+    }
+  ],
+  "checked": "2026-11"
+}

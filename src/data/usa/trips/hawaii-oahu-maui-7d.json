@@ -1,0 +1,81 @@
+{
+  "id": "hawaii-oahu-maui-7d",
+  "country": "usa",
+  "title": "夏威夷欧胡岛与茂宜岛 · 7 天",
+  "region": "hawaii",
+  "daysCount": 7,
+  "for": "第一次去夏威夷，想海滩、火山和公路都体验的人",
+  "season": "全年，4–5 月和 9–10 月最划算",
+  "summary": "前三天住威基基，把要预约的钻石头山、恐龙湾和珍珠港排在一起，第一天只在海边倒时差。第四天飞茂宜岛取车，第五天半夜上山看哈雷阿卡拉日出，第六天开哈纳公路。几个预约都要按夏威夷时间提前抢票，订好再定日期；恐龙湾周一、周二不开，第二天别落在这两天。",
+  "bases": ["檀香山威基基 3 晚", "茂宜岛基黑 3 晚"],
+  "days": [
+    {
+      "title": "抵达威基基",
+      "stay": "檀香山",
+      "items": [
+        { "note": "檀香山机场到威基基打车约 30–40 分钟" },
+        { "pref": "hawaii", "spot": "waikiki" },
+        { "pref": "hawaii", "food": "poke" }
+      ],
+      "move": "经东京、首尔或美国本土转机到檀香山"
+    },
+    {
+      "title": "钻石头山与恐龙湾",
+      "stay": "檀香山",
+      "items": [
+        { "pref": "hawaii", "spot": "diamond-head" },
+        { "pref": "hawaii", "spot": "hanauma-bay" },
+        { "pref": "hawaii", "food": "spam-musubi" }
+      ],
+      "move": "两处相距约 15 分钟车程，可租车一天或打车"
+    },
+    {
+      "title": "珍珠港与北岸",
+      "stay": "檀香山",
+      "items": [
+        { "pref": "hawaii", "spot": "pearl-harbor" },
+        { "pref": "hawaii", "spot": "north-shore" },
+        { "pref": "hawaii", "food": "shave-ice" }
+      ],
+      "move": "威基基到珍珠港约 30 分钟，珍珠港到北岸约 45 分钟，建议租车"
+    },
+    {
+      "title": "飞茂宜岛",
+      "stay": "基黑",
+      "items": [
+        { "note": "上午飞茂宜岛卡胡卢伊，取车后去基黑办入住" },
+        { "pref": "hawaii", "food": "loco-moco" },
+        { "note": "早点睡，第二天凌晨 3 点左右出发上山" }
+      ],
+      "move": "檀香山飞茂宜约 40 分钟；卡胡卢伊到基黑约 20 分钟"
+    },
+    {
+      "title": "哈雷阿卡拉日出",
+      "stay": "基黑",
+      "items": [
+        { "pref": "hawaii", "spot": "haleakala" },
+        { "note": "下山路过高地小镇吃早午饭，下午回酒店补觉" }
+      ],
+      "move": "基黑到山顶约 2 小时，山路弯多，夜里慢开"
+    },
+    {
+      "title": "哈纳公路",
+      "stay": "基黑",
+      "items": [
+        { "pref": "hawaii", "spot": "road-to-hana" },
+        { "note": "原路返回，天黑前离开山路" }
+      ],
+      "move": "帕伊亚到哈纳约 80 公里，单程约 2.5–3 小时，往返一整天"
+    },
+    {
+      "title": "海滩半天后返程",
+      "stay": "返程",
+      "items": [
+        { "note": "上午在基黑或怀雷阿的海滩浮潜、游泳" },
+        { "pref": "hawaii", "food": "poke" },
+        { "note": "从卡胡卢伊机场经檀香山或美国本土转机回国" }
+      ],
+      "move": "基黑到卡胡卢伊机场约 20 分钟，还车留足时间"
+    }
+  ]
+}

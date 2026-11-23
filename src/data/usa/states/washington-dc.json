@@ -1,0 +1,270 @@
+{
+  "slug": "washington-dc",
+  "country": "usa",
+  "name": "华盛顿特区",
+  "local": "Washington, D.C.",
+  "abbr": "DC",
+  "region": "northeast",
+  "tagline": "纪念碑和免费博物馆最集中的首都",
+  "intro": [
+    "华盛顿是美国首都，也是全美免费博物馆最多的城市：国家广场两侧排着十几座史密森尼博物馆，航空航天、自然历史、美国历史、非裔美国人历史和国家美术馆都不收门票。三天大致能看完广场一圈和最想去的几座馆。",
+    "国家广场从国会大厦一直延伸到林肯纪念堂，约 3 公里，中间是华盛顿纪念碑。走完全程加上潮汐湖边的杰斐逊纪念堂和二战、越战纪念碑，脚程不小，可以骑共享单车或电动滑板车。",
+    "国会大厦导览、华盛顿纪念碑电梯、国会图书馆和部分博物馆都要预约免费的限时票，最好出发前一个月在官网上订好。"
+  ],
+  "days": "2–4 天",
+  "seasons": {
+    "months": [
+      3,
+      4,
+      5,
+      9,
+      10
+    ],
+    "note": "樱花盛开一般在 3 月最后一周到 4 月第一周，年年不同；9–10 月凉爽。7–8 月湿热，常有雷阵雨。"
+  },
+  "stay": "住国家广场北边的市中心、宾州大道一带或杜邦圈，地铁几站到各个景点。弗吉尼亚州的罗斯林、水晶城靠地铁，房价常便宜一些。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "国航有北京直飞华盛顿杜勒斯机场（IAD）的航班，每周约 2 班，约 13–14 小时；更多人从纽约坐火车过来或经其他城市转机。"
+    },
+    {
+      "from": "杜勒斯机场",
+      "how": "地铁银线直通机场，到市中心约 50–60 分钟；里根国家机场（DCA）坐地铁约 15–20 分钟进城。"
+    },
+    {
+      "from": "纽约",
+      "how": "Amtrak 约 3–3.5 小时到联合车站；大巴约 4–5 小时，便宜但看路况。"
+    },
+    {
+      "from": "费城",
+      "how": "Amtrak 约 1.5–2 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "national-mall",
+      "name": "国家广场与华盛顿纪念碑",
+      "local": "National Mall & Washington Monument",
+      "kind": "park",
+      "ll": [
+        -77.0353,
+        38.8895
+      ],
+      "text": "东起国会大厦、西到林肯纪念堂的长条草坪，是华盛顿所有游览的主轴。中间那座约 169 米高的白色方尖碑是华盛顿纪念碑，坐电梯上到观景层能把整条广场和白宫一起看全。二战纪念碑、倒影池都在步行范围里，傍晚走一圈最舒服。",
+      "time": "半天",
+      "tip": "上纪念碑要限时票，30 天前在 recreation.gov 放票，当天早上 8:45 现场也发少量。",
+      "fee": "免费；网上订票有少量手续费",
+      "themes": [
+        "heritage",
+        "city"
+      ],
+      "photo": "Wide view along the National Mall on a clear spring morning: the tall white marble obelisk of the Washington Monument rising above a long green lawn lined with rows of elm trees, a ring of flags at its base, the domed Capitol far in the distance, a few small distant walkers."
+    },
+    {
+      "id": "lincoln-memorial",
+      "name": "林肯纪念堂",
+      "local": "Lincoln Memorial",
+      "kind": "landmark",
+      "ll": [
+        -77.0502,
+        38.8893
+      ],
+      "text": "希腊神庙样式的白色大理石殿堂，里面是巨大的林肯坐像，墙上刻着他的两篇著名演说。马丁·路德·金的《我有一个梦想》就是在这里的台阶上发表的。站在台阶上往东看，倒影池、纪念碑和国会大厦连成一条线，夜里灯光亮起后更好看。",
+      "time": "30–60 分钟",
+      "tip": "24 小时开放，晚上去人少、灯光好，顺路看韩战和越战纪念碑。",
+      "fee": "免费",
+      "themes": [
+        "heritage"
+      ],
+      "photo": "Night view of a white marble Greek temple-style memorial with a long row of Doric columns lit warmly from within, a huge seated marble statue visible between the central columns, wide steps in front, a deep blue sky, a few small distant figures on the steps."
+    },
+    {
+      "id": "smithsonian-museums",
+      "name": "史密森尼博物馆群",
+      "local": "Smithsonian Museums on the National Mall",
+      "kind": "museum",
+      "ll": [
+        -77.0261,
+        38.8913
+      ],
+      "text": "国家广场两侧的博物馆大多免费。第一次来优先三座：自然历史博物馆看希望钻石和恐龙厅；航空航天博物馆看莱特兄弟的飞机和阿波罗飞船；非裔美国人历史与文化博物馆从地下展厅一层层往上走，很震撼。国家美术馆也免费，不属于史密森尼。",
+      "time": "1–2 天",
+      "tip": "航空航天馆要提前领免费限时票；大多数馆约 10 点到 17:30 开放。",
+      "fee": "免费",
+      "themes": [
+        "art",
+        "heritage",
+        "family"
+      ],
+      "photo": "Interior of a vast natural history museum rotunda: a large African elephant specimen on a central platform under a high domed ceiling with tall marble columns, balconies on the upper floor, soft daylight, small distant visitors walking around."
+    },
+    {
+      "id": "us-capitol",
+      "name": "国会大厦",
+      "local": "United States Capitol",
+      "kind": "landmark",
+      "ll": [
+        -77.0091,
+        38.8899
+      ],
+      "text": "白色圆顶的国会大厦是参众两院开会的地方。参观从地下的游客中心进，讲解员带着看圆形大厅的穹顶壁画和雕像大厅。导览免费，在官网约限时票。出来后走地下通道去对面的国会图书馆杰斐逊大楼，阅览大厅的天花板非常华丽。",
+      "time": "2–3 小时",
+      "tip": "安检严格，食物饮料、喷雾等都不能带；国会图书馆也要另约免费限时票。",
+      "fee": "免费",
+      "themes": [
+        "heritage",
+        "art"
+      ],
+      "photo": "Front view of a massive white neoclassical capitol building with a tall cast-iron dome topped by a statue, wide marble steps and columned wings on both sides, a green lawn and reflecting pool in the foreground, clear blue sky, early morning light."
+    },
+    {
+      "id": "tidal-basin-cherry-blossoms",
+      "name": "潮汐湖樱花",
+      "local": "Tidal Basin Cherry Blossoms",
+      "kind": "park",
+      "ll": [
+        -77.0365,
+        38.884
+      ],
+      "text": "潮汐湖边种着上千棵日本赠送的樱花树，盛开时湖边一圈都是粉白色，对岸就是杰斐逊纪念堂的圆顶。盛开期只有几天，国家公园管理局每年会根据花苞预测发布日期。不是樱花季也值得来，湖边散步可以连着看罗斯福纪念园和马丁·路德·金纪念碑。",
+      "time": "1–2 小时",
+      "tip": "樱花季日出时去，人少光线好；那几周酒店早早涨价。",
+      "fee": "免费",
+      "themes": [
+        "nature",
+        "heritage"
+      ],
+      "photo": "Sunrise at a calm tidal lake ringed with blooming pale pink cherry trees, their branches arching over the water, a white domed neoclassical memorial with columns on the far shore reflected on the surface, soft pink and gold sky, a few small distant early walkers."
+    },
+    {
+      "id": "georgetown",
+      "name": "乔治城",
+      "local": "Georgetown",
+      "kind": "street",
+      "ll": [
+        -77.0654,
+        38.9055
+      ],
+      "text": "比华盛顿建城还早的老街区，砖砌联排屋、石板人行道和 19 世纪的运河步道，和政府区的严肃样子完全不同。M 街和威斯康星大道是商店和餐厅，南边是波托马克河边的滨水公园，北边是乔治城大学。这里没有地铁站，可坐巴士或从杜邦圈步行过去。",
+      "time": "半天",
+      "tip": "傍晚去河边看日落，然后在 M 街吃晚饭。",
+      "fee": "免费",
+      "themes": [
+        "city",
+        "heritage"
+      ],
+      "photo": "A quiet residential street in a historic neighbourhood: brick Federal-style townhouses with black shutters and painted front doors, gas-style street lamps, brick sidewalks, large trees turning yellow in autumn, late-afternoon sunlight."
+    },
+    {
+      "id": "national-zoo",
+      "name": "国家动物园",
+      "local": "Smithsonian's National Zoo",
+      "kind": "wildlife",
+      "ll": [
+        -77.0497,
+        38.9296
+      ],
+      "text": "史密森尼旗下的免费动物园，在石溪公园里，园区沿山坡展开。亚洲步道的大熊猫是很多人专门来看的，另外还有大象、狮虎和猩猩。带孩子来可以安排半天，地铁红线 Woodley Park 站下，走上坡约 10 分钟。",
+      "time": "3–4 小时",
+      "tip": "免费但所有人都要在官网预约入园通行证，婴儿也要。",
+      "fee": "免费（需预约）",
+      "themes": [
+        "family",
+        "wildlife"
+      ],
+      "photo": "A giant panda sitting among bamboo and rocks in a large leafy outdoor enclosure, chewing a green bamboo stalk, soft morning light filtering through tall trees, a wooden viewing railing blurred in the foreground."
+    }
+  ],
+  "foods": [
+    {
+      "id": "half-smoke",
+      "name": "半熏香肠",
+      "local": "Half-Smoke",
+      "text": "华盛顿本地的招牌热狗：粗粗的猪牛混合烟熏香肠，比普通热狗更辣更有嚼劲，一般盖满辣肉酱、洋葱和芥末。U 街上有一家 1958 年开业的老店，是华盛顿人的深夜食堂。",
+      "where": "U 街一带的老牌热狗店和球场小吃摊。",
+      "price": "一份约 8–12 美元",
+      "photo": "A grilled smoked sausage in a steamed bun smothered with dark beef chili, chopped white onions and a stripe of yellow mustard, in a paper boat on a diner counter, warm light, 45-degree angle."
+    },
+    {
+      "id": "ethiopian-food",
+      "name": "埃塞俄比亚菜",
+      "local": "Ethiopian Cuisine",
+      "text": "华盛顿有全美最大的埃塞俄比亚社区，这里的埃塞菜是一大特色。一张大大的酸味软饼上铺着各种炖菜：辣炖鸡、炖扁豆、炒牛肉和蔬菜，用手撕饼包着吃。素食选择也很多。",
+      "where": "U 街、肖区一带，以及北边的银泉。",
+      "price": "一人约 25–35 美元（不含小费）",
+      "photo": "Top-down view of a large round platter covered with spongy grey-brown injera flatbread topped with colourful mounds of red lentil stew, chicken stew, sauteed greens, yellow split peas and cabbage, rolled injera on the side, warm restaurant light."
+    },
+    {
+      "id": "maryland-crab-cake",
+      "name": "马里兰蟹饼",
+      "local": "Maryland Crab Cake",
+      "text": "旁边的切萨皮克湾盛产蓝蟹，蟹饼几乎全是蟹肉，只用少量面包屑黏住，煎得外脆里松。好的蟹饼一咬就散，满口是蟹肉的甜味。配塔塔酱和柠檬。",
+      "where": "华盛顿南岸码头的海鲜市场和各类海鲜餐厅。",
+      "price": "一份约 25–40 美元",
+      "photo": "A thick golden-brown pan-seared crab cake made of large lumps of white crab meat on a white plate, a lemon wedge and small cup of remoulade sauce beside it, a little green salad, soft natural light, 45-degree angle."
+    },
+    {
+      "id": "jumbo-slice",
+      "name": "阿德摩根巨型披萨",
+      "local": "Jumbo Slice",
+      "text": "阿德摩根酒吧街的深夜标配：一片披萨大到要用两个纸盘接住，便宜管饱，是华盛顿年轻人泡完吧之后的固定节目。味道普通，但值得体验一次。",
+      "where": "阿德摩根区的 18 街酒吧一带，晚上营业。",
+      "price": "一片约 6–8 美元",
+      "photo": "An enormous single slice of cheese pizza hanging over the edges of two paper plates placed side by side, melted cheese with oil sheen, held on a small counter at night, warm neon light blurred in the background."
+    }
+  ],
+  "tips": [
+    "博物馆大多免费，但航空航天馆、国会大厦、国会图书馆、纪念碑电梯都要提前约限时票。",
+    "华盛顿地铁用 SmarTrip 卡，可以直接加进 iPhone 或安卓手机钱包，按距离和时段计价。",
+    "特区的销售税和餐饮税都不含在标价里，餐饮税率比一般商品高；小费另付。",
+    "广场上没有遮挡，夏天带水、帽子和防晒；大部分博物馆 17:30 左右关门。",
+    "进联邦建筑安检严格，带小刀、喷雾、自拍杆可能被拦。"
+  ],
+  "nearby": [
+    "pennsylvania",
+    "new-york"
+  ],
+  "climate": {
+    "city": "华盛顿",
+    "ll": [
+      -77.0369,
+      38.9072
+    ]
+  },
+  "cover": {
+    "scene": "View across the calm Reflecting Pool on the National Mall at sunrise: the tall white obelisk of the Washington Monument mirrored perfectly in the water, rows of elm trees on both sides, a pink and pale blue sky, the dome of the Capitol faintly visible beyond, a few small distant figures along the edge.",
+    "alt": "日出时倒影池里的华盛顿纪念碑"
+  },
+  "sources": [
+    {
+      "title": "NPS · National Cherry Blossom Bloom Watch",
+      "url": "https://www.nps.gov/subjects/cherryblossom/bloom-watch.htm"
+    },
+    {
+      "title": "NPS · Washington Monument Plan Your Visit",
+      "url": "https://www.nps.gov/wamo/planyourvisit/index.htm"
+    },
+    {
+      "title": "U.S. Capitol Visitor Center · Book a Tour",
+      "url": "https://www.visitthecapitol.gov/plan-visit/book-tour"
+    },
+    {
+      "title": "Library of Congress · Visiting the Library",
+      "url": "https://www.loc.gov/visit/"
+    },
+    {
+      "title": "National Air and Space Museum · Visit",
+      "url": "https://airandspace.si.edu/visit"
+    },
+    {
+      "title": "Smithsonian's National Zoo · Visit",
+      "url": "https://nationalzoo.si.edu/visit"
+    },
+    {
+      "title": "中美直飞航线汇总（美国信用卡指南）",
+      "url": "https://www.uscreditcardguide.com/direct-flights-between-china-and-north-america-2023/"
+    }
+  ],
+  "checked": "2026-11"
+}

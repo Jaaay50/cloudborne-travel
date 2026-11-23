@@ -1,0 +1,260 @@
+{
+  "slug": "massachusetts",
+  "country": "usa",
+  "name": "麻省",
+  "local": "Massachusetts",
+  "abbr": "MA",
+  "region": "northeast",
+  "tagline": "独立战争的起点，名校、海岛和秋色",
+  "intro": [
+    "麻省的中心是波士顿，美国最老的城市之一。市中心不大，红砖步道「自由之路」把独立战争的老建筑串在一起，走路就能逛完；过了查尔斯河就是剑桥，哈佛和麻省理工都能进校园走走。两三天看城市刚好。",
+    "夏天往东去科德角和玛莎葡萄园岛，看沙丘、灯塔和海边小镇，吃龙虾卷；秋天往西去伯克希尔山区，或者北边的塞勒姆小镇，10 月的红叶和万圣节气氛是另一番样子。去海岛和山区最好租车，或者跟着渡轮和巴士时刻表走。",
+    "麻省冬天长、冷、多雪，11 月到次年 3 月不少海边小镇的店会关门歇业。最好的季节是 6–10 月，旺季住宿涨得厉害，尤其是海岛和秋叶季的周末。"
+  ],
+  "days": "3–5 天",
+  "seasons": {
+    "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "note": "6–8 月去海岛海边，9 月底–10 月中看红叶；12–3 月寒冷多雪，海边小镇多半歇业。"
+  },
+  "stay": "第一次住波士顿市中心、后湾或海港区，步行加地铁就能去自由之路和剑桥。去科德角或海岛建议住一晚，当天来回太赶。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "海南航空有北京直飞波士顿洛根机场（BOS）的航班，每周数班，约 13–14 小时；其余多经纽约、香港或东京转机。"
+    },
+    {
+      "from": "洛根机场",
+      "how": "机场有免费接驳车到蓝线 Airport 站进城；也可坐银线 SL1 巴士到南站，约 20–30 分钟。"
+    },
+    {
+      "from": "纽约",
+      "how": "Amtrak 约 3.5–4.5 小时到波士顿南站；飞机约 1 小时 15 分钟。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "freedom-trail",
+      "name": "自由之路",
+      "local": "Freedom Trail",
+      "kind": "street",
+      "ll": [
+        -71.064,
+        42.3554
+      ],
+      "text": "地上一条红砖线，从波士顿公园一路通到查尔斯敦，全程约 4 公里，串起 16 处独立战争前后的遗址：州议会大厦、老南会议厅、法纳尔厅、保罗·里维尔故居和老北教堂。跟着红线自己走就行，北端意大利区正好吃午饭。",
+      "time": "3–4 小时",
+      "tip": "部分建筑另收门票，挑一两处进去就够；穿好走的鞋。",
+      "fee": "步道免费",
+      "themes": [
+        "heritage",
+        "city"
+      ],
+      "photo": "A line of red bricks set into a sidewalk leading past an old red-brick colonial meeting house with a white wooden steeple, surrounded by modern office buildings, early autumn sunlight, a few small distant pedestrians."
+    },
+    {
+      "id": "harvard-mit",
+      "name": "哈佛与麻省理工",
+      "local": "Harvard University & MIT",
+      "kind": "city",
+      "ll": [
+        -71.1167,
+        42.3744
+      ],
+      "text": "两所学校都在剑桥，红线地铁几站就到。哈佛园里是红砖老楼和约翰·哈佛像，周边书店、咖啡馆很有学生气；麻省理工沿查尔斯河，大圆顶和盖里设计的歪扭楼值得看。校园开放走，教学楼和宿舍别乱进，学生带的导览要提前在官网报名。",
+      "time": "半天",
+      "tip": "从麻省理工走哈佛桥回后湾，河景和城市天际线最好看。",
+      "fee": "校园免费",
+      "themes": [
+        "heritage",
+        "art"
+      ],
+      "photo": "A quiet leafy university yard in early October: old red-brick Georgian halls with white window frames, tall elm trees just starting to turn yellow, crisscrossing paved paths across a green lawn, a few distant students walking, soft morning light."
+    },
+    {
+      "id": "mfa-boston",
+      "name": "波士顿美术馆",
+      "local": "Museum of Fine Arts, Boston",
+      "kind": "museum",
+      "ll": [
+        -71.0942,
+        42.3394
+      ],
+      "text": "美国顶级的综合美术馆之一，亚洲馆的中国古画和日本佛像收藏很有分量，印象派和美国绘画展厅也很精彩。挑两三个展区看就够半天。离芬威球场和加德纳美术馆都不远，可以排成一天的文化线路。",
+      "time": "2–4 小时",
+      "tip": "周二闭馆；工作日上午人最少。",
+      "fee": "约 30 美元",
+      "themes": [
+        "art"
+      ],
+      "photo": "Grand neoclassical granite museum facade with tall columns behind a wide lawn, a bronze equestrian statue in the foreground, late-afternoon autumn light, trees with yellow leaves, a few small distant visitors on the steps."
+    },
+    {
+      "id": "salem",
+      "name": "塞勒姆",
+      "local": "Salem",
+      "kind": "street",
+      "ll": [
+        -70.8921,
+        42.5216
+      ],
+      "text": "因 1692 年女巫审判出名的海港小镇，老街上是殖民时代木屋和女巫主题小店。镇上的皮博迪埃塞克斯博物馆值得专门来：馆里整体搬来了一座清代徽州老宅「荫余堂」，在美国看到原汁原味的马头墙和天井，感觉很奇妙。",
+      "time": "半天–1 天",
+      "tip": "10 月整月万圣节活动，周末人山人海，住宿要早订。",
+      "themes": [
+        "heritage",
+        "art",
+        "autumn"
+      ],
+      "photo": "A narrow historic street in a New England harbour town in October: dark wooden colonial houses with steep gables and small-paned windows, maple trees in bright orange, pumpkins on doorsteps, cobblestone sidewalk, soft overcast light."
+    },
+    {
+      "id": "cape-cod",
+      "name": "科德角国家海岸",
+      "local": "Cape Cod National Seashore",
+      "kind": "beach",
+      "ll": [
+        -69.9725,
+        41.8371
+      ],
+      "text": "像一只弯起的手臂伸进大西洋，外侧是长达几十公里的沙滩、沙丘和灯塔。夏天去海边晒太阳、骑车走铁轨改成的自行车道；最北端的普罗温斯敦是热闹的艺术小镇。从波士顿开车约 2 小时，夏季周末进出科德角的桥会堵车。",
+      "time": "1–2 天",
+      "tip": "大西洋这一侧海水偏凉，有离岸流，只在有救生员的海滩下水。",
+      "fee": "入园约 15–25 美元",
+      "themes": [
+        "sea",
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Wide view from a dune-top overlook on Cape Cod in summer: a long empty sand beach curving north below steep grassy dunes, white surf lines on deep blue Atlantic water, a white lighthouse on the distant bluff, bright midday sun and a few small clouds."
+    },
+    {
+      "id": "marthas-vineyard",
+      "name": "玛莎葡萄园岛",
+      "local": "Martha's Vineyard",
+      "kind": "island",
+      "ll": [
+        -70.5594,
+        41.4565
+      ],
+      "text": "科德角南边的度假岛。奥克布拉夫斯有一片彩色木屋，像姜饼屋一样挤在一起；埃德加敦是白墙捕鲸船长老宅；西南端的盖海德悬崖是彩色黏土崖。岛上有公交，也能租自行车，夏天最热闹。",
+      "time": "1–2 天",
+      "tip": "伍兹霍尔渡轮约 45 分钟；带车上岛必须提前订位，旺季很难订。",
+      "themes": [
+        "sea",
+        "heritage"
+      ],
+      "photo": "A cluster of small Victorian wooden cottages in bright pastel colours with lace-like gingerbread trim and pointed gables around a small grassy park, flower boxes on porches, a summer afternoon with clear blue sky."
+    },
+    {
+      "id": "berkshires",
+      "name": "伯克希尔山区",
+      "local": "The Berkshires",
+      "kind": "drive",
+      "ll": [
+        -73.3204,
+        42.2818
+      ],
+      "text": "麻省最西边的低山丘陵，9 月底到 10 月中满山红黄，是新英格兰赏秋的经典去处。斯托克布里奇的主街像一幅老画，附近有画家诺曼·洛克威尔的美术馆；北边的格雷洛克山是全州最高点，秋天开车上山看层层叠叠的林海。",
+      "time": "1–2 天",
+      "tip": "红叶季周末房价翻倍，选工作日；山区信号差，先下载离线地图。",
+      "themes": [
+        "autumn",
+        "roadtrip",
+        "nature"
+      ],
+      "photo": "Aerial-like view from a mountain summit in early October: rolling forested hills covered in red, orange and gold foliage stretching to the horizon, a small white-steepled village and a winding road in the valley, crisp clear afternoon light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "lobster-roll",
+      "name": "龙虾卷",
+      "local": "Lobster Roll",
+      "text": "新英格兰夏天的标志：烤过的热狗面包里塞满大块龙虾肉。冷吃拌一点蛋黄酱和芹菜，热吃浇融化黄油，两种都值得试。龙虾价格每年随行情变化，海边小摊不一定比城里便宜。",
+      "where": "波士顿北端、海港区，以及科德角和海岛上的海鲜小屋。",
+      "price": "一个约 30–40 美元",
+      "photo": "A split-top toasted bun overflowing with chunks of pink-and-white lobster meat lightly dressed, a pickle spear and potato chips beside it in a paper-lined basket, on a weathered wooden picnic table by the harbour, bright summer daylight."
+    },
+    {
+      "id": "clam-chowder",
+      "name": "新英格兰蛤蜊浓汤",
+      "local": "New England Clam Chowder",
+      "text": "奶白色的浓汤里有蛤蜊、土豆和咸猪肉丁，配小圆饼干一起吃。波士顿到处都有，在海边吹着冷风喝一碗最舒服。有的店会用挖空的酸面包碗来装。",
+      "where": "法纳尔厅一带、海港区的海鲜餐厅。",
+      "price": "一碗约 10–15 美元",
+      "photo": "A white ceramic bowl of thick creamy clam chowder with visible clams, diced potatoes and a sprinkle of parsley, small round oyster crackers scattered on top, a spoon beside it, a rustic wooden table, soft window light, 45-degree angle."
+    },
+    {
+      "id": "north-end-cannoli",
+      "name": "北端意式卷饼",
+      "local": "Cannoli in the North End",
+      "text": "北端是波士顿的意大利街区，老糕点店门口常排长队。卷饼是油炸的脆壳卷，现场填进里科塔奶酪馅，两头蘸巧克力豆或开心果碎，甜而不腻。买了可以边走边吃，接着逛自由之路。",
+      "where": "北端汉诺威街一带的意大利糕点店。",
+      "price": "一个约 5–7 美元",
+      "photo": "Two crisp golden fried pastry shells filled with white ricotta cream, the ends dipped in chocolate chips and crushed green pistachios, in a white cardboard bakery box tied with string, on a cafe counter, daylight."
+    },
+    {
+      "id": "fried-clams",
+      "name": "炸蛤蜊",
+      "local": "Fried Whole-Belly Clams",
+      "text": "麻省北岸的夏日小吃，整只带肚的蛤蜊裹粉炸，外脆里嫩带着海水味，配塔塔酱和薯条。在海边的外卖小屋点一份坐在野餐桌上吃最地道。",
+      "where": "北岸伊普斯威奇、埃塞克斯一带和科德角的海鲜小屋。",
+      "price": "一份约 25–35 美元",
+      "photo": "A paper boat piled with golden fried whole clams and crinkle-cut fries, a small paper cup of tartar sauce and a lemon wedge, on a weathered picnic table near a salt marsh, bright summer afternoon light."
+    }
+  ],
+  "tips": [
+    "波士顿地铁「T」可以直接刷银行卡或手机进站，比买纸票方便。",
+    "麻省销售税约 6.25%，波士顿餐饮约 7%，都不含在标价里；小费另算。",
+    "波士顿美术馆周二闭馆，海边小镇冬季很多店歇业，出发前查营业时间。",
+    "10 月秋叶季和 7–8 月海岛住宿都提前一两个月订，越近越贵。",
+    "自驾前查麻省 RMV 对外国驾照的要求，并向租车公司确认是否接受中文驾照和翻译件。"
+  ],
+  "nearby": [
+    "new-york"
+  ],
+  "climate": {
+    "city": "波士顿",
+    "ll": [
+      -71.0589,
+      42.3601
+    ]
+  },
+  "cover": {
+    "scene": "View across the Charles River in early October from the Cambridge bank: the Boston skyline and the golden dome of the State House on Beacon Hill rising beyond tree-lined riverbanks in red and orange, small white sailboats on calm blue water, a clear late-afternoon sky.",
+    "alt": "查尔斯河对岸的波士顿秋景"
+  },
+  "sources": [
+    {
+      "title": "The Freedom Trail Foundation",
+      "url": "https://www.thefreedomtrail.org/"
+    },
+    {
+      "title": "MFA Boston · Visit",
+      "url": "https://www.mfa.org/visit"
+    },
+    {
+      "title": "Peabody Essex Museum · Yin Yu Tang",
+      "url": "https://www.pem.org/visit/yin-yu-tang"
+    },
+    {
+      "title": "NPS · Cape Cod National Seashore Fees",
+      "url": "https://www.nps.gov/caco/planyourvisit/fees.htm"
+    },
+    {
+      "title": "Steamship Authority · Schedules",
+      "url": "https://www.steamshipauthority.com/schedules"
+    },
+    {
+      "title": "中美直飞航线汇总（美国信用卡指南）",
+      "url": "https://www.uscreditcardguide.com/direct-flights-between-china-and-north-america-2023/"
+    }
+  ],
+  "checked": "2026-11"
+}

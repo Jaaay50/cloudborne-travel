@@ -1,0 +1,196 @@
+{
+  "slug": "arizona",
+  "country": "usa",
+  "name": "亚利桑那",
+  "local": "Arizona",
+  "abbr": "AZ",
+  "region": "mountain-west",
+  "tagline": "大峡谷、羚羊谷和红岩荒漠的主场",
+  "intro": [
+    "亚利桑那北部是科罗拉多高原，大峡谷、马蹄湾、羚羊谷和纪念碑谷都在这一片，彼此相隔两三小时车程，最适合从拉斯维加斯或凤凰城出发自驾串起来。南部是索诺兰沙漠，到处是高大的仙人掌，图森和凤凰城冬天温暖，夏天极热。",
+    "这里路远：大峡谷南缘到佩奇约 2.5 小时，佩奇到纪念碑谷约 2 小时，一天别排超过两个大景点。羚羊谷只能跟纳瓦霍向导公司进，旺季要提前订好时段，再倒推前一晚住哪里。",
+    "时间最容易出错：亚利桑那全州不实行夏令时，但东北部的纳瓦霍保留地实行。3–11 月羚羊谷、纪念碑谷所在的纳瓦霍时间比佩奇市区快 1 小时，订导览、看日落都要确认是哪个时区。"
+  ],
+  "days": "4–6 天",
+  "seasons": {
+    "months": [3, 4, 5, 9, 10, 11],
+    "note": "北部 3–5 月、9–11 月最好；7–9 月是雨季，常有午后雷暴和山洪。南部沙漠 11–3 月舒服，6–8 月常超 43°C。"
+  },
+  "stay": "看大峡谷住南缘园内酒店或南门外的图萨扬小镇；看马蹄湾和羚羊谷住佩奇；纪念碑谷住谷口的酒店或古尔丁斯一带。塞多纳房价高，可以住弗拉格斯塔夫。",
+  "access": [
+    { "from": "中国大陆", "how": "一般在洛杉矶或旧金山入境后转机到凤凰城（约 1.5 小时），或飞拉斯维加斯后自驾进入，越洋段约 11–13 小时。" },
+    { "from": "拉斯维加斯", "how": "到大峡谷南缘约 450 公里（280 英里），开车约 4.5 小时；到佩奇约 440 公里，约 4.5 小时。" },
+    { "from": "凤凰城", "how": "到塞多纳约 190 公里，约 2 小时；到大峡谷南缘约 4 小时；到图森约 1.5–2 小时。" },
+    { "from": "锡安国家公园", "how": "到佩奇约 190 公里（120 英里），开车约 2 小时，进亚利桑那后注意时区变化。" }
+  ],
+  "spots": [
+    {
+      "id": "grand-canyon-south-rim",
+      "name": "大峡谷南缘",
+      "local": "Grand Canyon South Rim",
+      "kind": "national-park",
+      "ll": [-112.1090, 36.0617],
+      "text": "全年开放、设施最全的一侧，海拔约 2,100 米。马瑟点离游客中心最近，沿崖边步道往西走能一路换角度看；西边的隐士路 3–11 月只通免费班车，日落常去霍皮点。下谷步道往下走容易，回程要爬升上千米，别想着一天往返谷底。",
+      "time": "1–2 天",
+      "tip": "6–8 月下谷别在 10–16 点走；园内酒店旺季常提前一年订满。",
+      "fee": "约 35 美元/车，外国游客每人另加 100 美元",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Sunrise from Mather Point on the South Rim of the Grand Canyon: layered red, orange and cream rock walls and buttes stretching to the horizon, deep shadowed side canyons, soft mist low in the gorge, a gnarled pinyon pine on the limestone rim in the foreground, pale gold sky."
+    },
+    {
+      "id": "desert-view",
+      "name": "沙漠观景塔",
+      "local": "Desert View Watchtower",
+      "kind": "viewpoint",
+      "ll": [-111.8262, 36.0440],
+      "text": "南缘东头的终点，石头砌的观景塔是 1930 年代仿古普韦布洛建筑，塔内墙上有霍皮艺术家的壁画。这里能看到科罗拉多河大拐弯和远处的彩色沙漠。从大峡谷村沿沙漠景观道开过来约 40 公里，沿途几个观景点比村里人少。",
+      "time": "1–2 小时",
+      "tip": "从佩奇方向来走东门进园，正好先到这里；塔内开放时间以现场为准。",
+      "themes": ["heritage", "roadtrip"],
+      "photo": "The circular stone Desert View Watchtower standing on the edge of the Grand Canyon's eastern rim in late afternoon, rough tan masonry glowing warm, the Colorado River bending far below through red and purple canyon walls, the flat Painted Desert fading into haze beyond."
+    },
+    {
+      "id": "horseshoe-bend",
+      "name": "马蹄湾",
+      "local": "Horseshoe Bend",
+      "kind": "viewpoint",
+      "ll": [-111.5109, 36.8809],
+      "text": "科罗拉多河在佩奇南边绕出一个近 270 度的大弯，崖顶离水面约 300 米。从停车场走到观景台往返约 2.4 公里，路面硬化但几乎没遮阴。崖边只有一段护栏，其余地方没有，拍照别往边上凑。日出后人最少，日落时逆光但最热闹。",
+      "time": "1–1.5 小时",
+      "tip": "夏天中午地表很烫，带水戴帽；园区禁止放无人机。",
+      "fee": "停车约 10 美元/车，不认国家公园年卡",
+      "themes": ["nature", "roadtrip"],
+      "photo": "View from the cliff edge at Horseshoe Bend near Page: the green Colorado River curving in a tight horseshoe around a towering red sandstone butte, sheer orange cliffs dropping about a thousand feet, a small white boat far below, early morning light with the bend half in shadow."
+    },
+    {
+      "id": "antelope-canyon",
+      "name": "羚羊彩穴",
+      "local": "Antelope Canyon",
+      "kind": "nature",
+      "ll": [-111.3747, 36.8626],
+      "text": "纳瓦霍保留地里的狭缝峡谷，水流把砂岩冲成弯曲的波浪纹。上羚羊谷平路好走，夏季中午有光柱；下羚羊谷要爬几段铁梯，弯曲更多、人略少。所有区域只能跟纳瓦霍授权公司进，旺季提前几周订。导览多按纳瓦霍时间，比佩奇快 1 小时（3–11 月）。",
+      "time": "1.5–2 小时",
+      "tip": "雨季下雨就取消，1997 年山洪曾在下羚羊谷夺走 11 条命，听向导安排。",
+      "fee": "导览约 60–150 美元/人，以订单为准",
+      "themes": ["nature"],
+      "photo": "Inside Upper Antelope Canyon around midday: smooth, curving sandstone walls in glowing orange, red and violet, a narrow shaft of sunlight falling from a slit above onto the sandy floor with fine dust in the beam, dark recesses contrasting with lit edges."
+    },
+    {
+      "id": "monument-valley",
+      "name": "纪念碑谷",
+      "local": "Monument Valley Navajo Tribal Park",
+      "kind": "nature",
+      "ll": [-110.1118, 36.9821],
+      "text": "西部片里那几座孤零零的红色方山就在这里，属纳瓦霍部落公园，游客中心在亚利桑那一侧。自己开车可以走约 27 公里的土路环线，路面颠、有沙坑，越野车更稳；想进只准向导带的区域，就在游客中心报纳瓦霍人的吉普车团。住谷口能看日出时方山的剪影。",
+      "time": "半天–1 天",
+      "tip": "按纳瓦霍时间运营，冬季环线约 14:30 截止进入；不接受国家公园年卡。",
+      "fee": "约 10 美元/人（部落收费）",
+      "themes": ["nature", "roadtrip", "heritage"],
+      "photo": "Sunrise over Monument Valley from the visitor center terrace: the West and East Mitten Buttes and Merrick Butte rising as dark red silhouettes from a flat sandy desert, long shadows across the valley floor, orange glow on the horizon, a few sagebrush in the foreground."
+    },
+    {
+      "id": "sedona",
+      "name": "塞多纳红岩",
+      "local": "Sedona Red Rock Country",
+      "kind": "hiking",
+      "ll": [-111.7801, 34.8360],
+      "text": "小镇被一圈橙红色的岩山围着，教堂岩、钟岩都是镇边的短步道，爬到教堂岩鞍部往返约 1–1.5 小时，上段要手脚并用。镇北的橡树溪峡谷秋天有红叶，开车穿过去很舒服。这里步道多、停车位少，热门步道口周末一早就满。",
+      "time": "1–2 天",
+      "tip": "坐免费的 Sedona Shuttle 去热门步道口，不用抢车位；班期查官网。",
+      "fee": "步道停车约 5 美元/天，可用年卡",
+      "themes": ["nature", "autumn"],
+      "photo": "Cathedral Rock near Sedona at sunset: tall red sandstone spires glowing deep orange above green juniper and pinyon woodland, a shallow creek with smooth stones in the foreground reflecting the rock, a few thin clouds turning pink."
+    },
+    {
+      "id": "saguaro",
+      "name": "仙人掌国家公园",
+      "local": "Saguaro National Park",
+      "kind": "national-park",
+      "ll": [-111.1972, 32.2544],
+      "text": "图森东西两侧各一片，保护的是索诺兰沙漠里的巨柱仙人掌，高的有十几米、上百岁。西区仙人掌更密，有短步道和土路环线，日落时最好看；东区有一条约 13 公里的柏油环线。5–6 月仙人掌顶端开白花。夏天中午别下步道。",
+      "time": "半天",
+      "tip": "同一张门票 7 天内东西两区通用；沙漠里留意响尾蛇，别伸手进石缝。",
+      "fee": "约 25 美元/车",
+      "themes": ["nature"],
+      "photo": "Sonoran Desert at sunset in Saguaro National Park: dozens of tall saguaro cacti with upturned arms silhouetted against an orange and purple sky, palo verde trees and prickly pear in the foreground, rocky hills fading into the distance."
+    },
+    {
+      "id": "route-66-seligman",
+      "name": "66 号公路塞利格曼",
+      "local": "Historic Route 66, Seligman",
+      "kind": "drive",
+      "ll": [-112.8763, 35.3269],
+      "text": "州际公路通车后被绕开的小镇，靠 66 号老公路怀旧游活了下来：老加油站、霓虹招牌、老爷车和纪念品店挤在一条街上。从这里往西经金曼到托波克，是现存最长的一段连续 66 号老路，到金曼约 140 公里，车少、草原开阔，从大峡谷回拉斯维加斯可以绕走。",
+      "time": "1–2 小时",
+      "tip": "镇上加油、吃饭的选择不多；往西的老路段夜里没有路灯。",
+      "fee": "免费",
+      "themes": ["roadtrip", "heritage"],
+      "photo": "The main street of Seligman on old Route 66 on a sunny afternoon: low false-front buildings painted in faded turquoise, red and yellow, a vintage 1950s car parked by an old gas pump, power lines along an empty two-lane road, open grassland and a blue sky beyond, no readable signs."
+    }
+  ],
+  "foods": [
+    {
+      "id": "navajo-taco",
+      "name": "纳瓦霍塔可",
+      "local": "Navajo Taco",
+      "text": "把纳瓦霍炸面饼当底，铺上辣豆子、碎牛肉、生菜、番茄和奶酪，一张就有一盘子大。炸面饼本身外脆里软，也可以只蘸蜂蜜或撒糖当点心。去纪念碑谷、羚羊谷一带，路边小店和景区餐厅都常见。",
+      "where": "纳瓦霍保留地、纪念碑谷和佩奇一带",
+      "price": "一份约 12–18 美元",
+      "photo": "A Navajo taco on a paper-lined plate: a large golden puffy fry bread topped with chili beans, ground beef, shredded lettuce, diced tomato and grated cheddar, a side of salsa, on a wooden picnic table outdoors in bright light, 45-degree angle."
+    },
+    {
+      "id": "sonoran-hot-dog",
+      "name": "索诺兰热狗",
+      "local": "Sonoran Hot Dog",
+      "text": "从墨西哥边境传过来的图森街头小吃：培根卷着热狗烤，塞进松软的面包，再堆上豆子、洋葱、番茄、芥末、蛋黄酱和绿辣椒酱。味道浓、分量足，傍晚路边餐车最多。",
+      "where": "图森南区的餐车和墨西哥小馆",
+      "price": "一个约 5–8 美元",
+      "photo": "Close view of a Sonoran hot dog in a soft split bun: a bacon-wrapped sausage under pinto beans, chopped onion and tomato, zigzags of mustard and mayonnaise and green salsa, served in a paper tray with a roasted yellow chili on the side, evening street light."
+    },
+    {
+      "id": "chimichanga",
+      "name": "炸卷饼",
+      "local": "Chimichanga",
+      "text": "把塞满牛肉或鸡肉、豆子的大卷饼整个油炸，外皮金黄起泡，再浇上酱汁和奶酪，配酸奶油和牛油果酱。图森和凤凰城都说是自家发明的，墨西哥风味餐馆几乎都有。",
+      "where": "图森、凤凰城的墨西哥风味餐馆",
+      "price": "一人约 15–25 美元（不含小费）",
+      "photo": "A golden deep-fried chimichanga on an oval ceramic plate, topped with red enchilada sauce and melted cheese, sides of sour cream, guacamole, rice and refried beans, on a colourful tiled table in a warm-lit Mexican restaurant."
+    },
+    {
+      "id": "prickly-pear",
+      "name": "仙人掌果饮品",
+      "local": "Prickly Pear Lemonade",
+      "text": "仙人掌果做成的糖浆是亮眼的洋红色，味道介于西瓜和莓果之间。加进柠檬水、冰沙或玛格丽特里，沙漠里走完一圈来一杯正合适。纪念品店也卖果酱和软糖。",
+      "where": "塞多纳、图森、凤凰城的咖啡馆和餐厅",
+      "price": "一杯约 5–8 美元",
+      "photo": "A tall glass of bright magenta prickly pear lemonade with ice cubes and a lime wheel, a few ripe red prickly pear fruits beside it, on a sunlit patio table with blurred red rock hills in the background."
+    }
+  ],
+  "tips": [
+    "亚利桑那不实行夏令时，纳瓦霍保留地实行：3–11 月羚羊谷、纪念碑谷比佩奇快 1 小时，订导览看清时区。",
+    "大峡谷对 16 岁以上外国游客每人另收 100 美元；250 美元的外国人年卡管一整车人，多去一个公园就回本。",
+    "7–9 月雨季午后雷暴多，狭缝峡谷和干河床遇雨会发山洪，远处下雨也要听向导撤离。",
+    "亚利桑那认可有效外国驾照，国际驾照只是建议；中国驾照带护照和英文翻译件，先问租车公司。",
+    "大峡谷北缘 2025 年遭山火，园内住宿和游客中心受损，去北缘前查 NPS 最新开放情况。"
+  ],
+  "nearby": ["nevada", "utah", "california", "colorado"],
+  "climate": { "city": "弗拉格斯塔夫", "ll": [-111.6513, 35.1983] },
+  "cover": {
+    "scene": "Golden-hour view from Hopi Point on the South Rim of the Grand Canyon: tiers of red, orange and cream rock walls and temples receding into a hazy horizon, deep purple shadows filling the side canyons, a short stretch of the Colorado River visible far below, scattered junipers on the limestone rim in the foreground, clear sky turning warm.",
+    "alt": "大峡谷南缘的黄昏层岩"
+  },
+  "sources": [
+    { "title": "NPS：大峡谷门票", "url": "https://www.nps.gov/grca/planyourvisit/fees.htm" },
+    { "title": "NPS：非美国居民附加费", "url": "https://www.nps.gov/aboutus/nonresident-fees.htm" },
+    { "title": "NPS：大峡谷交通与路线", "url": "https://www.nps.gov/grca/planyourvisit/directions.htm" },
+    { "title": "NPS：大峡谷北缘现状", "url": "https://www.nps.gov/grca/northrimstatus.htm" },
+    { "title": "NPS 格伦峡谷：马蹄湾", "url": "https://www.nps.gov/glca/planyourvisit/horseshoe-bend.htm" },
+    { "title": "纳瓦霍部落公园：鲍威尔湖与羚羊谷", "url": "https://navajonationparks.org/navajo-tribal-parks/lake-powell/" },
+    { "title": "纳瓦霍部落公园：羚羊谷授权导览公司", "url": "https://navajonationparks.org/guided-tour-operators/antelope-canyon-tour-operators/" },
+    { "title": "纳瓦霍部落公园：纪念碑谷", "url": "https://navajonationparks.org/navajo-tribal-parks/monument-valley/" },
+    { "title": "NPS：仙人掌国家公园门票", "url": "https://www.nps.gov/sagu/planyourvisit/fees.htm" },
+    { "title": "美国林务局：红岩通行证", "url": "https://www.fs.usda.gov/r03/coconino/passes/red-rock-coconino-passes-program" },
+    { "title": "ADOT：外国游客在亚利桑那开车", "url": "https://azdot.gov/faq/what-needed-person-another-country-drive-arizona" }
+  ],
+  "checked": "2026-11"
+}

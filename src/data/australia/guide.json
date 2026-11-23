@@ -1,0 +1,262 @@
+{
+  "country": "australia",
+  "sections": [
+    {
+      "id": "visa",
+      "title": "签证与入境",
+      "items": [
+        {
+          "title": "办 600 类访客签证",
+          "text": "中国大陆护照去澳洲旅游，要提前在线申请访客签证（subclass 600）旅游类别，在 ImmiAccount 提交，从境外申请，签证费约 250 澳元起（2026 年 11 月官网价）。一般给 3 个月停留期，可能单次或多次入境。"
+        },
+        {
+          "title": "留足审理时间",
+          "text": "审理时间没有承诺，建议出发前至少 1–2 个月申请。可能被要求录指纹、拍照（生物信息）或补材料。官网提醒：拿到书面获签通知前不要安排出行，机票酒店尽量订可退的。"
+        },
+        {
+          "title": "10 年多次往返签",
+          "text": "常去澳洲的人可以申请访客签证的「常旅客」类别（Frequent Traveller），中国公民可申请，最长 10 年有效、每次停留最长 3 个月，签证费约 1,845 澳元，必须到澳洲生物信息采集中心录指纹。"
+        },
+        {
+          "title": "ETA 和 eVisitor 不适用",
+          "text": "电子旅行许可 ETA 只对美国、日本、新加坡、中国香港等护照开放，eVisitor 主要给欧洲护照，中国大陆护照都不能用。网上「免签」「落地签」的说法不适用于大陆护照。"
+        },
+        {
+          "title": "自助通关闸机",
+          "text": "7 岁以上、身高 1.1 米以上持护照的旅客一般可以走入境自助闸机 SmartGate，不会用就排人工通道。随身带好回程机票和住宿信息，被问到能说清行程。"
+        }
+      ]
+    },
+    {
+      "id": "customs",
+      "title": "入境申报与检疫",
+      "items": [
+        {
+          "title": "入境卡还是纸质的",
+          "text": "到达时要填入境旅客卡（Incoming Passenger Card），一般在飞机上发。2026 年起澳洲在逐步推网上的 Australia Travel Declaration，目前网页版只适用于到达西悉尼国际机场的航班，可提前 72 小时填。"
+        },
+        {
+          "title": "食品一律申报",
+          "text": "澳洲检疫非常严：新鲜水果、肉类（含真空包装的肉干、香肠）、蛋和蛋制品、生坚果、种子、中药材、自制食品都要在入境卡上勾选申报，拿不准就勾「是」并交给检疫查看。如实申报的东西最坏是被没收或处理；隐瞒可能被罚款，严重的会被取消签证。"
+        },
+        {
+          "title": "免税额度不高",
+          "text": "18 岁以上可免税带约 900 澳元的一般物品和 2.25 升酒；香烟免税额度很低，超了要申报补税，出发前在 ABF 官网查清楚。领馆多次提醒：带大量香烟不申报，已有中国旅客被取消签证、遣返甚至拘留。"
+        },
+        {
+          "title": "现金和药品",
+          "text": "随身带 1 万澳元及以上（或等值外币）现金必须申报。自用处方药带好医生处方或英文说明，保持原包装；部分中成药含受管制成分，可能被扣，出发前查清楚。"
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "title": "支付、小费与退税",
+      "items": [
+        {
+          "title": "主要刷卡",
+          "text": "澳洲几乎处处能刷卡和手机闪付，很多咖啡馆、停车场已经不收现金。带一张 Visa 或 Mastercard 信用卡为主、一张备用。部分面向中国游客的商店支持支付宝、微信，但不普遍；银联卡能用的地方有限。"
+        },
+        {
+          "title": "刷卡手续费取消",
+          "text": "2026 年 10 月 1 日起，商家不能再对 eftpos、Visa、Mastercard 的刷卡加收手续费（surcharge）。另外，不少餐厅在周日和公众假期会加收约 10–15% 的附加费，菜单或门口会写明。"
+        },
+        {
+          "title": "不用给小费",
+          "text": "澳洲没有小费文化，餐厅、出租车、酒店都不用另付。服务特别好可以凑个整或留一点零钱，高档餐厅大桌客人可能被加收服务费，结账前看清楚账单。"
+        },
+        {
+          "title": "退税 TRS 规则",
+          "text": "离境前 60 天内，在同一商家（同一 ABN）累计消费满 300 澳元（含 GST），可在机场退回价格里含的 GST（约为含税价的十一分之一），葡萄酒还能退酒税。要英文纸质税务发票原件，1,000 澳元以上的发票须写你护照上的名字；商品要随身带着备查。"
+        },
+        {
+          "title": "退税怎么办",
+          "text": "出发当天过了出境检查后去 TRS 柜台，带护照、登机牌、商品和发票，最晚在航班起飞前 30 分钟办完。可以先在 trs.border.gov.au 网页填好生成二维码省时间。退款退到信用卡、澳洲银行账户或支票，不给现金。"
+        }
+      ]
+    },
+    {
+      "id": "transport",
+      "title": "交通与自驾",
+      "items": [
+        {
+          "title": "州与州之间坐飞机",
+          "text": "澳洲很大：悉尼到珀斯约 4–5 小时航程，到乌鲁鲁约 3 小时。跨州基本坐国内航班，提前一两个月订价格更好；廉航的托运行李、餐食都要另外加钱。"
+        },
+        {
+          "title": "中国驾照要翻译件",
+          "text": "中国大陆不签发国际驾照，游客一般要带中国驾照原件和 NAATI 认证翻译件原件（复印件不行）。各州细则不一样，比如南澳也认领馆出具的翻译件；租车公司可能另有要求，出发前查所去州交通部门官网。"
+        },
+        {
+          "title": "靠左行驶",
+          "text": "澳洲靠左行驶、方向盘在右边，转弯和进环岛最容易出错，环岛顺时针走、让右边来车。乡间限速多为 100–110 公里/小时，测速很多；黄昏和夜里袋鼠常窜上路，长途尽量白天开。"
+        },
+        {
+          "title": "城市公交直接刷卡",
+          "text": "悉尼（Opal）、墨尔本（myki）、珀斯（SmartRider）、阿德莱德（metroCARD）的公交都能直接拿 Visa、Mastercard 信用卡或手机钱包刷闸，短期游客基本不用办卡。上下车都要刷，漏刷可能按最高票价扣。"
+        },
+        {
+          "title": "内陆和北部自驾",
+          "text": "内陆加油站之间可能隔几百公里，见到就加满。很多租车合同不允许开土路或夜间行车，北部雨季（约 11–4 月）常有道路被淹，出发前查当地路况网站。"
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "title": "网络与电话",
+      "items": [
+        {
+          "title": "本地电话卡",
+          "text": "三大运营商是 Telstra、Optus 和 Vodafone，机场、超市和便利店都能买预付费卡，开卡要用护照实名。去内陆、海岛和国家公园选 Telstra，覆盖最广；只在大城市玩哪家都行。"
+        },
+        {
+          "title": "eSIM 和漫游",
+          "text": "新款手机可以直接买 eSIM，出发前在网上开通，落地即用。国内运营商的澳洲漫游套餐也能用，适合短途，但流量通常比本地卡贵。微信、支付宝等国内 App 在澳洲正常使用。"
+        },
+        {
+          "title": "偏远地区没信号",
+          "text": "城市以外很多路段完全没信号，进国家公园前下好离线地图，把住宿地址和预约信息截图。去荒野徒步或长途自驾，可以考虑租卫星通信设备或个人定位信标。"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "安全与天气",
+      "items": [
+        {
+          "title": "紧急电话 000",
+          "text": "报警、火警、急救都打 000，免费，接通后先说要哪项服务。手机上也可以拨 112。救护车费用游客要自付、可能很贵，买保险时确认包含救护车和住院。"
+        },
+        {
+          "title": "海边只在红黄旗间游",
+          "text": "澳洲很多海滩有离岸流，只在有救生员、插红黄旗的区域下水。北部海域（昆士兰北部、北领地、西澳北部）约 10–5 月是箱水母季，河口和水潭可能有咸水鳄，看到警示牌别下水。"
+        },
+        {
+          "title": "紫外线极强",
+          "text": "澳洲紫外线比国内强得多，阴天也会晒伤。戴宽檐帽和墨镜，SPF50 防晒霜每两小时补一次，上午 10 点到下午 3 点尽量少暴晒。"
+        },
+        {
+          "title": "山火季和高温",
+          "text": "南部各州约 12–2 月是山火高发期，留意州消防部门的 App 和警报，火险「极端」日别进山林。内陆夏天常超 40°C，徒步早出发、每小时喝约 1 升水；车坏在路上就留在车旁等救援。"
+        },
+        {
+          "title": "野生动物",
+          "text": "蛇和蜘蛛大多不会主动攻击，别伸手翻石头和树洞；被咬后用弹力绷带加压包扎、保持不动，立即打 000。不要喂袋鼠、矮袋鼠和鸟类，人类食物会让它们生病，部分地方喂食会被罚款。"
+        }
+      ]
+    },
+    {
+      "id": "basics",
+      "title": "插头、电压与时差",
+      "items": [
+        {
+          "title": "插头基本通用",
+          "text": "澳洲是 230V、50Hz，八字形三脚扁插（I 型），国内常见的三脚扁插头基本能直接插；两脚平行扁插和圆插不行，带个转换头保险。墙上插座有开关，插上后要按下才通电。"
+        },
+        {
+          "title": "三个时区",
+          "text": "西澳和北京没有时差；北领地、南澳比北京快 1.5 小时；昆士兰、新南威尔士、首都领地、维多利亚、塔斯马尼亚快 2 小时。"
+        },
+        {
+          "title": "夏令时不统一",
+          "text": "每年 10 月第一个周日到次年 4 月第一个周日，新南威尔士、首都领地、维多利亚、塔斯马尼亚比北京快 3 小时，南澳快 2.5 小时；昆士兰、北领地、西澳不调。跨州航班看清是哪个时区的时间。"
+        },
+        {
+          "title": "季节和国内相反",
+          "text": "澳洲在南半球：12–2 月是夏天，6–8 月是冬天，北部热带只分旱季（约 5–10 月）和雨季（约 11–4 月）。春节前后是澳洲盛夏，也是中国游客高峰，机票酒店都贵。"
+        },
+        {
+          "title": "自来水和营业时间",
+          "text": "城市自来水可以直接喝。商店一般下午 5–6 点关门，大城市每周有一晚（多是周四或周五）开得晚；周日和公众假期营业时间短，乡镇的餐厅晚上 8 点后就不好找吃的。"
+        }
+      ]
+    }
+  ],
+  "numbers": [
+    { "label": "报警 / 急救 / 火警", "number": "000", "note": "免费。接通后先说 Police、Ambulance 或 Fire，再说地址。" },
+    { "label": "手机紧急号码", "number": "112", "note": "手机上的国际通用紧急号码，会转到 000。" },
+    { "label": "警方非紧急求助", "number": "131 444", "note": "报失物、非紧急案件；正在发生的危险仍打 000。" },
+    { "label": "中毒咨询", "number": "13 11 26", "note": "误食、误用药物或被有毒动物咬伤时，24 小时咨询。" },
+    { "label": "洪水、风暴救援（SES）", "number": "132 500", "note": "暴雨、洪水、大树倒塌等非危及生命的求助。" },
+    { "label": "领事保护热线 12308", "number": "+86-10-12308", "note": "24 小时，中文。在澳洲拨 0011-86-10-12308。" }
+  ],
+  "contacts": [
+    {
+      "name": "外交部全球领事保护应急热线",
+      "phone": "+86-10-12308 / +86-10-65612308",
+      "hours": "24 小时",
+      "note": "使领馆电话打不通或下班后打这个。手机装「中国领事」App 也能拨打。",
+      "url": "https://au.china-embassy.gov.cn/lsfw/zggmlsxz/yjdh/201305/t20130522_983847.htm"
+    },
+    {
+      "name": "中国驻澳大利亚大使馆 领保",
+      "phone": "+61-2-6228-3948",
+      "hours": "节假日可转打 12308",
+      "note": "领区：首都领地、北领地（去乌鲁鲁、达尔文出事找这里）。使馆公告固定电话因升级暂停使用，打不通直接拨 12308。",
+      "url": "https://au.china-embassy.gov.cn/lsfw/zggmlsxz/yjdh/201305/t20130522_983847.htm"
+    },
+    {
+      "name": "中国驻悉尼总领事馆 领保",
+      "phone": "+61-2-9550-5519",
+      "hours": "领事保护与协助热线",
+      "note": "领区：新南威尔士州。",
+      "url": "https://sydney.china-consulate.gov.cn/chn/lsbhyqw/lblxfs/202506/t20250602_11638689.htm"
+    },
+    {
+      "name": "中国驻墨尔本总领事馆 领保",
+      "phone": "+61-3-9824-8810",
+      "hours": "仅限紧急情况",
+      "note": "领区：维多利亚州、塔斯马尼亚州。一般咨询别打这个号码。",
+      "url": "https://melbourne.china-consulate.gov.cn/chn/lsfw/lsbhyxz/lblxfs/202502/t20250218_11557801.htm"
+    },
+    {
+      "name": "中国驻布里斯班总领事馆 领保",
+      "phone": "+61-7-3012-8090",
+      "hours": "领事保护与协助热线",
+      "note": "领区：昆士兰州。",
+      "url": "https://brisbane.china-consulate.gov.cn/chn/lsfw11/lsfw3/lstx/202611/t20261111_12057468.htm"
+    },
+    {
+      "name": "中国驻珀斯总领事馆 领保",
+      "phone": "+61-8-9221-3729",
+      "hours": "非工作时间转接 12308",
+      "note": "领区：西澳州。领馆在 45 Brown Street, East Perth。",
+      "url": "https://perth.china-consulate.gov.cn/lxwm_0/200711/t20071130_180942.htm"
+    },
+    {
+      "name": "中国驻阿德莱德总领事馆 领保",
+      "phone": "+61-423-680-789",
+      "hours": "以领馆公布为准",
+      "note": "领区：南澳州。证件咨询另拨 0421 419 598（工作日）。",
+      "url": "https://adelaide.china-consulate.gov.cn/chn/"
+    }
+  ],
+  "budget": {
+    "currency": "AUD",
+    "save": { "flight": 4500, "hotel": 150, "food": 60, "local": 15, "tickets": 20, "rail": 300, "airport": 25, "sim": 30, "shop": 150, "insure": 150 },
+    "mid": { "flight": 7000, "hotel": 260, "food": 110, "local": 35, "tickets": 60, "rail": 700, "airport": 60, "sim": 40, "shop": 500, "insure": 300 },
+    "lux": { "flight": 25000, "hotel": 550, "food": 220, "local": 90, "tickets": 150, "rail": 1500, "airport": 150, "sim": 60, "shop": 2000, "insure": 600 },
+    "note": "按淡季、每人约 7–10 天估算；租车按两人分摊。春节、12–1 月暑假和圣诞机票酒店常贵 50% 以上，乌鲁鲁住宿更贵。"
+  },
+  "sources": [
+    { "title": "Home Affairs: Visitor visa (subclass 600) Tourist stream (apply outside Australia)", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas" },
+    { "title": "Home Affairs: Visitor visa (subclass 600) Frequent Traveller stream", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/frequent-traveller-stream" },
+    { "title": "Home Affairs: Electronic Travel Authority (subclass 601) eligible passports", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601" },
+    { "title": "Australian Border Force: At the border (Incoming Passenger Card, SmartGate)", "url": "https://www.abf.gov.au/entering-and-leaving-australia/crossing-the-border/at-the-border" },
+    { "title": "Australian Border Force: Australia Travel Declaration", "url": "https://www.abf.gov.au/entering-and-leaving-australia/australia-travel-declaration" },
+    { "title": "Australian Border Force: Can you bring it in?", "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in" },
+    { "title": "Australian Border Force: Duty free concessions", "url": "https://www.abf.gov.au/entering-and-leaving-australia/duty-free" },
+    { "title": "Australian Border Force: Tourist Refund Scheme", "url": "https://www.abf.gov.au/entering-and-leaving-australia/tourist-refund-scheme" },
+    { "title": "Home Affairs: My TRS Claim web app", "url": "https://trs.border.gov.au/" },
+    { "title": "ABC News: RBA to remove card surcharges from 1 October 2026", "url": "https://www.abc.net.au/news/2026-03-31/rba-surcharges-debit-credit-new-reforms-october-2026/106500064" },
+    { "title": "SA.GOV.AU: Driving with your overseas licence in SA", "url": "https://www.sa.gov.au/topics/driving-and-transport/licences/interstate-and-overseas/driving-with-an-overseas-licence" },
+    { "title": "Department of Transport WA: Visiting from overseas or interstate", "url": "https://www.transport.wa.gov.au/licensing/drivers-licence/visit-move-wa/visiting-overseas-interstate" },
+    { "title": "Transperth: Contactless payments", "url": "https://www.transperth.wa.gov.au/Contactless-Payments" },
+    { "title": "中国驻澳大利亚大使馆：领事保护应急电话一览表及时差说明", "url": "https://au.china-embassy.gov.cn/lsfw/zggmlsxz/yjdh/201305/t20130522_983847.htm" },
+    { "title": "中国驻澳大利亚大使馆：关于暂时停用使馆固定电话的通知", "url": "https://au.china-embassy.gov.cn/chn/sggg/202512/t20251209_11769243.htm" },
+    { "title": "中国驻墨尔本总领馆：提醒注意入境携带物品和申报规定（2026-09-29）", "url": "https://melbourne.china-consulate.gov.cn/chn/lsfw/lsbhyxz/202609/t20260929_12033480.htm" },
+    { "title": "中国驻珀斯总领馆：联系方式", "url": "https://perth.china-consulate.gov.cn/lxwm_0/200711/t20071130_180942.htm" },
+    { "title": "中国驻阿德莱德总领馆：首页联系方式", "url": "https://adelaide.china-consulate.gov.cn/chn/" }
+  ],
+  "checked": "2026-11"
+}

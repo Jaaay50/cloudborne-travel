@@ -1,0 +1,221 @@
+{
+  "slug": "new-south-wales",
+  "country": "australia",
+  "name": "新南威尔士",
+  "local": "New South Wales",
+  "abbr": "NSW",
+  "region": "nsw-act",
+  "tagline": "海港城市加蓝山、酒庄和东海岸沙滩",
+  "intro": [
+    "新南威尔士是多数人到澳洲的第一站。悉尼港湾一天就能把歌剧院、海港大桥、渡轮和海滩串起来；往西两小时是蓝山，往北是猎人谷酒庄和斯蒂芬斯港的沙丘，再往北到拜伦湾，可以一路玩成东海岸公路旅行。",
+    "第一次来，悉尼留 3–4 天：一天港湾、一天海岸步道和曼利、一天蓝山，剩下的按兴趣选动物园或猎人谷。想看海豚、鲸鱼或白沙滩，再加 2–3 天往南或往北开，出了悉尼基本要自驾或跟团。",
+    "悉尼公共交通好用，火车、渡轮、巴士都能直接刷带感应功能的信用卡。12 月到次年 1 月是暑假旺季，跨年烟花前后酒店又贵又难订；海边只在插着红黄旗的那一段游泳。"
+  ],
+  "days": "5–7 天",
+  "seasons": {
+    "months": [9, 10, 11, 3, 4, 5],
+    "note": "9–11 月和 3–5 月最舒服；12–2 月热，是海滩旺季也是山火季；5–11 月沿海能看鲸鱼。"
+  },
+  "stay": "第一次住环形码头（Circular Quay）、岩石区或市中心，走路到歌剧院、坐渡轮都方便；想住海边选邦迪或曼利，进城坐巴士或渡轮约 30–40 分钟。",
+  "access": [
+    { "from": "中国大陆", "how": "北京、上海、广州、成都、海口等有直飞悉尼，约 9–12 小时；深圳航线计划 2026 年 12 月开通。" },
+    { "from": "墨尔本", "how": "飞机约 1.5 小时，航班很密；开车约 9 小时。" },
+    { "from": "布里斯班", "how": "飞机约 1.5 小时；去拜伦湾可飞黄金海岸机场，再开车约 1 小时。" },
+    { "from": "堪培拉", "how": "开车约 3 小时，飞机约 50 分钟。" }
+  ],
+  "spots": [
+    {
+      "id": "sydney-opera-house",
+      "name": "悉尼歌剧院",
+      "local": "Sydney Opera House",
+      "kind": "landmark",
+      "ll": [151.2153, -33.8568],
+      "text": "白色的贝壳屋顶近看是上百万块瓷砖拼成的，阳光不同颜色也不同。想进去看，参加约 1 小时的官方导览，有普通话场；更值得的是买张演出票，在音乐厅里听一场。出门沿皇家植物园走到麦考利夫人椅，是拍歌剧院和大桥同框的经典位置。",
+      "time": "1–3 小时",
+      "tip": "导览提前网上订比当天买便宜；傍晚去麦考利夫人椅看日落和亮灯。",
+      "fee": "外观免费 / 导览约 50 澳元",
+      "themes": ["city", "art"],
+      "photo": "Late-afternoon view from the Royal Botanic Garden foreshore toward Bennelong Point: the white ceramic-tiled shells of the Sydney Opera House catching warm light, the grey steel arch of the Harbour Bridge behind, a green-and-cream ferry crossing the harbour, clear October sky."
+    },
+    {
+      "id": "harbour-bridge",
+      "name": "悉尼海港大桥",
+      "local": "Sydney Harbour Bridge",
+      "kind": "landmark",
+      "ll": [151.2108, -33.8521],
+      "text": "本地人叫它「衣架」，1932 年通车的钢拱桥。不想花钱，就从岩石区上桥东侧人行道走到北岸，约 20–30 分钟，一路看歌剧院和整个港湾；想更刺激，就参加 BridgeClimb，系着安全绳爬上拱顶，一趟要两三个小时，日落场最抢手。",
+      "time": "30 分钟–3 小时",
+      "tip": "爬桥前要做酒精测试，手机、相机都不能带上去，由官方拍照。",
+      "fee": "走桥免费 / 爬桥需提前订",
+      "themes": ["city"],
+      "photo": "Wide view from Milsons Point at sunset of the Sydney Harbour Bridge: the grey steel through-arch between granite-faced pylons, a line of tiny climbers along the upper arch, the Opera House shells beyond, golden light on calm harbour water."
+    },
+    {
+      "id": "bondi-coogee-walk",
+      "name": "邦迪到库吉海岸步道",
+      "local": "Bondi to Coogee Coastal Walk",
+      "kind": "hiking",
+      "ll": [151.2744, -33.8953],
+      "text": "从邦迪海滩南端出发，沿着砂岩悬崖往南，经过塔玛拉玛、布朗特、克洛夫利到库吉，约 6 公里，走 2–3 小时。路上有海水泳池、崖顶墓园和好几个能下水的小海湾，5–11 月偶尔能看到鲸鱼喷水。走完在库吉坐巴士回城。",
+      "time": "2–3 小时",
+      "tip": "全程几乎没有遮阴，带水、帽子和防晒；邦迪只在红黄旗之间游泳。",
+      "fee": "免费",
+      "themes": ["sea", "nature"],
+      "photo": "Morning view from the cliff path above the Bondi Icebergs ocean pool: turquoise pool water at the edge of the rocks, waves spilling over its wall, the long curve of Bondi Beach with golden sand behind, sandstone cliffs, bright clear March sky."
+    },
+    {
+      "id": "manly-ferry",
+      "name": "坐渡轮去曼利",
+      "local": "Manly Ferry & Manly Beach",
+      "kind": "beach",
+      "ll": [151.2889, -33.7977],
+      "text": "从环形码头坐渡轮到曼利约 30 分钟，船会从歌剧院和大桥旁边开过，是看港湾最便宜的方式。曼利一边是港湾、一边是冲浪海滩，沿海边步道走到雪莉海滩（Shelly Beach）能浮潜看鱼，傍晚再坐船回城看夕阳。",
+      "time": "半天",
+      "tip": "站到外侧甲板视野最好；刷感应信用卡或 Opal 卡就能上船。",
+      "themes": ["sea", "city"],
+      "photo": "A green-and-cream Sydney ferry crossing the harbour toward Manly on a sunny morning, white wake trailing behind, sandstone headlands and bush-covered shoreline, small sailing boats, deep blue water, light scattered clouds."
+    },
+    {
+      "id": "taronga-zoo",
+      "name": "塔龙加动物园",
+      "local": "Taronga Zoo Sydney",
+      "kind": "wildlife",
+      "ll": [151.2414, -33.8438],
+      "text": "建在港湾北岸山坡上的动物园，从环形码头坐渡轮十几分钟就到。考拉、袋鼠、鸭嘴兽这些澳洲动物都能看到，最出名的画面是长颈鹿身后就是悉尼天际线和歌剧院。园区上下坡多，带孩子半天到一天正好。",
+      "time": "3–5 小时",
+      "tip": "开门就去，动物上午更活跃；园区坡多，穿好走的鞋。",
+      "themes": ["wildlife", "family", "city"],
+      "photo": "Two giraffes standing in a grassy hillside enclosure, the blue Sydney Harbour and city skyline with the Harbour Bridge in the background, eucalyptus trees framing the scene, soft morning light, clear sky."
+    },
+    {
+      "id": "blue-mountains",
+      "name": "蓝山与三姐妹峰",
+      "local": "Blue Mountains National Park",
+      "kind": "national-park",
+      "ll": [150.3120, -33.7327],
+      "text": "世界遗产蓝山离悉尼约 2 小时，满山桉树挥发的油雾让远处山谷泛着蓝色。卡通巴的回声角看三姐妹峰免费；旁边的景观世界（Scenic World）有号称世界最陡的轨道车和高空缆车。时间够就走一段悬崖步道，或去温特沃斯瀑布。",
+      "time": "1 天",
+      "tip": "中央车站坐火车到卡通巴约 2 小时；12–2 月出发前查高温和山火封路。",
+      "fee": "回声角免费 / 景观世界约 64 澳元起",
+      "themes": ["nature"],
+      "photo": "Late-afternoon view from the Echo Point lookout of the Three Sisters sandstone rock formation, honey-coloured cliffs glowing, the vast Jamison Valley below covered in eucalyptus forest fading into blue haze, layered ridges to the horizon, autumn sky."
+    },
+    {
+      "id": "hunter-valley",
+      "name": "猎人谷酒庄",
+      "local": "Hunter Valley",
+      "kind": "winery",
+      "ll": [151.2979, -32.7792],
+      "text": "澳洲最老的葡萄酒产区之一，离悉尼约 2 小时车程，核心在波科尔宾（Pokolbin）一带，一百多家酒庄挨着开。招牌是陈年后带蜂蜜和烤面包香的赛美蓉，还有设拉子。可以清晨坐热气球看葡萄园，白天跟品酒团跑三四家，晚上住在庄园里。",
+      "time": "1–2 天",
+      "tip": "要开车就别多喝，澳洲酒驾标准严；跟团或包车最省心。",
+      "themes": ["wine", "roadtrip"],
+      "photo": "Sunrise over rows of green vines in the Hunter Valley near Pokolbin, several colourful hot-air balloons drifting low above the vineyards, rolling hills and eucalyptus trees, mist lying in the hollows, soft golden spring light."
+    },
+    {
+      "id": "port-stephens",
+      "name": "斯蒂芬斯港沙丘与海豚",
+      "local": "Port Stephens & Stockton Bight Dunes",
+      "kind": "beach",
+      "ll": [152.0755, -32.7833],
+      "text": "悉尼往北约 2.5 小时。安娜湾背后是南半球最大的移动海岸沙丘，坐四驱车进去玩滑沙；纳尔逊湾的港湾里常年住着一群宽吻海豚，出海看海豚的船很多，5–11 月还能顺带看座头鲸迁徙。适合和猎人谷连成两三天的自驾。",
+      "time": "1 天",
+      "tip": "沙丘区开车要许可证，租来的普通车别冲上沙地，报四驱团最方便。",
+      "themes": ["sea", "wildlife", "family"],
+      "photo": "Wide view of the Stockton Bight sand dunes near Anna Bay: huge rippled pale-gold dunes under a clear blue sky, wind-sculpted ridges, a few tiny figures with sandboards on a far slope, the Pacific Ocean on the horizon, bright midday light."
+    },
+    {
+      "id": "byron-bay",
+      "name": "拜伦湾与灯塔",
+      "local": "Byron Bay & Cape Byron Lighthouse",
+      "kind": "beach",
+      "ll": [153.6363, -28.6386],
+      "text": "澳洲大陆最东端，白色灯塔立在海角上，清晨在这里看日出是很多人专程来的理由。绕灯塔的步道走一圈约 1.5–2 小时，能俯看整片海湾，5–11 月常见座头鲸，海里偶尔冒出海豚。镇上冲浪、咖啡和市集氛围浓，离黄金海岸机场约 1 小时车程。",
+      "time": "1–2 天",
+      "tip": "灯塔旁车位很少，旺季早上从镇上沿海边步道走上去。",
+      "themes": ["sea", "wildlife"],
+      "photo": "Sunrise at Cape Byron: the white lighthouse on a green headland above steep cliffs, the Pacific Ocean glowing orange and pink, a long curving beach and the low township in the distance, walkers as tiny figures on the coastal path."
+    },
+    {
+      "id": "jervis-bay",
+      "name": "杰维斯湾与海姆斯海滩",
+      "local": "Jervis Bay & Hyams Beach",
+      "kind": "beach",
+      "ll": [150.6920, -35.1010],
+      "text": "悉尼往南约 3 小时，海湾里的水清得能看到底，海姆斯海滩的沙又细又白。可以出海看海豚，5–11 月看鲸鱼，也能去旁边的布德里国家公园走海边步道。从悉尼去堪培拉时绕到这里住一晚，是很舒服的两日安排。",
+      "time": "1–2 天",
+      "tip": "12–1 月和周末车多、停车难，尽量上午早到；水温偏凉。",
+      "themes": ["sea", "wildlife"],
+      "photo": "Hyams Beach on a calm sunny morning: very fine bright white sand meeting clear turquoise water, small gentle waves, a low line of coastal bush and eucalyptus behind the beach, a rocky headland at one end, February light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "sydney-rock-oysters",
+      "name": "悉尼岩牡蛎",
+      "local": "Sydney Rock Oysters",
+      "text": "新州河口养殖的本地牡蛎，个头比太平洋生蚝小，味道更浓，带矿物感和回甘。行家只挤一点柠檬生吃，配一杯本地白葡萄酒。不同河口产的味道不一样，很多店会标明产地。",
+      "where": "悉尼鱼市、岩石区和港湾边的海鲜餐厅",
+      "photo": "A dozen freshly shucked Sydney rock oysters on crushed ice on a round metal platter, lemon wedges in the centre, small glossy oysters in ridged shells, harbour-side table, bright natural daylight, top-down angle."
+    },
+    {
+      "id": "fish-market-seafood",
+      "name": "鱼市海鲜",
+      "local": "Sydney Fish Market Seafood",
+      "text": "悉尼鱼市是南半球最大的鱼市之一，已搬进布莱克瓦特尔湾边的新楼。各家摊位现场蒸、炸、烤，也可以直接买刺身、龙虾、大虾，端到海边坐着吃。中午人最多，早点去挑得多。",
+      "where": "皮尔蒙特（Pyrmont）的悉尼鱼市，每天营业",
+      "photo": "A seafood platter at a waterfront market: steamed prawns, half a grilled lobster, oysters, salmon sashimi and lemon on a paper-lined tray, outdoor table by the bay with moored boats behind, bright midday light, 45-degree angle."
+    },
+    {
+      "id": "meat-pie",
+      "name": "澳式肉派",
+      "local": "Aussie Meat Pie",
+      "text": "澳洲人的国民快餐，酥皮里包着炖得软烂的碎牛肉和肉汁。悉尼的老派吃法是在派上浇一勺土豆泥和豌豆泥，再淋肉汁，站在路边吃。面包店、球场都有，现烤的才好吃。",
+      "where": "各区面包店、球场，伍卢莫卢码头一带的老派派车",
+      "price": "一个约 6–10 澳元",
+      "photo": "A golden flaky meat pie topped with a scoop of mashed potato, bright green mushy peas and brown gravy, served in a cardboard tray on a stainless steel counter of a street food van at night, warm light, 45-degree angle."
+    },
+    {
+      "id": "hunter-semillon",
+      "name": "猎人谷赛美蓉",
+      "local": "Hunter Valley Semillon",
+      "text": "猎人谷最有代表性的白葡萄酒。年轻时清淡偏酸、酒精度不高；放上五到十年会变成金黄色，带蜂蜜、坚果和烤面包的香气。在酒庄可以并排品新酒和陈酒，对比特别明显。",
+      "where": "猎人谷波科尔宾一带的酒庄品酒室",
+      "photo": "Two glasses of white wine on a timber tasting bench at a vineyard cellar door, one pale straw young wine and one deeper golden aged wine, rows of vines visible through the window behind, soft afternoon light, shallow depth of field."
+    },
+    {
+      "id": "smashed-avo",
+      "name": "牛油果吐司",
+      "local": "Smashed Avo on Toast",
+      "text": "悉尼咖啡馆早午餐的标配：烤过的酸种面包上铺压碎的牛油果，加菲达奶酪、柠檬和辣椒碎，常再配一个水波蛋。周末上午咖啡馆排队很常见，配一杯澳白，就是本地人的周末。",
+      "where": "邦迪、萨里山（Surry Hills）、纽镇一带的咖啡馆",
+      "price": "一份约 20–28 澳元",
+      "photo": "Smashed avocado on thick toasted sourdough topped with crumbled feta, chilli flakes, microherbs and a poached egg with a runny yolk, on a speckled ceramic plate on a light timber cafe table, morning window light, top-down angle."
+    }
+  ],
+  "tips": [
+    "感应信用卡或手机钱包可直接刷火车、渡轮和巴士，每天、每周有封顶价。",
+    "海滩只在红黄旗之间游泳，那段有救生员；12–2 月紫外线极强，帽子和防晒必备。",
+    "自驾靠左，环岛先让右侧来车；中国驾照需同时带英文翻译件（常用 NAATI 认证译员）。",
+    "10 月第一个周日到次年 4 月第一个周日是夏令时，比北京快 3 小时，其余时间快 2 小时。",
+    "12–2 月是山火季，去蓝山等山区前查新州消防局（RFS）的火情和封路信息。"
+  ],
+  "nearby": ["australian-capital-territory", "queensland", "victoria"],
+  "climate": { "city": "悉尼", "ll": [151.2093, -33.8688] },
+  "cover": {
+    "scene": "Wide view across Sydney Harbour from the water at sunset: the white sail-like shells of the Sydney Opera House on Bennelong Point, the steel arch of the Harbour Bridge spanning behind, city towers catching golden light, a ferry and small yachts on calm blue water, soft pink clouds on a spring evening.",
+    "alt": "日落时分的悉尼港湾"
+  },
+  "sources": [
+    { "title": "Sydney Opera House：Sydney Opera House Tour", "url": "https://www.sydneyoperahouse.com/tours/sydney-opera-house-tour" },
+    { "title": "NSW National Parks：Blue Mountains National Park", "url": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/blue-mountains-national-park" },
+    { "title": "Scenic World Blue Mountains", "url": "https://www.scenicworld.com.au/" },
+    { "title": "NSW National Parks：Walgun Cape Byron State Conservation Area", "url": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/cape-byron-state-conservation-area" },
+    { "title": "NSW National Parks：Worimi National Park", "url": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/worimi-national-park" },
+    { "title": "NSW Government：Driving with an overseas or interstate licence in NSW", "url": "https://www.nsw.gov.au/driving-boating-and-transport/driving-nsw/driver-and-rider-licences/visiting-or-moving-to-nsw/visiting-from-overseas-or-interstate" },
+    { "title": "Visit NSW：Hunter Valley", "url": "https://www.visitnsw.com/destinations/hunter/hunter-valley" },
+    { "title": "Sydney Fish Market", "url": "https://www.sydneyfishmarket.com.au/" },
+    { "title": "Karryon：Shenzhen Airlines Sydney route", "url": "https://karryon.com.au/industry-news/airline/sydney-airport-china-flight/" }
+  ],
+  "checked": "2026-11"
+}

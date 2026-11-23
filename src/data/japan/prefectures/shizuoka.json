@@ -83,7 +83,8 @@
       "time": "1 晚 2 天",
       "tip": "要先在「静冈县 FUJI NAVI」应用登记、完成学习测试并缴费；夏季五合目道路有私家车管制。",
       "fee": "入山费约 4,000 日元",
-      "themes": ["nature"]
+      "themes": ["nature"],
+      "open": [7, 8, 9]
     },
     {
       "id": "shuzenji",

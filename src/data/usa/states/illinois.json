@@ -1,0 +1,261 @@
+{
+  "slug": "illinois",
+  "country": "usa",
+  "name": "伊利诺伊",
+  "local": "Illinois",
+  "abbr": "IL",
+  "region": "midwest",
+  "tagline": "看摩天楼长大的地方，坐船听芝加哥建筑课",
+  "intro": [
+    "伊利诺伊的游客几乎全冲着芝加哥来。这座湖边城市是现代摩天楼的发源地，市中心沿芝加哥河排满不同年代的名楼，坐一趟建筑游船就像上了一堂建筑史课。千禧公园的「云门」、芝加哥艺术博物馆和湖边步道都在步行范围里。",
+    "芝加哥比纽约便宜一些，也更好走：市中心「环线」区域是方正的网格街道，高架列车绕着它转。三天可以看完市中心、湖边和一两个博物馆，再留半天去郊区橡树园看赖特早期的住宅。",
+    "这里冬天冷得出名，湖风一吹体感常在零下十几度，河上的游船和很多户外活动 11 月到次年 3 月都停了。最好的季节是 5–10 月，夏天湖边有沙滩、露天音乐会和烟花。"
+  ],
+  "days": "3–4 天",
+  "seasons": {
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "note": "5–10 月最好，建筑游船约 3 月中到 11 月下旬运营；12–2 月严寒大风，但有圣诞市集和冰场。"
+  },
+  "stay": "住环线区或密歇根大道「华丽一英里」一带，走路就到千禧公园、河边和博物馆；高架列车四通八达，住远一点也可以，但晚上避开偏僻的车站。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "目前没有直飞芝加哥的航班，常见是经香港、台北或美国西海岸、纽约转机到奥黑尔机场（ORD），全程约 17–20 小时。"
+    },
+    {
+      "from": "奥黑尔机场",
+      "how": "高架列车蓝线直通市中心约 45 分钟，机场站进站约 5 美元；打车约 40–60 分钟，看路况。"
+    },
+    {
+      "from": "纽约 / 华盛顿",
+      "how": "飞机约 2 小时；Amtrak 有夜车但要将近 20 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "millennium-park",
+      "name": "千禧公园与云门",
+      "local": "Millennium Park & Cloud Gate",
+      "kind": "park",
+      "ll": [
+        -87.6226,
+        41.8826
+      ],
+      "text": "市中心湖边的免费公园，招牌是不锈钢做的「云门」，像一颗巨大的豆子，倒映出天际线和人群，大家都叫它「豆子」。旁边的皇冠喷泉两块屏幕上是芝加哥市民的脸，夏天小孩在下面玩水；盖里设计的露天音乐亭夏天有免费音乐会。",
+      "time": "1–2 小时",
+      "tip": "清早去拍豆子人最少；冬天旁边有露天溜冰场。",
+      "fee": "免费",
+      "themes": [
+        "city",
+        "art",
+        "family"
+      ],
+      "photo": "A huge polished stainless-steel sculpture shaped like a giant bean in a city plaza, its mirror surface reflecting distorted skyscrapers and a blue sky with white clouds, a few small distant people walking beneath its arch, bright summer morning light."
+    },
+    {
+      "id": "art-institute-chicago",
+      "name": "芝加哥艺术博物馆",
+      "local": "Art Institute of Chicago",
+      "kind": "museum",
+      "ll": [
+        -87.6237,
+        41.8796
+      ],
+      "text": "美国最好的美术馆之一，就在千禧公园旁边，门口两只铜狮子是地标。印象派收藏特别强：修拉的《大碗岛的星期天下午》、莫奈的干草堆和睡莲，还有美国名画《美国哥特式》和《夜游者》。挑重点看也要半天。",
+      "time": "3–4 小时",
+      "tip": "周二闭馆，周四开到晚上 8 点。",
+      "fee": "约 32 美元",
+      "themes": [
+        "art"
+      ],
+      "photo": "A grand Beaux-Arts museum entrance on a city avenue: a wide stone facade with arched windows and columns, two large bronze lion statues on pedestals flanking broad steps, green trees, clear morning light, a few small distant visitors."
+    },
+    {
+      "id": "architecture-river-cruise",
+      "name": "芝加哥河建筑游船",
+      "local": "Chicago Architecture River Cruise",
+      "kind": "city",
+      "ll": [
+        -87.6244,
+        41.8879
+      ],
+      "text": "芝加哥最值得花钱的项目。游船沿芝加哥河的主干和南北两条支流走约 75 分钟，从老式装饰艺术大楼到玻璃幕墙新楼，讲解员一栋栋讲来历。芝加哥建筑中心的游船讲解最专业，从密歇根大道桥边的码头上船。",
+      "time": "约 1.5 小时",
+      "tip": "选上层露天座位；傍晚场光线最好，夏天要提前订。",
+      "fee": "约 55–60 美元",
+      "themes": [
+        "art",
+        "city"
+      ],
+      "photo": "View from the open upper deck of a tour boat on a narrow green city river: towering skyscrapers of stone, terracotta and glass rising steeply on both banks, a red steel bascule bridge ahead, golden late-afternoon light, blue sky."
+    },
+    {
+      "id": "willis-tower-skydeck",
+      "name": "威利斯大厦观景台",
+      "local": "Skydeck Chicago, Willis Tower",
+      "kind": "viewpoint",
+      "ll": [
+        -87.6359,
+        41.8789
+      ],
+      "text": "曾是世界最高楼的黑色大厦，103 层的观景台视野可达好几个州。招牌是从外墙伸出去的玻璃盒子「The Ledge」，站在上面脚下就是 400 多米的空气。天晴时去，排队时间可能比参观还长。",
+      "time": "1–2 小时",
+      "tip": "看天气再买票，雾天上去一片白；日落前上去最划算。",
+      "fee": "约 32 美元起",
+      "themes": [
+        "city",
+        "family"
+      ],
+      "photo": "Looking straight down through the glass floor of a transparent box projecting from a skyscraper's side, city streets, rooftops and tiny cars far below, the grid of the city stretching toward a lake on the horizon, clear daytime light."
+    },
+    {
+      "id": "navy-pier",
+      "name": "海军码头与湖滨步道",
+      "local": "Navy Pier & Lakefront Trail",
+      "kind": "city",
+      "ll": [
+        -87.605,
+        41.8917
+      ],
+      "text": "伸进密歇根湖的长码头，有摩天轮、游船码头、餐厅和儿童博物馆，夏天的晚上常放免费烟花。码头本身偏游客化，更好的是沿湖滨步道往南走或骑共享单车，一边是沙滩和湖水，一边是天际线，可以一路骑到博物馆园区。",
+      "time": "2–3 小时",
+      "tip": "冬天湖边风大且冷，码头室内部分仍开，户外步道就别去了。",
+      "fee": "码头免费；摩天轮另付",
+      "themes": [
+        "city",
+        "family",
+        "sea"
+      ],
+      "photo": "A long pier extending into a calm blue lake on a summer evening, a large Ferris wheel lit up in warm colours, sailboats moored nearby, the city skyline glowing in the background, soft dusk light."
+    },
+    {
+      "id": "museum-campus",
+      "name": "博物馆园区",
+      "local": "Museum Campus",
+      "kind": "museum",
+      "ll": [
+        -87.617,
+        41.8663
+      ],
+      "text": "湖边一块半岛上集中了三座大馆：菲尔德自然史博物馆有一具非常完整的霸王龙骨架，谢德水族馆有白鲸和海豚，阿德勒天文馆门口能拍到最经典的芝加哥天际线。带孩子的话一天就待在这里。",
+      "time": "半天–1 天",
+      "tip": "三馆都要买票，只去一两个就选好；从天文馆后面的湖边拍天际线不用门票。",
+      "themes": [
+        "family",
+        "art",
+        "city"
+      ],
+      "photo": "View from a lakeside point at sunset: the Chicago skyline of tall towers glowing orange across a small harbour, a domed planetarium building on the left, calm lake water, a grassy shoreline path in the foreground."
+    },
+    {
+      "id": "oak-park-wright",
+      "name": "橡树园赖特故居",
+      "local": "Frank Lloyd Wright Home and Studio, Oak Park",
+      "kind": "museum",
+      "ll": [
+        -87.7996,
+        41.8942
+      ],
+      "text": "芝加哥西边的郊区小镇，建筑师赖特在这里住了二十年，自宅兼工作室开放导览参观。周边街区有二十多座他设计的「草原式」住宅，屋檐压低、横线很长，跟着语音导览边走边看。高架列车绿线到 Oak Park 站，约 30 分钟。",
+      "time": "半天",
+      "tip": "室内导览名额有限，在官网提前订；冬季 1–2 月营业时间较短。",
+      "fee": "约 24–38 美元",
+      "themes": [
+        "art",
+        "heritage"
+      ],
+      "photo": "A Prairie-style house on a quiet tree-lined suburban street: low horizontal brown-shingled roofs with deep overhanging eaves, leaded-glass windows in geometric patterns, a brick terrace with planters, early autumn trees, soft afternoon light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "deep-dish-pizza",
+      "name": "芝加哥深盘披萨",
+      "local": "Chicago Deep-Dish Pizza",
+      "text": "跟纽约薄饼完全相反：用深铁盘烤，饼边像派皮，里面是厚厚的芝士和香肠，番茄酱铺在最上面。烤一个要 40 多分钟，大部分店可以先点单再入座。一个中号够两三个人吃。",
+      "where": "市中心和河北区的老牌深盘披萨店。",
+      "price": "中号一个约 30–40 美元",
+      "photo": "A slice of deep-dish pizza being lifted from a cast-iron pan, thick buttery golden crust, long strings of melted mozzarella, a layer of sausage under chunky red tomato sauce on top, on a wooden table, warm restaurant light."
+    },
+    {
+      "id": "chicago-hot-dog",
+      "name": "芝加哥热狗",
+      "local": "Chicago-style Hot Dog",
+      "text": "罂粟籽面包夹全牛肉热狗，上面堆满黄芥末、亮绿色的酸黄瓜酱、洋葱丁、番茄片、腌辣椒和一整条酸黄瓜，再撒芹菜盐。规矩是不加番茄酱。",
+      "where": "市内各处的热狗小店和球场。",
+      "price": "一个约 5–8 美元",
+      "photo": "A Chicago-style hot dog in a poppy seed bun loaded with yellow mustard, bright neon-green relish, chopped onions, tomato wedges, a long dill pickle spear and small green peppers, in a paper boat, on a counter, daylight."
+    },
+    {
+      "id": "italian-beef",
+      "name": "意式牛肉三明治",
+      "local": "Italian Beef Sandwich",
+      "text": "薄切的慢炖牛肉泡在香料肉汁里，夹进长面包，再加甜椒或辣味腌菜。点单时可以要求整个三明治「过汁」再浸一遍，吃起来滴汁，所以本地人站着、身子往前倾着吃。",
+      "where": "市内的老牌牛肉三明治店，西区和小意大利一带最多。",
+      "price": "一个约 10–15 美元",
+      "photo": "A long Italian roll stuffed with thin slices of juicy roast beef soaked in dark gravy, topped with chopped spicy pickled vegetables and green peppers, wrapped half in paper, dripping onto a tray, on a stainless counter, warm light."
+    },
+    {
+      "id": "garrett-popcorn",
+      "name": "芝加哥混合爆米花",
+      "local": "Chicago Mix Popcorn",
+      "text": "焦糖爆米花和切达芝士爆米花混在一起吃，甜咸交替，越吃越停不下来。市中心有几家老牌爆米花店，门口常排队，铁罐包装适合带回去当手信。",
+      "where": "密歇根大道和环线区的爆米花老店。",
+      "price": "一小袋约 6–10 美元",
+      "photo": "A close view of a paper bag filled with a mix of glossy amber caramel popcorn and bright orange cheddar cheese popcorn, a few kernels spilled on a white counter, soft daylight."
+    }
+  ],
+  "tips": [
+    "高架列车和公交直接刷银行卡或手机，单程约 2.5 美元，从奥黑尔机场站进站约 5 美元。",
+    "芝加哥市中心销售税约 10.25%，餐饮还要高一些，标价都不含税；小费另付。",
+    "芝加哥艺术博物馆周二闭馆，建筑游船冬季停航，排行程前先查。",
+    "深夜别在偏僻的高架站和南区、西区不熟悉的街道走动，打车回酒店。",
+    "冬天带帽子、手套和防风外套，湖边风很大。"
+  ],
+  "nearby": [],
+  "climate": {
+    "city": "芝加哥",
+    "ll": [
+      -87.6298,
+      41.8781
+    ]
+  },
+  "cover": {
+    "scene": "Wide view of the Chicago River winding through downtown at golden hour: dense skyscrapers of stone, terracotta and glass lining both banks, several red steel bascule bridges crossing the green water, a tour boat leaving a small wake, warm low sunlight on the towers and a clear sky.",
+    "alt": "黄昏的芝加哥河与摩天楼"
+  },
+  "sources": [
+    {
+      "title": "Art Institute of Chicago · Visit",
+      "url": "https://www.artic.edu/visit"
+    },
+    {
+      "title": "Skydeck Chicago · General Pricing",
+      "url": "https://theskydeck.com/tickets-shop/general-pricing/"
+    },
+    {
+      "title": "Chicago Architecture Center · River Cruise",
+      "url": "https://www.architecture.org/city-tours/river-cruise"
+    },
+    {
+      "title": "Navy Pier",
+      "url": "https://navypier.org/"
+    },
+    {
+      "title": "Frank Lloyd Wright Trust · Home and Studio",
+      "url": "https://flwright.org/visit/homeandstudio"
+    },
+    {
+      "title": "CTA · Fare Information",
+      "url": "https://www.transitchicago.com/fares/"
+    }
+  ],
+  "checked": "2026-11"
+}

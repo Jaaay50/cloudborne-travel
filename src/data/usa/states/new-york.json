@@ -1,0 +1,230 @@
+{
+  "slug": "new-york",
+  "country": "usa",
+  "name": "纽约",
+  "local": "New York",
+  "abbr": "NY",
+  "region": "northeast",
+  "tagline": "博物馆、天际线和百老汇，一座岛玩不完",
+  "intro": [
+    "纽约是大多数人第一次来美国的落脚点：博物馆、公园、百老汇和天际线都集中在曼哈顿这座岛上，坐地铁加步行就能玩。第一次来至少留 4 天，按区域排：中城一天，上东区博物馆加中央公园一天，下城、自由女神和布鲁克林大桥一天。",
+    "纽约贵在住和吃。曼哈顿中档酒店旺季一晚三四百美元很常见，房间还小；吃饭结账时另加税和约 20% 的小费。地铁 24 小时运行，刷银行卡或手机就能进站，比打车省钱也更快。",
+    "纽约州远不止纽约市。往北一两个小时是哈德逊河谷，10 月满山秋色；最西边的尼亚加拉瀑布要坐飞机过去，适合单独留出一两天。"
+  ],
+  "days": "4–6 天",
+  "seasons": {
+    "months": [4, 5, 6, 9, 10, 11],
+    "note": "4–6 月和 9–11 月最舒服；12 月节日气氛好但冷且贵，7–8 月闷热，1–2 月常下雪。"
+  },
+  "stay": "第一次建议住中城（时代广场到中央公园南侧之间）或下城地铁站附近，去哪都方便；想省钱可住皇后区长岛市或布鲁克林靠地铁的地方，进曼哈顿约 15–20 分钟。",
+  "access": [
+    { "from": "中国大陆", "how": "国航（北京）、东航（上海）、南航（广州）、厦航（福州）有直飞肯尼迪机场（JFK），班次不多，约 13–16 小时；经西海岸或东京、首尔转机选择更多。" },
+    { "from": "JFK 机场", "how": "坐 AirTrain 到 Jamaica 站换地铁 E 线或长岛铁路进曼哈顿，约 50–70 分钟；打车到曼哈顿有固定价，另加过路费和小费。" },
+    { "from": "华盛顿 / 费城", "how": "Amtrak 从华盛顿约 3–3.5 小时、从费城约 1–1.5 小时到宾州车站的 Moynihan 火车大厅。" },
+    { "from": "波士顿", "how": "Amtrak 约 3.5–4.5 小时；大巴约 4–5 小时，便宜但看路况。" }
+  ],
+  "spots": [
+    {
+      "id": "central-park",
+      "name": "中央公园",
+      "local": "Central Park",
+      "kind": "park",
+      "ll": [-73.9654, 40.7829],
+      "text": "曼哈顿正中一块南北约 4 公里的大公园，是纽约人跑步、野餐、晒太阳的地方。第一次来从东南角进去，经过榆树林荫道到贝塞斯达喷泉和弓桥，再往北走到眺望台城堡和大水库，半天就够。10 月底到 11 月中树叶变色最好看。",
+      "time": "2–4 小时",
+      "tip": "路边人力三轮车按分钟收费，上车前问清总价；租自行车更划算。",
+      "fee": "免费",
+      "themes": ["city", "nature", "autumn"],
+      "photo": "Elevated view from a skyscraper at the southern edge of Central Park in late October: a long rectangle of orange, yellow and green treetops stretching north between rows of tall apartment towers, a small lake reflecting the sky, soft afternoon light and light haze."
+    },
+    {
+      "id": "the-met",
+      "name": "大都会艺术博物馆",
+      "local": "The Metropolitan Museum of Art",
+      "kind": "museum",
+      "ll": [-73.9632, 40.7794],
+      "text": "全美最大的艺术博物馆，从埃及神庙、欧洲油画到中国书画和园林都有，一天也看不完。第一次来挑三块看：丹铎神庙所在的埃及区、二楼欧洲绘画，以及仿苏州园林建的明轩。门票当天还能进北边的修道院分馆。",
+      "time": "3–5 小时",
+      "tip": "周三闭馆；周五、周六开到晚上 9 点，傍晚人少。",
+      "fee": "约 30 美元（外州及外国游客）",
+      "themes": ["art", "city"],
+      "photo": "Wide interior view of a vast skylit museum gallery: an ancient sandstone Egyptian temple on a raised stone platform, a shallow reflecting pool in front, a slanted glass wall overlooking autumn trees of a park, a few small distant visitors, soft daylight."
+    },
+    {
+      "id": "statue-of-liberty",
+      "name": "自由女神像与埃利斯岛",
+      "local": "Statue of Liberty & Ellis Island",
+      "kind": "landmark",
+      "ll": [-74.0445, 40.6892],
+      "text": "上岛唯一的正规渡轮是 Statue City Cruises，从曼哈顿南端炮台公园出发，先到自由岛，再到埃利斯岛移民博物馆，一张票两个岛都能去。只想远看，坐免费的史泰登岛渡轮也能经过女神像。基座和皇冠票名额少，旺季要提前很久订。",
+      "time": "4–5 小时",
+      "tip": "炮台公园周边有人兜售「自由女神船票」，多是不靠岛的观光船，认准官网。",
+      "fee": "渡轮票约 26 美元起",
+      "themes": ["heritage", "city"],
+      "photo": "View from a ferry deck on New York Harbor on a clear spring morning: the green copper Statue of Liberty on her granite pedestal and star-shaped fort base, torch raised, small island trees at her feet, blue water with a white wake, a few distant gulls."
+    },
+    {
+      "id": "brooklyn-bridge-dumbo",
+      "name": "布鲁克林大桥与 DUMBO",
+      "local": "Brooklyn Bridge & DUMBO",
+      "kind": "landmark",
+      "ll": [-73.9969, 40.7061],
+      "text": "1883 年通车的石塔钢索桥，桥中间有架高的人行步道，全程约 1.8 公里。推荐先坐地铁到布鲁克林的 DUMBO：石板街尽头能拍到曼哈顿大桥框住帝国大厦的画面，河边公园看天际线和日落；再上桥往曼哈顿走，天际线一路在眼前。",
+      "time": "2–3 小时",
+      "tip": "白天桥上人挤人，早上 8 点前或傍晚走最舒服。",
+      "fee": "免费",
+      "themes": ["city", "heritage", "art"],
+      "photo": "Morning view along the elevated wooden promenade of the Brooklyn Bridge: a massive granite tower with twin pointed Gothic arches ahead, steel suspension cables fanning out overhead in a web pattern, the Lower Manhattan skyline beyond, soft golden sunrise light, a few small distant walkers."
+    },
+    {
+      "id": "times-square-broadway",
+      "name": "时代广场与百老汇",
+      "local": "Times Square & Broadway",
+      "kind": "city",
+      "ll": [-73.9855, 40.7580],
+      "text": "巨幅屏幕把路口照得像白天，晚上来最有气氛，看一眼就够，不必久留。真正值得的是周围剧院区的百老汇音乐剧：热门剧提前在官方渠道买，想碰运气就去广场红色台阶下的 TKTS 票亭买当天折扣票。不少剧目周一休演。",
+      "time": "1 小时–1 晚",
+      "tip": "扮卡通人物合影、往你手里塞 CD 的人事后都会要钱，直接走开。",
+      "fee": "广场免费；剧票按场次浮动",
+      "themes": ["city", "art"],
+      "photo": "Night street-level view of Times Square: towering walls of glowing LED screens in blurred reds, blues and whites with no legible text, yellow taxis streaking past as light trails, crowds as small distant silhouettes, a wide red-lit glass staircase in the background."
+    },
+    {
+      "id": "empire-state-building",
+      "name": "帝国大厦观景台",
+      "local": "Empire State Building Observatory",
+      "kind": "viewpoint",
+      "ll": [-73.9857, 40.7484],
+      "text": "1931 年建成的装饰艺术风格摩天楼，86 层是露天观景台，能看到中央公园、哈德逊河和下城楼群。日落前约一小时上去，白天和夜景一次看完。想拍到帝国大厦本身，就改去洛克菲勒中心的观景台；喜欢玻璃地板选哈德逊园区的 Edge。",
+      "time": "1–2 小时",
+      "tip": "雨雾天上去什么都看不到，先看天气再买票；可改期的票贵一些。",
+      "fee": "约 46 美元起",
+      "themes": ["city", "art"],
+      "photo": "View from the open-air observation deck high on a stepped Art Deco skyscraper at sunset: a dense grid of Midtown towers glowing orange, the Hudson River on the left, a darkening blue sky, a steel safety fence in the foreground."
+    },
+    {
+      "id": "high-line",
+      "name": "高线公园",
+      "local": "The High Line",
+      "kind": "park",
+      "ll": [-74.0048, 40.7480],
+      "text": "废弃高架货运铁路改成的空中步道，从肉库区一直到哈德逊园区，约 2.3 公里，两边是新旧建筑和野花野草。南端可以先逛切尔西市场，北端接哈德逊园区和 Edge 观景台；西边哈德逊河上的「小岛」公园也值得顺路看。",
+      "time": "1–2 小时",
+      "tip": "从南往北走，傍晚日落时光线最好；冬天开放时间较短。",
+      "fee": "免费",
+      "themes": ["city", "art"],
+      "photo": "Late-afternoon view along an elevated linear park built on old rail tracks: rusted steel rails embedded among tall grasses and wildflowers, wooden benches, brick warehouses and glass towers on both sides, warm low sunlight, a few small distant walkers."
+    },
+    {
+      "id": "moma",
+      "name": "现代艺术博物馆（MoMA）",
+      "local": "The Museum of Modern Art",
+      "kind": "museum",
+      "ll": [-73.9776, 40.7614],
+      "text": "看现代艺术的首选：梵高《星月夜》、莫奈《睡莲》、毕加索和沃霍尔都在这里，五楼是经典作品最集中的展厅。规模比大都会小，半天能看完。逛累了到一楼雕塑花园坐一会儿，再去第五大道和洛克菲勒中心，都在步行范围内。",
+      "time": "2–3 小时",
+      "tip": "开门就进去先看五楼，《星月夜》前中午以后要排队拍照。",
+      "fee": "约 30 美元",
+      "themes": ["art", "city"],
+      "photo": "Interior of a bright modern art museum gallery: white walls, pale wood floor, a few large framed post-impressionist and modernist paintings hung with generous spacing, a wide window showing a sculpture garden with birch trees, soft even daylight, a few distant visitors seen from behind."
+    },
+    {
+      "id": "niagara-falls",
+      "name": "尼亚加拉瀑布（美国侧）",
+      "local": "Niagara Falls State Park",
+      "kind": "nature",
+      "ll": [-79.0677, 43.0860],
+      "text": "美国最早的州立公园，在展望点和山羊岛上能近看美国瀑布和新娘面纱瀑布，马蹄瀑布主要在加拿大那边。夏天坐雾中少女号游船开到瀑布底下，再去风洞走木栈道淋一身水。从纽约飞布法罗约 1.5 小时，再开车约 30 分钟。",
+      "time": "1 天",
+      "tip": "走彩虹桥去加拿大一侧需要加拿大签证，中国护照别临时起意。",
+      "fee": "公园免费；游船约 30 美元起",
+      "themes": ["nature"],
+      "photo": "View from an overlook on the American side of Niagara Falls on a summer afternoon: a wide curtain of white water plunging over a rocky ledge into a misty gorge, a small tour boat near the base, a rainbow in the spray, green trees on the cliffs."
+    },
+    {
+      "id": "hudson-valley",
+      "name": "哈德逊河谷秋色",
+      "local": "Hudson Valley",
+      "kind": "drive",
+      "ll": [-74.0597, 41.4256],
+      "text": "纽约市往北的河谷，10 月中前后满山红黄，是离城最近的赏秋去处。不开车可以从中央车站坐北方铁路约 1.5 小时到 Beacon，看迪亚比肯美术馆的大型当代艺术；开车就去风暴王艺术中心，大片草坡上散落着巨型雕塑，再到农场摘苹果。",
+      "time": "1 天",
+      "tip": "秋季周末风暴王和果园都要提前在官网订票、订停车。",
+      "themes": ["autumn", "art", "roadtrip"],
+      "photo": "Rolling green-and-gold meadow in mid-October with a large abstract steel sculpture standing on a hilltop, wooded hills behind turning red, orange and yellow, river highlands in the distance, crisp clear blue sky, late-morning light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "ny-pizza-slice",
+      "name": "纽约披萨",
+      "local": "New York-style Pizza Slice",
+      "text": "薄而有韧劲的大饼按片卖，对折着边走边吃是纽约人的标准吃法。最基本的芝士片和意式辣香肠片最能看出水平，街角小店现烤现切，几美元就能当一顿午饭。",
+      "where": "曼哈顿和布鲁克林街角的披萨店，深夜也有。",
+      "price": "一片约 3–5 美元",
+      "photo": "A single large thin-crust cheese pizza slice on a white paper plate, folded slightly, glossy melted mozzarella with orange oil spots and a blistered charred crust, on a steel counter in a small pizzeria, warm overhead light, 45-degree angle."
+    },
+    {
+      "id": "bagel-lox",
+      "name": "贝果配三文鱼",
+      "local": "Bagel with Lox and Cream Cheese",
+      "text": "纽约贝果先煮后烤，外皮有光泽、里面紧实有嚼劲。经典吃法是对半切开抹一层奶油奶酪，叠上烟熏三文鱼、红洋葱和酸豆，是很多纽约人一天的开始。",
+      "where": "上西区、下东区的老牌熟食店和街坊贝果店，早上最新鲜。",
+      "price": "约 12–20 美元",
+      "photo": "A sliced everything bagel on a white plate spread thickly with cream cheese and topped with folds of glossy pink smoked salmon, thin red onion rings and capers, a paper cup of coffee beside it, morning window light, 45-degree angle."
+    },
+    {
+      "id": "pastrami-sandwich",
+      "name": "熏牛肉三明治",
+      "local": "Pastrami on Rye",
+      "text": "犹太熟食店的招牌：腌过再熏再蒸的牛胸肉手切厚片，堆在黑麦面包里，配黄芥末和酸黄瓜。下东区的 Katz's 从 1888 年开到现在，一份分量两个人吃都够。",
+      "where": "下东区休斯敦街一带的老牌犹太熟食店。",
+      "price": "一份约 30 美元以上",
+      "photo": "A towering pastrami sandwich on rye bread cut in half on a white plate, thick hand-carved slices of pink-red smoked beef with peppery dark edges, a dish of green pickles beside it, mustard in a small cup, a bustling old deli counter blurred behind."
+    },
+    {
+      "id": "chicken-over-rice",
+      "name": "清真鸡肉饭",
+      "local": "Halal Cart Chicken over Rice",
+      "text": "街头餐车的平价饭：黄姜饭上铺切碎的烤鸡或羊肉，淋白酱和红辣酱，配点生菜。分量大、几分钟就好，是上班族和学生的快餐。红酱很辣，第一次少放。",
+      "where": "中城街头的清真餐车，53 街与第六大道路口最有名。",
+      "price": "一份约 10–13 美元",
+      "photo": "Top-down view of an aluminium takeaway tray of yellow turmeric rice topped with chopped grilled chicken, drizzled with white sauce and a little red hot sauce, shredded lettuce and a piece of pita on the side, on a city bench, daylight."
+    },
+    {
+      "id": "buffalo-wings",
+      "name": "水牛城辣鸡翅",
+      "local": "Buffalo Wings",
+      "text": "发源于纽约州西部布法罗的炸鸡翅，裹黄油辣酱，配蓝纹奶酪酱和芹菜条解辣。去尼亚加拉瀑布正好在布法罗吃一顿，纽约市的运动酒吧也几乎都有。",
+      "where": "布法罗市区的老店和酒吧，纽约市的运动酒吧。",
+      "price": "十只约 15–20 美元",
+      "photo": "A basket of glossy orange-red fried chicken wings coated in buttery hot sauce, with celery and carrot sticks and a small cup of chunky blue cheese dip, on a wooden bar table, warm pub lighting, 45-degree angle."
+    }
+  ],
+  "tips": [
+    "地铁和公交直接刷银行卡或手机，单程约 3 美元，同一张卡 7 天内花满约 35 美元后免费。",
+    "纽约市销售税约 8.875%，标价不含税；餐厅另付约 18–22% 小费，账单已含服务费就别重复给。",
+    "大都会周三闭馆，其他博物馆闭馆日各不相同，排行程前逐个查。",
+    "12–2 月常有暴风雪，航班容易取消，去尼亚加拉和哈德逊河谷留出备用日。",
+    "过马路很多人闯红灯，跟着走前先看车，自行车和电动车速度很快。"
+  ],
+  "nearby": ["massachusetts", "pennsylvania", "washington-dc"],
+  "climate": { "city": "纽约", "ll": [-74.0060, 40.7128] },
+  "cover": {
+    "scene": "Wide view across the East River at dusk from a Brooklyn waterfront park: the Lower Manhattan skyline with its tallest glass tower catching the last orange light, the stone towers and cables of the Brooklyn Bridge on the right, calm water reflecting city lights, a deep blue sky with a few clouds.",
+    "alt": "黄昏的曼哈顿天际线与布鲁克林大桥"
+  },
+  "sources": [
+    { "title": "NPS · Statue of Liberty Fees & Passes", "url": "https://www.nps.gov/stli/planyourvisit/fees.htm" },
+    { "title": "Statue City Cruises · Statue of Liberty Tickets", "url": "https://www.cityexperiences.com/new-york/city-cruises/statue/" },
+    { "title": "The Met · Met Fifth Avenue", "url": "https://www.metmuseum.org/plan-your-visit/met-fifth-avenue" },
+    { "title": "MoMA · Tickets", "url": "https://visit.moma.org/select" },
+    { "title": "Empire State Building · Tickets", "url": "https://www.esbnyc.com/buy-tickets" },
+    { "title": "Edge NYC", "url": "https://www.edgenyc.com/" },
+    { "title": "Niagara Falls State Park", "url": "https://www.niagarafallsstatepark.com/" },
+    { "title": "Maid of the Mist", "url": "https://www.maidofthemist.com/" },
+    { "title": "OMNY · Fares", "url": "https://omny.info/fares" },
+    { "title": "中美直飞航线汇总（美国信用卡指南）", "url": "https://www.uscreditcardguide.com/direct-flights-between-china-and-north-america-2023/" }
+  ],
+  "checked": "2026-11"
+}

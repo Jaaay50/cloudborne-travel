@@ -1,0 +1,193 @@
+{
+  "slug": "south-australia",
+  "country": "australia",
+  "name": "南澳",
+  "local": "South Australia",
+  "abbr": "SA",
+  "region": "south-australia",
+  "tagline": "酒乡、野生动物岛和红色山脉",
+  "intro": [
+    "南澳首府阿德莱德不大，街道方正、节奏慢，但离几个澳洲最有名的酒区都很近：巴罗莎谷约 1 小时车程，麦克拉伦谷约 45 分钟，阿德莱德山区开车半小时就到。爱喝葡萄酒、爱吃的人，在这里待四五天都不腻。",
+    "想看野生动物就去袋鼠岛：澳洲海狮趴在沙滩上，野生袋鼠、考拉和针鼹随处能遇到，开车加渡轮半天就能上岛，至少住两晚。往北五个小时车程是弗林德斯山脉，红色山脊围成的威尔皮纳盆地是内陆风光的入门版。",
+    "南澳游客比悉尼、墨尔本少得多，景点之间要开车，公共交通基本只覆盖阿德莱德市区。常见路线是阿德莱德住两三晚跑酒区，再上袋鼠岛；也可以从墨尔本沿大洋路一路开过来。"
+  ],
+  "days": "4–7 天",
+  "seasons": {
+    "months": [3, 4, 5, 9, 10, 11],
+    "note": "3–5 月是葡萄采收季，9–11 月春天最舒服；12–2 月常超 35°C 且有山火风险，弗林德斯山脉 4–10 月去最好。"
+  },
+  "stay": "阿德莱德住市中心（CBD）或北阿德莱德，去中央市场和电车站都近；想看海可以住格雷尔格。酒区可以在巴罗莎谷的塔南达住一晚，袋鼠岛住金斯科特或彭尼肖。",
+  "access": [
+    { "from": "中国大陆", "how": "广州有南航全年直飞，每周约 3 班；东航上海浦东直飞为季节性航线（约 12–2 月、6–8 月）。两条都约 10 小时。" },
+    { "from": "墨尔本", "how": "飞机约 1 小时 15 分钟；自驾走大洋路约 2–3 天。" },
+    { "from": "悉尼", "how": "飞机约 2 小时；悉尼比阿德莱德快半小时。" },
+    { "from": "珀斯", "how": "飞机约 3 小时；阿德莱德和珀斯之间有 1.5–2.5 小时时差。" }
+  ],
+  "spots": [
+    {
+      "id": "adelaide-central-market",
+      "name": "阿德莱德中央市场",
+      "local": "Adelaide Central Market",
+      "kind": "market",
+      "ll": [138.5980, -34.9297],
+      "text": "市中心的室内食品市场，开了一百多年，七十多个摊位卖本地水果、奶酪、熏肉、面包和海鲜，旁边就是唐人街。早上来逛一圈、吃个早餐最舒服，适合买点水果和奶酪带去酒庄野餐。",
+      "time": "1–2 小时",
+      "tip": "周日、周一休市；周五开到晚上 9 点，周六下午 3 点就收。",
+      "fee": "免费入场",
+      "themes": ["city", "wine"],
+      "photo": "Inside a large covered produce market in the morning: long aisles of stalls piled with colourful fresh fruit, vegetables and wheels of cheese under a high steel-framed roof with skylights, warm lighting, a few small shoppers in the distance, no readable signs."
+    },
+    {
+      "id": "glenelg",
+      "name": "格雷尔格海滩",
+      "local": "Glenelg",
+      "kind": "beach",
+      "ll": [138.5143, -34.9804],
+      "text": "从市中心坐有轨电车约 30 分钟就到的海滨小镇，一条长长的木栈桥伸进圣文森特湾，沙滩宽、浪小，傍晚看日落落进海里。镇上 Jetty Road 一路是餐厅和冰淇淋店，适合到阿德莱德第一天傍晚来放松。",
+      "time": "半天",
+      "tip": "只在有救生员巡逻、插红黄旗的区域下水。",
+      "fee": "免费",
+      "themes": ["sea", "city", "family"],
+      "photo": "Sunset over Glenelg beach: a long timber jetty stretching into calm gulf water, wide pale sand with gentle waves, the sky glowing orange and pink near the horizon, a few small silhouetted figures walking along the shore, low-rise seaside buildings to one side."
+    },
+    {
+      "id": "barossa-valley",
+      "name": "巴罗莎谷",
+      "local": "Barossa Valley",
+      "kind": "winery",
+      "ll": [138.9603, -34.5217],
+      "text": "澳洲最有名的红酒产区，西拉（Shiraz）是招牌，有不少一百多年的老藤。19 世纪德国移民留下的石头农舍、教堂和熏肉店还在，塔南达、努里乌特帕几个小镇之间都是葡萄园。从阿德莱德开车约 1 小时，挑三四家酒庄品酒就是一整天。",
+      "time": "1 天",
+      "tip": "喝了酒就别开车，报酒区一日团最省心；热门酒庄午餐要提前订。",
+      "fee": "品鉴约 10–30 澳元",
+      "themes": ["wine", "roadtrip"],
+      "photo": "Rolling vineyards in the Barossa Valley in autumn: neat rows of vines with golden and rust-red leaves stretching over gentle hills, an old sandstone farmhouse with a corrugated iron roof among gum trees, soft late-afternoon light and a few high clouds."
+    },
+    {
+      "id": "mclaren-vale",
+      "name": "麦克拉伦谷",
+      "local": "McLaren Vale",
+      "kind": "winery",
+      "ll": [138.5417, -35.2173],
+      "text": "阿德莱德往南约 45 分钟的酒区，葡萄园一直铺到海边，橄榄园和杏仁园穿插其中。最出名的是像魔方一样的玻璃建筑酒庄 d'Arenberg Cube，里面能品酒也能吃饭。可以和附近的海滩一起排一天，或者顺路去袋鼠岛。",
+      "time": "半天–1 天",
+      "tip": "去袋鼠岛的渡口在南边，可以前一晚住麦克拉伦谷，第二天早上赶船。",
+      "themes": ["wine", "art", "roadtrip"],
+      "photo": "Vineyards of McLaren Vale on a clear spring day: rows of fresh green vines running towards distant low hills, an olive grove along the edge, and a striking modern winery building shaped like a stack of irregular glass cubes rising above the vines, bright sunlight."
+    },
+    {
+      "id": "hahndorf",
+      "name": "汉多夫德国村",
+      "local": "Hahndorf, Adelaide Hills",
+      "kind": "street",
+      "ll": [138.8097, -35.0288],
+      "text": "阿德莱德山区里的德国移民小镇，19 世纪 30 年代末就建起来了，一条主街两边是石头老房、面包房和熟食店，可以吃德式香肠、喝本地啤酒。秋天 4–5 月满街梧桐变黄最好看。周边的山区有凉爽气候的酒庄和苹果园，从市区开车约 30 分钟。",
+      "time": "半天",
+      "tip": "周末中午人多、停车难，工作日上午去更从容。",
+      "fee": "免费",
+      "themes": ["city", "wine"],
+      "photo": "The main street of Hahndorf in autumn: old stone and timber cottages with steep roofs and shady verandas lining a quiet road, tall plane trees with bright yellow and orange leaves arching overhead, fallen leaves on the footpath, soft afternoon light, a few small distant pedestrians."
+    },
+    {
+      "id": "seal-bay",
+      "name": "海豹湾",
+      "local": "Seal Bay Conservation Park, Kangaroo Island",
+      "kind": "wildlife",
+      "ll": [137.3191, -35.9924],
+      "text": "袋鼠岛南岸的澳洲海狮保护区，这是全世界最稀有的海狮之一。沿约 900 米的木栈道穿过沙丘，在观景台往下看海狮在沙滩上睡觉、哺乳；跟导览团还可以下到沙滩上，在规定距离外近看。上岛从阿德莱德开车约 2 小时到海角码头，再坐约 45 分钟渡轮。",
+      "time": "1–2 小时",
+      "tip": "要在岛上自驾，先问租车公司能不能把车开上渡轮。",
+      "fee": "栈道自助游约 21 澳元",
+      "themes": ["wildlife", "sea", "family"],
+      "photo": "Australian sea lions resting on a wide white-sand beach at Seal Bay on Kangaroo Island, seen from a low timber boardwalk in the dunes: several brown sea lions lying in the sand, gentle surf behind, coastal shrubs in the foreground, bright clear daylight."
+    },
+    {
+      "id": "remarkable-rocks",
+      "name": "神奇岩石",
+      "local": "Remarkable Rocks, Flinders Chase National Park",
+      "kind": "national-park",
+      "ll": [136.7572, -36.0482],
+      "text": "袋鼠岛西端花岗岩海岬上的一堆巨石，被风和海水掏成空洞和弯钩，表面长满橘红色地衣，衬着南大洋非常上镜。附近的海军上将拱门下有一群长鼻海狗。弗林德斯蔡斯国家公园 2019–2020 年山火后植被在恢复，路上常能遇到袋鼠和针鼹。",
+      "time": "半天",
+      "tip": "岩石边缘没有护栏，风大时别靠近崖边；傍晚光线最好。",
+      "fee": "按人收费，或买袋鼠岛通票约 95 澳元",
+      "themes": ["nature", "wildlife", "sea"],
+      "photo": "Remarkable Rocks on Kangaroo Island in late afternoon: huge granite boulders sculpted into hollow, curving shapes and covered in bright orange lichen, sitting on a smooth granite dome above the deep blue Southern Ocean, low coastal heath around, warm side light and a clear sky."
+    },
+    {
+      "id": "wilpena-pound",
+      "name": "威尔皮纳盆地",
+      "local": "Wilpena Pound, Ikara-Flinders Ranges National Park",
+      "kind": "national-park",
+      "ll": [138.6061, -31.5265],
+      "text": "弗林德斯山脉中间一圈红色山脊围成的天然盆地，像一个巨大的碗。徒步可以走到旧农舍和观景台，体力好的可以爬圣玛丽峰；更省力的是坐小飞机从空中看完整的圆形山脊。早晚山坡变红，袋鼠和鸸鹋成群出现。离阿德莱德约 450 公里，至少住两晚。",
+      "time": "2–3 天",
+      "tip": "很多路段没有手机信号，进山前下好离线地图、加满油、带足水。",
+      "fee": "按车收费，约 14 澳元 / 车",
+      "themes": ["nature", "roadtrip", "wildlife"],
+      "photo": "Aerial view of Wilpena Pound in the Flinders Ranges in the morning: a vast natural amphitheatre ringed by jagged red and ochre ridges, the basin floor covered in green native pine and grey-green scrub, long shadows on the slopes, a clear blue sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "king-george-whiting",
+      "name": "乔治王鳕鱼",
+      "local": "King George Whiting",
+      "text": "南澳人最爱的海鱼，肉白、细嫩、带点甜味。最常见的是裹薄面糊或面包屑煎炸，配柠檬和薯条，比一般炸鱼精致。海边餐厅和炸鱼店的菜单上经常能看到。",
+      "where": "格雷尔格一带的海鲜餐厅和炸鱼店，阿德莱德市区酒馆。",
+      "price": "一份约 30–45 澳元",
+      "photo": "Two lightly crumbed King George whiting fillets on a white plate with thin-cut chips, a lemon wedge and a small green salad, on a timber table at a seaside restaurant with soft blurred ocean light behind, shot from 45 degrees."
+    },
+    {
+      "id": "coffin-bay-oysters",
+      "name": "科芬湾生蚝",
+      "local": "Coffin Bay Oysters",
+      "text": "南澳艾尔半岛科芬湾的养殖生蚝，个头饱满，海水味干净，在澳洲很有名。阿德莱德的海鲜店和餐厅常有现开的，一打起点，挤点柠檬直接吃。",
+      "where": "阿德莱德中央市场的海鲜摊、市区海鲜餐厅。",
+      "price": "一打约 30–45 澳元",
+      "photo": "A dozen freshly shucked oysters on a bed of crushed ice on a round metal tray, glossy plump flesh in rough grey shells, lemon halves in the centre, on a marble bar counter, bright natural light, shot from above."
+    },
+    {
+      "id": "barossa-shiraz",
+      "name": "巴罗莎西拉红酒",
+      "local": "Barossa Shiraz",
+      "text": "巴罗莎谷的招牌红酒，颜色深、果味浓、单宁饱满，不少酒庄有上百年的老藤。酒窖门店能先品后买；托运回国注意航空公司对行李里酒类的限制和国内入境免税额度。",
+      "where": "巴罗莎谷各酒庄的酒窖门店（cellar door）。",
+      "price": "品鉴约 10–30 澳元",
+      "photo": "A glass of deep purple-red Shiraz on an old wooden barrel top inside a stone wine cellar, a dark unlabelled bottle beside it, rows of oak barrels softly blurred in the background, warm dim lighting."
+    },
+    {
+      "id": "pie-floater",
+      "name": "豌豆汤肉派",
+      "local": "Pie Floater",
+      "text": "阿德莱德的老派夜宵：一个肉馅派倒扣在浓稠的绿豌豆汤里，再浇一圈番茄酱。看着奇怪，吃起来是热乎乎的咸香。现在不算到处都有，看到就试一次。",
+      "where": "阿德莱德市区部分面包店和老派小吃店。",
+      "price": "一份约 10–15 澳元",
+      "photo": "A golden meat pie sitting upside down in a shallow bowl of thick green pea soup, topped with a swirl of red tomato sauce, on a simple counter top, warm evening light, shot from a 45-degree angle."
+    }
+  ],
+  "tips": [
+    "南澳比悉尼、墨尔本慢半小时，比北京快 1.5 小时；10 月初到次年 4 月初实行夏令时，快 2.5 小时。",
+    "用中国驾照开车要带 NAATI 认证翻译件原件（领馆出具的也认）；靠左行驶，出发前查南澳政府官网。",
+    "去袋鼠岛的渡轮在暑假和周末满得快，车位要提前订。",
+    "12–2 月山火季注意 CFS 官网和 Alert SA 的警报，火险极高的日子别进山。",
+    "阿德莱德公交可以直接刷 Visa、Mastercard 或 Amex 卡乘车，不用专门办卡。"
+  ],
+  "nearby": ["victoria", "northern-territory", "western-australia", "new-south-wales"],
+  "climate": { "city": "阿德莱德", "ll": [138.5999, -34.9282] },
+  "cover": {
+    "scene": "Remarkable Rocks on Kangaroo Island at golden hour: a cluster of giant granite boulders eroded into hollow, wave-like shapes and patched with vivid orange lichen, perched on a smooth granite dome high above the deep blue Southern Ocean, white surf on the rocks far below, low green coastal heath in the foreground, a few tiny distant visitors for scale, warm low sunlight and a clear sky.",
+    "alt": "袋鼠岛神奇岩石"
+  },
+  "sources": [
+    { "title": "National Parks and Wildlife Service SA: Ikara-Flinders Ranges National Park", "url": "https://www.parks.sa.gov.au/parks/ikara-flinders-ranges-national-park" },
+    { "title": "National Parks and Wildlife Service SA: Flinders Chase National Park", "url": "https://www.parks.sa.gov.au/parks/flinders-chase-national-park" },
+    { "title": "National Parks and Wildlife Service SA: Kangaroo Island Tour Pass", "url": "https://www.parks.sa.gov.au/book-and-pay/kangaroo-island-tour-pass" },
+    { "title": "Seal Bay: Boardwalk self-guided tour", "url": "https://www.parks.sa.gov.au/experiences/seal-bay/tours/boardwalk-self-guided-tour" },
+    { "title": "Adelaide Central Market: Trading hours", "url": "https://adelaidecentralmarket.com.au/" },
+    { "title": "SA.GOV.AU: Driving with your overseas licence in SA", "url": "https://www.sa.gov.au/topics/driving-and-transport/licences/interstate-and-overseas/driving-with-an-overseas-licence" },
+    { "title": "CAAC: China Eastern launches Shanghai Pudong-Adelaide seasonal service", "url": "https://www.caac.gov.cn/English/BeltAndRoad/202606/t20260625_231155.html" },
+    { "title": "Karryon: China Southern year-round Perth and Adelaide flights", "url": "https://karryon.com.au/industry-news/airline/china-southern-year-round-adl-per/" }
+  ],
+  "checked": "2026-11"
+}

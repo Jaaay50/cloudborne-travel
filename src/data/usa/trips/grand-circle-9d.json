@@ -1,0 +1,104 @@
+{
+  "id": "grand-circle-9d",
+  "country": "usa",
+  "title": "西部峡谷大环线 · 9 天",
+  "region": "mountain-west",
+  "daysCount": 9,
+  "for": "第一次去美国西部、能自驾、想一次看完几大峡谷的人",
+  "season": "4–5 月、9–10 月最合适",
+  "summary": "从拉斯维加斯取车顺时针绕一圈，全程约 1,700 公里。先经火焰谷去锡安住两晚，穿隧道到布莱斯看石柱，再南下佩奇看马蹄湾、跟团进羚羊谷，从东门进大峡谷住两晚，最后沿 66 号老公路和胡佛水坝回拉斯维加斯。每天车程控制在 3 小时左右，最后一天回程最长。",
+  "bases": ["拉斯维加斯 2 晚", "锡安 2 晚", "布莱斯 1 晚", "佩奇 1 晚", "大峡谷 2 晚"],
+  "days": [
+    {
+      "title": "抵达拉斯维加斯",
+      "stay": "拉斯维加斯",
+      "items": [
+        { "note": "机场取车或打车去大道酒店，先倒时差" },
+        { "pref": "nevada", "spot": "las-vegas-strip" },
+        { "pref": "nevada", "food": "vegas-buffet" }
+      ],
+      "move": "哈里·里德机场到大道打车约 15–20 分钟"
+    },
+    {
+      "title": "火焰谷，北上锡安",
+      "stay": "斯普林代尔",
+      "items": [
+        { "pref": "nevada", "spot": "valley-of-fire" },
+        { "note": "进入犹他后时钟拨快 1 小时" },
+        { "note": "傍晚到斯普林代尔，在镇上超市补给水和干粮" }
+      ],
+      "move": "拉斯维加斯→火焰谷约 1 小时；火焰谷→斯普林代尔约 230 公里、2.5 小时"
+    },
+    {
+      "title": "锡安峡谷一日",
+      "stay": "斯普林代尔",
+      "items": [
+        { "pref": "utah", "spot": "zion-canyon" },
+        { "pref": "utah", "spot": "angels-landing" },
+        { "note": "没抽中许可，就走到侦察者瞭望点折返" }
+      ],
+      "move": "游客中心坐免费班车进峡谷，3–11 月私家车不能开进景观道"
+    },
+    {
+      "title": "穿隧道去布莱斯",
+      "stay": "布莱斯峡谷城",
+      "items": [
+        { "note": "早上走锡安—卡梅尔公路，过隧道看棋盘台地" },
+        { "pref": "utah", "spot": "bryce-canyon" },
+        { "pref": "utah", "food": "fry-sauce" }
+      ],
+      "move": "斯普林代尔→布莱斯约 115 公里，约 1.5–2 小时"
+    },
+    {
+      "title": "布莱斯日出，转佩奇",
+      "stay": "佩奇",
+      "items": [
+        { "note": "日出点看日出，再走纳瓦霍—女王花园环线" },
+        { "pref": "arizona", "spot": "horseshoe-bend" },
+        { "pref": "arizona", "food": "navajo-taco" }
+      ],
+      "move": "布莱斯→佩奇约 240 公里、2.5–3 小时；3–11 月进亚利桑那拨慢 1 小时"
+    },
+    {
+      "title": "羚羊谷到大峡谷",
+      "stay": "大峡谷南缘",
+      "items": [
+        { "pref": "arizona", "spot": "antelope-canyon" },
+        { "note": "导览时间看清是纳瓦霍时间还是亚利桑那时间" },
+        { "pref": "arizona", "spot": "desert-view" }
+      ],
+      "move": "佩奇→沙漠观景塔约 2 小时，再沿沙漠景观道约 40 分钟到大峡谷村"
+    },
+    {
+      "title": "大峡谷南缘一日",
+      "stay": "大峡谷南缘",
+      "items": [
+        { "note": "清早下南凯巴布步道到 Ooh Aah 观景点折返" },
+        { "pref": "arizona", "spot": "grand-canyon-south-rim" },
+        { "note": "傍晚坐隐士路班车去霍皮点看日落" }
+      ],
+      "move": "园内坐免费班车；隐士路 3–11 月不通私家车"
+    },
+    {
+      "title": "66 号公路回赌城",
+      "stay": "拉斯维加斯",
+      "items": [
+        { "pref": "arizona", "spot": "route-66-seligman" },
+        { "pref": "nevada", "spot": "hoover-dam" },
+        { "pref": "nevada", "spot": "fremont-street" },
+        { "pref": "nevada", "food": "shrimp-cocktail" }
+      ],
+      "move": "大峡谷→塞利格曼约 2 小时，→胡佛水坝约 2.5 小时，→市区约 45 分钟"
+    },
+    {
+      "title": "红石峡谷后返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "nevada", "spot": "red-rock-canyon" },
+        { "pref": "nevada", "food": "spring-mountain-chinatown" },
+        { "note": "下午还车去机场，经洛杉矶或旧金山转机回国" }
+      ],
+      "move": "大道→红石峡谷约 30 分钟；10–5 月景观道要预约时段"
+    }
+  ]
+}

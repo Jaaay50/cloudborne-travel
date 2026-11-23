@@ -1,0 +1,216 @@
+{
+  "slug": "queensland",
+  "country": "australia",
+  "name": "昆士兰",
+  "local": "Queensland",
+  "abbr": "QLD",
+  "region": "queensland",
+  "tagline": "大堡礁、热带雨林和一整条海滩",
+  "intro": [
+    "昆士兰占了澳洲东北一大块，从南边的布里斯班、黄金海岸，一直到北边热带的凯恩斯，开车要两天。多数人来就为两件事：在凯恩斯或圣灵群岛出海看大堡礁，在黄金海岸晒太阳、带孩子玩主题乐园。",
+    "南北气候差别很大。布里斯班和黄金海岸属于亚热带，一年里多数时间都能下海；凯恩斯以北是热带，5–10 月旱季最舒服，11 月以后进入雨季，同时也是有毒水母活跃的时候。安排行程时先想好重点放在南边还是北边，中间用国内航班连起来。",
+    "第一次来，凯恩斯住 3–4 晚：一天外堡礁、一天库兰达雨林、一天去丹翠雨林和摩斯曼峡谷；再飞黄金海岸或布里斯班住 2–3 晚。喜欢沙岛和四驱越野，就把芬沙岛或白天堂海滩单独排进去。"
+  ],
+  "days": "6–9 天",
+  "seasons": {
+    "months": [5, 6, 7, 8, 9, 10],
+    "note": "北部 5–10 月旱季最好；11–5 月是热带水母季，12–3 月雨季还可能有气旋。"
+  },
+  "stay": "凯恩斯住滨海大道一带，走路到出海码头；想安静住道格拉斯港。黄金海岸住冲浪者天堂或布罗德海滩，坐轻轨方便；布里斯班住市中心或南岸。",
+  "access": [
+    { "from": "中国大陆", "how": "广州、上海有直飞布里斯班，约 9–10 小时；凯恩斯没有直飞，经布里斯班或悉尼转机。" },
+    { "from": "布里斯班", "how": "飞凯恩斯约 2.5 小时；开车到黄金海岸约 1 小时。" },
+    { "from": "悉尼", "how": "飞布里斯班约 1.5 小时，飞凯恩斯约 3 小时，飞圣灵群岛的普罗瑟派恩约 2.5 小时。" },
+    { "from": "墨尔本", "how": "飞黄金海岸或布里斯班约 2 小时，飞凯恩斯约 3.5 小时。" }
+  ],
+  "spots": [
+    {
+      "id": "south-bank-brisbane",
+      "name": "布里斯班南岸",
+      "local": "South Bank Parklands, Brisbane",
+      "kind": "park",
+      "ll": [153.0224, -27.4776],
+      "text": "布里斯班河南岸的一长条公园，中间有一片免费的人工沙滩泳池，有救生员看着，城市里就能下水。旁边是昆士兰美术馆和现代艺术馆，常设展免费。傍晚坐免费的城市渡轮或 CityCat 在河上走一段，再去袋鼠角悬崖看市中心夜景。",
+      "time": "半天",
+      "tip": "周末上午人多，平日去泳池更舒服；白天紫外线强，注意防晒。",
+      "fee": "免费",
+      "themes": ["city", "family"],
+      "photo": "Sunny afternoon at Streets Beach in South Bank Parklands, Brisbane: a man-made lagoon with pale sand and clear blue water, palm trees around its edge, the Brisbane River and city towers rising behind, a few small swimmers in the distance, clear sky."
+    },
+    {
+      "id": "lone-pine-koala",
+      "name": "龙柏考拉保护区",
+      "local": "Lone Pine Koala Sanctuary",
+      "kind": "wildlife",
+      "ll": [152.9684, -27.5352],
+      "text": "1927 年开办的考拉保护区，园里养着几十只考拉，还有一大片草地可以给袋鼠喂食。按时间表有考拉讲解、牧羊犬表演和猛禽飞行展示。注意：2024 年 7 月起这里已停止「抱考拉拍照」，改为付费的近距离体验，可以在旁边摸一摸、合个影。",
+      "time": "3–4 小时",
+      "tip": "去之前看官网的每日活动时间表；袋鼠饲料在园内买。",
+      "themes": ["wildlife", "family"],
+      "photo": "A koala sitting in the fork of a eucalyptus tree, grey fluffy fur and round ears, holding a bunch of green gum leaves, soft dappled daylight through the canopy, blurred green background, eye-level view from a short distance."
+    },
+    {
+      "id": "surfers-paradise",
+      "name": "冲浪者天堂",
+      "local": "Surfers Paradise, Gold Coast",
+      "kind": "beach",
+      "ll": [153.4315, -27.9973],
+      "text": "黄金海岸的中心，几十公里长的沙滩正对着一排高楼。救生员每天守着，只在红黄旗之间下水就行。可以上 Q1 大楼高层的观景台看整条海岸线；傍晚去南边的伯利角（Burleigh Heads），从海角上看夕阳照在高楼群上，本地人更爱这里。",
+      "time": "半天–1 天",
+      "tip": "轻轨 G:link 沿海岸跑，住冲浪者天堂基本不用租车。",
+      "themes": ["sea", "city", "family"],
+      "photo": "Early-morning view along the long golden beach at Surfers Paradise: gentle white surf rolling in, a line of high-rise towers along the shore catching soft sunrise light, red-and-yellow flags planted on the sand, a few tiny swimmers, calm sky."
+    },
+    {
+      "id": "gold-coast-theme-parks",
+      "name": "黄金海岸主题乐园",
+      "local": "Gold Coast Theme Parks",
+      "kind": "theme-park",
+      "ll": [153.3131, -27.9073],
+      "text": "黄金海岸北边的库默拉、奥克森福德一带有梦幻世界、华纳电影世界和水上乐园，海洋世界在主海滩，带孩子每个园至少留一整天。电影世界有几条澳洲顶级的过山车，海洋世界适合小孩看海豚和企鹅；夏天水上乐园最受欢迎。",
+      "time": "1 天",
+      "tip": "门票提前网上买，多园联票更划算；12–1 月暑假排队最长。",
+      "themes": ["family"],
+      "photo": "A large steel roller coaster with bright orange track looping above palm trees at a theme park on a clear sunny day, a train of cars cresting the top, colourful buildings below, small crowds of visitors in the distance, blue sky."
+    },
+    {
+      "id": "kgari",
+      "name": "芬沙岛（K'gari）",
+      "local": "K'gari (Fraser Island)",
+      "kind": "island",
+      "ll": [153.0557, -25.4423],
+      "text": "世界最大的沙岛，世界遗产。岛上没有铺装路，只能开四驱车在沙地和海滩上跑。最出名的是麦肯齐湖：白沙湖底、透明的蓝水；还有能顺着水漂下去的伊莱溪、搁浅在七十五英里海滩上的马希诺号沉船。没有四驱经验的话，报一到两天的团最省心。",
+      "time": "1–3 天",
+      "tip": "进岛车辆要提前买许可（一个月内约 62 澳元）；别喂野犬，别在外海游泳。",
+      "themes": ["nature", "sea", "roadtrip"],
+      "photo": "Lake McKenzie on K'gari on a sunny day: pure white silica sand shore, clear water shading from pale turquoise to deep blue, a fringe of dense green eucalyptus forest around the lake, no buildings, bright midday light."
+    },
+    {
+      "id": "whitehaven-beach",
+      "name": "白天堂海滩",
+      "local": "Whitehaven Beach & Hill Inlet",
+      "kind": "beach",
+      "ll": [149.0352, -20.2764],
+      "text": "圣灵群岛的招牌，约 7 公里长的白沙滩，沙子是极细的硅砂，踩上去会吱吱响。从希尔湾观景台往下看，退潮时白沙和蓝绿海水交织成漩涡，是昆士兰最有名的一张照片。只能坐船或水上飞机去，从艾尔利海滩或汉密尔顿岛出发。",
+      "time": "半天–1 天",
+      "tip": "选退潮时段上观景台最好看；11–5 月下水要穿防蜇服。",
+      "fee": "半日船约 139 澳元起",
+      "themes": ["sea"],
+      "photo": "Aerial-style view from the Hill Inlet lookout at low tide: swirling patterns of pure white silica sand and turquoise and emerald water winding through the inlet, green forested headlands on either side, deep blue Coral Sea beyond, bright midday sun."
+    },
+    {
+      "id": "outer-reef",
+      "name": "大堡礁外礁一日游",
+      "local": "Outer Great Barrier Reef",
+      "kind": "nature",
+      "ll": [145.8086, -16.0057],
+      "text": "从凯恩斯或道格拉斯港坐大船出海约 1.5 小时，到外礁浮台或礁盘边上浮潜。外礁水更清、珊瑚和鱼更多，船上一般含午餐、浮潜装备、半潜艇或玻璃底船；可以加付体验潜水。不会游泳也能穿救生衣跟着导游浮潜，或者只坐半潜艇看。",
+      "time": "1 天（约 8 小时）",
+      "tip": "容易晕船先吃药，坐船中后部；挑风小的日子，提前几天订。",
+      "fee": "一日游多在 250–350 澳元",
+      "themes": ["sea", "wildlife"],
+      "photo": "Underwater view on the outer Great Barrier Reef in clear blue water: branching and plate corals in shades of brown, purple and green, a school of small blue-green fish, a large blue-lipped giant clam in the foreground, sunlight rays from the surface."
+    },
+    {
+      "id": "green-island",
+      "name": "绿岛",
+      "local": "Green Island",
+      "kind": "island",
+      "ll": [145.9740, -16.7602],
+      "text": "离凯恩斯只有约 45 分钟快船的珊瑚礁小岛，岛上是雨林，绕岛走一圈不到一小时。从沙滩直接下水就能浮潜看鱼和海龟，也可以坐玻璃底船。比外礁一日游轻松、便宜，适合带老人小孩，或者怕晕船、只想看个大概的人。",
+      "time": "半天–1 天",
+      "tip": "早班船人少；11–5 月浮潜穿防蜇服，只在标示区域下水。",
+      "themes": ["sea", "family"],
+      "photo": "Green Island seen from a boat on a calm morning: a low sandy coral cay covered in dense green rainforest, a white sand beach, clear turquoise shallow water over pale sand and dark coral patches, a long timber jetty, bright clear sky."
+    },
+    {
+      "id": "kuranda",
+      "name": "库兰达雨林小镇",
+      "local": "Kuranda Skyrail & Scenic Railway",
+      "kind": "nature",
+      "ll": [145.6333, -16.8209],
+      "text": "凯恩斯西北山上的雨林小镇，经典玩法是一程坐天空缆车，贴着世界遗产雨林的树冠滑过去，中途下车看巴伦瀑布；另一程坐 1891 年修通的库兰达观光火车，绕着峡谷和瀑布慢慢开下山。镇上有蝴蝶园、鸟园和市集，留两三个小时。",
+      "time": "1 天",
+      "tip": "上山坐缆车、下山坐火车，时间最顺；雨季瀑布水量最大。",
+      "fee": "缆车往返约 111 澳元",
+      "themes": ["nature", "family"],
+      "photo": "A gondola cabin of a rainforest cableway gliding just above a dense green tropical rainforest canopy near Cairns, mist in the valleys, a ridge of forested mountains behind, a glimpse of the coast in the distance, soft morning light."
+    },
+    {
+      "id": "daintree",
+      "name": "丹翠雨林与苦难角",
+      "local": "Daintree Rainforest & Cape Tribulation",
+      "kind": "national-park",
+      "ll": [145.4622, -16.0888],
+      "text": "世界上最古老的热带雨林之一，在这里雨林直接长到海边，和大堡礁两个世界遗产挨在一起。从道格拉斯港往北，先去摩斯曼峡谷走雨林步道，再坐汽车渡轮过丹翠河，河上可以坐船找鳄鱼，一路开到苦难角的海滩。来回一天，自驾或跟团都行。",
+      "time": "1 天",
+      "tip": "渡轮 5:00–24:00 运行，小车往返约 57 澳元；河边、海边看到鳄鱼警示牌别下水。",
+      "themes": ["nature", "wildlife", "roadtrip"],
+      "photo": "Cape Tribulation beach at low tide on a dry-season morning: dense green rainforest meeting a curving golden sand beach, mangroves at one end, calm turquoise water, a forested mountain headland behind with low cloud on its peak."
+    }
+  ],
+  "foods": [
+    {
+      "id": "moreton-bay-bugs",
+      "name": "摩顿湾虾蛄",
+      "local": "Moreton Bay Bugs",
+      "text": "长得像扁平版小龙虾的拖鞋龙虾，产自布里斯班外海一带。肉甜、紧实，没有龙虾那么贵。最常见的做法是对半切开，抹蒜蓉黄油烤，或者做成意面、汉堡。",
+      "where": "布里斯班和黄金海岸的海鲜餐厅、渔港小店",
+      "photo": "Two Moreton Bay bugs split in half lengthwise and grilled with garlic butter and parsley, flat orange-red shells and white meat, served on a white plate with lemon wedges, outdoor waterfront table, bright daylight, top-down angle."
+    },
+    {
+      "id": "mud-crab",
+      "name": "泥蟹",
+      "local": "Mud Crab",
+      "text": "昆士兰红树林里长大的大青蟹，钳子特别大，肉厚又甜。本地多是清蒸或做成辣椒蟹，很多亚洲餐馆按重量称了现做。凯恩斯、道格拉斯港的海鲜店都能吃到，也有带你去河里收蟹笼的出海团。",
+      "where": "凯恩斯滨海大道一带和道格拉斯港的海鲜餐厅",
+      "photo": "A whole mud crab with large claws cooked in a glossy red chilli sauce, served in a wide shallow bowl with spring onions and coriander, a bread roll on the side, casual restaurant table, warm evening light, 45-degree angle."
+    },
+    {
+      "id": "barramundi",
+      "name": "尖吻鲈",
+      "local": "Barramundi",
+      "text": "本地人叫它 barra，北部河口和沿海的本地鱼，名字来自原住民语，肉白、刺少、味道清淡，带皮煎得焦脆最好吃。昆士兰北部的餐厅几乎都有，配薯条就是最简单的一顿；野生的比养殖的味道更足。",
+      "where": "凯恩斯、道格拉斯港的餐厅和海鲜外卖店",
+      "photo": "A crisp skin-on pan-fried barramundi fillet on a bed of salad leaves with a lemon wedge and a small pile of chips, on a white plate at an outdoor tropical cafe table, palm leaves blurred in the background, bright daylight."
+    },
+    {
+      "id": "tropical-mangoes",
+      "name": "热带芒果",
+      "local": "Queensland Mangoes",
+      "text": "昆士兰是澳洲最大的芒果产区，11 月到次年 2 月当季，路边农场摊和超市整箱卖。最常见的是肯辛顿品种，香气浓、纤维少。凯恩斯周边的热带水果园还能吃到山竹、红毛丹、龙宫果等少见水果。",
+      "where": "11–2 月的超市、路边水果摊、凯恩斯拉斯蒂市场",
+      "price": "当季一盒约 20–30 澳元",
+      "photo": "A wooden crate of ripe Kensington Pride mangoes with orange-yellow skin blushed with red, one mango cut into a hedgehog pattern on a cutting board in front, outdoor market stall, bright tropical daylight, 45-degree angle."
+    }
+  ],
+  "tips": [
+    "11–5 月是热带水母季，北部海域下水穿防蜇服，在防蜇网内、红黄旗之间游。",
+    "凯恩斯以北的河口、红树林和海边可能有咸水鳄，看到警示牌就别下水、别靠近水边。",
+    "昆士兰不实行夏令时，全年比北京快 2 小时；10–4 月比悉尼、墨尔本慢 1 小时。",
+    "出海一日游的船费一般已含大堡礁环境管理费；风大的日子会取消或改期。",
+    "自驾靠左；中国驾照要带英文翻译件，昆州交通部建议找 NAATI 认证译员。"
+  ],
+  "nearby": ["new-south-wales", "northern-territory"],
+  "climate": { "city": "凯恩斯", "ll": [145.7781, -16.9186] },
+  "cover": {
+    "scene": "Wide view from the Hill Inlet lookout in the Whitsundays at low tide: swirling bands of brilliant white silica sand and turquoise and emerald water curving through the inlet, the long white sweep of Whitehaven Beach beyond, green forested hills of the island framing the scene, deep blue Coral Sea under a clear sky.",
+    "alt": "圣灵群岛希尔湾的白沙漩涡"
+  },
+  "sources": [
+    { "title": "Queensland Government：Driving in Queensland on an overseas licence", "url": "https://www.qld.gov.au/transport/licensing/driver-licensing/overseas/driving" },
+    { "title": "Queensland Parks：K'gari getting there and getting around", "url": "https://parks.qld.gov.au/parks/kgari-fraser/visiting-safely/getting-there-and-getting-around" },
+    { "title": "Queensland Parks：Vehicle access permits", "url": "https://parks.qld.gov.au/management/managed-areas/recreation/vehicle-permits" },
+    { "title": "Reef Authority：Environmental management charge", "url": "https://www.gbrmpa.gov.au/access/environmental-management-charge/what-are-charges" },
+    { "title": "Quicksilver Cruises：Outer Barrier Reef fares", "url": "https://www.quicksilver-cruises.com/reef-tour/obr_fares/" },
+    { "title": "Skyrail Rainforest Cableway：Prices", "url": "https://skyrail.com.au/plan/skyrail-rainforest-cableway/" },
+    { "title": "Kuranda Scenic Railway", "url": "https://www.ksr.com.au/" },
+    { "title": "Daintree Ferry", "url": "https://daintreeferry.com.au/" },
+    { "title": "Cruise Whitsundays：Experiences", "url": "https://www.cruisewhitsundays.com/" },
+    { "title": "Green Island Resort", "url": "https://www.greenislandresort.com.au/" },
+    { "title": "Mossman Gorge Centre", "url": "https://www.mossmangorge.com.au/" },
+    { "title": "Cairns Regional Council：Beaches & foreshores", "url": "https://www.cairns.qld.gov.au/experience-cairns/parks-beaches-community-venues/swimming,-beaches-and-fishing/beaches" },
+    { "title": "Australian Aviation：China Eastern daily Brisbane flights", "url": "https://australianaviation.com.au/2026/03/china-eastern-will-move-to-daily-year-round-brisbane-flights/" }
+  ],
+  "checked": "2026-11"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "perth-west-coast-6d",
+  "country": "australia",
+  "title": "珀斯与西澳海岸 · 6 天",
+  "region": "western-australia",
+  "daysCount": 6,
+  "for": "从广州直飞、想看矮袋鼠、石林和酒庄的自驾新手",
+  "season": "9–11 月、3–5 月最舒服",
+  "summary": "珀斯住 3 晚、玛格丽特河住 2 晚，只换一次酒店。第一天适应时差，傍晚去国王公园；第二天从弗里曼特尔坐船上罗特尼斯岛骑车看矮袋鼠；第三天北上尖峰石阵，顺路吃龙虾；然后南下玛格丽特河两天，最后一天经弗里曼特尔回珀斯，赶深夜航班。",
+  "bases": ["珀斯 3 晚", "玛格丽特河 2 晚"],
+  "days": [
+    {
+      "title": "抵达珀斯·国王公园",
+      "stay": "珀斯",
+      "items": [
+        { "note": "落地后坐机场线火车或打车进市区，先放行李" },
+        { "pref": "western-australia", "spot": "kings-park" },
+        { "note": "晚上在北桥一带随便吃点，早睡" }
+      ],
+      "move": "珀斯机场→市中心火车约 20 分钟，打车约 25 分钟"
+    },
+    {
+      "title": "罗特尼斯岛一日",
+      "stay": "珀斯",
+      "items": [
+        { "pref": "western-australia", "spot": "rottnest-island" },
+        { "note": "岛上租自行车环岛，带足水和防晒" },
+        { "pref": "western-australia", "food": "fish-and-chips" }
+      ],
+      "move": "珀斯→弗里曼特尔火车约 30 分钟；渡轮约 30 分钟上岛"
+    },
+    {
+      "title": "北上尖峰石阵",
+      "stay": "珀斯",
+      "items": [
+        { "note": "早上取车，先在城里练练左行再上高速" },
+        { "pref": "western-australia", "spot": "pinnacles" },
+        { "pref": "western-australia", "food": "western-rock-lobster" }
+      ],
+      "move": "珀斯→尖峰石阵约 200 公里、约 2.5 小时；日落前往回开"
+    },
+    {
+      "title": "南下玛格丽特河",
+      "stay": "玛格丽特河",
+      "items": [
+        { "note": "中途在巴瑟尔顿看伸进海里的长栈桥" },
+        { "pref": "western-australia", "spot": "margaret-river" },
+        { "pref": "western-australia", "food": "margaret-river-wine" }
+      ],
+      "move": "珀斯→玛格丽特河约 270 公里、约 3 小时"
+    },
+    {
+      "title": "酒庄、溶洞与海岬",
+      "stay": "玛格丽特河",
+      "items": [
+        { "note": "上午钻一个钟乳石溶洞，下午去卢因角灯塔" },
+        { "pref": "western-australia", "food": "marron" },
+        { "note": "傍晚去附近海滩看日落，别在无人看守的海滩游泳" }
+      ],
+      "move": "沿 Caves Road 自驾，单程都在 1 小时内"
+    },
+    {
+      "title": "弗里曼特尔后返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "western-australia", "spot": "fremantle" },
+        { "note": "傍晚还车，深夜航班从珀斯飞回广州" }
+      ],
+      "move": "玛格丽特河→弗里曼特尔约 3 小时；再到机场约 30 分钟"
+    }
+  ]
+}

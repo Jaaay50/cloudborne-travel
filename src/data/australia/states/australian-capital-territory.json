@@ -1,0 +1,150 @@
+{
+  "slug": "australian-capital-territory",
+  "country": "australia",
+  "name": "首都领地",
+  "local": "Australian Capital Territory",
+  "abbr": "ACT",
+  "region": "nsw-act",
+  "tagline": "规划出来的首都，博物馆多半免费",
+  "intro": [
+    "首都领地基本就是堪培拉这一座城：上世纪按规划图在空地上建起来的首都，国会、国家级博物馆和美术馆都围着人工湖格里芬湖排开。城市安静、车少，节奏和悉尼、墨尔本完全不同。",
+    "适合对历史、政治、艺术感兴趣的人，或者带孩子看科技馆。国会大厦、战争纪念馆、国家美术馆都免费，一天能看两三个；再花半天去城外的保护区看袋鼠和考拉。两天足够，从悉尼自驾过来的话，可以顺路加上南海岸的杰维斯湾。",
+    "堪培拉在内陆高地上，季节感比沿海强：3–4 月满城落叶树变黄变红，6–8 月清晨经常结霜，12–2 月干热。公共交通不算密，景点之间打车或租车最省时间。"
+  ],
+  "days": "1–2 天",
+  "seasons": {
+    "months": [3, 4, 9, 10, 11],
+    "note": "3–4 月秋色最好；9 月中–10 月中有 Floriade 花展；6–8 月早晚常在 0 °C 上下。"
+  },
+  "stay": "住市中心北边的 City、布拉登（Braddon）一带，吃饭方便；想离国会和博物馆近，住湖南边的巴顿（Barton）或金斯顿（Kingston）。",
+  "access": [
+    { "from": "中国大陆", "how": "没有直飞；先飞悉尼或墨尔本（约 9–12 小时），再转国内航班或从悉尼开车过来。" },
+    { "from": "悉尼", "how": "开车约 3 小时；飞机约 50 分钟；也有长途大巴约 3–3.5 小时。" },
+    { "from": "墨尔本", "how": "飞机约 1 小时 10 分钟；开车约 7–8 小时。" }
+  ],
+  "spots": [
+    {
+      "id": "parliament-house",
+      "name": "国会大厦",
+      "local": "Australian Parliament House",
+      "kind": "landmark",
+      "ll": [149.1246, -35.3076],
+      "text": "建在山丘里的国会大厦，屋顶是一大片草坡，上面立着巨大的不锈钢旗杆。免费入场，安检后可以自己逛大厅和艺术藏品，也可以跟每天的免费短导览。开会期间能进旁听席看众议院的质询时间，吵得比电视上还热闹。",
+      "time": "1.5–2 小时",
+      "tip": "开会日程看官网的会期日历；入口安检和机场差不多，别带刀具。",
+      "fee": "免费",
+      "themes": ["city", "art"],
+      "photo": "View up the long ceremonial approach to Australian Parliament House in Canberra on a clear autumn morning: the low curved white building set into a grassy hill, the huge four-legged stainless steel flagpole rising above, a forecourt with a red-ochre mosaic, blue sky."
+    },
+    {
+      "id": "war-memorial",
+      "name": "澳大利亚战争纪念馆",
+      "local": "Australian War Memorial",
+      "kind": "museum",
+      "ll": [149.1493, -35.2806],
+      "text": "既是纪念堂也是博物馆，从一战加里波利到维和行动，用飞机、坦克、实景模型讲澳洲参加过的战争。最打动人的是每天闭馆前的「最后岗位」仪式，会讲一位阵亡者的故事，再吹响号角。馆前是笔直的澳新军团大道，隔着湖正对国会大厦。",
+      "time": "2–3 小时",
+      "tip": "仪式每天 16:30 在纪念庭院举行，提前 15 分钟到；馆内部分展厅在改建。",
+      "fee": "免费",
+      "themes": ["city"],
+      "photo": "The Australian War Memorial in Canberra seen from the end of Anzac Parade in late afternoon: a sandstone building with a copper-green Byzantine-style dome, a broad red-gravel avenue lined with eucalyptus leading toward it, Mount Ainslie bushland behind, golden April light."
+    },
+    {
+      "id": "national-gallery",
+      "name": "国家美术馆",
+      "local": "National Gallery of Australia",
+      "kind": "museum",
+      "ll": [149.1367, -35.3009],
+      "text": "澳洲最大的美术馆，免费参观。一进门是由两百根彩绘空心原木组成的《原住民纪念碑》，原住民艺术是这里最值得花时间的部分；也有波洛克的《蓝柱》等西方现代名作。湖边的雕塑花园里，詹姆斯·特瑞尔的天光装置《内与外》可以坐进去看天。",
+      "time": "2–3 小时",
+      "tip": "每天 10:00–17:00 开放；特展要另买票，常设展免费。",
+      "fee": "常设展免费",
+      "themes": ["art"],
+      "photo": "Inside a domed skyspace in a sculpture garden on a clear afternoon: a circular opening in a concrete stupa framing pure blue sky, smooth curved walls in soft grey, a shallow reflecting pool outside with a grassy pyramid shape, gentle even light."
+    },
+    {
+      "id": "mount-ainslie",
+      "name": "安斯利山观景台",
+      "local": "Mount Ainslie Lookout",
+      "kind": "viewpoint",
+      "ll": [149.1580, -35.2702],
+      "text": "看懂堪培拉规划的最好位置：从山顶往下望，澳新军团大道、格里芬湖和国会大厦正好连成一条直线，就是设计师当年画的城市中轴。开车能直接到山顶，体力好可以从战争纪念馆后面沿步道走上来，单程约 45 分钟到 1 小时。",
+      "time": "30 分钟–2 小时",
+      "tip": "日落前上去最好看，天黑后能看城市灯光；冬天山顶风大，带外套。",
+      "fee": "免费",
+      "themes": ["city", "nature"],
+      "photo": "Panoramic view from the Mount Ainslie lookout at sunset: the straight red line of Anzac Parade leading from the War Memorial dome across Lake Burley Griffin to Parliament House on the far hill, autumn trees in yellow and red, low hills on the horizon, warm light."
+    },
+    {
+      "id": "lake-burley-griffin",
+      "name": "格里芬湖与英联邦公园",
+      "local": "Lake Burley Griffin & Commonwealth Park",
+      "kind": "park",
+      "ll": [149.1302, -35.2890],
+      "text": "堪培拉的人工湖，湖边排着国家图书馆、国家科技馆（Questacon）和国家肖像馆。最舒服的玩法是租辆自行车绕湖中段骑一圈，看库克船长纪念喷泉和国家钟塔。9 月中到 10 月中，湖北岸的英联邦公园办 Floriade 花展，郁金香成片开。",
+      "time": "2–3 小时",
+      "tip": "3 月有热气球节，清晨能看几十只热气球飞过湖面，日期提前查。",
+      "themes": ["flowers", "city", "family"],
+      "photo": "Early spring morning in Commonwealth Park on the shore of Lake Burley Griffin: dense beds of red, yellow and purple tulips in curving patterns, the tall white plume of the Captain Cook Memorial Jet on the lake behind, blossoming trees, soft clear light."
+    },
+    {
+      "id": "tidbinbilla",
+      "name": "廷宾比拉自然保护区",
+      "local": "Tidbinbilla Nature Reserve",
+      "kind": "wildlife",
+      "ll": [148.9428, -35.4402],
+      "text": "城西南约 40 分钟车程的山谷保护区，袋鼠、鸸鹋在草地上随处可见，桉树林里的考拉步道能近距离看考拉，湿地里有鸭嘴兽和黑天鹅。步道从几百米的平路到半天的登山都有，比城里的动物园更像真正的澳洲野外，适合半天自驾。",
+      "time": "半天",
+      "tip": "清晨和傍晚动物最活跃；保护区按车收门票，开放时间以官网为准。",
+      "themes": ["wildlife", "nature", "family"],
+      "photo": "Eastern grey kangaroos grazing on a grassy valley floor at dusk in a nature reserve, eucalyptus woodland and rounded forested hills behind, long golden light across the grass, a joey's head peeking from a pouch, calm clear sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "canberra-truffles",
+      "name": "冬季黑松露",
+      "local": "Canberra Region Black Truffles",
+      "text": "堪培拉一带冬天冷、土壤合适，是澳洲重要的黑松露产区。6–8 月是采收季，餐厅会推松露菜单，周边农场有跟着狗去林子里找松露的体验，找到的松露当场切片配炒蛋或意面。",
+      "where": "6–8 月城里餐厅的季节菜单，周边松露农场",
+      "photo": "Thin shavings of black truffle with marbled dark interior scattered over soft scrambled eggs on a white plate, a whole knobbly truffle and a small slicer beside it, rustic timber table, soft winter window light, 45-degree angle."
+    },
+    {
+      "id": "canberra-district-wine",
+      "name": "冷凉产区葡萄酒",
+      "local": "Canberra District Wine",
+      "text": "堪培拉周边海拔高、昼夜温差大，雷司令清爽带柠檬味，设拉子加一点维欧尼混酿是这里的招牌。酒庄多在城北边界外的默伦巴蒂曼（Murrumbateman）一带，开车约 30–40 分钟，品酒室规模小、能和酿酒师聊上几句。",
+      "where": "城北默伦巴蒂曼一带的酒庄品酒室",
+      "photo": "A glass of deep purple shiraz and a glass of pale riesling on an outdoor table at a small cellar door, rows of vines on a gentle slope behind, dry golden grass and eucalyptus, clear autumn afternoon light."
+    },
+    {
+      "id": "dickson-asian-eats",
+      "name": "迪克森亚洲餐馆街",
+      "local": "Dickson Asian Eateries",
+      "text": "城北迪克森的伍利街（Woolley Street）一带是堪培拉的「唐人街」，中餐、越南粉、马来西亚菜、韩国烤肉挨着开，价格比市中心实在。吃腻西餐时来这里最合适，晚上营业到比较晚。",
+      "where": "迪克森伍利街一带",
+      "price": "一人约 20–35 澳元",
+      "photo": "A steaming bowl of Vietnamese beef pho with thin rice noodles, sliced beef and fresh herbs, a side plate of bean sprouts, lime and chilli, chopsticks and a soup spoon on a simple laminate table in a casual eatery, warm evening light."
+    }
+  ],
+  "tips": [
+    "国会大厦、战争纪念馆、国家美术馆都免费，安排在同一天最顺路。",
+    "城里景点分散、公交班次少，两人以上打车或租车比坐公交省时间。",
+    "自驾靠左；中国驾照要配英文翻译件，出发前查 Access Canberra 的最新要求。",
+    "6–8 月清晨路面会结冰，早上开车放慢；城郊黄昏常有袋鼠横穿马路。"
+  ],
+  "nearby": ["new-south-wales", "victoria"],
+  "climate": { "city": "堪培拉", "ll": [149.1300, -35.2809] },
+  "cover": {
+    "scene": "Wide elevated view over Canberra from Mount Ainslie on a clear April afternoon: the straight ceremonial avenue of Anzac Parade running from the copper-domed War Memorial across the blue water of Lake Burley Griffin to Parliament House with its tall steel flagpole, autumn trees in red and gold, low wooded hills around the planned city.",
+    "alt": "安斯利山俯瞰堪培拉中轴"
+  },
+  "sources": [
+    { "title": "Australian War Memorial：Visit", "url": "https://www.awm.gov.au/visit" },
+    { "title": "National Gallery of Australia：Visit", "url": "https://nga.gov.au/visit/" },
+    { "title": "Parliament of Australia：Visit Parliament", "url": "https://www.aph.gov.au/Visit_Parliament" },
+    { "title": "Floriade Australia", "url": "https://floriadeaustralia.com/" },
+    { "title": "Access Canberra：Drivers with licences from overseas", "url": "https://www.accesscanberra.act.gov.au/driving-transport-and-parking/licences/drivers-with-licences-from-overseas" }
+  ],
+  "checked": "2026-11"
+}

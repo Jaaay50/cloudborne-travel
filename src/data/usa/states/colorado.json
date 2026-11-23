@@ -1,0 +1,307 @@
+{
+  "slug": "colorado",
+  "country": "usa",
+  "name": "科罗拉多",
+  "local": "Colorado",
+  "abbr": "CO",
+  "region": "mountain-west",
+  "tagline": "落基山的高山公路、金色白杨和沙丘",
+  "intro": [
+    "科罗拉多是美国平均海拔最高的州，落基山脉从中间穿过，五十多座山峰超过 4,200 米。东边的丹佛是门户城市，往西一两个小时就进山：落基山国家公园的高山公路、阿斯彭的白杨林、西南角的普韦布洛古崖居和大沙丘，各有各的看头。",
+    "最好看的季节是 7–8 月的高山野花和 9 月中下旬到 10 月初的白杨黄叶。山区天气变得快，夏天几乎每天午后都有雷阵雨，爬山、开高山公路都尽量上午完成。冬天这里是滑雪胜地，山路要换雪地胎。",
+    "海拔是第一件要当回事的事。丹佛约 1,600 米，山顶公路超过 3,700 米，刚到的头一两天容易头疼、气喘、睡不好。先在丹佛住一晚适应，多喝水、少喝酒，别一下飞机就冲上山。"
+  ],
+  "days": "5–7 天",
+  "seasons": {
+    "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "note": "6–9 月高山公路通车，7–8 月野花最盛，9 月中–10 月初看白杨黄叶。12–3 月是雪季，山路要防滑装备。"
+  },
+  "stay": "进出住丹佛市中心联合车站一带；看落基山国家公园住埃斯蒂斯帕克；看秋色住阿斯彭或附近的斯诺马斯；西南角的梅萨维德和百万美元公路，以杜兰戈或乌雷为据点。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "通常在旧金山、洛杉矶或西雅图入境转机，越洋段约 11–13 小时，转飞丹佛约 2.5 小时。"
+    },
+    {
+      "from": "丹佛机场",
+      "how": "到市区坐 A 线通勤火车约 37 分钟；到落基山国家公园东门开车约 1.5–2 小时。"
+    },
+    {
+      "from": "盐湖城",
+      "how": "开车经 I-70 到丹佛约 840 公里（520 英里），约 8 小时；到摩押后再往东约 6 小时。"
+    },
+    {
+      "from": "丹佛",
+      "how": "到科罗拉多泉约 110 公里，1–1.5 小时；到阿斯彭约 3.5 小时；到大沙丘约 4 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "denver",
+      "name": "丹佛与红岩剧场",
+      "local": "Denver & Red Rocks",
+      "kind": "city",
+      "ll": [
+        -105.0001,
+        39.7532
+      ],
+      "text": "丹佛号称「一英里高的城市」，海拔约 1,600 米。修缮过的联合车站一带是老城下城区，餐厅、精酿酒吧集中；州议会大厦台阶上有一级刻着「一英里高」的标记。往西半小时的红岩剧场建在两块巨大红岩之间，没有演出时可以免费进去走走，夏夜看一场露天演出更难忘。",
+      "time": "1 天",
+      "tip": "第一晚先住丹佛适应海拔；红岩剧场演出票早早售罄，提前看演出日历。",
+      "themes": [
+        "city",
+        "art"
+      ],
+      "photo": "Red Rocks Amphitheatre near Denver at golden hour: curved rows of empty seating set between two massive tilted red sandstone monoliths, a stage at the bottom, green foothills and the flat city spreading to the horizon beyond, warm low light."
+    },
+    {
+      "id": "rocky-mountain-np",
+      "name": "落基山国家公园",
+      "local": "Rocky Mountain National Park",
+      "kind": "national-park",
+      "ll": [
+        -105.6459,
+        40.312
+      ],
+      "text": "离丹佛约 2 小时，入口在埃斯蒂斯帕克。熊湖路一带最适合一般游客：熊湖绕一圈约 1 公里，往上走到梦湖、翡翠湖往返约 6 公里，一路是高山湖和冰斗。秋天草甸上常见大群马鹿，9 月发情季能听到公鹿嚎叫。",
+      "time": "1–2 天",
+      "tip": "2026 年 5 月 22 日–10 月中要预约时段，熊湖路 5–18 点，其余区域 9–14 点。",
+      "fee": "约 35 美元/车（7 天），外国游客每人另加 100 美元",
+      "themes": [
+        "nature",
+        "wildlife",
+        "autumn"
+      ],
+      "photo": "Dream Lake in Rocky Mountain National Park on a still summer morning: clear alpine water reflecting the jagged granite face of Hallett Peak with lingering snow fields, twisted subalpine firs and boulders along the shore, a thin morning mist on the lake."
+    },
+    {
+      "id": "trail-ridge-road",
+      "name": "山脊公路",
+      "local": "Trail Ridge Road",
+      "kind": "drive",
+      "ll": [
+        -105.7543,
+        40.4415
+      ],
+      "text": "横穿落基山国家公园的高山公路，最高点约 3,713 米，是美国最高的连续铺装公路。中段十几公里都在林线之上，两侧是苔原和远处的雪峰，路边常有旱獭和马鹿。从埃斯蒂斯帕克开到西边的格兰德湖镇约 77 公里，不停车也要 2 小时左右。",
+      "time": "半天",
+      "tip": "一般约 5 月底–10 月中通车；午后多雷暴，山顶别久留，备好外套。",
+      "fee": "含在国家公园门票里",
+      "themes": [
+        "roadtrip",
+        "nature"
+      ],
+      "photo": "Trail Ridge Road winding above treeline in Rocky Mountain National Park in July: a two-lane road with low stone barriers crossing green alpine tundra dotted with small wildflowers, rugged snow-streaked peaks across a deep valley, a few cars far ahead, clear blue sky with building afternoon clouds.",
+      "open": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "garden-of-the-gods",
+      "name": "众神花园",
+      "local": "Garden of the Gods",
+      "kind": "park",
+      "ll": [
+        -104.8824,
+        38.8744
+      ],
+      "text": "科罗拉多泉城边的免费市立公园，一排排红色砂岩直立起来，后面就是派克斯峰。园内有平坦的铺装步道绕着中心岩群走一圈，约 2 公里，老人孩子都能走；还有攀岩路线和骑马。从丹佛开车 1 小时出头，适合顺路去大沙丘或往南走时停一下。",
+      "time": "1.5–2 小时",
+      "tip": "日出时红岩最亮、停车位也多；游客中心露台能看到岩群和派克斯峰同框。",
+      "fee": "免费",
+      "themes": [
+        "nature",
+        "family"
+      ],
+      "photo": "Sunrise at Garden of the Gods: tall upright red sandstone fins glowing bright orange, green scrub oak and junipers at their base, the broad snow-dusted summit of Pikes Peak rising behind under a clear pale blue sky."
+    },
+    {
+      "id": "maroon-bells",
+      "name": "褐铃峰",
+      "local": "Maroon Bells",
+      "kind": "nature",
+      "ll": [
+        -106.9455,
+        39.0968
+      ],
+      "text": "阿斯彭西南约 16 公里，两座紫褐色、带条纹的尖峰倒映在褐湖里，是科罗拉多被拍得最多的山景。9 月下旬山坡的白杨林一片金黄，最热闹。湖边有平缓小路可以散步，想多走可以去火山口湖，往返约 5.8 公里。",
+      "time": "半天",
+      "tip": "5–10 月进山要提前在官网订班车或停车许可；白杨黄叶季名额抢得快。",
+      "fee": "班车往返约 16 美元/人",
+      "themes": [
+        "autumn",
+        "nature"
+      ],
+      "photo": "The twin Maroon Bells peaks at sunrise in late September: striped maroon and grey mountain faces lit pink by first light, reflected perfectly in calm Maroon Lake, hillsides of bright golden aspen trees and dark conifers along the shore, a light mist on the water."
+    },
+    {
+      "id": "mesa-verde",
+      "name": "梅萨维德",
+      "local": "Mesa Verde National Park",
+      "kind": "national-park",
+      "ll": [
+        -108.473,
+        37.1666
+      ],
+      "text": "普韦布洛先民七八百年前在台地的悬崖凹处建起石头村落，悬崖宫有一百多个房间，是北美最大的崖居。从路边观景点就能看到，但跟护林员走进去更值：要下石阶、爬几段梯子。从杜兰戈开到入口约 1 小时，入口到崖居区还要约 45 分钟山路。",
+      "time": "1 天",
+      "tip": "崖居导览约 5–10 月开放，提前 14 天在 recreation.gov 放票，一人约 8 美元；园内不收现金。",
+      "fee": "旺季约 30 美元/车",
+      "themes": [
+        "heritage"
+      ],
+      "photo": "Cliff Palace in Mesa Verde seen from the overlook on a clear afternoon: a large village of tan sandstone rooms and round and square towers tucked under a deep overhanging cliff alcove, dark doorways, juniper and pinyon trees on the canyon slope below, warm sunlight on the stone."
+    },
+    {
+      "id": "great-sand-dunes",
+      "name": "大沙丘国家公园",
+      "local": "Great Sand Dunes National Park",
+      "kind": "national-park",
+      "ll": [
+        -105.5123,
+        37.733
+      ],
+      "text": "落基山脚下突然冒出一片北美最高的沙丘，最高约 230 米，后面是积雪的山脊。可以随意爬沙丘、滑沙；5 月底–6 月山上融雪，沙丘前的梅达诺溪会流成浅浅的一条河，孩子们在里面玩水。这里人少，晚上星空很好。",
+      "time": "半天–1 天",
+      "tip": "夏天午后沙面极烫且常有雷暴，早上去；滑沙板要在园外租好再进。",
+      "fee": "约 25 美元/车，无需预约",
+      "themes": [
+        "nature",
+        "family",
+        "aurora"
+      ],
+      "photo": "Great Sand Dunes in early morning: tall rippled sand ridges in soft beige and gold with sharp shadow lines, the shallow braided Medano Creek glinting across flat sand in the foreground, the snow-capped Sangre de Cristo Mountains rising behind under a clear sky, a few tiny distant hikers."
+    },
+    {
+      "id": "million-dollar-highway",
+      "name": "百万美元公路",
+      "local": "Million Dollar Highway (US 550)",
+      "kind": "drive",
+      "ll": [
+        -107.6714,
+        38.0228
+      ],
+      "text": "550 号公路从锡尔弗顿到乌雷这一段约 40 公里，翻过约 3,350 米的红山垭口，路贴着悬崖修，不少弯道没有护栏。沿途是废弃矿场、红色山坡和瀑布，9 月下旬白杨黄了最美。乌雷小镇在峡谷底，号称「美国的瑞士」，有温泉可以泡。",
+      "time": "半天",
+      "tip": "怕高就挑晴天白天慢慢开，别在天黑或下雪时走；冬季常因雪临时封路。",
+      "fee": "免费",
+      "themes": [
+        "roadtrip",
+        "autumn"
+      ],
+      "photo": "US Highway 550 near Red Mountain Pass in late September: a narrow two-lane road cut into a steep mountainside, slopes of golden aspens and dark spruce, a rust-red mountain peak above, an old wooden mine structure on the hillside, crisp blue sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "green-chile",
+      "name": "青辣椒炖肉酱",
+      "local": "Colorado Green Chile",
+      "text": "用烤过的青辣椒和猪肉块炖成的浓汤，又辣又香。科罗拉多人什么都爱「浇一下」：浇在卷饼、汉堡、薯饼甚至早餐蛋上，叫 smothered。西南部普韦布洛产的辣椒最受本地人推崇。",
+      "where": "丹佛的墨西哥小馆和早餐店",
+      "price": "一份浇汁卷饼约 12–18 美元",
+      "photo": "A large burrito smothered in chunky green chile sauce with pork pieces and melted cheese on an oval white diner plate, a side of refried beans and a warm tortilla, on a worn wooden table, 45-degree angle, warm light."
+    },
+    {
+      "id": "denver-omelette",
+      "name": "丹佛煎蛋卷",
+      "local": "Denver Omelette",
+      "text": "美式早餐店的老招牌：鸡蛋里裹着火腿丁、青椒和洋葱，常再加一层奶酪，配炸薯饼和吐司。进山前在丹佛吃一顿扎实的早餐，开车一路都不饿。",
+      "where": "丹佛的家庭式早餐店",
+      "price": "一份约 12–16 美元（不含小费）",
+      "photo": "A folded golden omelette filled with diced ham, green bell pepper and onion, melted cheese at the edges, beside crispy hash browns and buttered toast on a white plate, coffee mug nearby, morning window light in a diner."
+    },
+    {
+      "id": "palisade-peaches",
+      "name": "帕利塞德桃",
+      "local": "Palisade Peaches",
+      "text": "西部大章克申附近的帕利塞德小镇是科罗拉多的桃子和葡萄产区，日照足、昼夜温差大，桃子甜得出汁。7 月底–9 月路边果摊一箱一箱地卖，也能在丹佛的农夫市集买到。",
+      "where": "帕利塞德果园区、丹佛农夫市集（7–9 月）",
+      "photo": "A wooden crate of ripe Palisade peaches with blushing red and golden skins at a roadside fruit stand, one peach cut in half showing juicy orange flesh, orchards and a flat-topped mesa softly blurred behind in summer sunlight."
+    },
+    {
+      "id": "colorado-craft-beer",
+      "name": "精酿啤酒",
+      "local": "Colorado Craft Beer",
+      "text": "丹佛和博尔德的精酿酒厂多得数不过来，不少带试饮区，可以点一排小杯慢慢尝。高海拔喝酒更容易上头，前一两天少喝；租车自驾的话，同行要有人不喝。",
+      "where": "丹佛 RiNo 艺术区、下城区一带",
+      "price": "一杯约 7–9 美元",
+      "photo": "A wooden tasting paddle holding four small glasses of craft beer ranging from pale gold to dark amber, foam on top, on a bar counter in a brick-walled taproom with steel brewing tanks blurred in the background."
+    },
+    {
+      "id": "rocky-mountain-oysters",
+      "name": "落基山生蚝",
+      "local": "Rocky Mountain Oysters",
+      "text": "名字叫生蚝，其实是裹粉油炸的牛睾丸，是牧场时代留下的吃法，口感有点像炸鸡块。属于猎奇菜，丹佛几家老牌西部牛排馆和球场能点到，蘸鸡尾酒酱吃。",
+      "where": "丹佛的西部风格牛排馆",
+      "photo": "A small plate of golden deep-fried breaded medallions with a ramekin of red cocktail sauce and lemon wedges, on a rustic wooden table in a Western-style steakhouse with warm dim lighting."
+    }
+  ],
+  "tips": [
+    "海拔高：丹佛约 1,600 米，高山公路超过 3,700 米；头一两天放慢、多喝水，头痛加重就往低处走。",
+    "落基山国家公园对 16 岁以上外国游客每人另收 100 美元，梅萨维德、大沙丘不收；年卡 250 美元管一整车。",
+    "夏季山区几乎天天午后雷暴，徒步中午前下到林线以下，听到雷声就撤。",
+    "9–5 月 I-70 山区段可能启动防滑法规，租车问清轮胎；外国驾照带护照和英文翻译件，以租车公司为准。"
+  ],
+  "nearby": [
+    "utah",
+    "wyoming",
+    "arizona"
+  ],
+  "climate": {
+    "city": "丹佛",
+    "ll": [
+      -104.9903,
+      39.7392
+    ]
+  },
+  "cover": {
+    "scene": "The Maroon Bells near Aspen, Colorado at sunrise in late September: two striped maroon-and-grey pyramidal peaks catching pink first light, mirrored in the still surface of Maroon Lake, slopes covered in glowing golden aspen groves mixed with dark spruce, a thin mist hanging over the water, clear sky.",
+    "alt": "金色白杨环绕的褐铃峰"
+  },
+  "sources": [
+    {
+      "title": "NPS：落基山国家公园门票",
+      "url": "https://www.nps.gov/romo/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：落基山国家公园 2026 分时段预约",
+      "url": "https://www.nps.gov/romo/planyourvisit/timed-entry-permit-system.htm"
+    },
+    {
+      "title": "NPS：非美国居民附加费",
+      "url": "https://www.nps.gov/aboutus/nonresident-fees.htm"
+    },
+    {
+      "title": "NPS：梅萨维德门票",
+      "url": "https://www.nps.gov/meve/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：梅萨维德崖居导览",
+      "url": "https://www.nps.gov/meve/planyourvisit/cliff_dwelling_tours.htm"
+    },
+    {
+      "title": "NPS：大沙丘门票",
+      "url": "https://www.nps.gov/grsa/planyourvisit/fees.htm"
+    },
+    {
+      "title": "阿斯彭商会：褐铃峰预约",
+      "url": "https://aspenchamber.org/plan-trip/trip-highlights/maroon-bells/reservations"
+    },
+    {
+      "title": "Aspen Snowmass：褐铃峰交通与班车",
+      "url": "https://www.aspensnowmass.com/discover/experiences/guides/maroon-bells-101-all-you-need-to-know"
+    }
+  ],
+  "checked": "2026-11"
+}

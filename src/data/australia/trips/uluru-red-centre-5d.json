@@ -1,0 +1,61 @@
+{
+  "id": "uluru-red-centre-5d",
+  "country": "australia",
+  "title": "红土中心 · 乌鲁鲁到爱丽斯泉 5 天",
+  "region": "northern-territory",
+  "daysCount": 5,
+  "for": "第一次去澳洲内陆、能接受每天早起和长途自驾的人",
+  "season": "5–9 月最舒服，6–7 月早晚冷",
+  "summary": "飞进艾尔斯岩机场、从爱丽斯泉飞走，中间租车自驾约 800 公里。前两晚住尤拉拉，乌鲁鲁看两次日出日落、走一段环岩步道，卡塔丘塔走风之谷；第三天开到国王峡谷，第四天清早走峡谷边缘环线后去爱丽斯泉，最后半天逛西麦克唐奈山脉。",
+  "bases": ["尤拉拉 2 晚", "国王峡谷 1 晚", "爱丽斯泉 1 晚"],
+  "days": [
+    {
+      "title": "飞抵乌鲁鲁看日落",
+      "stay": "尤拉拉",
+      "items": [
+        { "note": "从悉尼或墨尔本飞艾尔斯岩机场，取车后入住尤拉拉" },
+        { "note": "先在网上买好乌鲁鲁-卡塔丘塔国家公园门票" },
+        { "pref": "northern-territory", "spot": "uluru" }
+      ],
+      "move": "悉尼 / 墨尔本→艾尔斯岩机场约 3 小时；机场到尤拉拉约 10 分钟"
+    },
+    {
+      "title": "卡塔丘塔与文化中心",
+      "stay": "尤拉拉",
+      "items": [
+        { "pref": "northern-territory", "spot": "kata-tjuta" },
+        { "note": "中午回酒店避暑，下午去乌鲁鲁文化中心" },
+        { "pref": "northern-territory", "food": "bush-meats" }
+      ],
+      "move": "尤拉拉→卡塔丘塔约 45 分钟；天亮前出发赶日出"
+    },
+    {
+      "title": "环岩步道后去峡谷",
+      "stay": "国王峡谷",
+      "items": [
+        { "note": "日出看乌鲁鲁，之后走一段环岩步道，带足水" },
+        { "pref": "northern-territory", "food": "damper" },
+        { "note": "下午开车去国王峡谷，天黑前到" }
+      ],
+      "move": "尤拉拉→国王峡谷约 300 公里、约 3.5 小时，全程柏油路"
+    },
+    {
+      "title": "峡谷边缘环线",
+      "stay": "爱丽斯泉",
+      "items": [
+        { "pref": "northern-territory", "spot": "kings-canyon" },
+        { "note": "午饭后开往爱丽斯泉，路上休息加油" }
+      ],
+      "move": "国王峡谷→爱丽斯泉约 470 公里、约 5 小时，走柏油路"
+    },
+    {
+      "title": "西麦克唐奈后返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "northern-territory", "spot": "west-macdonnell-ranges" },
+        { "note": "傍晚还车，从爱丽斯泉飞回悉尼或墨尔本" }
+      ],
+      "move": "爱丽斯泉→辛普森峡谷约 25 分钟，到斯坦利峡谷约 1 小时"
+    }
+  ]
+}

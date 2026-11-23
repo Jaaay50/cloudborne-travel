@@ -1,0 +1,93 @@
+{
+  "id": "sydney-melbourne-8d",
+  "country": "australia",
+  "title": "悉尼墨尔本加大洋路 · 8 天",
+  "region": "nsw-act",
+  "daysCount": 8,
+  "for": "第一次去澳洲，想看两大城市和一段海岸公路的人",
+  "season": "9–11 月、3–4 月最舒服",
+  "summary": "悉尼住 4 晚：港湾、海岸步道、蓝山各一天。第五天飞墨尔本，逛巷子和市场，傍晚去菲利普岛看企鹅。最后两天租车走大洋路，在坎贝尔港住一晚，第二天清早看十二门徒再开回墨尔本。",
+  "bases": ["悉尼 4 晚", "墨尔本 2 晚", "坎贝尔港 1 晚"],
+  "days": [
+    {
+      "title": "抵达悉尼·港湾",
+      "stay": "悉尼",
+      "items": [
+        { "note": "机场坐机场快线火车约 15 分钟到市中心，先放行李" },
+        { "pref": "new-south-wales", "spot": "sydney-opera-house" },
+        { "pref": "new-south-wales", "food": "sydney-rock-oysters" }
+      ],
+      "move": "市中心步行；傍晚沿植物园走到麦考利夫人椅看歌剧院"
+    },
+    {
+      "title": "走大桥·渡轮去曼利",
+      "stay": "悉尼",
+      "items": [
+        { "pref": "new-south-wales", "spot": "harbour-bridge" },
+        { "pref": "new-south-wales", "spot": "manly-ferry" },
+        { "pref": "new-south-wales", "food": "meat-pie" }
+      ],
+      "move": "岩石区上桥步行到北岸；环形码头坐渡轮到曼利约 30 分钟"
+    },
+    {
+      "title": "邦迪海岸步道",
+      "stay": "悉尼",
+      "items": [
+        { "pref": "new-south-wales", "food": "smashed-avo" },
+        { "pref": "new-south-wales", "spot": "bondi-coogee-walk" },
+        { "pref": "new-south-wales", "food": "fish-market-seafood" }
+      ],
+      "move": "市中心坐巴士到邦迪约 30–40 分钟；库吉坐巴士回城"
+    },
+    {
+      "title": "蓝山一日",
+      "stay": "悉尼",
+      "items": [
+        { "pref": "new-south-wales", "spot": "blue-mountains" },
+        { "note": "回声角看三姐妹峰，再坐景观世界的轨道车和缆车" }
+      ],
+      "move": "中央车站坐火车到卡通巴约 2 小时，早班出发"
+    },
+    {
+      "title": "飞墨尔本·巷子咖啡",
+      "stay": "墨尔本",
+      "items": [
+        { "note": "上午飞墨尔本约 1.5 小时，机场坐大巴进城" },
+        { "pref": "victoria", "spot": "melbourne-laneways" },
+        { "pref": "victoria", "food": "flat-white" },
+        { "pref": "victoria", "spot": "ngv-international" }
+      ],
+      "move": "悉尼→墨尔本航班约 1.5 小时；市中心免费电车区内坐电车"
+    },
+    {
+      "title": "市场与企鹅归巢",
+      "stay": "墨尔本",
+      "items": [
+        { "pref": "victoria", "spot": "queen-victoria-market" },
+        { "pref": "victoria", "food": "hot-jam-doughnuts" },
+        { "pref": "victoria", "spot": "penguin-parade" }
+      ],
+      "move": "下午租车或跟团去菲利普岛，单程约 2 小时，夜里开回"
+    },
+    {
+      "title": "大洋路西行",
+      "stay": "坎贝尔港",
+      "items": [
+        { "pref": "victoria", "spot": "great-ocean-road" },
+        { "note": "肯尼特河找野生考拉，阿波罗湾吃午饭" },
+        { "pref": "victoria", "spot": "twelve-apostles" }
+      ],
+      "move": "墨尔本→坎贝尔港沿海岸约 4.5–5 小时车程，不含停留"
+    },
+    {
+      "title": "清晨门徒·回墨尔本",
+      "stay": "返程",
+      "items": [
+        { "note": "日出前后再去一次十二门徒和洛克阿德峡" },
+        { "pref": "victoria", "food": "chicken-parma" },
+        { "note": "傍晚还车，去机场或回市区" }
+      ],
+      "move": "坎贝尔港走内陆公路回墨尔本约 3–3.5 小时"
+    }
+  ]
+}

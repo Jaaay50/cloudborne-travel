@@ -1,0 +1,73 @@
+{
+  "id": "florida-family-6d",
+  "country": "usa",
+  "title": "佛州亲子 · 乐园到基韦斯特 6 天",
+  "region": "south",
+  "daysCount": 6,
+  "for": "带孩子的家庭，能自驾，想乐园和海边都玩到",
+  "season": "11–4 月，避开 3 月春假和圣诞",
+  "summary": "奥兰多进、迈阿密出，在奥兰多机场取车，迈阿密还车。前两天各玩一个乐园，第三天看航天中心后南下迈阿密；第四天上午大沼泽看鳄鱼，下午回海滩；第五天沿跨海公路开到基韦斯特住一晚，第六天开回迈阿密坐晚班机。乐园门票按日期浮动，提前买。",
+  "bases": ["奥兰多 2 晚", "迈阿密 2 晚", "基韦斯特 1 晚"],
+  "days": [
+    {
+      "title": "迪士尼魔法王国",
+      "stay": "奥兰多",
+      "items": [
+        { "note": "开园前到，先排最热门的项目" },
+        { "pref": "florida", "spot": "walt-disney-world" },
+        { "note": "晚上留在园里看城堡烟花" }
+      ],
+      "move": "住迪士尼周边酒店可坐接驳车，省去停车费"
+    },
+    {
+      "title": "环球影城或史诗宇宙",
+      "stay": "奥兰多",
+      "items": [
+        { "pref": "florida", "spot": "universal-orlando" },
+        { "note": "一天只够玩透一个园，按孩子年龄和喜好选" }
+      ],
+      "move": "迪士尼到环球开车约 20–30 分钟"
+    },
+    {
+      "title": "看火箭，再南下",
+      "stay": "迈阿密",
+      "items": [
+        { "pref": "florida", "spot": "kennedy-space-center" },
+        { "note": "下午 3 点前出发南下，傍晚到迈阿密" },
+        { "pref": "florida", "food": "cuban-sandwich" }
+      ],
+      "move": "奥兰多到航天中心约 1 小时；再沿 95 号州际南下约 3.5 小时"
+    },
+    {
+      "title": "大沼泽与南海滩",
+      "stay": "迈阿密",
+      "items": [
+        { "pref": "florida", "spot": "everglades" },
+        { "pref": "florida", "food": "cafecito" },
+        { "pref": "florida", "spot": "miami-beach-art-deco" },
+        { "pref": "florida", "food": "stone-crab" }
+      ],
+      "move": "迈阿密到皇家棕榈游客中心约 1–1.5 小时；下午回南海滩"
+    },
+    {
+      "title": "跨海公路到基韦斯特",
+      "stay": "基韦斯特",
+      "items": [
+        { "pref": "florida", "spot": "overseas-highway" },
+        { "pref": "florida", "spot": "key-west" },
+        { "pref": "florida", "food": "key-lime-pie" }
+      ],
+      "move": "迈阿密到基韦斯特约 260 公里，开车约 4 小时，中途停桥边海滩"
+    },
+    {
+      "title": "老城早餐后开回",
+      "stay": "回国",
+      "items": [
+        { "note": "上午骑车逛老城和海明威故居" },
+        { "pref": "florida", "food": "conch-fritters" },
+        { "note": "中午出发开回迈阿密机场还车，坐晚班机" }
+      ],
+      "move": "基韦斯特到迈阿密机场约 4 小时，周日下午常堵车"
+    }
+  ]
+}

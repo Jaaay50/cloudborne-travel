@@ -1,0 +1,269 @@
+{
+  "slug": "washington",
+  "country": "usa",
+  "name": "华盛顿州",
+  "local": "Washington",
+  "abbr": "WA",
+  "region": "west-coast",
+  "tagline": "西雅图出城两小时，就是雪山、雨林和海岛",
+  "intro": [
+    "华盛顿州在美国西北角，和首都华盛顿特区不是一个地方。西雅图是门户，市场、太空针塔和咖啡馆一两天就能逛完；真正的看点在城外：雷尼尔雪山、奥林匹克半岛的温带雨林和海岸、北喀斯喀特的碧绿湖水，还有圣胡安群岛的虎鲸。",
+    "这里适合喜欢户外、愿意自驾的人。以西雅图为中心，雷尼尔山、北喀斯喀特各能当天往返，奥林匹克半岛最好住一两晚绕一圈。7–9 月是旱季，天最蓝、山路全开；其余月份多雨，但城市里照样好逛。",
+    "如果行程宽裕，可以从西雅图往北开车约 3 小时去加拿大温哥华，但中国护照入境加拿大需要提前办好加拿大签证，回美国也要过边检。"
+  ],
+  "days": "4–6 天",
+  "seasons": {
+    "months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "note": "7–9 月雨最少、雷尼尔山野花约 7 月底–8 月开；10 月看红叶；11–3 月多雨，山区积雪。"
+  },
+  "stay": "西雅图住市中心或南湖联合区，走路能到派克市场和太空针塔；去奥林匹克半岛住安吉利斯港或福克斯；雷尼尔山可住公园西南口的 Ashford 一带。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "上海、北京、重庆有直飞西雅图，约 11–12 小时，班次不多，常要经东京、首尔或旧金山转。"
+    },
+    {
+      "from": "旧金山 / 洛杉矶",
+      "how": "飞西雅图约 2–3 小时，航班很密。"
+    },
+    {
+      "from": "温哥华",
+      "how": "自驾约 3 小时（不算过境排队），也有火车和大巴；需持有效美国签证。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "pike-place-market",
+      "name": "派克市场",
+      "local": "Pike Place Market",
+      "kind": "market",
+      "ll": [
+        -122.3422,
+        47.6097
+      ],
+      "text": "1907 年开业的公营市场，鱼摊伙计隔着柜台扔三文鱼是招牌场面。上下好几层，有鲜花、水果、手工艺品摊和小吃店，市场对面有常被叫作「第一家」的星巴克老店，门口常排长队。后面的 Post Alley 小巷里有满墙口香糖的口香糖墙。",
+      "time": "2–3 小时",
+      "tip": "上午 10 点前人少；顺着台阶走到海边，能接上新修的滨水步道。",
+      "fee": "免费",
+      "themes": [
+        "city"
+      ],
+      "photo": "Inside Pike Place Market on a weekday morning: a long covered arcade of produce and fish stalls, piles of red cherries and apples, whole salmon and crabs on crushed ice, warm hanging lights, a few shoppers in the distance, glimpses of the bay through the windows."
+    },
+    {
+      "id": "space-needle",
+      "name": "太空针塔",
+      "local": "Space Needle",
+      "kind": "landmark",
+      "ll": [
+        -122.3493,
+        47.6205
+      ],
+      "text": "1962 年世博会留下的观景塔，西雅图天际线的标志。观景层有玻璃围栏和会转的玻璃地板，天气好时能看到雷尼尔雪山和普吉特湾。脚下的西雅图中心还有奇胡利玻璃艺术馆和流行文化博物馆，可以连在一起逛半天。",
+      "time": "1–2 小时",
+      "tip": "按 15 分钟时段入场，晴天傍晚最抢手；阴雨天看不到山就别上。",
+      "fee": "约 35–55 美元",
+      "themes": [
+        "city",
+        "art"
+      ],
+      "photo": "The Space Needle seen from Kerry Park on a clear summer evening: the slender white tower with its saucer-shaped top standing above the downtown Seattle skyline, Elliott Bay to the right, and the snow-covered cone of Mount Rainier glowing pink in the far distance."
+    },
+    {
+      "id": "mount-rainier",
+      "name": "雷尼尔山国家公园",
+      "local": "Mount Rainier National Park",
+      "kind": "national-park",
+      "ll": [
+        -121.7353,
+        46.7865
+      ],
+      "text": "海拔约 4,392 米的冰川火山，西雅图晴天时就挂在城市南边。最常去的是南坡的 Paradise，从游客中心走 Skyline 步道，夏天满山野花，抬头就是冰川；东北侧的 Sunrise 角度更开阔，但道路只在约 7–9 月开放。2026 年不实行限时入园，但夏季周末停车场中午前就满。",
+      "time": "1 天",
+      "tip": "冬季上 Paradise 要求车内备防滑链；山上天气多变，带防风外套。",
+      "fee": "每车约 30 美元，7 天有效",
+      "themes": [
+        "nature",
+        "snow"
+      ],
+      "photo": "Mount Rainier from the Skyline Trail at Paradise in early August: a massive snow and glacier-covered volcanic cone filling the sky, alpine meadows in front covered with purple lupine and red paintbrush wildflowers, dark subalpine fir trees, a gravel path winding across the slope."
+    },
+    {
+      "id": "olympic-national-park",
+      "name": "奥林匹克国家公园",
+      "local": "Olympic National Park",
+      "kind": "national-park",
+      "ll": [
+        -123.9348,
+        47.8606
+      ],
+      "text": "一个公园三种风景：霍河雨林里挂满苔藓的大树，鲁比海滩上的海蚀柱和漂流木，还有山上的飓风岭高山草甸。公园在半岛上绕一圈，沿 101 号公路开车要 2–3 天才走得完。霍河雨林的苔藓厅步道约 1.3 公里，轻松好走。",
+      "time": "2–3 天",
+      "tip": "夏天霍河入口常排车队，上午 9 点前到；去飓风岭前查道路开放情况。",
+      "fee": "每车约 30 美元，7 天有效",
+      "themes": [
+        "nature",
+        "sea",
+        "roadtrip"
+      ],
+      "photo": "The Hall of Mosses trail in the Hoh Rain Forest on a misty morning: huge bigleaf maple trees draped in thick green and golden hanging moss, tall ferns covering the forest floor, a narrow dirt path, soft diffused light filtering through the canopy."
+    },
+    {
+      "id": "north-cascades",
+      "name": "北喀斯喀特与迪亚布洛湖",
+      "local": "North Cascades & Diablo Lake",
+      "kind": "national-park",
+      "ll": [
+        -121.0975,
+        48.7105
+      ],
+      "text": "西雅图东北约 2.5–3 小时车程，20 号公路穿过尖峭的雪峰和冰川。迪亚布洛湖因冰川细粉呈碧绿色，路边观景台停车就能看。国家公园不收门票，游客远少于雷尼尔山，适合想安静看山的人；再往东的 Washington Pass 观景台也很壮观。",
+      "time": "1 天",
+      "tip": "20 号公路山口段通常 11 月到次年 4–5 月冬季封闭，出发前查 WSDOT 路况。",
+      "fee": "免费",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Diablo Lake from the roadside overlook on a sunny summer afternoon: vivid turquoise glacial water winding between steep forested mountain slopes, jagged snow-dusted peaks in the background, dark green conifers along the shoreline, a few white clouds.",
+      "open": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "san-juan-islands",
+      "name": "圣胡安群岛",
+      "local": "San Juan Islands",
+      "kind": "island",
+      "ll": [
+        -123.1525,
+        48.5158
+      ],
+      "text": "西雅图北边的一串海岛，节奏慢，海边是礁石、灯塔和薰衣草农场。最出名的是看虎鲸：夏天在圣胡安岛西岸的 Lime Kiln 灯塔公园，运气好能在岸上看到虎鲸游过，也可以从星期五港坐观鲸船。从阿纳科特斯坐州营渡轮约 1–2 小时上岛。",
+      "time": "1–2 天",
+      "tip": "夏季带车上渡轮要提前预约；岛上住宿少，至少提前一个月订。",
+      "themes": [
+        "sea",
+        "wildlife"
+      ],
+      "photo": "Lime Kiln Point lighthouse on San Juan Island in summer: a small white lighthouse on dark rocky shoreline, twisted reddish madrona trees above, calm blue water of Haro Strait with a black dorsal fin of an orca breaking the surface in the distance, Vancouver Island hills on the horizon."
+    },
+    {
+      "id": "leavenworth",
+      "name": "莱文沃斯小镇",
+      "local": "Leavenworth",
+      "kind": "street",
+      "ll": [
+        -120.6615,
+        47.5962
+      ],
+      "text": "喀斯喀特山东侧的小镇，整条街都按巴伐利亚风格建造，木阳台、彩绘外墙和德式香肠啤酒屋，背后就是雪山。10 月有啤酒节和山谷红叶，12 月整个小镇挂满彩灯，像个圣诞村。从西雅图走 2 号公路过史蒂文斯山口约 2.5 小时。",
+      "time": "半天–1 天",
+      "tip": "12 月周末人山人海、停车难，尽量平日去；冬天过山口要看是否要求防滑链。",
+      "fee": "免费",
+      "themes": [
+        "autumn",
+        "snow",
+        "roadtrip"
+      ],
+      "photo": "Main street of Leavenworth on a snowy December evening: Bavarian-style buildings with carved wooden balconies and painted facades, rooftops covered in snow, strings of warm Christmas lights on every building and tree, snowy mountains behind, a few small figures walking on the sidewalk."
+    }
+  ],
+  "foods": [
+    {
+      "id": "pacific-oysters",
+      "name": "生蚝",
+      "local": "Pacific Northwest Oysters",
+      "text": "普吉特湾和胡德运河一带冷水养出的生蚝，个头小到中等，带海水的咸鲜和一点回甜，不同海湾的味道差别明显。生吃配柠檬和红葱醋，很多店下午有欢乐时段特价。",
+      "where": "西雅图滨水区和巴拉德、国会山一带的生蚝吧。",
+      "price": "一打约 35–50 美元（不含小费）",
+      "photo": "A dozen freshly shucked oysters arranged on a metal tray of crushed ice, with lemon wedges and a small dish of mignonette sauce, on a dark wooden bar counter, cool daylight from a window, top-down view."
+    },
+    {
+      "id": "cedar-plank-salmon",
+      "name": "雪松板烤三文鱼",
+      "local": "Cedar Plank Salmon",
+      "text": "把野生三文鱼放在泡过水的雪松木板上烤，鱼肉带一股木头的烟熏香。夏天是红鲑、银鲑最鲜的时候，菜单上会写明是哪一种。派克市场的鱼摊也卖熏三文鱼，可以真空包装带走。",
+      "where": "西雅图海鲜餐厅和派克市场一带。",
+      "price": "一份约 35–50 美元（不含小费）",
+      "photo": "A fillet of deep orange wild salmon with a lightly charred surface resting on a scorched cedar wood plank, garnished with lemon slices and fresh dill, roasted vegetables beside it, on a rustic restaurant table, 45-degree angle."
+    },
+    {
+      "id": "seattle-coffee",
+      "name": "西雅图咖啡",
+      "local": "Seattle Coffee",
+      "text": "西雅图是美国精品咖啡最早兴起的城市之一，阴雨天多，街角咖啡馆就是大家的客厅。除了连锁老店，国会山和巴拉德一带有很多自家烘焙的小店，手冲和浓缩都做得认真。",
+      "where": "国会山、巴拉德和市中心的独立咖啡馆。",
+      "price": "一杯约 5–7 美元",
+      "photo": "A latte with a neat rosetta in a ceramic cup on a wooden counter of a small cafe, rain-streaked window behind with a blurred street, warm interior light, shallow depth of field."
+    },
+    {
+      "id": "seattle-teriyaki",
+      "name": "西雅图照烧饭",
+      "local": "Seattle-style Teriyaki",
+      "text": "西雅图本地的家常快餐：炭烤鸡腿肉切块，淋上甜咸的照烧酱，配一大份白饭和卷心菜沙拉，装在外卖盒里。量大、便宜、出餐快，是当地人午饭的老选择。",
+      "where": "西雅图市区和郊区随处可见的小照烧店。",
+      "price": "一份约 13–18 美元",
+      "photo": "A takeout clamshell box with sliced grilled chicken thighs glazed in glossy teriyaki sauce and sprinkled with sesame seeds, a mound of white rice and a small side of shredded cabbage salad, on a plain table, top-down view."
+    }
+  ],
+  "tips": [
+    "西雅图销售税约 10%，餐厅小费按税前 18–22% 给；超市买的多数食品免销售税。",
+    "华盛顿州允许外国游客用本国驾照开车最长 1 年；中国驾照建议配认证英文翻译件并带护照。",
+    "10–5 月多雨偏冷，防水外套比伞好用；山区和山口冬季可能要求防滑链。",
+    "进 Lime Kiln 等州立公园停车要买 Discover Pass，国家公园年票不通用。",
+    "雷尼尔山、奥林匹克山区大片地方没信号，提前下载离线地图。"
+  ],
+  "nearby": [
+    "alaska",
+    "california"
+  ],
+  "climate": {
+    "city": "西雅图",
+    "ll": [
+      -122.3321,
+      47.6062
+    ]
+  },
+  "cover": {
+    "scene": "Wide view of downtown Seattle from Kerry Park on a clear summer evening: the white Space Needle standing in front of a cluster of glass towers, the blue water of Elliott Bay and container cranes on the right, and the huge snow-covered cone of Mount Rainier rising on the horizon in soft pink light.",
+    "alt": "西雅图天际线与雷尼尔山"
+  },
+  "sources": [
+    {
+      "title": "NPS Mount Rainier：Fees & Passes（2026 年不实行限时入园）",
+      "url": "https://www.nps.gov/mora/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS Olympic：Fees & Passes",
+      "url": "https://www.nps.gov/olym/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：Entrance Passes",
+      "url": "https://www.nps.gov/planyourvisit/passes.htm"
+    },
+    {
+      "title": "Space Needle：Plan Your Visit",
+      "url": "https://www.spaceneedle.com/plan-your-visit"
+    },
+    {
+      "title": "Washington DOL：Do I need to take a test?（外国驾照最长 1 年）",
+      "url": "https://dol.wa.gov/driver-licenses-and-permits/driver-training-and-testing/do-i-need-take-test"
+    },
+    {
+      "title": "FlightConnections：SEA 直飞航线",
+      "url": "https://www.flightconnections.com/flights-from-seattle-sea"
+    }
+  ],
+  "checked": "2026-11"
+}

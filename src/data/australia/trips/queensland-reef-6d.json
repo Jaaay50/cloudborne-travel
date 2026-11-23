@@ -1,0 +1,69 @@
+{
+  "id": "queensland-reef-6d",
+  "country": "australia",
+  "title": "凯恩斯大堡礁加黄金海岸 · 6 天",
+  "region": "queensland",
+  "daysCount": 6,
+  "for": "想出海看珊瑚、走雨林，再带孩子玩海滩乐园的人",
+  "season": "5–10 月旱季最好",
+  "summary": "凯恩斯住 3 晚：一天外礁浮潜，一天库兰达缆车和小火车，一天往北走摩斯曼峡谷和丹翠雨林。第四天飞黄金海岸，冲浪者天堂住 2 晚，玩一天主题乐园，最后去布里斯班南岸转一圈再飞走。",
+  "bases": ["凯恩斯 3 晚", "黄金海岸 2 晚"],
+  "days": [
+    {
+      "title": "外堡礁出海",
+      "stay": "凯恩斯",
+      "items": [
+        { "pref": "queensland", "spot": "outer-reef" },
+        { "note": "傍晚在滨海大道泳池边散步，早点休息" },
+        { "pref": "queensland", "food": "barramundi" }
+      ],
+      "move": "早上约 7–8 点码头集合，船程约 1.5 小时，下午 5 点前后回港"
+    },
+    {
+      "title": "库兰达雨林",
+      "stay": "凯恩斯",
+      "items": [
+        { "pref": "queensland", "spot": "kuranda" },
+        { "pref": "queensland", "food": "tropical-mangoes" }
+      ],
+      "move": "上山坐天空缆车约 1.5 小时（含中途下车），下山坐观光火车约 2 小时"
+    },
+    {
+      "title": "丹翠雨林自驾",
+      "stay": "凯恩斯",
+      "items": [
+        { "pref": "queensland", "spot": "daintree" },
+        { "pref": "queensland", "food": "mud-crab" }
+      ],
+      "move": "凯恩斯→摩斯曼峡谷约 75 分钟，过渡轮到苦难角再约 45 分钟"
+    },
+    {
+      "title": "飞黄金海岸",
+      "stay": "黄金海岸",
+      "items": [
+        { "note": "上午飞黄金海岸机场，坐大巴或打车约 30–40 分钟到冲浪者天堂" },
+        { "pref": "queensland", "spot": "surfers-paradise" },
+        { "pref": "queensland", "food": "moreton-bay-bugs" }
+      ],
+      "move": "凯恩斯→黄金海岸航班约 2.5 小时"
+    },
+    {
+      "title": "主题乐园一天",
+      "stay": "黄金海岸",
+      "items": [
+        { "pref": "queensland", "spot": "gold-coast-theme-parks" },
+        { "note": "傍晚去伯利角看夕阳照在高楼群上" }
+      ],
+      "move": "冲浪者天堂坐乐园专线巴士或开车约 20–25 分钟"
+    },
+    {
+      "title": "布里斯班南岸",
+      "stay": "返程",
+      "items": [
+        { "pref": "queensland", "spot": "south-bank-brisbane" },
+        { "note": "河边坐 CityCat 渡轮走一段，下午去机场" }
+      ],
+      "move": "黄金海岸开车或坐火车到布里斯班约 1–1.5 小时"
+    }
+  ]
+}

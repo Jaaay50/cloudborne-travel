@@ -1,0 +1,227 @@
+{
+  "slug": "california",
+  "country": "usa",
+  "name": "加州",
+  "local": "California",
+  "abbr": "CA",
+  "region": "west-coast",
+  "tagline": "城市、海岸公路和国家公园，一趟都能看到",
+  "intro": [
+    "加州是第一次来美国西海岸最常选的地方：北边是旧金山和湾区，中间是优胜美地和 1 号公路的大苏尔海岸，南边是洛杉矶、圣地亚哥和几个主题乐园。城市、花岗岩山谷、海岸悬崖和沙漠都能在一趟里看到，只是州很大，点与点之间动辄开车四五个小时。",
+    "第一次来建议只挑一条线：旧金山加优胜美地，再沿 1 号公路南下洛杉矶，8–10 天刚好；带孩子的可以把重心放在洛杉矶和圣地亚哥。除了旧金山市区，加州基本离不开车，公共交通只够在城里用。",
+    "2026 年起，非美国居民进优胜美地每人要另付 100 美元（16 岁以上），对预算影响不小。要去两个以上国家公园，或者两个以上成年人同车，买 250 美元的非居民年票通常更划算，一张卡覆盖整车。"
+  ],
+  "days": "8–10 天",
+  "seasons": {
+    "months": [4, 5, 6, 9, 10],
+    "note": "4–6 月和 9–10 月最舒服；优胜美地瀑布 5–6 月水最大；6–8 月旧金山多雾偏凉，约书亚树夏天常超 40°C。"
+  },
+  "stay": "旧金山住联合广场或渔人码头附近，坐车方便；优胜美地谷内住宿少且贵，可住公园外的 El Portal 或 Mariposa；洛杉矶按行程住圣莫尼卡或好莱坞一带，别贪便宜住太偏。",
+  "access": [
+    { "from": "中国大陆", "how": "北京、上海、广州有直飞洛杉矶和旧金山，厦门直飞洛杉矶、武汉直飞旧金山，约 11–13 小时；航线常调整，以航司为准。" },
+    { "from": "旧金山—洛杉矶", "how": "飞机约 1.5 小时；走 5 号州际公路自驾约 6 小时，走 1 号公路至少要 2 天。" },
+    { "from": "拉斯维加斯", "how": "飞洛杉矶约 1 小时；自驾约 4–5 小时，周五下午和周日回程常堵车。" }
+  ],
+  "spots": [
+    {
+      "id": "golden-gate-bridge",
+      "name": "金门大桥",
+      "local": "Golden Gate Bridge",
+      "kind": "landmark",
+      "ll": [-122.4783, 37.8199],
+      "text": "橙红色的悬索桥横跨旧金山湾口，全长约 2.7 公里，桥面东侧人行道可以步行或骑车过去。经典机位有三个：南端桥下的 Fort Point、北端高处的 Battery Spencer，和城里的 Baker Beach 沙滩。夏天下午常被海雾吞掉，能见度好的是早上和秋季。",
+      "time": "1–3 小时",
+      "tip": "开车往南进城收过桥费，没有收费亭，租车公司按车牌代扣并加手续费。",
+      "fee": "步行免费",
+      "themes": ["city", "art"],
+      "photo": "View from the Battery Spencer hilltop on the Marin side in late afternoon: the orange-red towers of the Golden Gate Bridge rising above a low band of white fog, the San Francisco skyline small in the distance, dark blue bay water, dry golden grass in the foreground."
+    },
+    {
+      "id": "alcatraz",
+      "name": "恶魔岛",
+      "local": "Alcatraz Island",
+      "kind": "island",
+      "ll": [-122.4229, 37.8267],
+      "text": "湾里关过黑帮头目的旧联邦监狱，现在归国家公园管理。坐渡轮约 15 分钟上岛，牢房区的语音导览很值得听，讲越狱和狱中生活，有中文版。岛上回望旧金山天际线也很好。只能坐官方授权的 Alcatraz City Cruises，从 33 号码头出发。",
+      "time": "2.5–3 小时",
+      "tip": "最早可提前 90 天订，旺季常提前几周售罄；别从第三方高价买。",
+      "fee": "日场成人约 48 美元",
+      "themes": ["heritage", "city"],
+      "photo": "Alcatraz Island seen from the deck of a ferry on San Francisco Bay on a clear morning: the pale concrete cellhouse on top of the rocky island, a tall white lighthouse beside it, green slopes and old brick buildings below, choppy blue-grey water with gulls."
+    },
+    {
+      "id": "yosemite",
+      "name": "优胜美地国家公园",
+      "local": "Yosemite National Park",
+      "kind": "national-park",
+      "ll": [-119.5936, 37.7456],
+      "text": "冰川切出来的花岗岩山谷，酋长岩、半圆顶和几道大瀑布都在谷里，走平路就能看到大半。经典安排：谷地看隧道观景点和优胜美地瀑布，南边看巨杉林 Mariposa Grove，夏秋再上冰川点俯瞰。2026 年不再实行入园预约，但旺季停车很难，尽量早上 8 点前进谷。",
+      "time": "1–2 天",
+      "tip": "冰川点路和 Tioga 路通常 11 月起冬季封闭到次年 5–6 月，出发前查路况。",
+      "fee": "每车约 35 美元，非居民每人另加 100 美元",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Tunnel View in Yosemite Valley on a late spring afternoon: the sheer grey granite face of El Capitan on the left, Bridalveil Fall streaming down the cliffs on the right, Half Dome in the distance, dense green conifer forest filling the valley floor, scattered white clouds."
+    },
+    {
+      "id": "big-sur",
+      "name": "1 号公路大苏尔段",
+      "local": "Highway 1, Big Sur",
+      "kind": "drive",
+      "ll": [-121.9018, 37.4778],
+      "text": "从卡梅尔到坎布里亚约 160 公里，公路贴着悬崖走，一边是山，一边是太平洋。比克斯比桥、McWay 瀑布、Pfeiffer 海滩都在路边停车就能看，往南还有 Piedras Blancas 的象海豹。塌方段 2026 年 1 月修复后已全线通车，但冬季暴雨仍可能临时封路。",
+      "time": "1–2 天",
+      "tip": "沿途加油站少且贵，从蒙特雷出发前加满；由北往南开，靠海一侧停车更顺。",
+      "themes": ["roadtrip", "sea", "nature"],
+      "photo": "Bixby Creek Bridge on the Big Sur coast seen from the north pullout on a clear morning: a single concrete arch spanning a deep canyon, the two-lane highway curving along steep green and brown cliffs, white surf breaking on a small beach, the deep blue Pacific stretching to the horizon."
+    },
+    {
+      "id": "griffith-observatory",
+      "name": "格里菲斯天文台",
+      "local": "Griffith Observatory",
+      "kind": "viewpoint",
+      "ll": [-118.3004, 34.1184],
+      "text": "建在好莱坞山上的白色天文台，看洛杉矶全景和好莱坞标志最方便的地方，免费入场。傍晚来最好：先看日落，再看城市灯海一路铺到海边，晴朗的夜里还能排队用公共望远镜看星星。馆内天文展览值得逛一圈，天象厅节目另收费。",
+      "time": "2–3 小时",
+      "tip": "周一闭馆；周末山上停车很难，可以坐 DASH 公交的天文台线上山。",
+      "fee": "免费，天象厅另收费",
+      "themes": ["city"],
+      "photo": "Griffith Observatory at dusk seen from the hiking trail below: a white building with three copper-green domes on a ridge of the Hollywood Hills, the vast grid of Los Angeles lights spreading to the horizon, a pink and orange sky after sunset."
+    },
+    {
+      "id": "santa-monica-pier",
+      "name": "圣莫尼卡码头",
+      "local": "Santa Monica Pier",
+      "kind": "beach",
+      "ll": [-118.4973, 34.0092],
+      "text": "洛杉矶最经典的海边，木栈道码头上有摩天轮和小游乐园，也是 66 号公路的西端终点。沿海边自行车道往南骑约 20 分钟就是威尼斯海滩，滑板场、肌肉海滩和运河小区都很有洛杉矶味。傍晚看太平洋日落最好。",
+      "time": "半天",
+      "tip": "海水常年偏凉，想下水选 7–9 月；周末附近停车场满得很早。",
+      "fee": "免费",
+      "themes": ["sea", "city", "family"],
+      "photo": "Santa Monica Pier at sunset seen from the wide sandy beach to the south: the wooden pier on pilings stretching into the ocean, a Ferris wheel and small roller coaster on the deck, palm trees along the shore, soft waves and wet sand reflecting the orange sky."
+    },
+    {
+      "id": "disneyland",
+      "name": "迪士尼乐园与环球影城",
+      "local": "Disneyland Resort & Universal Studios Hollywood",
+      "kind": "theme-park",
+      "ll": [-117.9190, 33.8121],
+      "text": "南加州两大主题乐园：阿纳海姆的迪士尼度假区有 1955 年开的第一座迪士尼乐园和隔壁的加州冒险乐园；环球影城在好莱坞山北侧，有片场电车之旅和哈利·波特园区。两边相距约 1 小时车程，各要一整天，带孩子至少留两天。",
+      "time": "每个 1 天",
+      "tip": "门票按日期浮动，工作日、非假期便宜；只在官网或正规渠道买。",
+      "fee": "按日期浮动定价",
+      "themes": ["family"],
+      "photo": "A Victorian-style main street inside a Southern California theme park on a sunny morning: pastel shopfronts with ornate trim, flower beds and old-fashioned lamp posts, a pink fairytale castle with blue spires at the far end, small crowds of visitors walking in the distance."
+    },
+    {
+      "id": "san-diego",
+      "name": "圣地亚哥",
+      "local": "San Diego",
+      "kind": "city",
+      "ll": [-117.1469, 32.7316],
+      "text": "加州最南端的海港城，气候全年温和，节奏比洛杉矶慢。巴尔博亚公园里博物馆扎堆，旁边就是圣地亚哥动物园；中途岛号航母博物馆停在市中心海边；拉霍亚海湾的礁石上躺着海狮和海豹，能离得很近看。离墨西哥边境只有约 30 分钟车程。",
+      "time": "2–3 天",
+      "tip": "拉霍亚的海狮海豹别靠近、别摸，保持几米距离；繁殖季部分海滩会封闭。",
+      "themes": ["city", "sea", "wildlife"],
+      "photo": "La Jolla Cove in San Diego on a sunny afternoon: sea lions resting on dark sandstone rocks beside clear turquoise water, a small sandy cove below eroded cliffs, palm trees and low white buildings on the bluff above, a few distant people on the path."
+    },
+    {
+      "id": "joshua-tree",
+      "name": "约书亚树国家公园",
+      "local": "Joshua Tree National Park",
+      "kind": "national-park",
+      "ll": [-116.1700, 34.0122],
+      "text": "两种沙漠在这里交会，满地是形状古怪的约书亚树和堆成小山的花岗岩巨石，适合攀爬、短途徒步和看星空。从洛杉矶开车约 2.5 小时，可以和棕榈泉连在一起玩。Hidden Valley、Skull Rock 和 Cholla 仙人掌园都在主路边，一天能看个大概。",
+      "time": "1 天",
+      "tip": "园内没有加油站、几乎没信号，带足水；5–9 月中午别徒步。",
+      "fee": "每车约 30 美元，7 天有效",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Joshua Tree National Park at golden hour: spiky, branching Joshua trees scattered across a flat desert plain, huge piles of rounded tan granite boulders behind them, low desert shrubs, a clear sky turning warm orange near the horizon."
+    },
+    {
+      "id": "napa-valley",
+      "name": "纳帕谷",
+      "local": "Napa Valley",
+      "kind": "winery",
+      "ll": [-122.4094, 38.4366],
+      "text": "旧金山北边约 1.5 小时车程的葡萄酒产区，29 号公路两边一家挨一家都是酒庄，赤霞珠最有名。多数酒庄品酒要提前预约，一次尝 4–5 款，每人多在 50 美元以上，有的可配餐。9–10 月采收季最热闹也最贵；隔壁索诺玛小酒庄多，价格亲民一些。",
+      "time": "1 天",
+      "tip": "品酒就别开车，美国查酒驾很严；可以报团、包车，或者住在镇上。",
+      "themes": ["wine", "roadtrip"],
+      "photo": "Rolling vineyards in Napa Valley in early October: neat rows of grapevines with leaves turning yellow and red, a stone winery building with a tiled roof among oak trees, low golden hills under a hazy blue sky, soft morning light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "clam-chowder",
+      "name": "酸面包碗蛤蜊浓汤",
+      "local": "Clam Chowder in a Sourdough Bowl",
+      "text": "把旧金山的酸面包挖空当碗，盛上奶油蛤蜊浓汤，喝完汤再撕面包吃。酸面包带点微酸，是旧金山的老特产。渔人码头一带最多，海风里来一碗很暖和。",
+      "where": "渔人码头、39 号码头和渡轮大厦一带。",
+      "price": "一份约 12–20 美元",
+      "photo": "A round sourdough bread bowl filled with thick creamy clam chowder, the crust lid set beside it, on a paper-lined tray on an outdoor wooden table, soft overcast daylight, shot at a 45-degree angle."
+    },
+    {
+      "id": "dungeness-crab",
+      "name": "珍宝蟹",
+      "local": "Dungeness Crab",
+      "text": "湾区的季节海鲜，个头大、肉甜，常见做法是整只水煮蘸黄油，或者蒜香烤蟹，华人餐馆也做姜葱炒。捕捞季一般从冬天开始，开季日期常因鲸鱼和水质推迟，点之前问一句是不是当季鲜货。",
+      "where": "渔人码头的街边摊，日落区、列治文区的中餐馆。",
+      "price": "按时价称重",
+      "photo": "A whole boiled Dungeness crab with its orange-red shell cracked open, on a white plate with a small cup of melted butter and lemon wedges, on a weathered wooden table near a harbor, bright daylight, top-down view."
+    },
+    {
+      "id": "mission-burrito",
+      "name": "米申卷饼",
+      "local": "Mission Burrito",
+      "text": "旧金山米申区发展出来的大号墨西哥卷饼：蒸软的面饼包进米饭、豆子、烤肉、莎莎酱和牛油果酱，用锡纸裹着，一个顶一顿饭。米申区沿街很多小店，排队点单，现场卷好。",
+      "where": "米申区 24 街和 Valencia 街一带。",
+      "price": "一个约 12–18 美元",
+      "photo": "A large burrito wrapped in foil and cut in half, showing layers of rice, beans, grilled meat, salsa and guacamole inside a soft flour tortilla, on a red plastic tray in a casual taqueria, warm indoor light, 45-degree angle."
+    },
+    {
+      "id": "fish-tacos",
+      "name": "炸鱼塔可",
+      "local": "Baja Fish Tacos",
+      "text": "圣地亚哥的招牌小吃，源自墨西哥下加利福尼亚：裹面糊炸得酥脆的白鱼块，配紫甘蓝丝、酸奶油酱和青柠，包在玉米饼里。海边吃最对味，也有烤鱼版本，更清爽。",
+      "where": "圣地亚哥的海滩区、拉霍亚和老城一带。",
+      "price": "一个约 5–8 美元",
+      "photo": "Two Baja-style fish tacos on a small white plate: golden battered white fish on corn tortillas with shredded purple cabbage, a drizzle of white crema and pico de gallo, a lime wedge, on a sunny outdoor patio table near the beach."
+    },
+    {
+      "id": "ktown-bbq",
+      "name": "韩国城烤肉",
+      "local": "Koreatown Korean BBQ",
+      "text": "洛杉矶韩国城是韩国以外最大的韩裔聚居区之一，烤肉店开到深夜。牛五花、牛小排在桌上现烤，配一桌免费续的小菜，不少店是固定价格吃到饱。一群人晚饭来最热闹。",
+      "where": "韩国城 Wilshire 大道和 Western 大道一带。",
+      "price": "一人约 35–60 美元（不含小费）",
+      "photo": "Thin slices of marinated beef and pork belly sizzling on a round tabletop grill, surrounded by many small dishes of kimchi, pickled vegetables and dipping sauces, lettuce leaves on the side, in a busy restaurant with warm light, 45-degree view."
+    }
+  ],
+  "tips": [
+    "非居民进优胜美地每人另付 100 美元；同车两个成人以上或还去别的国家公园，买 250 美元非居民年票更划算。",
+    "加州允许游客用本国有效驾照开车；中国驾照建议配认证英文翻译件并带护照，租车前问清租车公司要求。",
+    "标价不含销售税（约 7–10%），餐厅小费按税前 18–22% 给；不少餐厅账单里已加服务费，先看清。",
+    "旧金山、洛杉矶砸车窗偷窃很常见，停车时车里别留任何看得见的东西，行李也别放。",
+    "夏天旧金山常只有 15–20°C，海边要带外套；同一天内陆和沙漠可能超过 40°C。"
+  ],
+  "nearby": ["nevada", "arizona", "utah"],
+  "climate": { "city": "洛杉矶", "ll": [-118.2437, 34.0522] },
+  "cover": {
+    "scene": "Wide view of the Big Sur coastline on California's Highway 1 on a clear late afternoon: the concrete arch of Bixby Creek Bridge spanning a deep coastal canyon, the narrow road winding along steep green and golden cliffs, white surf on rocky coves below, the deep blue Pacific Ocean filling the horizon, a few small cars on the road.",
+    "alt": "大苏尔海岸与比克斯比桥"
+  },
+  "sources": [
+    { "title": "NPS Yosemite：Fees & Passes（含非居民 100 美元附加费）", "url": "https://www.nps.gov/yose/planyourvisit/fees.htm" },
+    { "title": "NPS Yosemite：2026 年不再实行入园预约", "url": "https://www.nps.gov/yose/planyourvisit/reservations.htm" },
+    { "title": "NPS：Entrance Passes（居民 80 美元 / 非居民 250 美元年票）", "url": "https://www.nps.gov/planyourvisit/passes.htm" },
+    { "title": "NPS：Nonresident Fees", "url": "https://www.nps.gov/aboutus/nonresident-fees.htm" },
+    { "title": "NPS Alcatraz：Fees & Passes", "url": "https://www.nps.gov/alca/planyourvisit/fees.htm" },
+    { "title": "NPS Joshua Tree：Entrance Fees", "url": "https://www.nps.gov/jotr/planyourvisit/fees.htm" },
+    { "title": "Caltrans：Highway 1 to Reopen Today at Regent's Slide（2026-01-14）", "url": "https://dot.ca.gov/caltrans-near-me/district-5/d5-news/d5-news-1-14-26" },
+    { "title": "Griffith Observatory：Visit", "url": "https://griffithobservatory.lacity.gov/visit/" },
+    { "title": "California DMV：Driver's Licenses", "url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/driver-licenses-dl/" },
+    { "title": "FlightConnections：LAX / SFO 直飞航线", "url": "https://www.flightconnections.com/flights-from-los-angeles-lax" }
+  ],
+  "checked": "2026-11"
+}

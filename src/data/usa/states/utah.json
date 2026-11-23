@@ -1,0 +1,313 @@
+{
+  "slug": "utah",
+  "country": "usa",
+  "name": "犹他",
+  "local": "Utah",
+  "abbr": "UT",
+  "region": "mountain-west",
+  "tagline": "五座国家公园连成一条红岩公路",
+  "intro": [
+    "犹他南部集中了五座国家公园：西边的锡安和布莱斯离拉斯维加斯近，东边的拱门和峡谷地都在摩押小镇旁边，圆顶礁夹在中间。红色砂岩被切成峡谷、石拱、石柱和尖塔，几天之内能看到完全不同的地貌，是美国西部自驾最集中的一片。",
+    "五个公园全看完至少要一周，公园之间单程两三小时。时间少就挑一边：锡安加布莱斯两三天，接着往南去佩奇和大峡谷；或者从盐湖城南下摩押，看拱门和峡谷地。12 号公路从布莱斯通到圆顶礁，本身就是一段很漂亮的路。",
+    "北边的盐湖城是犹他首府，也是不少人进出的机场。城市不大，看看圣殿广场、去大盐湖边的羚羊岛走走就够；冬天附近雪场多，粉雪出名。"
+  ],
+  "days": "5–8 天",
+  "seasons": {
+    "months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "note": "4–5 月、9–10 月最好。6–8 月锡安、摩押常近 40°C，7–9 月有山洪；布莱斯海拔高，11–3 月常下雪。"
+  },
+  "stay": "锡安住南门外的斯普林代尔，免费班车进园；布莱斯住门外的布莱斯峡谷城；拱门和峡谷地住摩押；圆顶礁住托里。旺季几个小镇房少价高，早订。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "通常没有直飞，在洛杉矶、旧金山或西雅图入境转机到盐湖城约 1.5–2 小时；或飞拉斯维加斯后开车去锡安。"
+    },
+    {
+      "from": "拉斯维加斯",
+      "how": "到锡安南门约 260 公里（160 英里），开车约 2.5–3 小时，进犹他后时钟拨快 1 小时。"
+    },
+    {
+      "from": "盐湖城",
+      "how": "到摩押约 370 公里（230 英里），约 4 小时；到锡安约 500 公里（310 英里），约 4.5–5 小时。"
+    },
+    {
+      "from": "大峡谷南缘",
+      "how": "经佩奇到锡安约 400 公里（250 英里），开车约 4.5 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "zion-canyon",
+      "name": "锡安峡谷与窄缝",
+      "local": "Zion Canyon & The Narrows",
+      "kind": "national-park",
+      "ll": [
+        -112.9475,
+        37.2853
+      ],
+      "text": "维珍河在锡安切出一条两岸高崖的深谷。3–11 月私家车不能开进峡谷景观道，要在游客中心坐免费班车，沿途下车走翡翠池、河滨步道。河滨步道尽头就是窄缝：直接蹚水往上游走，越往里崖壁越高、河道越窄，不需许可的话走到哪里折返都行，往返半天就很值。",
+      "time": "1–2 天",
+      "tip": "蹚窄缝穿防滑溯溪鞋、带手杖；水量大或山洪预警时会关闭，出发前看游客中心预报。",
+      "fee": "约 35 美元/车，外国游客每人另加 100 美元",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Inside the Zion Narrows on a summer morning: the shallow green Virgin River flowing between sheer red and orange sandstone walls hundreds of feet high, reflected light glowing on the curved cliffs, a few small distant hikers wading upstream, a strip of bright sky far above."
+    },
+    {
+      "id": "angels-landing",
+      "name": "天使降临",
+      "local": "Angels Landing",
+      "kind": "hiking",
+      "ll": [
+        -112.948,
+        37.2693
+      ],
+      "text": "锡安最出名也最险的步道，往返约 8.7 公里、爬升约 450 米。前半段之字形上坡到侦察者瞭望点，后半段在宽仅几米的岩脊上抓着铁链走，两边是几百米的落差，出过多起坠亡事故。不走铁链段的话，到瞭望点看峡谷已经很值。",
+      "time": "4–5 小时",
+      "tip": "铁链段要许可：季度抽签，或前一天 0:01–15:00（山地时间）报名，约 16 点出结果。",
+      "fee": "抽签报名约 6 美元，中签每人约 3 美元",
+      "themes": [
+        "nature"
+      ],
+      "photo": "View from the narrow sandstone spine of Angels Landing in Zion: a knife-edge ridge with a chain handrail running along it, sheer drops on both sides into a green canyon with the winding Virgin River and a road far below, red and white cliffs opposite, bright morning light, a few tiny hikers on the ridge."
+    },
+    {
+      "id": "bryce-canyon",
+      "name": "布莱斯峡谷",
+      "local": "Bryce Canyon National Park",
+      "kind": "national-park",
+      "ll": [
+        -112.1671,
+        37.6234
+      ],
+      "text": "说是峡谷，其实是一圈巨大的天然露天剧场，里面密密麻麻立着橙红色的石柱。站在日出点、日落点往下看最震撼，但更推荐走下去：纳瓦霍环线接女王花园步道约 4.6 公里，在石柱之间穿行。海拔约 2,400–2,700 米，比锡安凉快很多。",
+      "time": "1 天",
+      "tip": "日出时石柱最红；这里是暗夜保护区，晴夜看星星很好，夜里冷，带厚外套。",
+      "fee": "约 35 美元/车，外国游客每人另加 100 美元",
+      "themes": [
+        "nature",
+        "aurora",
+        "snow"
+      ],
+      "photo": "Sunrise over the Bryce Amphitheater from the rim near Sunset Point: thousands of slender orange, pink and cream hoodoos lit by low golden light, dark green ponderosa pines and firs scattered between them, a faint layer of morning haze over distant plateaus."
+    },
+    {
+      "id": "arches",
+      "name": "拱门国家公园",
+      "local": "Arches National Park",
+      "kind": "national-park",
+      "ll": [
+        -109.4993,
+        38.7435
+      ],
+      "text": "园内有两千多座天然石拱，最出名的是孤立在岩坡顶上的精致拱门，往返约 4.8 公里，一路上坡、几乎没遮阴，傍晚去看石拱被夕阳照红。时间少就开车看平衡石和窗户区，几步路就能走到石拱下面。2026 年不实行分时段预约。",
+      "time": "1 天",
+      "tip": "3–10 月很挤，8 点前或 15 点后进园；火焰炉迷宫区要提前在 recreation.gov 订许可。",
+      "fee": "约 30 美元/车，无外国游客附加费",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Delicate Arch at sunset: a freestanding red sandstone arch standing on the rim of a smooth slickrock bowl, glowing orange in the last sunlight, the snow-capped La Sal Mountains blue in the distance, long shadows across the pale rock, a few small distant visitors."
+    },
+    {
+      "id": "canyonlands",
+      "name": "峡谷地天空之岛",
+      "local": "Canyonlands Island in the Sky",
+      "kind": "viewpoint",
+      "ll": [
+        -109.868,
+        38.3891
+      ],
+      "text": "峡谷地分好几个片区，天空之岛离摩押最近，约 50 分钟车程。这是一片高出四周几百米的台地，站在边缘能看到下面层层叠叠的峡谷和远处的科罗拉多河。台地拱门是看日出的名点，走几分钟就到；大观景点能看到最开阔的全景。",
+      "time": "半天",
+      "tip": "台地拱门日出要提前占位；园内几乎没有吃的和水，在摩押备好。",
+      "fee": "约 30 美元/车",
+      "themes": [
+        "nature",
+        "roadtrip"
+      ],
+      "photo": "Sunrise through Mesa Arch in Canyonlands: the underside of a low sandstone arch glowing bright orange from reflected light, framing a vast maze of canyons and a tall rock tower below, the sun just rising over distant mesas, soft pastel sky."
+    },
+    {
+      "id": "capitol-reef",
+      "name": "圆顶礁",
+      "local": "Capitol Reef National Park",
+      "kind": "national-park",
+      "ll": [
+        -111.262,
+        38.2914
+      ],
+      "text": "一条一百多公里长的地壳褶皱，岩层被掀起成一道道彩色崖壁和白色圆顶。人比其他四个公园少得多。弗鲁塔老村留着摩门拓荒者种的果园，夏秋可以采果；24 号公路边能看到古人刻在崖上的岩画，希克曼石桥步道往返约 3 公里。",
+      "time": "半天–1 天",
+      "tip": "沿 24 号公路穿过公园不收费，进景观道才收；园内无加油站，在托里加满。",
+      "fee": "景观道约 20 美元/车",
+      "themes": [
+        "nature",
+        "heritage"
+      ],
+      "photo": "The historic Fruita area of Capitol Reef in early autumn: rows of fruit trees with yellowing leaves and a green meadow in front of towering banded cliffs of red, cream and grey rock, a small wooden barn, clear blue sky."
+    },
+    {
+      "id": "scenic-byway-12",
+      "name": "12 号景观公路",
+      "local": "Scenic Byway 12",
+      "kind": "drive",
+      "ll": [
+        -111.4538,
+        37.7466
+      ],
+      "text": "从布莱斯一路往东到圆顶礁附近的托里，约 200 公里，不停车也要 3 小时左右。最精彩的一段在埃斯卡兰特和博尔德之间，公路走在一条两侧都是悬崖的窄岩脊上。沿途的下卡夫溪瀑布步道往返约 10 公里，适合想多走一点的人。",
+      "time": "半天–1 天",
+      "tip": "岩脊段没有护栏，弯多坡陡，慢开；冬季博尔德山段偶有积雪。",
+      "fee": "免费",
+      "themes": [
+        "roadtrip",
+        "nature"
+      ],
+      "photo": "A two-lane road winding across a narrow slickrock ridge on Scenic Byway 12 near Boulder, Utah: pale cream and orange sandstone domes dropping steeply into canyons on both sides, scattered junipers, one small car on the road, late afternoon light and a few high clouds."
+    },
+    {
+      "id": "salt-lake-city",
+      "name": "盐湖城与羚羊岛",
+      "local": "Salt Lake City & Antelope Island",
+      "kind": "city",
+      "ll": [
+        -111.8925,
+        40.7704
+      ],
+      "text": "盐湖城是摩门教的总部，市中心的圣殿广场有花园和游客中心，可以免费参观，城市干净、街道很宽。往北约 1 小时开到大盐湖里的羚羊岛州立公园，岛上散养着野牛和叉角羚，盐湖水面开阔，傍晚看日落很好。",
+      "time": "1 天",
+      "tip": "羚羊岛 5–6 月湖边小飞虫很多；野牛离近了会冲人，保持距离。",
+      "themes": [
+        "city",
+        "wildlife"
+      ],
+      "photo": "Bison grazing on golden grassland on Antelope Island at sunset, the flat silvery surface of the Great Salt Lake stretching behind, rugged brown hills along the shore and distant snow-capped Wasatch peaks, warm low light."
+    }
+  ],
+  "foods": [
+    {
+      "id": "fry-sauce",
+      "name": "炸薯条蘸酱",
+      "local": "Fry Sauce",
+      "text": "犹他人几乎人人都爱的粉橙色蘸酱，基本是番茄酱加蛋黄酱，有的再加点腌黄瓜碎。本地汉堡店点薯条时都会配上，用来蘸洋葱圈、配汉堡也行。",
+      "where": "全州的本地汉堡店和快餐店",
+      "price": "汉堡套餐约 10–15 美元",
+      "photo": "A paper-lined basket of golden crinkle-cut fries with a small cup of pale pink-orange dipping sauce, a cheeseburger wrapped in paper beside it, on a red plastic tray in a bright roadside diner."
+    },
+    {
+      "id": "funeral-potatoes",
+      "name": "葬礼土豆",
+      "local": "Funeral Potatoes",
+      "text": "名字吓人，其实是土豆丝、奶油、奶酪烤成的焗土豆，表面撒玉米片烤得酥脆。犹他教会聚餐、节日家宴必有这一盘，因为常出现在丧礼后的聚餐而得名。盐湖城一些家常菜馆和自助餐有卖。",
+      "where": "盐湖城的家常菜馆、周日早午餐",
+      "price": "一份约 6–10 美元",
+      "photo": "A rectangular glass baking dish of cheesy potato casserole with a golden crunchy cornflake topping, one square scooped out onto a plate beside it, on a kitchen table with a checked cloth, soft daylight, 45-degree angle."
+    },
+    {
+      "id": "utah-scone",
+      "name": "犹他司康",
+      "local": "Utah Scone",
+      "text": "和英式司康完全不同：犹他的「司康」是一大块炸面饼，蓬松中空，趁热抹蜂蜜黄油吃，有点像炸油饼配甜酱。早餐店和一些本地连锁餐厅都有。",
+      "where": "盐湖城一带的早餐店和本地餐厅",
+      "price": "一份约 5–10 美元",
+      "photo": "Two large puffy golden fried dough pieces on a white diner plate, a scoop of whipped honey butter melting on top and a small dish of honey beside them, morning light on a wooden counter."
+    },
+    {
+      "id": "fruita-pie",
+      "name": "弗鲁塔果园派",
+      "local": "Capitol Reef Fruit Pie",
+      "text": "圆顶礁公园里的吉福德老宅在开放季节卖小份水果派，用料有苹果、樱桃、桃子等，配冰淇淋吃。拓荒者的老果园就在旁边，买一个坐在草地上吃很惬意。午后常卖完，开放月份以公园官网为准。",
+      "where": "圆顶礁弗鲁塔区的吉福德老宅",
+      "photo": "A small individual cherry pie with a golden lattice crust on a paper plate, set on a wooden picnic table under fruit trees, red rock cliffs softly blurred in the background, bright afternoon light."
+    },
+    {
+      "id": "dirty-soda",
+      "name": "调味汽水",
+      "local": "Dirty Soda",
+      "text": "犹他特有的饮料文化：可乐或汽水里加椰子糖浆、奶油、青柠，再加满一大杯碎冰。不少本地人不碰咖啡和酒，就靠它提神，街上专门的汽水店门口常排着汽车长队。",
+      "where": "全州的汽水店，多为得来速",
+      "price": "一杯约 3–6 美元",
+      "photo": "A large clear plastic cup of cola mixed with swirls of cream over crushed pebble ice, a lime wedge and a straw, held up against a sunny parking lot with mountains far in the background, no logos."
+    }
+  ],
+  "tips": [
+    "犹他用山地时间，比内华达快 1 小时；3–11 月也比亚利桑那（纳瓦霍保留地外）快 1 小时。",
+    "锡安、布莱斯对 16 岁以上外国游客每人另收 100 美元，拱门、峡谷地、圆顶礁不收；跑三园以上买年卡更划算。",
+    "7–9 月午后雷暴多，窄缝和狭缝峡谷遇雨会突发山洪；进峡谷前看游客中心的山洪预报。",
+    "公园之间人烟稀少，加油站隔一两百公里才一个，油箱过半就加；带足水和零食。",
+    "犹他允许持有效外国驾照的游客短期驾驶，中国驾照带护照和英文翻译件，出发前查犹他驾照管理处官网。"
+  ],
+  "nearby": [
+    "arizona",
+    "nevada",
+    "colorado",
+    "wyoming"
+  ],
+  "climate": {
+    "city": "盐湖城",
+    "ll": [
+      -111.891,
+      40.7608
+    ]
+  },
+  "cover": {
+    "scene": "Delicate Arch in Arches National Park at golden hour: a freestanding red sandstone arch on the edge of a smooth slickrock bowl, glowing deep orange in low sunlight, the snow-dusted La Sal Mountains on the horizon under a clear pale blue sky, long soft shadows across the rock, no people.",
+    "alt": "夕阳下的精致拱门"
+  },
+  "sources": [
+    {
+      "title": "NPS：锡安门票",
+      "url": "https://www.nps.gov/zion/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：天使降临许可",
+      "url": "https://www.nps.gov/zion/planyourvisit/angels-landing-hiking-permits.htm"
+    },
+    {
+      "title": "NPS：锡安峡谷班车",
+      "url": "https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-system.htm"
+    },
+    {
+      "title": "NPS：布莱斯峡谷门票",
+      "url": "https://www.nps.gov/brca/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：布莱斯峡谷班车",
+      "url": "https://www.nps.gov/brca/planyourvisit/shuttle.htm"
+    },
+    {
+      "title": "NPS：拱门门票",
+      "url": "https://www.nps.gov/arch/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：2026 年夏季各公园预约制安排",
+      "url": "https://www.nps.gov/orgs/1207/national-park-service-expands-access-for-summer-2026-while-maintaining-safety-at-high-visitation-parks.htm"
+    },
+    {
+      "title": "NPS：峡谷地门票",
+      "url": "https://www.nps.gov/cany/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：圆顶礁门票",
+      "url": "https://www.nps.gov/care/planyourvisit/fees.htm"
+    },
+    {
+      "title": "NPS：非美国居民附加费",
+      "url": "https://www.nps.gov/aboutus/nonresident-fees.htm"
+    },
+    {
+      "title": "犹他驾照管理处：外国驾照互认",
+      "url": "https://dld.utah.gov/foreign-license-reciprocity/"
+    }
+  ],
+  "checked": "2026-11"
+}

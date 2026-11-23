@@ -1,0 +1,287 @@
+{
+  "slug": "pennsylvania",
+  "country": "usa",
+  "name": "宾州",
+  "local": "Pennsylvania",
+  "abbr": "PA",
+  "region": "northeast",
+  "tagline": "美国建国的地方，城里看历史，乡下看阿米什",
+  "intro": [
+    "宾州的游客大多只到费城：《独立宣言》和美国宪法都在这里的独立厅签署，自由钟就在马路对面，老城区几个街口就能把美国建国史看一遍。费城离纽约、华盛顿都只有一两个小时火车，东海岸行程里很适合停一晚。",
+    "往西是另一个宾州：兰开斯特一带的阿米什人至今赶马车、不用电，农田和木结构谷仓一望无际；葛底斯堡是南北战争决定性战役的古战场；再往西的山谷里有赖特设计的流水别墅，旁边就是钢铁城匹兹堡。",
+    "这些地方彼此隔得远，公共交通到不了乡下，想去兰开斯特、葛底斯堡和流水别墅基本都要自驾，或者报当地一日游。"
+  ],
+  "days": "2–4 天",
+  "seasons": {
+    "months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "note": "4–6 月、9–10 月最舒服，10 月中前后西部山区红叶最好；7–8 月闷热，1–2 月冷，流水别墅冬季闭馆。"
+  },
+  "stay": "费城住老城区或中心城区（市政厅附近），步行到独立厅和雷丁车站市场。去流水别墅或匹兹堡就在匹兹堡市中心住一晚。",
+  "access": [
+    {
+      "from": "中国大陆",
+      "how": "目前没有直飞费城的航班，一般先飞纽约或华盛顿再坐火车，或在美国其他城市转机到费城机场（PHL）。"
+    },
+    {
+      "from": "纽约",
+      "how": "Amtrak 约 1–1.5 小时到费城 30 街车站；新泽西通勤铁路换乘更便宜但更慢。"
+    },
+    {
+      "from": "华盛顿",
+      "how": "Amtrak 约 1.5–2 小时到费城。"
+    },
+    {
+      "from": "费城到匹兹堡",
+      "how": "飞机约 1 小时；开车约 5 小时；Amtrak 约 7 小时。"
+    }
+  ],
+  "spots": [
+    {
+      "id": "independence-hall",
+      "name": "独立厅",
+      "local": "Independence Hall",
+      "kind": "landmark",
+      "ll": [
+        -75.15,
+        39.9489
+      ],
+      "text": "1776 年《独立宣言》和 1787 年美国宪法都在这栋红砖楼里通过。参观由国家公园管理局的讲解员带队，进议事厅看当年开会的桌椅。旁边的国会厅是美国早期国会开会的地方，可以一起看。",
+      "time": "约 1 小时",
+      "tip": "需要预约时在 recreation.gov 订限时票，最多提前 30 天；次日票前一天下午 5 点放出。",
+      "fee": "免费；网上订票每张约 1 美元",
+      "themes": [
+        "heritage"
+      ],
+      "photo": "Front view of a Georgian red-brick hall with white trim, tall arched windows and a white wooden clock tower with a steeple, a wide green lawn and brick walkway in front, a clear spring morning, a few small distant visitors."
+    },
+    {
+      "id": "liberty-bell",
+      "name": "自由钟",
+      "local": "Liberty Bell Center",
+      "kind": "landmark",
+      "ll": [
+        -75.1503,
+        39.9496
+      ],
+      "text": "那口有一道大裂缝的铜钟就在独立厅对面的玻璃展馆里，透过身后的窗还能把独立厅一起拍进去。展馆里讲了这口钟后来怎样成为废奴运动和民权运动的象征。不用预约，过安检就能进。",
+      "time": "30–45 分钟",
+      "tip": "早上 9 点开门就去，旅行团到了之后安检要排队。",
+      "fee": "免费",
+      "themes": [
+        "heritage"
+      ],
+      "photo": "A large dark bronze bell with a long visible crack, hanging from a wooden yoke inside a bright glass pavilion, the red-brick hall with a white clock tower visible through the tall window behind it, soft daylight."
+    },
+    {
+      "id": "reading-terminal-market",
+      "name": "雷丁车站市场",
+      "local": "Reading Terminal Market",
+      "kind": "market",
+      "ll": [
+        -75.159,
+        39.9533
+      ],
+      "text": "1893 年开业的室内大市场，原来在火车站底下，现在挤着几十家摊位：芝士牛肉三明治、烤猪肉三明治、阿米什人做的甜点和椒盐卷饼、冰淇淋都有。中午人最多，找座位要碰运气，可以先买再找。",
+      "time": "1 小时",
+      "tip": "阿米什人的摊位一般不是天天开，周日部分摊位休息，想吃特定摊先查。",
+      "themes": [
+        "city",
+        "wine"
+      ],
+      "photo": "Busy interior of a historic covered food market: rows of food stalls under a high steel-trussed roof, glass display cases of pastries and meats, hanging signs without legible text, warm lighting, crowds as small blurred figures."
+    },
+    {
+      "id": "philadelphia-museum-of-art",
+      "name": "费城艺术博物馆",
+      "local": "Philadelphia Museum of Art",
+      "kind": "museum",
+      "ll": [
+        -75.181,
+        39.9656
+      ],
+      "text": "希腊神庙式的大楼立在小山上，门前就是电影《洛奇》里主角跑上去的那段台阶，很多人只为来跑一遍。馆藏同样够分量，欧洲绘画、杜尚作品和整间搬来的寺院回廊都值得看。站在台阶顶上能看到一路通往市政厅的林荫大道。",
+      "time": "2–3 小时",
+      "tip": "只爬台阶看景不用买票，日落时最好看。",
+      "themes": [
+        "art",
+        "city"
+      ],
+      "photo": "Wide view up a long flight of stone steps toward a massive neoclassical museum building with golden-ochre columns and a pediment, on a hilltop, clear late-afternoon light, a few small distant people climbing the steps."
+    },
+    {
+      "id": "lancaster-amish",
+      "name": "兰开斯特阿米什乡村",
+      "local": "Lancaster County Amish Country",
+      "kind": "drive",
+      "ll": [
+        -76.1822,
+        40.0387
+      ],
+      "text": "费城往西约 1.5 小时车程，农田、红色谷仓和风车一片接一片，路上常常跟着黑色的马车慢慢走。可以去阿米什农场和集市，买自制果酱、手工被子和派。阿米什人不喜欢被拍照，看风景可以，别对着人拍。",
+      "time": "半天–1 天",
+      "tip": "周日阿米什人做礼拜，很多店铺和农场不开门。",
+      "themes": [
+        "roadtrip",
+        "heritage"
+      ],
+      "photo": "Rural farmland in late spring: a black horse-drawn buggy travelling along a narrow country road between green fields, a large red barn and white farmhouse with a silo behind, rolling hills, soft morning light."
+    },
+    {
+      "id": "gettysburg",
+      "name": "葛底斯堡古战场",
+      "local": "Gettysburg National Military Park",
+      "kind": "park",
+      "ll": [
+        -77.2268,
+        39.8121
+      ],
+      "text": "1863 年南北战争中最惨烈的战役在这里打了三天，林肯随后发表了著名的葛底斯堡演说。古战场开车自驾一圈，路边有上千座纪念碑和炮位。先在游客中心看影片和环形全景画，再按地图开车走一遍。",
+      "time": "半天–1 天",
+      "tip": "可以请持证导游上你的车讲解，要提前预约。",
+      "fee": "战场免费；馆内套票约 21 美元",
+      "themes": [
+        "heritage",
+        "roadtrip"
+      ],
+      "photo": "Open grassy battlefield at golden hour with old split-rail wooden fences, a row of dark bronze cannons on stone-lined ridges, scattered granite monuments, low rolling hills and trees in early autumn colours."
+    },
+    {
+      "id": "fallingwater",
+      "name": "流水别墅",
+      "local": "Fallingwater",
+      "kind": "museum",
+      "ll": [
+        -79.4682,
+        39.9063
+      ],
+      "text": "建筑师赖特 1930 年代的代表作，房子直接架在一道小瀑布上，混凝土挑台一层层伸出去，与岩石和溪水融在一起。只能跟导览进屋，最经典的角度在溪流下游的观景点。从匹兹堡开车约 1.5 小时。",
+      "time": "2–3 小时",
+      "tip": "务必提前在官网订导览；周三闭馆，1 月至 3 月中旬歇业，6 岁以下不能进屋。",
+      "fee": "室内导览约 42 美元",
+      "themes": [
+        "art",
+        "nature"
+      ],
+      "photo": "Classic downstream view of a modernist house built over a small waterfall: cantilevered cream-coloured concrete terraces stacked over a rocky stream, vertical walls of rough tan stone, dense green forest, white water cascading below, soft overcast summer light."
+    },
+    {
+      "id": "pittsburgh-mount-washington",
+      "name": "匹兹堡华盛顿山",
+      "local": "Mount Washington, Pittsburgh",
+      "kind": "viewpoint",
+      "ll": [
+        -80.0181,
+        40.4384
+      ],
+      "text": "匹兹堡夹在两条河汇成俄亥俄河的地方，市中心是一块三角形半岛，桥多到数不清。坐 19 世纪的老缆车杜肯斜坡铁路上华盛顿山，从观景台看三条河、一排排黄色铁桥和城市楼群，傍晚和夜景都好看。",
+      "time": "1–2 小时",
+      "tip": "日落前半小时上山，白天的河景和夜景能一次看全。",
+      "themes": [
+        "city",
+        "art"
+      ],
+      "photo": "Night view from a hilltop overlook across a river confluence: a triangular downtown of lit skyscrapers on a point of land, several yellow steel bridges spanning dark water with light reflections, a historic incline railway car on a steep track in the foreground."
+    }
+  ],
+  "foods": [
+    {
+      "id": "philly-cheesesteak",
+      "name": "费城芝士牛肉堡",
+      "local": "Philly Cheesesteak",
+      "text": "长面包里塞满铁板现切的薄牛肉片和洋葱，再加融化的芝士，是费城的头号招牌。南费城有两家老店隔街对望打擂台，本地人其实各有各的街坊小店。点单时说清要不要洋葱、要哪种芝士。",
+      "where": "南费城意大利市场一带，以及雷丁车站市场。",
+      "price": "一个约 14–20 美元",
+      "photo": "A long hoagie roll stuffed with thinly chopped griddled beef, softened onions and melted cheese, wrapped half in white paper on a metal tray, steam rising, a street-side counter in the background, daylight, 45-degree angle."
+    },
+    {
+      "id": "roast-pork-sandwich",
+      "name": "烤猪肉三明治",
+      "local": "Roast Pork Sandwich",
+      "text": "很多费城人觉得这才是真正的本地三明治：慢烤的薄猪肉片浸在肉汁里，配炒过的西兰花苗和带劲的老波罗伏洛芝士，咸香有点苦味。雷丁车站市场里有排长队的老摊。",
+      "where": "雷丁车站市场和南费城的熟食店。",
+      "price": "一个约 15–18 美元",
+      "photo": "A crusty Italian roll filled with thin juicy slices of roast pork, dark green sauteed broccoli rabe and melted sharp provolone, cut in half on white butcher paper, on a market counter, warm light."
+    },
+    {
+      "id": "soft-pretzel",
+      "name": "费城软椒盐卷饼",
+      "local": "Philly Soft Pretzel",
+      "text": "费城版的椒盐卷饼做成长条「8」字形，几个连在一起烤，表面撒粗盐，有嚼劲。早上在街边、便利店都能买到，蘸黄芥末吃，是最便宜的费城小吃。",
+      "where": "街头小摊和便利店；雷丁车站市场的阿米什摊位现做。",
+      "price": "一个约 2–5 美元",
+      "photo": "Several freshly baked figure-eight soft pretzels joined side by side, glossy deep-brown crust sprinkled with coarse white salt, on a sheet of brown paper with a small cup of yellow mustard, morning daylight."
+    },
+    {
+      "id": "shoofly-pie",
+      "name": "糖蜜派",
+      "local": "Shoofly Pie",
+      "text": "宾州荷兰裔和阿米什人的传统甜点，用糖蜜做馅，上面撒一层酥粒，口感像湿润的蛋糕，非常甜。配一杯不加糖的黑咖啡刚好。在兰开斯特的农场集市和烘焙店最容易买到。",
+      "where": "兰开斯特一带的阿米什集市和烘焙店。",
+      "price": "一块约 4–6 美元",
+      "photo": "A slice of molasses pie on a small white plate showing a dark gooey bottom layer under a crumbly brown streusel top, the rest of the pie in a glass dish behind, on a farmhouse wooden table, soft natural light."
+    },
+    {
+      "id": "pittsburgh-sandwich",
+      "name": "匹兹堡夹薯条三明治",
+      "local": "Pittsburgh-style Sandwich with Fries",
+      "text": "匹兹堡码头工人传下来的吃法：把薯条和酸甜卷心菜沙拉直接夹进三明治里，配肉和芝士，一手就能吃完一顿。分量很大，可以两人分一份。",
+      "where": "匹兹堡斯特里普区和市中心的老牌三明治店。",
+      "price": "一个约 12–15 美元",
+      "photo": "A tall sandwich on thick white Italian bread stacked with grilled meat, melted cheese, a layer of golden french fries and pale coleslaw, cut in half on wax paper, on a diner counter, warm overhead light."
+    }
+  ],
+  "tips": [
+    "独立厅票每张收约 1 美元手续费，不退不改；没抢到可以第二天下午 5 点再刷次日票。",
+    "宾州销售税约 6%，费城约 8%；很多基本衣物在宾州免销售税。",
+    "去兰开斯特、葛底斯堡、流水别墅都要开车，出发前查宾州交通部门对外国驾照的规定。",
+    "流水别墅冬季闭馆、周三闭馆，订票时看清开放日期和儿童年龄限制。"
+  ],
+  "nearby": [
+    "new-york",
+    "washington-dc"
+  ],
+  "climate": {
+    "city": "费城",
+    "ll": [
+      -75.1652,
+      39.9526
+    ]
+  },
+  "cover": {
+    "scene": "Elevated view over Independence Mall in Philadelphia on a clear spring morning: the red-brick Independence Hall with its white clock tower and steeple at the end of a long green lawn, tree-lined walkways, modern city towers rising behind under a blue sky.",
+    "alt": "春天的费城独立厅与独立广场"
+  },
+  "sources": [
+    {
+      "title": "NPS · Independence Hall Tickets",
+      "url": "https://www.nps.gov/inde/planyourvisit/independencehalltickets.htm"
+    },
+    {
+      "title": "NPS · Liberty Bell Center",
+      "url": "https://www.nps.gov/inde/planyourvisit/libertybellcenter.htm"
+    },
+    {
+      "title": "Reading Terminal Market",
+      "url": "https://readingterminalmarket.org/"
+    },
+    {
+      "title": "NPS · Gettysburg Fees",
+      "url": "https://www.nps.gov/gett/planyourvisit/fees.htm"
+    },
+    {
+      "title": "Fallingwater · Visit",
+      "url": "https://fallingwater.org/visit/"
+    },
+    {
+      "title": "Philadelphia Museum of Art",
+      "url": "https://philamuseum.org/visit"
+    }
+  ],
+  "checked": "2026-11"
+}

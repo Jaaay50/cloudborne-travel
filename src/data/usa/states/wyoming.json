@@ -1,0 +1,186 @@
+{
+  "slug": "wyoming",
+  "country": "usa",
+  "name": "怀俄明",
+  "local": "Wyoming",
+  "abbr": "WY",
+  "region": "mountain-west",
+  "tagline": "黄石的间歇泉和野牛，大提顿的雪峰",
+  "intro": [
+    "怀俄明是美国人口最少的州，游客几乎都冲着西北角来：黄石是世界上第一个国家公园，地热、峡谷和野生动物都在一片约 2,400 米高的火山高原上；南边紧挨着大提顿，锯齿状的雪峰从平地拔起，山脚的杰克逊是进出的小镇。",
+    "黄石很大，主环线约 229 公里，限速低、常因野牛过马路堵车，至少留三天：一天看老忠实和大棱镜一带的间歇泉，一天看黄石大峡谷和海登谷，一天清早去拉马尔谷找狼和野牛。大提顿再留一两天。园内住宿要提前一年左右订，订不到就住西黄石、加德纳或杰克逊。",
+    "季节决定能看什么。约 11 月初到次年 4 月中，除北门到东北门一段外，黄石园内道路不通普通车辆，冬季只能跟雪地车、雪地巴士团进；5 月部分路段才陆续开放，高处的邓雷文垭口常到 5 月底。6–9 月最完整，9 月人少动物也活跃。"
+  ],
+  "days": "5–7 天",
+  "seasons": {
+    "months": [6, 7, 8, 9],
+    "note": "6–9 月道路全通，7–8 月最挤，9 月人少、动物活跃但早晚近 0°C。约 11 月初–4 月中多数园内道路封闭。"
+  },
+  "stay": "黄石园内的老忠实、峡谷村、湖区住宿位置最好，要尽早订；园外住西黄石（看间歇泉方便）、加德纳（离猛犸和拉马尔谷近）。大提顿住杰克逊或园内杰克逊湖一带。",
+  "access": [
+    { "from": "中国大陆", "how": "通常没有直飞，在洛杉矶、旧金山或西雅图入境，经丹佛或盐湖城转机到杰克逊霍尔机场，全程约 18–24 小时。" },
+    { "from": "盐湖城", "how": "开车到杰克逊约 440 公里（275 英里），约 4.5–5 小时；到西黄石约 5 小时。" },
+    { "from": "博兹曼（蒙大拿）", "how": "博兹曼机场航班多，到黄石北门约 130 公里，约 1.5 小时；到西黄石约 2 小时。" },
+    { "from": "杰克逊", "how": "穿过大提顿到黄石南门约 90 公里，约 1.5 小时；到老忠实约 2.5–3 小时。" }
+  ],
+  "spots": [
+    {
+      "id": "old-faithful",
+      "name": "老忠实间歇泉",
+      "local": "Old Faithful & Upper Geyser Basin",
+      "kind": "national-park",
+      "ll": [-110.8281, 44.4605],
+      "text": "黄石最有名的间歇泉，平均约 90 分钟喷一次，水柱几十米高，游客中心和 NPS App 会公布预测时间。看完别急着走：周围的上间歇泉盆地是全球间歇泉最密集的地方，沿木栈道走到牵牛花池往返约 4.5 公里，一路是冒泡的彩色温泉和随时可能喷发的小泉眼。",
+      "time": "半天",
+      "tip": "预测时间前后约 10 分钟都可能喷；对面的老忠实客栈是百年木结构大厅，可以进去看看。",
+      "fee": "约 35 美元/车，外国游客每人另加 100 美元",
+      "themes": ["nature", "family"],
+      "photo": "Old Faithful geyser erupting on a clear summer morning: a tall white column of steaming water shooting into a blue sky, drifting steam backlit by the sun, pale mineral-crusted ground and a wooden boardwalk in the foreground, dark lodgepole pine forest behind, small distant spectators."
+    },
+    {
+      "id": "grand-prismatic",
+      "name": "大棱镜温泉",
+      "local": "Grand Prismatic Spring",
+      "kind": "nature",
+      "ll": [-110.8382, 44.5251],
+      "text": "美国最大的温泉，直径约 110 米，中间深蓝，向外是绿、黄、橙、红的细菌色带。在栈道上平视只看得到蒸汽和边缘；想看全貌就去仙女瀑布步道口，上山坡到观景台，往返约 2 公里。晴天午后蒸汽少、颜色最清楚。",
+      "time": "2–3 小时",
+      "tip": "停车场很小，旺季 10 点前或傍晚去；风大时帽子会被吹进温泉，戴紧或收好。",
+      "themes": ["nature"],
+      "photo": "Grand Prismatic Spring seen from the hillside overlook on a sunny afternoon: a huge round hot spring with a deep blue centre ringed by bands of green, yellow, bright orange and rust red, wisps of steam drifting across, a thin boardwalk with tiny distant visitors along its edge, lodgepole pines in the foreground."
+    },
+    {
+      "id": "grand-canyon-yellowstone",
+      "name": "黄石大峡谷",
+      "local": "Grand Canyon of the Yellowstone",
+      "kind": "viewpoint",
+      "ll": [-110.4794, 44.7213],
+      "text": "黄石河在这里切出一条黄色、粉色岩壁的峡谷，下瀑布落差约 94 米，水量大、声音震耳。南岸的艺术家点是看瀑布的经典位置，停车几步就到；北岸可以走陡坡下到瀑布顶端，往返约 1.2 公里，回程很累。上午阳光照进峡谷，有时能看到彩虹。",
+      "time": "2–3 小时",
+      "tip": "峡谷村附近南北两岸各一条观景道，开车切换观景点；看完往南就是海登谷。",
+      "themes": ["nature"],
+      "photo": "View from Artist Point of the Lower Falls of the Yellowstone River: a powerful white waterfall plunging into a deep V-shaped canyon with steep walls of yellow, cream and pink eroded rock, the green river winding below, scattered pine trees on the rim, bright morning sun."
+    },
+    {
+      "id": "lamar-valley",
+      "name": "拉马尔谷与海登谷",
+      "local": "Lamar Valley & Hayden Valley",
+      "kind": "wildlife",
+      "ll": [-110.1880, 44.8590],
+      "text": "黄石看动物的两大河谷。东北角的拉马尔谷开阔平坦，夏天成群的野牛就在路边吃草，运气好能用望远镜看到狼群；海登谷在峡谷村和湖区之间，野牛、马鹿多，偶尔有灰熊。黎明和黄昏动物最活跃，路边停着一排架长镜头的人，多半就是有发现。",
+      "time": "半天",
+      "tip": "离熊和狼至少约 91 米（100 码），离野牛和马鹿至少约 23 米（25 码）；只在路边停车带停。",
+      "themes": ["wildlife", "nature"],
+      "photo": "Early morning in Lamar Valley, Yellowstone: a herd of dark brown bison grazing on a wide green grassland along a meandering river, light mist over the water, rolling sagebrush hills and distant mountains with patches of snow, low golden sunlight."
+    },
+    {
+      "id": "mammoth-hot-springs",
+      "name": "猛犸温泉",
+      "local": "Mammoth Hot Springs",
+      "kind": "nature",
+      "ll": [-110.7056, 44.9706],
+      "text": "热泉带着石灰质一层层堆积，形成白色、奶油色和橙色的阶梯状石灰华台地，形状每年都在变。下台地有木栈道和台阶，上台地可以开车绕一小圈。旁边的猛犸小镇常有马鹿在草坪上躺着，秋天公鹿很凶。这里在北门附近，冬天也能开车到。",
+      "time": "2–3 小时",
+      "tip": "部分台地会干涸变灰，哪处正活跃看游客中心介绍；别在马鹿和车之间穿行。",
+      "themes": ["nature", "wildlife"],
+      "photo": "Travertine terraces at Mammoth Hot Springs: stepped white and cream mineral formations with orange and brown streaks, shallow steaming pools on each ledge, a few dead grey trees standing in the deposits, a wooden boardwalk to one side, blue sky with soft clouds."
+    },
+    {
+      "id": "jenny-lake",
+      "name": "大提顿珍妮湖",
+      "local": "Jenny Lake, Grand Teton National Park",
+      "kind": "national-park",
+      "ll": [-110.7303, 43.7636],
+      "text": "大提顿山脚的冰川湖，湖后就是主峰大提顿（约 4,199 米）。坐渡船到对岸，走约 1.5 公里上坡就到隐瀑和灵感点，能回头看到湖和杰克逊谷；不坐船就沿湖岸走过去，单程多约 3 公里。大提顿门票和黄石分开收，外国游客附加费也各收一次。",
+      "time": "半天",
+      "tip": "这里是熊区，徒步带防熊喷雾（不能带上飞机，到当地买或租）；渡船另付费。",
+      "fee": "约 35 美元/车，外国游客每人另加 100 美元",
+      "themes": ["nature"],
+      "photo": "Jenny Lake in Grand Teton National Park on a calm summer morning: clear blue-green water with rounded stones near the shore, dense dark conifers around the lake, the jagged granite peaks of the Teton Range rising steeply behind with snowfields, a small boat crossing far out on the water."
+    },
+    {
+      "id": "mormon-row",
+      "name": "摩门街老谷仓",
+      "local": "Mormon Row",
+      "kind": "viewpoint",
+      "ll": [-110.6645, 43.6691],
+      "text": "百年前摩门教拓荒者在这片草原上建起农庄，留下几座木头谷仓，背后正对着整排提顿山，是大提顿最经典的日出机位。附近的牛轭湾清晨能拍到莫兰山倒影，常见驼鹿和白头海雕；9 月下旬河边杨树变黄最好看。",
+      "time": "1–2 小时",
+      "tip": "日出前半小时到；草原上常有野牛群，别为了拍照走近。",
+      "themes": ["heritage", "nature", "autumn"],
+      "photo": "An old weathered wooden barn with a steep pitched roof on flat sagebrush grassland at sunrise, the jagged snow-dusted Teton Range lit soft pink behind it, a split-rail fence in the foreground, clear sky, no people."
+    },
+    {
+      "id": "jackson",
+      "name": "杰克逊小镇",
+      "local": "Jackson, Wyoming",
+      "kind": "city",
+      "ll": [-110.7618, 43.4800],
+      "text": "大提顿南边的西部小镇，镇中心广场四角各有一座用马鹿脱落的鹿角堆成的拱门，周围是木栈道、牛仔酒吧和画廊。夏天可以去附近蒂顿村的杰克逊霍尔雪场坐缆车上山，冬天那里是滑雪胜地；约 12 月中–4 月初镇北的国家马鹿保护区有马拉雪橇，能近看几千头过冬的马鹿。",
+      "time": "半天–1 天",
+      "tip": "这里物价和房价都高，夏季早订；镇上超市补给后再进黄石。",
+      "themes": ["city", "snow", "wildlife"],
+      "photo": "The town square in Jackson, Wyoming on a summer evening: a large arch made of interlocking pale elk antlers framing a leafy green park, wooden boardwalks and Western-style storefronts with false fronts around it, forested mountains rising behind, soft warm light, no readable signs."
+    }
+  ],
+  "foods": [
+    {
+      "id": "bison-burger",
+      "name": "野牛肉汉堡",
+      "local": "Bison Burger",
+      "text": "怀俄明餐馆菜单上的常客。野牛肉比牛肉瘦、味道更浓，煎到五六分熟最嫩，太熟会柴。黄石园内餐厅和杰克逊的小馆都有，也有人点马鹿肉汉堡或马鹿香肠尝鲜。",
+      "where": "杰克逊镇上、黄石园内餐厅",
+      "price": "一个约 18–25 美元（不含小费）",
+      "photo": "A thick bison burger on a toasted brioche bun with melted cheddar, lettuce, tomato and grilled onions, a side of fries, served on a wooden board in a rustic log-walled restaurant, warm light, 45-degree angle."
+    },
+    {
+      "id": "huckleberry",
+      "name": "越橘冰淇淋",
+      "local": "Huckleberry Ice Cream",
+      "text": "越橘是落基山北部野生的紫色小浆果，比蓝莓酸、香味更冲，至今没法大规模种植。黄石和杰克逊到处都是越橘冰淇淋、奶昔、果酱和派，看完间歇泉排队来一支是标准动作。",
+      "where": "黄石园内商店、杰克逊镇上的冰淇淋店",
+      "price": "一球约 5–7 美元",
+      "photo": "A waffle cone with two scoops of purple huckleberry ice cream studded with dark berry pieces, held outdoors against a blurred background of pine forest and steam rising from a geyser basin, bright summer daylight."
+    },
+    {
+      "id": "cutthroat-trout",
+      "name": "煎鳟鱼",
+      "local": "Pan-Fried Trout",
+      "text": "黄石和大提顿的河湖里有本地的割喉鳟，蛇河一带是飞蝇钓的名地。餐馆里吃到的多是养殖鳟鱼，裹粉煎得焦香，配柠檬、黄油和土豆，味道清淡，吃了几天汉堡后正好换换口味。",
+      "where": "杰克逊和园内湖区的餐厅",
+      "price": "一份约 25–35 美元（不含小费）",
+      "photo": "A whole pan-fried trout with crisp golden skin on a white plate with lemon wedges, roasted fingerling potatoes and green beans, a glass of water beside it, on a table by a window looking out on a lake and pine forest."
+    },
+    {
+      "id": "chuckwagon-dinner",
+      "name": "牛仔篷车晚餐",
+      "local": "Chuckwagon Dinner",
+      "text": "西部牧场的老吃法：在户外长桌上吃炖豆子、烤牛肉或烤鸡、玉米面包和饼干，常配一场乡村音乐表演。杰克逊附近几家牧场夏季每晚开饭，偏向游客体验，适合带孩子去热闹一下，要提前订位。",
+      "where": "杰克逊周边的牧场，多在 6–9 月",
+      "price": "一人约 50–70 美元",
+      "photo": "A tin plate with sliced barbecued beef, baked beans, cornbread and a buttered biscuit on a long wooden outdoor table, an old covered chuckwagon and pine-covered hills softly blurred behind at golden hour."
+    }
+  ],
+  "tips": [
+    "黄石、大提顿各收一次门票和每人 100 美元外国游客费；两人以上同车，直接买 250 美元外国人年卡。",
+    "离熊和狼至少约 91 米，离野牛和马鹿至少约 23 米；野牛伤人事故每年都有，别为拍照靠近。",
+    "地热区只走栈道，地表下面可能是滚烫的薄壳；园内严禁触碰温泉和下水泡温泉。",
+    "黄石海拔约 2,400 米，夏天也可能下冰雹、降到 0°C 附近，带抓绒和冲锋衣；园内信号很差，先下离线地图。",
+    "外国驾照可以在怀俄明开车，国际驾照建议带上；中国驾照带护照和英文翻译件，并按租车公司要求准备。"
+  ],
+  "nearby": ["colorado", "utah"],
+  "climate": { "city": "杰克逊", "ll": [-110.7624, 43.4799] },
+  "cover": {
+    "scene": "Grand Prismatic Spring in Yellowstone seen from the hillside overlook on a bright summer afternoon: an enormous round hot spring with a deep turquoise centre surrounded by vivid rings of green, yellow and orange, wide orange runoff channels spreading across pale ground, thin steam drifting, tiny visitors on a boardwalk, dark green pines and rolling hills under a blue sky.",
+    "alt": "俯瞰黄石大棱镜温泉"
+  },
+  "sources": [
+    { "title": "NPS：黄石门票", "url": "https://www.nps.gov/yell/planyourvisit/fees.htm" },
+    { "title": "NPS：黄石道路开放与封闭日期", "url": "https://www.nps.gov/yell/planyourvisit/parkroads.htm" },
+    { "title": "NPS：黄石安全须知（野生动物距离、地热区）", "url": "https://www.nps.gov/yell/planyourvisit/safety.htm" },
+    { "title": "NPS：大提顿门票", "url": "https://www.nps.gov/grte/planyourvisit/fees.htm" },
+    { "title": "NPS：非美国居民附加费", "url": "https://www.nps.gov/aboutus/nonresident-fees.htm" },
+    { "title": "NPS：America the Beautiful 年卡", "url": "https://www.nps.gov/planyourvisit/passes.htm" }
+  ],
+  "checked": "2026-11"
+}

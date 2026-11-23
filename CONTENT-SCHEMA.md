@@ -137,6 +137,9 @@
 
 写完每个文件后运行 `python3 -I -m json.tool <file> > /dev/null` 确认是合法 JSON；再运行 `python3 -I scripts/check_content.py <file>...` 检查字段。
 
-## 封面插画
+## 封面插画与配图
 
 县和地区的封面插画统一在 `src/data/japan/covers.json` 里描述，内容文件里**不要**写 `cover` 字段。
+景点和美食的写实配图描述在 `src/data/japan/photos/<地区>.json`（键 `s:<县>/<景点 id>`、`f:<县>/<美食 id>`），写法见 `CONTENT-SCHEMA-AU-US.md` 的「`photo` 与 `cover.scene`」。新增景点或美食时一并补上。
+
+澳大利亚和美国的格式见 `CONTENT-SCHEMA-AU-US.md`。

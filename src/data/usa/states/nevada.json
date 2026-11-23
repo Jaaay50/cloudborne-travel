@@ -1,0 +1,179 @@
+{
+  "slug": "nevada",
+  "country": "usa",
+  "name": "内华达",
+  "local": "Nevada",
+  "abbr": "NV",
+  "region": "mountain-west",
+  "tagline": "赌城霓虹之外，还有红岩、大坝和高山湖",
+  "intro": [
+    "内华达大部分是干旱的盆地和山脉，游客几乎都从拉斯维加斯进出。大道上的酒店、秀场和自助餐够玩两三天，但更值得的是开车一小时内就到的红石峡谷、火焰谷和胡佛水坝；这里也是去锡安、大峡谷那条大环线最常用的起点。",
+    "拉斯维加斯的节奏是白天热、晚上热闹。6–8 月中午动辄 40°C 以上，户外活动放在早上，午后回酒店休息，天黑再出门逛大道和老城弗里蒙特街。看秀、订餐都提前在官网订，酒店房价外别忘了度假村费和停车费。",
+    "州的另一头是太浩湖东岸和里诺，夏天湖水清得见底，冬天可以滑雪，离旧金山比离拉斯维加斯近得多，适合和加州北部连着玩。东部的大盆地国家公园很偏，但星空和几千岁的狐尾松在别处很难见到。"
+  ],
+  "days": "3–5 天",
+  "seasons": {
+    "months": [3, 4, 5, 10, 11],
+    "note": "3–5 月、10–11 月最舒服；6–8 月拉斯维加斯常超 40°C。太浩湖以 6–9 月为好，12–3 月是雪季。"
+  },
+  "stay": "第一次住大道中段（凯撒宫、百乐宫一带），走路能串起最多酒店和秀场；想省钱又爱热闹可以住老城弗里蒙特街附近。订房时比较含度假村费的总价。",
+  "access": [
+    { "from": "中国大陆", "how": "通常没有直飞，一般在洛杉矶或旧金山入境转机，越洋段约 11–13 小时，转飞拉斯维加斯约 1–1.5 小时。" },
+    { "from": "洛杉矶", "how": "走 I-15 开车约 430 公里（270 英里），4–5 小时，周五傍晚和周日下午常堵；飞机约 1 小时。" },
+    { "from": "大峡谷南缘", "how": "开车约 450 公里（280 英里），约 4.5 小时，快到时经过胡佛水坝。" },
+    { "from": "旧金山", "how": "去太浩湖开车约 3.5–4 小时；也可飞里诺（约 1 小时），再开车约 1 小时到湖东岸。" }
+  ],
+  "spots": [
+    {
+      "id": "las-vegas-strip",
+      "name": "拉斯维加斯大道",
+      "local": "Las Vegas Strip",
+      "kind": "city",
+      "ll": [-115.1770, 36.1131],
+      "text": "长约 6.8 公里的大道两边是一座接一座的主题酒店：百乐宫的音乐喷泉、威尼斯人的室内运河、球形场馆 Sphere 的外壳灯光都能免费看。酒店之间看着近，走起来常要十几分钟，靠天桥和室内通道串起来；想看的秀提前在官网订票。",
+      "time": "半天–2 天",
+      "tip": "百乐宫喷泉入夜后约每 15 分钟一场；大道酒店停车多收费，入住前查好。",
+      "fee": "逛街免费",
+      "themes": ["city", "family"],
+      "photo": "Elevated dusk view along the Las Vegas Strip: a long boulevard lined with glowing resort towers, the Bellagio fountains shooting tall arcs of water across a lake in front of a curved hotel facade, car light trails on the road, desert mountains as silhouettes under a fading orange and deep blue sky, no readable signs."
+    },
+    {
+      "id": "fremont-street",
+      "name": "弗里蒙特街",
+      "local": "Fremont Street Experience",
+      "kind": "street",
+      "ll": [-115.1435, 36.1705],
+      "text": "拉斯维加斯的老城区，五个街区长的步行街上空罩着巨大的 LED 天幕，天黑后整点放灯光秀，还能坐滑索从人群头顶飞过。这里赌桌门槛低、街头表演多，气氛比大道更野；往东走的东弗里蒙特一带有不少酒吧和小餐馆。",
+      "time": "2–3 小时",
+      "tip": "从大道坐 24 小时运行的 Deuce 双层巴士或打车约 15–20 分钟；深夜结伴走。",
+      "fee": "免费",
+      "themes": ["city"],
+      "photo": "Night view down a pedestrian street under a long arched LED canopy glowing with vivid blue and violet patterns, vintage casino facades trimmed with abstract neon shapes on both sides, crowds as small distant figures, a zipline cable running overhead, no readable signs."
+    },
+    {
+      "id": "hoover-dam",
+      "name": "胡佛水坝",
+      "local": "Hoover Dam",
+      "kind": "landmark",
+      "ll": [-114.7393, 36.0162],
+      "text": "1930 年代建成的混凝土拱坝，高约 221 米，把科罗拉多河拦成米德湖，坝顶正中就是内华达和亚利桑那的州界。坝顶可以免费走，最好的全景在下游纪念大桥的人行道上。想进坝体看发电机房，就买游客中心票或大坝导览票。",
+      "time": "2–3 小时",
+      "tip": "导览票只在现场卖，要先过安检；11–3 月坝两侧时区差 1 小时。",
+      "fee": "游客中心约 15 美元，停车约 10 美元",
+      "themes": ["heritage", "roadtrip"],
+      "photo": "View from the high pedestrian walkway of the Memorial Bridge looking upstream at Hoover Dam: a massive curved pale concrete wall wedged into a dark volcanic canyon, a white mineral band on the rock above the waterline, intake towers standing in deep blue Lake Mead behind, the green Colorado River below, bright midday sun."
+    },
+    {
+      "id": "valley-of-fire",
+      "name": "火焰谷州立公园",
+      "local": "Valley of Fire State Park",
+      "kind": "park",
+      "ll": [-114.5440, 36.4185],
+      "text": "内华达最老的州立公园，红色砂岩被风蚀成波浪、蜂窝和大象的样子，岩壁上还留着古代岩画。沿 White Domes 路开进去就能看到大部分精华，火焰波浪（Fire Wave）和白穹顶环线都是短步道。离拉斯维加斯约 1 小时，适合半日游。",
+      "time": "半天",
+      "tip": "约 5 月 15 日–9 月 30 日因高温关闭几条热门步道，夏天只看车道边。",
+      "fee": "外州车约 15 美元/车",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Late afternoon light on the Fire Wave in Valley of Fire: a smooth sandstone dome striped in swirling bands of deep red, pink and cream, small desert shrubs growing from cracks, jagged red rock fins behind under a clear deep-blue sky."
+    },
+    {
+      "id": "red-rock-canyon",
+      "name": "红石峡谷",
+      "local": "Red Rock Canyon National Conservation Area",
+      "kind": "drive",
+      "ll": [-115.4279, 36.1356],
+      "text": "离大道约 30 分钟车程。单向环行的景观道约 21 公里（13 英里），绕过红白相间的卡利科山和高耸的灰色崖壁，不停车约 45 分钟。沿途有不少短步道和攀岩点，春秋清晨去最舒服，也适合到拉斯维加斯后第一天倒时差。",
+      "time": "2–4 小时",
+      "tip": "10 月 1 日–5 月 31 日 8–17 点进景观道，要先在 recreation.gov 预约时段。",
+      "fee": "约 20 美元/车，认年卡",
+      "themes": ["nature", "roadtrip"],
+      "photo": "Morning view from a pullout on the Red Rock Canyon scenic drive: rounded Calico Hills sandstone banded in bright red, orange and cream, creosote bushes and a few Joshua trees in the foreground, a tall grey limestone escarpment behind, soft early light and a clear sky."
+    },
+    {
+      "id": "sand-harbor",
+      "name": "太浩湖沙港",
+      "local": "Sand Harbor, Lake Tahoe",
+      "kind": "nature",
+      "ll": [-119.9320, 39.1987],
+      "text": "太浩湖东岸属于内华达，沙港是湖水最透亮的一段：浅水里散着圆滚滚的花岗岩巨石，湖水从碧绿渐变到深蓝。夏天可以划桨板、在小沙滩晒太阳，7–8 月还有露天莎士比亚戏剧节。湖面海拔约 1,900 米，夏天湖水也很凉。",
+      "time": "半天",
+      "tip": "夏季周末停车场一早就满，28 号公路路边禁止停车，尽量 8 点前到。",
+      "fee": "外州车约 15 美元/车",
+      "themes": ["nature", "family"],
+      "photo": "Clear turquoise shallows of Lake Tahoe at Sand Harbor on a calm summer morning: large rounded granite boulders scattered in transparent water, the lake shifting from emerald to deep blue, a pine-covered shoreline and distant mountains with small patches of late snow."
+    },
+    {
+      "id": "great-basin",
+      "name": "大盆地国家公园",
+      "local": "Great Basin National Park",
+      "kind": "national-park",
+      "ll": [-114.2199, 39.0056],
+      "text": "内华达东部的偏远国家公园，不收门票。看点有三：钟乳石密布、只能跟导览进的雷曼洞，海拔近 4,000 米的惠勒峰，以及能活几千年的狐尾松。这里是国际暗夜公园，晴天夜里银河很清楚。从拉斯维加斯开车约 5 小时，建议住一晚。",
+      "time": "1–2 天",
+      "tip": "雷曼洞导览名额少，提前在 recreation.gov 订；惠勒峰景观道上段冬季封闭。",
+      "fee": "免门票，洞穴导览约 8–15 美元",
+      "themes": ["nature", "aurora"],
+      "photo": "Ancient Great Basin bristlecone pines on a rocky slope below Wheeler Peak at golden hour: twisted, wind-polished trunks in amber and silver tones, sparse clusters of needles, a grey quartzite summit with small snow patches behind under a clean blue sky."
+    }
+  ],
+  "foods": [
+    {
+      "id": "vegas-buffet",
+      "name": "酒店自助餐",
+      "local": "Las Vegas Buffet",
+      "text": "拉斯维加斯的招牌吃法。大道上几家高档酒店的自助餐把海鲜、牛排、各国菜和甜品摆成长长一排，比十几年前贵了不少，但一顿能尝很多。周末和节假日排队长，能在网上订位就先订，午餐比晚餐便宜。",
+      "where": "大道上凯撒宫、永利、大都会等酒店",
+      "price": "晚餐一人约 60–100 美元（不含小费）",
+      "photo": "Overhead view of a buffet plate on a white tablecloth: snow crab legs, a slice of prime rib, a few chilled shrimp, small dim sum and a mini dessert, buffet stations softly blurred in the warm-lit dining room behind."
+    },
+    {
+      "id": "spring-mountain-chinatown",
+      "name": "春山路中国城",
+      "local": "Spring Mountain Road Chinatown",
+      "text": "大道西边的春山路一带是拉斯维加斯的亚洲餐饮街，川菜、粤式点心、火锅、越南粉、拉面和韩国烤肉连成几公里，不少店开到深夜。吃腻了美式大餐，或者看完秀半夜饿了，打车十来分钟就到。",
+      "where": "大道以西的 Spring Mountain Road 沿线",
+      "price": "一人约 20–40 美元（不含小费）",
+      "photo": "A steaming bowl of Sichuan-style beef noodle soup with red chili oil, sliced beef and scallions beside small plates of dumplings and a pot of tea on a dark wooden table in a casual Asian restaurant, warm evening light, 45-degree angle."
+    },
+    {
+      "id": "shrimp-cocktail",
+      "name": "老派鲜虾杯",
+      "local": "Shrimp Cocktail",
+      "text": "老拉斯维加斯的经典小吃：高脚玻璃杯里塞满冰镇小虾，浇上酸甜带辣根味的番茄酱，配柠檬和苏打饼干。早年老城赌场拿它当低价招牌招揽客人，现在老城区和大道上的牛排馆、酒吧里还能点到。",
+      "where": "老城弗里蒙特街一带的老赌场、大道牛排馆",
+      "photo": "A tall stemmed glass packed with small chilled pink shrimp in bright red cocktail sauce, a lemon wedge on the rim, a side plate of saltine crackers, on a dark bar counter with warm low lighting."
+    },
+    {
+      "id": "basque-dinner",
+      "name": "巴斯克长桌餐",
+      "local": "Basque Family-Style Dinner",
+      "text": "一百多年前不少西班牙巴斯克人来内华达放羊，北部小城留下了长桌共餐的巴斯克餐馆：汤、沙拉、豆子、面包一道道端上桌，再上羊排或牛排，饭前来一杯苦甜的 Picon Punch。分量很大，适合几个人一起吃。",
+      "where": "里诺、埃尔科、加德纳维尔等北部城镇",
+      "photo": "Family-style Basque dinner on a long communal table: a tureen of vegetable soup, bowls of beans and green salad, a basket of crusty bread, grilled lamb chops on a platter and a short glass of amber aperitif, in a rustic wood-panelled dining room."
+    }
+  ],
+  "tips": [
+    "6–8 月白天常超 40°C：户外活动放在日出后两三小时内，车里备足水，别把手机和孩子留在车里。",
+    "大道酒店常在房价外收每晚几十美元的度假村费，自驾还要付停车费，订房比较总价。",
+    "内华达认可有效的外国驾照，国际驾照只当翻译用；中国驾照建议带护照和英文翻译件，并按租车公司要求准备。",
+    "内华达用太平洋时间，开进犹他要拨快 1 小时；喝酒、进赌场都要满 21 岁，随身带护照。",
+    "拉斯维加斯一日游常去的大峡谷「西缘玻璃桥」属华拉派部落，不是南缘国家公园，按想看的选。"
+  ],
+  "nearby": ["california", "arizona", "utah"],
+  "climate": { "city": "拉斯维加斯", "ll": [-115.1398, 36.1699] },
+  "cover": {
+    "scene": "A two-lane road curving through Valley of Fire State Park in Nevada in late afternoon, flanked by towering, deeply eroded red Aztec sandstone formations glowing orange in low sun, sparse desert shrubs along the shoulders, a single small car far down the road, long shadows and a clear deep-blue sky with a few thin clouds.",
+    "alt": "火焰谷红岩间的公路"
+  },
+  "sources": [
+    { "title": "NPS：非美国居民附加费", "url": "https://www.nps.gov/aboutus/nonresident-fees.htm" },
+    { "title": "NPS：America the Beautiful 年卡", "url": "https://www.nps.gov/planyourvisit/passes.htm" },
+    { "title": "美国垦务局：胡佛水坝参观信息", "url": "https://www.usbr.gov/lc/hooverdam/service/index.html" },
+    { "title": "内华达州立公园：火焰谷", "url": "https://parks.nv.gov/parks/valley-of-fire" },
+    { "title": "内华达州立公园：沙港", "url": "https://parks.nv.gov/parks/sand-harbor" },
+    { "title": "BLM：红石峡谷游览须知", "url": "https://www.blm.gov/programs/national-conservation-lands/nevada/red-rock-canyon-national-conservation-area/planning-your-visit" },
+    { "title": "NPS：大盆地国家公园门票与洞穴导览", "url": "https://www.nps.gov/grba/planyourvisit/fees.htm" },
+    { "title": "内华达 DMV 常见问题（外国驾照）", "url": "https://dmv.nv.gov/faqs.htm" }
+  ],
+  "checked": "2026-11"
+}

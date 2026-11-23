@@ -33,11 +33,11 @@ node scripts/prepare-geo.mjs    # 重新生成县界
 
 ## 插画
 
-木刻版画（新版画）风格，由 Cloudborne 中转站图片分组的 `gpt-image-2.6` 生成（2026-11-23，64 张，约 $3）。风格提示词和每张的场景描述在 `covers.json`。新增插画：在管理员账号上建分组 114 的限额临时 Key，按 `covers.json` 的 `style` + 场景生成 1536×1024 medium 质量，放进 `art-src/<组>/<slug>.png`，跑 `build-images.mjs`；用完停用并删除 Key。插画是风格化描绘，页脚已声明不代表实景。
+木刻版画（新版画）风格，AI 生成（2026-11-23，64 张）。风格提示词和每张的场景描述在 `covers.json`。新增插画：按 `covers.json` 的 `style` + 场景生成 1536×1024 的图，放进 `art-src/<组>/<slug>.png`，跑 `build-images.mjs`。插画是风格化描绘，页脚已声明不代表实景。
 
 ## 内容与核对
 
-正文为原创。票价、时长、政策由写作时用官方来源核对，来源和核对月份写在每个文件的 `sources` / `checked`，页面底部显示。写作时未能核实、只写了「约」或删掉具体数字的项目，记录在各批次交接里（见下方「待补核」）。
+正文为原创。票价、时长、政策由写作时用官方来源核对，来源和核对月份写在每个文件的 `sources` / `checked`，页面底部显示。未能核实的只写了「约」或不写具体数字（见下方「待补核」）。
 
 改内容后跑 `npm run check`，再 `npm run build`。
 
@@ -48,12 +48,14 @@ node scripts/prepare-geo.mjs    # 重新生成县界
 
 ## 离线
 
-`/sw.js`（由 `src/pages/sw.js.ts` 生成，每次构建换版本）预缓存首页、行程、预算和全部随身工具页，其它页面和图片访问过即缓存。
+`/sw.js`（由 `src/pages/sw.js.ts` 生成，`scripts/finalize-sw.mjs` 在构建后按内容算版本、补上 CSS/JS 预缓存）预缓存首页、行程、预算和全部随身工具页，其它页面和图片访问过即缓存。
 
 ## 部署
 
-尚未上线。计划：独立公开仓库 + GitHub Pages，域名 `travel.cloudborne.cn`（DNSPod CNAME），与 `mac.cloudborne.cn` 相同做法，不碰官网和广州主机。推送仓库、加 DNS 记录前需站长确认。
+公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
+
+上线后验收：`curl -sI https://travel.cloudborne.cn/` 为 200，首页、一个县页、`/plan/`、`/sw.js` 可访问，`/sw.js` 里的 `const V` 与本地 `dist/sw.js` 一致。
 
 ## 待补核
 
-写作时 WebSearch 额度用尽，以下类型的数字只按维基百科或公开资料写了「约」，上线前或之后可补核：各地区内铁路/巴士时长、部分门票（金阁寺、清水寺、大阪城、彦根城未写价格）、美食人均区间、祭典固定日期。
+以下类型的数字目前只按维基百科或公开资料写了「约」，可再对照运营方官网补核：各地区内铁路/巴士时长、部分门票（金阁寺、清水寺、大阪城、彦根城未写价格）、美食人均区间、祭典固定日期。

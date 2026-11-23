@@ -285,5 +285,6 @@ a:hover .pic img, .hover-zoom:hover .pic img { transform: scale(1.04); }
   .hdr, .ftr, .toast, .no-print { display: none !important; }
   body { background: #fff; }
   body::before { display: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
 .search-box input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }

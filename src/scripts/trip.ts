@@ -19,7 +19,11 @@ function sanitize(raw: unknown): TripState {
   const r = raw as Partial<TripState>;
   const ok = (k: unknown): k is string => typeof k === 'string' && /^[sf]:[a-z]+\/[a-z0-9-]+$/.test(k);
   if (typeof r.title === 'string') s.title = r.title.slice(0, 40);
-  if (typeof r.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.start)) s.start = r.start;
+  // Accept only real calendar dates (rejects 2026-13-45): the date must survive a UTC round trip unchanged.
+  if (typeof r.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.start)) {
+    const d = new Date(r.start + 'T00:00:00Z');
+    if (!Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === r.start) s.start = r.start;
+  }
   const seen = new Set<string>();
   const take = (arr: unknown) => (Array.isArray(arr) ? arr.filter((k) => ok(k) && !seen.has(k) && seen.add(k)) : []);
   if (Array.isArray(r.days)) s.days = r.days.slice(0, 30).map(take);
@@ -31,7 +35,12 @@ function sanitize(raw: unknown): TripState {
   return s;
 }
 
+// In-memory copy used when localStorage is blocked or full, so the session still works.
+let memory: TripState | null = null;
+export let persistent = true;
+
 export function load(): TripState {
+  if (memory) return sanitize(memory);
   try {
     return sanitize(JSON.parse(localStorage.getItem(KEY) || 'null'));
   } catch {
@@ -39,14 +48,19 @@ export function load(): TripState {
   }
 }
 
-export function save(s: TripState) {
+/** Returns false when the trip could only be kept in memory (private mode, storage full). */
+export function save(s: TripState): boolean {
   const clean = sanitize(s);
   try {
     localStorage.setItem(KEY, JSON.stringify(clean));
+    memory = null;
+    persistent = true;
   } catch {
-    /* storage full or blocked: keep in memory only */
+    memory = clean;
+    persistent = false;
   }
   listeners.forEach((fn) => fn(clean));
+  return persistent;
 }
 
 export const subscribe = (fn: (s: TripState) => void) => {
@@ -87,9 +101,22 @@ const unb64url = (s: string) => {
   const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/'));
   return Uint8Array.from(bin, (c) => c.charCodeAt(0));
 };
-async function pipe(bytes: Uint8Array, stream: CompressionStream | DecompressionStream) {
-  const out = new Response(new Blob([bytes as BlobPart]).stream().pipeThrough(stream));
-  return new Uint8Array(await out.arrayBuffer());
+const MAX_SHARE_BYTES = 64 * 1024;
+async function pipe(bytes: Uint8Array, stream: CompressionStream | DecompressionStream, limit = Infinity) {
+  const reader = new Blob([bytes as BlobPart]).stream().pipeThrough(stream).getReader();
+  const parts: Uint8Array[] = [];
+  let n = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    n += value.length;
+    if (n > limit) { await reader.cancel(); throw new Error('share data too large'); }
+    parts.push(value);
+  }
+  const out = new Uint8Array(n);
+  let o = 0;
+  for (const p of parts) { out.set(p, o); o += p.length; }
+  return out;
 }
 
 export async function encodeShare(s: TripState): Promise<string> {
@@ -101,8 +128,9 @@ export async function encodeShare(s: TripState): Promise<string> {
 export async function decodeShare(code: string): Promise<TripState | null> {
   try {
     const kind = code[0];
+    if (code.length > 20000) return null;
     let bytes = unb64url(code.slice(1));
-    if (kind === 'z') bytes = await pipe(bytes, new DecompressionStream('deflate-raw'));
+    if (kind === 'z') bytes = await pipe(bytes, new DecompressionStream('deflate-raw'), MAX_SHARE_BYTES);
     else if (kind !== 'j') return null;
     const o = JSON.parse(new TextDecoder().decode(bytes));
     return sanitize({ title: o.t, start: o.st, days: o.d, pool: o.p, notes: o.n });

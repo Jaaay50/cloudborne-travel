@@ -364,6 +364,11 @@ const tools = [
     }
   });
   const fire = (name: string, detail: unknown) => document.dispatchEvent(new CustomEvent(name, { detail }));
+  // The map may have restored a deep link (#r= / #p=) before this script ran: sync the panel to it.
+  const mapEl = document.querySelector<HTMLElement>('.jmap-explore');
+  if (mapEl?.dataset.level && mapEl.dataset.level !== 'nation') {
+    show(mapEl.dataset.level === 'region' ? `region:${mapEl.dataset.region}` : `pref:${mapEl.dataset.pref}`);
+  }
   panel.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     const r = t.closest<HTMLElement>('[data-go-region]');

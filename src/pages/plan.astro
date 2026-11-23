@@ -29,9 +29,9 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
   </section>
 
   <div class="wrap import-bar" id="import-bar" hidden>
-    <span>这是别人分享给你的行程。</span>
+    <span>你正在看别人分享的行程。</span>
     <button type="button" class="btn sm primary" id="import-yes">保存为我的行程</button>
-    <button type="button" class="btn sm" id="import-no">只看看</button>
+    <button type="button" class="btn sm" id="import-no">回到我的行程</button>
   </div>
 
   <section class="wrap plan-grid">
@@ -142,6 +142,7 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
 
 <script>
   import { load, save, subscribe, encodeShare, decodeShare, emptyTrip, type TripState } from '../scripts/trip';
+  import * as tripStore from '../scripts/trip';
   import { getCatalog, type Catalog } from '../scripts/catalog';
 
   const COLORS = ['#c2412b', '#2c6e8f', '#5c8a4e', '#b88a2e', '#7a4f9a', '#c0607a', '#2f8f80', '#8a5a3c', '#4a5fa0', '#a0522d'];
@@ -169,13 +170,16 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
     return `${d.getMonth() + 1}/${d.getDate()} 周${'日一二三四五六'[d.getDay()]}`;
   };
   // Hours from strings like "2–3 小时", "半天", "30–60 分钟", "1 天".
+  // Rough hours a spot takes within one day. Anything a day or longer counts as a full day (8 h),
+  // so a single multi-day stop never triggers the "too full" warning on its own.
   const hours = (t: string) => {
     if (!t) return 1;
     if (/半天/.test(t)) return 4;
+    if (/晚|夜/.test(t)) return 8;
     const m = t.match(/(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*(小时|分钟|天)/);
     if (!m) return /天/.test(t) ? 8 : 1.5;
     const v = m[2] ? (+m[1] + +m[2]) / 2 : +m[1];
-    return m[3] === '分钟' ? v / 60 : m[3] === '天' ? v * 8 : v;
+    return m[3] === '分钟' ? v / 60 : m[3] === '天' ? 8 : v;
   };
 
   function makeItem(key: string, where: string) {
@@ -281,10 +285,21 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
   }
 
   // ---- mutations ----
-  const commit = (flashKey?: string) => {
-    if (viewOnly) { render(); return; }
-    save(state);
-    if (flashKey) requestAnimationFrame(() => document.querySelector(`[data-key="${CSS.escape(flashKey)}"]`)?.classList.add('flash'));
+  let warnedStorage = false;
+  const commit = (flashKey?: string, focusSel?: string) => {
+    if (viewOnly) {
+      // Editing someone else's shared trip: offer to keep it, otherwise the edit would vanish on reload.
+      if (!adoptShared()) { state = sharedState ? structuredClone(sharedState) : state; render(); return; }
+    }
+    if (!save(state) && !warnedStorage) {
+      warnedStorage = true;
+      (window as any).cbtToast?.('浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。', 5000);
+    }
+    requestAnimationFrame(() => {
+      const li = flashKey ? document.querySelector<HTMLElement>(`[data-key="${CSS.escape(flashKey)}"]`) : null;
+      li?.classList.add('flash');
+      if (li && focusSel) li.querySelector<HTMLElement>(focusSel)?.focus();
+    });
   };
   const listOf = (where: string) => (where === 'pool' ? state.pool : state.days[+where]);
   const remove = (key: string) => { state.pool = state.pool.filter((k) => k !== key); state.days = state.days.map((d) => d.filter((k) => k !== key)); };
@@ -298,8 +313,8 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
       const where = li.closest<HTMLElement>('[data-drop]')!.dataset.drop!;
       const l = listOf(where), i = l.indexOf(key);
       if (t.classList.contains('del')) { remove(key); delete state.notes[key]; commit(); }
-      else if (t.classList.contains('up') && i > 0) { l.splice(i, 1); l.splice(i - 1, 0, key); commit(key); }
-      else if (t.classList.contains('down') && i < l.length - 1) { l.splice(i, 1); l.splice(i + 1, 0, key); commit(key); }
+      else if (t.classList.contains('up') && i > 0) { l.splice(i, 1); l.splice(i - 1, 0, key); commit(key, '.op.up'); }
+      else if (t.classList.contains('down') && i < l.length - 1) { l.splice(i, 1); l.splice(i + 1, 0, key); commit(key, '.op.down'); }
       return;
     }
     const dd = t.closest<HTMLElement>('[data-del-day]');
@@ -315,39 +330,409 @@ const xy = Object.fromEntries(allSpots.map((s) => [s.key, project(s.ll)]));
     if (!sel || !sel.value) return;
     const key = sel.closest<HTMLLIElement>('.item')!.dataset.key!;
     place(key, sel.value);
-    commit(key);
+    commit(key, 'select.move');
   });
   $('add-day').addEventListener('click', () => { if (state.days.length < 30) { state.days.push([]); commit(); } });
   $('clear').addEventListener('click', () => { if (confirm('清空整个行程？此操作无法撤销。')) { state = emptyTrip(); commit(); } });
-  $<HTMLInputElement>('trip-title').addEventListener('change', (e) => { state.title = (e.target as HTMLInputElement).value.trim() || '我的日本行程'; commit(); });
+  let titleTimer = 0;
+  const saveTitle = () => { const v = $<HTMLInputElement>('trip-title').value.trim() || '我的日本行程'; if (v !== state.title) { state.title = v; commit(); } };
+  $<HTMLInputElement>('trip-title').addEventListener('input', () => { clearTimeout(titleTimer); titleTimer = window.setTimeout(saveTitle, 400); });
+  $<HTMLInputElement>('trip-title').addEventListener('change', () => { clearTimeout(titleTimer); saveTitle(); });
   $<HTMLInputElement>('trip-start').addEventListener('change', (e) => { state.start = (e.target as HTMLInputElement).value || null; commit(); });
 
   // ---- drag and drop (desktop) ----
+  // Only drags that started on one of our items (custom type) are accepted, and state is always reset.
+  const DRAG_TYPE = 'application/x-cbt-item';
   let dragKey = '';
+  const endDrag = () => { document.querySelectorAll('.dragging, .over').forEach((x) => x.classList.remove('dragging', 'over')); dragKey = ''; };
+  const ours = (e: DragEvent) => !!dragKey && !!e.dataTransfer?.types.includes(DRAG_TYPE);
   document.addEventListener('dragstart', (e) => {
     const li = (e.target as HTMLElement).closest<HTMLLIElement>('.item');
     if (!li) return;
     dragKey = li.dataset.key!;
     li.classList.add('dragging');
     e.dataTransfer!.effectAllowed = 'move';
-    e.dataTransfer!.setData('text/plain', dragKey);
+    e.dataTransfer!.setData(DRAG_TYPE, dragKey);
+    e.dataTransfer!.setData('text/plain', li.querySelector('.nm')?.textContent || dragKey);
   });
-  document.addEventListener('dragend', () => { document.querySelectorAll('.dragging, .over').forEach((x) => x.classList.remove('dragging', 'over')); dragKey = ''; });
+  document.addEventListener('dragend', endDrag);
   document.addEventListener('dragover', (e) => {
     const ul = (e.target as HTMLElement).closest<HTMLElement>('[data-drop]');
-    if (!ul || !dragKey) return;
+    if (!ul || !ours(e)) return;
     e.preventDefault();
     document.querySelectorAll('.over').forEach((x) => x !== ul && x.classList.remove('over'));
     ul.classList.add('over');
   });
   document.addEventListener('drop', (e) => {
     const ul = (e.target as HTMLElement).closest<HTMLElement>('[data-drop]');
-    if (!ul || !dragKey) return;
+    if (!ul || !ours(e)) { endDrag(); return; }
     e.preventDefault();
-    const items = [...ul.querySelectorAll<HTMLLIElement>('.item')].filter((x) => x.dataset.key !== dragKey);
+    const key = dragKey;
+    const items = [...ul.querySelectorAll<HTMLLIElement>('.item')].filter((x) => x.dataset.key !== key);
     const idx = items.findIndex((x) => { const r = x.getBoundingClientRect(); return e.clientY < r.top + r.height / 2; });
-    place(dragKey, ul.dataset.drop!, idx);
-    commit(dragKey);
+    endDrag();
+    place(key, ul.dataset.drop!, idx);
+    commit(key);
+  });
+
+  // ---- share & export ----
+  $('share').addEventListener('click', async () => {
+    const code = await encodeShare(state);
+    const url = `${location.origin}/plan/#t=${code}`;
+    try { await navigator.clipboard.writeText(url); (window as any).cbtToast?.('分享链接已复制，发给同行的人就能看到这份行程'); }
+    catch { prompt('复制这个链接：', url); }
+  });
+  $('copy-text').addEventListener('click', async () => {
+    const lines = [state.title, ''];
+    state.days.forEach((d, i) => { lines.push(`【${dateOf(i) || `第 ${i + 1} 天`}】`); d.forEach((k, j) => lines.push(`${j + 1}. ${info(k).name}（${info(k).sub}）`)); lines.push(''); });
+    if (state.pool.length) { lines.push('【待安排】'); state.pool.forEach((k) => lines.push(`· ${info(k).name}`)); }
+    lines.push('— 用栖云旅行排的行程 travel.cloudborne.cn');
+    try { await navigator.clipboard.writeText(lines.join('\n')); (window as any).cbtToast?.('已复制文字版，可以直接粘贴到微信'); }
+    catch { prompt('复制下面的文字：', lines.join('\n')); }
+  });
+
+  // ---- shared trips (#t=...) ----
+  let sharedState: TripState | null = null;
+  function adoptShared(): boolean {
+    const cur = load();
+    if (cur.days.flat().length + cur.pool.length && !confirm('这是别人分享的行程。要保存成你自己的行程再修改吗？\n（会替换掉你现有的行程）')) return false;
+    viewOnly = false;
+    sharedState = null;
+    history.replaceState(null, '', '/plan/');
+    $('import-bar').hidden = true;
+    return true;
+  }
+  $('import-yes').addEventListener('click', () => { if (adoptShared()) commit(); });
+  $('import-no').addEventListener('click', () => {
+    viewOnly = false;
+    sharedState = null;
+    state = load();
+    history.replaceState(null, '', '/plan/');
+    $('import-bar').hidden = true;
+    render();
+  });
+  async function readHash() {
+    const m = location.hash.match(/^#t=(.+)$/);
+    if (!m) return;
+    const shared = await decodeShare(m[1]);
+    if (!shared) {
+      (window as any).cbtToast?.('这个分享链接打不开，可能复制不完整。请让对方重新发一次。', 5000);
+      history.replaceState(null, '', '/plan/');
+      return;
+    }
+    viewOnly = true;
+    sharedState = shared;
+    state = structuredClone(shared);
+    $('import-bar').hidden = false;
+    render();
+  }
+  addEventListener('hashchange', readHash);
+
+  // ---- init ----
+  subscribe((s) => { if (!viewOnly) { state = s; render(); } });
+  (async () => {
+    try { cat = await getCatalog(); } catch { /* names fall back to ids */ }
+    await readHash();
+    if (!viewOnly) render();
+    if (!tripStore.persistent) (window as any).cbtToast?.('浏览器不允许保存，关闭页面后行程会丢失。', 5000);
+  })();
+</script>
+  </div>
+</Base>
+
+<style is:global>
+@keyframes flash { 0% { background: var(--vermilion-bg); } 100% { background: var(--card); } }
+  .plan-page {
+  .plan-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 36px 0 18px; }
+  .title-input { font: 600 clamp(26px, 3.6vw, 38px) var(--serif); border: 0; background: transparent; color: var(--ink); padding: 2px 0; width: min(560px, 100%); border-bottom: 1px dashed transparent; outline: 0; }
+  .title-input:hover, .title-input:focus { border-bottom-color: var(--line-2); }
+  .ph-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--mut); margin-top: 6px; }
+  .ph-meta input { font: inherit; color: var(--ink); border: 1px solid var(--line-2); border-radius: 8px; padding: 3px 8px; background: var(--card); }
+  .ph-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .import-bar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 12px 16px; background: var(--indigo-bg); border-radius: 14px; margin-bottom: 14px; font-size: 14.5px; }
+  .plan-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 24px; align-items: start; }
+  .board { display: grid; gap: 14px; }
+  .pool { padding: 14px 16px; border-style: dashed; background: color-mix(in srgb, var(--card) 70%, transparent); }
+  .pool-empty { font-size: 14px; color: var(--mut); line-height: 1.8; padding: 4px 0 8px; }
+  .pool-empty a { color: var(--vermilion); font-weight: 600; }
+  .col-hd { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .col-hd b { font-family: var(--serif); font-size: 18px; }
+  .col-hd small { color: var(--mut); font-size: 13px; }
+  .col-hd .day-del { margin-left: auto; border: 0; background: none; color: var(--mut); cursor: pointer; font-size: 13px; padding: 4px 6px; border-radius: 6px; }
+  .col-hd .day-del:hover { background: var(--paper-2); color: var(--vermilion); }
+  .day { padding: 14px 16px; border-left: 4px solid var(--c, var(--ink)); }
+  .day .badge { display: inline-grid; place-items: center; min-width: 34px; height: 26px; border-radius: 8px; background: var(--c); color: #fff; font: 600 13px var(--sans); padding: 0 7px; }
+  .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; min-height: 44px; border-radius: 12px; transition: background var(--t-fast); }
+  .items.over { background: var(--vermilion-bg); outline: 2px dashed #e7b8aa; outline-offset: 2px; }
+  .items:empty::after { content: "把景点拖到这里"; display: grid; place-items: center; height: 44px; font-size: 13px; color: var(--mut); border: 1px dashed var(--line-2); border-radius: 12px; }
+  .item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; cursor: grab; transition: box-shadow var(--t-fast), transform var(--t-fast) var(--ease), opacity var(--t-fast); }
+  .item:hover { box-shadow: var(--sh-1); }
+  .item.dragging { opacity: .4; }
+  .item.flash { animation: flash 900ms var(--ease); }
+  .grip { color: var(--line-2); font-size: 12px; letter-spacing: -2px; cursor: grab; }
+  .ic { width: 26px; height: 26px; flex-shrink: 0; border-radius: 8px; display: grid; place-items: center; font-size: 12px; font-weight: 600; color: #fff; background: var(--vermilion); }
+  .ic.food { background: var(--gold); }
+  .txt { flex: 1; min-width: 0; display: grid; }
+  .nm { font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nm:hover { color: var(--vermilion); }
+  .sub { font-size: 12.5px; color: var(--mut); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ops { display: flex; gap: 2px; align-items: center; opacity: .5; transition: opacity var(--t-fast); }
+  .item:hover .ops, .item:focus-within .ops { opacity: 1; }
+  .op { border: 0; background: transparent; width: 26px; height: 26px; border-radius: 7px; cursor: pointer; color: var(--ink-2); font-size: 14px; }
+  .op:hover { background: var(--paper-2); }
+  select.op { width: auto; font-size: 12px; padding: 0 2px; border: 1px solid var(--line); background: var(--card); }
+  .op.del:hover { color: var(--vermilion); }
+  .add-day { border: 1px dashed var(--line-2); background: transparent; border-radius: 16px; padding: 14px; cursor: pointer; color: var(--ink-2); font-size: 15px; transition: background var(--t-fast), border-color var(--t-fast); }
+  .add-day:hover { background: var(--card); border-color: #c4b89e; }
+  .day-warn { font-size: 12.5px; color: #9a5b14; background: #fbf0db; border-radius: 8px; padding: 5px 10px; margin-top: 8px; }
+  .side-sticky { position: sticky; top: calc(var(--hdr) + 16px); display: grid; gap: 12px; }
+  .pmap { overflow: hidden; padding: 0; }
+  .pmap svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 12px; padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--line); }
+  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .legend i { width: 14px; height: 4px; border-radius: 2px; background: var(--c); }
+  .insights { padding: 14px 16px; font-size: 14px; color: var(--ink-2); display: grid; gap: 8px; }
+  .insights b { color: var(--ink); }
+  .insights ul { margin: 0; padding-left: 18px; }
+  @media (max-width: 1000px) { .plan-grid { grid-template-columns: 1fr; } .plan-side { order: -1; } .side-sticky { position: static; grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .side-sticky { grid-template-columns: 1fr; } .grip { display: none; } .ops { opacity: 1; } .op.up, .op.down { display: none; } }
+  @media print { .plan-grid { grid-template-columns: 1fr; } .ops, .grip { display: none !important; } .pool { display: none; } .item { break-inside: avoid; } }
+  }
+</style>
+
+<script>
+  import { load, save, subscribe, encodeShare, decodeShare, emptyTrip, type TripState } from '../scripts/trip';
+  import * as tripStore from '../scripts/trip';
+  import { getCatalog, type Catalog } from '../scripts/catalog';
+
+  const COLORS = ['#c2412b', '#2c6e8f', '#5c8a4e', '#b88a2e', '#7a4f9a', '#c0607a', '#2f8f80', '#8a5a3c', '#4a5fa0', '#a0522d'];
+  const XY: Record<string, [number, number]> = JSON.parse(document.getElementById('spot-xy')!.textContent || '{}');
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const tpl = $<HTMLTemplateElement>('item-tpl');
+  let cat: Catalog | null = null;
+  let state: TripState = load();
+  let viewOnly = false;
+
+  const prefName = (slug: string) => cat?.p.find((p) => p.s === slug)?.n ?? slug;
+  const info = (key: string) => {
+    const k = key.slice(2), pref = k.split('/')[0];
+    if (key.startsWith('s:')) {
+      const s = cat?.s.find((x) => x.k === k);
+      return { name: s?.n ?? k, sub: `${prefName(pref)} · ${s?.t ?? ''}`, href: `/japan/${pref}/#spot-${k.split('/')[1]}`, pref, food: false, time: s?.t ?? '' };
+    }
+    const f = cat?.f.find((x) => x.k === k);
+    return { name: f?.n ?? k, sub: `${prefName(pref)} · ${f?.w ?? ''}`, href: `/japan/${pref}/#food-${k.split('/')[1]}`, pref, food: true, time: '' };
+  };
+  const dateOf = (i: number) => {
+    if (!state.start) return '';
+    const d = new Date(state.start + 'T00:00:00');
+    d.setDate(d.getDate() + i);
+    return `${d.getMonth() + 1}/${d.getDate()} 周${'日一二三四五六'[d.getDay()]}`;
+  };
+  // Hours from strings like "2–3 小时", "半天", "30–60 分钟", "1 天".
+  // Rough hours a spot takes within one day. Anything a day or longer counts as a full day (8 h),
+  // so a single multi-day stop never triggers the "too full" warning on its own.
+  const hours = (t: string) => {
+    if (!t) return 1;
+    if (/半天/.test(t)) return 4;
+    if (/晚|夜/.test(t)) return 8;
+    const m = t.match(/(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*(小时|分钟|天)/);
+    if (!m) return /天/.test(t) ? 8 : 1.5;
+    const v = m[2] ? (+m[1] + +m[2]) / 2 : +m[1];
+    return m[3] === '分钟' ? v / 60 : m[3] === '天' ? 8 : v;
+  };
+
+  function makeItem(key: string, where: string) {
+    const li = tpl.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
+    const it = info(key);
+    li.dataset.key = key;
+    li.querySelector('.ic')!.textContent = it.food ? '食' : '景';
+    li.querySelector('.ic')!.classList.toggle('food', it.food);
+    const a = li.querySelector<HTMLAnchorElement>('.nm')!;
+    a.textContent = it.name;
+    a.href = it.href;
+    li.querySelector('.sub')!.textContent = it.sub;
+    const sel = li.querySelector<HTMLSelectElement>('select.move')!;
+    sel.innerHTML = `<option value="">移到…</option>` + (where !== 'pool' ? `<option value="pool">待安排</option>` : '') + state.days.map((_, i) => (String(i) === where ? '' : `<option value="${i}">第 ${i + 1} 天</option>`)).join('');
+    return li;
+  }
+
+  function render() {
+    $<HTMLInputElement>('trip-title').value = state.title;
+    $<HTMLInputElement>('trip-start').value = state.start ?? '';
+    // pool
+    const poolUl = document.querySelector<HTMLUListElement>('[data-drop="pool"]')!;
+    poolUl.replaceChildren(...state.pool.map((k) => makeItem(k, 'pool')));
+    $('pool-empty').hidden = state.pool.length > 0 || state.days.flat().length > 0;
+    $('pool-n').textContent = state.pool.length ? `${state.pool.length} 项` : '';
+    // days
+    const wrap = $('days');
+    wrap.replaceChildren(...state.days.map((d, i) => {
+      const sec = document.createElement('section');
+      sec.className = 'card day';
+      sec.style.setProperty('--c', COLORS[i % COLORS.length]);
+      const prefsToday = [...new Set(d.map((k) => info(k).pref))];
+      const h = d.filter((k) => k.startsWith('s:')).reduce((a, k) => a + hours(info(k).time), 0);
+      sec.innerHTML = `<div class="col-hd"><span class="badge">D${i + 1}</span><b>${dateOf(i) || `第 ${i + 1} 天`}</b><small>${d.length ? `${d.length} 项 · 约 ${Math.round(h)} 小时 · ${prefsToday.map(prefName).join('、')}` : ''}</small>${state.days.length > 1 ? `<button type="button" class="day-del" data-del-day="${i}">删除这天</button>` : ''}</div>`;
+      const ul = document.createElement('ul');
+      ul.className = 'items';
+      ul.dataset.drop = String(i);
+      ul.append(...d.map((k) => makeItem(k, String(i))));
+      sec.append(ul);
+      const warn: string[] = [];
+      if (prefsToday.length >= 3) warn.push(`一天跨 ${prefsToday.length} 个县，路上时间会很长`);
+      if (h > 10) warn.push(`景点加起来约 ${Math.round(h)} 小时，可能排太满`);
+      if (warn.length) {
+        const p = document.createElement('p');
+        p.className = 'day-warn';
+        p.textContent = warn.join('；');
+        sec.append(p);
+      }
+      return sec;
+    }));
+    drawMap();
+    insights();
+  }
+
+  function drawMap() {
+    const svg = $('pmap') as unknown as SVGSVGElement;
+    const routes = svg.querySelector('#routes')!, dots = svg.querySelector('#dots')!;
+    const pts: [number, number][] = [];
+    let r = '', d = '';
+    state.days.forEach((day, i) => {
+      const c = COLORS[i % COLORS.length];
+      const xy = day.filter((k) => XY[k.slice(2)]).map((k) => XY[k.slice(2)]);
+      if (xy.length > 1) r += `<polyline points="${xy.map((p) => p.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" opacity=".85"/>`;
+      xy.forEach((p, j) => { pts.push(p); d += `<g transform="translate(${p[0]} ${p[1]})"><circle r="9" fill="${c}" stroke="#fff" stroke-width="2" vector-effect="non-scaling-stroke" class="pd"/><text text-anchor="middle" dy="3.6" font-size="9.5" font-weight="700" fill="#fff" class="pt">${j + 1}</text></g>`; });
+    });
+    state.pool.filter((k) => XY[k.slice(2)]).forEach((k) => { const p = XY[k.slice(2)]; pts.push(p); d += `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#fff" stroke="#7a7f8a" stroke-width="1.5" vector-effect="non-scaling-stroke" class="pd"/>`; });
+    routes.innerHTML = r;
+    dots.innerHTML = d;
+    // fit view
+    let vb = [0, 0, 1000, 1000];
+    if (pts.length) {
+      const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+      const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const s = Math.max(x1 - x0, y1 - y0, 120) + 80;
+      vb = [(x0 + x1) / 2 - s / 2, (y0 + y1) / 2 - s / 2, s, s];
+    }
+    svg.setAttribute('viewBox', vb.map((n) => n.toFixed(1)).join(' '));
+    const k = vb[2] / 1000;
+    svg.querySelectorAll<SVGGElement>('#dots g').forEach((g) => g.setAttribute('transform', g.getAttribute('transform')!.replace(/ scale\([^)]*\)/, '') + ` scale(${k.toFixed(3)})`));
+    svg.querySelectorAll<SVGCircleElement>('#dots > circle').forEach((c) => c.setAttribute('r', String(6 * k)));
+    $('legend').innerHTML = state.days.map((day, i) => (day.length ? `<span style="--c:${COLORS[i % COLORS.length]}"><i></i>D${i + 1}</span>` : '')).join('') + (state.pool.length ? `<span style="--c:#7a7f8a"><i style="height:8px;width:8px;border-radius:50%;background:#fff;border:1.5px solid #7a7f8a"></i>待安排</span>` : '');
+  }
+
+  function insights() {
+    const all = [...state.pool, ...state.days.flat()];
+    const spots = all.filter((k) => k.startsWith('s:'));
+    const prefs = [...new Set(all.map((k) => info(k).pref))];
+    const nights: string[] = [];
+    let moves = 0, last = '';
+    state.days.forEach((d) => {
+      const main = d.length ? info(d[d.length - 1]).pref : last;
+      if (last && main && main !== last) moves++;
+      if (main) last = main;
+      nights.push(main);
+    });
+    const tips: string[] = [];
+    if (state.pool.length) tips.push(`还有 ${state.pool.length} 项没排进具体哪天。`);
+    if (moves >= 3) tips.push(`行程里换了约 ${moves} 次落脚地。考虑用寄行李服务，或减少换酒店的次数。`);
+    if (state.days.length >= 7 && prefs.length >= 5) tips.push('一周以上、跨很多县，可以对比一下 JR Pass 或地区周游券的价格。<a href="/japan/tools/transport/">交通常识 →</a>');
+    if (!all.length) tips.push('先去挑几个想去的地方吧。');
+    $('trip-sum').textContent = `${state.days.length} 天 · ${spots.length} 个景点 · ${prefs.length} 个县`;
+    $('insights').innerHTML = `<b>这份行程</b><ul>${[`${state.days.length} 天，${spots.length} 个景点，${all.length - spots.length} 个美食`, prefs.length ? `涉及：${prefs.map(prefName).join('、')}` : '', ...tips].filter(Boolean).map((t) => `<li>${t}</li>`).join('')}</ul><a class="btn sm" href="/budget/?days=${state.days.length}" style="justify-self:start">按 ${state.days.length} 天算预算 →</a>`;
+  }
+
+  // ---- mutations ----
+  let warnedStorage = false;
+  const commit = (flashKey?: string, focusSel?: string) => {
+    if (viewOnly) {
+      // Editing someone else's shared trip: offer to keep it, otherwise the edit would vanish on reload.
+      if (!adoptShared()) { state = sharedState ? structuredClone(sharedState) : state; render(); return; }
+    }
+    if (!save(state) && !warnedStorage) {
+      warnedStorage = true;
+      (window as any).cbtToast?.('浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。', 5000);
+    }
+    requestAnimationFrame(() => {
+      const li = flashKey ? document.querySelector<HTMLElement>(`[data-key="${CSS.escape(flashKey)}"]`) : null;
+      li?.classList.add('flash');
+      if (li && focusSel) li.querySelector<HTMLElement>(focusSel)?.focus();
+    });
+  };
+  const listOf = (where: string) => (where === 'pool' ? state.pool : state.days[+where]);
+  const remove = (key: string) => { state.pool = state.pool.filter((k) => k !== key); state.days = state.days.map((d) => d.filter((k) => k !== key)); };
+  const place = (key: string, where: string, index = -1) => { remove(key); const l = listOf(where); if (index < 0 || index > l.length) l.push(key); else l.splice(index, 0, key); };
+
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const li = t.closest<HTMLLIElement>('.item');
+    if (li && t.closest('.op')) {
+      const key = li.dataset.key!;
+      const where = li.closest<HTMLElement>('[data-drop]')!.dataset.drop!;
+      const l = listOf(where), i = l.indexOf(key);
+      if (t.classList.contains('del')) { remove(key); delete state.notes[key]; commit(); }
+      else if (t.classList.contains('up') && i > 0) { l.splice(i, 1); l.splice(i - 1, 0, key); commit(key, '.op.up'); }
+      else if (t.classList.contains('down') && i < l.length - 1) { l.splice(i, 1); l.splice(i + 1, 0, key); commit(key, '.op.down'); }
+      return;
+    }
+    const dd = t.closest<HTMLElement>('[data-del-day]');
+    if (dd) {
+      const i = +dd.dataset.delDay!;
+      state.pool.push(...state.days[i]);
+      state.days.splice(i, 1);
+      commit();
+    }
+  });
+  document.addEventListener('change', (e) => {
+    const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select.move');
+    if (!sel || !sel.value) return;
+    const key = sel.closest<HTMLLIElement>('.item')!.dataset.key!;
+    place(key, sel.value);
+    commit(key, 'select.move');
+  });
+  $('add-day').addEventListener('click', () => { if (state.days.length < 30) { state.days.push([]); commit(); } });
+  $('clear').addEventListener('click', () => { if (confirm('清空整个行程？此操作无法撤销。')) { state = emptyTrip(); commit(); } });
+  let titleTimer = 0;
+  const saveTitle = () => { const v = $<HTMLInputElement>('trip-title').value.trim() || '我的日本行程'; if (v !== state.title) { state.title = v; commit(); } };
+  $<HTMLInputElement>('trip-title').addEventListener('input', () => { clearTimeout(titleTimer); titleTimer = window.setTimeout(saveTitle, 400); });
+  $<HTMLInputElement>('trip-title').addEventListener('change', () => { clearTimeout(titleTimer); saveTitle(); });
+  $<HTMLInputElement>('trip-start').addEventListener('change', (e) => { state.start = (e.target as HTMLInputElement).value || null; commit(); });
+
+  // ---- drag and drop (desktop) ----
+  // Only drags that started on one of our items (custom type) are accepted, and state is always reset.
+  const DRAG_TYPE = 'application/x-cbt-item';
+  let dragKey = '';
+  const endDrag = () => { document.querySelectorAll('.dragging, .over').forEach((x) => x.classList.remove('dragging', 'over')); dragKey = ''; };
+  const ours = (e: DragEvent) => !!dragKey && !!e.dataTransfer?.types.includes(DRAG_TYPE);
+  document.addEventListener('dragstart', (e) => {
+    const li = (e.target as HTMLElement).closest<HTMLLIElement>('.item');
+    if (!li) return;
+    dragKey = li.dataset.key!;
+    li.classList.add('dragging');
+    e.dataTransfer!.effectAllowed = 'move';
+    e.dataTransfer!.setData(DRAG_TYPE, dragKey);
+    e.dataTransfer!.setData('text/plain', li.querySelector('.nm')?.textContent || dragKey);
+  });
+  document.addEventListener('dragend', endDrag);
+  document.addEventListener('dragover', (e) => {
+    const ul = (e.target as HTMLElement).closest<HTMLElement>('[data-drop]');
+    if (!ul || !ours(e)) return;
+    e.preventDefault();
+    document.querySelectorAll('.over').forEach((x) => x !== ul && x.classList.remove('over'));
+    ul.classList.add('over');
+  });
+  document.addEventListener('drop', (e) => {
+    const ul = (e.target as HTMLElement).closest<HTMLElement>('[data-drop]');
+    if (!ul || !ours(e)) { endDrag(); return; }
+    e.preventDefault();
+    const key = dragKey;
+    const items = [...ul.querySelectorAll<HTMLLIElement>('.item')].filter((x) => x.dataset.key !== key);
+    const idx = items.findIndex((x) => { const r = x.getBoundingClientRect(); return e.clientY < r.top + r.height / 2; });
+    endDrag();
+    place(key, ul.dataset.drop!, idx);
+    commit(key);
   });
 
   // ---- share & export ----

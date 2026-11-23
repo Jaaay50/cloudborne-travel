@@ -8,7 +8,7 @@
     "images": "node scripts/build-images.mjs",
     "check": "python3 -I scripts/check_content.py --all",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/finalize-sw.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

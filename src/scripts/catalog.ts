@@ -8,7 +8,7 @@ export interface Catalog { p: CatPref[]; s: CatSpot[]; f: CatFood[]; r: CatLink[
 let cache: Promise<Catalog> | null = null;
 export function getCatalog(): Promise<Catalog> {
   if (!cache) {
-    cache = fetch('/catalog.json', { cache: 'force-cache' }).then((r) => {
+    cache = fetch('/catalog.json').then((r) => {
       if (!r.ok) throw new Error('catalog ' + r.status);
       return r.json();
     });

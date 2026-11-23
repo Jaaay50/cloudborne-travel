@@ -131,6 +131,7 @@ function search(qRaw: string): Hit[] {
 function renderResults() {
   if (!list || !input) return;
   const q = input.value.trim();
+  input.removeAttribute('aria-activedescendant');
   if (!q) {
     list.innerHTML = `<div class="search-empty">试试「京都」「温泉」「拉面」「红叶」「机场」「退税」</div>`;
     return;

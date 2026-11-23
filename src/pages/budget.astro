@@ -109,6 +109,7 @@ import Base from '../layouts/Base.astro';
 </style>
 
 <script>
+  import { readJSON, writeJSON, remove } from '../scripts/store';
   const KEY = 'cbt.budget.v1';
   const TIERS: Record<string, Record<string, number>> = {
     save: { flight: 2200, hotel: 9000, food: 4000, local: 1000, tickets: 1000, rail: 8000, airport: 2500, sim: 1500, shop: 10000, insure: 60 },
@@ -132,7 +133,9 @@ import Base from '../layouts/Base.astro';
   }
 
   function calc() {
-    const people = Math.max(1, num('people')), days = Math.max(1, num('days')), rate = Math.max(1, num('rate'));
+    // An empty or silly exchange rate (while typing) falls back to a typical rate instead of 1.
+    const rawRate = num('rate');
+    const people = Math.max(1, num('people')), days = Math.max(1, num('days')), rate = rawRate >= 5 ? rawRate : 21;
     const nights = Math.max(0, days - 1), perRoom = Math.max(1, num('perRoom'));
     const rooms = Math.ceil(people / perRoom);
     const kyN = (form.elements.namedItem('kyoto') as HTMLInputElement).checked ? Math.min(nights, num('kyotoNights')) : 0;
@@ -158,13 +161,20 @@ import Base from '../layouts/Base.astro';
     document.getElementById('tbl')!.innerHTML = Object.entries(cny).map(([k, v]) => `<tr><td><i style="background:${COLORS[k as keyof typeof COLORS]}"></i>${NAMES[k as keyof typeof NAMES]}${k === 'hotel' ? `<small>${rooms} 间 × ${nights} 晚${kyTax ? ` · 含京都税 ${fmt(kyTax)} 日元` : ''}</small>` : ''}</td><td>¥${fmt(v)}${k !== 'flight' && rate ? `<small>${fmt(v * rate)} 日元</small>` : ''}</td></tr>`).join('');
     const data: Record<string, string | boolean> = { tier };
     for (const el of Array.from(form.elements) as HTMLInputElement[]) if (el.name) data[el.name] = el.type === 'checkbox' ? el.checked : el.value;
-    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { /* ignore */ }
+    writeJSON(KEY, data);
     return { total, people, days, cny };
   }
 
   document.querySelectorAll<HTMLButtonElement>('[data-tier]').forEach((b) => b.addEventListener('click', () => { setTier(b.dataset.tier!); calc(); }));
   form.addEventListener('input', calc);
-  document.getElementById('bd-reset')!.addEventListener('click', () => { localStorage.removeItem(KEY); (form.elements.namedItem('people') as HTMLInputElement).value = '2'; (form.elements.namedItem('days') as HTMLInputElement).value = '6'; setTier('mid'); calc(); });
+  const DEFAULTS: Record<string, string> = { people: '2', days: '6', rate: '21.0', perRoom: '2', kyotoNights: '0' };
+  document.getElementById('bd-reset')!.addEventListener('click', () => {
+    remove(KEY);
+    for (const [k, v] of Object.entries(DEFAULTS)) (form.elements.namedItem(k) as HTMLInputElement).value = v;
+    (form.elements.namedItem('kyoto') as HTMLInputElement).checked = false;
+    setTier('mid');
+    calc();
+  });
   document.getElementById('bd-copy')!.addEventListener('click', async () => {
     const { total, people, days, cny } = calc();
     const text = [`日本 ${days} 天 · ${people} 人 预算（人民币）`, ...Object.entries(cny).map(([k, v]) => `${NAMES[k as keyof typeof NAMES]}：¥${fmt(v)}`), `合计：¥${fmt(total)}，每人 ¥${fmt(total / people)}`, '— 栖云旅行 travel.cloudborne.cn/budget/'].join('\n');
@@ -172,8 +182,7 @@ import Base from '../layouts/Base.astro';
   });
 
   // init: saved values > ?days= > tier defaults
-  let saved: Record<string, string | boolean> | null = null;
-  try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { saved = null; }
+  const saved = readJSON<Record<string, string | boolean> | null>(KEY, null, (v): v is Record<string, string | boolean> => !!v && typeof v === 'object' && !Array.isArray(v));
   setTier(typeof saved?.tier === 'string' && TIERS[saved.tier] ? saved.tier : 'mid', !!saved);
   if (saved) for (const [k, v] of Object.entries(saved)) { const el = form.elements.namedItem(k) as HTMLInputElement | null; if (el) el.type === 'checkbox' ? (el.checked = !!v) : (el.value = String(v)); }
   const qd = new URLSearchParams(location.search).get('days');

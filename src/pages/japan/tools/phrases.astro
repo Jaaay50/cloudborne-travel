@@ -65,9 +65,12 @@ const cats = phrases?.categories ?? [];
   @media (max-width: 640px) { .ph-list { grid-template-columns: 1fr; } }
 </style>
 <script>
+  import { readJSON, writeJSON, isStringArray } from '../../../scripts/store';
   const KEY = 'cbt.phrases.fav';
-  const favs = new Set<string>(JSON.parse(localStorage.getItem(KEY) || '[]'));
   const items = [...document.querySelectorAll<HTMLElement>('.ph')];
+  const known = new Set(items.map((el) => el.dataset.id!));
+  // Drop favourites whose phrase no longer exists, so the ★ tab is never mysteriously empty.
+  const favs = new Set<string>(readJSON(KEY, [] as string[], isStringArray).filter((id) => known.has(id)));
   const tabs = [...document.querySelectorAll<HTMLButtonElement>('.ph-tabs .chip')];
   let cat = favs.size ? 'fav' : (tabs[1]?.dataset.cat ?? 'fav');
   const paint = () => {
@@ -90,7 +93,7 @@ const cats = phrases?.categories ?? [];
     if (t.closest('[data-star]')) {
       const id = el.dataset.id!;
       favs.has(id) ? favs.delete(id) : favs.add(id);
-      localStorage.setItem(KEY, JSON.stringify([...favs]));
+      writeJSON(KEY, [...favs]);
       paint();
       return;
     }
@@ -106,7 +109,7 @@ const cats = phrases?.categories ?? [];
   });
   full.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
-    if (t.closest('[data-close]')) { full.hidden = true; cur?.querySelector<HTMLElement>('[data-show]')?.focus(); }
+    if (t.closest('[data-close]')) closeFull();
     if (t.closest('[data-rotate]')) full.classList.toggle('rot');
     if (t.closest('[data-speak]') && 'speechSynthesis' in window) {
       const u = new SpeechSynthesisUtterance(full.querySelector('.pf-ja')!.textContent || '');
@@ -116,6 +119,17 @@ const cats = phrases?.categories ?? [];
       speechSynthesis.speak(u);
     }
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !full.hidden) full.hidden = true; });
+  const closeFull = () => { full.hidden = true; cur?.querySelector<HTMLElement>('[data-show]')?.focus(); };
+  document.addEventListener('keydown', (e) => {
+    if (full.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeFull(); return; }
+    if (e.key === 'Tab') {
+      const btns = [...full.querySelectorAll<HTMLElement>('button')];
+      const i = btns.indexOf(document.activeElement as HTMLElement);
+      const next = e.shiftKey ? (i <= 0 ? btns.length - 1 : i - 1) : (i === btns.length - 1 ? 0 : i + 1);
+      e.preventDefault();
+      btns[next].focus();
+    }
+  });
   paint();
 </script>

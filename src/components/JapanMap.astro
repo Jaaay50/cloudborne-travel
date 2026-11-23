@@ -254,7 +254,7 @@ const id = `map-${mode}-${focusPref ?? focusRegion ?? 'all'}`;
     const zoom = (target: Box) => {
       cancelAnimationFrame(raf);
       const to = square(target);
-      if (reduce) { setBox(to); declutter(root); return; }
+      if (reduce) { setBox(to); requestAnimationFrame(() => declutter(root)); return; }
       const from = cur.slice() as Box;
       const t0 = performance.now();
       const dur = 620;
@@ -283,10 +283,14 @@ const id = `map-${mode}-${focusPref ?? focusRegion ?? 'all'}`;
       root.querySelectorAll<SVGElement>('.pin').forEach((el) => {
         const on = state.level === 'region' ? el.dataset.region === activeRegion : state.level === 'pref' ? el.dataset.pref === state.pref : !!theme && (el.dataset.themes || '').split(' ').includes(theme);
         el.toggleAttribute('data-active', on);
-        el.classList.toggle('off', !!theme && !(el.dataset.themes || '').split(' ').includes(theme));
+        const off = !!theme && !(el.dataset.themes || '').split(' ').includes(theme);
+        el.classList.toggle('off', off);
+        if (on && !off) el.removeAttribute('tabindex'); else el.setAttribute('tabindex', '-1');
       });
       back.hidden = state.level === 'nation';
       backLabel.textContent = state.level === 'pref' && !singlePref(state.region!) ? regionNames[state.region!] : '全国';
+      root.dataset.region = state.region ?? '';
+      root.dataset.pref = state.pref ?? '';
       root.dispatchEvent(new CustomEvent('jmap:state', { detail: { ...state }, bubbles: true }));
     };
 
@@ -344,13 +348,14 @@ const id = `map-${mode}-${focusPref ?? focusRegion ?? 'all'}`;
     // external control
     document.addEventListener('jmap:go', (e) => {
       const d = (e as CustomEvent).detail as { region?: string; pref?: string };
-      if (d.pref) go({ level: 'pref', region: prefs[d.pref].region, pref: d.pref });
-      else if (d.region) openRegion(d.region);
+      if (d.pref && Object.hasOwn(prefs, d.pref)) go({ level: 'pref', region: prefs[d.pref].region, pref: d.pref });
+      else if (d.region && Object.hasOwn(regions, d.region)) openRegion(d.region);
       else go({ level: 'nation' });
     });
     document.addEventListener('jmap:theme', (e) => {
       theme = (e as CustomEvent).detail || '';
       paint();
+      requestAnimationFrame(() => declutter(root));
     });
     document.addEventListener('jmap:hover', (e) => {
       const d = (e as CustomEvent).detail as { region?: string; pref?: string; key?: string } | null;
@@ -358,12 +363,23 @@ const id = `map-${mode}-${focusPref ?? focusRegion ?? 'all'}`;
       root.querySelectorAll<SVGElement>('.pin').forEach((p) => p.classList.toggle('hot', !!d?.key && p.dataset.key === d.key));
     });
 
-    // initial state from hash
-    const h = location.hash;
-    const m = h.match(/^#([rp])=([a-z]+)$/);
+    // State from the URL hash: on load (no animation) and when the hash changes later (animated).
+    const fromHash = (): typeof state | null => {
+      const m = location.hash.match(/^#([rp])=([a-z]+)$/);
+      if (m && m[1] === 'r' && Object.hasOwn(regions, m[2])) return { level: 'region', region: m[2] };
+      if (m && m[1] === 'p' && Object.hasOwn(prefs, m[2])) return { level: 'pref', region: prefs[m[2]].region, pref: m[2] };
+      return null;
+    };
+    const initial = fromHash();
     setBox(home);
-    if (m && m[1] === 'r' && regions[m[2]]) { state = { level: 'region', region: m[2] }; setBox(square(regions[m[2]].box)); }
-    else if (m && m[1] === 'p' && prefs[m[2]]) { state = { level: 'pref', region: prefs[m[2]].region, pref: m[2] }; setBox(square(prefs[m[2]].box)); }
+    if (initial) {
+      state = initial;
+      setBox(square(initial.level === 'region' ? regions[initial.region!].box : prefs[initial.pref!].box));
+    }
     paint();
+    addEventListener('hashchange', () => {
+      const next = fromHash();
+      if (next && (next.level !== state.level || next.region !== state.region || next.pref !== state.pref)) go(next, false);
+    });
   }
 </script>

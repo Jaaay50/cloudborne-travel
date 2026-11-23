@@ -1,0 +1,67 @@
+---
+import ToolShell from '../../../components/ToolShell.astro';
+import { emergency } from '../../../lib/toolkit';
+const tel = (s: string) => 'tel:' + s.replace(/[^\d+]/g, '');
+---
+<ToolShell slug="emergency" title="紧急求助" description="在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。" lead="手机上点号码可以直接拨打。建议出发前截图保存这一页。" sources={emergency?.sources}>
+  {!emergency && <p class="tcard">内容整理中。</p>}
+  {emergency && (
+    <>
+      <div class="nums">
+        {emergency.numbers.map((n) => (
+          <a class="num" href={tel(n.number)}>
+            <span class="n">{n.number}</span>
+            <span><b>{n.label}</b>{n.note && <small>{n.note}</small>}</span>
+          </a>
+        ))}
+      </div>
+      <section class="tool-sec">
+        <h2>求助电话</h2>
+        <div class="contacts">
+          {emergency.contacts.map((c) => (
+            <div class="tcard contact">
+              <div><b>{c.name}</b>{c.hours && <small>{c.hours}</small>}{c.note && <p>{c.note}</p>}</div>
+              <div class="c-act">
+                <a class="btn sm" href={tel(c.phone)}>{c.phone}</a>
+                {c.url && <a class="c-url" href={c.url} target="_blank" rel="noopener nofollow">官网</a>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section class="tool-sec">
+        <h2>遇到这些情况</h2>
+        <div class="faq">
+          {emergency.steps.map((s, i) => (
+            <details open={i === 0}>
+              <summary>{s.title}</summary>
+              <ol>{s.items.map((t) => <li>{t}</li>)}</ol>
+            </details>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+</ToolShell>
+<style>
+  .nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 22px; }
+  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 18px; background: var(--vermilion); color: #fff; transition: transform var(--t-fast) var(--ease), background var(--t-fast); }
+  .num:nth-child(n + 3) { background: var(--ink); }
+  .num:hover { transform: translateY(-2px); }
+  .num:active { transform: scale(.98); }
+  .num .n { font: 700 32px/1 var(--sans); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+  .num b { display: block; font-size: 15px; }
+  .num small { display: block; font-size: 12px; opacity: .85; line-height: 1.45; }
+  .contacts { display: grid; gap: 8px; }
+  .contact { display: flex; justify-content: space-between; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .contact small { color: var(--mut); font-size: 12.5px; margin-left: 8px; }
+  .c-act { display: flex; gap: 10px; align-items: center; }
+  .c-url { font-size: 13px; color: var(--indigo); }
+  .faq { display: grid; gap: 8px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 16px; }
+  summary { cursor: pointer; padding: 13px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+  summary::after { content: "+"; color: var(--mut); transition: transform var(--t) var(--ease); }
+  details[open] summary::after { transform: rotate(45deg); }
+  summary::-webkit-details-marker { display: none; }
+  details ol { margin: 0 0 14px; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; display: grid; gap: 5px; }
+</style>

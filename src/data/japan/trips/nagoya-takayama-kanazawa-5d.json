@@ -1,0 +1,66 @@
+{
+  "id": "nagoya-takayama-kanazawa-5d",
+  "title": "名古屋进出：高山·白川乡·金泽 5 天",
+  "region": "chubu",
+  "daysCount": 5,
+  "for": "第二次去日本、想看老街和合掌村的人，飞名古屋进出",
+  "season": "4–5 月、10–11 月最舒服；1–2 月雪景",
+  "summary": "从名古屋出发逆时针绕一圈：坐特急上飞驒高山逛老街，第三天经白川乡坐巴士到金泽，最后从敦贺换车回名古屋。外国游客买「高山·北陆地区周游券」基本都能覆盖，敦贺到名古屋这一段要另买票。巴士全是指定席，要提前订。",
+  "bases": ["名古屋 1 晚", "高山 1 晚", "金泽 2 晚"],
+  "days": [
+    {
+      "title": "抵达名古屋",
+      "stay": "名古屋",
+      "items": [
+        { "note": "从中部机场坐名铁到名古屋，放下行李" },
+        { "pref": "aichi", "spot": "nagoya-castle" },
+        { "pref": "aichi", "spot": "osu" },
+        { "pref": "aichi", "food": "hitsumabushi" }
+      ],
+      "move": "机场到名铁名古屋约 29–38 分钟；本丸御殿下午 4 点停止入场"
+    },
+    {
+      "title": "特急上飞驒高山",
+      "stay": "高山",
+      "items": [
+        { "pref": "gifu", "spot": "takayama-sanmachi" },
+        { "pref": "gifu", "food": "hida-gyu" },
+        { "pref": "gifu", "food": "mitarashi-dango" },
+        { "pref": "gifu", "food": "takayama-ramen" }
+      ],
+      "move": "名古屋坐 JR 特急「ひだ」到高山约 2 小时 30 分钟"
+    },
+    {
+      "title": "朝市、白川乡、到金泽",
+      "stay": "金泽",
+      "items": [
+        { "pref": "gifu", "spot": "miyagawa-asaichi" },
+        { "pref": "gifu", "spot": "shirakawago" },
+        { "note": "下午从白川乡坐巴士去金泽，晚上在金泽站附近吃饭" }
+      ],
+      "move": "高山到白川乡巴士约 50 分钟，白川乡到金泽约 1 小时 30 分钟"
+    },
+    {
+      "title": "金泽名园与茶屋街",
+      "stay": "金泽",
+      "items": [
+        { "pref": "ishikawa", "spot": "omicho-market" },
+        { "pref": "ishikawa", "food": "kaisendon" },
+        { "pref": "ishikawa", "spot": "kenrokuen" },
+        { "pref": "ishikawa", "spot": "21st-century-museum" },
+        { "pref": "ishikawa", "spot": "higashi-chaya" }
+      ],
+      "move": "市内坐巴士，兼六园和美术馆之间步行约 5 分钟"
+    },
+    {
+      "title": "武家屋敷后回名古屋",
+      "stay": "当天返程",
+      "items": [
+        { "pref": "ishikawa", "spot": "nagamachi" },
+        { "pref": "ishikawa", "spot": "kanazawa-castle" },
+        { "note": "中午坐车回名古屋，再坐名铁去中部机场" }
+      ],
+      "move": "金泽坐新干线到敦贺，换特急「しらさぎ」到名古屋，约 2.5–3 小时"
+    }
+  ]
+}

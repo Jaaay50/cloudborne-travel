@@ -1,0 +1,112 @@
+// Trip state kept in localStorage. Items are "s:<pref>/<spot>" (spot) or "f:<pref>/<food>" (food).
+export interface TripState {
+  v: 1;
+  title: string;
+  start: string | null; // yyyy-mm-dd
+  days: string[][];
+  pool: string[]; // saved but not yet scheduled
+  notes: Record<string, string>;
+}
+
+const KEY = 'cbt.trip.v1';
+const listeners = new Set<(s: TripState) => void>();
+
+export const emptyTrip = (): TripState => ({ v: 1, title: '我的日本行程', start: null, days: [[]], pool: [], notes: {} });
+
+function sanitize(raw: unknown): TripState {
+  const s = emptyTrip();
+  if (!raw || typeof raw !== 'object') return s;
+  const r = raw as Partial<TripState>;
+  const ok = (k: unknown): k is string => typeof k === 'string' && /^[sf]:[a-z]+\/[a-z0-9-]+$/.test(k);
+  if (typeof r.title === 'string') s.title = r.title.slice(0, 40);
+  if (typeof r.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.start)) s.start = r.start;
+  const seen = new Set<string>();
+  const take = (arr: unknown) => (Array.isArray(arr) ? arr.filter((k) => ok(k) && !seen.has(k) && seen.add(k)) : []);
+  if (Array.isArray(r.days)) s.days = r.days.slice(0, 30).map(take);
+  if (!s.days.length) s.days = [[]];
+  s.pool = take(r.pool);
+  if (r.notes && typeof r.notes === 'object') {
+    for (const [k, v] of Object.entries(r.notes)) if (seen.has(k) && typeof v === 'string') s.notes[k] = v.slice(0, 120);
+  }
+  return s;
+}
+
+export function load(): TripState {
+  try {
+    return sanitize(JSON.parse(localStorage.getItem(KEY) || 'null'));
+  } catch {
+    return emptyTrip();
+  }
+}
+
+export function save(s: TripState) {
+  const clean = sanitize(s);
+  try {
+    localStorage.setItem(KEY, JSON.stringify(clean));
+  } catch {
+    /* storage full or blocked: keep in memory only */
+  }
+  listeners.forEach((fn) => fn(clean));
+}
+
+export const subscribe = (fn: (s: TripState) => void) => {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
+};
+
+export const allKeys = (s: TripState) => [...s.pool, ...s.days.flat()];
+export const count = (s: TripState) => allKeys(s).length;
+export const has = (s: TripState, key: string) => allKeys(s).includes(key);
+
+export function toggle(key: string): boolean {
+  const s = load();
+  if (has(s, key)) {
+    s.pool = s.pool.filter((k) => k !== key);
+    s.days = s.days.map((d) => d.filter((k) => k !== key));
+    delete s.notes[key];
+    save(s);
+    return false;
+  }
+  s.pool.push(key);
+  save(s);
+  return true;
+}
+
+// Cross-tab sync.
+window.addEventListener('storage', (e) => {
+  if (e.key === KEY) listeners.forEach((fn) => fn(load()));
+});
+
+// ---- share links: state -> base64url(deflate(json)) in the URL hash ----
+const b64url = (bytes: Uint8Array) => {
+  let bin = '';
+  bytes.forEach((b) => (bin += String.fromCharCode(b)));
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+};
+const unb64url = (s: string) => {
+  const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from(bin, (c) => c.charCodeAt(0));
+};
+async function pipe(bytes: Uint8Array, stream: CompressionStream | DecompressionStream) {
+  const out = new Response(new Blob([bytes as BlobPart]).stream().pipeThrough(stream));
+  return new Uint8Array(await out.arrayBuffer());
+}
+
+export async function encodeShare(s: TripState): Promise<string> {
+  const json = new TextEncoder().encode(JSON.stringify({ t: s.title, st: s.start, d: s.days, p: s.pool, n: s.notes }));
+  if ('CompressionStream' in window) return 'z' + b64url(await pipe(json, new CompressionStream('deflate-raw')));
+  return 'j' + b64url(json);
+}
+
+export async function decodeShare(code: string): Promise<TripState | null> {
+  try {
+    const kind = code[0];
+    let bytes = unb64url(code.slice(1));
+    if (kind === 'z') bytes = await pipe(bytes, new DecompressionStream('deflate-raw'));
+    else if (kind !== 'j') return null;
+    const o = JSON.parse(new TextDecoder().decode(bytes));
+    return sanitize({ title: o.t, start: o.st, days: o.d, pool: o.p, notes: o.n });
+  } catch {
+    return null;
+  }
+}

@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  nav?: 'home' | 'regions' | 'themes' | 'trips' | 'tools' | 'plan' | 'budget';
+  noindex?: boolean;
+}
+const { title, description, image = '/og.jpg', nav, noindex = false } = Astro.props;
+const site = Astro.site!;
+const canonical = new URL(Astro.url.pathname, site).href;
+const fullTitle = title === '栖云旅行' ? '栖云旅行 · 日本旅行指南与行程手账' : `${title} · 栖云旅行`;
+const ogImage = new URL(image, site).href;
+const links = [
+  { id: 'regions', href: '/#explore', text: '地图' },
+  { id: 'themes', href: '/japan/themes/', text: '季节与主题' },
+  { id: 'trips', href: '/japan/trips/', text: '行程模板' },
+  { id: 'tools', href: '/japan/tools/', text: '随身工具' },
+  { id: 'budget', href: '/budget/', text: '算预算' },
+];
+---
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#f6f1e7" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="栖云旅行" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="hdr" id="hdr">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="栖云旅行 首页">
+          <img src="/favicon.svg" alt="" width="30" height="30" />
+          <span><b>栖云旅行</b><small>CLOUDBORNE · 日本</small></span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          {links.map((l) => <a href={l.href} aria-current={nav === l.id ? 'page' : undefined}>{l.text}</a>)}
+        </nav>
+        <div class="hdr-tools">
+          <button class="search-btn" type="button" data-open-search aria-label="搜索目的地、景点或美食">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+            <span>搜目的地、景点、美食</span><kbd>/</kbd>
+          </button>
+          <a class="trip-btn" href="/plan/" aria-label="我的行程">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5 7.5 3.5l5 2 4.5-2v11l-4.5 2-5-2L3 16.5v-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M7.5 3.5v11M12.5 5.5v11" stroke="currentColor" stroke-width="1.6" /></svg>
+            行程<span class="trip-count" data-trip-count>0</span>
+          </a>
+          <button class="menu-btn" type="button" aria-label="菜单" aria-expanded="false" data-menu>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <nav class="mobile-nav" aria-label="移动端导航" hidden data-mobile-nav>
+      {links.map((l) => <a href={l.href}>{l.text}</a>)}
+      <a href="/plan/">我的行程</a>
+    </nav>
+
+    <main id="main"><slot /></main>
+
+    <footer class="ftr">
+      <div class="wrap">
+        <div class="row">
+          <a class="brand" href="/"><img src="/favicon.svg" alt="" width="24" height="24" /><b>栖云旅行</b></a>
+          <span>日本 47 个都道府县的原创旅行指南、行程规划与随身工具。</span>
+        </div>
+        <div class="row">
+          <a href="/#explore">地图</a><a href="/japan/themes/">季节与主题</a><a href="/japan/trips/">行程模板</a>
+          <a href="/japan/tools/">随身工具</a><a href="/plan/">我的行程</a><a href="/budget/">算预算</a><a href="/about/">关于与说明</a>
+        </div>
+        <div class="row">
+          <span>票价、班次、营业时间与政策会变动，出发前请以官方信息为准。插画为原创风格化作品，不代表实景。</span>
+        </div>
+        <div class="row">
+          <span>© {new Date().getFullYear()} <a href="https://cloudborne.cn">Cloudborne 栖云</a></span>
+          <span>地图边界：Natural Earth（公有领域）</span>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="dlg" id="search-dlg" aria-label="搜索">
+      <div class="search-box">
+        <div class="field">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          <input id="search-input" type="search" placeholder="京都、温泉、拉面、伏见稻荷…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="search-list" aria-autocomplete="list" />
+          <button type="button" data-close-search>Esc</button>
+        </div>
+        <div class="search-results" id="search-list" role="listbox"></div>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

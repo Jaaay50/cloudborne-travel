@@ -1,0 +1,71 @@
+{
+  "id": "hokkaido-summer-6d",
+  "title": "北海道夏季 · 6 天",
+  "region": "hokkaido",
+  "daysCount": 6,
+  "for": "第一次去北海道、夏天想避暑看花田的人",
+  "season": "6 月下旬到 8 月上旬，7 月中旬最佳",
+  "summary": "以札幌为中心：先在札幌和小樽缓一缓，再坐 JR 去富良野、美瑛看薰衣草和青池，顺道去旭山动物园，最后一晚在定山溪泡温泉放松。全程靠 JR 和巴士，不用自驾，用札幌—富良野地区周游券覆盖大部分车费。",
+  "bases": ["札幌 3 晚", "富良野 1 晚", "定山溪 1 晚"],
+  "days": [
+    {
+      "title": "抵达札幌",
+      "stay": "札幌",
+      "items": [
+        { "note": "新千岁机场坐 JR 快速 Airport 进城" },
+        { "pref": "hokkaido", "spot": "odori-park" },
+        { "pref": "hokkaido", "food": "jingisukan" }
+      ],
+      "move": "新千岁机场→札幌 JR 约 40 分钟"
+    },
+    {
+      "title": "小樽一日游",
+      "stay": "札幌",
+      "items": [
+        { "pref": "hokkaido", "spot": "otaru-canal" },
+        { "pref": "hokkaido", "food": "kaisendon" },
+        { "note": "傍晚回札幌，晚上去薄野逛逛" }
+      ],
+      "move": "札幌↔小樽 JR 约 35–45 分钟"
+    },
+    {
+      "title": "富良野薰衣草",
+      "stay": "富良野",
+      "items": [
+        { "pref": "hokkaido", "spot": "farm-tomita" },
+        { "pref": "hokkaido", "food": "soft-serve" },
+        { "note": "下午逛富良野市区，早点休息" }
+      ],
+      "move": "札幌→富良野 JR 约 2–2.5 小时，一般在泷川或旭川换车"
+    },
+    {
+      "title": "美瑛青池与旭川",
+      "stay": "札幌",
+      "items": [
+        { "pref": "hokkaido", "spot": "shirogane-blue-pond" },
+        { "pref": "hokkaido", "spot": "asahiyama-zoo" },
+        { "note": "傍晚从旭川坐特急回札幌" }
+      ],
+      "move": "富良野→美瑛 JR，美瑛→旭川 JR，旭川→札幌特急约 1.5 小时"
+    },
+    {
+      "title": "定山溪温泉",
+      "stay": "定山溪",
+      "items": [
+        { "pref": "hokkaido", "food": "soup-curry" },
+        { "pref": "hokkaido", "spot": "jozankei-onsen" },
+        { "note": "住温泉旅馆，吃怀石晚餐" }
+      ],
+      "move": "札幌站坐预约制巴士到定山溪约 1 小时"
+    },
+    {
+      "title": "回札幌、返程",
+      "stay": "—",
+      "items": [
+        { "pref": "hokkaido", "food": "miso-ramen" },
+        { "note": "札幌站周边买伴手礼后去机场" }
+      ],
+      "move": "定山溪→札幌巴士约 1 小时，札幌→新千岁机场 JR 约 40 分钟"
+    }
+  ]
+}

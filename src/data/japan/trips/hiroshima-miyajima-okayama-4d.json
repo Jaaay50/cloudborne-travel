@@ -1,0 +1,102 @@
+{
+  "id": "hiroshima-miyajima-okayama-4d",
+  "title": "广岛 + 宫岛 + 冈山 · 4 天",
+  "region": "chugoku",
+  "daysCount": 4,
+  "for": "去过关西、想往西多走一步的第一、二次游客",
+  "season": "春樱秋叶最好，冬天正好吃牡蛎",
+  "summary": "从关西坐新干线往西，第一天看广岛和平公园，第二天上宫岛并在岛上住一晚，避开一日游人潮看傍晚和清晨的大鸟居；后两天回到冈山，看后乐园、冈山城和仓敷老街，再从冈山坐新干线回关西。",
+  "bases": [
+    "广岛 1 晚",
+    "宫岛 1 晚",
+    "冈山 1 晚"
+  ],
+  "days": [
+    {
+      "title": "广岛市区与和平公园",
+      "stay": "广岛",
+      "items": [
+        {
+          "pref": "hiroshima",
+          "spot": "peace-park"
+        },
+        {
+          "pref": "hiroshima",
+          "spot": "shukkeien"
+        },
+        {
+          "pref": "hiroshima",
+          "food": "hiroshima-okonomiyaki"
+        }
+      ],
+      "move": "新大阪坐新干线约 1.5 小时到广岛，市内坐路面电车"
+    },
+    {
+      "title": "上宫岛，住岛上",
+      "stay": "宫岛",
+      "items": [
+        {
+          "pref": "hiroshima",
+          "spot": "itsukushima-shrine"
+        },
+        {
+          "pref": "hiroshima",
+          "spot": "mount-misen"
+        },
+        {
+          "pref": "hiroshima",
+          "food": "oysters"
+        },
+        {
+          "pref": "hiroshima",
+          "food": "momiji-manju"
+        }
+      ],
+      "move": "广岛站坐 JR 约 30 分钟到宫岛口，换渡轮约 10 分钟"
+    },
+    {
+      "title": "清晨鸟居，转去冈山",
+      "stay": "冈山",
+      "items": [
+        {
+          "note": "早饭前去海边看没有人的大鸟居"
+        },
+        {
+          "pref": "hiroshima",
+          "food": "anagomeshi"
+        },
+        {
+          "pref": "okayama",
+          "spot": "korakuen"
+        },
+        {
+          "pref": "okayama",
+          "spot": "okayama-castle"
+        }
+      ],
+      "move": "渡轮和 JR 回广岛站，新干线约 40 分钟到冈山"
+    },
+    {
+      "title": "仓敷老街半日",
+      "stay": "返程",
+      "items": [
+        {
+          "pref": "okayama",
+          "spot": "kurashiki-bikan"
+        },
+        {
+          "pref": "okayama",
+          "spot": "ohara-museum"
+        },
+        {
+          "pref": "okayama",
+          "food": "barazushi"
+        },
+        {
+          "note": "傍晚从冈山坐新干线回关西，或去冈山机场"
+        }
+      ],
+      "move": "冈山站坐 JR 约 15–20 分钟到仓敷站"
+    }
+  ]
+}

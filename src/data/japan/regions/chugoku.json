@@ -1,0 +1,83 @@
+{
+  "slug": "chugoku",
+  "name": "中国地方",
+  "kana": "ちゅうごく",
+  "en": "Chugoku",
+  "tagline": "广岛、宫岛和山阴神话之地，本州西端",
+  "intro": [
+    "「中国地方」是日本本州西部的地名，不是中国。它包括面朝濑户内海的冈山、广岛、山口（山阳一侧），和面朝日本海的鸟取、岛根（山阴一侧）。山阳一侧有新干线贯穿，广岛的原爆圆顶和宫岛、冈山后乐园、仓敷老街都很好安排；山阴一侧人少，有出云大社、松江城和鸟取沙丘。",
+    "第一次来，从关西坐新干线往西，广岛住两晚、冈山住一晚就是经典路线；第二次来可以从冈山坐特急北上山阴，或者从尾道骑自行车跨岛波海道去四国。山阳和山阴之间隔着中国山地，JR 特急要两个多小时，别想一天来回。"
+  ],
+  "days": "4–6 天",
+  "season": "春秋最好；冬天山阳吃牡蛎、山阴吃松叶蟹；夏天岛上很晒。",
+  "gateways": [
+    {
+      "name": "广岛机场（HIJ）",
+      "how": "机场巴士到广岛站约 50 分钟，约 1,500 日元；有首尔、台北等国际航线"
+    },
+    {
+      "name": "冈山机场（OKJ）",
+      "how": "机场巴士到冈山站约 30 分钟，约 1,000 日元；有上海、香港、台北航线"
+    },
+    {
+      "name": "从关西乘新干线",
+      "how": "新大阪到冈山约 45 分钟–1 小时，到广岛约 1.5 小时；在关西进出最灵活"
+    },
+    {
+      "name": "从福冈乘新干线",
+      "how": "博多到广岛约 1 小时，到新下关约 15–20 分钟，适合连着九州玩"
+    }
+  ],
+  "cities": [
+    "广岛",
+    "冈山",
+    "仓敷",
+    "尾道",
+    "松江",
+    "出云"
+  ],
+  "passes": [
+    {
+      "name": "JR 冈山·广岛·山口周游券",
+      "text": "5 天约 17,000 日元，含冈山到博多的山阳新干线指定席和宫岛渡轮，在冈山以西玩 3 天以上就划算。"
+    },
+    {
+      "name": "JR 山阳·山阴周游券",
+      "text": "7 天约 23,000 日元，含新大阪到博多的山阳新干线（希望号、瑞穗号除外）和山阴特急，从关西出发连玩山阳山阴最合适。"
+    },
+    {
+      "name": "JR 鸟取·松江周游券",
+      "text": "3 天约 4,000 日元，可坐鸟取到松江、出云一带的特急自由席，只玩山阴时买。"
+    }
+  ],
+  "prefectures": [
+    "tottori",
+    "shimane",
+    "okayama",
+    "hiroshima",
+    "yamaguchi"
+  ],
+  "sources": [
+    {
+      "title": "JR 西日本：冈山·广岛·山口周游券",
+      "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/okayama_hiroshima_yamaguchi/"
+    },
+    {
+      "title": "JR 西日本：山阳·山阴周游券",
+      "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/"
+    },
+    {
+      "title": "JR 西日本：鸟取·松江周游券",
+      "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/tottorimatsue/"
+    },
+    {
+      "title": "冈山机场：机场巴士",
+      "url": "https://www.okayama-airport.org/access/bus/"
+    },
+    {
+      "title": "广岛机场：广岛站方向巴士时刻",
+      "url": "https://www.hij.airport.jp/access/timetable/2.html"
+    }
+  ],
+  "checked": "2026-11"
+}

@@ -1,0 +1,74 @@
+{
+  "id": "setouchi-art-shikoku-6d",
+  "title": "濑户内艺术岛 + 四国 · 6 天",
+  "region": "shikoku",
+  "daysCount": 6,
+  "for": "喜欢艺术建筑和慢节奏、第二次去日本的人",
+  "season": "3–11 月，避开岛上美术馆冬季闭馆",
+  "summary": "从冈山出发，先在直岛住一晚，第二天看地中美术馆再转丰岛，傍晚坐船到高松；在高松看庭园、吃乌冬、爬金刀比罗宫，再坐特急去松山泡道后温泉，最后沿岛波海道跨海回到本州尾道。",
+  "bases": ["直岛 1 晚", "高松 2 晚", "松山 2 晚"],
+  "days": [
+    {
+      "title": "冈山出发上直岛",
+      "stay": "直岛",
+      "items": [
+        { "pref": "okayama", "spot": "korakuen" },
+        { "note": "午后坐 JR 到宇野港，换船去直岛宫浦港" },
+        { "pref": "kagawa", "spot": "naoshima-honmura" }
+      ],
+      "move": "冈山站坐 JR 约 1 小时到宇野，渡轮约 20 分钟到直岛"
+    },
+    {
+      "title": "地中美术馆与丰岛",
+      "stay": "高松",
+      "items": [
+        { "pref": "kagawa", "spot": "chichu-art-museum" },
+        { "pref": "kagawa", "spot": "teshima-art-museum" },
+        { "note": "直岛避开周一、丰岛避开周二，门票提前网上订" }
+      ],
+      "move": "直岛坐船到丰岛家浦港，傍晚从丰岛坐船到高松；船班少，提前查"
+    },
+    {
+      "title": "高松庭园与乌冬",
+      "stay": "高松",
+      "items": [
+        { "pref": "kagawa", "food": "sanuki-udon" },
+        { "pref": "kagawa", "spot": "ritsurin-garden" },
+        { "pref": "kagawa", "spot": "yashima" }
+      ],
+      "move": "市内坐 JR 或琴电，屋岛坐巴士上山"
+    },
+    {
+      "title": "爬金比罗，去道后",
+      "stay": "松山",
+      "items": [
+        { "pref": "kagawa", "spot": "kotohira-gu" },
+        { "note": "参道上吃一碗乌冬当午饭" },
+        { "pref": "ehime", "spot": "dogo-onsen-honkan" },
+        { "pref": "ehime", "food": "botchan-dango" }
+      ],
+      "move": "高松到琴平约 1 小时；琴平经多度津坐特急到松山约 2.5 小时"
+    },
+    {
+      "title": "松山城与海边小站",
+      "stay": "松山",
+      "items": [
+        { "pref": "ehime", "spot": "matsuyama-castle" },
+        { "pref": "ehime", "food": "taimeshi" },
+        { "pref": "ehime", "spot": "shimonada-station" }
+      ],
+      "move": "市内坐路面电车；下滩站坐 JR 普通列车约 1 小时"
+    },
+    {
+      "title": "跨岛波海道回本州",
+      "stay": "尾道或返程",
+      "items": [
+        { "pref": "ehime", "spot": "shimanami-kaido" },
+        { "pref": "ehime", "spot": "oyamazumi-shrine" },
+        { "pref": "hiroshima", "spot": "onomichi" },
+        { "note": "体力一般就只骑一段，其余换巴士" }
+      ],
+      "move": "松山坐 JR 特急到今治，骑车或坐巴士过桥到尾道"
+    }
+  ]
+}

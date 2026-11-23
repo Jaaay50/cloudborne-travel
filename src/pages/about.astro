@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="关于与说明" description="栖云旅行是 Cloudborne 栖云做的日本旅行指南：内容原创、插画原创、不登录、不追踪。" nav="home">
+  <section class="wrap about">
+    <h1>关于栖云旅行</h1>
+    <div class="prose">
+      <p>栖云旅行是 <a href="https://cloudborne.cn">Cloudborne 栖云</a> 做的日本旅行指南，给第一次或第二次去日本的人用。我们想把「去哪、怎么去、花多少、到了怎么办」放进一个打开就能用的地方。</p>
+      <p><b>内容</b>：47 个都道府县的介绍、景点、美食、交通和提醒都是我们自己写的。票价、开放时间和政策尽量对照官方来源核对，每页底部写了来源和核对时间。这些信息会变，出发前请再确认一次。</p>
+      <p><b>插画</b>：全站插画是统一的木刻版画风格原创作品，是对当地风景的风格化描绘，不是实景照片。</p>
+      <p><b>地图</b>：行政边界来自 Natural Earth（公有领域），为了好看和加载快做了简化，不适合用于测量。景点坐标用于大致定位，导航请点「高德导航」或其他地图 App。</p>
+      <p><b>隐私</b>：不需要注册登录。你的行程、清单、收藏都只存在你自己的浏览器里（localStorage），我们看不到。分享链接把行程编码在网址里，只有拿到链接的人能看到。</p>
+      <p><b>离线</b>：打开过的页面会缓存到手机里，地铁里没信号也能看。在浏览器里「添加到主屏幕」，用起来像 App。</p>
+      <p>发现错误或有建议，欢迎写信到 <a href="mailto:contact@cloudborne.cn">contact@cloudborne.cn</a>。</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .about { max-width: 760px; padding: 48px 0 20px; }
+  .about h1 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 20px; }
+  .about a { color: var(--vermilion); }
+  .about b { color: var(--ink); }
+</style>

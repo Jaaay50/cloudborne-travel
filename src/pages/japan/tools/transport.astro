@@ -1,0 +1,30 @@
+---
+import ToolShell from '../../../components/ToolShell.astro';
+import { transport } from '../../../lib/toolkit';
+---
+<ToolShell slug="transport" title="交通常识" description="日本坐车要知道的事：IC 卡、新干线大件行李预约、寄行李、出租车、末班车，以及 JR Pass 和地区周游券值不值。" lead="第一次在日本坐车，先看这几条。" sources={transport?.sources}>
+  {!transport && <p class="tcard">内容整理中。</p>}
+  {transport && (
+    <>
+      <section class="tool-sec">
+        <h2>坐车常识</h2>
+        <div class="tips">{transport.tips.map((t) => <div class="tcard"><b>{t.title}</b><p>{t.text}</p></div>)}</div>
+      </section>
+      <section class="tool-sec">
+        <h2>周游券值不值</h2>
+        <p class="hint">先在行程里列出要坐的长途段，把单程票价加起来，再和周游券比。只在一个城市玩，基本不需要。</p>
+        <div class="tips">{transport.passes.map((p) => <div class="tcard pass"><div class="pass-hd"><b>{p.name}</b><span>{p.price}</span></div><p>{p.text}</p></div>)}</div>
+      </section>
+      <p class="more"><a href="/japan/tools/airports/">机场进城 →</a></p>
+    </>
+  )}
+</ToolShell>
+<style>
+  .tips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .hint { color: var(--mut); font-size: 14px; margin: -4px 0 12px; }
+  .pass-hd { display: grid; gap: 2px; }
+  .pass-hd span { font-weight: 600; color: var(--vermilion); font-size: 13.5px; line-height: 1.55; }
+  .more { margin-top: 20px; }
+  .more a { color: var(--vermilion); font-weight: 600; }
+  @media (max-width: 640px) { .tips { grid-template-columns: 1fr; } }
+</style>

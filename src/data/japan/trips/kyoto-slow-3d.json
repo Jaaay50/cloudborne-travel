@@ -1,0 +1,45 @@
+{
+  "id": "kyoto-slow-3d",
+  "title": "京都慢游 · 3 天（樱花或红叶季）",
+  "region": "kansai",
+  "daysCount": 3,
+  "for": "去过关西一次，想在花季专心慢逛京都的人",
+  "season": "3 月底–4 月初，或 11 月中–12 月初",
+  "summary": "花季的京都，关键不是去哪，而是几点去。这条路线把最挤的景点放在清早：第一天赶早钻伏见稻荷，再看东福寺和宇治；第二天走哲学之道，晚上看清水寺夜间参拜；第三天天亮就进岚山竹林，下午去金阁寺。每天只排 3–4 个点，留时间喝茶歇脚。",
+  "bases": ["京都 2–3 晚"],
+  "days": [
+    {
+      "title": "伏见、东福寺与宇治",
+      "stay": "京都",
+      "items": [
+        { "pref": "kyoto", "spot": "fushimi-inari" },
+        { "pref": "kyoto", "spot": "tofuku-ji" },
+        { "pref": "kyoto", "spot": "byodoin-uji" },
+        { "pref": "kyoto", "food": "uji-matcha" }
+      ],
+      "move": "JR 奈良线把稻荷、东福寺、宇治串成一线，每段都在 30 分钟内"
+    },
+    {
+      "title": "哲学之道到清水夜色",
+      "stay": "京都",
+      "items": [
+        { "pref": "kyoto", "spot": "ginkaku-ji" },
+        { "pref": "kyoto", "food": "yudofu" },
+        { "pref": "kyoto", "spot": "kiyomizu-dera" },
+        { "pref": "kyoto", "spot": "gion-hanamikoji" }
+      ],
+      "move": "上午从银阁寺沿哲学之道南行到南禅寺；傍晚去清水寺，夜里走到祇园"
+    },
+    {
+      "title": "岚山清晨，金阁午后",
+      "stay": "京都",
+      "items": [
+        { "pref": "kyoto", "spot": "arashiyama" },
+        { "pref": "kyoto", "spot": "kinkaku-ji" },
+        { "pref": "kyoto", "food": "saba-zushi" },
+        { "note": "红叶季体力好，可把金阁寺换成鞍马贵船徒步" }
+      ],
+      "move": "早上 7 点前坐 JR 到嵯峨岚山；下午打车或坐巴士去金阁寺"
+    }
+  ]
+}

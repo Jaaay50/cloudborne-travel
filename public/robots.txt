@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /plan/
+
+Sitemap: https://travel.cloudborne.cn/sitemap.xml

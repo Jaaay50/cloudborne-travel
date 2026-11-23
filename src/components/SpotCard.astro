@@ -1,0 +1,39 @@
+---
+import type { SpotRef } from '../lib/content';
+import { THEMES, KIND_NAMES, REGION_BY_SLUG } from '../lib/japan';
+interface Props { s: SpotRef; showPref?: boolean }
+const { s, showPref = true } = Astro.props;
+const r = REGION_BY_SLUG[s.region];
+---
+<article class="scard" data-region={s.region} data-pref={s.pref} data-themes={s.themes.join(' ')} data-kind={s.kind}>
+  <a class="scard-link" href={`/japan/${s.pref}/#spot-${s.id}`}>
+    <span class="scard-top">
+      {showPref && <span class="scard-pref" style={`--tone:${r.tone};--ink:${r.ink}`}>{s.prefName}</span>}
+      <span class="scard-kind">{KIND_NAMES[s.kind] ?? s.kind} · {s.time}</span>
+    </span>
+    <b>{s.name}</b>
+    <span class="scard-text">{s.text}</span>
+  </a>
+  <span class="scard-ft">
+    <span class="scard-themes">{s.themes.map((t) => <span class="tag theme" style={`--dot:${THEMES[t].tone}`}>{THEMES[t].name}</span>)}</span>
+    <button type="button" class="add" data-add={`s:${s.pref}/${s.id}`} data-name={s.name} aria-pressed="false" aria-label={`把${s.name}加入行程`}>
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+    </button>
+  </span>
+</article>
+
+<style>
+  .scard { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 15px 16px 13px; transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t); }
+  .scard:hover { transform: translateY(-2px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .scard[hidden] { display: none; }
+  .scard-link { display: grid; gap: 5px; flex: 1; }
+  .scard-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .scard-pref { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--tone) 22%, white); color: var(--ink); }
+  .scard-kind { font-size: 12px; color: var(--mut); }
+  .scard b { font-family: var(--serif); font-size: 18px; line-height: 1.35; }
+  .scard-link:hover b { color: var(--vermilion); }
+  .scard-text { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .scard-ft { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; }
+  .scard-themes { display: flex; gap: 4px; flex-wrap: wrap; }
+  .scard .add { width: 30px; padding: 0; justify-content: center; flex-shrink: 0; }
+</style>

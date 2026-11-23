@@ -1,0 +1,65 @@
+{
+  "id": "kansai-first-5d",
+  "title": "第一次去关西 · 5 天",
+  "region": "kansai",
+  "daysCount": 5,
+  "for": "第一次去日本、想把京都奈良大阪都看一遍的人",
+  "season": "3–5 月、10–11 月最舒服",
+  "summary": "京都住 3 晚、大阪住 1 晚，只换一次酒店。京都按片区走：第一天傍晚伏见稻荷，第二天东山，第三天岚山和金阁寺；第四天带行李经奈良去大阪，喂鹿看大佛，晚上逛道顿堀；最后半天大阪城，再从难波去机场。",
+  "bases": ["京都 3 晚", "大阪 1 晚"],
+  "days": [
+    {
+      "title": "抵达京都·千本鸟居",
+      "stay": "京都",
+      "items": [
+        { "note": "关西机场坐 HARUKA 到京都站，先去酒店放行李" },
+        { "pref": "kyoto", "spot": "fushimi-inari" },
+        { "pref": "kyoto", "food": "nishin-soba" }
+      ],
+      "move": "关西机场→京都站 HARUKA 约 75–80 分钟；京都站→稻荷站 JR 约 5 分钟"
+    },
+    {
+      "title": "东山一日",
+      "stay": "京都",
+      "items": [
+        { "pref": "kyoto", "spot": "kiyomizu-dera" },
+        { "pref": "kyoto", "spot": "gion-hanamikoji" },
+        { "pref": "kyoto", "spot": "ginkaku-ji" },
+        { "pref": "kyoto", "food": "yudofu" }
+      ],
+      "move": "清水寺开门就到，步行下坡到祇园；午后坐巴士或打车去银阁寺"
+    },
+    {
+      "title": "岚山与金阁寺",
+      "stay": "京都",
+      "items": [
+        { "pref": "kyoto", "spot": "arashiyama" },
+        { "pref": "kyoto", "spot": "kinkaku-ji" },
+        { "pref": "kyoto", "food": "obanzai" }
+      ],
+      "move": "JR 嵯峨野线到嵯峨岚山站约 15 分钟；岚山到金阁寺打车约 20 分钟"
+    },
+    {
+      "title": "奈良喂鹿，晚到大阪",
+      "stay": "大阪",
+      "items": [
+        { "pref": "nara", "spot": "todai-ji" },
+        { "pref": "nara", "spot": "nara-park" },
+        { "pref": "nara", "food": "kakinoha-zushi" },
+        { "pref": "osaka", "spot": "dotonbori" },
+        { "pref": "osaka", "food": "takoyaki" }
+      ],
+      "move": "近铁京都→奈良约 35–45 分钟，奈良→难波约 40 分钟；行李可寄存在车站"
+    },
+    {
+      "title": "大阪城后返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "osaka", "spot": "osaka-castle" },
+        { "pref": "osaka", "spot": "kuromon-market" },
+        { "note": "下午从难波坐南海 rapi:t 去关西机场" }
+      ],
+      "move": "难波→关西机场 rapi:t 约 35–40 分钟；航班前至少 2 小时到机场"
+    }
+  ]
+}

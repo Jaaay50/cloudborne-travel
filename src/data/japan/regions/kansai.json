@@ -1,0 +1,59 @@
+{
+  "slug": "kansai",
+  "name": "关西",
+  "kana": "かんさい",
+  "en": "Kansai",
+  "tagline": "古都、美食和温泉，第一次去日本的首选",
+  "intro": [
+    "关西是第一次去日本最容易上手的地区：京都看寺院和老街，大阪吃喝逛街，奈良喂鹿看大佛，神户看港口夜景，城市之间坐电车多在一小时内。选一两个城市当大本营，每天往外跑，就能把主要景点串起来，不用天天换酒店。",
+    "想走远一点，可以加上姬路城、城崎温泉、高野山、熊野古道或伊势神宫，单程两三个小时，最好住一晚。樱花和红叶季是关西最挤也最贵的时候，酒店要提前一两个月订；夏天闷热，冬天人少，反而适合慢慢看寺院。"
+  ],
+  "days": "5–7 天",
+  "season": "3 月底–4 月初樱花、11 月中下旬红叶最美也最挤；冬季人少价低，夏季闷热。",
+  "gateways": [
+    {
+      "name": "关西国际机场（KIX）",
+      "how": "JR 特急 HARUKA 到京都约 75–80 分钟，外国游客优惠单程票约 2,700 日元；南海电铁到难波约 35–45 分钟。"
+    },
+    {
+      "name": "新大阪站",
+      "how": "从东京坐东海道新干线希望号约 2.5 小时；到京都再坐新干线约 15 分钟，换地铁可去梅田、难波。"
+    },
+    {
+      "name": "大阪伊丹机场（ITM）",
+      "how": "只有国内航班，适合从东京、北海道、冲绳飞过来；有机场巴士直达梅田、京都站。"
+    },
+    {
+      "name": "中部国际机场（NGO）",
+      "how": "去三重伊势志摩更近：先到名古屋，再坐近铁特急约 1 小时 20 分钟到伊势。"
+    }
+  ],
+  "cities": ["京都", "大阪", "奈良", "神户", "姬路", "伊势"],
+  "passes": [
+    {
+      "name": "JR 关西广域周游券",
+      "text": "连续 5 天约 12,000 日元，含新大阪–冈山新干线、HARUKA 和去城崎温泉、天桥立、白滨的特急；跑远线才划算。"
+    },
+    {
+      "name": "WEST QR 关西地区周游券",
+      "text": "1–4 天约 2,700–6,700 日元，只在海外渠道卖，手机扫码进站；只管 JR、不含新干线。纸质版已于 2026 年 9 月底停售。"
+    },
+    {
+      "name": "HARUKA 外国游客单程票",
+      "text": "关西机场到京都约 2,700 日元、到大阪/新大阪约 1,900 日元，比原价便宜不少；只走一趟机场线时最实用。"
+    },
+    {
+      "name": "ICOCA 交通卡",
+      "text": "关西的交通 IC 卡，地铁、私铁、巴士和便利店都能刷。行程以市内为主时，刷卡往往比买周游券更省心。"
+    }
+  ],
+  "prefectures": ["kyoto", "osaka", "hyogo", "nara", "wakayama", "shiga", "mie"],
+  "sources": [
+    { "title": "JR西日本：WEST QR HARUKA One-way Ticket", "url": "https://www.westjr.co.jp/global/en/ticket/westqr/haruka/" },
+    { "title": "JR西日本：Kansai WIDE Area Pass", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_wide/" },
+    { "title": "JR西日本：WEST QR Kansai Area Pass", "url": "https://www.westjr.co.jp/global/en/ticket/westqr/kansaiarea/" },
+    { "title": "南海電鉄：2026年4月1日から特急料金が新しくなります", "url": "https://www.nankai.co.jp/lib/company/news/pdf/260122.pdf" },
+    { "title": "维基百科：近鉄特急", "url": "https://ja.wikipedia.org/wiki/近鉄特急" }
+  ],
+  "checked": "2026-11"
+}

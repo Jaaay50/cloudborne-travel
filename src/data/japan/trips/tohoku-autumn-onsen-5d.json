@@ -1,0 +1,122 @@
+{
+  "id": "tohoku-autumn-onsen-5d",
+  "title": "东北红叶与温泉 · 5 天",
+  "region": "tohoku",
+  "daysCount": 5,
+  "for": "去过东京关西、想看红叶泡温泉又怕人多的人",
+  "season": "10 月中旬到 11 月上旬",
+  "summary": "从仙台进、沿东北新干线一路往北：松岛看海湾，平泉看金色堂和峡谷游船，再拐进角馆和乳头温泉泡乳白色的秘汤，最后到青森走奥入濑红叶。新干线部分用 JR EAST PASS 5 天正好覆盖。冬天走这条线也可以，把奥入濑换成八甲田雾凇。",
+  "bases": [
+    "仙台 1 晚",
+    "一关 1 晚",
+    "乳头温泉 1 晚",
+    "青森 1 晚"
+  ],
+  "days": [
+    {
+      "title": "仙台与松岛",
+      "stay": "仙台",
+      "items": [
+        {
+          "pref": "miyagi",
+          "spot": "matsushima"
+        },
+        {
+          "pref": "miyagi",
+          "spot": "zuiganji"
+        },
+        {
+          "pref": "miyagi",
+          "food": "gyutan"
+        }
+      ],
+      "move": "仙台↔松岛海岸 JR 仙石线约 40 分钟"
+    },
+    {
+      "title": "平泉世界遗产",
+      "stay": "一关",
+      "items": [
+        {
+          "pref": "iwate",
+          "spot": "chusonji"
+        },
+        {
+          "pref": "iwate",
+          "spot": "motsuji"
+        },
+        {
+          "pref": "iwate",
+          "spot": "geibikei"
+        },
+        {
+          "pref": "iwate",
+          "food": "mochi-zen"
+        }
+      ],
+      "move": "仙台→一关新干线约 30 多分钟，一关→平泉 JR 约 8 分钟"
+    },
+    {
+      "title": "角馆与乳头温泉",
+      "stay": "乳头温泉",
+      "items": [
+        {
+          "pref": "akita",
+          "spot": "kakunodate"
+        },
+        {
+          "pref": "akita",
+          "spot": "lake-tazawa"
+        },
+        {
+          "pref": "akita",
+          "spot": "nyuto-onsen"
+        },
+        {
+          "pref": "akita",
+          "food": "kiritanpo"
+        }
+      ],
+      "move": "一关→盛冈→角馆坐新干线；再到田泽湖站坐巴士进山约 50 分钟"
+    },
+    {
+      "title": "北上青森",
+      "stay": "青森",
+      "items": [
+        {
+          "note": "早上再泡一次汤，坐巴士回田泽湖站"
+        },
+        {
+          "pref": "aomori",
+          "spot": "sannai-maruyama"
+        },
+        {
+          "pref": "aomori",
+          "spot": "aomori-museum-of-art"
+        },
+        {
+          "pref": "aomori",
+          "food": "hotate"
+        }
+      ],
+      "move": "田泽湖→盛冈→新青森新干线约 2 小时，再换 JR 到青森站"
+    },
+    {
+      "title": "奥入濑红叶",
+      "stay": "—",
+      "items": [
+        {
+          "pref": "aomori",
+          "food": "nokke-don"
+        },
+        {
+          "pref": "aomori",
+          "spot": "oirase-stream"
+        },
+        {
+          "note": "傍晚回新青森，坐新干线回东京约 3 小时"
+        }
+      ],
+      "move": "青森站坐 JR 巴士进奥入濑，班次少先查好回程"
+    }
+  ]
+}

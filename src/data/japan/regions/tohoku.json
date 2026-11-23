@@ -1,0 +1,31 @@
+{
+  "slug": "tohoku",
+  "name": "东北",
+  "kana": "とうほく",
+  "en": "Tohoku",
+  "tagline": "红叶、雪国温泉和夏日祭，比关东关西人少",
+  "intro": [
+    "东北指本州北部的青森、岩手、宫城、秋田、山形、福岛六县，面积大、人口少，中国游客也比关西少很多。东北新干线贯穿南北，从东京到仙台约 1.5 小时、到新青森约 3 小时，秋田和山形还有新干线支线直通，坐火车就能串起主要景点。",
+    "这里四季分明：4 月下旬弘前和角馆的樱花比东京晚一个月，8 月初青森睡魔、秋田竿灯、仙台七夕三大祭集中，10 月中旬起奥入濑、鸣子峡红叶，冬天有藏王树冰、银山温泉和乳头温泉的雪景。山区巴士班次少，行程要留余量。"
+  ],
+  "days": "4–7 天",
+  "season": "4 月下旬樱花、8 月上旬夏祭、10 月中下旬红叶、1–2 月雪景温泉。",
+  "gateways": [
+    { "name": "仙台机场（SDJ）", "how": "仙台机场线到仙台站约 25 分钟，约 680 日元；国际航线以东亚为主，出发前查当季航班" },
+    { "name": "东京站", "how": "东北新干线北上：仙台约 1.5 小时、盛冈约 2 小时 13 分钟、新青森约 3 小时" },
+    { "name": "新函馆北斗站", "how": "从北海道南下，新干线到新青森约 1 小时，适合北海道加东北连游" }
+  ],
+  "cities": ["仙台", "松岛", "平泉", "盛冈", "角馆", "青森", "弘前", "山形", "会津若松"],
+  "passes": [
+    { "name": "JR EAST PASS", "text": "JR 东日本全线（含东北、关东、长野新潟）连续 5 天约 35,000 日元，从东京出发、要坐三段以上新干线的行程先算算单买的价格再决定" },
+    { "name": "JR 东北·南北海道铁路周游券", "text": "连续 6 天约 32,000 日元，覆盖东北和函馆、札幌一带，不含东京。适合北海道和东北连着玩" }
+  ],
+  "prefectures": ["aomori", "iwate", "miyagi", "akita", "yamagata", "fukushima"],
+  "sources": [
+    { "title": "JR Hokkaido · 2026 年联合周游券调整公告", "url": "https://www.jrhokkaido.co.jp/CM/Info/news_en/pdf/joint_pass_202601_en.pdf" },
+    { "title": "LIVE JAPAN · JR EAST PASS 东北", "url": "https://livejapan.com/en/in-tohoku/in-pref-miyagi/in-sendai_matsushima/article-a3000337/" },
+    { "title": "JR 集团 · 隼号停靠站与所需时间", "url": "https://www.jr-group.jp/hayabusa-info.html" },
+    { "title": "japan-guide.com · Rail Passes", "url": "https://www.japan-guide.com/e/e2357.html" }
+  ],
+  "checked": "2026-11"
+}

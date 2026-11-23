@@ -1,0 +1,76 @@
+{
+  "id": "kyushu-onsen-6d",
+  "title": "九州温泉 6 天 · 福冈由布院别府熊本",
+  "region": "kyushu",
+  "daysCount": 6,
+  "for": "第一次去九州、想泡温泉也想逛城市的人",
+  "season": "秋冬最合适，春天也不错",
+  "summary": "福冈进出，先在市区吃两天，再坐观光列车去由布院住一晚旅馆，第二天到别府看地狱、吃地狱蒸，最后坐特急和新干线去熊本看城。全程不用自驾，城市之间都是火车，买一张北九州周游券基本够用。",
+  "bases": ["福冈 2 晚", "由布院 1 晚", "别府 1 晚", "熊本 1 晚"],
+  "days": [
+    {
+      "title": "落地福冈，逛市区",
+      "stay": "福冈",
+      "items": [
+        { "pref": "fukuoka", "spot": "kushida-shrine" },
+        { "pref": "fukuoka", "spot": "ohori-maizuru" },
+        { "pref": "fukuoka", "food": "yatai" },
+        { "pref": "fukuoka", "food": "hakata-ramen" }
+      ],
+      "move": "国内线地铁或国际线巴士到博多，市区坐地铁"
+    },
+    {
+      "title": "太宰府和柳川",
+      "stay": "福冈",
+      "items": [
+        { "pref": "fukuoka", "spot": "dazaifu-tenmangu" },
+        { "pref": "fukuoka", "spot": "yanagawa" },
+        { "pref": "fukuoka", "food": "motsunabe" }
+      ],
+      "move": "全天坐西铁，可买太宰府柳川观光套票"
+    },
+    {
+      "title": "由布院之森去由布院",
+      "stay": "由布院",
+      "items": [
+        { "note": "上午坐由布院之森，约 2 小时 15 分钟，提前订座" },
+        { "pref": "oita", "spot": "yufuin" },
+        { "pref": "oita", "food": "dango-jiru" },
+        { "note": "傍晚回旅馆泡汤，吃怀石晚餐" }
+      ],
+      "move": "博多坐特急由布院之森到由布院"
+    },
+    {
+      "title": "别府地狱和地狱蒸",
+      "stay": "别府",
+      "items": [
+        { "note": "清晨去金鳞湖看晨雾，秋冬最明显" },
+        { "pref": "oita", "spot": "beppu-jigoku" },
+        { "pref": "oita", "spot": "kannawa-onsen" },
+        { "pref": "oita", "food": "jigoku-mushi" }
+      ],
+      "move": "由布院坐路线巴士到别府约 1 小时，市内坐巴士"
+    },
+    {
+      "title": "砂浴后去熊本",
+      "stay": "熊本",
+      "items": [
+        { "pref": "oita", "spot": "takegawara-onsen" },
+        { "pref": "kumamoto", "spot": "suizenji" },
+        { "pref": "kumamoto", "food": "basashi" },
+        { "note": "多留一天可以报阿苏一日游" }
+      ],
+      "move": "别府坐音速号回博多，换九州新干线到熊本，约 3 小时"
+    },
+    {
+      "title": "熊本城后返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "kumamoto", "spot": "kumamoto-castle" },
+        { "pref": "kumamoto", "food": "kumamoto-ramen" },
+        { "note": "新干线约 35 分钟回博多，地铁去福冈机场" }
+      ],
+      "move": "熊本坐九州新干线到博多，再去机场"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "kanto",
+  "name": "关东",
+  "kana": "かんとう",
+  "en": "Kanto",
+  "tagline": "以东京为中心，一小时内就有古都、温泉和海",
+  "intro": [
+    "关东是以东京为中心的一都六县，也是大多数人第一次去日本的落脚点。东京本身就够玩四五天；往南是镰仓、箱根和横滨，往北是日光的世界遗产和群马的温泉，往东是成田、房总半岛和茨城的花海，大多能从东京当天往返。",
+    "最省事的安排是住东京不动，每天往一个方向出城：镰仓江之岛一天、日光一天、川越半天；箱根、草津这类温泉地值得住一晚。第二次来可以把重心放在郊外，用东京的地铁和私铁就能串起来，不一定要买全国铁路通票。"
+  ],
+  "days": "5–7 天",
+  "season": "3 月底到 4 月初樱花、11 月红叶最好；7–8 月闷热多雨，冬天晴天多、远眺富士山的机会大。",
+  "gateways": [
+    { "name": "成田国际机场（NRT）", "how": "京成 Skyliner 到上野约 40 多分钟、约 2,470 日元；JR N'EX 到东京站约 1 小时、约 3,140 日元；巴士到东京站约 1,500 日元。" },
+    { "name": "羽田机场（HND）", "how": "京急到品川约 15 分钟、约 330 日元；单轨电车到滨松町约 15 分钟、约 520 日元，再换 JR 山手线。" },
+    { "name": "东京站（新干线）", "how": "从京都、大阪坐东海道新干线希望号约 2 小时 15 分钟到 2 小时半；东北、北陆、上越新干线也都从这里出发。" }
+  ],
+  "cities": ["东京", "横滨", "镰仓", "箱根", "日光", "川越"],
+  "passes": [
+    { "name": "Tokyo Subway Ticket", "text": "东京地铁和都营地铁 24/48/72 小时无限坐，约 1,000/1,500/2,000 日元，不含 JR。每天坐四五趟地铁就回本。" },
+    { "name": "JR 东京广域周游券", "text": "3 天约 16,000 日元，管 JR 东日本到日光、轻井泽、河口湖等地。三天里有两天长途出城才划算，只在日本境内买。" },
+    { "name": "箱根周游券", "text": "小田急发行，从新宿出发 2 日约 7,100 日元，含往返和箱根区内登山电车、缆车、游船，浪漫特快另付。去箱根基本都值。" },
+    { "name": "NIKKO PASS", "text": "东武发行，世界遗产区 2 日约 3,000 日元，含浅草往返日光和区内巴士，特急另付。只看东照宫一带选这个。" }
+  ],
+  "prefectures": ["ibaraki", "tochigi", "gunma", "saitama", "chiba", "tokyo", "kanagawa"],
+  "sources": [
+    { "title": "京成电铁 Skyliner 票价", "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/traffic/skyliner_fares.php" },
+    { "title": "japan-guide：羽田机场交通", "url": "https://www.japan-guide.com/e/e2430.html" },
+    { "title": "东京 Metro：Tokyo Subway Ticket", "url": "https://www.tokyometro.jp/en/ticket/value/travel/index.html" },
+    { "title": "小田急：箱根周游券", "url": "https://hakonetrip.odakyu-global.com/passes/hakone-freepass/" },
+    { "title": "东武铁道：NIKKO PASS", "url": "https://www.tobu.co.jp/en/ticket/nikko/all.html?version=en" }
+  ],
+  "checked": "2026-11"
+}

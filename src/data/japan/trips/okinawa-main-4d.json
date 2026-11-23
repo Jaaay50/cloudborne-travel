@@ -1,0 +1,53 @@
+{
+  "id": "okinawa-main-4d",
+  "title": "冲绳本岛不自驾 · 4 天",
+  "region": "okinawa",
+  "daysCount": 4,
+  "for": "第一次去冲绳、不能自驾的人",
+  "season": "春秋最合适，7–10 月留意台风",
+  "summary": "四天都住那霸，不换酒店。南部靠单轨电车和巴士，看首里城和斋场御岳；北部报一日游，一天串起万座毛、美丽海水族馆、今归仁城和古宇利岛。中国大陆驾照不能在日本开车，这条路线全程不用开车。",
+  "bases": ["那霸 3 晚"],
+  "days": [
+    {
+      "title": "到那霸逛国际通",
+      "stay": "那霸",
+      "items": [
+        { "note": "单轨电车约 13 分钟到县厅前，入住放行李" },
+        { "pref": "okinawa", "spot": "kokusai-dori" },
+        { "pref": "okinawa", "food": "agu-pork" }
+      ],
+      "move": "那霸机场坐单轨电车到市区"
+    },
+    {
+      "title": "首里城和斋场御岳",
+      "stay": "那霸",
+      "items": [
+        { "pref": "okinawa", "spot": "shuri-castle" },
+        { "pref": "okinawa", "food": "goya-champuru" },
+        { "pref": "okinawa", "spot": "sefa-utaki" }
+      ],
+      "move": "单轨电车到首里；下午从那霸巴士总站坐巴士约 1 小时去斋场御岳"
+    },
+    {
+      "title": "北部一日游",
+      "stay": "那霸",
+      "items": [
+        { "pref": "okinawa", "spot": "manzamo" },
+        { "pref": "okinawa", "spot": "churaumi-aquarium" },
+        { "pref": "okinawa", "spot": "nakijin-castle" },
+        { "pref": "okinawa", "spot": "kouri-island" }
+      ],
+      "move": "报北部一日游，早上从那霸出发，傍晚回来"
+    },
+    {
+      "title": "吃顿冲绳面再返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "okinawa", "food": "okinawa-soba" },
+        { "pref": "okinawa", "food": "sata-andagi" },
+        { "note": "单轨电车回那霸机场，预留出境时间" }
+      ],
+      "move": "单轨电车约 13 分钟到那霸机场"
+    }
+  ]
+}

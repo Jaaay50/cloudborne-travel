@@ -1,0 +1,33 @@
+{
+  "name": "cloudborne-travel",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "geo": "node scripts/build-geo.mjs",
+    "images": "node scripts/build-images.mjs",
+    "check": "python3 -I scripts/check_content.py --all",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.4.13",
+    "d3-geo": "^3.1.2",
+    "polylabel": "^2.1.0",
+    "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "topojson-simplify": "^3.0.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/d3-geo": "^3.1.1",
+    "@types/geojson": "^7946.0.16",
+    "@types/polylabel": "^2.0.0",
+    "@types/topojson-client": "^3.1.5",
+    "@types/topojson-server": "^3.0.4",
+    "@types/topojson-simplify": "^3.0.3",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3"
+  }
+}

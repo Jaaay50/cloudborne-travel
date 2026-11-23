@@ -1,0 +1,45 @@
+{
+  "id": "tokyo-kamakura-hakone-3d",
+  "title": "东京出发：镰仓 + 箱根 3 天",
+  "region": "kanto",
+  "daysCount": 3,
+  "for": "已经逛过东京市区，想加几天古寺、海边和温泉的人",
+  "season": "4–6 月、10–11 月最好",
+  "summary": "第一天从东京当天往返镰仓和江之岛，看大佛、古寺和海；第二天坐浪漫特快进箱根，按登山电车、缆车、海盗船的顺序走一圈环线，晚上住温泉旅馆；第三天上午泡汤，下午在横滨港未来看海吃拉面，晚上回到东京。",
+  "bases": ["东京 1 晚", "箱根 1 晚"],
+  "days": [
+    {
+      "title": "镰仓古寺和江之岛",
+      "stay": "东京",
+      "items": [
+        { "pref": "kanagawa", "spot": "tsurugaoka-hachimangu" },
+        { "pref": "kanagawa", "spot": "kotoku-in" },
+        { "pref": "kanagawa", "spot": "hasedera" },
+        { "pref": "kanagawa", "food": "shirasu-don" },
+        { "pref": "kanagawa", "spot": "enoshima" }
+      ],
+      "move": "东京站坐 JR 横须贺线到镰仓约 1 小时；景点之间坐江之电，回程可坐小田急到新宿"
+    },
+    {
+      "title": "箱根环线",
+      "stay": "箱根",
+      "items": [
+        { "pref": "kanagawa", "spot": "hakone-open-air-museum" },
+        { "pref": "kanagawa", "spot": "owakudani" },
+        { "pref": "kanagawa", "food": "kuro-tamago" },
+        { "note": "桃源台坐海盗船到元箱根，看箱根神社水中鸟居" }
+      ],
+      "move": "新宿坐浪漫特快到箱根汤本约 85 分钟；冬季缆车检修时改坐替代巴士"
+    },
+    {
+      "title": "汤本温泉和横滨",
+      "stay": "东京",
+      "items": [
+        { "pref": "kanagawa", "spot": "hakone-yumoto" },
+        { "pref": "kanagawa", "spot": "minato-mirai" },
+        { "pref": "kanagawa", "food": "iekei-ramen" }
+      ],
+      "move": "汤本坐登山电车到小田原，换 JR 东海道线到横滨，晚上回东京"
+    }
+  ]
+}

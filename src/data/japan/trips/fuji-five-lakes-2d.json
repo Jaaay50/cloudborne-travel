@@ -1,0 +1,36 @@
+{
+  "id": "fuji-five-lakes-2d",
+  "title": "富士五湖 2 天 · 从东京出发",
+  "region": "chubu",
+  "daysCount": 2,
+  "for": "第一次专门看富士山、只能从东京抽出两天的人",
+  "season": "11–2 月最容易看清富士山；4 月看樱花",
+  "summary": "富士山常被云挡，所以一定要在河口湖住一晚，留出第二天的早晨。第一天坐巴士过来，先去五重塔和吉田乌冬，下午到湖边；第二天一早看山，再去西湖的茅草屋村和忍野八海，傍晚回东京。",
+  "bases": ["河口湖 1 晚"],
+  "days": [
+    {
+      "title": "五重塔与河口湖",
+      "stay": "河口湖",
+      "items": [
+        { "note": "早班巴士从新宿到富士山站，换富士急线到下吉田站" },
+        { "pref": "yamanashi", "spot": "chureito" },
+        { "pref": "yamanashi", "food": "yoshida-udon" },
+        { "pref": "yamanashi", "spot": "kawaguchiko-oishi" },
+        { "pref": "yamanashi", "food": "hoto" }
+      ],
+      "move": "新宿到河口湖站巴士约 1 小时 45 分钟；下吉田、河口湖之间坐富士急线"
+    },
+    {
+      "title": "清晨看山，涌泉与古村",
+      "stay": "回东京",
+      "items": [
+        { "note": "日出后到湖边看富士山，上午 10 点前最清楚" },
+        { "pref": "yamanashi", "spot": "nenba" },
+        { "pref": "yamanashi", "spot": "oshino-hakkai" },
+        { "pref": "yamanashi", "food": "shingen-mochi" },
+        { "note": "傍晚从河口湖站坐巴士或特急「富士回游」回东京" }
+      ],
+      "move": "西湖坐周游巴士，忍野八海坐路线巴士；回程车票提前订好"
+    }
+  ]
+}

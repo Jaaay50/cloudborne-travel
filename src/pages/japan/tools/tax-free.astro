@@ -1,0 +1,94 @@
+---
+import ToolShell from '../../../components/ToolShell.astro';
+import { taxfree } from '../../../lib/toolkit';
+const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase: 5000, note: '' };
+---
+<ToolShell slug="tax-free" title="退税与计算" description="2026 年 11 月 1 日起日本免税改为出境退税：先付含税价，出境时海关确认后退还消费税。规则、步骤、常见问题和速算。" lead={taxfree?.summary ?? '2026 年 11 月起，日本免税改为「先付含税价、出境时退税」。'} sources={taxfree?.sources}>
+  <section class="calc card">
+    <div class="calc-in">
+      <label>小票上的金额（日元）<input type="number" id="amt" min="0" step="100" inputmode="numeric" placeholder="例如 33000" /></label>
+      <div class="seg" role="radiogroup" aria-label="价格类型">
+        <button type="button" class="chip on" data-incl="1" role="radio" aria-checked="true">含税价</button>
+        <button type="button" class="chip" data-incl="0" role="radio" aria-checked="false">税前价</button>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="商品类型">
+        <button type="button" class="chip on" data-rate={c.taxRate} role="radio" aria-checked="true">一般商品 {Math.round(c.taxRate * 100)}%</button>
+        <button type="button" class="chip" data-rate={c.reducedRate} role="radio" aria-checked="false">食品饮料 {Math.round(c.reducedRate * 100)}%</button>
+      </div>
+      <label>汇率（1 人民币 = ? 日元）<input type="number" id="fx" step="0.01" value="21.0" /></label>
+    </div>
+    <div class="calc-out" aria-live="polite">
+      <p class="eyebrow">可退的消费税</p>
+      <p class="big"><span id="tax">0</span><small> 日元</small></p>
+      <p id="tax-cny" class="cny">约 ¥0</p>
+      <p id="tax-hint" class="hint"></p>
+    </div>
+    {c.note && <p class="calc-note">{c.note}</p>}
+  </section>
+
+  {taxfree && (
+    <>
+      <section class="tool-sec">
+        <h2>怎么退</h2>
+        <ol class="steps">{taxfree.steps.map((s, i) => <li><span>{i + 1}</span><div><b>{s.title}</b><p>{s.text}</p></div></li>)}</ol>
+      </section>
+      <section class="tool-sec">
+        <h2>规则要点</h2>
+        <div class="rules">{taxfree.rules.map((r) => <div class="tcard"><b>{r.title}</b><p>{r.text}</p></div>)}</div>
+      </section>
+      <section class="tool-sec">
+        <h2>常见问题</h2>
+        <div class="faq">{taxfree.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+      </section>
+    </>
+  )}
+</ToolShell>
+<style>
+  .calc { margin-top: 22px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .calc-in { display: grid; gap: 12px; }
+  .calc-in label { display: grid; gap: 4px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+  .calc-in input { font: 18px var(--sans); height: 46px; padding: 0 12px; border: 1px solid var(--line-2); border-radius: 12px; background: #fff; color: var(--ink); }
+  .calc-in input:focus { outline: 0; border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
+  .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+  .calc-out { background: var(--paper); border-radius: 16px; padding: 18px; display: grid; align-content: center; }
+  .big { font: 600 48px/1.1 var(--serif); margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .big small { font: 16px var(--sans); color: var(--mut); }
+  .cny { color: var(--ink-2); font-size: 16px; margin-top: 4px; }
+  .hint { font-size: 13px; margin-top: 10px; color: var(--mut); }
+  .hint.warn { color: #9a5b14; }
+  .calc-note { grid-column: 1 / -1; font-size: 12.5px; color: var(--mut); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .steps li { display: flex; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .steps li > span { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: var(--vermilion); color: #fff; display: grid; place-items: center; font: 600 14px var(--serif); }
+  .steps p { color: var(--ink-2); font-size: 14.5px; margin-top: 2px; }
+  .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .faq { display: grid; gap: 8px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 16px; transition: box-shadow var(--t-fast); }
+  details[open] { box-shadow: var(--sh-1); }
+  summary { cursor: pointer; padding: 13px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+  summary::after { content: "+"; color: var(--mut); transition: transform var(--t) var(--ease); }
+  details[open] summary::after { transform: rotate(45deg); }
+  summary::-webkit-details-marker { display: none; }
+  details p { color: var(--ink-2); font-size: 14.5px; padding-bottom: 14px; }
+  @media (max-width: 720px) { .calc, .rules { grid-template-columns: 1fr; } }
+</style>
+<script define:vars={{ min: c.minPurchase }}>
+  const amt = document.getElementById('amt'), fx = document.getElementById('fx');
+  let incl = true, rate = parseFloat(document.querySelector('[data-rate]').dataset.rate);
+  const fmt = (n) => Math.round(n).toLocaleString('zh-CN');
+  function calc() {
+    const a = Math.max(0, +amt.value || 0);
+    const pre = incl ? a / (1 + rate) : a;
+    const tax = incl ? a - pre : a * rate;
+    document.getElementById('tax').textContent = fmt(Math.floor(tax));
+    document.getElementById('tax-cny').textContent = `约 ¥${fmt(tax / Math.max(1, +fx.value || 21))}`;
+    const h = document.getElementById('tax-hint');
+    if (min && a > 0 && pre < min) { h.textContent = `税前 ${fmt(pre)} 日元，未满 ${fmt(min)} 日元，同一店当天合计要满这个数才能退。`; h.className = 'hint warn'; }
+    else if (a > 0) { h.textContent = `税前 ${fmt(pre)} 日元。实际到手可能扣除退税机构的手续费。`; h.className = 'hint'; }
+    else h.textContent = '';
+  }
+  document.querySelectorAll('[data-incl]').forEach((b) => b.addEventListener('click', () => { incl = b.dataset.incl === '1'; document.querySelectorAll('[data-incl]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', String(x === b)); }); calc(); }));
+  document.querySelectorAll('[data-rate]').forEach((b) => b.addEventListener('click', () => { rate = parseFloat(b.dataset.rate); document.querySelectorAll('[data-rate]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', String(x === b)); }); calc(); }));
+  amt.addEventListener('input', calc); fx.addEventListener('input', calc);
+  calc();
+</script>

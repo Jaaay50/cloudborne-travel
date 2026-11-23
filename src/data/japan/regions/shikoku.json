@@ -1,0 +1,73 @@
+{
+  "slug": "shikoku",
+  "name": "四国",
+  "kana": "しこく",
+  "en": "Shikoku",
+  "tagline": "乌冬、温泉、清流和濑户内海的艺术岛",
+  "intro": [
+    "四国是日本四个主岛里最小的一个，由香川、德岛、爱媛、高知四个县组成，和本州之间有三条跨海大桥相连。北边面朝濑户内海，有直岛等艺术岛、道后温泉和岛波海道；南边面朝太平洋，有高知的鲣鱼和四万十川；中间是大步危、祖谷这样的深山峡谷。",
+    "四国游客比关西少得多，节奏慢，但县与县之间 JR 特急也要 2–3 小时，最好挑两三个县，各住一两晚。第一次来可以从冈山过濑户大桥到高松，上岛看艺术，再去松山泡道后温泉；喜欢自然的，往高知和德岛山里走。"
+  ],
+  "days": "4–7 天",
+  "season": "春秋最好；夏天上岛和骑行很晒；台风季留意船班和列车停运。",
+  "gateways": [
+    {
+      "name": "高松机场（TAK）",
+      "how": "机场巴士到高松站约 45 分钟，约 1,300 日元；有上海、首尔、台北等航线"
+    },
+    {
+      "name": "松山机场（MYJ）",
+      "how": "机场巴士到 JR 松山站约 1,000 日元，到道后温泉约 1,200 日元"
+    },
+    {
+      "name": "从冈山乘 JR",
+      "how": "冈山是四国的铁路门户：快速 Marine Liner 约 55 分钟到高松，特急去松山、高知各约 2.5 小时"
+    },
+    {
+      "name": "从关西乘高速巴士",
+      "how": "大阪、神户经淡路岛到德岛约 2–2.5 小时，到高松约 3.5 小时"
+    }
+  ],
+  "cities": [
+    "高松",
+    "松山",
+    "高知",
+    "德岛",
+    "直岛"
+  ],
+  "passes": [
+    {
+      "name": "ALL SHIKOKU Rail Pass",
+      "text": "JR 四国全线和琴电、土佐电等可坐；2026 年 12 月起含指定席，3 天约 15,000 日元、7 天约 23,000 日元。松山市内电车不含。"
+    },
+    {
+      "name": "四国通票不包含的部分",
+      "text": "冈山到儿岛一段属 JR 西日本，松山市内电车、去各岛的渡轮和高速巴士也都不含，需另付。"
+    }
+  ],
+  "prefectures": [
+    "tokushima",
+    "kagawa",
+    "ehime",
+    "kochi"
+  ],
+  "sources": [
+    {
+      "title": "JR 四国：ALL SHIKOKU Rail Pass 价格与使用条件变更（2026-10）",
+      "url": "https://www.jr-shikoku.co.jp/global/en/news/pdf/20261029_all-shikoku-rail-pass.pdf"
+    },
+    {
+      "title": "JR 四国：ALL SHIKOKU Rail Pass 伊予铁道覆盖变更（2025-10）",
+      "url": "https://www.jr-shikoku.co.jp/global/en/news/pdf/20251031-all-shikoku-rail-pass.pdf"
+    },
+    {
+      "title": "高松机场：巴士交通",
+      "url": "https://www.takamatsu-airport.com/access/bus/"
+    },
+    {
+      "title": "松山机场：巴士交通",
+      "url": "https://www.matsuyama-airport.co.jp/access/bus.html"
+    }
+  ],
+  "checked": "2026-11"
+}

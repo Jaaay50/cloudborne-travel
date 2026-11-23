@@ -1,0 +1,65 @@
+{
+  "id": "tokyo-first-5d",
+  "title": "第一次去东京 · 5 天",
+  "region": "kanto",
+  "daysCount": 5,
+  "for": "第一次去日本、想把东京主要片区都走一遍的人",
+  "season": "3–5 月、10–12 月最舒服",
+  "summary": "住在东京不换酒店，每天集中玩一两个相邻片区：老东京的浅草和上野、吃货的筑地和银座、年轻人的原宿和涩谷，再用半天去高尾山爬山看红叶或富士山，最后一天去月岛吃文字烧、去台场看海，傍晚直接去机场。",
+  "bases": ["东京 4 晚"],
+  "days": [
+    {
+      "title": "到达 · 浅草和晴空塔",
+      "stay": "东京",
+      "items": [
+        { "note": "上午落地进城，先到酒店寄存行李" },
+        { "pref": "tokyo", "spot": "sensoji" },
+        { "pref": "tokyo", "food": "tendon" },
+        { "pref": "tokyo", "spot": "tokyo-skytree" }
+      ],
+      "move": "成田坐 Skyliner 到上野约 40 多分钟，再换地铁银座线到浅草"
+    },
+    {
+      "title": "上野、筑地和银座",
+      "stay": "东京",
+      "items": [
+        { "pref": "tokyo", "spot": "ueno-park" },
+        { "pref": "tokyo", "spot": "tsukiji-outer-market" },
+        { "pref": "tokyo", "food": "edomae-sushi" },
+        { "note": "下午沿晴海通走到银座，逛百货和旗舰店" }
+      ],
+      "move": "上野坐日比谷线到筑地约 15 分钟；筑地周日和部分周三休市，避开这几天"
+    },
+    {
+      "title": "明治神宫和涩谷",
+      "stay": "东京",
+      "items": [
+        { "pref": "tokyo", "spot": "meiji-jingu" },
+        { "note": "原宿竹下通、表参道逛街吃甜品" },
+        { "pref": "tokyo", "spot": "shibuya-crossing" },
+        { "pref": "tokyo", "food": "tokyo-ramen" }
+      ],
+      "move": "JR 山手线到原宿站，逛完沿表参道走到涩谷约 20 分钟"
+    },
+    {
+      "title": "高尾山和新宿",
+      "stay": "东京",
+      "items": [
+        { "pref": "tokyo", "spot": "takao-san" },
+        { "pref": "tokyo", "spot": "shinjuku-gyoen" },
+        { "pref": "tokyo", "spot": "tokyo-metropolitan-government" }
+      ],
+      "move": "新宿坐京王线到高尾山口约 50 分钟；午后回新宿，御苑冬季下午 4 点半关门"
+    },
+    {
+      "title": "月岛、台场和返程",
+      "stay": "返程",
+      "items": [
+        { "pref": "tokyo", "food": "monjayaki" },
+        { "pref": "tokyo", "spot": "odaiba" },
+        { "note": "从台场去羽田较近；坐成田航班的要多留时间" }
+      ],
+      "move": "月岛坐有乐町线到丰洲，换百合海鸥线到台场"
+    }
+  ]
+}

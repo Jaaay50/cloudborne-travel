@@ -1,0 +1,47 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { TOOLS } from '../../../lib/toolkit';
+---
+<Base title="随身工具" description="去日本用得上的离线工具：日语大字卡、机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。" nav="tools">
+  <section class="wrap tk-head">
+    <p class="eyebrow">FIELD TOOLKIT</p>
+    <h1>到了日本，打开就能用</h1>
+    <p class="lead">打开过一次之后，没信号也能看。手机浏览器里选「添加到主屏幕」，用起来像 App。</p>
+  </section>
+  <section class="wrap">
+    <div class="grid g-3">
+      {TOOLS.map((t) => (
+        <a class="tk" href={`/japan/tools/${t.slug}/`}>
+          <span class="tk-ico">{t.ico}</span>
+          <b>{t.t}</b>
+          <small>{t.d}</small>
+          {!t.ready && <em>整理中</em>}
+        </a>
+      ))}
+    </div>
+    <div class="install card" id="install">
+      <b>装到手机桌面</b>
+      <p><span class="ios">iPhone：用 Safari 打开本站 → 点底部「分享」→「添加到主屏幕」。</span><span class="and">安卓：用 Chrome 打开 → 右上角菜单 →「添加到主屏幕」或「安装应用」。</span></p>
+      <button type="button" class="btn sm primary" id="install-btn" hidden>一键安装</button>
+    </div>
+  </section>
+</Base>
+<style>
+  .tk-head { padding: 48px 0 24px; }
+  .tk-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 10px; }
+  .lead { color: var(--ink-2); max-width: 620px; font-size: 16.5px; }
+  .tk { position: relative; display: grid; gap: 4px; padding: 20px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease); }
+  .tk:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
+  .tk-ico { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--vermilion-bg); color: var(--vermilion); font: 600 21px var(--jp); margin-bottom: 8px; }
+  .tk b { font-size: 18px; font-family: var(--serif); }
+  .tk small { color: var(--mut); font-size: 13.5px; }
+  .tk em { position: absolute; right: 14px; top: 14px; font-style: normal; font-size: 12px; color: var(--mut); background: var(--paper-2); padding: 2px 8px; border-radius: 999px; }
+  .install { margin-top: 20px; padding: 18px 20px; display: grid; gap: 6px; }
+  .install p { color: var(--ink-2); font-size: 14.5px; display: grid; gap: 2px; }
+</style>
+<script>
+  let deferred: any = null;
+  const btn = document.getElementById('install-btn')!;
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; btn.hidden = false; });
+  btn.addEventListener('click', async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; btn.hidden = true; });
+</script>

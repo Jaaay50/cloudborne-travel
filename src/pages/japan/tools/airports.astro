@@ -1,0 +1,54 @@
+---
+import ToolShell from '../../../components/ToolShell.astro';
+import { transport } from '../../../lib/toolkit';
+const airports = transport?.airports ?? [];
+---
+<ToolShell slug="airports" title="机场进城" description="成田、羽田、关西、中部、新千岁、福冈、那霸机场到市区的交通方式、时间和票价。" lead="落地后怎么进市区。时间和票价是大概数，班次和价格以运营方为准。" sources={transport?.sources}>
+  {!airports.length && <p class="tcard">内容整理中。</p>}
+  <div class="ap-tabs no-print" role="tablist">
+    {airports.map((a, i) => <button type="button" class:list={['chip', { on: i === 0 }]} role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-ap={a.id}>{a.name}<small>{a.code}</small></button>)}
+  </div>
+  {airports.map((a, i) => (
+    <section class="ap" data-ap={a.id} hidden={i !== 0}>
+      <h2>{a.name} <small>{a.code} · 去{a.city}</small></h2>
+      <div class="ap-opts">
+        {a.options.map((o) => (
+          <div class="opt">
+            <div class="opt-hd"><b>{o.name}</b><span class="to">→ {o.to}</span></div>
+            <div class="opt-nums"><span>⏱ {o.time}</span><span>¥ {o.price}</span></div>
+            {o.note && <p>{o.note}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+</ToolShell>
+<style>
+  .ap-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 22px 0 16px; }
+  .ap-tabs small { font-size: 11px; opacity: .65; margin-left: 2px; }
+  .ap[hidden] { display: none; }
+  .ap { animation: fadeIn 260ms var(--ease); }
+  .ap h2 { font-size: 24px; margin-bottom: 12px; }
+  .ap h2 small { font: 14px var(--sans); color: var(--mut); margin-left: 6px; }
+  .ap-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .opt { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .opt-hd { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+  .opt-hd b { font-size: 16.5px; }
+  .to { color: var(--ink-2); font-size: 14px; }
+  .opt-nums { display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap; }
+  .opt-nums span { background: var(--paper-2); border-radius: 8px; padding: 2px 9px; font-size: 13.5px; font-weight: 600; }
+  .opt p { color: var(--ink-2); font-size: 13.5px; line-height: 1.65; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 640px) { .ap-opts { grid-template-columns: 1fr; } }
+</style>
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.ap-tabs .chip')];
+  const secs = [...document.querySelectorAll<HTMLElement>('section.ap')];
+  const pick = (id: string) => {
+    tabs.forEach((t) => { const on = t.dataset.ap === id; t.classList.toggle('on', on); t.setAttribute('aria-selected', String(on)); });
+    secs.forEach((s) => (s.hidden = s.dataset.ap !== id));
+  };
+  tabs.forEach((t) => t.addEventListener('click', () => { pick(t.dataset.ap!); history.replaceState(null, '', '#' + t.dataset.ap); }));
+  const h = location.hash.slice(1);
+  if (h && secs.some((s) => s.dataset.ap === h)) pick(h);
+</script>

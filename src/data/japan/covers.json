@@ -1,0 +1,265 @@
+{
+ "style": "Style: modern Japanese woodblock print (shin-hanga inspired), flat layered colour areas, fine carved outlines, gentle gradients (bokashi) in the sky, slightly textured washi paper grain, calm and elegant palette. Wide landscape composition for a travel guide cover. No text, no letters, no signage, no logos, no watermark, no people in close-up.",
+ "hero": {
+  "scene": "A wide panoramic Japanese landscape journey from left to right: cherry blossoms by a river and an old wooden town, a white bullet train crossing a viaduct over rice fields, snow-capped Mount Fuji in the centre, a vermilion torii and pagoda among autumn maples, a calm sea with small islands on the right, soft dawn sky with layered clouds",
+  "alt": "从樱花古镇到海岛的日本全景"
+ },
+ "prefectures": {
+  "hokkaido": {
+   "scene": "Rolling hills of Furano in July with long stripes of purple lavender, red poppies and white flowers, a lone poplar tree, the jagged Tokachi mountain range far behind under a wide summer sky",
+   "alt": "富良野夏天的薰衣草花田"
+  },
+  "aomori": {
+   "scene": "Hirosaki Castle's small white keep on its stone wall framed by full cherry blossoms, petals floating on the moat like a pink raft, snow-capped Mount Iwaki in the distance",
+   "alt": "弘前城的樱花与护城河花筏"
+  },
+  "iwate": {
+   "scene": "Geibikei Gorge in autumn, a flat-bottomed wooden boat with a tiny boatman poling along a calm green river between tall grey cliffs covered with red and gold trees",
+   "alt": "猊鼻溪秋天的游船"
+  },
+  "miyagi": {
+   "scene": "Matsushima Bay at dawn, dozens of small pine-covered rocky islets on still water, a long red wooden footbridge leading to one island, soft pink sky",
+   "alt": "松岛湾清晨的松树小岛"
+  },
+  "akita": {
+   "scene": "Kakunodate samurai district in spring, a quiet lane lined with black wooden fences and old gates under cascading weeping cherry trees",
+   "alt": "角馆武家屋敷的垂枝樱"
+  },
+  "yamagata": {
+   "scene": "Ginzan Onsen on a snowy winter night, three- and four-storey wooden inns facing each other across a narrow river, warm gas lamps glowing, snow falling softly",
+   "alt": "银山温泉的雪夜"
+  },
+  "fukushima": {
+   "scene": "Ouchi-juku old post town in deep snow, a straight street lined with thick thatched-roof houses, smoke rising, forested hills behind under a pale winter sky",
+   "alt": "大内宿雪中的茅草屋"
+  },
+  "ibaraki": {
+   "scene": "Hitachi Seaside Park in late April, a gentle hill completely covered with sky-blue nemophila flowers meeting the clear blue sky, a small path winding to the top",
+   "alt": "常陆海滨公园的粉蝶花"
+  },
+  "tochigi": {
+   "scene": "The vermilion Shinkyo sacred bridge in Nikko arching over a fast clear mountain river, surrounded by blazing red and orange autumn forest",
+   "alt": "日光神桥的秋色"
+  },
+  "gunma": {
+   "scene": "Kusatsu Onsen's yubatake at dusk, steaming hot spring water flowing through long wooden channels into a turquoise pool, old wooden inns and warm lanterns around it",
+   "alt": "草津温泉的汤畑"
+  },
+  "saitama": {
+   "scene": "Kawagoe's Little Edo street with heavy black clay-walled merchant houses and the tall wooden bell tower rising above the rooftops, soft afternoon light",
+   "alt": "川越小江户的钟楼与老街"
+  },
+  "chiba": {
+   "scene": "Oyama Senmaida terraced rice fields on a hillside at dusk, water-filled paddies reflecting an orange and purple sky, small farmhouse and trees",
+   "alt": "大山千枚田的梯田黄昏"
+  },
+  "tokyo": {
+   "scene": "The Sumida River in Tokyo at dusk in cherry blossom season, pink trees along the embankment, a temple's five-storey pagoda roof and a very tall slender modern broadcast tower on the skyline, a small river boat",
+   "alt": "隅田川的樱花与东京天际线"
+  },
+  "kanagawa": {
+   "scene": "The Shonan coast at sunset, Enoshima island with its lighthouse across the water, the silhouette of Mount Fuji on the horizon, a small green-and-cream local train running along the seaside",
+   "alt": "湘南海岸的江之岛与富士山"
+  },
+  "niigata": {
+   "scene": "Hoshitoge terraced rice paddies at dawn in early summer, layers of flooded fields reflecting the sky, morning mist drifting through beech trees on the slopes",
+   "alt": "星峠梯田的清晨雾气"
+  },
+  "toyama": {
+   "scene": "The snow-capped Tateyama mountain range rising dramatically behind the calm blue waters of Toyama Bay at dawn, small fishing boats on the bay",
+   "alt": "富山湾背后的立山连峰"
+  },
+  "ishikawa": {
+   "scene": "Kenroku-en garden in Kanazawa in winter, pine trees protected by conical rope supports (yukitsuri), a two-legged stone lantern beside a pond, fresh snow",
+   "alt": "兼六园冬天的雪吊与石灯笼"
+  },
+  "fukui": {
+   "scene": "Eihei-ji Zen temple halls and covered wooden staircases among towering ancient cedar trees, moss and soft rain, a quiet stone path",
+   "alt": "永平寺杉林中的禅寺"
+  },
+  "yamanashi": {
+   "scene": "Mount Fuji in late autumn seen from a hillside above Lake Kawaguchi, a five-storey red pagoda in the foreground among red and orange maple trees, the snow-capped cone of Fuji filling the upper right, clear morning light",
+   "alt": "河口湖畔的富士山与五重塔"
+  },
+  "nagano": {
+   "scene": "Matsumoto Castle's black wooden keep reflected in its moat, a red bridge, snow-covered peaks of the Northern Japanese Alps behind under a crisp blue sky",
+   "alt": "松本城与北阿尔卑斯雪山"
+  },
+  "gifu": {
+   "scene": "Shirakawa-go village in winter twilight, steep thatched gassho-style farmhouses blanketed with snow, warm light glowing from small windows, snowy mountains around",
+   "alt": "白川乡雪夜的合掌造"
+  },
+  "shizuoka": {
+   "scene": "Neat rounded rows of bright green tea bushes covering gentle hills, Mount Fuji with a snow cap rising behind, spring morning",
+   "alt": "茶园尽头的富士山"
+  },
+  "aichi": {
+   "scene": "Nagoya Castle's tall keep with green copper roofs and golden fish-shaped ornaments on the ridge, cherry blossoms in front, stone walls",
+   "alt": "名古屋城与樱花"
+  },
+  "mie": {
+   "scene": "Meoto Iwa wedded rocks at Futami joined by a thick straw rope, a small white torii on the larger rock, sunrise over the sea with gentle waves",
+   "alt": "二见浦夫妇岩的日出"
+  },
+  "shiga": {
+   "scene": "A vermilion torii gate standing in the calm water of Lake Biwa at sunrise, soft mist, distant mountains on the far shore",
+   "alt": "琵琶湖中的鸟居日出"
+  },
+  "kyoto": {
+   "scene": "Kiyomizu-dera temple's large wooden stage on tall pillars surrounded by red and gold autumn maples, a three-storey vermilion pagoda nearby, the old city spreading below at golden hour",
+   "alt": "清水寺舞台的秋色"
+  },
+  "osaka": {
+   "scene": "Osaka Castle's white and green keep with golden trim standing on massive stone walls above a moat, cherry blossoms, a faint modern city skyline in the background",
+   "alt": "大阪城与樱花"
+  },
+  "hyogo": {
+   "scene": "Himeji Castle, an elegant white castle with layered roofs, seen through full cherry blossoms on a bright spring day",
+   "alt": "樱花中的姬路城"
+  },
+  "nara": {
+   "scene": "Gentle deer resting on the grass of Nara Park under golden autumn trees, the five-storey pagoda of Kofuku-ji rising behind",
+   "alt": "奈良公园的小鹿与五重塔"
+  },
+  "wakayama": {
+   "scene": "Nachi Falls, a tall white waterfall dropping through a dark green forest, a three-storey vermilion pagoda in the foreground on the hillside",
+   "alt": "那智瀑布与三重塔"
+  },
+  "tottori": {
+   "scene": "The vast Tottori sand dunes at sunset, wind ripples on golden sand, the Sea of Japan beyond, a few tiny figures walking along the ridge",
+   "alt": "鸟取沙丘的日落"
+  },
+  "shimane": {
+   "scene": "The main hall of Izumo Taisha shrine with its enormous thick twisted straw rope hanging over the entrance, a pine-lined approach, calm overcast light",
+   "alt": "出云大社的大注连绳"
+  },
+  "okayama": {
+   "scene": "Korakuen landscape garden in autumn with a wide lawn, a pond and teahouse, the black Okayama Castle rising behind red maples",
+   "alt": "后乐园与冈山城的秋色"
+  },
+  "hiroshima": {
+   "scene": "The great vermilion torii gate of Itsukushima Shrine standing in the sea at high tide, forested Mount Misen behind, sunset sky reflected on the water",
+   "alt": "严岛神社海上鸟居"
+  },
+  "yamaguchi": {
+   "scene": "Kintaikyo bridge with five elegant wooden arches crossing a wide clear river, cherry blossoms on the banks, a small castle on the hill behind",
+   "alt": "锦带桥与樱花"
+  },
+  "tokushima": {
+   "scene": "A swaying vine suspension bridge (kazurabashi) over an emerald river deep in the Iya Valley, steep autumn-coloured mountainsides",
+   "alt": "祖谷溪的葛藤吊桥"
+  },
+  "kagawa": {
+   "scene": "Ritsurin Garden with a curved wooden arch bridge over a pond, sculpted pine trees, Mount Shiun forming the backdrop, calm spring morning",
+   "alt": "栗林公园的拱桥与松"
+  },
+  "ehime": {
+   "scene": "Dogo Onsen's three-storey traditional wooden public bathhouse at dusk, a small watchtower on its roof, warm lantern light, a quiet street",
+   "alt": "道后温泉本馆的黄昏"
+  },
+  "kochi": {
+   "scene": "The clear Shimanto River winding through green mountains in summer, a low concrete bridge without railings just above the water, a small boat",
+   "alt": "四万十川的沉下桥"
+  },
+  "fukuoka": {
+   "scene": "Small open-air food stalls with lanterns along a river in a city at night, warm light reflected in the water, steam rising, no readable text",
+   "alt": "河边的屋台夜景"
+  },
+  "saga": {
+   "scene": "Yutoku Inari shrine's bright vermilion halls built on tall wooden stilts against a wooded hillside, autumn maples around",
+   "alt": "祐德稻荷神社的秋色"
+  },
+  "nagasaki": {
+   "scene": "Nagasaki harbour at blue hour seen from a hilltop, city lights spreading over hills around a deep bay, ships in the harbour",
+   "alt": "长崎港的夜色"
+  },
+  "kumamoto": {
+   "scene": "The green grassland of Kusasenri in the Aso caldera, a small pond with horses grazing, the volcano smoking gently in the background",
+   "alt": "阿苏草千里的草原与火山"
+  },
+  "oita": {
+   "scene": "Beppu at dusk, many white plumes of steam rising from hot spring vents across the hillside town, Beppu Bay beyond",
+   "alt": "别府升腾的温泉蒸汽"
+  },
+  "miyazaki": {
+   "scene": "Takachiho Gorge, a slender waterfall falling from basalt cliffs into an emerald river, a small rowboat on the water, lush green foliage",
+   "alt": "高千穗峡的真名井瀑布"
+  },
+  "kagoshima": {
+   "scene": "Sakurajima volcano with a plume of smoke rising across Kinko Bay, palm trees and a ferry in the foreground, bright clear day",
+   "alt": "樱岛火山与锦江湾"
+  },
+  "okinawa": {
+   "scene": "Turquoise and emerald water of a sheltered bay with small green islets and white sand, a red-tiled Ryukyu roof with a lion-dog guardian statue and red hibiscus flowers in the foreground",
+   "alt": "琉球屋顶与碧蓝海湾"
+  }
+ },
+ "regions": {
+  "tohoku": {
+   "scene": "The Oirase Stream in autumn, a clear mountain stream with small waterfalls and mossy rocks under a canopy of red, orange and yellow leaves",
+   "alt": "奥入濑溪流的秋天"
+  },
+  "kanto": {
+   "scene": "The Tokyo skyline at dusk seen from across the bay, modern towers and bridges with soft lights, the silhouette of Mount Fuji on the far horizon",
+   "alt": "黄昏的东京与远方富士"
+  },
+  "chubu": {
+   "scene": "Kamikochi valley with a long wooden suspension bridge over a clear blue-green river, the jagged Hotaka peaks with snow patches behind, larch trees in autumn gold",
+   "alt": "上高地的河童桥与穗高连峰"
+  },
+  "kansai": {
+   "scene": "A path through a tunnel of hundreds of vermilion torii gates winding up a forested hill, dappled sunlight, stone fox statues",
+   "alt": "千本鸟居的朱红小径"
+  },
+  "chugoku": {
+   "scene": "A hillside town of old temples and narrow stairways overlooking a calm strait in the Seto Inland Sea, small islands and a long suspension bridge in the distance",
+   "alt": "濑户内海边的坡道小城"
+  },
+  "shikoku": {
+   "scene": "A Shikoku pilgrimage temple gate at the top of stone steps, a pilgrim's walking path through cedars, the Seto Inland Sea and islands visible below",
+   "alt": "四国遍路的山门与海景"
+  },
+  "kyushu": {
+   "scene": "Volcanic green hills of Kyushu with white onsen steam rising from a valley village, a smoking volcano in the distance under a big sky",
+   "alt": "九州的火山与温泉蒸汽"
+  }
+ },
+ "themes": {
+  "sakura": {
+   "scene": "A riverside promenade under a long tunnel of full pink cherry blossoms, petals falling onto calm water, small wooden boats",
+   "alt": "樱花隧道与河道"
+  },
+  "flowers": {
+   "scene": "A wisteria trellis tunnel with long hanging purple and white flower clusters, sunlight filtering through, garden path",
+   "alt": "紫藤花廊"
+  },
+  "autumn": {
+   "scene": "A moss garden of an old temple covered with fallen red maple leaves, a thatched gate and stone lantern, glowing autumn light",
+   "alt": "红叶落满的苔庭"
+  },
+  "snow": {
+   "scene": "Mount Zao's frost-covered snow monster trees on a white mountainside under a pale blue sky, a ropeway gondola in the distance",
+   "alt": "藏王树冰"
+  },
+  "onsen": {
+   "scene": "An outdoor rock hot spring bath with rising steam surrounded by a snowy forest, a small wooden roof and lantern, no people",
+   "alt": "雪林中的露天温泉"
+  },
+  "sea": {
+   "scene": "A white sand beach with clear turquoise water and coral shallows, a small island on the horizon, fluffy summer clouds",
+   "alt": "海岛的白沙与碧海"
+  },
+  "heritage": {
+   "scene": "A quiet approach to an ancient wooden temple, rows of moss-covered stone lanterns under tall cedars, soft morning light",
+   "alt": "古寺参道的石灯笼"
+  },
+  "nature": {
+   "scene": "A calm mountain lake reflecting forested slopes and a volcanic peak, morning mist, a small wooden pier",
+   "alt": "山中湖泊的晨雾"
+  },
+  "art": {
+   "scene": "A small island in the Seto Inland Sea with a minimalist concrete museum built into a green hillside and an abstract sculpture on a wooden pier by the sea",
+   "alt": "濑户内海小岛上的美术馆"
+  }
+ }
+}

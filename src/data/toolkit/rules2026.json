@@ -1,0 +1,148 @@
+{
+  "items": [
+    {
+      "id": "taxfree-refund",
+      "title": "免税改成「先付税、出境再退」",
+      "date": "2026-11-01",
+      "text": "免税店先收含税价。购买次日起 90 天内出境时，托运行李前在机场终端刷护照、接受海关确认，之后由店家或退税机构退还消费税。同一店当天税前满 5,000 日元起；消耗品不再封袋、也没有 50 万上限，但在日本吃掉用掉就退不了。",
+      "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html"
+    },
+    {
+      "id": "departure-tax-3000",
+      "title": "出国税从 1,000 涨到 3,000 日元",
+      "date": "2026-07-01",
+      "text": "「国际观光旅客税」每次离开日本收 3,000 日元，航空公司随机票一起收，不用另外交。7 月 1 日前出票、出发日期当时就定好的机票，一般仍按 1,000 日元。2 岁以下和入境后 24 小时内转机离开的不收。",
+      "url": "https://www.nta.go.jp/publication/pamph/kansetsu/kanko/pdf/01.pdf"
+    },
+    {
+      "id": "kyoto-lodging-tax",
+      "title": "京都住宿税最高涨到 10,000 日元",
+      "date": "2026-03-01",
+      "text": "京都市按每人每晚房费分 5 档：不到 6,000 日元收 200，6,000–2 万收 400，2–5 万收 1,000，5–10 万收 4,000，10 万以上收 10,000。按入住日算，之前按旧标准预付过的，入住时要补差额。",
+      "url": "https://www.city.kyoto.lg.jp/gyozai/page/0000346705.html"
+    },
+    {
+      "id": "hokkaido-lodging-tax",
+      "title": "北海道开征住宿税",
+      "date": "2026-04-01",
+      "text": "在北海道住宿，每人每晚加收道税：房费不到 2 万日元收 100，2–5 万收 200，5 万以上收 500。札幌、小樽、函馆、旭川、富良野、二世古、俱知安等地还会叠加市町村税，实际要多付一点。",
+      "url": "https://www.pref.hokkaido.lg.jp/sm/zim/tax/218623.html"
+    },
+    {
+      "id": "osaka-lodging-tax",
+      "title": "大阪住宿税门槛降低、税额上调",
+      "date": "2025-09-01",
+      "text": "大阪府住宿税起征点从每人每晚 7,000 日元降到 5,000 日元：5,000–15,000 收 200，15,000–2 万收 400，2 万以上收 500。按不含餐的房费算，订房时看清价格里含不含这笔税。",
+      "url": "https://www.pref.osaka.lg.jp/moyo/o070070/000002.html"
+    },
+    {
+      "id": "jr-east-fare-2026",
+      "title": "JR 东日本票价上调",
+      "date": "2026-03-14",
+      "text": "JR 东日本整体平均上调约 7.1%，山手线等起步价从 150 涨到 160 日元，东京市区原来的低价区间并入普通区间。在东京坐 JR 每程会贵一点，规划预算时别用旧攻略里的票价。",
+      "url": "https://www.jreast.co.jp/2026unchin-kaitei/"
+    },
+    {
+      "id": "fuji-climbing-fee",
+      "title": "富士山登山收 4,000 日元，2026 年照旧",
+      "date": "2025-07",
+      "text": "2025 年起山梨、静冈两侧登山道都收每人 4,000 日元，2026 年不变。吉田线每天限 4,000 人，14 点到次日 3 点关闸；静冈侧要先在 FUJI NAVI 登记并完成学习，夜间进山须住山小屋。封山期别擅自登。",
+      "url": "https://www.pref.yamanashi.jp/fujisan/annzenn/documents/r8fujitozan.html"
+    },
+    {
+      "id": "separate-shipping-ended",
+      "title": "免税品不能再自己寄回国",
+      "date": "2025-04-01",
+      "text": "以前免税买的东西可以出境前用 EMS 等自行邮寄、凭单据过海关；这条路已经取消。想拿到退税，就得把东西随身带到机场；或者在店里直接办理寄往海外（直送），由店家处理免税。",
+      "url": "https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/0025003-110_02.pdf"
+    },
+    {
+      "id": "miyajima-visitor-tax",
+      "title": "上宫岛要交 100 日元访问税",
+      "date": "2023-10-01",
+      "text": "坐渡轮去宫岛，每人每次 100 日元，直接加在船费里由船公司代收，不用另外排队。一年内要去好几次的，可以一次交 500 日元管一年。学龄前儿童不收。",
+      "url": "https://www.city.hatsukaichi.hiroshima.jp/soshiki/110/59551.html"
+    },
+    {
+      "id": "jesta-plan",
+      "title": "JESTA 电子入境许可还没开始",
+      "date": "2028-04",
+      "text": "日本计划在 2028 财年推出类似美国 ESTA 的「JESTA」，对象是免签短期访客，未获批不能登机，具体日期未定。中国大陆护照赴日目前要办签证，基本不受影响；现在没有官方申请入口，别信代办网站。",
+      "url": "https://www.moj.go.jp/isa/05_00054.html"
+    }
+  ],
+  "sources": [
+    {
+      "title": "观光厅 消费税免税店网站：旅行者特设页（退税方式）",
+      "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html"
+    },
+    {
+      "title": "观光厅 旅行者常见问题（退税方式）",
+      "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00027.html"
+    },
+    {
+      "title": "国税厅 输出物品贩卖场制度 Q&A（退税方式·概要篇）",
+      "url": "https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/0025003-110_02.pdf"
+    },
+    {
+      "title": "国税厅 国际观光旅客税 Q&A（2026 年 4 月修订）",
+      "url": "https://www.nta.go.jp/publication/pamph/kansetsu/kanko/pdf/01.pdf"
+    },
+    {
+      "title": "京都市 宿泊税常见问题（2026 年 3 月起税额改正）",
+      "url": "https://www.city.kyoto.lg.jp/gyozai/page/0000346705.html"
+    },
+    {
+      "title": "京都观光 Navi 京都市宿泊税改正通知",
+      "url": "https://ja.kyoto.travel/news/format.php?id=532"
+    },
+    {
+      "title": "北海道 总务部税务课 北海道宿泊税",
+      "url": "https://www.pref.hokkaido.lg.jp/sm/zim/tax/218623.html"
+    },
+    {
+      "title": "大阪府 宿泊税条例改正通知",
+      "url": "https://www.pref.osaka.lg.jp/moyo/o070070/000002.html"
+    },
+    {
+      "title": "大阪观光局 宿泊税改正说明",
+      "url": "https://osaka-info.jp/information/to-tourist/news-lodging-tax/"
+    },
+    {
+      "title": "JR 东日本 2026 年运赁改定说明",
+      "url": "https://www.jreast.co.jp/2026unchin-kaitei/"
+    },
+    {
+      "title": "Impress Watch：JR 东日本 2026 年 3 月平均 7.1% 涨价、起步价 160 日元",
+      "url": "https://www.watch.impress.co.jp/docs/news/2036143.html"
+    },
+    {
+      "title": "山梨县 令和 8 年度富士登山",
+      "url": "https://www.pref.yamanashi.jp/fujisan/annzenn/documents/r8fujitozan.html"
+    },
+    {
+      "title": "静冈县 三条登山道登山规制",
+      "url": "https://www.pref.shizuoka.jp/kankosports/kanko/mtfuji/1002809/1072062.html"
+    },
+    {
+      "title": "中国驻日本大使馆 提醒中国公民切勿违规擅自登山（2026-11-17）",
+      "url": "https://jp.china-embassy.gov.cn/zytz_0/202611/t20261117_12060710.htm"
+    },
+    {
+      "title": "廿日市市 宫岛访问税概要",
+      "url": "https://www.city.hatsukaichi.hiroshima.jp/soshiki/110/59551.html"
+    },
+    {
+      "title": "出入国在留管理厅 电子渡航认证制度（JESTA）",
+      "url": "https://www.moj.go.jp/isa/05_00054.html"
+    },
+    {
+      "title": "日本经济新闻：JESTA 入管法修正案内阁会议决定",
+      "url": "https://www.nikkei.com/article/DGXZQOUA061680W6A300C2000000/"
+    },
+    {
+      "title": "Impress Watch：访日客电子渡航认证 JESTA 2028 年度导入",
+      "url": "https://www.watch.impress.co.jp/docs/news/2092336.html"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="日本旅行预算计算" description="一页算清日本旅行花费：机票、住宿（含住宿税）、交通、吃饭、门票和购物，按人数和天数分摊，人民币日元互换。" nav="budget">
+  <section class="wrap bd-head">
+    <p class="eyebrow">BUDGET</p>
+    <h1>这趟要花多少钱</h1>
+    <p class="lead">先选一个档位，再改成你自己的数字。所有输入只存在你的浏览器里。</p>
+  </section>
+
+  <section class="wrap bd-grid">
+    <form class="card bd-form" id="bd" autocomplete="off">
+      <div class="row3">
+        <label>人数<input type="number" name="people" min="1" max="20" value="2" /></label>
+        <label>天数<input type="number" name="days" min="1" max="30" value="6" /></label>
+        <label>汇率 <small>1 人民币 = ? 日元</small><input type="number" name="rate" step="0.01" min="5" max="40" value="21.0" /></label>
+      </div>
+      <div class="tiers" role="radiogroup" aria-label="消费档位">
+        <button type="button" class="chip" data-tier="save" aria-checked="false" role="radio">省钱</button>
+        <button type="button" class="chip on" data-tier="mid" aria-checked="true" role="radio">舒适</button>
+        <button type="button" class="chip" data-tier="lux" aria-checked="false" role="radio">宽裕</button>
+      </div>
+
+      <fieldset>
+        <legend>机票 <small>每人往返，人民币，填官网含税价</small></legend>
+        <input type="number" name="flight" min="0" step="100" />
+      </fieldset>
+      <fieldset>
+        <legend>住宿 <small>每晚每间，日元</small></legend>
+        <div class="row2">
+          <label>每晚房费<input type="number" name="hotel" min="0" step="1000" /></label>
+          <label>几人一间<input type="number" name="perRoom" min="1" max="6" value="2" /></label>
+        </div>
+        <label class="inline"><input type="checkbox" name="kyoto" /> 有几晚住京都（京都住宿税按房费档位另收）<input type="number" name="kyotoNights" min="0" max="30" value="0" class="mini" /> 晚</label>
+      </fieldset>
+      <fieldset>
+        <legend>每人每天 <small>日元</small></legend>
+        <div class="row3">
+          <label>吃饭<input type="number" name="food" min="0" step="500" /></label>
+          <label>市内交通<input type="number" name="local" min="0" step="100" /></label>
+          <label>门票体验<input type="number" name="tickets" min="0" step="500" /></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>大交通与其他 <small>每人，日元</small></legend>
+        <div class="row3">
+          <label>新干线 / 周游券<input type="number" name="rail" min="0" step="1000" /></label>
+          <label>机场往返<input type="number" name="airport" min="0" step="500" /></label>
+          <label>流量卡 / eSIM<input type="number" name="sim" min="0" step="100" /></label>
+        </div>
+        <div class="row2">
+          <label>购物预算<input type="number" name="shop" min="0" step="1000" /></label>
+          <label>保险（人民币）<input type="number" name="insure" min="0" step="10" /></label>
+        </div>
+      </fieldset>
+      <p class="note">住宿税、出国税：2026 年 7 月起日本出国税为每人 3,000 日元（一般已含在机票里）。东京、大阪、京都、北海道等地另有住宿税，京都最高，按每人每晚房费分档，本表按京都档位粗算；其他城市每晚一两百日元，计在住宿里即可。<a href="/japan/tools/rules-2026/">看 2026 新规 →</a></p>
+    </form>
+
+    <aside class="bd-side">
+      <div class="card bd-sum" aria-live="polite">
+        <p class="eyebrow">合计（人民币）</p>
+        <p class="total"><span id="t-all">—</span></p>
+        <p class="per">每人 <b id="t-per">—</b> · 每人每天 <b id="t-day">—</b></p>
+        <div class="bars" id="bars"></div>
+        <table class="tbl" id="tbl"></table>
+        <div class="bd-actions">
+          <button type="button" class="btn sm" id="bd-copy">复制明细给同行</button>
+          <button type="button" class="btn sm ghost" id="bd-reset">恢复默认</button>
+        </div>
+      </div>
+    </aside>
+  </section>
+</Base>
+
+<style>
+  .bd-head { padding: 48px 0 22px; }
+  .bd-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 10px; }
+  .lead { color: var(--ink-2); max-width: 620px; font-size: 16.5px; }
+  .bd-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 24px; align-items: start; padding-bottom: 40px; }
+  .bd-form { padding: 22px; display: grid; gap: 18px; }
+  .bd-form label { display: grid; gap: 4px; font-size: 13.5px; color: var(--ink-2); font-weight: 600; }
+  .bd-form label small, legend small { font-weight: 400; color: var(--mut); font-size: 12px; margin-left: 6px; }
+  .bd-form input[type="number"] { font: 16px var(--sans); color: var(--ink); height: 42px; padding: 0 12px; border: 1px solid var(--line-2); border-radius: 11px; background: #fff; width: 100%; transition: border-color var(--t-fast), box-shadow var(--t-fast); }
+  .bd-form input[type="number"]:focus { outline: 0; border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
+  .bd-form input.mini { width: 70px; height: 32px; display: inline-block; }
+  .inline { display: flex !important; align-items: center; gap: 8px !important; flex-wrap: wrap; font-weight: 400 !important; margin-top: 10px; }
+  fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+  legend { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 8px; padding: 0; }
+  .row2, .row3 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .row3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tiers { display: flex; gap: 6px; }
+  .note { font-size: 12.5px; color: var(--mut); line-height: 1.7; }
+  .note a { color: var(--vermilion); }
+  .bd-side { position: sticky; top: calc(var(--hdr) + 16px); }
+  .bd-sum { padding: 22px; }
+  .total { font: 600 44px/1.1 var(--serif); margin: 4px 0 6px; letter-spacing: .01em; }
+  .total::before { content: "¥"; font-size: 24px; margin-right: 4px; color: var(--mut); }
+  .per { color: var(--ink-2); font-size: 14px; }
+  .bars { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 18px 0 12px; background: var(--paper-2); gap: 2px; }
+  .bars span { transition: flex-grow 400ms var(--ease); }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .tbl td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .tbl td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .tbl i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 8px; vertical-align: 0; }
+  .tbl small { color: var(--mut); margin-left: 6px; }
+  .bd-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  @media (max-width: 960px) { .bd-grid { grid-template-columns: 1fr; } .bd-side { position: static; order: -1; } }
+  @media (max-width: 560px) { .row3 { grid-template-columns: 1fr 1fr; } .total { font-size: 36px; } }
+</style>
+
+<script>
+  const KEY = 'cbt.budget.v1';
+  const TIERS: Record<string, Record<string, number>> = {
+    save: { flight: 2200, hotel: 9000, food: 4000, local: 1000, tickets: 1000, rail: 8000, airport: 2500, sim: 1500, shop: 10000, insure: 60 },
+    mid: { flight: 3500, hotel: 18000, food: 7000, local: 1500, tickets: 2500, rail: 20000, airport: 3500, sim: 2000, shop: 30000, insure: 100 },
+    lux: { flight: 6500, hotel: 40000, food: 15000, local: 3000, tickets: 6000, rail: 35000, airport: 6000, sim: 3000, shop: 80000, insure: 200 },
+  };
+  const COLORS = { flight: '#2c4a6e', hotel: '#c2412b', food: '#b88a2e', transport: '#5c8a4e', tickets: '#7a4f9a', shop: '#c0607a', other: '#7a7f8a' };
+  const NAMES = { flight: '机票', hotel: '住宿', food: '吃饭', transport: '交通', tickets: '门票体验', shop: '购物', other: '流量 / 保险 / 税' };
+  const form = document.getElementById('bd') as HTMLFormElement;
+  const num = (n: string) => Math.max(0, +(form.elements.namedItem(n) as HTMLInputElement).value || 0);
+  const fmt = (n: number) => Math.round(n).toLocaleString('zh-CN');
+  let tier = 'mid';
+
+  // Kyoto lodging tax (from 2026-03-01): per person per night by room rate per person.
+  const kyotoTax = (perPersonRate: number) => (perPersonRate < 6000 ? 200 : perPersonRate < 20000 ? 400 : perPersonRate < 50000 ? 1000 : perPersonRate < 100000 ? 4000 : 10000);
+
+  function setTier(t: string, keepSaved = false) {
+    tier = t;
+    document.querySelectorAll<HTMLButtonElement>('[data-tier]').forEach((b) => { const on = b.dataset.tier === t; b.classList.toggle('on', on); b.setAttribute('aria-checked', String(on)); });
+    if (!keepSaved) for (const [k, v] of Object.entries(TIERS[t])) (form.elements.namedItem(k) as HTMLInputElement).value = String(v);
+  }
+
+  function calc() {
+    const people = Math.max(1, num('people')), days = Math.max(1, num('days')), rate = Math.max(1, num('rate'));
+    const nights = Math.max(0, days - 1), perRoom = Math.max(1, num('perRoom'));
+    const rooms = Math.ceil(people / perRoom);
+    const kyN = (form.elements.namedItem('kyoto') as HTMLInputElement).checked ? Math.min(nights, num('kyotoNights')) : 0;
+    const kyTax = kyN * people * kyotoTax(num('hotel') / Math.min(perRoom, people));
+    const yen = {
+      hotel: num('hotel') * rooms * nights + kyTax,
+      food: num('food') * people * days,
+      transport: (num('local') * days + num('rail') + num('airport')) * people,
+      tickets: num('tickets') * people * days,
+      shop: num('shop') * people,
+      other: num('sim') * people,
+    };
+    const cny: Record<string, number> = {
+      flight: num('flight') * people,
+      hotel: yen.hotel / rate, food: yen.food / rate, transport: yen.transport / rate, tickets: yen.tickets / rate, shop: yen.shop / rate,
+      other: yen.other / rate + num('insure') * people,
+    };
+    const total = Object.values(cny).reduce((a, b) => a + b, 0);
+    document.getElementById('t-all')!.textContent = fmt(total);
+    document.getElementById('t-per')!.textContent = '¥' + fmt(total / people);
+    document.getElementById('t-day')!.textContent = '¥' + fmt(total / people / days);
+    document.getElementById('bars')!.innerHTML = Object.entries(cny).map(([k, v]) => `<span title="${NAMES[k as keyof typeof NAMES]}" style="flex-grow:${v};background:${COLORS[k as keyof typeof COLORS]}"></span>`).join('');
+    document.getElementById('tbl')!.innerHTML = Object.entries(cny).map(([k, v]) => `<tr><td><i style="background:${COLORS[k as keyof typeof COLORS]}"></i>${NAMES[k as keyof typeof NAMES]}${k === 'hotel' ? `<small>${rooms} 间 × ${nights} 晚${kyTax ? ` · 含京都税 ${fmt(kyTax)} 日元` : ''}</small>` : ''}</td><td>¥${fmt(v)}${k !== 'flight' && rate ? `<small>${fmt(v * rate)} 日元</small>` : ''}</td></tr>`).join('');
+    const data: Record<string, string | boolean> = { tier };
+    for (const el of Array.from(form.elements) as HTMLInputElement[]) if (el.name) data[el.name] = el.type === 'checkbox' ? el.checked : el.value;
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { /* ignore */ }
+    return { total, people, days, cny };
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-tier]').forEach((b) => b.addEventListener('click', () => { setTier(b.dataset.tier!); calc(); }));
+  form.addEventListener('input', calc);
+  document.getElementById('bd-reset')!.addEventListener('click', () => { localStorage.removeItem(KEY); (form.elements.namedItem('people') as HTMLInputElement).value = '2'; (form.elements.namedItem('days') as HTMLInputElement).value = '6'; setTier('mid'); calc(); });
+  document.getElementById('bd-copy')!.addEventListener('click', async () => {
+    const { total, people, days, cny } = calc();
+    const text = [`日本 ${days} 天 · ${people} 人 预算（人民币）`, ...Object.entries(cny).map(([k, v]) => `${NAMES[k as keyof typeof NAMES]}：¥${fmt(v)}`), `合计：¥${fmt(total)}，每人 ¥${fmt(total / people)}`, '— 栖云旅行 travel.cloudborne.cn/budget/'].join('\n');
+    try { await navigator.clipboard.writeText(text); (window as any).cbtToast?.('已复制预算明细'); } catch { prompt('复制：', text); }
+  });
+
+  // init: saved values > ?days= > tier defaults
+  let saved: Record<string, string | boolean> | null = null;
+  try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { saved = null; }
+  setTier(typeof saved?.tier === 'string' && TIERS[saved.tier] ? saved.tier : 'mid', !!saved);
+  if (saved) for (const [k, v] of Object.entries(saved)) { const el = form.elements.namedItem(k) as HTMLInputElement | null; if (el) el.type === 'checkbox' ? (el.checked = !!v) : (el.value = String(v)); }
+  const qd = new URLSearchParams(location.search).get('days');
+  if (qd && +qd > 0) (form.elements.namedItem('days') as HTMLInputElement).value = String(Math.min(30, +qd));
+  calc();
+</script>

@@ -1,0 +1,308 @@
+{
+  "airports": [
+    {
+      "id": "narita",
+      "name": "成田机场",
+      "code": "NRT",
+      "city": "东京",
+      "options": [
+        {
+          "name": "京成 Skyliner",
+          "to": "日暮里 / 京成上野",
+          "time": "约 36–41 分钟",
+          "price": "约 2,580 日元",
+          "note": "全车对号座，最快。住上野、浅草、日暮里一带首选；京成已公布 2027 年 3 月起加价，买票前看一眼现价。",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/"
+        },
+        {
+          "name": "京成 Access 特急",
+          "to": "浅草 / 日本桥 / 东银座 / 品川",
+          "time": "比 Skyliner 慢，具体看班次",
+          "price": "到浅草约 1,290 日元",
+          "note": "不用特急券，直通都营浅草线，到浅草、银座一带不用换乘，便宜又省事。",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/traffic/express_fares.php"
+        },
+        {
+          "name": "JR 成田特快 N'EX",
+          "to": "东京站 / 品川 / 涩谷 / 新宿 / 横滨",
+          "time": "到东京站约 1 小时",
+          "price": "到东京站约 3,140 日元，到新宿约 3,330 日元",
+          "note": "直达新宿、涩谷不用换乘。外国护照可买「N'EX 东京往返票」约 5,200 日元（14 天内往返一次），来回都坐就划算。",
+          "url": "https://jr-group.jp/nex-ryokin/"
+        },
+        {
+          "name": "利木津巴士 / 平价机场巴士",
+          "to": "新宿酒店区 / 东京站 / 银座",
+          "time": "到东京站最快约 65 分钟，到新宿约 2 小时（看路况）",
+          "price": "利木津到新宿约 3,600 日元；平价巴士 TYO-NRT 到东京站约 1,500 日元",
+          "note": "利木津直接停大酒店门口，行李多最省心；平价巴士便宜但深夜清晨班次另计价。堵车会拖时间。",
+          "url": "https://www.limousinebus.co.jp/en/"
+        }
+      ]
+    },
+    {
+      "id": "haneda",
+      "name": "羽田机场",
+      "code": "HND",
+      "city": "东京",
+      "options": [
+        {
+          "name": "京急线",
+          "to": "品川 / 浅草 / 横滨",
+          "time": "第 3 航站楼到品川约 11–13 分钟，到浅草约 34 分钟",
+          "price": "第 3 航站楼到品川约 330 日元",
+          "note": "到品川换 JR 山手线最快；部分车直通浅草线，住浅草、东银座可一车到。",
+          "url": "https://www.haneda-tokyo-access.com/en/ride/fares.html"
+        },
+        {
+          "name": "东京单轨电车",
+          "to": "滨松町",
+          "time": "约 13 分钟起",
+          "price": "第 3 航站楼到滨松町约 520 日元",
+          "note": "滨松町换 JR 山手线、京滨东北线。站台宽、好放箱子，班次密。",
+          "url": "https://www.tokyo-monorail.co.jp/english/"
+        },
+        {
+          "name": "利木津巴士",
+          "to": "新宿 / 池袋 / 各大酒店",
+          "time": "到新宿约 40 分钟–1 小时（看路况）",
+          "price": "到新宿约 1,400 日元，深夜班约 2,800 日元",
+          "note": "深夜到港电车停了也有车，可直接到酒店门口；早晚高峰容易堵。",
+          "url": "https://www.limousinebus.co.jp/en/"
+        }
+      ]
+    },
+    {
+      "id": "kansai",
+      "name": "关西国际机场",
+      "code": "KIX",
+      "city": "大阪 / 京都",
+      "options": [
+        {
+          "name": "南海 rapi:t 特急",
+          "to": "难波（なんば）",
+          "time": "约 35–45 分钟",
+          "price": "约 1,670 日元（车票约 970 日元 + 特急券约 700 日元）",
+          "note": "住难波、心斋桥、道顿堀最方便；不赶时间坐南海空港急行只要车票钱，约 44 分钟。车内补特急券要多付约 300 日元。",
+          "url": "https://www.nankai.co.jp/traffic/express/rapit.html"
+        },
+        {
+          "name": "JR HARUKA 特急",
+          "to": "天王寺 / 大阪·新大阪 / 京都",
+          "time": "到京都直达不用换乘，时长以时刻表为准",
+          "price": "外国游客可买 HARUKA 优惠单程票，2026 年 11 月 1 日起售出的票已调价，以 JR 西日本官网为准",
+          "note": "去京都不用换车。优惠票需外国护照+短期滞在身份，只能在 JR 西日本官网或海外旅行社预订，日本国内不卖。",
+          "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/"
+        },
+        {
+          "name": "机场利木津巴士",
+          "to": "大阪站（梅田）/ 京都站",
+          "time": "到梅田约 60 分钟，到京都站约 85–90 分钟",
+          "price": "到梅田约 1,800 日元，到京都站约 2,800 日元",
+          "note": "不用预约、先到先上，行李放车底。住梅田或京都站附近、箱子大的话最省力。",
+          "url": "https://www.kate.co.jp/en/timetable/"
+        }
+      ]
+    },
+    {
+      "id": "chubu",
+      "name": "中部国际机场（新特丽亚）",
+      "code": "NGO",
+      "city": "名古屋",
+      "options": [
+        {
+          "name": "名铁 μSKY 特急",
+          "to": "名铁名古屋",
+          "time": "约 29 分钟",
+          "price": "约 1,430 日元（车票约 980 日元 + μ 车票约 450 日元）",
+          "note": "全车对号座、最快。名铁名古屋站就在 JR 名古屋站旁边，转新干线方便。",
+          "url": "https://www.meitetsu.co.jp/eng/airport-access/index.html"
+        },
+        {
+          "name": "名铁特急（普通车厢）",
+          "to": "金山 / 名铁名古屋",
+          "time": "到名铁名古屋约 38 分钟",
+          "price": "约 980 日元",
+          "note": "坐普通车厢只要车票钱，慢不了几分钟；住金山一带直接在金山下。",
+          "url": "https://www.meitetsu.co.jp/eng/airport-access/index.html"
+        }
+      ]
+    },
+    {
+      "id": "new-chitose",
+      "name": "新千岁机场",
+      "code": "CTS",
+      "city": "札幌",
+      "options": [
+        {
+          "name": "JR 快速 Airport",
+          "to": "札幌 / 小樽",
+          "time": "到札幌最快约 33–37 分钟",
+          "price": "约 1,230 日元；坐 u-seat 指定席另加约 1,000 日元",
+          "note": "大部分座位不用预约，Suica 等交通 IC 卡可直接刷。部分班次直通小樽。冬天下大雪偶尔停运，留好余量。",
+          "url": "https://www.jrhokkaido.co.jp/global/english/travel/airport.html"
+        },
+        {
+          "name": "机场联络巴士",
+          "to": "札幌市中心（札幌站前、大通、薄野一带）",
+          "time": "比 JR 慢不少，看路况",
+          "price": "以运营公司官网为准",
+          "note": "北都交通、北海道中央巴士运营，酒店在巴士站旁时可少拖行李；冬天路况差，赶时间优先坐 JR。",
+          "url": "https://www.hokkaido-airports.com/en/new-chitose/access/bus/"
+        }
+      ]
+    },
+    {
+      "id": "fukuoka",
+      "name": "福冈机场",
+      "code": "FUK",
+      "city": "福冈",
+      "options": [
+        {
+          "name": "福冈市地铁机场线",
+          "to": "博多 / 天神",
+          "time": "到博多约 5 分钟，到天神约 11 分钟",
+          "price": "按距离计价，210 日元起，到博多、天神都只要几百日元",
+          "note": "地铁站和国内线航站楼直连。国际线到达要先在 5 号站台坐免费联络巴士到国内线（约 10 分钟）再进站。",
+          "url": "https://subway.city.fukuoka.lg.jp/eng/route/"
+        },
+        {
+          "name": "国际线直达巴士",
+          "to": "博多站 / 天神",
+          "time": "看路况",
+          "price": "到站台看价格",
+          "note": "从国际线航站楼直接出发，省掉换联络巴士；行李多时可考虑。班次和票价以运营公司为准。",
+          "url": "https://www.fukuoka-airport.jp/en/access/bus.html"
+        },
+        {
+          "name": "出租车",
+          "to": "博多 / 天神",
+          "time": "看路况",
+          "price": "按表计价",
+          "note": "机场离市区很近，三四个人拼一辆不算贵，行李多又赶时间时很实用。",
+          "url": "https://www.fukuoka-airport.jp/en/access/taxi.html"
+        }
+      ]
+    },
+    {
+      "id": "naha",
+      "name": "那霸机场",
+      "code": "OKA",
+      "city": "冲绳",
+      "options": [
+        {
+          "name": "冲绳单轨电车 Yui Rail",
+          "to": "县厅前（国际通）/ 首里",
+          "time": "到县厅前约 13 分钟，到首里约 27 分钟",
+          "price": "到县厅前约 290 日元，到首里约 360 日元",
+          "note": "冲绳本岛唯一的轨道交通，可刷 Suica 等交通 IC 卡。一天坐三四趟以上可买 24 小时券约 1,000 日元。",
+          "url": "https://www.yui-rail.co.jp/en/"
+        },
+        {
+          "name": "机场利木津巴士 / 路线巴士",
+          "to": "北谷、恩纳度假区、名护等",
+          "time": "看线路和路况，去北部要预留较长时间",
+          "price": "按线路，以运营公司为准",
+          "note": "去度假酒店不想自驾就坐这个，在机场 1 号站台附近上车。注意：中国大陆驾照不能直接在日本开车。",
+          "url": "https://www.naha-airport.co.jp/en/access/bus/"
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "title": "交通 IC 卡：一张走全国",
+      "text": "Suica、PASMO、ICOCA 等交通 IC 卡在各大城市的地铁、JR、大部分巴士都通用，便利店也能刷。iPhone 可以在钱包里直接加 Suica。余额不够出不了闸时别慌，去闸机旁的「精算機」（补票机）充值补差价再出站就行。"
+    },
+    {
+      "title": "新干线带大箱子要先订座",
+      "text": "东海道、山阳、九州新干线（东京—新大阪—博多—鹿儿岛中央）上，三边之和超过 160 cm、不超过 250 cm 的行李，买票时要选「特大行李放置处」附带的座位（同价）。没订就带上车，要现场交约 1,000 日元手续费并听乘务员安排。超过 250 cm 不能上车。"
+    },
+    {
+      "title": "行李寄送：空手逛更轻松",
+      "text": "黑猫宅急便可从酒店前台、便利店、营业所把箱子寄到下一家酒店，多数线路隔天到。寄到机场要在起飞前 2 天（部分地区 3 天）寄出，当天凭寄件存根在机场柜台取；单件不超过 30 kg。转点或去机场前寄掉，坐电车轻松很多。"
+    },
+    {
+      "title": "出租车：贵但省心",
+      "text": "东京 23 区普通车起步约 500 日元（约 1 km），之后按距离跳表，22 点到早 5 点加收约 2 成，高速费另付。车门是自动开关的，别自己拉。GO 等打车 App 可以绑卡、直接输目的地，语言不通时最省事。"
+    },
+    {
+      "title": "末班车比你想的早",
+      "text": "东京、大阪等大城市的电车末班大多在零点前后，郊外线路更早。晚上出去玩先查好末班；错过只能打车或等首班。节假日、深夜到港的航班尤其要提前规划进城方式。"
+    },
+    {
+      "title": "新干线指定席还是自由席",
+      "text": "节假日、樱花和红叶季、年末年初建议买指定席（对号座），淡季平日自由席通常有座。持 JR Pass 也能免费订指定席，提前在售票机或网上订好，上车不用抢。"
+    },
+    {
+      "title": "换乘 App 一定要装",
+      "text": "Google 地图或「乗換案内」类 App 能查到具体站台、出口、票价和末班车。日本同一站名可能分属不同公司（比如 JR 和地铁），按 App 提示认准公司和出口能少走很多冤枉路。"
+    }
+  ],
+  "passes": [
+    {
+      "name": "全国 JR Pass（JAPAN RAIL PASS）",
+      "price": "普通车 7 天约 50,000 日元（官网价）/ 约 53,000 日元（海外代理价），14 天约 80,000 日元起，21 天约 100,000 日元起",
+      "text": "只限短期滞在的外国游客。2026 年 10 月起海外代理店涨价，官方网站暂时维持原价，在官网买更便宜。能坐大部分 JR 线和新干线，但坐「希望号」「瑞穗号」要另买专用票（东京—新大阪约 4,960 日元）。只在一两个地区玩的话通常不划算，要跨东京、关西、九州长距离来回才值得算一算。"
+    },
+    {
+      "name": "JR TOKYO Wide Pass",
+      "price": "3 天约 16,000 日元",
+      "text": "2026 年 3 月起从约 15,000 日元涨到约 16,000 日元。覆盖东京周边的轻井泽、日光、河口湖等地，适合以东京为据点做两三次远郊一日游的人。只在东京市内转就不用买。"
+    },
+    {
+      "name": "关西广域周游券（Kansai WIDE Area Pass）",
+      "price": "5 天约 12,000 日元",
+      "text": "关西一带 JR 随便坐，含 HARUKA 和新大阪—冈山的山阳新干线指定席，可去姬路、冈山、城崎温泉、天桥立、白滨等。适合以大阪或京都为据点往外跑的行程。原来的关西地区周游券已于 2026 年 9 月 30 日停售，只在京阪神转可看 3 天约 3,000 日元的 Kansai Mini Pass（不含 HARUKA）。"
+    },
+    {
+      "name": "关西·广岛地区周游券",
+      "price": "5 天约 17,000 日元",
+      "text": "从关西坐山阳新干线（含「希望号」）到广岛，还包宫岛渡轮。大阪、京都加广岛、宫岛的路线基本都能回本。"
+    },
+    {
+      "name": "JR 九州周游券（全九州）",
+      "price": "3 天约 22,000 日元，5 天约 24,000 日元，7 天约 26,000 日元",
+      "text": "九州新干线、特急随便坐。另有北九州版 3 天约 15,000 日元、南九州版 3 天约 12,000 日元。网上预订价可能不同，以 JR 九州官网为准。"
+    },
+    {
+      "name": "北海道铁路周游券（Hokkaido Rail Pass）",
+      "price": "5 天约 22,000 日元起（海外/网上预购价），车站现场购买贵约 1,000 日元",
+      "text": "JR 北海道全线（北海道新干线除外）随便坐，7 天约 28,000 日元、10 天约 37,000 日元。札幌—函馆、旭川、富良野、钏路这种远距离往返两三趟就回本；特急全车指定席，上车前记得先领座位票。"
+    }
+  ],
+  "sources": [
+    { "title": "京成电铁 Skyliner 官网", "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/" },
+    { "title": "京成电铁 Access 特急各站票价", "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/traffic/express_fares.php" },
+    { "title": "Aviation Wire：京成 Skyliner 2027–2028 年加价计划", "url": "https://www.aviationwire.jp/archives/354063" },
+    { "title": "成田特快票价与 N'EX 东京往返票汇总（jr-group.jp，非 JR 东日本官网）", "url": "https://jr-group.jp/nex-ryokin/" },
+    { "title": "Airport Bus TYO-NRT", "url": "https://tyo-nrt.com/en/" },
+    { "title": "利木津巴士官网（成田、羽田时刻与票价）", "url": "https://www.limousinebus.co.jp/en/" },
+    { "title": "京急 羽田机场进城指南（时长、票价查询）", "url": "https://www.haneda-tokyo-access.com/en/ride/fares.html" },
+    { "title": "东京单轨电车 羽田第 3 航站楼站票价表", "url": "https://www.tokyo-monorail.co.jp/guidance/pdf/fare_kokusaisen.pdf" },
+    { "title": "南海电铁 rapi:t 特急", "url": "https://www.nankai.co.jp/traffic/express/rapit.html" },
+    { "title": "JR 西日本 HARUKA 优惠单程票", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" },
+    { "title": "关西机场交通（KATE）利木津巴士时刻与票价", "url": "https://www.kate.co.jp/en/timetable/" },
+    { "title": "名铁 中部机场进出交通", "url": "https://www.meitetsu.co.jp/eng/airport-access/index.html" },
+    { "title": "JR 北海道 快速 Airport", "url": "https://www.jrhokkaido.co.jp/global/english/travel/airport.html" },
+    { "title": "JR 北海道 机场进城（日文）", "url": "https://www.jrhokkaido.co.jp/airport/" },
+    { "title": "新千岁机场 巴士", "url": "https://www.hokkaido-airports.com/en/new-chitose/access/bus/" },
+    { "title": "福冈市地铁 线路图与所需时间", "url": "https://subway.city.fukuoka.lg.jp/eng/route/" },
+    { "title": "福冈市地铁 普通票价", "url": "https://subway.city.fukuoka.lg.jp/fare/futuken/" },
+    { "title": "福冈机场 交通", "url": "https://www.fukuoka-airport.jp/en/access/" },
+    { "title": "冲绳单轨电车 Yui Rail", "url": "https://www.yui-rail.co.jp/en/" },
+    { "title": "那霸机场 巴士", "url": "https://www.naha-airport.co.jp/en/access/bus/" },
+    { "title": "JR 东海 新干线行李规定", "url": "https://global.jr-central.co.jp/en/info/oversized-baggage/" },
+    { "title": "黑猫宅急便 寄送到机场", "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/airport/" },
+    { "title": "东京出租车协会 运价表", "url": "https://www.taxi-tokyo.or.jp/english/call/pricelist.html" },
+    { "title": "JAPAN RAIL PASS 官网 价格", "url": "https://japanrailpass.net/en/purchase/price/" },
+    { "title": "JAPAN RAIL PASS 官网 希望号/瑞穗号专用票", "url": "https://japanrailpass.net/en/use/special-ticket/" },
+    { "title": "Travel Voice：JR 东日本 2026 年 3 月外国游客周游券改定", "url": "https://www.travelvoice.jp/20260129-159154" },
+    { "title": "JR 西日本 关西广域周游券", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_wide/" },
+    { "title": "JR 西日本 关西·广岛地区周游券", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai_hiroshima/" },
+    { "title": "JR 西日本 Kansai Mini Pass", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansaimini/" },
+    { "title": "JR 西日本 关西地区周游券（停售说明）", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/kansai/" },
+    { "title": "JR 九州 周游券", "url": "https://www.jrkyushu.co.jp/english/railpass/railpass.html" },
+    { "title": "JR 北海道 周游券", "url": "https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html" }
+  ]
+}

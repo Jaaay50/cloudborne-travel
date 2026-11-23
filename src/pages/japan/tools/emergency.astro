@@ -8,7 +8,7 @@ const tel = (s: string) => {
 };
 const firstNum = (s: string) => s.match(/\+?\d[\d-]{1,}\d/)?.[0] ?? s;
 ---
-<ToolShell slug="emergency" title="紧急求助" description="在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。" lead="手机上点号码可以直接拨打。建议出发前截图保存这一页。" sources={emergency?.sources}>
+<ToolShell slug="emergency" title="紧急求助" description="在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。" lead="点号码直接拨打。" sources={emergency?.sources}>
   {!emergency && <p class="tcard">内容整理中。</p>}
   {emergency && (
     <>

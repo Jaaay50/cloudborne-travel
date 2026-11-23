@@ -1,4 +1,5 @@
-// Trip state kept in localStorage. Items are "s:<pref>/<spot>" (spot) or "f:<pref>/<food>" (food).
+// Trip state kept in localStorage. Items are "s:<place>/<spot>" (spot) or "f:<place>/<food>" (food); see lib/keys.ts.
+import { ITEM_RE } from '../lib/keys';
 export interface TripState {
   v: 1;
   title: string;
@@ -11,13 +12,13 @@ export interface TripState {
 const KEY = 'cbt.trip.v1';
 const listeners = new Set<(s: TripState) => void>();
 
-export const emptyTrip = (): TripState => ({ v: 1, title: '我的日本行程', start: null, days: [[]], pool: [], notes: {} });
+export const emptyTrip = (): TripState => ({ v: 1, title: '我的行程', start: null, days: [[]], pool: [], notes: {} });
 
 function sanitize(raw: unknown): TripState {
   const s = emptyTrip();
   if (!raw || typeof raw !== 'object') return s;
   const r = raw as Partial<TripState>;
-  const ok = (k: unknown): k is string => typeof k === 'string' && /^[sf]:[a-z]+\/[a-z0-9-]+$/.test(k);
+  const ok = (k: unknown): k is string => typeof k === 'string' && ITEM_RE.test(k);
   if (typeof r.title === 'string') s.title = r.title.slice(0, 40);
   // Accept only real calendar dates (rejects 2026-13-45): the date must survive a UTC round trip unchanged.
   if (typeof r.start === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.start)) {

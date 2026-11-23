@@ -3,7 +3,7 @@ import ToolShell from '../../../components/ToolShell.astro';
 import { transport } from '../../../lib/toolkit';
 const airports = transport?.airports ?? [];
 ---
-<ToolShell slug="airports" title="机场进城" description="成田、羽田、关西、中部、新千岁、福冈、那霸机场到市区的交通方式、时间和票价。" lead="落地后怎么进市区。时间和票价是大概数，班次和价格以运营方为准。" sources={transport?.sources}>
+<ToolShell slug="airports" title="机场进城" description="成田、羽田、关西、中部、新千岁、福冈、那霸机场到市区的交通方式、时间和票价。" sources={transport?.sources}>
   {!airports.length && <p class="tcard">内容整理中。</p>}
   <div class="ap-tabs no-print" role="tablist">
     {airports.map((a, i) => <button type="button" class:list={['chip', { on: i === 0 }]} role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-ap={a.id}>{a.name}<small>{a.code}</small></button>)}

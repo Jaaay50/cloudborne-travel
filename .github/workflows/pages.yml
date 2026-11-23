@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '17 22 * * *' # daily, 06:17 Beijing: refresh exchange rates and seasonal content
   workflow_dispatch:
 
 permissions:

@@ -3,7 +3,7 @@ import ToolShell from '../../../components/ToolShell.astro';
 import { taxfree } from '../../../lib/toolkit';
 const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase: 5000, note: '' };
 ---
-<ToolShell slug="tax-free" title="退税与计算" description="2026 年 11 月 1 日起日本免税改为出境退税：先付含税价，出境时海关确认后退还消费税。规则、步骤、常见问题和速算。" lead={taxfree?.summary ?? '2026 年 11 月起，日本免税改为「先付含税价、出境时退税」。'} sources={taxfree?.sources}>
+<ToolShell slug="tax-free" title="退税与计算" description="2026 年 11 月 1 日起日本免税改为出境退税：先付含税价，出境时海关确认后退还消费税。规则、步骤、常见问题和速算。" sources={taxfree?.sources}>
   <section class="calc card">
     <div class="calc-in">
       <label>小票上的金额（日元）<input type="number" id="amt" min="0" step="100" inputmode="numeric" placeholder="例如 33000" /></label>
@@ -18,7 +18,7 @@ const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase:
       <label>汇率（1 人民币 = ? 日元）<input type="number" id="fx" step="0.01" value="21.0" /></label>
     </div>
     <div class="calc-out" aria-live="polite">
-      <p class="eyebrow">可退的消费税</p>
+      <p class="sum-label">可退的消费税</p>
       <p class="big"><span id="tax">0</span><small> 日元</small></p>
       <p id="tax-cny" class="cny">约 ¥0</p>
       <p id="tax-hint" class="hint"></p>
@@ -85,6 +85,7 @@ const c = taxfree?.calculator ?? { taxRate: 0.1, reducedRate: 0.08, minPurchase:
   summary::-webkit-details-marker { display: none; }
   details p { color: var(--ink-2); font-size: 14.5px; padding-bottom: 14px; }
   @media (max-width: 720px) { .calc, .rules { grid-template-columns: 1fr; } }
+  .sum-label { font-size: 13px; color: var(--mut); }
 </style>
 <script define:vars={{ min: c.minPurchase }}>
   const amt = document.getElementById('amt'), fx = document.getElementById('fx');

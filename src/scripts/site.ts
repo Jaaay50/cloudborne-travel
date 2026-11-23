@@ -1,6 +1,7 @@
 // Site-wide behaviour: header, mobile menu, search dialog, trip buttons, toast, reveal-on-scroll.
 import { load, subscribe, toggle, has, count, type TripState } from './trip';
 import { getCatalog, type Catalog } from './catalog';
+import { placeHref, parseItem, parsePlace } from '../lib/keys';
 
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel);
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)];
@@ -95,29 +96,38 @@ function score(q: string, fields: string[]) {
   return best;
 }
 
+const COUNTRY_NAME: Record<string, string> = { japan: '日本', australia: '澳大利亚', usa: '美国' };
 function search(qRaw: string): Hit[] {
   if (!cat) return [];
   const q = norm(qRaw);
   if (!q) return [];
-  const prefName = Object.fromEntries(cat.p.map((p) => [p.s, p.n]));
+  const place = Object.fromEntries(cat.p.map((p) => [p.s, p]));
+  const hrefOf = (key: string) => placeHref(key);
   const hits: Hit[] = [];
   for (const p of cat.p) {
-    const sc = score(q, [p.n, p.k, p.e, p.t]);
-    if (sc) hits.push({ href: `/japan/${p.s}/`, title: p.n, sub: p.t, ico: `<img src="/img/prefectures/${p.s}-640.webp" alt="" loading="lazy">`, score: sc + 20, grp: '目的地' });
+    const sc = score(q, [p.n, p.k, p.e, p.t, COUNTRY_NAME[p.c] ?? '']);
+    const ico = p.i ? `<img src="${p.i}-${p.ph ? '800' : '640'}.webp" alt="" loading="lazy">` : '地';
+    if (sc) hits.push({ href: hrefOf(p.s), title: p.n, sub: `${COUNTRY_NAME[p.c]} · ${p.t}`, ico, score: sc + 20, grp: '目的地' });
   }
   for (const r of cat.r) {
     const sc = score(q, [r.n, r.k ?? '', r.d]);
     if (sc) hits.push({ href: r.u, title: r.n, sub: r.d, ico: '地', score: sc + 15, grp: '目的地' });
   }
+  const thumb = (key: string, ph: number | undefined, kind: 's' | 'f', fallback: string) => {
+    if (!ph) return fallback;
+    const { place: pk, id } = parseItem(`${kind}:${key}`);
+    const { country, slug } = parsePlace(pk);
+    return `<img src="/img/photos/${country}/${slug}/${kind}-${id}-400.webp" alt="" loading="lazy">`;
+  };
   for (const s of cat.s) {
-    const pref = s.k.split('/')[0];
-    const sc = score(q, [s.n, s.l, s.e, prefName[pref] ?? '']);
-    if (sc) hits.push({ href: `/japan/${pref}/#spot-${s.k.split('/')[1]}`, title: s.n, sub: `${prefName[pref]} · ${s.t}`, ico: '景', score: sc, grp: '景点' });
+    const pk = s.k.split('/')[0];
+    const sc = score(q, [s.n, s.l, s.e, place[pk]?.n ?? '']);
+    if (sc) hits.push({ href: `${hrefOf(pk)}#spot-${s.k.split('/')[1]}`, title: s.n, sub: `${place[pk]?.n ?? ''} · ${s.t}`, ico: thumb(s.k, s.ph, 's', '景'), score: sc, grp: '景点' });
   }
   for (const f of cat.f) {
-    const pref = f.k.split('/')[0];
-    const sc = score(q, [f.n, f.l, prefName[pref] ?? '']);
-    if (sc) hits.push({ href: `/japan/${pref}/#food-${f.k.split('/')[1]}`, title: f.n, sub: `${prefName[pref]} · ${f.w}`, ico: '食', score: sc - 2, grp: '美食' });
+    const pk = f.k.split('/')[0];
+    const sc = score(q, [f.n, f.l, place[pk]?.n ?? '']);
+    if (sc) hits.push({ href: `${hrefOf(pk)}#food-${f.k.split('/')[1]}`, title: f.n, sub: `${place[pk]?.n ?? ''} · ${f.w}`, ico: thumb(f.k, f.ph, 'f', '食'), score: sc - 2, grp: '美食' });
   }
   for (const [arr, grp, ico] of [[cat.th, '主题', '季'], [cat.tr, '行程模板', '程'], [cat.to, '随身工具', '具']] as const) {
     for (const t of arr) {
@@ -133,7 +143,7 @@ function renderResults() {
   const q = input.value.trim();
   input.removeAttribute('aria-activedescendant');
   if (!q) {
-    list.innerHTML = `<div class="search-empty">试试「京都」「温泉」「拉面」「红叶」「机场」「退税」</div>`;
+    list.innerHTML = `<div class="search-empty">试试「京都」「大堡礁」「黄石」「温泉」「拉面」</div>`;
     return;
   }
   if (!cat) {
@@ -142,7 +152,7 @@ function renderResults() {
   }
   const hits = search(q);
   if (!hits.length) {
-    list.innerHTML = `<div class="search-empty">没有找到「${esc(q)}」。换个说法，或用县名、景点名试试。</div>`;
+    list.innerHTML = `<div class="search-empty">没有找到「${esc(q)}」，换个说法试试。</div>`;
     return;
   }
   sel = Math.min(sel, hits.length - 1);
@@ -216,18 +226,31 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- reveal on scroll ---------- */
+// Siblings that enter together are staggered by 60 ms each.
 const io = 'IntersectionObserver' in window
   ? new IntersectionObserver(
-      (entries) => entries.forEach((en) => {
-        if (en.isIntersecting) {
+      (entries) => {
+        const entering = entries.filter((en) => en.isIntersecting);
+        entering.forEach((en, i) => {
+          (en.target as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 60}ms`);
           en.target.classList.add('in');
           io?.unobserve(en.target);
-        }
-      }),
-      { rootMargin: '0px 0px -8% 0px' },
+        });
+      },
+      { rootMargin: '0px 0px -6% 0px' },
     )
   : null;
 $$('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('in')));
+
+/* ---------- photos fade in once decoded ---------- */
+const fadeIn = (img: HTMLImageElement) => {
+  if (img.complete && img.naturalWidth) { img.classList.add('ok'); return; }
+  img.classList.add('fade');
+  const done = () => img.classList.add('ok');
+  img.addEventListener('load', done, { once: true });
+  img.addEventListener('error', done, { once: true });
+};
+$$<HTMLImageElement>('img[data-fade]').forEach(fadeIn);
 
 /* ---------- service worker (offline) ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') {

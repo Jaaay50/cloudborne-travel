@@ -81,8 +81,8 @@ export const shapes: PrefShape[] = parts.map(({ slug, main, inset }) => {
     if (useInset || near(coreBox, b, 26)) box = union(box, b)!;
   }
   const projected = core.map((ring) => ring.map((c) => proj(c as [number, number])!));
-  const pl = polylabel(projected as number[][][], 0.5);
-  return { slug, region: REGION_OF_PREF[slug], d, box, label: [+pl[0].toFixed(1), +pl[1].toFixed(1)] };
+  const pl = polylabel(projected as [number, number][][], 0.5);
+  return { slug, region: REGION_OF_PREF[slug], d, box, label: [+pl[0].toFixed(1), +pl[1].toFixed(1)] as [number, number] };
 }).sort((a, b) => PREF_SLUGS.indexOf(a.slug) - PREF_SLUGS.indexOf(b.slug));
 
 export const shapeBySlug = Object.fromEntries(shapes.map((s) => [s.slug, s])) as Record<PrefSlug, PrefShape>;

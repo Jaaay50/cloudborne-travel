@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import TripPage from '../../../components/TripPage.astro';
+import { tripsAll, type WTrip } from '../../../lib/world';
+
+export function getStaticPaths() {
+  return tripsAll('australia').map((t) => ({ params: { id: t.id }, props: { t } }));
+}
+const { t } = Astro.props as { t: WTrip };
+const crumbs = [{ href: '/australia/', text: '澳大利亚' }, { href: '/trips/', text: '行程模板' }];
+---
+<Base title={t.title} description={`${t.title}：${t.summary}`} image={t.cover ? `${t.cover}-1600.webp` : undefined} nav="trips">
+  <TripPage t={t} crumbs={crumbs} />
+</Base>

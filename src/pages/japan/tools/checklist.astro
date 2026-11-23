@@ -4,7 +4,7 @@ import { checklist } from '../../../lib/toolkit';
 const groups = checklist?.groups ?? [];
 const total = groups.reduce((a, g) => a + g.items.length, 0);
 ---
-<ToolShell slug="checklist" title="行前清单" description="去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。" lead="出发前一周过一遍。勾选会保存在这台设备上。" sources={checklist?.sources}>
+<ToolShell slug="checklist" title="行前清单" description="去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。" sources={checklist?.sources}>
   <div class="ck-bar card">
     <div class="ck-prog"><span id="ck-fill"></span></div>
     <p><b id="ck-n">0</b> / {total} 已完成</p>

@@ -1,220 +1,75 @@
 ---
 import Base from '../layouts/Base.astro';
-import JapanMap from '../components/JapanMap.astro';
-import { REGIONS, THEMES, THEME_SLUGS, PREF_NAMES, SINGLE_PREF_REGIONS } from '../lib/japan';
-import { prefs, getRegion, trips, allSpots, covers } from '../lib/content';
+import { placesOf, tripsAll } from '../lib/world';
+import { covers } from '../lib/content';
 
-const month = new Date().getMonth() + 1; // build month; the client re-picks by the visitor's date
-const seasonal: Record<string, { title: string; themes: string[] }> = {
-  winter: { title: '冬天去哪', themes: ['snow', 'onsen'] },
-  spring: { title: '春天去哪', themes: ['sakura', 'flowers'] },
-  summer: { title: '夏天去哪', themes: ['sea', 'nature'] },
-  autumn: { title: '秋天去哪', themes: ['autumn', 'onsen'] },
-};
-const prefCount = prefs.length;
-const spotCount = allSpots.length;
-const regionCards = REGIONS.map((r) => {
-  const reg = getRegion(r.slug);
-  const single = SINGLE_PREF_REGIONS.has(r.slug);
-  const pref = single ? prefs.find((p) => p.slug === r.prefs[0]) : undefined;
-  return {
-    ...r,
-    href: single ? `/japan/${r.prefs[0]}/` : `/japan/region/${r.slug}/`,
-    img: single ? `/img/prefectures/${r.prefs[0]}` : `/img/regions/${r.slug}`,
-    tagline: reg?.tagline ?? pref?.tagline ?? '',
-    cities: reg?.cities ?? [],
-    days: reg?.days ?? pref?.days ?? '',
-  };
-});
-const tools = [
-  { href: '/japan/tools/phrases/', t: '日语大字卡', d: '点餐、忌口、退税、寄行李，直接给店员看', ico: 'あ' },
-  { href: '/japan/tools/airports/', t: '机场进城', d: '成田、羽田、关西等 7 个机场怎么进市区', ico: '✈' },
-  { href: '/japan/tools/tax-free/', t: '退税计算', d: '2026 年 11 月起改为出境退税，规则与速算', ico: '¥' },
-  { href: '/japan/tools/checklist/', t: '行前清单', d: '证件、支付、网络、插头，可勾选，自动保存', ico: '✓' },
-  { href: '/japan/tools/emergency/', t: '紧急求助', d: '报警急救、使领馆电话、护照丢了怎么办', ico: '!' },
-  { href: '/japan/tools/rules-2026/', t: '2026 新规', d: '出国税、住宿税、免税改退税，附官方来源', ico: '新' },
+const jp = placesOf('japan'), au = placesOf('australia'), us = placesOf('usa');
+const coverOf = (list: typeof au, slug: string) => list.find((p) => p.slug === slug && p.cover) ?? list.find((p) => p.cover);
+const auHero = coverOf(au, 'new-south-wales');
+const usHero = coverOf(us, 'utah');
+const count = (list: typeof jp) => list.reduce((n, p) => n + p.spots.length, 0);
+const countries = [
+  { href: '/japan/', name: '日本', en: 'Japan', line: `${jp.length} 个都道府县 · ${count(jp)} 个景点`, img: '/img/hero-1280.webp', alt: covers.hero.alt },
+  { href: '/australia/', name: '澳大利亚', en: 'Australia', line: `${au.length} 个州和领地 · ${count(au)} 个景点`, img: auHero ? `${auHero.cover}-800.webp` : '/img/hero-1280.webp', alt: auHero?.coverAlt ?? '' },
+  { href: '/usa/', name: '美国', en: 'United States', line: `${us.length} 个热门州 · ${count(us)} 个景点`, img: usHero ? `${usHero.cover}-800.webp` : '/img/hero-1280.webp', alt: usHero?.coverAlt ?? '' },
 ];
+const trips = tripsAll();
+const pick = [...trips.filter((t) => t.country === 'japan').slice(0, 2), ...trips.filter((t) => t.country === 'australia').slice(0, 2), ...trips.filter((t) => t.country === 'usa').slice(0, 2)];
 ---
-<Base title="栖云旅行" description={`日本 47 个都道府县的原创旅行指南：互动地图、${spotCount}+ 个景点与地方美食、季节主题、现成行程模板，加上能离线用的日语卡、退税计算和行前清单。`} nav="home">
-  <link slot="head" rel="preload" as="image" href="/img/hero-1280.webp" imagesrcset="/img/hero-1280.webp 1280w, /img/hero-2304.webp 2304w" imagesizes="100vw" />
-
-  <section class="hero">
-    <picture>
-      <source srcset="/img/hero-1280.webp 1280w, /img/hero-2304.webp 2304w" sizes="100vw" type="image/webp" />
-      <img src="/img/hero-1280.webp" alt={covers.hero.alt} width="2304" height="1024" fetchpriority="high" />
-    </picture>
-    <div class="wrap hero-copy">
-      <p class="eyebrow">JAPAN · 47 都道府县</p>
-      <h1>在地图上，<br />找到你的日本。</h1>
-      <p class="lead">从一座城、一碗面、一场红叶开始。看攻略、排行程、算预算，出发后还有随身工具。</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#explore">打开地图</a>
-        <a class="btn" href="/japan/trips/">看行程模板</a>
-        <button class="btn ghost hero-search" type="button" data-open-search>
-          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-          搜一搜
-        </button>
-      </div>
+<Base title="栖云旅行" description="日本、澳大利亚、美国的原创旅行指南：互动地图、景点与美食配图、行程模板、一分钟生成攻略、预算计算和离线随身工具。" nav="home">
+  <script slot="head" is:inline>
+    // The Japan map used to live on the home page: keep old deep links (#explore, #p=kyoto, #r=kansai) working.
+    if (/^#(explore|[pr]=[a-z-]+)$/.test(location.hash)) location.replace('/japan/' + location.hash);
+  </script>
+  <section class="w-hero wrap">
+    <h1>想去哪儿，<br />先在这儿排好。</h1>
+    <p class="lead">日本、澳大利亚、美国。看攻略、排行程、算预算。</p>
+    <div class="w-cta">
+      <a class="btn primary" href="/quick/">一分钟生成攻略</a>
+      <button class="btn" type="button" data-open-search>搜目的地</button>
     </div>
   </section>
 
-  <section class="section explore" id="explore">
+  <section class="wrap w-countries">
+    {countries.map((c, i) => (
+      <a class="w-country reveal" href={c.href} style={`--i:${i}`}>
+        <img src={c.img} alt={c.alt} width="800" height="533" fetchpriority={i === 0 ? 'high' : undefined} />
+        <span class="w-c-body">
+          <small>{c.en}</small>
+          <b>{c.name}</b>
+          <span>{c.line}</span>
+        </span>
+        <span class="w-go" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="section">
     <div class="wrap">
-      <div class="section-hd">
+      <a class="quick-card reveal" href="/quick/">
         <div>
-          <h2>探索地图</h2>
-          <p>9 个地区 · {prefCount} 个都道府县 · {spotCount} 个精选景点</p>
+          <h2>不知道怎么排？回答 5 个问题。</h2>
+          <p>去哪、几天、几个人、预算、喜欢什么。马上给你一份按天排好的行程，可以直接改。</p>
         </div>
-      </div>
-      <div class="explore-grid">
-        <div class="explore-map">
-          <JapanMap mode="explore" />
-          <div class="theme-bar" role="group" aria-label="按主题在地图上标出景点">
-            <span>地图上标出：</span>
-            {THEME_SLUGS.map((t) => (
-              <button type="button" class="chip" data-theme={t} aria-pressed="false" style={`--dot:${THEMES[t].tone}`}><i></i>{THEMES[t].name}</button>
-            ))}
-          </div>
-        </div>
-        <aside class="panel card" id="panel" aria-live="polite">
-          <div class="panel-view" data-view="nation">
-            <p class="eyebrow">选一个地区开始</p>
-            <div class="region-list">
-              {regionCards.map((r) => (
-                <button type="button" class="region-row" data-go-region={r.slug} style={`--tone:${r.tone};--ink:${r.ink}`}>
-                  <img src={`${r.img}-640.webp`} alt="" loading="lazy" width="640" height="427" />
-                  <span>
-                    <b>{r.name}</b>
-                    <small>{r.tagline}</small>
-                  </span>
-                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </button>
-              ))}
-            </div>
-          </div>
-          {REGIONS.map((r) => {
-            const reg = getRegion(r.slug);
-            const single = SINGLE_PREF_REGIONS.has(r.slug);
-            if (single) return null;
-            return (
-              <div class="panel-view" data-view={`region:${r.slug}`} hidden style={`--tone:${r.tone};--ink:${r.ink}`}>
-                <div class="pv-pic"><img src={`/img/regions/${r.slug}-640.webp`} alt="" loading="lazy" width="640" height="427" /></div>
-                <p class="eyebrow">{reg?.kana ?? ''}</p>
-                <h3>{r.name}</h3>
-                {reg && <p class="pv-lead">{reg.tagline}</p>}
-                {reg && <p class="pv-meta"><span>建议 {reg.days}</span><span>{reg.season}</span></p>}
-                <div class="pv-prefs">
-                  {r.prefs.map((p) => {
-                    const pd = prefs.find((x) => x.slug === p);
-                    return (
-                      <button type="button" class="pv-pref" data-go-pref={p} disabled={!pd}>
-                        <b>{PREF_NAMES[p]}</b>
-                        {pd && <small>{pd.tagline}</small>}
-                      </button>
-                    );
-                  })}
-                </div>
-                <a class="btn sm" href={`/japan/region/${r.slug}/`}>{r.name}完整攻略 →</a>
-              </div>
-            );
-          })}
-          {prefs.map((p) => {
-            const r = REGIONS.find((x) => x.slug === p.region)!;
-            return (
-              <div class="panel-view" data-view={`pref:${p.slug}`} hidden style={`--tone:${r.tone};--ink:${r.ink}`}>
-                <div class="pv-pic"><img src={`/img/prefectures/${p.slug}-640.webp`} alt="" loading="lazy" width="640" height="427" /></div>
-                <p class="eyebrow">{p.kana} · {r.name}</p>
-                <h3>{p.name}</h3>
-                <p class="pv-lead">{p.tagline}</p>
-                <p class="pv-meta"><span>建议 {p.days}</span><span>{p.seasons.note.split('。')[0]}</span></p>
-                <ul class="pv-spots">
-                  {p.spots.slice(0, 6).map((s) => (
-                    <li>
-                      <a href={`/japan/${p.slug}/#spot-${s.id}`} data-hover-key={`${p.slug}/${s.id}`}>{s.name}</a>
-                      <small>{s.time}</small>
-                      <button type="button" class="add" data-add={`s:${p.slug}/${s.id}`} data-name={s.name} aria-pressed="false" aria-label={`把${s.name}加入行程`}>
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <a class="btn primary sm" href={`/japan/${p.slug}/`}>看{p.name}完整攻略 →</a>
-              </div>
-            );
-          })}
-        </aside>
-      </div>
+        <span class="btn primary">开始 →</span>
+      </a>
     </div>
   </section>
-
-  <section class="section season-sec">
-    <div class="wrap">
-      <div class="section-hd">
-        <div>
-          <h2 data-season-title>{seasonal[month <= 2 || month === 12 ? 'winter' : month <= 5 ? 'spring' : month <= 8 ? 'summer' : 'autumn'].title}</h2>
-          <p>按季节和兴趣找灵感，点开看每个主题下的景点。</p>
-        </div>
-        <a class="more" href="/japan/themes/">全部主题 →</a>
-      </div>
-      <div class="theme-grid">
-        <div class="theme-feat"></div>
-        <div class="theme-rest">
-          {THEME_SLUGS.map((t) => (
-            <a class="theme-card" href={`/japan/themes/${t}/`} data-theme-card={t} style={`--dot:${THEMES[t].tone}`}>
-              <div class="pic"><img src={`/img/themes/${t}-640.webp`} alt={covers.themes[t].alt} loading="lazy" width="640" height="427" /></div>
-              <div class="tc-body">
-                <b>{THEMES[t].name}</b>
-                <small>{THEMES[t].season} · {allSpots.filter((s) => s.themes.includes(t)).length} 处</small>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {trips.length > 0 && (
-    <section class="section">
-      <div class="wrap">
-        <div class="section-hd">
-          <div>
-            <h2>拿来就能用的行程</h2>
-            <p>按天排好、交通写清楚。一键复制到「我的行程」，再按自己的节奏改。</p>
-          </div>
-          <a class="more" href="/japan/trips/">全部 {trips.length} 条 →</a>
-        </div>
-        <div class="grid g-3">
-          {trips.slice(0, 6).map((t) => {
-            const first = t.days.flatMap((d) => d.items).find((i) => 'pref' in i) as { pref: string } | undefined;
-            return (
-              <a class="place reveal" href={`/japan/trips/${t.id}/`}>
-                <div class="pic"><img src={`/img/prefectures/${first?.pref ?? 'tokyo'}-640.webp`} alt="" loading="lazy" width="640" height="427" /></div>
-                <div class="body">
-                  <h3>{t.title}</h3>
-                  <p>{t.for}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  )}
 
   <section class="section">
     <div class="wrap">
       <div class="section-hd">
-        <div>
-          <h2>到了日本用得上</h2>
-          <p>全部能离线打开。加到手机主屏幕，地下铁里没信号也能用。</p>
-        </div>
-        <a class="more" href="/japan/tools/">随身工具 →</a>
+        <div><h2>拿来就能用的行程</h2></div>
+        <a class="more" href="/trips/">全部 {trips.length} 条 →</a>
       </div>
-      <div class="grid g-3 tools">
-        {tools.map((t) => (
-          <a class="tool reveal" href={t.href}>
-            <span class="tool-ico">{t.ico}</span>
-            <span><b>{t.t}</b><small>{t.d}</small></span>
+      <div class="grid g-3">
+        {pick.map((t) => (
+          <a class="place reveal" href={t.href}>
+            <div class="pic">
+              {t.cover && <img src={`${t.cover}-${t.country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              <span class="badge">{t.daysCount} 天</span>
+            </div>
+            <div class="body"><h3>{t.title}</h3><p>{t.for}</p></div>
           </a>
         ))}
       </div>
@@ -223,14 +78,14 @@ const tools = [
 
   <section class="section plan-cta">
     <div class="wrap">
-      <div class="cta-card">
+      <div class="cta-card reveal">
         <div>
           <h2>把想去的地方，排成一份行程。</h2>
-          <p>在任何景点、美食旁点「加入行程」，再到行程页拖动排进每一天。自动算出每天去几个县、要不要换酒店，生成链接发给同行的人。不用注册，存在你自己的浏览器里。</p>
+          <p>在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。</p>
         </div>
         <div class="cta-actions">
           <a class="btn primary" href="/plan/">打开我的行程 <span class="trip-count" data-trip-count>0</span></a>
-          <a class="btn" href="/budget/">先算一笔预算</a>
+          <a class="btn" href="/budget/">算预算</a>
         </div>
       </div>
     </div>
@@ -238,180 +93,45 @@ const tools = [
 </Base>
 
 <style>
-  .hero { position: relative; min-height: min(calc(80vh - var(--hdr)), 660px); display: flex; align-items: center; overflow: hidden; isolation: isolate; }
-  .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -2; }
-  .hero picture img { animation: settle 1.6s var(--ease) both; }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(246, 241, 231, .94) 0%, rgba(246, 241, 231, .78) 30%, rgba(246, 241, 231, 0) 58%), linear-gradient(0deg, var(--paper) 0%, rgba(246, 241, 231, 0) 18%); }
-  .hero-copy { padding: 40px 0 70px; }
-  .hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.18; margin: 10px 0 16px; animation: rise 800ms var(--ease) both; }
-  .hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); max-width: 460px; animation: rise 800ms 80ms var(--ease) both; }
-  .hero .eyebrow { animation: rise 800ms var(--ease) both; }
-  .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; animation: rise 800ms 160ms var(--ease) both; }
-  .hero-search { color: var(--ink-2); }
-  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  @media (max-width: 760px) {
-    .hero { min-height: auto; display: block; }
-    .hero picture { position: relative; display: block; aspect-ratio: 16 / 9; }
-    .hero picture img { position: absolute; }
-    .hero::after { background: linear-gradient(0deg, var(--paper) 0%, rgba(246, 241, 231, 0) 22%); height: 56.25vw; }
-    .hero-copy { padding: 4px 0 18px; }
-    .hero h1 br { display: none; }
-  }
+  .w-hero { padding: 64px 0 30px; }
+  .w-hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.16; animation: rise 900ms var(--ease-out) both; }
+  .w-hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); margin-top: 16px; animation: rise 900ms 90ms var(--ease-out) both; }
+  .w-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; animation: rise 900ms 180ms var(--ease-out) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
 
-  .explore { padding-top: 24px; }
-  .explore-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
-  .explore-map { position: sticky; top: calc(var(--hdr) + 12px); }
-  .theme-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; font-size: 13px; color: var(--mut); }
-  .panel { padding: 18px; min-height: 560px; }
-  .panel-view { animation: fadeIn 320ms var(--ease) both; }
-  .panel-view[hidden] { display: none; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .region-list { display: grid; gap: 8px; margin-top: 10px; }
-  .region-row {
-    display: grid; grid-template-columns: 74px 1fr 18px; gap: 12px; align-items: center; text-align: left; padding: 7px; border-radius: 14px;
-    border: 1px solid var(--line); background: var(--card); cursor: pointer; transition: border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast) var(--ease);
-  }
-  .region-row:hover { border-color: color-mix(in srgb, var(--tone) 70%, white); box-shadow: var(--sh-1); }
-  .region-row:active { transform: scale(.99); }
-  .region-row img { width: 74px; height: 50px; object-fit: cover; border-radius: 9px; }
-  .region-row b { font-family: var(--serif); font-size: 17px; display: block; color: var(--ink); line-height: 1.3; }
-  .region-row small { font-size: 12.5px; color: var(--mut); display: block; line-height: 1.45; }
-  .region-row svg { width: 16px; height: 16px; color: var(--mut); transition: transform var(--t-fast) var(--ease); }
-  .region-row:hover svg { transform: translateX(2px); color: var(--ink); }
-  .pv-pic { border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; margin-bottom: 14px; }
-  .pv-pic img { width: 100%; height: 100%; object-fit: cover; }
-  .panel h3 { font-size: 30px; letter-spacing: .05em; margin-top: 2px; }
-  .pv-lead { color: var(--ink-2); margin-top: 4px; font-size: 15px; }
-  .pv-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 14px; }
-  .pv-meta span { font-size: 12.5px; background: var(--paper-2); border-radius: 8px; padding: 3px 9px; color: var(--ink-2); }
-  .pv-prefs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
-  .pv-pref { text-align: left; border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 9px 11px; cursor: pointer; transition: border-color var(--t-fast), background var(--t-fast); }
-  .pv-pref:hover:not(:disabled) { border-color: color-mix(in srgb, var(--tone) 70%, white); background: color-mix(in srgb, var(--tone) 10%, white); }
-  .pv-pref:disabled { opacity: .5; cursor: default; }
-  .pv-pref b { font-family: var(--serif); font-size: 16px; display: block; }
-  .pv-pref small { font-size: 12px; color: var(--mut); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.45; }
-  .pv-spots { list-style: none; padding: 0; margin: 0 0 16px; border-top: 1px solid var(--line); }
-  .pv-spots li { display: flex; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid var(--line); }
-  .pv-spots a { font-weight: 600; flex: 1; min-width: 0; }
-  .pv-spots a:hover { color: var(--vermilion); }
-  .pv-spots small { color: var(--mut); font-size: 12.5px; white-space: nowrap; }
-  .pv-spots .add { width: 30px; padding: 0; justify-content: center; }
-  @media (max-width: 900px) {
-    .explore-grid { grid-template-columns: 1fr; }
-    .explore-map { position: static; }
-    .panel { min-height: 0; }
-  }
+  .w-countries { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; padding-bottom: 8px; }
+  .w-country { position: relative; display: block; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 5; isolation: isolate; color: #fff; box-shadow: var(--sh-2); transition: transform 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
+  .w-country:first-child { aspect-ratio: auto; }
+  .w-country.reveal { transition-delay: calc(var(--i) * 80ms); }
+  .w-country img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1200ms var(--ease-out); }
+  .w-country::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(14, 12, 10, .72) 0%, rgba(14, 12, 10, .1) 48%, rgba(14, 12, 10, 0) 70%); }
+  .w-country:hover { transform: translateY(-6px); box-shadow: var(--sh-3); }
+  .w-country:hover img { transform: scale(1.06); }
+  .w-c-body { position: absolute; left: 24px; right: 24px; bottom: 22px; display: grid; gap: 2px; }
+  .w-c-body small { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+  .w-c-body b { font: 600 clamp(30px, 3.4vw, 42px)/1.15 var(--serif); letter-spacing: .06em; }
+  .w-c-body span { font-size: 14px; opacity: .9; }
+  .w-go { position: absolute; right: 22px; top: 20px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 18px; transition: transform 400ms var(--spring), background 300ms; }
+  .w-country:hover .w-go { transform: translateX(4px); background: rgba(255, 255, 255, .3); }
+  @media (max-width: 900px) { .w-countries { grid-template-columns: 1fr 1fr; } .w-country:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; } }
+  @media (max-width: 560px) { .w-countries { grid-template-columns: 1fr; } .w-country, .w-country:first-child { aspect-ratio: 16 / 10; } }
 
-  .theme-grid { display: grid; gap: 12px; }
-  .theme-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .theme-feat:empty { display: none; }
-  .theme-rest { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
-  .theme-card { display: block; position: relative; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-1); transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease); }
-  .theme-card:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
-  .theme-rest .pic { aspect-ratio: 4 / 5; }
-  .tc-body { padding: 9px 11px 11px; }
-  .tc-body b { font-family: var(--serif); font-size: 17px; display: flex; align-items: center; gap: 6px; }
-  .tc-body b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
-  .tc-body small { font-size: 11.5px; color: var(--mut); display: block; line-height: 1.4; margin-top: 2px; }
-  .theme-feat .pic { aspect-ratio: 16 / 8; }
-  .theme-feat .tc-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px; color: #fff; background: linear-gradient(0deg, rgba(20, 18, 14, .6), rgba(20, 18, 14, 0)); }
-  .theme-feat .tc-body b { font-size: 26px; }
-  .theme-feat .tc-body b::before { width: 9px; height: 9px; }
-  .theme-feat .tc-body small { color: rgba(255, 255, 255, .88); font-size: 13.5px; }
-  .theme-feat .theme-card::after { content: "当季"; position: absolute; top: 12px; left: 12px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
-  @media (max-width: 900px) { .theme-rest { grid-template-columns: repeat(7, 132px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; } .theme-rest > * { scroll-snap-align: start; } }
-  @media (max-width: 560px) { .theme-feat { grid-template-columns: 1fr; } .theme-feat .pic { aspect-ratio: 16 / 9; } .theme-feat .tc-body b { font-size: 22px; } }
+  .quick-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px 34px; border-radius: 26px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-1); transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
+  .quick-card:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
+  .quick-card h2 { font-size: clamp(22px, 2.6vw, 30px); }
+  .quick-card p { color: var(--ink-2); margin-top: 8px; max-width: 620px; }
+  @media (max-width: 640px) { .quick-card { flex-direction: column; align-items: flex-start; padding: 24px 22px; } }
 
-  .tools .tool {
-    display: flex; gap: 14px; align-items: center; padding: 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--line);
-    transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t-fast);
-  }
-  .tools .tool:hover { transform: translateY(-2px); box-shadow: var(--sh-2); border-color: var(--line-2); }
-  .tool-ico { width: 46px; height: 46px; flex-shrink: 0; border-radius: 13px; display: grid; place-items: center; background: var(--vermilion-bg); color: var(--vermilion); font: 600 20px var(--jp); }
-  .tool b { display: block; font-size: 16px; }
-  .tool small { display: block; color: var(--mut); font-size: 13px; line-height: 1.5; margin-top: 2px; }
+  .place .pic { position: relative; }
+  .badge { position: absolute; left: 12px; top: 12px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 13px; padding: 3px 11px; border-radius: 999px; }
 
   .cta-card {
     display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; padding: 36px 40px; border-radius: 28px;
-    background: var(--ink) url('/img/themes/heritage-640.webp') right center / auto 100% no-repeat; color: #fff; position: relative; overflow: hidden; isolation: isolate;
+    background: #1f2430; color: #fff; position: relative; overflow: hidden; isolation: isolate;
   }
-  .cta-card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--ink) 52%, rgba(31, 36, 48, .55)); }
   .cta-card h2 { font-size: clamp(24px, 3vw, 32px); }
   .cta-card p { color: rgba(255, 255, 255, .78); margin-top: 10px; font-size: 15px; max-width: 560px; }
   .cta-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
   .cta-actions .btn:not(.primary) { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .25); color: #fff; }
-  @media (max-width: 760px) { .cta-card { grid-template-columns: 1fr; padding: 26px 22px; background-image: none; } .cta-actions { justify-content: flex-start; } }
+  @media (max-width: 760px) { .cta-card { grid-template-columns: 1fr; padding: 26px 22px; } .cta-actions { justify-content: flex-start; } }
 </style>
-
-<script>
-  const panel = document.getElementById('panel')!;
-  const views = [...panel.querySelectorAll<HTMLElement>('.panel-view')];
-  const show = (key: string) => {
-    let hit = false;
-    views.forEach((v) => {
-      const on = v.dataset.view === key;
-      if (on) hit = true;
-      if (v.hidden === on) v.hidden = !on;
-    });
-    if (!hit) views.forEach((v) => (v.hidden = v.dataset.view !== 'nation'));
-  };
-  document.addEventListener('jmap:state', (e) => {
-    const s = (e as CustomEvent).detail as { level: string; region?: string; pref?: string };
-    show(s.level === 'nation' ? 'nation' : s.level === 'region' ? `region:${s.region}` : `pref:${s.pref}`);
-    if (s.level !== 'nation' && innerWidth <= 900 && e.isTrusted !== false) {
-      const top = panel.getBoundingClientRect().top;
-      if (top > innerHeight * 0.9) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-  const fire = (name: string, detail: unknown) => document.dispatchEvent(new CustomEvent(name, { detail }));
-  // The map may have restored a deep link (#r= / #p=) before this script ran: sync the panel to it.
-  const mapEl = document.querySelector<HTMLElement>('.jmap-explore');
-  if (mapEl?.dataset.level && mapEl.dataset.level !== 'nation') {
-    show(mapEl.dataset.level === 'region' ? `region:${mapEl.dataset.region}` : `pref:${mapEl.dataset.pref}`);
-  }
-  panel.addEventListener('click', (e) => {
-    const t = e.target as HTMLElement;
-    const r = t.closest<HTMLElement>('[data-go-region]');
-    if (r) fire('jmap:go', { region: r.dataset.goRegion });
-    const p = t.closest<HTMLElement>('[data-go-pref]');
-    if (p) fire('jmap:go', { pref: p.dataset.goPref });
-  });
-  panel.addEventListener('pointerover', (e) => {
-    const t = e.target as HTMLElement;
-    const r = t.closest<HTMLElement>('[data-go-region]');
-    const p = t.closest<HTMLElement>('[data-go-pref]');
-    const k = t.closest<HTMLElement>('[data-hover-key]');
-    fire('jmap:hover', r ? { region: r.dataset.goRegion } : p ? { pref: p.dataset.goPref } : k ? { key: k.dataset.hoverKey } : null);
-  });
-  panel.addEventListener('pointerleave', () => fire('jmap:hover', null));
-
-  const chips = [...document.querySelectorAll<HTMLButtonElement>('.theme-bar .chip')];
-  chips.forEach((c) =>
-    c.addEventListener('click', () => {
-      const on = c.getAttribute('aria-pressed') !== 'true';
-      chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c && on)));
-      fire('jmap:theme', on ? c.dataset.theme : '');
-    }),
-  );
-
-  // Seasonal ordering by the visitor's month.
-  const m = new Date().getMonth() + 1;
-  const season = m <= 2 || m === 12 ? 'winter' : m <= 5 ? 'spring' : m <= 8 ? 'summer' : 'autumn';
-  const meta: Record<string, [string, string[]]> = {
-    winter: ['冬天去哪', ['snow', 'onsen']], spring: ['春天去哪', ['sakura', 'flowers']],
-    summer: ['夏天去哪', ['sea', 'nature']], autumn: ['秋天去哪', ['autumn', 'onsen']],
-  };
-  const [title, featured] = meta[season];
-  const h = document.querySelector('[data-season-title]');
-  if (h) h.textContent = title;
-  const feat = document.querySelector('.theme-feat');
-  if (feat) {
-    featured.forEach((t) => {
-      const c = document.querySelector<HTMLElement>(`[data-theme-card="${t}"]`);
-      if (!c) return;
-      const img = c.querySelector('img');
-      if (img) img.src = img.src.replace('-640.webp', '-1200.webp');
-      feat.appendChild(c);
-    });
-  }
-</script>

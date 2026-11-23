@@ -3,7 +3,7 @@ import ToolShell from '../../../components/ToolShell.astro';
 import { phrases } from '../../../lib/toolkit';
 const cats = phrases?.categories ?? [];
 ---
-<ToolShell slug="phrases" title="日语大字卡" description="去日本用得上的日语句子：点餐忌口、购物退税、酒店、交通、寄行李、药店就医、求助。点一下放大给店员看。" lead="点任意一句，全屏放大给对方看。★ 收藏常用的，会排在最前面。" sources={phrases?.sources}>
+<ToolShell slug="phrases" title="日语大字卡" description="去日本用得上的日语句子：点餐忌口、购物退税、酒店、交通、寄行李、药店就医、求助。点一下放大给店员看。" lead="点一句，全屏给对方看。" sources={phrases?.sources}>
   {!cats.length && <p class="tcard">内容整理中。</p>}
   {cats.length > 0 && (
     <>

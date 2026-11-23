@@ -1,0 +1,384 @@
+---
+// Country landing page: hero, explore map with side panel, themes, trips, tools.
+import WorldMap from './WorldMap.astro';
+import { placesOf, regionsOf, tripsAll, themesOf, type WPlace } from '../lib/world';
+import { monthRanges, type CountrySlug } from '../lib/countries';
+
+export interface HomeTool { href: string; t: string; d: string; ico: string }
+interface Props {
+  country: CountrySlug;
+  name: string;
+  hero: { img: string; sizes: [number, number]; alt: string; title: string; lead: string };
+  themeCards?: { slug: string; href: string; img: string; alt: string; count: number }[];
+  tools: HomeTool[];
+  toolsHref: string;
+}
+const { country, name, hero, themeCards = [], tools, toolsHref } = Astro.props;
+const places = placesOf(country);
+const regions = regionsOf(country);
+const themes = themesOf(country);
+const trips = tripsAll(country);
+const spotCount = places.reduce((n, p) => n + p.spots.length, 0);
+const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
+// Cover photos come in 800 / 1600; Japan illustrations in 640 / 1200.
+const placeImg = (p: WPlace | undefined, _small = true) => (p?.cover ? `${p.cover}-${p.coverPhoto ? 800 : 640}.webp` : '');
+const usedThemes = Object.keys(themes).filter((t) => places.some((p) => p.spots.some((s) => s.themes.includes(t))));
+const [hs, hl] = hero.sizes;
+---
+<section class="hero">
+  <picture>
+    <img src={`${hero.img}-${hs}.webp`} srcset={`${hero.img}-${hs}.webp ${hs}w, ${hero.img}-${hl}.webp ${hl}w`} sizes="100vw" alt={hero.alt} width={hl} height={Math.round(hl / 2.25)} fetchpriority="high" />
+  </picture>
+  <div class="wrap hero-copy">
+    <h1 set:html={hero.title} />
+    <p class="lead">{hero.lead}</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#explore">打开地图</a>
+      <a class="btn" href={`/quick/?c=${country}`}>快速生成攻略</a>
+    </div>
+  </div>
+</section>
+
+<section class="section explore" id="explore">
+  <div class="wrap">
+    <div class="section-hd">
+      <div>
+        <h2>探索地图</h2>
+        <p>{places.length} 个{country === 'japan' ? '都道府县' : '州'} · {spotCount} 个景点</p>
+      </div>
+    </div>
+    <div class="explore-grid">
+      <div class="explore-map">
+        <WorldMap country={country} mode="explore" />
+        {usedThemes.length > 0 && (
+          <div class="theme-bar" role="group" aria-label="按主题在地图上标出景点">
+            {usedThemes.map((t) => (
+              <button type="button" class="chip" data-theme={t} aria-pressed="false" style={`--dot:${themes[t].tone}`}><i></i>{themes[t].name}</button>
+            ))}
+          </div>
+        )}
+      </div>
+      <aside class="panel card" id="panel" aria-live="polite">
+        <div class="panel-view" data-view="nation">
+          <div class="region-list">
+            {regions.map((r) => {
+              const first = byKey[r.places.find((k) => byKey[k]) ?? ''];
+              return (
+                <button type="button" class="region-row" data-go-region={r.slug} style={`--tone:${r.tone};--rink:${r.ink}`}>
+                  {country === 'japan'
+                    ? <img src={`${r.cover}-640.webp`} alt="" loading="lazy" width="640" height="427" />
+                    : placeImg(first) ? <img src={placeImg(first)} alt="" loading="lazy" width="400" height="267" /> : <span class="ph" />}
+                  <span>
+                    <b>{r.name}</b>
+                    <small>{r.tagline}</small>
+                  </span>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        {regions.filter((r) => r.places.filter((k) => byKey[k]).length > 1).map((r) => (
+          <div class="panel-view" data-view={`region:${r.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
+            {(country === 'japan' || placeImg(byKey[r.places.find((k) => byKey[k])!])) && <div class="pv-pic"><img src={country === 'japan' ? `${r.cover}-640.webp` : placeImg(byKey[r.places.find((k) => byKey[k])!], false)} alt="" loading="lazy" width="640" height="427" /></div>}
+            <h3>{r.name}</h3>
+            <p class="pv-lead">{r.tagline}</p>
+            <div class="pv-prefs">
+              {r.places.map((k) => {
+                const pd = byKey[k];
+                return pd ? (
+                  <button type="button" class="pv-pref" data-go-pref={pd.slug}>
+                    <b>{pd.name}</b>
+                    <small>{pd.tagline}</small>
+                  </button>
+                ) : null;
+              })}
+            </div>
+            {country === 'japan' && r.href && <a class="btn sm" href={r.href}>{r.name}完整攻略 →</a>}
+          </div>
+        ))}
+        {places.map((p) => {
+          const r = regions.find((x) => x.slug === p.region)!;
+          return (
+            <div class="panel-view" data-view={`pref:${p.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
+              {placeImg(p) && <div class="pv-pic"><img src={placeImg(p, false)} alt="" loading="lazy" width="640" height="427" /></div>}
+              <h3>{p.name}</h3>
+              <p class="pv-lead">{p.tagline}</p>
+              <p class="pv-meta"><span>建议 {p.days}</span><span>最佳 {monthRanges(p.months)}</span></p>
+              <ul class="pv-spots">
+                {p.spots.slice(0, 6).map((s) => (
+                  <li>
+                    {s.img ? <img class="pv-thumb" src={`${s.img}-400.webp`} alt="" loading="lazy" width="400" height="267" /> : <span class="pv-thumb ph" />}
+                    <a href={`${p.href}#spot-${s.id}`} data-hover-key={s.key}>{s.name}</a>
+                    <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={`把${s.name}加入行程`}>
+                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <a class="btn primary sm" href={p.href}>看{p.name}完整攻略 →</a>
+            </div>
+          );
+        })}
+      </aside>
+    </div>
+  </div>
+</section>
+
+{themeCards.length > 0 && (
+  <section class="section season-sec">
+    <div class="wrap">
+      <div class="section-hd">
+        <div><h2 data-season-title>按季节去</h2></div>
+        <a class="more" href="/japan/themes/">全部主题 →</a>
+      </div>
+      <div class="theme-grid">
+        <div class="theme-feat"></div>
+        <div class="theme-rest">
+          {themeCards.map((t) => (
+            <a class="theme-card" href={t.href} data-theme-card={t.slug} style={`--dot:${themes[t.slug].tone}`}>
+              <div class="pic"><img src={`${t.img}-640.webp`} alt={t.alt} loading="lazy" width="640" height="427" /></div>
+              <div class="tc-body">
+                <b>{themes[t.slug].name}</b>
+                <small>{themes[t.slug].season}</small>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{country !== 'japan' && (
+  <section class="section">
+    <div class="wrap">
+      <div class="section-hd"><div><h2>{places.length} 个{country === 'usa' ? '热门州' : '州和领地'}</h2></div></div>
+      <div class="grid g-4">
+        {places.map((p) => (
+          <a class="place reveal" href={p.href}>
+            <div class="pic">{placeImg(p) && <img src={placeImg(p, false)} alt={p.coverAlt} loading="lazy" width="800" height="533" data-fade />}</div>
+            <div class="body"><h3>{p.name}</h3><p>{p.tagline}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{trips.length > 0 && (
+  <section class="section">
+    <div class="wrap">
+      <div class="section-hd">
+        <div><h2>拿来就能用的行程</h2></div>
+        <a class="more" href={`/trips/#${country}`}>全部 {trips.length} 条 →</a>
+      </div>
+      <div class="grid g-3">
+        {trips.slice(0, 6).map((t) => (
+          <a class="place reveal" href={t.href}>
+            <div class="pic">
+              {t.cover && <img src={`${t.cover}-${country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              <span class="badge">{t.daysCount} 天</span>
+            </div>
+            <div class="body">
+              <h3>{t.title}</h3>
+              <p>{t.for}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-hd">
+      <div><h2>到了{name}用得上</h2></div>
+      <a class="more" href={toolsHref}>全部 →</a>
+    </div>
+    <div class="grid g-3 tools">
+      {tools.map((t) => (
+        <a class="tool reveal" href={t.href}>
+          <span class="tool-ico">{t.ico}</span>
+          <span><b>{t.t}</b><small>{t.d}</small></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .hero { position: relative; min-height: min(calc(80vh - var(--hdr)), 660px); display: flex; align-items: center; overflow: hidden; isolation: isolate; }
+  .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -2; }
+  .hero picture img { animation: settle 1.8s var(--ease-out) both; }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(var(--hero-fade), .94) 0%, rgba(var(--hero-fade), .78) 30%, rgba(var(--hero-fade), 0) 58%), linear-gradient(0deg, var(--paper) 0%, rgba(var(--hero-fade), 0) 18%); }
+  .hero-copy { padding: 40px 0 70px; }
+  .hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.18; margin: 0 0 16px; animation: rise 900ms var(--ease-out) both; }
+  .hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); max-width: 460px; animation: rise 900ms 90ms var(--ease-out) both; }
+  .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; animation: rise 900ms 180ms var(--ease-out) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+  @media (max-width: 760px) {
+    .hero { min-height: auto; display: block; }
+    .hero picture { position: relative; display: block; aspect-ratio: 16 / 9; }
+    .hero picture img { position: absolute; }
+    .hero::after { background: linear-gradient(0deg, var(--paper) 0%, rgba(var(--hero-fade), 0) 22%); height: 56.25vw; }
+    .hero-copy { padding: 4px 0 18px; }
+    .hero h1 br { display: none; }
+  }
+
+  .explore { padding-top: 24px; }
+  .explore-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+  .explore-map { position: sticky; top: calc(var(--hdr) + 12px); }
+  .theme-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; }
+  .panel { padding: 18px; min-height: 560px; }
+  .panel-view { animation: panelIn 420ms var(--ease-out) both; }
+  .panel-view[hidden] { display: none; }
+  .panel-view > * { animation: panelIn 480ms var(--ease-out) both; }
+  .panel-view > :nth-child(2) { animation-delay: 40ms; }
+  .panel-view > :nth-child(3) { animation-delay: 80ms; }
+  .panel-view > :nth-child(4) { animation-delay: 120ms; }
+  .panel-view > :nth-child(n + 5) { animation-delay: 160ms; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .region-list { display: grid; gap: 8px; }
+  .region-row {
+    display: grid; grid-template-columns: 74px 1fr 18px; gap: 12px; align-items: center; text-align: left; padding: 7px; border-radius: 14px;
+    border: 1px solid var(--line); background: var(--card); cursor: pointer; transition: border-color var(--t-fast), box-shadow var(--t-fast), transform 240ms var(--ease-out);
+  }
+  .region-row:hover { border-color: color-mix(in srgb, var(--tone) 70%, var(--card)); box-shadow: var(--sh-1); transform: translateX(2px); }
+  .region-row:active { transform: scale(.99); }
+  .region-row img, .region-row .ph { width: 74px; height: 50px; object-fit: cover; border-radius: 9px; background: color-mix(in srgb, var(--tone) 40%, var(--card)); }
+  .region-row b { font-family: var(--serif); font-size: 17px; display: block; color: var(--rink, var(--ink)); line-height: 1.3; }
+  @media (prefers-color-scheme: dark) { .region-row b { color: color-mix(in srgb, var(--rink) 45%, #fff); } }
+  .region-row small { font-size: 12.5px; color: var(--mut); display: block; line-height: 1.45; }
+  .region-row svg { width: 16px; height: 16px; color: var(--mut); transition: transform var(--t-fast) var(--ease); }
+  .region-row:hover svg { transform: translateX(2px); color: var(--ink); }
+  .pv-pic { border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; margin-bottom: 14px; background: var(--paper-2); }
+  .pv-pic img { width: 100%; height: 100%; object-fit: cover; animation: settle 1.2s var(--ease-out) both; }
+  .panel h3 { font-size: 30px; letter-spacing: .05em; margin-top: 2px; }
+  .pv-lead { color: var(--ink-2); margin-top: 4px; font-size: 15px; }
+  .pv-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 14px; }
+  .pv-meta span { font-size: 12.5px; background: var(--paper-2); border-radius: 8px; padding: 3px 9px; color: var(--ink-2); }
+  .pv-prefs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 16px; }
+  .pv-pref { text-align: left; border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 9px 11px; cursor: pointer; color: var(--ink); transition: border-color var(--t-fast), background var(--t-fast), transform 200ms var(--ease-out); }
+  .pv-pref:hover { border-color: color-mix(in srgb, var(--tone) 70%, var(--card)); background: color-mix(in srgb, var(--tone) 10%, var(--card)); transform: translateY(-1px); }
+  .pv-pref b { font-family: var(--serif); font-size: 16px; display: block; }
+  .pv-pref small { font-size: 12px; color: var(--mut); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.45; }
+  .pv-spots { list-style: none; padding: 0; margin: 0 0 16px; border-top: 1px solid var(--line); }
+  .pv-spots li { display: flex; align-items: center; gap: 10px; padding: 7px 2px; border-bottom: 1px solid var(--line); }
+  .pv-thumb { width: 44px; height: 44px; border-radius: 9px; object-fit: cover; flex-shrink: 0; background: var(--paper-2); }
+  .pv-spots a { font-weight: 600; flex: 1; min-width: 0; }
+  .pv-spots a:hover { color: var(--vermilion); }
+  .pv-spots .add { width: 30px; padding: 0; justify-content: center; }
+  @media (max-width: 900px) {
+    .explore-grid { grid-template-columns: 1fr; }
+    .explore-map { position: static; }
+    .panel { min-height: 0; }
+  }
+
+  .theme-grid { display: grid; gap: 12px; }
+  .theme-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .theme-feat:empty { display: none; }
+  .theme-rest { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+  .theme-card { display: block; position: relative; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-1); transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
+  .theme-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
+  .theme-rest .pic { aspect-ratio: 4 / 5; }
+  .tc-body { padding: 9px 11px 11px; }
+  .tc-body b { font-family: var(--serif); font-size: 17px; display: flex; align-items: center; gap: 6px; }
+  .tc-body b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
+  .tc-body small { font-size: 11.5px; color: var(--mut); display: block; line-height: 1.4; margin-top: 2px; }
+  .theme-feat .pic { aspect-ratio: 16 / 8; }
+  .theme-feat .tc-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px; color: #fff; background: linear-gradient(0deg, rgba(20, 18, 14, .6), rgba(20, 18, 14, 0)); }
+  .theme-feat .tc-body b { font-size: 26px; }
+  .theme-feat .tc-body small { color: rgba(255, 255, 255, .88); font-size: 13.5px; }
+  .theme-feat .theme-card::after { content: "当季"; position: absolute; top: 12px; left: 12px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  @media (max-width: 900px) { .theme-rest { grid-template-columns: repeat(7, 132px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; } .theme-rest > * { scroll-snap-align: start; } }
+  @media (max-width: 560px) { .theme-feat { grid-template-columns: 1fr; } .theme-feat .pic { aspect-ratio: 16 / 9; } .theme-feat .tc-body b { font-size: 22px; } }
+
+  .place .pic { position: relative; }
+  .place .badge { position: absolute; left: 12px; top: 12px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 13px; padding: 3px 11px; border-radius: 999px; }
+  .tools .tool {
+    display: flex; gap: 14px; align-items: center; padding: 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--line);
+    transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out), border-color var(--t-fast);
+  }
+  .tools .tool:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .tool-ico { width: 46px; height: 46px; flex-shrink: 0; border-radius: 13px; display: grid; place-items: center; background: var(--vermilion-bg); color: var(--vermilion); font: 600 20px var(--jp); transition: transform 380ms var(--spring); }
+  .tool:hover .tool-ico { transform: rotate(-6deg) scale(1.06); }
+  .tool b { display: block; font-size: 16px; }
+  .tool small { display: block; color: var(--mut); font-size: 13px; line-height: 1.5; margin-top: 2px; }
+</style>
+
+<script>
+  const panel = document.getElementById('panel');
+  if (panel) {
+    const views = [...panel.querySelectorAll<HTMLElement>('.panel-view')];
+    const show = (key: string) => {
+      let hit = false;
+      views.forEach((v) => {
+        const on = v.dataset.view === key;
+        if (on) hit = true;
+        if (v.hidden === on) v.hidden = !on;
+      });
+      if (!hit) views.forEach((v) => (v.hidden = v.dataset.view !== 'nation'));
+    };
+    document.addEventListener('jmap:state', (e) => {
+      const s = (e as CustomEvent).detail as { level: string; region?: string; pref?: string };
+      show(s.level === 'nation' ? 'nation' : s.level === 'region' ? `region:${s.region}` : `pref:${s.pref}`);
+      if (s.level !== 'nation' && innerWidth <= 900) {
+        const top = panel.getBoundingClientRect().top;
+        if (top > innerHeight * 0.9) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+    const fire = (name: string, detail: unknown) => document.dispatchEvent(new CustomEvent(name, { detail }));
+    // The map may have restored a deep link (#r= / #p=) before this script ran: sync the panel to it.
+    const mapEl = document.querySelector<HTMLElement>('.jmap-explore');
+    if (mapEl?.dataset.level && mapEl.dataset.level !== 'nation') {
+      show(mapEl.dataset.level === 'region' ? `region:${mapEl.dataset.region}` : `pref:${mapEl.dataset.pref}`);
+    }
+    panel.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      const r = t.closest<HTMLElement>('[data-go-region]');
+      if (r) fire('jmap:go', { region: r.dataset.goRegion });
+      const p = t.closest<HTMLElement>('[data-go-pref]');
+      if (p) fire('jmap:go', { pref: p.dataset.goPref });
+    });
+    panel.addEventListener('pointerover', (e) => {
+      const t = e.target as HTMLElement;
+      const r = t.closest<HTMLElement>('[data-go-region]');
+      const p = t.closest<HTMLElement>('[data-go-pref]');
+      const k = t.closest<HTMLElement>('[data-hover-key]');
+      fire('jmap:hover', r ? { region: r.dataset.goRegion } : p ? { pref: p.dataset.goPref } : k ? { key: k.dataset.hoverKey } : null);
+    });
+    panel.addEventListener('pointerleave', () => fire('jmap:hover', null));
+
+    const chips = [...document.querySelectorAll<HTMLButtonElement>('.theme-bar .chip')];
+    chips.forEach((c) =>
+      c.addEventListener('click', () => {
+        const on = c.getAttribute('aria-pressed') !== 'true';
+        chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c && on)));
+        fire('jmap:theme', on ? c.dataset.theme : '');
+      }),
+    );
+  }
+
+  // Japan: seasonal featured themes by the visitor's month.
+  const feat = document.querySelector('.theme-feat');
+  if (feat) {
+    const m = new Date().getMonth() + 1;
+    const season = m <= 2 || m === 12 ? 'winter' : m <= 5 ? 'spring' : m <= 8 ? 'summer' : 'autumn';
+    const meta: Record<string, [string, string[]]> = {
+      winter: ['冬天去哪', ['snow', 'onsen']], spring: ['春天去哪', ['sakura', 'flowers']],
+      summer: ['夏天去哪', ['sea', 'nature']], autumn: ['秋天去哪', ['autumn', 'onsen']],
+    };
+    const [title, featured] = meta[season];
+    const h = document.querySelector('[data-season-title]');
+    if (h) h.textContent = title;
+    featured.forEach((t) => {
+      const c = document.querySelector<HTMLElement>(`[data-theme-card="${t}"]`);
+      if (!c) return;
+      const img = c.querySelector('img');
+      if (img) img.src = img.src.replace('-640.webp', '-1200.webp');
+      feat.appendChild(c);
+    });
+  }
+</script>

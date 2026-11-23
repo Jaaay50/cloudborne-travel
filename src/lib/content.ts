@@ -1,11 +1,15 @@
 // Loads the hand-written Japan content (src/data/japan/**) at build time.
 import { PREF_SLUGS, REGION_OF_PREF, REGIONS, type PrefSlug, type RegionSlug, type Season, type ThemeSlug } from './japan';
 import coversRaw from '../data/japan/covers.json';
+import { COUNTRIES, regionOf, type XCountry } from './countries';
+import photoIndex from '../data/photo-index.json';
 
 export interface Source { title: string; url: string }
 export interface Spot {
   id: string; name: string; local?: string; en?: string; kind: string; ll: [number, number];
   text: string; time: string; tip?: string; fee?: string; themes: ThemeSlug[];
+  /** Months the spot can be visited (seasonal closures); absent = all year. */
+  open?: number[];
 }
 export interface Food { id: string; name: string; local?: string; text: string; where: string; price?: string }
 export interface Pref {
@@ -77,3 +81,64 @@ export const mapLinks = (name: string, [lon, lat]: [number, number]) => ({
 });
 
 export const xhs = (q: string) => `https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(q)}`;
+
+// ---------------- Australia / USA ----------------
+
+export interface XSpot extends Omit<Spot, 'themes' | 'en'> { themes: string[]; photo?: string }
+export interface XFood extends Food { photo?: string }
+export interface XState {
+  slug: string; country: XCountry; name: string; local: string; abbr: string; region: string; tagline: string; intro: string[];
+  days: string; seasons: { months: number[]; note: string }; stay: string; access: { from: string; how: string }[];
+  spots: XSpot[]; foods: XFood[]; tips: string[]; nearby: string[]; climate: { city: string; ll: [number, number] };
+  cover: { scene: string; alt: string }; sources: Source[]; checked: string;
+}
+export interface XTrip {
+  id: string; country: XCountry; title: string; region: string; daysCount: number; for: string; season: string; summary: string;
+  bases: string[]; days: { title: string; stay: string; items: TripItem[]; move?: string }[];
+}
+export interface Guide {
+  country: XCountry;
+  sections: { id: string; title: string; items: { title: string; text: string }[] }[];
+  numbers: { label: string; number: string; note?: string }[];
+  contacts: { name: string; phone: string; hours?: string; note?: string; url?: string }[];
+  budget: { currency: string; save: Record<string, number>; mid: Record<string, number>; lux: Record<string, number>; note: string };
+  sources: Source[]; checked: string;
+}
+
+const auStates = import.meta.glob<XState>('../data/australia/states/*.json', { eager: true, import: 'default' });
+const usStates = import.meta.glob<XState>('../data/usa/states/*.json', { eager: true, import: 'default' });
+const auTrips = import.meta.glob<XTrip>('../data/australia/trips/*.json', { eager: true, import: 'default' });
+const usTrips = import.meta.glob<XTrip>('../data/usa/trips/*.json', { eager: true, import: 'default' });
+const guides = import.meta.glob<Guide>('../data/*/guide.json', { eager: true, import: 'default' });
+
+const order = (c: XCountry) => COUNTRIES[c].regions.flatMap((r) => r.states);
+const sortStates = (c: XCountry, list: XState[]) => list.sort((a, b) => order(c).indexOf(a.slug) - order(c).indexOf(b.slug));
+for (const s of [...Object.values(auStates), ...Object.values(usStates)]) for (const x of s.spots ?? []) x.themes ??= [];
+
+export const statesOf: Record<XCountry, XState[]> = {
+  australia: sortStates('australia', Object.values(auStates)),
+  usa: sortStates('usa', Object.values(usStates)),
+};
+export const getState = (c: XCountry, slug: string) => statesOf[c].find((s) => s.slug === slug);
+export const tripsOf: Record<XCountry, XTrip[]> = {
+  australia: Object.values(auTrips).sort((a, b) => a.daysCount - b.daysCount),
+  usa: Object.values(usTrips).sort((a, b) => a.daysCount - b.daysCount),
+};
+export const guideOf = (c: XCountry) => guides[`../data/${c}/guide.json`] as Guide | undefined;
+
+export interface XSpotRef extends XSpot { country: XCountry; state: string; stateName: string; region: string; key: string }
+export interface XFoodRef extends XFood { country: XCountry; state: string; stateName: string; key: string }
+export const xSpots = (c: XCountry): XSpotRef[] => statesOf[c].flatMap((st) =>
+  st.spots.map((s) => ({ ...s, country: c, state: st.slug, stateName: st.name, region: regionOf(c, st.slug)?.slug ?? st.region, key: `${st.slug}/${s.id}` })));
+export const xFoods = (c: XCountry): XFoodRef[] => statesOf[c].flatMap((st) =>
+  st.foods.map((f) => ({ ...f, country: c, state: st.slug, stateName: st.name, key: `${st.slug}/${f.id}` })));
+
+// ---------------- photos ----------------
+// photo-index.json lists every generated photo as "<country>/<place>/<s|f>-<id>" (plus "<country>/<place>/cover").
+const PHOTOS = new Set<string>(photoIndex as string[]);
+/** URL prefix of a photo, or null when there is none yet.
+ *  Spots/foods: append "-400.webp" or "-800.webp". Covers: append "-800.webp" or "-1600.webp". */
+export function photo(country: string, place: string, kind: 's' | 'f' | 'cover', id = ''): string | null {
+  const key = kind === 'cover' ? `${country}/${place}/cover` : `${country}/${place}/${kind}-${id}`;
+  return PHOTOS.has(key) ? `/img/photos/${key}` : null;
+}

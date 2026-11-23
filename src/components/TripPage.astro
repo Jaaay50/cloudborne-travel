@@ -1,0 +1,126 @@
+---
+// One trip template page (any country).
+import { allPlaces, type WTrip, type WSpot, type WFood } from '../lib/world';
+import { mapLinks } from '../lib/content';
+import { atlas } from '../lib/atlas';
+
+interface Props { t: WTrip; crumbs: { href: string; text: string }[] }
+const { t, crumbs } = Astro.props;
+const places = allPlaces();
+const A = atlas(t.country);
+const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
+type Row = { kind: 'spot'; s: WSpot; placeName: string; href: string } | { kind: 'food'; f: WFood; placeName: string; href: string } | { kind: 'note'; note: string };
+const days = t.days.map((d) => ({
+  ...d,
+  rows: d.items.map((it): Row | null => {
+    if ('note' in it) return { kind: 'note', note: it.note };
+    const p = byKey[it.pref];
+    if (!p) return null;
+    if ('spot' in it) { const s = p.spots.find((x) => x.id === it.spot); return s ? { kind: 'spot', s, placeName: p.name, href: `${p.href}#spot-${s.id}` } : null; }
+    const f = p.foods.find((x) => x.id === it.food);
+    return f ? { kind: 'food', f, placeName: p.name, href: `${p.href}#food-${f.id}` } : null;
+  }).filter((x): x is Row => !!x),
+}));
+const payload = JSON.stringify({ title: t.title, days: days.map((d) => d.rows.flatMap((r) => (r.kind === 'spot' ? [r.s.item] : r.kind === 'food' ? [r.f.item] : []))) });
+const heroW = t.country === 'japan' ? [640, 1200] : [800, 1600];
+const amap = t.country === 'japan';
+---
+<section class="phero short">
+  {t.cover && <img src={`${t.cover}-${heroW[1]}.webp`} alt="" width={heroW[1]} height={Math.round(heroW[1] * 2 / 3)} fetchpriority="high" />}
+  <div class="wrap">
+    <nav class="crumbs" aria-label="位置">{crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}</nav>
+    <h1>{t.title}</h1>
+    <p class="tagline">{t.for}</p>
+    <div class="facts"><span>{t.daysCount} 天</span><span>{t.season}</span></div>
+  </div>
+</section>
+
+<div class="wrap trip-layout">
+  <div>
+    <p class="summary">{t.summary}</p>
+    <p class="bases">住：{t.bases.join(' → ')}</p>
+    <div class="actions no-print">
+      <button type="button" class="btn primary" data-copy-trip={payload}>复制到我的行程</button>
+      <button type="button" class="btn" onclick="print()">打印 / 存 PDF</button>
+    </div>
+    <ol class="days">
+      {days.map((d, i) => (
+        <li class="day reveal">
+          <div class="day-hd">
+            <span class="dn">D{i + 1}</span>
+            <div><h2>{d.title}</h2><p>住 {d.stay}{d.move && ` · ${d.move}`}</p></div>
+          </div>
+          <ul class="items">
+            {d.rows.map((r) => (
+              r.kind === 'spot' ? (
+                <li class="it">
+                  <span class="dot spot"></span>
+                  {r.s.img && <img class="it-pic" src={`${r.s.img}-400.webp`} alt="" loading="lazy" width="400" height="267" data-fade />}
+                  <div>
+                    <a href={r.href}><b>{r.s.name}</b></a>
+                    <small>{r.placeName} · {A.kinds[r.s.kind] ?? r.s.kind} · {r.s.time}{r.s.fee && ` · ${r.s.fee}`}</small>
+                    {r.s.tip && <p>{r.s.tip}</p>}
+                  </div>
+                  <a class="nav-link no-print" href={amap ? mapLinks(r.s.local || r.s.name, r.s.ll).amap : mapLinks(r.s.local || r.s.name, r.s.ll).google} target="_blank" rel="noopener">导航</a>
+                </li>
+              ) : r.kind === 'food' ? (
+                <li class="it">
+                  <span class="dot food"></span>
+                  {r.f.img && <img class="it-pic" src={`${r.f.img}-400.webp`} alt="" loading="lazy" width="400" height="267" data-fade />}
+                  <div>
+                    <a href={r.href}><b>吃 {r.f.name}</b></a>
+                    <small>{r.f.where}{r.f.price && ` · ${r.f.price}`}</small>
+                  </div>
+                </li>
+              ) : (
+                <li class="it note"><span class="dot"></span><div><p>{r.note}</p></div></li>
+              )
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</div>
+
+<style is:global>
+  .phero.short { min-height: 360px; }
+  .trip-layout { max-width: 860px; padding-top: 30px; }
+  .trip-layout .summary { font-size: 17px; line-height: 1.85; color: var(--ink-2); }
+  .trip-layout .bases { font-size: 14px; color: var(--mut); margin-top: 8px; }
+  .trip-layout .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 10px; }
+  .trip-layout .days { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 16px; }
+  .trip-layout .day { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 20px 22px; box-shadow: var(--sh-1); break-inside: avoid; }
+  .trip-layout .day-hd { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+  .trip-layout .dn { width: 48px; height: 48px; border-radius: 14px; background: var(--ink); color: var(--on-ink); display: grid; place-items: center; font: 600 17px var(--serif); flex-shrink: 0; }
+  .trip-layout .day-hd h2 { font-size: 21px; }
+  .trip-layout .day-hd p { font-size: 13.5px; color: var(--mut); }
+  .trip-layout .items { list-style: none; padding: 0 0 0 22px; margin: 0; border-left: 2px dashed var(--line-2); margin-left: 23px; display: grid; gap: 14px; }
+  .trip-layout .it { position: relative; display: flex; gap: 12px; align-items: flex-start; }
+  .trip-layout .it > div { flex: 1; min-width: 0; }
+  .trip-layout .it-pic { width: 76px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; background: var(--paper-2); }
+  .trip-layout .dot { position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper-2); border: 3px solid var(--card); box-shadow: 0 0 0 1px var(--line-2); }
+  .trip-layout .dot.spot { background: var(--vermilion); }
+  .trip-layout .dot.food { background: var(--gold); }
+  .trip-layout .it b { font-size: 16px; }
+  .trip-layout .it a:hover b { color: var(--vermilion); }
+  .trip-layout .it small { display: block; font-size: 13px; color: var(--mut); }
+  .trip-layout .it p { font-size: 13.5px; color: var(--ink-2); margin-top: 3px; }
+  .trip-layout .it.note p { color: var(--mut); font-style: italic; }
+  .trip-layout .nav-link { font-size: 12.5px; color: var(--indigo); white-space: nowrap; padding-top: 2px; }
+  @media (max-width: 640px) {
+    .trip-layout .day { padding: 16px; } .trip-layout .items { margin-left: 10px; padding-left: 18px; } .trip-layout .dot { left: -26px; }
+    .trip-layout .it-pic { width: 60px; height: 46px; }
+  }
+</style>
+<script>
+  import { load, save } from '../scripts/trip';
+  document.querySelector<HTMLButtonElement>('[data-copy-trip]')?.addEventListener('click', (e) => {
+    const data = JSON.parse((e.currentTarget as HTMLElement).dataset.copyTrip!) as { title: string; days: string[][] };
+    const cur = load();
+    const has = cur.days.flat().length + cur.pool.length > 0;
+    if (has && !confirm('你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）')) return;
+    save({ v: 1, title: data.title, start: cur.start, days: data.days, pool: [], notes: {} });
+    location.href = '/plan/';
+  });
+</script>

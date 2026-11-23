@@ -1,10 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { TOOLS, type Src } from '../lib/toolkit';
-interface Props { slug: string; title: string; description: string; lead: string; sources?: Src[] | null; checked?: string }
+interface Props { slug: string; title: string; description: string; lead?: string; sources?: Src[] | null; checked?: string }
 const { slug, title, description, lead, sources, checked = '2026-11' } = Astro.props;
 ---
-<Base title={title} description={description} nav="tools">
+<Base title={title} description={description} nav="japan">
   <div class="wrap tool-layout">
     <nav class="tool-nav no-print" aria-label="随身工具">
       <a href="/japan/tools/" class="tn-all">随身工具</a>
@@ -13,11 +13,11 @@ const { slug, title, description, lead, sources, checked = '2026-11' } = Astro.p
     <div class="tool-main">
       <header class="tool-head">
         <h1>{title}</h1>
-        <p>{lead}</p>
+        {lead && <p>{lead}</p>}
       </header>
       <slot />
       {sources && sources.length > 0 && (
-        <p class="tool-src">核对于 {checked}，以官方最新信息为准。来源：{sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
+        <details class="tool-src"><summary>来源（{checked}）</summary><p>{sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p></details>
       )}
     </div>
   </div>
@@ -35,6 +35,8 @@ const { slug, title, description, lead, sources, checked = '2026-11' } = Astro.p
   .tool-head p { color: var(--ink-2); font-size: 16px; margin-top: 8px; max-width: 680px; }
   .tool-main { min-width: 0; }
   .tool-src { margin-top: 32px; font-size: 12.5px; color: var(--mut); line-height: 1.8; }
+  .tool-src summary { cursor: pointer; }
+  .tool-src p { margin-top: 6px; }
   .tool-src a { text-decoration: underline; text-decoration-color: var(--line-2); }
   .tool-sec { margin-top: 28px; }
   .tool-sec > h2 { font-size: 22px; margin-bottom: 12px; }

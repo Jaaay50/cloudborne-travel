@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import CountryHome from '../../components/CountryHome.astro';
+import { covers, allSpots } from '../../lib/content';
+import { THEME_SLUGS } from '../../lib/japan';
+
+const themeCards = THEME_SLUGS.map((t) => ({ slug: t, href: `/japan/themes/${t}/`, img: `/img/themes/${t}`, alt: covers.themes[t].alt, count: allSpots.filter((s) => s.themes.includes(t)).length }));
+const tools = [
+  { href: '/japan/tools/phrases/', t: '日语大字卡', d: '点餐、忌口、退税，直接给店员看', ico: 'あ' },
+  { href: '/japan/tools/airports/', t: '机场进城', d: '7 个机场怎么进市区', ico: '✈' },
+  { href: '/japan/tools/tax-free/', t: '退税计算', d: '2026 年 11 月起出境退税', ico: '¥' },
+  { href: '/japan/tools/checklist/', t: '行前清单', d: '勾选，自动保存', ico: '✓' },
+  { href: '/japan/tools/emergency/', t: '紧急求助', d: '报警急救、使领馆', ico: '!' },
+  { href: '/japan/tools/rules-2026/', t: '2026 新规', d: '出国税、住宿税、免税改退税', ico: '新' },
+];
+---
+<Base title="日本旅行攻略" description={`日本 47 个都道府县的原创旅行指南：互动地图、${allSpots.length} 个景点与地方美食、季节主题、行程模板和离线随身工具。`} nav="japan">
+  <link slot="head" rel="preload" as="image" href="/img/hero-1280.webp" imagesrcset="/img/hero-1280.webp 1280w, /img/hero-2304.webp 2304w" imagesizes="100vw" />
+  <CountryHome country="japan" name="日本"
+    hero={{ img: '/img/hero', sizes: [1280, 2304], alt: covers.hero.alt, title: '在地图上，<br />找到你的日本。', lead: '从一座城、一碗面、一场红叶开始。' }}
+    themeCards={themeCards} tools={tools} toolsHref="/japan/tools/" />
+</Base>

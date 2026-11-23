@@ -3,7 +3,7 @@ import ToolShell from '../../../components/ToolShell.astro';
 import { rules } from '../../../lib/toolkit';
 const items = [...(rules?.items ?? [])].sort((a, b) => a.date.localeCompare(b.date));
 ---
-<ToolShell slug="rules-2026" title="2026 新规速览" description="2026 年去日本要知道的新变化：出国税涨到 3,000 日元、免税改出境退税、京都和北海道住宿税等，附官方来源。" lead="今年对游客影响最大的几项变化，按生效时间排。每条都附官方来源。" sources={rules?.sources}>
+<ToolShell slug="rules-2026" title="2026 新规速览" description="2026 年去日本要知道的新变化：出国税涨到 3,000 日元、免税改出境退税、京都和北海道住宿税等，附官方来源。" sources={rules?.sources}>
   <ol class="tl">
     {items.map((r) => (
       <li class="tl-item" data-date={r.date}>

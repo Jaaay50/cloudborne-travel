@@ -1,0 +1,334 @@
+---
+// Guide page for one place (Japanese prefecture or Australian / US state). Pages pass a normalised model.
+import WorldMap from './WorldMap.astro';
+import ClimateTable from './ClimateTable.astro';
+import { mapLinks, xhs } from '../lib/content';
+import { MONTHS, monthRanges, type CountrySlug } from '../lib/countries';
+import { atlas } from '../lib/atlas';
+import type { WPlace } from '../lib/world';
+
+export interface PlaceModel {
+  place: WPlace;
+  country: CountrySlug;
+  countryName: string;
+  crumbs: { href: string; text: string }[];
+  kicker: string; // small line above the title
+  intro: string[];
+  months: number[];
+  seasonNote: string;
+  facts: string[];
+  access: { from: string; how: string }[];
+  stay: string;
+  tips: string[];
+  nearby: WPlace[];
+  sources: { title: string; url: string }[];
+  checked: string;
+  heroImg: string; // URL without size suffix
+  heroSizes: [number, number]; // e.g. [800, 1600] for photos, [640, 1200] for illustrations
+  heroAlt: string;
+  side?: { title: string; text?: string; href?: string; link?: string };
+  climateKey: string;
+}
+interface Props { m: PlaceModel }
+const { m } = Astro.props;
+const p = m.place;
+const A = atlas(m.country);
+const themes = A.themes;
+const useAmap = m.country === 'japan';
+const spotThemes = [...new Set(p.spots.flatMap((s) => s.themes))].filter((t) => themes[t]);
+const [hs, hl] = m.heroSizes;
+---
+<section class="phero">
+  <img src={`${m.heroImg}-${hl}.webp`} srcset={`${m.heroImg}-${hs}.webp ${hs}w, ${m.heroImg}-${hl}.webp ${hl}w`} sizes="100vw" alt={m.heroAlt} width={hl} height={Math.round((hl * 2) / 3)} fetchpriority="high" />
+  <div class="wrap">
+    <nav class="crumbs" aria-label="位置">
+      {m.crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}
+    </nav>
+    <p class="kana">{m.kicker}</p>
+    <h1>{p.name}</h1>
+    <p class="tagline">{p.tagline}</p>
+    <div class="facts">{m.facts.map((f) => <span>{f}</span>)}</div>
+  </div>
+</section>
+
+<div class="wrap pref-layout">
+  <article class="pref-main">
+    <nav class="toc no-print" aria-label="本页目录">
+      <a href="#overview">概览</a><a href="#spots">景点</a><a href="#food">美食</a><a href="#access">交通住宿</a><a href="#tips">提醒</a>
+    </nav>
+
+    <section id="overview" class="block">
+      <div class="prose">{m.intro.map((t) => <p>{t}</p>)}</div>
+      <div class="season-row">
+        <div class="months" aria-label={`最佳月份：${monthRanges(m.months)}`}>
+          {MONTHS.map((mn, i) => <span class:list={['mo', { on: m.months.includes(i + 1) }]} aria-hidden="true">{i + 1}</span>)}
+        </div>
+        <p>{m.seasonNote}</p>
+      </div>
+      <ClimateTable place={m.climateKey} highlight={m.months} />
+    </section>
+
+    <section id="spots" class="block">
+      <div class="block-hd">
+        <h2>景点</h2>
+        {spotThemes.length > 1 && (
+          <div class="filter no-print" role="group" aria-label="按主题筛选景点">
+            <button type="button" class="chip on" data-f="" aria-pressed="true">全部</button>
+            {spotThemes.map((t) => (
+              <button type="button" class="chip" data-f={t} aria-pressed="false" style={`--dot:${themes[t].tone}`}><i></i>{themes[t].name}</button>
+            ))}
+          </div>
+        )}
+      </div>
+      <ol class="spots">
+        {p.spots.map((s, i) => {
+          const links = mapLinks(s.local || s.name, s.ll);
+          return (
+            <li class:list={['spot reveal', { 'has-img': !!s.img }]} id={`spot-${s.id}`} data-themes={s.themes.join(' ')} data-key={s.key}>
+              {s.img && (
+                <figure class="spot-pic">
+                  <img src={`${s.img}-800.webp`} srcset={`${s.img}-400.webp 400w, ${s.img}-800.webp 800w`} sizes="(max-width: 640px) 100vw, 300px" alt={s.name} loading="lazy" decoding="async" width="800" height="533" data-fade />
+                  <span class="spot-n">{i + 1}</span>
+                </figure>
+              )}
+              <div class="spot-body">
+                <div class="spot-hd">
+                  <div>
+                    <h3>{!s.img && <span class="spot-n inline">{i + 1}</span>}{s.name}</h3>
+                    {(s.local || s.en) && <p class="spot-sub">{[s.local, s.en].filter(Boolean).join(' · ')}</p>}
+                  </div>
+                  <button type="button" class="add no-print" data-add={s.item} data-name={s.name} aria-pressed="false">
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                    <span data-label>加入行程</span>
+                  </button>
+                </div>
+                <p class="spot-text">{s.text}</p>
+                <div class="spot-meta">
+                  <span class="tag">{A.kinds[s.kind] ?? s.kind}</span>
+                  <span class="tag">{s.time}</span>
+                  {s.fee && <span class="tag">{s.fee}</span>}
+                  {s.themes.filter((t) => themes[t]).map((t) => <span class="tag theme" style={`--dot:${themes[t].tone}`}>{themes[t].name}</span>)}
+                </div>
+                {s.tip && <p class="spot-tip">{s.tip}</p>}
+                <div class="spot-links no-print">
+                  {useAmap && <a href={links.amap} target="_blank" rel="noopener">高德</a>}
+                  <a href={links.google} target="_blank" rel="noopener">Google 地图</a>
+                  <a href={links.apple} target="_blank" rel="noopener">Apple 地图</a>
+                  <a href={xhs(`${s.name} 攻略`)} target="_blank" rel="noopener">小红书</a>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+
+    <section id="food" class="block">
+      <div class="block-hd"><h2>吃什么</h2></div>
+      <div class="foods">
+        {p.foods.map((f) => (
+          <div class:list={['food reveal', { 'has-img': !!f.img }]} id={`food-${f.id}`}>
+            {f.img && <div class="food-pic"><img src={`${f.img}-800.webp`} srcset={`${f.img}-400.webp 400w, ${f.img}-800.webp 800w`} sizes="(max-width: 640px) 100vw, 420px" alt={f.name} loading="lazy" decoding="async" width="800" height="533" data-fade /></div>}
+            <div class="food-body">
+              <div class="food-hd">
+                <h3>{f.name}</h3>
+                <button type="button" class="add no-print" data-add={f.item} data-name={f.name} aria-pressed="false" aria-label={`把${f.name}加入行程`}>
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                </button>
+              </div>
+              <p>{f.text}</p>
+              <p class="food-where">{f.where}{f.price && <span> · {f.price}</span>}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="access" class="block">
+      <div class="block-hd"><h2>怎么去 · 住哪里</h2></div>
+      <div class="access">
+        {m.access.map((a) => <div class="acc"><b>{a.from}</b><p>{a.how}</p></div>)}
+      </div>
+      <div class="stay"><b>住哪里</b><p>{m.stay}</p></div>
+    </section>
+
+    <section id="tips" class="block">
+      <div class="block-hd"><h2>出发前知道这些</h2></div>
+      <ul class="tips">{m.tips.map((t) => <li>{t}</li>)}</ul>
+    </section>
+
+    {m.sources.length > 0 && (
+      <details class="block sources">
+        <summary>来源（{m.checked}）</summary>
+        <p>{m.sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
+      </details>
+    )}
+  </article>
+
+  <aside class="pref-side no-print">
+    <div class="side-sticky">
+      <WorldMap country={m.country} mode="focus" focusPref={p.slug} />
+      {m.side && (
+        <div class="side-card card">
+          <b>{m.side.title}</b>
+          {m.side.text && <p>{m.side.text}</p>}
+          {m.side.href && <a href={m.side.href}>{m.side.link}</a>}
+        </div>
+      )}
+    </div>
+  </aside>
+</div>
+
+{m.nearby.length > 0 && (
+  <section class="section nearby">
+    <div class="wrap">
+      <div class="section-hd"><div><h2>顺路去</h2></div></div>
+      <div class="grid g-4">
+        {m.nearby.map((n) => (
+          <a class="place reveal" href={n.href}>
+            <div class="pic">{n.cover && <img src={`${n.cover}-${n.coverPhoto ? 800 : 640}.webp`} alt={n.coverAlt} loading="lazy" width="640" height="427" data-fade />}</div>
+            <div class="body"><h3>{n.name}</h3><p>{n.tagline}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style is:global>
+  .pref-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; padding-top: 8px; }
+  .toc { position: sticky; top: var(--hdr); z-index: 5; display: flex; gap: 4px; padding: 10px 0; background: var(--paper); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+  .toc a { padding: 6px 12px; border-radius: 999px; font-size: 14px; color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
+  .toc a:hover { background: var(--paper-2); color: var(--ink); }
+  .toc a.cur { background: var(--ink); color: var(--on-ink); }
+  .block { padding: 34px 0 6px; }
+  .block-hd { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .block-hd h2 { font-size: 26px; }
+  .filter { display: flex; flex-wrap: wrap; gap: 6px; }
+  .season-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+  .months { display: flex; gap: 3px; }
+  .mo { width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; font-size: 11.5px; font-variant-numeric: tabular-nums; background: var(--paper-2); color: var(--mut); }
+  .mo.on { background: var(--vermilion); color: #fff; font-weight: 600; }
+  .season-row p { flex: 1 1 240px; color: var(--ink-2); font-size: 14.5px; line-height: 1.6; }
+  #overview .climate { margin-top: 12px; }
+
+  .spots { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .spot { position: relative; display: grid; grid-template-columns: 1fr; background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: box-shadow 360ms var(--ease-out), border-color var(--t), opacity var(--t), transform 360ms var(--ease-out); scroll-margin-top: calc(var(--hdr) + 64px); }
+  .spot.has-img { grid-template-columns: 300px minmax(0, 1fr); }
+  .spot:hover, .spot.hot { box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .spot:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
+  .spot.hide { display: none; }
+  .spot-pic { position: relative; margin: 0; overflow: hidden; background: var(--paper-2); min-height: 100%; }
+  .spot-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .spot:hover .spot-pic img { transform: scale(1.04); }
+  .spot-n { position: absolute; left: 12px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: rgba(20, 18, 14, .62); color: #fff; display: grid; place-items: center; font: 600 14px var(--serif); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .spot-n.inline { position: static; display: inline-grid; width: 26px; height: 26px; margin-right: 8px; font-size: 13px; background: var(--ink); color: var(--on-ink); vertical-align: 2px; backdrop-filter: none; }
+  .spot-body { padding: 18px 20px; min-width: 0; }
+  .spot-hd { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+  .spot h3 { font-size: 20px; }
+  .spot-sub { font-size: 12.5px; color: var(--mut); margin-top: 1px; }
+  .spot-text { margin-top: 8px; color: var(--ink-2); font-size: 15.5px; line-height: 1.8; }
+  .spot-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .spot-tip { margin-top: 10px; font-size: 14px; color: var(--ink-2); background: var(--tip-bg); border-radius: 10px; padding: 8px 12px; }
+  .spot-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 13px; }
+  .spot-links a { color: var(--indigo); }
+  .spot-links a:hover { text-decoration: underline; }
+
+  .foods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .food { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; scroll-margin-top: calc(var(--hdr) + 64px); transition: box-shadow 360ms var(--ease-out), transform 360ms var(--ease-out); }
+  .food:hover { box-shadow: var(--sh-2); }
+  .food:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
+  .food-pic { aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2); }
+  .food-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .food:hover .food-pic img { transform: scale(1.04); }
+  .food-body { padding: 14px 18px 16px; }
+  .food-hd { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+  .food-hd .add { width: 30px; padding: 0; justify-content: center; flex-shrink: 0; }
+  .food h3 { font-size: 18px; }
+  .food p { color: var(--ink-2); font-size: 14.5px; margin-top: 6px; line-height: 1.7; }
+  .food .food-where { font-size: 13.5px; color: var(--mut); }
+
+  .access { display: grid; gap: 8px; }
+  .acc { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+  .acc b { font-size: 14.5px; }
+  .acc p { font-size: 14.5px; color: var(--ink-2); }
+  .stay { margin-top: 10px; padding: 14px 16px; border-radius: 14px; background: var(--indigo-bg); font-size: 14.5px; color: var(--ink-2); }
+  .stay b { color: var(--ink); }
+  .tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .tips li { position: relative; padding: 11px 16px 11px 40px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; font-size: 14.5px; color: var(--ink-2); }
+  .tips li::before { content: "!"; position: absolute; left: 13px; top: 12px; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); color: #fff; font: 700 12px/18px var(--sans); text-align: center; }
+  .sources summary { font-size: 13px; color: var(--mut); cursor: pointer; list-style: none; }
+  .sources summary::-webkit-details-marker { display: none; }
+  .sources summary::after { content: " ›"; display: inline-block; transition: transform var(--t) var(--ease); }
+  .sources[open] summary::after { transform: rotate(90deg); }
+  .sources p { font-size: 12.5px; color: var(--mut); line-height: 1.8; margin-top: 8px; }
+  .sources a { text-decoration: underline; text-decoration-color: var(--line-2); }
+  .sources a:hover { color: var(--ink); }
+
+  .pref-side { padding-top: 20px; }
+  .side-sticky { position: sticky; top: calc(var(--hdr) + 16px); display: grid; gap: 12px; }
+  .side-card { padding: 14px 16px; font-size: 14px; }
+  .side-card p { color: var(--mut); margin: 2px 0 6px; font-size: 13.5px; }
+  .side-card a { color: var(--vermilion); font-weight: 600; font-size: 13.5px; }
+  .nearby { padding-top: 30px; }
+
+  @media (max-width: 1000px) {
+    .pref-layout { grid-template-columns: 1fr; gap: 0; }
+    .pref-side { order: -1; padding-top: 18px; }
+    .side-sticky { position: static; }
+    .side-card { display: none; }
+  }
+  @media (max-width: 760px) {
+    .spot.has-img { grid-template-columns: 1fr; }
+    .spot-pic { aspect-ratio: 16 / 10; min-height: 0; }
+  }
+  @media (max-width: 640px) {
+    .foods { grid-template-columns: 1fr; }
+    .spot-body { padding: 15px; }
+    .acc { grid-template-columns: 1fr; gap: 2px; }
+    .spot-hd .add [data-label] { display: none; }
+    .spot-hd .add { width: 30px; padding: 0; justify-content: center; }
+    .mo { width: 21px; height: 21px; font-size: 10.5px; }
+  }
+  @media print { .spot.has-img { grid-template-columns: 180px 1fr; } .spot { break-inside: avoid; } }
+</style>
+
+<script>
+  // theme filter
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.block-hd .filter .chip')];
+  const spots = [...document.querySelectorAll<HTMLElement>('.spot')];
+  chips.forEach((c) =>
+    c.addEventListener('click', () => {
+      const f = c.dataset.f!;
+      chips.forEach((x) => {
+        const on = x === c;
+        x.classList.toggle('on', on);
+        x.setAttribute('aria-pressed', String(on));
+      });
+      spots.forEach((s) => s.classList.toggle('hide', !!f && !(s.dataset.themes || '').split(' ').includes(f)));
+      document.querySelectorAll<SVGElement>('.jmap .pin').forEach((pin) => pin.classList.toggle('off', !!f && !(pin.dataset.themes || '').split(' ').includes(f)));
+      document.dispatchEvent(new CustomEvent('jmap:filter'));
+    }),
+  );
+  // map <-> list hover
+  const pins = new Map([...document.querySelectorAll<SVGElement>('.jmap .pin')].map((p) => [p.dataset.key, p]));
+  spots.forEach((s) => {
+    s.addEventListener('pointerenter', () => pins.get(s.dataset.key)?.classList.add('hot'));
+    s.addEventListener('pointerleave', () => pins.get(s.dataset.key)?.classList.remove('hot'));
+  });
+  pins.forEach((pin, key) => {
+    const li = spots.find((s) => s.dataset.key === key);
+    pin.addEventListener('pointerenter', () => li?.classList.add('hot'));
+    pin.addEventListener('pointerleave', () => li?.classList.remove('hot'));
+  });
+  // toc highlight
+  const toc = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  const secs = toc.map((a) => document.querySelector<HTMLElement>(a.getAttribute('href')!)).filter(Boolean) as HTMLElement[];
+  const io = new IntersectionObserver(
+    (es) => es.forEach((e) => {
+      if (e.isIntersecting) toc.forEach((a) => a.classList.toggle('cur', a.getAttribute('href') === '#' + e.target.id));
+    }),
+    { rootMargin: '-30% 0px -60% 0px' },
+  );
+  secs.forEach((s) => io.observe(s));
+</script>

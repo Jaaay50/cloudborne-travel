@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import CountryHome from '../../components/CountryHome.astro';
+import { placesOf } from '../../lib/world';
+
+const places = placesOf('usa');
+const heroPlace = places.find((p) => p.slug === 'utah' && p.cover) ?? places.find((p) => p.cover);
+const hero = heroPlace?.cover ?? '/img/hero';
+const tools = [
+  { href: '/usa/guide/#visa', t: '签证与入境', d: '要准备什么、怎么申请', ico: '证' },
+  { href: '/usa/guide/#money', t: '支付与小费', d: '刷卡、小费、退税', ico: '$' },
+  { href: '/usa/guide/#transport', t: '交通与自驾', d: '驾照、租车、国内航班', ico: '⇄' },
+  { href: '/usa/guide/#safety', t: '安全与天气', d: '紧急电话、使领馆', ico: '!' },
+  { href: '/quick/?c=usa', t: '快速攻略', d: '选几个选项，马上出一份行程', ico: '✦' },
+  { href: '/budget/?c=usa', t: '算预算', d: '机票、住宿、吃喝一页算清', ico: '¥' },
+];
+---
+<Base title="美国旅行攻略" description="美国热门州的原创旅行指南：国家公园、自驾路线、城市、景点和美食配图、行程模板、签证与入境须知。" image={heroPlace ? `${hero}-1600.webp` : undefined} nav="usa">
+  <CountryHome country="usa" name="美国"
+    hero={{ img: hero, sizes: heroPlace ? [800, 1600] : [1280, 2304], alt: heroPlace?.coverAlt ?? '', title: '国家公园、<br />海岸和大城市。', lead: '黄石、大峡谷、1 号公路，还有纽约的夜。' }}
+    tools={tools} toolsHref="/usa/guide/" />
+</Base>

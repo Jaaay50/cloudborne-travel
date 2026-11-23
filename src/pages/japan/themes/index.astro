@@ -10,11 +10,9 @@ const CAL: Record<string, number[]> = {
   sea: [5, 6, 7, 8, 9, 10], heritage: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], nature: [5, 6, 7, 8, 9, 10], art: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 };
 ---
-<Base title="季节与主题" description="按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。" nav="themes">
+<Base title="季节与主题" description="按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。" nav="japan">
   <section class="wrap th-head">
-    <p class="eyebrow">SEASONS &amp; THEMES</p>
     <h1>什么时候去，去看什么</h1>
-    <p class="lead">日本四季分明，同一个地方春秋两季是两个样子。先定季节，再挑主题，最后落到具体景点。</p>
   </section>
 
   <section class="wrap cal card" aria-label="主题月历">
@@ -25,17 +23,16 @@ const CAL: Record<string, number[]> = {
         {months.map((_, i) => <span class:list={['cell', { on: CAL[t].includes(i + 1) }]} data-m={i + 1}></span>)}
       </a>
     ))}
-    <p class="cal-note">颜色条是大致的好时节，各地早晚不同：樱花和红叶会从南到北、从山下到山上依次推进。</p>
   </section>
 
   <section class="wrap section">
     <div class="grid g-3">
       {THEME_SLUGS.map((t) => (
-        <a class="place" href={`/japan/themes/${t}/`}>
+        <a class="place reveal" href={`/japan/themes/${t}/`}>
           <div class="pic"><img src={`/img/themes/${t}-640.webp`} alt={covers.themes[t].alt} loading="lazy" width="640" height="427" /></div>
           <div class="body">
-            <h3>{THEMES[t].name}<small>{THEMES[t].season}</small></h3>
-            <p>{allSpots.filter((s) => s.themes.includes(t)).length} 个景点 · {[...new Set(allSpots.filter((s) => s.themes.includes(t)).map((s) => s.prefName))].slice(0, 5).join('、')}</p>
+            <h3>{THEMES[t].name}</h3>
+            <p>{THEMES[t].season} · {allSpots.filter((s) => s.themes.includes(t)).length} 个景点</p>
           </div>
         </a>
       ))}
@@ -46,7 +43,6 @@ const CAL: Record<string, number[]> = {
 <style>
   .th-head { padding: 48px 0 24px; }
   .th-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 10px; }
-  .lead { color: var(--ink-2); max-width: 620px; font-size: 16.5px; }
   .cal { padding: 14px 18px 12px; overflow-x: auto; }
   .cal-row { display: grid; grid-template-columns: 84px repeat(12, minmax(28px, 1fr)); gap: 3px; align-items: center; min-width: 560px; padding: 3px 0; border-radius: 8px; transition: background var(--t-fast); }
   a.cal-row:hover { background: var(--paper-2); }
@@ -54,9 +50,8 @@ const CAL: Record<string, number[]> = {
   .cal-name { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; padding-left: 4px; }
   .cal-name i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
   .cell { height: 16px; border-radius: 4px; background: var(--paper-2); }
-  .cell.on { background: color-mix(in srgb, var(--dot) 75%, white); }
+  .cell.on { background: color-mix(in srgb, var(--dot) 75%, var(--card)); }
   .cell.now { outline: 2px solid var(--ink); outline-offset: 1px; }
-  .cal-note { font-size: 12.5px; color: var(--mut); margin-top: 10px; }
 </style>
 <script>
   const m = String(new Date().getMonth() + 1);

@@ -1,8 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
-import JapanMap from '../../components/JapanMap.astro';
-import { prefs, getRegion, covers, mapLinks, xhs, type Pref } from '../../lib/content';
-import { REGION_BY_SLUG, PREF_NAMES, THEMES, KIND_NAMES, SEASON_NAMES, SINGLE_PREF_REGIONS, type Season } from '../../lib/japan';
+import PlacePage, { type PlaceModel } from '../../components/PlacePage.astro';
+import { prefs, getRegion, covers, type Pref } from '../../lib/content';
+import { REGION_BY_SLUG, SINGLE_PREF_REGIONS, SEASON_NAMES } from '../../lib/japan';
+import { placesOf } from '../../lib/world';
 
 export function getStaticPaths() {
   return prefs.map((p) => ({ params: { pref: p.slug }, props: { p } }));
@@ -11,279 +12,23 @@ const { p } = Astro.props as { p: Pref };
 const region = REGION_BY_SLUG[p.region];
 const regionInfo = getRegion(p.region);
 const single = SINGLE_PREF_REGIONS.has(p.region);
-const nearby = p.nearby.map((s) => prefs.find((x) => x.slug === s)).filter((x): x is Pref => !!x);
-const seasons: Season[] = ['spring', 'summer', 'autumn', 'winter'];
-const cover = covers.prefectures[p.slug];
+const places = placesOf('japan');
+const place = places.find((x) => x.slug === p.slug)!;
+const m: PlaceModel = {
+  place, country: 'japan', countryName: '日本',
+  crumbs: [{ href: '/japan/', text: '日本' }, single ? { href: `/japan/#p=${p.slug}`, text: '地图' } : { href: `/japan/region/${p.region}/`, text: region.name }],
+  kicker: `${p.kana} · ${p.local}`,
+  intro: p.intro, months: place.months, seasonNote: p.seasons.note,
+  facts: [`建议 ${p.days}`, `最佳 ${p.seasons.best.map((s) => SEASON_NAMES[s]).join(' / ')}`, `${p.spots.length} 个景点 · ${p.foods.length} 种美食`],
+  access: p.access.map((a) => ({ from: `从${a.from}`, how: a.how })), stay: p.stay, tips: p.tips,
+  nearby: p.nearby.map((s) => places.find((x) => x.slug === s)).filter((x): x is NonNullable<typeof x> => !!x),
+  sources: p.sources, checked: p.checked,
+  heroImg: `/img/prefectures/${p.slug}`, heroSizes: [640, 1200], heroAlt: covers.prefectures[p.slug]?.alt ?? '',
+  side: { title: `${p.name}在${region.name}`, text: regionInfo?.tagline, href: single ? undefined : `/japan/region/${p.region}/`, link: `看${region.name}全部 ${region.prefs.length} 个县 →` },
+  climateKey: `japan/${p.slug}`,
+};
 const desc = `${p.name}旅行攻略：${p.tagline}。${p.spots.length} 个景点、${p.foods.length} 种地方美食、交通与住宿建议。`;
 ---
-<Base title={`${p.name}旅行攻略`} description={desc} image={`/img/prefectures/${p.slug}-1200.webp`} nav="regions">
-  <section class="phero" style={`--tone:${region.tone}`}>
-    <img src={`/img/prefectures/${p.slug}-1200.webp`} alt={cover.alt} width="1200" height="800" fetchpriority="high" />
-    <div class="wrap">
-      <nav class="crumbs" aria-label="位置">
-        <a href="/">首页</a><span>/</span>
-        {single ? <a href={`/#p=${p.slug}`}>地图</a> : <a href={`/japan/region/${p.region}/`}>{region.name}</a>}
-      </nav>
-      <p class="kana">{p.kana} · {p.local}</p>
-      <h1>{p.name}</h1>
-      <p class="tagline">{p.tagline}</p>
-      <div class="facts">
-        <span>建议 {p.days}</span>
-        <span>最佳 {p.seasons.best.map((s) => SEASON_NAMES[s]).join(' / ')}</span>
-        <span>{p.spots.length} 个景点 · {p.foods.length} 种美食</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap pref-layout">
-    <article class="pref-main">
-      <nav class="toc no-print" aria-label="本页目录">
-        <a href="#overview">概览</a><a href="#spots">景点</a><a href="#food">美食</a><a href="#access">交通住宿</a><a href="#tips">提醒</a>
-      </nav>
-
-      <section id="overview" class="block">
-        <div class="prose">{p.intro.map((t) => <p>{t}</p>)}</div>
-        <div class="season-row" aria-label="季节">
-          {seasons.map((s) => (
-            <span class:list={['season', { on: p.seasons.best.includes(s) }]}>{SEASON_NAMES[s]}</span>
-          ))}
-          <p>{p.seasons.note}</p>
-        </div>
-      </section>
-
-      <section id="spots" class="block">
-        <div class="block-hd">
-          <h2>景点</h2>
-          <div class="filter no-print" role="group" aria-label="按主题筛选景点">
-            <button type="button" class="chip on" data-f="" aria-pressed="true">全部</button>
-            {[...new Set(p.spots.flatMap((s) => s.themes))].map((t) => (
-              <button type="button" class="chip" data-f={t} aria-pressed="false" style={`--dot:${THEMES[t].tone}`}><i></i>{THEMES[t].name}</button>
-            ))}
-          </div>
-        </div>
-        <ol class="spots">
-          {p.spots.map((s, i) => {
-            const links = mapLinks(s.local || s.name, s.ll);
-            return (
-              <li class="spot" id={`spot-${s.id}`} data-themes={s.themes.join(' ')} data-key={`${p.slug}/${s.id}`}>
-                <div class="spot-n">{i + 1}</div>
-                <div class="spot-body">
-                  <div class="spot-hd">
-                    <div>
-                      <h3>{s.name}</h3>
-                      <p class="spot-sub">{[s.local, s.en].filter(Boolean).join(' · ')}</p>
-                    </div>
-                    <button type="button" class="add no-print" data-add={`s:${p.slug}/${s.id}`} data-name={s.name} aria-pressed="false">
-                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-                      <span data-label>加入行程</span>
-                    </button>
-                  </div>
-                  <p class="spot-text">{s.text}</p>
-                  <div class="spot-meta">
-                    <span class="tag">{KIND_NAMES[s.kind] ?? s.kind}</span>
-                    <span class="tag">⏱ {s.time}</span>
-                    {s.fee && <span class="tag">¥ {s.fee}</span>}
-                    {s.themes.map((t) => <span class="tag theme" style={`--dot:${THEMES[t].tone}`}>{THEMES[t].name}</span>)}
-                  </div>
-                  {s.tip && <p class="spot-tip"><b>小贴士</b>{s.tip}</p>}
-                  <div class="spot-links no-print">
-                    <a href={links.amap} target="_blank" rel="noopener">高德导航</a>
-                    <a href={links.google} target="_blank" rel="noopener">Google 地图</a>
-                    <a href={links.apple} target="_blank" rel="noopener">Apple 地图</a>
-                    <a href={xhs(`${s.name} 攻略`)} target="_blank" rel="noopener">小红书</a>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      </section>
-
-      <section id="food" class="block">
-        <div class="block-hd"><h2>吃什么</h2></div>
-        <div class="foods">
-          {p.foods.map((f) => (
-            <div class="food" id={`food-${f.id}`}>
-              <div class="food-hd">
-                <h3>{f.name}{f.local && f.local !== f.name && <small>{f.local}</small>}</h3>
-                <button type="button" class="add no-print" data-add={`f:${p.slug}/${f.id}`} data-name={f.name} aria-pressed="false" aria-label={`把${f.name}加入行程`}>
-                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-                </button>
-              </div>
-              <p>{f.text}</p>
-              <p class="food-where"><b>去哪吃</b>{f.where}</p>
-              {f.price && <p class="food-where"><b>大概多少</b>{f.price}</p>}
-              <a class="food-xhs no-print" href={xhs(`${p.name} ${f.name}`)} target="_blank" rel="noopener">在小红书看实拍 →</a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="access" class="block">
-        <div class="block-hd"><h2>怎么去 · 住哪里</h2></div>
-        <div class="access">
-          {p.access.map((a) => (
-            <div class="acc"><b>从 {a.from}</b><p>{a.how}</p></div>
-          ))}
-        </div>
-        <div class="stay"><b>住哪里</b><p>{p.stay}</p></div>
-      </section>
-
-      <section id="tips" class="block">
-        <div class="block-hd"><h2>出发前知道这些</h2></div>
-        <ul class="tips">{p.tips.map((t) => <li>{t}</li>)}</ul>
-      </section>
-
-      <section class="block sources">
-        <p>信息核对于 {p.checked}。票价、营业时间可能变化，出发前请以官方为准。参考：
-          {p.sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}
-        </p>
-      </section>
-    </article>
-
-    <aside class="pref-side no-print">
-      <div class="side-sticky">
-        <JapanMap mode="focus" focusPref={p.slug} />
-        <div class="side-card card">
-          <b>{p.name}在{region.name}</b>
-          {regionInfo && <p>{regionInfo.tagline}</p>}
-          {!single && <a href={`/japan/region/${p.region}/`}>看{region.name}全部 {region.prefs.length} 个县 →</a>}
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  {nearby.length > 0 && (
-    <section class="section nearby">
-      <div class="wrap">
-        <div class="section-hd"><div><h2>顺路去</h2><p>和{p.name}常一起排进行程的地方</p></div></div>
-        <div class="grid g-4">
-          {nearby.map((n) => (
-            <a class="place" href={`/japan/${n.slug}/`}>
-              <div class="pic"><img src={`/img/prefectures/${n.slug}-640.webp`} alt={covers.prefectures[n.slug].alt} loading="lazy" width="640" height="427" /></div>
-              <div class="body"><h3>{n.name}<small>{n.kana}</small></h3><p>{n.tagline}</p></div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
+<Base title={`${p.name}旅行攻略`} description={desc} image={`/img/prefectures/${p.slug}-1200.webp`} nav="japan">
+  <PlacePage m={m} />
 </Base>
-
-<style>
-  .pref-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; padding-top: 8px; }
-  .toc { position: sticky; top: var(--hdr); z-index: 5; display: flex; gap: 4px; padding: 10px 0; background: var(--paper); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
-  .toc a { padding: 6px 12px; border-radius: 999px; font-size: 14px; color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
-  .toc a:hover { background: var(--paper-2); color: var(--ink); }
-  .toc a.cur { background: var(--ink); color: #fff; }
-  .block { padding: 34px 0 6px; }
-  .block-hd { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-  .block-hd h2 { font-size: 26px; }
-  .filter { display: flex; flex-wrap: wrap; gap: 6px; }
-  .season-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 20px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
-  .season { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 15px; background: var(--paper-2); color: var(--mut); }
-  .season.on { background: var(--vermilion); color: #fff; }
-  .season-row p { flex: 1 1 260px; margin-left: 8px; color: var(--ink-2); font-size: 14.5px; line-height: 1.6; }
-
-  .spots { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-  .spot { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; transition: box-shadow var(--t) var(--ease), border-color var(--t), opacity var(--t), transform var(--t) var(--ease); scroll-margin-top: calc(var(--hdr) + 64px); }
-  .spot:hover, .spot.hot { box-shadow: var(--sh-2); border-color: var(--line-2); }
-  .spot:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
-  .spot.hide { display: none; }
-  .spot-n { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font: 600 15px var(--serif); }
-  .spot-hd { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
-  .spot h3 { font-size: 20px; }
-  .spot-sub { font: 12.5px var(--jp); color: var(--mut); margin-top: 1px; }
-  .spot-text { margin-top: 8px; color: var(--ink-2); font-size: 15.5px; line-height: 1.8; }
-  .spot-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .spot-tip { margin-top: 10px; font-size: 14px; color: var(--ink-2); background: #fbf3e2; border-radius: 10px; padding: 8px 12px; }
-  .spot-tip b, .food-where b, .stay b { font-weight: 600; color: var(--ink); margin-right: 8px; }
-  .spot-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 13px; }
-  .spot-links a { color: var(--indigo); }
-  .spot-links a:hover { text-decoration: underline; }
-
-  .foods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .food { padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; scroll-margin-top: calc(var(--hdr) + 64px); }
-  .food:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
-  .food-hd { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-  .food-hd .add { width: 30px; padding: 0; justify-content: center; flex-shrink: 0; }
-  .food h3 { font-size: 18px; }
-  .food h3 small { font: 12px var(--jp); color: var(--mut); margin-left: 8px; font-weight: 400; }
-  .food p { color: var(--ink-2); font-size: 14.5px; margin-top: 6px; line-height: 1.7; }
-  .food-where { font-size: 13.5px !important; }
-  .food-xhs { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--vermilion); }
-
-  .access { display: grid; gap: 8px; }
-  .acc { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
-  .acc b { font-size: 14.5px; }
-  .acc p { font-size: 14.5px; color: var(--ink-2); }
-  .stay { margin-top: 10px; padding: 14px 16px; border-radius: 14px; background: var(--indigo-bg); font-size: 14.5px; color: var(--ink-2); }
-  .tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-  .tips li { position: relative; padding: 11px 16px 11px 40px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; font-size: 14.5px; color: var(--ink-2); }
-  .tips li::before { content: "!"; position: absolute; left: 13px; top: 12px; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); color: #fff; font: 700 12px/18px var(--sans); text-align: center; }
-  .sources p { font-size: 12.5px; color: var(--mut); line-height: 1.8; }
-  .sources a { text-decoration: underline; text-decoration-color: var(--line-2); }
-  .sources a:hover { color: var(--ink); }
-
-  .pref-side { padding-top: 20px; }
-  .side-sticky { position: sticky; top: calc(var(--hdr) + 16px); display: grid; gap: 12px; }
-  .side-card { padding: 14px 16px; font-size: 14px; }
-  .side-card p { color: var(--mut); margin: 2px 0 6px; font-size: 13.5px; }
-  .side-card a { color: var(--vermilion); font-weight: 600; font-size: 13.5px; }
-  .nearby { padding-top: 30px; }
-
-  @media (max-width: 1000px) {
-    .pref-layout { grid-template-columns: 1fr; gap: 0; }
-    .pref-side { order: -1; padding-top: 18px; }
-    .side-sticky { position: static; }
-    .side-card { display: none; }
-  }
-  @media (max-width: 640px) {
-    .foods { grid-template-columns: 1fr; }
-    .spot { grid-template-columns: 1fr; padding: 15px; }
-    .spot-n { display: none; }
-    .acc { grid-template-columns: 1fr; gap: 2px; }
-    .spot-hd .add [data-label] { display: none; }
-    .spot-hd .add { width: 30px; padding: 0; justify-content: center; }
-  }
-</style>
-
-<script>
-  // theme filter
-  const chips = [...document.querySelectorAll<HTMLButtonElement>('.filter .chip')];
-  const spots = [...document.querySelectorAll<HTMLElement>('.spot')];
-  chips.forEach((c) =>
-    c.addEventListener('click', () => {
-      const f = c.dataset.f!;
-      chips.forEach((x) => {
-        const on = x === c;
-        x.classList.toggle('on', on);
-        x.setAttribute('aria-pressed', String(on));
-      });
-      spots.forEach((s) => s.classList.toggle('hide', !!f && !(s.dataset.themes || '').split(' ').includes(f)));
-      document.querySelectorAll<SVGElement>('.jmap .pin').forEach((pin) => pin.classList.toggle('off', !!f && !(pin.dataset.themes || '').split(' ').includes(f)));
-      document.dispatchEvent(new CustomEvent('jmap:filter'));
-    }),
-  );
-  // map <-> list hover
-  const pins = new Map([...document.querySelectorAll<SVGElement>('.jmap .pin')].map((p) => [p.dataset.key, p]));
-  spots.forEach((s) => {
-    s.addEventListener('pointerenter', () => pins.get(s.dataset.key)?.classList.add('hot'));
-    s.addEventListener('pointerleave', () => pins.get(s.dataset.key)?.classList.remove('hot'));
-  });
-  pins.forEach((pin, key) => {
-    const li = spots.find((s) => s.dataset.key === key);
-    pin.addEventListener('pointerenter', () => li?.classList.add('hot'));
-    pin.addEventListener('pointerleave', () => li?.classList.remove('hot'));
-  });
-  // toc highlight
-  const toc = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
-  const secs = toc.map((a) => document.querySelector<HTMLElement>(a.getAttribute('href')!)).filter(Boolean) as HTMLElement[];
-  const io = new IntersectionObserver(
-    (es) => es.forEach((e) => {
-      if (e.isIntersecting) toc.forEach((a) => a.classList.toggle('cur', a.getAttribute('href') === '#' + e.target.id));
-    }),
-    { rootMargin: '-30% 0px -60% 0px' },
-  );
-  secs.forEach((s) => io.observe(s));
-</script>

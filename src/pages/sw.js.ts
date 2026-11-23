@@ -4,10 +4,10 @@
 import { TOOLS } from '../lib/toolkit';
 
 export function GET() {
-  const precache = ['/', '/plan/', '/budget/', '/japan/tools/', ...TOOLS.map((t) => `/japan/tools/${t.slug}/`), '/catalog.json', '/favicon.svg', '/manifest.webmanifest'];
+  const precache = ['/', '/plan/', '/budget/', '/quick/', '/japan/tools/', ...TOOLS.map((t) => `/japan/tools/${t.slug}/`), '/australia/guide/', '/usa/guide/', '/catalog.json', '/favicon.svg', '/manifest.webmanifest'];
   const js = `
 const V = "dev";
-const PRE = 'cbt-pre-' + V, RUN = 'cbt-run-v1', ASSETS = 'cbt-assets-v1';
+const PRE = 'cbt-pre-' + V, RUN = 'cbt-run-v1', ASSETS = 'cbt-assets-v1', IMG = 'cbt-img-v1';
 const PRECACHE = ${JSON.stringify(precache)};
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(PRE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -38,9 +38,9 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => { if (res.ok) put(ASSETS, req, res, 120); return res; })));
     return;
   }
-  // Illustrations: cache first.
+  // Illustrations and photos: cache first, in their own cache so page visits don't evict them.
   if (url.pathname.startsWith('/img/')) {
-    e.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => { if (res.ok) put(RUN, req, res, 160); return res; })));
+    e.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => { if (res.ok) put(IMG, req, res, 400); return res; })));
   }
 });
 `;

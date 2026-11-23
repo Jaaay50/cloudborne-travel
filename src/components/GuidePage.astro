@@ -1,0 +1,91 @@
+---
+import type { Guide } from '../lib/content';
+interface Props { country: string; name: string; g: Guide | undefined }
+const { country, name, g } = Astro.props;
+const tel = (s: string) => {
+  const m = s.match(/\+?\d[\d\s-]{1,}\d/);
+  return m ? 'tel:' + m[0].replace(/[\s-]/g, '') : undefined;
+};
+const firstNum = (s: string) => s.match(/\+?\d[\d\s-]{1,}\d/)?.[0] ?? s;
+---
+<section class="wrap gd-head">
+  <nav class="crumbs-plain"><a href={`/${country}/`}>{name}</a><span>/</span><span>出行须知</span></nav>
+  <h1>去{name}之前</h1>
+  {g && (
+    <nav class="gd-toc" aria-label="目录">
+      {g.sections.map((s) => <a href={`#${s.id}`}>{s.title}</a>)}
+      <a href="#sos">紧急电话</a>
+    </nav>
+  )}
+</section>
+{!g && <section class="wrap"><p>内容整理中。</p></section>}
+{g && (
+  <div class="wrap gd">
+    {g.sections.map((s) => (
+      <section class="gd-sec reveal" id={s.id}>
+        <h2>{s.title}</h2>
+        <div class="gd-items">
+          {s.items.map((it) => <div class="gd-item"><b>{it.title}</b><p>{it.text}</p></div>)}
+        </div>
+      </section>
+    ))}
+    <section class="gd-sec reveal" id="sos">
+      <h2>紧急电话</h2>
+      <div class="nums">
+        {g.numbers.map((n) => (
+          <a class="num" href={tel(n.number)}>
+            <span class="n">{n.number}</span>
+            <span><b>{n.label}</b>{n.note && <small>{n.note}</small>}</span>
+          </a>
+        ))}
+      </div>
+      <div class="contacts">
+        {g.contacts.map((c) => (
+          <div class="contact">
+            <div><b>{c.name}</b>{c.note && <p>{c.note}</p>}</div>
+            <div class="c-act">
+              <a class="btn sm" href={tel(c.phone)}>拨打 {firstNum(c.phone)}</a>
+              {c.url && <a class="c-url" href={c.url} target="_blank" rel="noopener nofollow">官网</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+    <details class="gd-src">
+      <summary>来源（{g.checked}）</summary>
+      <p>{g.sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
+    </details>
+  </div>
+)}
+<style>
+  .gd-head { padding: 44px 0 10px; max-width: 860px; }
+  .crumbs-plain { display: flex; gap: 6px; font-size: 13.5px; color: var(--mut); }
+  .crumbs-plain a:hover { color: var(--ink); }
+  .gd-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 18px; }
+  .gd-toc { display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: var(--hdr); z-index: 4; background: var(--paper); padding: 8px 0; }
+  .gd-toc a { padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); font-size: 14px; color: var(--ink-2); transition: border-color 160ms, color 160ms; }
+  .gd-toc a:hover { border-color: var(--hover-line); color: var(--ink); }
+  .gd { max-width: 860px; padding-bottom: 20px; }
+  .gd-sec { padding: 26px 0 4px; scroll-margin-top: calc(var(--hdr) + 60px); }
+  .gd-sec h2 { font-size: 24px; margin-bottom: 14px; }
+  .gd-items { display: grid; gap: 10px; }
+  .gd-item { padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+  .gd-item b { font-size: 16px; }
+  .gd-item p { color: var(--ink-2); font-size: 15px; line-height: 1.75; margin-top: 4px; }
+  .nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); transition: transform 300ms var(--ease-out), box-shadow 300ms; }
+  .num:hover { transform: translateY(-2px); box-shadow: var(--sh-2); }
+  .num .n { font: 700 26px var(--serif); color: var(--vermilion); min-width: 56px; }
+  .num b { display: block; font-size: 15px; }
+  .num small { display: block; font-size: 12.5px; color: var(--mut); line-height: 1.45; }
+  .contacts { display: grid; gap: 10px; margin-top: 12px; }
+  .contact { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+  .contact p { font-size: 13.5px; color: var(--mut); margin-top: 2px; }
+  .c-act { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+  .c-url { font-size: 13px; color: var(--indigo); }
+  .gd-src { margin-top: 26px; }
+  .gd-src summary { font-size: 13px; color: var(--mut); cursor: pointer; }
+  .gd-src p { font-size: 12.5px; color: var(--mut); line-height: 1.8; margin-top: 8px; }
+  .gd-src a { text-decoration: underline; text-decoration-color: var(--line-2); }
+  @media (max-width: 640px) { .contact { flex-direction: column; align-items: flex-start; } }
+</style>

@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PlacePage, { type PlaceModel } from '../../components/PlacePage.astro';
+import { statesOf, type XState } from '../../lib/content';
+import { COUNTRIES, monthRanges } from '../../lib/countries';
+import { placesOf, regionsOf } from '../../lib/world';
+
+const C = 'usa' as const;
+export function getStaticPaths() {
+  return statesOf['usa'].map((s) => ({ params: { state: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: XState };
+const meta = COUNTRIES[C];
+const places = placesOf(C);
+const place = places.find((x) => x.slug === s.slug)!;
+const region = regionsOf(C).find((r) => r.slug === s.region);
+const multi = region && region.places.length > 1;
+const m: PlaceModel = {
+  place, country: C, countryName: meta.name,
+  crumbs: [{ href: '/usa/', text: meta.name }, multi ? { href: `/usa/#r=${s.region}`, text: region!.name } : { href: `/usa/#p=${s.slug}`, text: '地图' }],
+  kicker: `${s.local} · ${s.abbr}`,
+  intro: s.intro, months: s.seasons.months, seasonNote: s.seasons.note,
+  facts: [`建议 ${s.days}`, `最佳 ${monthRanges(s.seasons.months)}`, `${s.spots.length} 个景点 · ${s.foods.length} 种美食`],
+  access: s.access.map((a) => ({ from: a.from.startsWith('从') ? a.from : `从${a.from}`, how: a.how })), stay: s.stay, tips: s.tips,
+  nearby: s.nearby.map((n) => places.find((x) => x.slug === n)).filter((x): x is NonNullable<typeof x> => !!x),
+  sources: s.sources, checked: s.checked,
+  heroImg: place.cover || '/img/hero', heroSizes: place.cover ? [800, 1600] : [1280, 2304], heroAlt: s.cover.alt,
+  side: { title: `${meta.name}出行须知`, text: '签证、入境、小费、自驾和紧急电话', href: '/usa/guide/', link: '去看看 →' },
+  climateKey: `usa/${s.slug}`,
+};
+const desc = `${s.name}旅行攻略：${s.tagline}。${s.spots.length} 个景点、${s.foods.length} 种美食、交通与住宿建议。`;
+---
+<Base title={`${s.name}旅行攻略`} description={desc} image={place.cover ? `${place.cover}-1600.webp` : undefined} nav="usa">
+  <PlacePage m={m} />
+</Base>

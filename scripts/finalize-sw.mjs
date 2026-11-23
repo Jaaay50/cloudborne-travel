@@ -13,13 +13,14 @@ for (const p of pages.filter((p) => p.endsWith('/'))) {
   if (!fs.existsSync(file)) throw new Error('precache page missing: ' + p);
   for (const m of fs.readFileSync(file, 'utf8').matchAll(/(?:href|src)="(\/_astro\/[^"]+)"/g)) assets.add(m[1]);
 }
-// JS chunks import other chunks; follow static imports.
+// JS chunks import other chunks; follow static and dynamic imports.
 const queue = [...assets].filter((a) => a.endsWith('.js'));
 while (queue.length) {
   const a = queue.pop();
   const src = fs.readFileSync(path.join(dist, a), 'utf8');
-  for (const m of src.matchAll(/from\s*["']\.\/([^"']+\.js)["']|import\s*["']\.\/([^"']+\.js)["']/g)) {
-    const dep = '/_astro/' + (m[1] || m[2]);
+  // static (`from "./x.js"`, `import "./x.js"`) and dynamic (`import("./x.js")`) imports
+  for (const m of src.matchAll(/from\s*["']\.\/([^"']+\.js)["']|import\s*["']\.\/([^"']+\.js)["']|import\(\s*["'`]\.\/([^"'`]+\.js)["'`]\s*\)/g)) {
+    const dep = '/_astro/' + (m[1] || m[2] || m[3]);
     if (!assets.has(dep)) { assets.add(dep); queue.push(dep); }
   }
 }

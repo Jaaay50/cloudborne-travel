@@ -1,12 +1,15 @@
 ---
 import type { SpotRef } from '../lib/content';
+import { photo } from '../lib/content';
 import { THEMES, KIND_NAMES, REGION_BY_SLUG } from '../lib/japan';
 interface Props { s: SpotRef; showPref?: boolean }
 const { s, showPref = true } = Astro.props;
 const r = REGION_BY_SLUG[s.region];
+const img = photo('japan', s.pref, 's', s.id);
 ---
-<article class="scard" data-region={s.region} data-pref={s.pref} data-themes={s.themes.join(' ')} data-kind={s.kind}>
+<article class="scard reveal" data-region={s.region} data-pref={s.pref} data-themes={s.themes.join(' ')} data-kind={s.kind}>
   <a class="scard-link" href={`/japan/${s.pref}/#spot-${s.id}`}>
+    {img && <span class="scard-pic"><img src={`${img}-400.webp`} srcset={`${img}-400.webp 400w, ${img}-800.webp 800w`} sizes="(max-width: 520px) 100vw, 400px" alt="" loading="lazy" width="400" height="267" data-fade /></span>}
     <span class="scard-top">
       {showPref && <span class="scard-pref" style={`--tone:${r.tone};--ink:${r.ink}`}>{s.prefName}</span>}
       <span class="scard-kind">{KIND_NAMES[s.kind] ?? s.kind} · {s.time}</span>
@@ -23,12 +26,15 @@ const r = REGION_BY_SLUG[s.region];
 </article>
 
 <style>
-  .scard { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 15px 16px 13px; transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t); }
-  .scard:hover { transform: translateY(-2px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .scard { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 15px 16px 13px; overflow: hidden; transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out), border-color var(--t); }
+  .scard:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
   .scard[hidden] { display: none; }
   .scard-link { display: grid; gap: 5px; flex: 1; }
+  .scard-pic { display: block; margin: -15px -16px 8px; aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2); }
+  .scard-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .scard:hover .scard-pic img { transform: scale(1.05); }
   .scard-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .scard-pref { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--tone) 22%, white); color: var(--ink); }
+  .scard-pref { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--tone) 22%, var(--card)); color: var(--ink); }
   .scard-kind { font-size: 12px; color: var(--mut); }
   .scard b { font-family: var(--serif); font-size: 18px; line-height: 1.35; }
   .scard-link:hover b { color: var(--vermilion); }

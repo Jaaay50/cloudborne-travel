@@ -67,7 +67,9 @@ npm run photos     # 按 public/img/photos/ 重建照片清单
 
 公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效；每天北京时间 06:17 自动重建一次（更新汇率和当季推荐）。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
 
-上线后验收：`curl -sI https://travel.cloudborne.cn/` 为 200，首页、一个县页、`/plan/`、`/sw.js` 可访问，`/sw.js` 里的 `const V` 与本地 `dist/sw.js` 一致。
+**国内线路**（2026-11-24 起）：DNSPod `travel` 分线路解析——「境内」CNAME → `travel.cloudborne.cn.eo.dnse0.com.`（腾讯云 EdgeOne 个人版，站点 `zone-3xsll1v25wlu`，加速区域中国大陆，免费证书由 EdgeOne 自动续期），「默认」继续 → GitHub Pages。EdgeOne 回源到广州服务器（`175.178.188.85`，nginx `sites-available/cloudborne-travel.conf`，文件在 `/srv/travel/current` → `releases/<时间>`，保留最近 5 版）。同一个工作流的 `mirror` 任务把构建产物 rsync 到广州并 `publish`；仓库 secret `GZ_DEPLOY_KEY` 只能写 `/srv/travel/stage` 和执行 `publish`（服务器 `/usr/local/sbin/cbt-deploy` 强制命令）。缓存跟随源站：页面 `no-cache`，`/_astro/` 一年，`/img/` 七天；改了图片要在 EdgeOne 刷新 `/img/` 目录。页脚备案号 粤ICP备2026056740号-1。
+
+上线后验收：`curl -sI https://travel.cloudborne.cn/` 为 200，首页、一个县页、`/plan/`、`/sw.js` 可访问，`/sw.js` 里的 `const V` 与本地 `dist/sw.js` 一致；国内线路从广州服务器 `dig @119.29.29.29 travel.cloudborne.cn` 应指向 EdgeOne，`/sw.js` 版本同样一致。
 
 ## 待补核
 

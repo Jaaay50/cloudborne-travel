@@ -40,3 +40,28 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Mainland mirror: the Guangzhou origin behind EdgeOne (DNSPod 境内 line). Pages stays the overseas origin.
+  # The key in GZ_DEPLOY_KEY can only rsync into /srv/travel/stage and run "publish" (forced command).
+  mirror:
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: gz-mirror
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+      - run: mkdir site && tar -xf artifact.tar -C site
+      - name: Sync to Guangzhou origin and publish
+        env:
+          KEY: ${{ secrets.GZ_DEPLOY_KEY }}
+        run: |
+          command -v rsync >/dev/null || { sudo apt-get update -q && sudo apt-get install -y -q rsync; }
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/gz && chmod 600 ~/.ssh/gz
+          echo '175.178.188.85 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8qx8rFGxgDjK5eXL1jdjQTrwRCryyNWcwr2C5HOz2T' > ~/.ssh/known_hosts
+          SSH='ssh -i ~/.ssh/gz -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20'
+          for i in 1 2 3; do rsync -rlt --delete --checksum --timeout=120 -e "$SSH" site/ cbt-deploy@175.178.188.85:/ && break; [ $i = 3 ] && exit 1; sleep 20; done
+          $SSH cbt-deploy@175.178.188.85 publish

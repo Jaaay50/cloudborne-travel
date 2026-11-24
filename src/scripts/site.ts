@@ -2,6 +2,7 @@
 import { load, subscribe, toggle, has, count, type TripState } from './trip';
 import { getCatalog, type Catalog } from './catalog';
 import { placeHref, parseItem, parsePlace } from '../lib/keys';
+import { ct, lp, LANG } from './i18n';
 
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel);
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)];
@@ -25,6 +26,46 @@ mobileNav?.addEventListener('click', (e) => {
     menuBtn?.setAttribute('aria-expanded', 'false');
   }
 });
+
+/* ---------- language switch ---------- */
+// The choice is remembered: the Chinese home page sends a returning English / Japanese reader to their
+// language once per visit (other pages and shared links are never redirected).
+const langSw = $('[data-lang-sw]');
+const langBtn = $<HTMLButtonElement>('[data-lang-btn]');
+const langMenu = $('[data-lang-menu]');
+const closeLang = () => { if (langMenu) langMenu.hidden = true; langBtn?.setAttribute('aria-expanded', 'false'); };
+langBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const open = langMenu!.hidden;
+  langMenu!.hidden = !open;
+  langBtn.setAttribute('aria-expanded', String(open));
+  if (open) langMenu!.querySelector<HTMLAnchorElement>('[aria-checked="true"]')?.focus();
+});
+document.addEventListener('click', (e) => { if (langSw && !langSw.contains(e.target as Node)) closeLang(); });
+langMenu?.addEventListener('keydown', (e) => {
+  const items = $$<HTMLAnchorElement>('a', langMenu);
+  const i = items.indexOf(document.activeElement as HTMLAnchorElement);
+  if (e.key === 'Escape') { closeLang(); langBtn?.focus(); }
+  else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length]?.focus();
+  }
+});
+document.addEventListener('click', (e) => {
+  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('[data-set-lang]');
+  if (!a) return;
+  try { localStorage.setItem('cbt-lang', a.dataset.setLang!); sessionStorage.setItem('cbt-lang-seen', '1'); } catch { /* private mode */ }
+  // Keep the in-page position (#spot-…) when switching.
+  if (location.hash && !a.hash) a.hash = location.hash;
+});
+try {
+  const pref = localStorage.getItem('cbt-lang');
+  if (LANG === 'zh' && location.pathname === '/' && !location.search && !location.hash && (pref === 'en' || pref === 'ja') && !sessionStorage.getItem('cbt-lang-seen')) {
+    sessionStorage.setItem('cbt-lang-seen', '1');
+    location.replace(`/${pref}/`);
+  }
+  sessionStorage.setItem('cbt-lang-seen', '1');
+} catch { /* private mode */ }
 
 /* ---------- toast ---------- */
 const toastEl = $('#toast');
@@ -53,7 +94,7 @@ function paintTrip(s: TripState) {
     const on = has(s, b.dataset.add!);
     b.setAttribute('aria-pressed', String(on));
     const label = b.querySelector('[data-label]');
-    if (label) label.textContent = on ? '已加入' : '加入行程';
+    if (label) label.textContent = on ? ct('已加入') : ct('加入行程');
   });
 }
 paintTrip(load());
@@ -64,7 +105,8 @@ document.addEventListener('click', (e) => {
   e.preventDefault();
   const added = toggle(b.dataset.add!);
   const name = b.dataset.name || '';
-  toast(added ? `已把「${name}」加入行程 <a href="/plan/">去排行程</a>` : `已从行程移除「${name}」`);
+  const nm = esc(name);
+  toast(added ? `${ct('已把「{name}」加入行程', { name: nm })} <a href="${lp('/plan/')}">${ct('去排行程')}</a>` : ct('已从行程移除「{name}」', { name: nm }));
 });
 
 /* ---------- search ---------- */
@@ -96,7 +138,8 @@ function score(q: string, fields: string[]) {
   return best;
 }
 
-const COUNTRY_NAME: Record<string, string> = { japan: '日本', australia: '澳大利亚', usa: '美国' };
+const COUNTRY_NAME: Record<string, string> = { japan: ct('日本'), australia: ct('澳大利亚'), usa: ct('美国') };
+const G = { dest: ct('目的地'), spot: ct('景点'), food: ct('美食'), theme: ct('主题'), trip: ct('行程模板'), tool: ct('随身工具') };
 function search(qRaw: string): Hit[] {
   if (!cat) return [];
   const q = norm(qRaw);
@@ -106,12 +149,12 @@ function search(qRaw: string): Hit[] {
   const hits: Hit[] = [];
   for (const p of cat.p) {
     const sc = score(q, [p.n, p.k, p.e, p.t, COUNTRY_NAME[p.c] ?? '']);
-    const ico = p.i ? `<img src="${p.i}-${p.ph ? '800' : '640'}.webp" alt="" loading="lazy">` : '地';
-    if (sc) hits.push({ href: hrefOf(p.s), title: p.n, sub: `${COUNTRY_NAME[p.c]} · ${p.t}`, ico, score: sc + 20, grp: '目的地' });
+    const ico = p.i ? `<img src="${p.i}-${p.ph ? '800' : '640'}.webp" alt="" loading="lazy">` : ct('地');
+    if (sc) hits.push({ href: hrefOf(p.s), title: p.n, sub: `${COUNTRY_NAME[p.c]} · ${p.t}`, ico, score: sc + 20, grp: G.dest });
   }
   for (const r of cat.r) {
     const sc = score(q, [r.n, r.k ?? '', r.d]);
-    if (sc) hits.push({ href: r.u, title: r.n, sub: r.d, ico: '地', score: sc + 15, grp: '目的地' });
+    if (sc) hits.push({ href: lp(r.u), title: r.n, sub: r.d, ico: ct('地'), score: sc + 15, grp: G.dest });
   }
   const thumb = (key: string, ph: number | undefined, kind: 's' | 'f', fallback: string) => {
     if (!ph) return fallback;
@@ -122,17 +165,17 @@ function search(qRaw: string): Hit[] {
   for (const s of cat.s) {
     const pk = s.k.split('/')[0];
     const sc = score(q, [s.n, s.l, s.e, place[pk]?.n ?? '']);
-    if (sc) hits.push({ href: `${hrefOf(pk)}#spot-${s.k.split('/')[1]}`, title: s.n, sub: `${place[pk]?.n ?? ''} · ${s.t}`, ico: thumb(s.k, s.ph, 's', '景'), score: sc, grp: '景点' });
+    if (sc) hits.push({ href: `${hrefOf(pk)}#spot-${s.k.split('/')[1]}`, title: s.n, sub: `${place[pk]?.n ?? ''} · ${s.t}`, ico: thumb(s.k, s.ph, 's', ct('景')), score: sc, grp: G.spot });
   }
   for (const f of cat.f) {
     const pk = f.k.split('/')[0];
     const sc = score(q, [f.n, f.l, place[pk]?.n ?? '']);
-    if (sc) hits.push({ href: `${hrefOf(pk)}#food-${f.k.split('/')[1]}`, title: f.n, sub: `${place[pk]?.n ?? ''} · ${f.w}`, ico: thumb(f.k, f.ph, 'f', '食'), score: sc - 2, grp: '美食' });
+    if (sc) hits.push({ href: `${hrefOf(pk)}#food-${f.k.split('/')[1]}`, title: f.n, sub: `${place[pk]?.n ?? ''} · ${f.w}`, ico: thumb(f.k, f.ph, 'f', ct('食')), score: sc - 2, grp: G.food });
   }
-  for (const [arr, grp, ico] of [[cat.th, '主题', '季'], [cat.tr, '行程模板', '程'], [cat.to, '随身工具', '具']] as const) {
+  for (const [arr, grp, ico] of [[cat.th, G.theme, ct('季')], [cat.tr, G.trip, ct('程')], [cat.to, G.tool, ct('具')]] as const) {
     for (const t of arr) {
       const sc = score(q, [t.n, t.d, t.k ?? '']);
-      if (sc) hits.push({ href: t.u, title: t.n, sub: t.d, ico, score: sc - 4, grp });
+      if (sc) hits.push({ href: lp(t.u), title: t.n, sub: t.d, ico, score: sc - 4, grp });
     }
   }
   return hits.sort((a, b) => b.score - a.score).slice(0, 24);
@@ -143,23 +186,23 @@ function renderResults() {
   const q = input.value.trim();
   input.removeAttribute('aria-activedescendant');
   if (!q) {
-    list.innerHTML = `<div class="search-empty">试试「京都」「大堡礁」「黄石」「温泉」「拉面」</div>`;
+    list.innerHTML = `<div class="search-empty">${esc(ct('试试「京都」「大堡礁」「黄石」「温泉」「拉面」'))}</div>`;
     return;
   }
   if (!cat) {
-    list.innerHTML = `<div class="search-empty">正在加载…</div>`;
+    list.innerHTML = `<div class="search-empty">${esc(ct('正在加载…'))}</div>`;
     return;
   }
   const hits = search(q);
   if (!hits.length) {
-    list.innerHTML = `<div class="search-empty">没有找到「${esc(q)}」，换个说法试试。</div>`;
+    list.innerHTML = `<div class="search-empty">${ct('没有找到「{q}」，换个说法试试。', { q: esc(q) })}</div>`;
     return;
   }
   sel = Math.min(sel, hits.length - 1);
   const nq = norm(q);
   let html = '';
   let last = '';
-  const order = ['目的地', '景点', '美食', '主题', '行程模板', '随身工具'];
+  const order = [G.dest, G.spot, G.food, G.theme, G.trip, G.tool];
   hits.sort((a, b) => order.indexOf(a.grp) - order.indexOf(b.grp) || b.score - a.score);
   hits.forEach((h, i) => {
     if (h.grp !== last) {
@@ -184,7 +227,7 @@ function openSearch(prefill = '') {
       cat = c;
       renderResults();
     })
-    .catch(() => list && (list.innerHTML = `<div class="search-empty">搜索数据加载失败，请检查网络后重试。</div>`));
+    .catch(() => list && (list.innerHTML = `<div class="search-empty">${esc(ct('搜索数据加载失败，请检查网络后重试。'))}</div>`));
 }
 $$('[data-open-search]').forEach((b) => b.addEventListener('click', () => openSearch((b as HTMLElement).dataset.q || '')));
 $$('[data-close-search]').forEach((b) => b.addEventListener('click', () => dlg?.close()));
@@ -254,5 +297,6 @@ $$<HTMLImageElement>('img[data-fade]').forEach(fadeIn);
 
 /* ---------- service worker (offline) ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+  // One worker per language (/sw.js, /en/sw.js, /ja/sw.js); each one's scope is its own language's pages.
+  window.addEventListener('load', () => navigator.serviceWorker.register(lp('/sw.js')).catch(() => {}));
 }

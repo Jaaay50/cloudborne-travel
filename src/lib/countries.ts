@@ -1,5 +1,8 @@
 // Static facts about Australia and the USA: states we cover, travel regions, themes, palettes.
 // Japan keeps its own module (japan.ts) because its slugs and regions are fixed by the prefecture list.
+// Chinese literals here are UI strings: scripts/i18n.py extract collects them, and the exported tables
+// are translated() views, so they read in the current render language.
+import { translated, tr, monthSpan, listSep } from './i18n';
 
 export type CountrySlug = 'japan' | 'australia' | 'usa';
 export type XCountry = 'australia' | 'usa';
@@ -21,7 +24,7 @@ export interface CountryMeta {
   kinds: Record<string, string>;
 }
 
-export const EXTRA_KINDS: Record<string, string> = {
+const EXTRA_KINDS_ZH: Record<string, string> = {
   'national-park': '国家公园', beach: '海滩', landmark: '地标', winery: '酒庄', wildlife: '野生动物', drive: '自驾路线',
 };
 
@@ -53,7 +56,7 @@ const US_THEMES: Record<string, XTheme> = {
   wildlife: { name: '野生动物', tone: '#9b6a3c', season: '全年' },
 };
 
-export const COUNTRIES: Record<XCountry, CountryMeta> = {
+const COUNTRIES_ZH: Record<XCountry, CountryMeta> = {
   australia: {
     slug: 'australia', name: '澳大利亚', en: 'Australia', unit: '州和领地', currency: 'AUD', currencyName: '澳元', rate: 0.21,
     names: {
@@ -99,19 +102,22 @@ export const COUNTRIES: Record<XCountry, CountryMeta> = {
   },
 };
 
-export const COUNTRY_LIST = [
+const COUNTRY_LIST_ZH = [
   { slug: 'japan' as const, name: '日本', en: 'Japan', href: '/japan/' },
   { slug: 'australia' as const, name: '澳大利亚', en: 'Australia', href: '/australia/' },
   { slug: 'usa' as const, name: '美国', en: 'USA', href: '/usa/' },
 ];
 
+export const EXTRA_KINDS = translated(EXTRA_KINDS_ZH);
+export const COUNTRIES = translated(COUNTRIES_ZH);
+export const COUNTRY_LIST = translated(COUNTRY_LIST_ZH);
+
 export const regionOf = (c: XCountry, state: string) => COUNTRIES[c].regions.find((r) => r.states.includes(state));
-export const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 
 /** "3, 4, 5, 9, 10" -> "3–5 月、9–10 月" */
 export function monthRanges(months: number[]): string {
   const ms = [...new Set(months)].filter((m) => m >= 1 && m <= 12).sort((a, b) => a - b);
-  if (ms.length === 12) return '全年';
+  if (ms.length === 12) return tr('全年');
   // wrap-around (11, 12, 1, 2): rotate so a run that crosses the new year stays together
   let start = 0;
   for (let i = 0; i < ms.length; i++) if ((ms[(i - 1 + ms.length) % ms.length] % 12) + 1 !== ms[i]) { start = i; break; }
@@ -122,5 +128,5 @@ export function monthRanges(months: number[]): string {
     if (last && (last[last.length - 1] % 12) + 1 === m) last.push(m);
     else runs.push([m]);
   }
-  return runs.map((r) => (r.length === 1 ? `${r[0]} 月` : `${r[0]}–${r[r.length - 1]} 月`)).join('、');
+  return runs.map((r) => (r.length === 1 ? monthSpan(r[0]) : monthSpan(r[0], r[r.length - 1]))).join(listSep());
 }

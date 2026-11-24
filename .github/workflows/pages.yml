@@ -27,6 +27,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: python3 -I scripts/check_content.py --all
+      # Lists content or UI text changed since the last translation run (those parts show in Chinese
+      # on /en/ and /ja/ until `npm run i18n -- translate` is run and the cache committed).
+      - run: python3 -I scripts/i18n.py check
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

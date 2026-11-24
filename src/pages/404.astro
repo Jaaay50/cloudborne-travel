@@ -1,18 +1,17 @@
 ---
+// GitHub Pages and the Guangzhou nginx both serve this one file for every missing URL. Visitors under
+// /en/ or /ja/ are sent on to that language's own page (/en/404/, /ja/404/ from [...lang]/404.astro),
+// so no server config is needed. Chinese visitors see this page as before.
 import Base from '../layouts/Base.astro';
+import NotFound from '../components/NotFound.astro';
+import { t } from '../lib/i18n';
 ---
-<Base title="没找到这一页" description="页面不存在" noindex>
-  <section class="wrap nf">
-    <img src="/img/themes/heritage-640.webp" alt="" width="640" height="427" />
-    <h1>这条路好像走不通</h1>
-    <p>页面可能搬家了，或者链接打错了。</p>
-    <div class="nf-a"><a class="btn primary" href="/">回首页</a><button class="btn" type="button" data-open-search>搜一搜</button></div>
-  </section>
+<Base title={t('没找到这一页')} description={t('页面不存在')} noindex>
+  <script is:inline>
+    (function () {
+      var m = location.pathname.match(/^\/(en|ja)\//);
+      if (m && !/^\/(en|ja)\/404\/$/.test(location.pathname)) location.replace('/' + m[1] + '/404/');
+    })();
+  </script>
+  <NotFound />
 </Base>
-<style>
-  .nf { text-align: center; padding: 60px 0; display: grid; justify-items: center; gap: 12px; }
-  .nf img { width: min(420px, 90%); border-radius: 20px; box-shadow: var(--sh-2); margin-bottom: 10px; }
-  .nf h1 { font-size: 32px; }
-  .nf p { color: var(--mut); }
-  .nf-a { display: flex; gap: 10px; margin-top: 8px; }
-</style>

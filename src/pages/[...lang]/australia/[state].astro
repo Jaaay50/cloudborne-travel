@@ -1,0 +1,42 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PlacePage, { type PlaceModel } from '../../../components/PlacePage.astro';
+import { statesOf, getState } from '../../../lib/content';
+import { COUNTRIES, monthRanges } from '../../../lib/countries';
+import { placesOf, regionsOf } from '../../../lib/world';
+import { t, lang, LANGS, runLang } from '../../../lib/i18n';
+
+const C = 'australia' as const;
+// Slugs are the same in every language; the content is looked up per render language below.
+export function getStaticPaths() {
+  const slugs = runLang('zh', () => statesOf['australia'].map((s) => s.slug));
+  return LANGS.flatMap((l) => slugs.map((state) => ({ params: { lang: l === 'zh' ? undefined : l, state } })));
+}
+const s = getState(C, Astro.params.state!)!;
+const meta = COUNTRIES[C];
+const places = placesOf(C);
+const place = places.find((x) => x.slug === s.slug)!;
+const region = regionsOf(C).find((r) => r.slug === s.region);
+const multi = region && region.places.length > 1;
+const m: PlaceModel = {
+  place, country: C, countryName: meta.name,
+  crumbs: [{ href: '/australia/', text: meta.name }, multi ? { href: `/australia/#r=${s.region}`, text: region!.name } : { href: `/australia/#p=${s.slug}`, text: t('地图') }],
+  kicker: [s.local !== s.name && s.local, s.abbr].filter(Boolean).join(' · '), // English pages: the local name is the title
+  intro: s.intro, months: s.seasons.months, seasonNote: s.seasons.note,
+  facts: [
+    t('建议 {days}', { days: s.days }),
+    t('最佳 {months}', { months: monthRanges(s.seasons.months) }),
+    t('{spots} 个景点 · {foods} 种美食', { spots: s.spots.length, foods: s.foods.length }),
+  ],
+  access: s.access.map((a) => ({ from: lang() === 'zh' && a.from.startsWith('从') ? a.from : t('从{from}', { from: a.from }), how: a.how })), stay: s.stay, tips: s.tips,
+  nearby: s.nearby.map((n) => places.find((x) => x.slug === n)).filter((x): x is NonNullable<typeof x> => !!x),
+  sources: s.sources, checked: s.checked,
+  heroImg: place.cover || '/img/hero', heroSizes: place.cover ? [800, 1600] : [1280, 2304], heroAlt: s.cover.alt,
+  side: { title: t('{name}出行须知', { name: meta.name }), text: t('签证、入境、小费、自驾和紧急电话'), href: '/australia/guide/', link: t('去看看 →') },
+  climateKey: `australia/${s.slug}`,
+};
+const desc = t('{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种美食、交通与住宿建议。', { name: s.name, tagline: s.tagline, spots: s.spots.length, foods: s.foods.length });
+---
+<Base title={t('{name}旅行攻略', { name: s.name })} description={desc} image={place.cover ? `${place.cover}-1600.webp` : undefined} nav="australia">
+  <PlacePage m={m} />
+</Base>

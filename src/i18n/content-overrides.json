@@ -1,0 +1,258 @@
+{
+  "en": {
+    "usa/guide.json": {
+      "sections.0.items.0.title": "ESTA or a B1/B2 visa",
+      "sections.0.items.0.text": "Citizens of Visa Waiver Program countries, including the UK, most EU countries, Japan, South Korea, Australia and New Zealand, can visit for up to 90 days with an approved ESTA: apply at esta.cbp.dhs.gov at least 72 hours before you fly. It costs about $40 and is usually valid for two years. Canadian citizens generally need neither. Everyone else applies for a B1/B2 visitor visa: complete the DS-160 online, pay the approximately $185 application fee and book an interview at a U.S. embassy or consulate. Waiting times can be long, so start two or three months ahead and don't buy a nonrefundable ticket first.",
+      "sections.0.items.3.title": "EVUS for 10-year visas on a Chinese passport",
+      "sections.0.items.3.text": "EVUS applies only to People's Republic of China passport holders with a 10-year B1/B2 visa: register at evus.gov before each trip to the United States. A registration lasts two years and must be redone after a new passport or visa; each new registration costs about $31 (fees are adjusted every January). Airlines can refuse boarding without it. Use only the official site and avoid high-priced agents."
+    },
+    "australia/guide.json": {
+      "sections.0.items.0.title": "ETA, eVisitor or a visitor visa",
+      "sections.0.items.0.text": "What you need depends on your passport. Holders of eligible passports, such as the United States, Canada, Japan, South Korea, Singapore, Malaysia and Hong Kong, apply for an Electronic Travel Authority (subclass 601) in the official Australian ETA app; the service charge is A$20. Most European passports, including British citizens, can get a free eVisitor (subclass 651) through ImmiAccount. Both allow stays of up to three months per visit within 12 months. Other passports need a Visitor visa (subclass 600, Tourist stream), applied for online in ImmiAccount from outside Australia; fees start at about A$250 (official price, November 2026).",
+      "sections.0.items.3.title": "Apply only through official channels",
+      "sections.0.items.3.text": "Use the Australian ETA app or ImmiAccount on immi.homeaffairs.gov.au. Sites that charge more than the official fee or promise faster processing are not official. Every visitor except New Zealand citizens needs a visa or ETA before flying, so claims online about visa-free entry or visas on arrival do not apply."
+    },
+    "toolkit/emergency.json": {
+      "contacts.0.phone": "03-3501-0110 (or #9110 within Tokyo)"
+    },
+    "toolkit/phrases.json": {
+      "categories.0.items.1.zh": "Do you have an English menu?",
+      "categories.0.items.1.ja": "英語のメニューはありますか。",
+      "categories.0.items.1.kana": "えいごのメニューはありますか。",
+      "categories.1.items.5.zh": "Can I pay by contactless (tap to pay)?",
+      "categories.1.items.5.ja": "タッチ決済は使えますか。",
+      "categories.1.items.5.kana": "タッチけっさいはつかえますか。",
+      "categories.1.items.5.note": "Point at your card or phone as you ask.",
+      "categories.6.items.1.zh": "Is there anyone here who speaks English?",
+      "categories.6.items.1.ja": "英語が話せる人はいますか。",
+      "categories.6.items.1.kana": "えいごがはなせるひとはいますか。"
+    }
+  },
+  "ja": {
+    "usa/guide.json": {
+      "sections.0.items.0.title": "ESTAかB1/B2ビザか",
+      "sections.0.items.0.text": "日本を含むビザ免除プログラム参加国（英国、EUの多くの国、韓国、オーストラリアなど）の旅行者は、ESTA（電子渡航認証）の承認を受ければ観光で最長90日滞在できます。出発の72時間前までにesta.cbp.dhs.govで申請し、料金は約40ドル、有効期間は通常2年です。対象外のパスポートの場合はB1/B2訪問ビザが必要で、オンラインでDS-160に記入し、約185ドルの申請料を支払って米国大使館・領事館での面接を予約します。予約待ちが長くなることもあるため、2〜3か月前には準備を始め、払い戻し不可の航空券は先に買わないようにしましょう。",
+      "sections.0.items.3.title": "中国パスポートの10年ビザはEVUS登録",
+      "sections.0.items.3.text": "EVUSの対象は、有効期間10年のB1/B2ビザを持つ中華人民共和国パスポートの所持者だけです。対象者は渡米のたびにevus.govで登録が必要で、登録の有効期間は2年、パスポートやビザを新しくした場合は再登録します。新規登録1回につき約31ドル（料金は毎年1月に改定）かかり、未登録だと搭乗を断られることがあります。公式サイトを使い、高額な代行サイトは避けましょう。"
+    },
+    "australia/guide.json": {
+      "sections.0.items.0.title": "ETA・eVisitor・訪問者ビザ",
+      "sections.0.items.0.text": "必要な手続きはパスポートによって異なります。日本、米国、カナダ、韓国、シンガポール、マレーシア、香港などのパスポートは、公式アプリ「Australian ETA」で電子渡航許可ETA（subclass 601）を申請します。手数料は20豪ドルです。英国を含む欧州の多くのパスポートは、ImmiAccountで無料のeVisitor（subclass 651）を取得できます。どちらも12か月の間に何度でも入国でき、1回の滞在は最長3か月です。それ以外のパスポートは、オーストラリア国外からImmiAccountで訪問者ビザ（subclass 600、観光カテゴリー）を申請します。料金は約250豪ドルから（2026年11月の公式サイト価格）です。",
+      "sections.0.items.3.title": "申請は公式窓口だけで",
+      "sections.0.items.3.text": "申請はアプリ「Australian ETA」か、immi.homeaffairs.gov.auのImmiAccountで行います。公式料金より高い手数料を取ったり、審査の短縮をうたったりするサイトは公式ではありません。ニュージーランド国民以外は、渡航前にビザかETAが必要です。「ビザなしで入国できる」「到着時にビザが取れる」といったネット上の情報は当てはまりません。"
+    },
+    "toolkit/emergency.json": {
+      "contacts.0.phone": "03-3501-0110（東京都内からは #9110 も可）"
+    },
+    "usa/states/alaska.json": {
+      "name": "アラスカ"
+    },
+    "usa/states/arizona.json": {
+      "name": "アリゾナ"
+    },
+    "usa/states/california.json": {
+      "name": "カリフォルニア"
+    },
+    "usa/states/colorado.json": {
+      "name": "コロラド"
+    },
+    "usa/states/washington-dc.json": {
+      "name": "ワシントンD.C."
+    },
+    "usa/states/florida.json": {
+      "name": "フロリダ"
+    },
+    "usa/states/hawaii.json": {
+      "name": "ハワイ"
+    },
+    "usa/states/illinois.json": {
+      "name": "イリノイ"
+    },
+    "usa/states/massachusetts.json": {
+      "name": "マサチューセッツ"
+    },
+    "usa/states/nevada.json": {
+      "name": "ネバダ"
+    },
+    "usa/states/new-york.json": {
+      "name": "ニューヨーク"
+    },
+    "usa/states/pennsylvania.json": {
+      "name": "ペンシルベニア"
+    },
+    "usa/states/utah.json": {
+      "name": "ユタ"
+    },
+    "usa/states/washington.json": {
+      "name": "ワシントン州"
+    },
+    "usa/states/wyoming.json": {
+      "name": "ワイオミング"
+    },
+    "australia/states/new-south-wales.json": {
+      "name": "ニューサウスウェールズ"
+    },
+    "australia/states/victoria.json": {
+      "name": "ビクトリア"
+    },
+    "australia/states/queensland.json": {
+      "name": "クイーンズランド"
+    },
+    "australia/states/western-australia.json": {
+      "name": "西オーストラリア"
+    },
+    "australia/states/south-australia.json": {
+      "name": "南オーストラリア"
+    },
+    "australia/states/tasmania.json": {
+      "name": "タスマニア"
+    },
+    "australia/states/northern-territory.json": {
+      "name": "ノーザンテリトリー"
+    },
+    "australia/states/australian-capital-territory.json": {
+      "name": "首都特別地域"
+    },
+    "japan/prefectures/hokkaido.json": {
+      "name": "北海道"
+    },
+    "japan/prefectures/aomori.json": {
+      "name": "青森"
+    },
+    "japan/prefectures/iwate.json": {
+      "name": "岩手"
+    },
+    "japan/prefectures/miyagi.json": {
+      "name": "宮城"
+    },
+    "japan/prefectures/akita.json": {
+      "name": "秋田"
+    },
+    "japan/prefectures/yamagata.json": {
+      "name": "山形"
+    },
+    "japan/prefectures/fukushima.json": {
+      "name": "福島"
+    },
+    "japan/prefectures/ibaraki.json": {
+      "name": "茨城"
+    },
+    "japan/prefectures/tochigi.json": {
+      "name": "栃木"
+    },
+    "japan/prefectures/gunma.json": {
+      "name": "群馬"
+    },
+    "japan/prefectures/saitama.json": {
+      "name": "埼玉"
+    },
+    "japan/prefectures/chiba.json": {
+      "name": "千葉"
+    },
+    "japan/prefectures/tokyo.json": {
+      "name": "東京"
+    },
+    "japan/prefectures/kanagawa.json": {
+      "name": "神奈川"
+    },
+    "japan/prefectures/niigata.json": {
+      "name": "新潟"
+    },
+    "japan/prefectures/toyama.json": {
+      "name": "富山"
+    },
+    "japan/prefectures/ishikawa.json": {
+      "name": "石川"
+    },
+    "japan/prefectures/fukui.json": {
+      "name": "福井"
+    },
+    "japan/prefectures/yamanashi.json": {
+      "name": "山梨"
+    },
+    "japan/prefectures/nagano.json": {
+      "name": "長野"
+    },
+    "japan/prefectures/gifu.json": {
+      "name": "岐阜"
+    },
+    "japan/prefectures/shizuoka.json": {
+      "name": "静岡"
+    },
+    "japan/prefectures/aichi.json": {
+      "name": "愛知"
+    },
+    "japan/prefectures/mie.json": {
+      "name": "三重"
+    },
+    "japan/prefectures/shiga.json": {
+      "name": "滋賀"
+    },
+    "japan/prefectures/kyoto.json": {
+      "name": "京都"
+    },
+    "japan/prefectures/osaka.json": {
+      "name": "大阪"
+    },
+    "japan/prefectures/hyogo.json": {
+      "name": "兵庫"
+    },
+    "japan/prefectures/nara.json": {
+      "name": "奈良"
+    },
+    "japan/prefectures/wakayama.json": {
+      "name": "和歌山"
+    },
+    "japan/prefectures/tottori.json": {
+      "name": "鳥取"
+    },
+    "japan/prefectures/shimane.json": {
+      "name": "島根"
+    },
+    "japan/prefectures/okayama.json": {
+      "name": "岡山"
+    },
+    "japan/prefectures/hiroshima.json": {
+      "name": "広島"
+    },
+    "japan/prefectures/yamaguchi.json": {
+      "name": "山口"
+    },
+    "japan/prefectures/tokushima.json": {
+      "name": "徳島"
+    },
+    "japan/prefectures/kagawa.json": {
+      "name": "香川"
+    },
+    "japan/prefectures/ehime.json": {
+      "name": "愛媛"
+    },
+    "japan/prefectures/kochi.json": {
+      "name": "高知"
+    },
+    "japan/prefectures/fukuoka.json": {
+      "name": "福岡"
+    },
+    "japan/prefectures/saga.json": {
+      "name": "佐賀"
+    },
+    "japan/prefectures/nagasaki.json": {
+      "name": "長崎"
+    },
+    "japan/prefectures/kumamoto.json": {
+      "name": "熊本"
+    },
+    "japan/prefectures/oita.json": {
+      "name": "大分"
+    },
+    "japan/prefectures/miyazaki.json": {
+      "name": "宮崎"
+    },
+    "japan/prefectures/kagoshima.json": {
+      "name": "鹿児島"
+    },
+    "japan/prefectures/okinawa.json": {
+      "name": "沖縄"
+    }
+  }
+}

@@ -1,9 +1,0 @@
----
-import Base from '../../layouts/Base.astro';
-import GuidePage from '../../components/GuidePage.astro';
-import { guideOf } from '../../lib/content';
-const g = guideOf('australia');
----
-<Base title="澳大利亚出行须知" description="去澳大利亚之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气、紧急电话和中国使领馆。" nav="australia">
-  <GuidePage country="australia" name="澳大利亚" g={g} />
-</Base>

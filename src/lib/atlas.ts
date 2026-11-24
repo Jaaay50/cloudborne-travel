@@ -8,6 +8,7 @@ import usRaw from '../data/geo/usa-states.json';
 import * as jp from './geo';
 import { REGIONS as JP_REGIONS, PREF_NAMES, THEMES as JP_THEMES, KIND_NAMES } from './japan';
 import { COUNTRIES, EXTRA_KINDS, type CountrySlug, type XCountry } from './countries';
+import { lang, tr } from './i18n';
 
 export type Box = [number, number, number, number];
 export interface AtlasShape { slug: string; region: string; d: string; box: Box; label: [number, number]; name: string; covered: boolean }
@@ -53,13 +54,13 @@ function japanAtlas(): Atlas {
       slug: r.slug, name: r.name, tone: r.tone, ink: r.ink, places: r.prefs, box: jp.regionBoxes[r.slug],
       label: r.slug === 'okinawa' ? [jp.INSET.x + 250, jp.INSET.y + 140] : jp.regionLabels[r.slug],
     })),
-    frames: [{ ...jp.INSET, label: '冲绳 · 奄美' }],
+    frames: [{ ...jp.INSET, label: tr('冲绳 · 奄美') }],
     project: jp.project,
     themes: JP_THEMES,
     kinds: KIND_NAMES,
     href: (slug) => `/japan/${slug}/`,
-    unit: '县',
-    nationName: '全国',
+    unit: tr('县'),
+    nationName: tr('全国'),
   };
 }
 
@@ -129,7 +130,7 @@ function build(country: XCountry, fc: Fc, proj: GeoProjection, width: number, fr
   const themes = Object.fromEntries(Object.entries(meta.themes).map(([k, v]) => [k, { name: v.name, tone: v.tone }]));
   return {
     country, view, shapes, regions, frames: frames(path), project, themes, kinds: { ...KIND_NAMES, ...EXTRA_KINDS },
-    href: (slug) => `/${country}/${slug}/`, unit: '州', nationName: country === 'usa' ? '全美' : '全澳',
+    href: (slug) => `/${country}/${slug}/`, unit: tr('州'), nationName: country === 'usa' ? tr('全美') : tr('全澳'),
   };
 }
 
@@ -155,8 +156,10 @@ function usaAtlas(): Atlas {
   });
 }
 
-const cache = new Map<CountrySlug, Atlas>();
+// Built once per country and language (names and labels are translated).
+const cache = new Map<string, Atlas>();
 export function atlas(country: CountrySlug): Atlas {
-  if (!cache.has(country)) cache.set(country, country === 'japan' ? japanAtlas() : country === 'australia' ? australiaAtlas() : usaAtlas());
-  return cache.get(country)!;
+  const key = `${lang()}:${country}`;
+  if (!cache.has(key)) cache.set(key, country === 'japan' ? japanAtlas() : country === 'australia' ? australiaAtlas() : usaAtlas());
+  return cache.get(key)!;
 }

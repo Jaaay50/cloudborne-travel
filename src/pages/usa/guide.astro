@@ -1,9 +1,0 @@
----
-import Base from '../../layouts/Base.astro';
-import GuidePage from '../../components/GuidePage.astro';
-import { guideOf } from '../../lib/content';
-const g = guideOf('usa');
----
-<Base title="美国出行须知" description="去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气、紧急电话和中国使领馆。" nav="usa">
-  <GuidePage country="usa" name="美国" g={g} />
-</Base>

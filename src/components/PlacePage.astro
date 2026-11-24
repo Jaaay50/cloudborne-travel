@@ -3,7 +3,8 @@
 import WorldMap from './WorldMap.astro';
 import ClimateTable from './ClimateTable.astro';
 import { mapLinks, xhs } from '../lib/content';
-import { MONTHS, monthRanges, type CountrySlug } from '../lib/countries';
+import { monthRanges, type CountrySlug } from '../lib/countries';
+import { t, lang, listSep } from '../lib/i18n';
 import { atlas } from '../lib/atlas';
 import type { WPlace } from '../lib/world';
 
@@ -34,14 +35,18 @@ const { m } = Astro.props;
 const p = m.place;
 const A = atlas(m.country);
 const themes = A.themes;
-const useAmap = m.country === 'japan';
-const spotThemes = [...new Set(p.spots.flatMap((s) => s.themes))].filter((t) => themes[t]);
+// Amap and Xiaohongshu are for Chinese readers only.
+const zh = lang() === 'zh';
+const useAmap = m.country === 'japan' && zh;
+const spotThemes = [...new Set(p.spots.flatMap((s) => s.themes))].filter((x) => themes[x]);
+// Secondary names under a spot title; translated titles often equal one of them, so skip that repeat outside Chinese.
+const subNames = (s: { name: string; local?: string; en?: string }) => [s.local, s.en].filter((x): x is string => !!x && (zh || x !== s.name));
 const [hs, hl] = m.heroSizes;
 ---
 <section class="phero">
   <img src={`${m.heroImg}-${hl}.webp`} srcset={`${m.heroImg}-${hs}.webp ${hs}w, ${m.heroImg}-${hl}.webp ${hl}w`} sizes="100vw" alt={m.heroAlt} width={hl} height={Math.round((hl * 2) / 3)} fetchpriority="high" />
   <div class="wrap">
-    <nav class="crumbs" aria-label="位置">
+    <nav class="crumbs" aria-label={t('位置')}>
       {m.crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}
     </nav>
     <p class="kana">{m.kicker}</p>
@@ -53,15 +58,15 @@ const [hs, hl] = m.heroSizes;
 
 <div class="wrap pref-layout">
   <article class="pref-main">
-    <nav class="toc no-print" aria-label="本页目录">
-      <a href="#overview">概览</a><a href="#spots">景点</a><a href="#food">美食</a><a href="#access">交通住宿</a><a href="#tips">提醒</a>
+    <nav class="toc no-print" aria-label={t('本页目录')}>
+      <a href="#overview">{t('概览')}</a><a href="#spots">{t('景点')}</a><a href="#food">{t('美食')}</a><a href="#access">{t('交通住宿')}</a><a href="#tips">{t('提醒')}</a>
     </nav>
 
     <section id="overview" class="block">
-      <div class="prose">{m.intro.map((t) => <p>{t}</p>)}</div>
+      <div class="prose">{m.intro.map((x) => <p>{x}</p>)}</div>
       <div class="season-row">
-        <div class="months" aria-label={`最佳月份：${monthRanges(m.months)}`}>
-          {MONTHS.map((mn, i) => <span class:list={['mo', { on: m.months.includes(i + 1) }]} aria-hidden="true">{i + 1}</span>)}
+        <div class="months" aria-label={t('最佳月份：{months}', { months: monthRanges(m.months) })}>
+          {Array.from({ length: 12 }, (_, i) => <span class:list={['mo', { on: m.months.includes(i + 1) }]} aria-hidden="true">{i + 1}</span>)}
         </div>
         <p>{m.seasonNote}</p>
       </div>
@@ -70,12 +75,12 @@ const [hs, hl] = m.heroSizes;
 
     <section id="spots" class="block">
       <div class="block-hd">
-        <h2>景点</h2>
+        <h2>{t('景点')}</h2>
         {spotThemes.length > 1 && (
-          <div class="filter no-print" role="group" aria-label="按主题筛选景点">
-            <button type="button" class="chip on" data-f="" aria-pressed="true">全部</button>
-            {spotThemes.map((t) => (
-              <button type="button" class="chip" data-f={t} aria-pressed="false" style={`--dot:${themes[t].tone}`}><i></i>{themes[t].name}</button>
+          <div class="filter no-print" role="group" aria-label={t('按主题筛选景点')}>
+            <button type="button" class="chip on" data-f="" aria-pressed="true">{t('全部')}</button>
+            {spotThemes.map((x) => (
+              <button type="button" class="chip" data-f={x} aria-pressed="false" style={`--dot:${themes[x].tone}`}><i></i>{themes[x].name}</button>
             ))}
           </div>
         )}
@@ -95,11 +100,11 @@ const [hs, hl] = m.heroSizes;
                 <div class="spot-hd">
                   <div>
                     <h3>{!s.img && <span class="spot-n inline">{i + 1}</span>}{s.name}</h3>
-                    {(s.local || s.en) && <p class="spot-sub">{[s.local, s.en].filter(Boolean).join(' · ')}</p>}
+                    {subNames(s).length > 0 && <p class="spot-sub">{subNames(s).join(' · ')}</p>}
                   </div>
                   <button type="button" class="add no-print" data-add={s.item} data-name={s.name} aria-pressed="false">
                     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-                    <span data-label>加入行程</span>
+                    <span data-label>{t('加入行程')}</span>
                   </button>
                 </div>
                 <p class="spot-text">{s.text}</p>
@@ -107,14 +112,14 @@ const [hs, hl] = m.heroSizes;
                   <span class="tag">{A.kinds[s.kind] ?? s.kind}</span>
                   <span class="tag">{s.time}</span>
                   {s.fee && <span class="tag">{s.fee}</span>}
-                  {s.themes.filter((t) => themes[t]).map((t) => <span class="tag theme" style={`--dot:${themes[t].tone}`}>{themes[t].name}</span>)}
+                  {s.themes.filter((x) => themes[x]).map((x) => <span class="tag theme" style={`--dot:${themes[x].tone}`}>{themes[x].name}</span>)}
                 </div>
                 {s.tip && <p class="spot-tip">{s.tip}</p>}
                 <div class="spot-links no-print">
                   {useAmap && <a href={links.amap} target="_blank" rel="noopener">高德</a>}
-                  <a href={links.google} target="_blank" rel="noopener">Google 地图</a>
-                  <a href={links.apple} target="_blank" rel="noopener">Apple 地图</a>
-                  <a href={xhs(`${s.name} 攻略`)} target="_blank" rel="noopener">小红书</a>
+                  <a href={links.google} target="_blank" rel="noopener">{t('Google 地图')}</a>
+                  <a href={links.apple} target="_blank" rel="noopener">{t('Apple 地图')}</a>
+                  {zh && <a href={xhs(`${s.name} 攻略`)} target="_blank" rel="noopener">小红书</a>}
                 </div>
               </div>
             </li>
@@ -124,7 +129,7 @@ const [hs, hl] = m.heroSizes;
     </section>
 
     <section id="food" class="block">
-      <div class="block-hd"><h2>吃什么</h2></div>
+      <div class="block-hd"><h2>{t('吃什么')}</h2></div>
       <div class="foods">
         {p.foods.map((f) => (
           <div class:list={['food reveal', { 'has-img': !!f.img }]} id={`food-${f.id}`}>
@@ -132,7 +137,7 @@ const [hs, hl] = m.heroSizes;
             <div class="food-body">
               <div class="food-hd">
                 <h3>{f.name}</h3>
-                <button type="button" class="add no-print" data-add={f.item} data-name={f.name} aria-pressed="false" aria-label={`把${f.name}加入行程`}>
+                <button type="button" class="add no-print" data-add={f.item} data-name={f.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: f.name })}>
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
                 </button>
               </div>
@@ -145,22 +150,22 @@ const [hs, hl] = m.heroSizes;
     </section>
 
     <section id="access" class="block">
-      <div class="block-hd"><h2>怎么去 · 住哪里</h2></div>
+      <div class="block-hd"><h2>{t('怎么去 · 住哪里')}</h2></div>
       <div class="access">
         {m.access.map((a) => <div class="acc"><b>{a.from}</b><p>{a.how}</p></div>)}
       </div>
-      <div class="stay"><b>住哪里</b><p>{m.stay}</p></div>
+      <div class="stay"><b>{t('住哪里')}</b><p>{m.stay}</p></div>
     </section>
 
     <section id="tips" class="block">
-      <div class="block-hd"><h2>出发前知道这些</h2></div>
-      <ul class="tips">{m.tips.map((t) => <li>{t}</li>)}</ul>
+      <div class="block-hd"><h2>{t('出发前知道这些')}</h2></div>
+      <ul class="tips">{m.tips.map((x) => <li>{x}</li>)}</ul>
     </section>
 
     {m.sources.length > 0 && (
       <details class="block sources">
-        <summary>来源（{m.checked}）</summary>
-        <p>{m.sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
+        <summary>{t('来源（{date}）', { date: m.checked })}</summary>
+        <p>{m.sources.map((s, i) => <>{i > 0 && listSep()}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
       </details>
     )}
   </article>
@@ -182,7 +187,7 @@ const [hs, hl] = m.heroSizes;
 {m.nearby.length > 0 && (
   <section class="section nearby">
     <div class="wrap">
-      <div class="section-hd"><div><h2>顺路去</h2></div></div>
+      <div class="section-hd"><div><h2>{t('顺路去')}</h2></div></div>
       <div class="grid g-4">
         {m.nearby.map((n) => (
           <a class="place reveal" href={n.href}>

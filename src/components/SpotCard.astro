@@ -2,6 +2,7 @@
 import type { SpotRef } from '../lib/content';
 import { photo } from '../lib/content';
 import { THEMES, KIND_NAMES, REGION_BY_SLUG } from '../lib/japan';
+import { t } from '../lib/i18n';
 interface Props { s: SpotRef; showPref?: boolean }
 const { s, showPref = true } = Astro.props;
 const r = REGION_BY_SLUG[s.region];
@@ -18,8 +19,8 @@ const img = photo('japan', s.pref, 's', s.id);
     <span class="scard-text">{s.text}</span>
   </a>
   <span class="scard-ft">
-    <span class="scard-themes">{s.themes.map((t) => <span class="tag theme" style={`--dot:${THEMES[t].tone}`}>{THEMES[t].name}</span>)}</span>
-    <button type="button" class="add" data-add={`s:${s.pref}/${s.id}`} data-name={s.name} aria-pressed="false" aria-label={`把${s.name}加入行程`}>
+    <span class="scard-themes">{s.themes.map((th) => <span class="tag theme" style={`--dot:${THEMES[th].tone}`}>{THEMES[th].name}</span>)}</span>
+    <button type="button" class="add" data-add={`s:${s.pref}/${s.id}`} data-name={s.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: s.name })}>
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
     </button>
   </span>

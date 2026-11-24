@@ -3,14 +3,15 @@
 import { allPlaces, type WTrip, type WSpot, type WFood } from '../lib/world';
 import { mapLinks } from '../lib/content';
 import { atlas } from '../lib/atlas';
+import { t, lang } from '../lib/i18n';
 
 interface Props { t: WTrip; crumbs: { href: string; text: string }[] }
-const { t, crumbs } = Astro.props;
+const { t: trip, crumbs } = Astro.props;
 const places = allPlaces();
-const A = atlas(t.country);
+const A = atlas(trip.country);
 const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
 type Row = { kind: 'spot'; s: WSpot; placeName: string; href: string } | { kind: 'food'; f: WFood; placeName: string; href: string } | { kind: 'note'; note: string };
-const days = t.days.map((d) => ({
+const days = trip.days.map((d) => ({
   ...d,
   rows: d.items.map((it): Row | null => {
     if ('note' in it) return { kind: 'note', note: it.note };
@@ -21,34 +22,34 @@ const days = t.days.map((d) => ({
     return f ? { kind: 'food', f, placeName: p.name, href: `${p.href}#food-${f.id}` } : null;
   }).filter((x): x is Row => !!x),
 }));
-const payload = JSON.stringify({ title: t.title, days: days.map((d) => d.rows.flatMap((r) => (r.kind === 'spot' ? [r.s.item] : r.kind === 'food' ? [r.f.item] : []))) });
-const heroW = t.country === 'japan' ? [640, 1200] : [800, 1600];
-const amap = t.country === 'japan';
+const payload = JSON.stringify({ title: trip.title, days: days.map((d) => d.rows.flatMap((r) => (r.kind === 'spot' ? [r.s.item] : r.kind === 'food' ? [r.f.item] : []))) });
+const heroW = trip.country === 'japan' ? [640, 1200] : [800, 1600];
+const amap = trip.country === 'japan' && lang() === 'zh'; // Amap is for Chinese readers only
 ---
 <section class="phero short">
-  {t.cover && <img src={`${t.cover}-${heroW[1]}.webp`} alt="" width={heroW[1]} height={Math.round(heroW[1] * 2 / 3)} fetchpriority="high" />}
+  {trip.cover && <img src={`${trip.cover}-${heroW[1]}.webp`} alt="" width={heroW[1]} height={Math.round(heroW[1] * 2 / 3)} fetchpriority="high" />}
   <div class="wrap">
-    <nav class="crumbs" aria-label="位置">{crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}</nav>
-    <h1>{t.title}</h1>
-    <p class="tagline">{t.for}</p>
-    <div class="facts"><span>{t.daysCount} 天</span><span>{t.season}</span></div>
+    <nav class="crumbs" aria-label={t('位置')}>{crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}</nav>
+    <h1>{trip.title}</h1>
+    <p class="tagline">{trip.for}</p>
+    <div class="facts"><span>{t('{n} 天', { n: trip.daysCount })}</span><span>{trip.season}</span></div>
   </div>
 </section>
 
 <div class="wrap trip-layout">
   <div>
-    <p class="summary">{t.summary}</p>
-    <p class="bases">住：{t.bases.join(' → ')}</p>
+    <p class="summary">{trip.summary}</p>
+    <p class="bases">{t('住：{bases}', { bases: trip.bases.join(' → ') })}</p>
     <div class="actions no-print">
-      <button type="button" class="btn primary" data-copy-trip={payload}>复制到我的行程</button>
-      <button type="button" class="btn" onclick="print()">打印 / 存 PDF</button>
+      <button type="button" class="btn primary" data-copy-trip={payload}>{t('复制到我的行程')}</button>
+      <button type="button" class="btn" onclick="print()">{t('打印 / 存 PDF')}</button>
     </div>
     <ol class="days">
       {days.map((d, i) => (
         <li class="day reveal">
           <div class="day-hd">
             <span class="dn">D{i + 1}</span>
-            <div><h2>{d.title}</h2><p>住 {d.stay}{d.move && ` · ${d.move}`}</p></div>
+            <div><h2>{d.title}</h2><p>{t('住 {stay}', { stay: d.stay })}{d.move && ` · ${d.move}`}</p></div>
           </div>
           <ul class="items">
             {d.rows.map((r) => (
@@ -61,14 +62,14 @@ const amap = t.country === 'japan';
                     <small>{r.placeName} · {A.kinds[r.s.kind] ?? r.s.kind} · {r.s.time}{r.s.fee && ` · ${r.s.fee}`}</small>
                     {r.s.tip && <p>{r.s.tip}</p>}
                   </div>
-                  <a class="nav-link no-print" href={amap ? mapLinks(r.s.local || r.s.name, r.s.ll).amap : mapLinks(r.s.local || r.s.name, r.s.ll).google} target="_blank" rel="noopener">导航</a>
+                  <a class="nav-link no-print" href={amap ? mapLinks(r.s.local || r.s.name, r.s.ll).amap : mapLinks(r.s.local || r.s.name, r.s.ll).google} target="_blank" rel="noopener">{t('导航')}</a>
                 </li>
               ) : r.kind === 'food' ? (
                 <li class="it">
                   <span class="dot food"></span>
                   {r.f.img && <img class="it-pic" src={`${r.f.img}-400.webp`} alt="" loading="lazy" width="400" height="267" data-fade />}
                   <div>
-                    <a href={r.href}><b>吃 {r.f.name}</b></a>
+                    <a href={r.href}><b>{t('吃 {name}', { name: r.f.name })}</b></a>
                     <small>{r.f.where}{r.f.price && ` · ${r.f.price}`}</small>
                   </div>
                 </li>
@@ -115,12 +116,13 @@ const amap = t.country === 'japan';
 </style>
 <script>
   import { load, save } from '../scripts/trip';
+  import { ct, lp } from '../scripts/i18n';
   document.querySelector<HTMLButtonElement>('[data-copy-trip]')?.addEventListener('click', (e) => {
     const data = JSON.parse((e.currentTarget as HTMLElement).dataset.copyTrip!) as { title: string; days: string[][] };
     const cur = load();
     const has = cur.days.flat().length + cur.pool.length > 0;
-    if (has && !confirm('你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）')) return;
+    if (has && !confirm(ct('你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）'))) return;
     save({ v: 1, title: data.title, start: cur.start, days: data.days, pool: [], notes: {} });
-    location.href = '/plan/';
+    location.href = lp('/plan/');
   });
 </script>

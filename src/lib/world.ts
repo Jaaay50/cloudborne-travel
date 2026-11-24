@@ -3,6 +3,8 @@ import { prefs, getRegion, trips as jpTrips, covers, statesOf, tripsOf, photo, t
 import { REGIONS as JP_REGIONS, REGION_OF_PREF, SINGLE_PREF_REGIONS, THEMES as JP_THEMES, type Season } from './japan';
 import { COUNTRIES, type CountrySlug, type XCountry } from './countries';
 import { placeKey, type Country } from './keys';
+import { perLang } from './data';
+import { L, translated } from './i18n';
 
 export interface WSpot {
   id: string; key: string; item: string; name: string; local?: string; en?: string; kind: string; ll: [number, number];
@@ -57,8 +59,8 @@ function xPlaces(c: XCountry): WPlace[] {
   });
 }
 
-const cache: Partial<Record<CountrySlug, WPlace[]>> = {};
-export const placesOf = (c: CountrySlug): WPlace[] => (cache[c] ??= c === 'japan' ? japanPlaces() : xPlaces(c));
+const placesByLang = perLang(() => ({ japan: japanPlaces(), australia: xPlaces('australia'), usa: xPlaces('usa') }));
+export const placesOf = (c: CountrySlug): WPlace[] => placesByLang()[c];
 export const allPlaces = () => [...placesOf('japan'), ...placesOf('australia'), ...placesOf('usa')];
 export const placeByKey = (key: string) => allPlaces().find((p) => p.key === key);
 
@@ -69,7 +71,7 @@ export function regionsOf(c: CountrySlug): WRegion[] {
       const reg = getRegion(r.slug);
       const pref = single ? prefs.find((p) => p.slug === r.prefs[0]) : undefined;
       return {
-        country: 'japan', slug: r.slug, name: r.name, tone: r.tone, ink: r.ink, places: r.prefs, tagline: reg?.tagline ?? pref?.tagline ?? '',
+        country: 'japan', slug: r.slug, name: translated(r).name, tone: r.tone, ink: r.ink, places: r.prefs, tagline: reg?.tagline ?? pref?.tagline ?? '',
         href: single ? `/japan/${r.prefs[0]}/` : `/japan/region/${r.slug}/`, cover: single ? `/img/prefectures/${r.prefs[0]}` : `/img/regions/${r.slug}`,
       };
     });
@@ -78,7 +80,7 @@ export function regionsOf(c: CountrySlug): WRegion[] {
   return COUNTRIES[c].regions.map((r) => {
     const ps = r.states.map((s) => places.find((p) => p.slug === s)).filter((p): p is WPlace => !!p);
     return {
-      country: c, slug: r.slug, name: r.name, tone: r.tone, ink: r.ink, places: r.states.map((s) => placeKey(c, s)),
+      country: c, slug: r.slug, name: translated(r).name, tone: r.tone, ink: r.ink, places: r.states.map((s) => placeKey(c, s)),
       tagline: ps.length === 1 ? ps[0].tagline : ps.map((p) => p.name).join(' · '),
       href: ps.length === 1 ? ps[0].href : null, cover: ps[0]?.cover ?? '',
     };
@@ -88,11 +90,11 @@ export function regionsOf(c: CountrySlug): WRegion[] {
 /** Region tone for a place (map colours, chips). */
 export function toneOf(country: CountrySlug, region: string) {
   const r = country === 'japan' ? JP_REGIONS.find((x) => x.slug === region) : COUNTRIES[country].regions.find((x) => x.slug === region);
-  return { tone: r?.tone ?? '#c9bfa8', ink: r?.ink ?? '#5a5040', name: r?.name ?? '' };
+  return { tone: r?.tone ?? '#c9bfa8', ink: r?.ink ?? '#5a5040', name: r ? translated(r).name : '' };
 }
 
 export const themesOf = (c: CountrySlug): Record<string, { name: string; tone: string; season: string }> =>
-  c === 'japan' ? (JP_THEMES as unknown as Record<string, { name: string; tone: string; season: string }>) : COUNTRIES[c].themes;
+  translated(c === 'japan' ? (JP_THEMES as unknown as Record<string, { name: string; tone: string; season: string }>) : COUNTRIES[c].themes);
 
 /** Rough months a theme is at its best, used by the quick planner to avoid out-of-season picks. */
 export const THEME_MONTHS: Record<CountrySlug, Record<string, number[]>> = {
@@ -109,6 +111,10 @@ function tripCover(country: Country, items: TripItem[]) {
 }
 
 export function tripsAll(c?: CountrySlug): WTrip[] {
+  const all = tripsByLang();
+  return c ? all[c] : [...all.japan, ...all.australia, ...all.usa];
+}
+const tripsByLang = perLang(() => {
   const jp: WTrip[] = jpTrips.map((t) => ({
     country: 'japan', id: t.id, title: t.title, region: t.region, daysCount: t.daysCount, for: t.for, season: t.season, summary: t.summary,
     bases: t.bases, href: `/japan/trips/${t.id}/`, cover: tripCover('japan', t.days.flatMap((d) => d.items)), days: t.days,
@@ -119,16 +125,35 @@ export function tripsAll(c?: CountrySlug): WTrip[] {
     // Trip items reference bare state slugs; turn them into place keys.
     days: t.days.map((d) => ({ ...d, items: d.items.map((i) => ('pref' in i ? { ...i, pref: placeKey(country, i.pref) } : i)) as TripItem[] })),
   }));
-  const all = { japan: jp, australia: x('australia'), usa: x('usa') };
-  return c ? all[c] : [...all.japan, ...all.australia, ...all.usa];
+  return { japan: jp, australia: x('australia'), usa: x('usa') } as Record<CountrySlug, WTrip[]>;
+});
+
+/** Rough hours a spot takes, read from its Chinese time text ("2–3 小时", "半天", "30–60 分钟", "1 天").
+ *  Returned as two numbers so the browser never parses translated text:
+ *  [hours for the quick planner (a full day = 7), hours for the day planner (a full day = 8)]. */
+export function spotHours(t: string): [number, number] {
+  if (!t) return [1.5, 1];
+  if (/半天/.test(t)) return [4, 4];
+  if (/晚|夜/.test(t)) return [6, 8];
+  const m = t.match(/(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*(小时|分钟|天)/);
+  if (!m) return /天/.test(t) ? [7, 8] : [2, 1.5];
+  const v = m[2] ? (+m[1] + +m[2]) / 2 : +m[1];
+  return m[3] === '分钟' ? [v / 60, v / 60] : m[3] === '天' ? [7, 8] : [v, v];
 }
+const zhTimes = perLang(() => new Map(allPlaces().flatMap((p) => p.spots.map((s) => [s.key, s.time] as const))));
+const zhFees = perLang(() => new Map(allPlaces().flatMap((p) => p.spots.map((s) => [s.key, s.fee ?? ''] as const))));
+/** 1 when the spot's (Chinese) fee text shows an amount over 3,000, for the quick planner's "save money" answer. */
+const pricey = (fee: string) => (/[0-9]{3,}/.test(fee.replace(/,/g, '')) && +fee.replace(/[^0-9]/g, '') > 3000 ? 1 : 0);
 
 /** Compact catalogue for the browser: search, planner, quick planner. */
 export function catalogData() {
   const places = allPlaces();
+  const zh = zhTimes('zh');
+  const fees = zhFees('zh');
+  const h = (key: string) => spotHours(zh.get(key) ?? '').map((x) => Math.round(x * 100) / 100);
   return {
     p: places.map((p) => ({ s: p.key, c: p.country, n: p.name, k: p.local, e: p.en, r: p.region, t: p.tagline, d: p.days, m: p.months, i: p.cover, ph: p.coverPhoto ? 1 : 0 })),
-    s: places.flatMap((p) => p.spots.map((s) => ({ k: s.key, n: s.name, l: s.local ?? '', e: s.en ?? '', d: s.kind, t: s.time, ll: s.ll, th: s.themes, f: s.fee ?? '', ph: s.img ? 1 : 0, ...(s.open ? { o: s.open } : {}) }))),
+    s: places.flatMap((p) => p.spots.map((s) => ({ k: s.key, n: s.name, l: s.local ?? '', e: s.en ?? '', d: s.kind, t: s.time, h: h(s.key), x: pricey(fees.get(s.key) ?? ''), ll: s.ll, th: s.themes, f: s.fee ?? '', ph: s.img ? 1 : 0, ...(s.open ? { o: s.open } : {}) }))),
     f: places.flatMap((p) => p.foods.map((f) => ({ k: f.key, n: f.name, l: f.local ?? '', w: f.where, pr: f.price ?? '', ph: f.img ? 1 : 0 }))),
     tm: Object.fromEntries((['japan', 'australia', 'usa'] as const).map((c) => [c, Object.fromEntries(Object.entries(themesOf(c)).map(([k, v]) => [k, { n: v.name, c: v.tone }]))])),
     tw: THEME_MONTHS,

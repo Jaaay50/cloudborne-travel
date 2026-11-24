@@ -1,0 +1,25 @@
+---
+import Base from '../../../layouts/Base.astro';
+import CountryHome from '../../../components/CountryHome.astro';
+import { placesOf } from '../../../lib/world';
+import { t, langPaths } from '../../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const places = placesOf('australia');
+const heroPlace = places.find((p) => p.slug === 'new-south-wales' && p.cover) ?? places.find((p) => p.cover);
+const hero = heroPlace?.cover ?? '/img/hero';
+const tools = [
+  { href: '/australia/guide/#visa', t: t('签证与入境'), d: t('要准备什么、怎么申请'), ico: t('证') },
+  { href: '/australia/guide/#money', t: t('支付与小费'), d: t('刷卡、小费、退税'), ico: '$' },
+  { href: '/australia/guide/#transport', t: t('交通与自驾'), d: t('驾照、租车、国内航班'), ico: '⇄' },
+  { href: '/australia/guide/#safety', t: t('安全与天气'), d: t('紧急电话、使领馆'), ico: '!' },
+  { href: '/quick/?c=australia', t: t('快速攻略'), d: t('选几个选项，马上出一份行程'), ico: '✦' },
+  { href: '/budget/?c=australia', t: t('算预算'), d: t('机票、住宿、吃喝一页算清'), ico: '¥' },
+];
+---
+<Base title={t('澳大利亚旅行攻略')} description={t('澳大利亚 8 个州和领地的原创旅行指南：互动地图、景点和美食实拍风格配图、行程模板、签证与入境须知。')} image={heroPlace ? `${hero}-1600.webp` : undefined} nav="australia">
+  <CountryHome country="australia" name={t('澳大利亚')}
+    hero={{ img: hero, sizes: heroPlace ? [800, 1600] : [1280, 2304], alt: heroPlace?.coverAlt ?? '', title: t('南半球的海、<br />红土和城市。'), lead: t('大堡礁、乌鲁鲁、大洋路，再加一杯澳白。') }}
+    tools={tools} toolsHref="/australia/guide/" />
+</Base>

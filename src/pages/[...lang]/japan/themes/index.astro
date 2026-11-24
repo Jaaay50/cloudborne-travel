@@ -1,0 +1,63 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { THEMES, THEME_SLUGS } from '../../../../lib/japan';
+import { allSpots, covers } from '../../../../lib/content';
+import { t, langPaths, monthName } from '../../../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const months = Array.from({ length: 12 }, (_, i) => monthName(i + 1));
+// Rough calendar of when each theme is at its best (1-based months). Used for the season strip.
+const CAL: Record<string, number[]> = {
+  sakura: [3, 4, 5], flowers: [4, 5, 6, 7, 8], autumn: [10, 11, 12], snow: [12, 1, 2], onsen: [11, 12, 1, 2, 3],
+  sea: [5, 6, 7, 8, 9, 10], heritage: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], nature: [5, 6, 7, 8, 9, 10], art: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+};
+---
+<Base title={t('季节与主题')} description={t('按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。')} nav="japan">
+  <section class="wrap th-head">
+    <h1>{t('什么时候去，去看什么')}</h1>
+  </section>
+
+  <section class="wrap cal card" aria-label={t('主题月历')}>
+    <div class="cal-row cal-hd"><span></span>{months.map((m) => <span>{m}</span>)}</div>
+    {THEME_SLUGS.map((x) => (
+      <a class="cal-row" href={`/japan/themes/${x}/`} style={`--dot:${THEMES[x].tone}`}>
+        <span class="cal-name"><i></i>{THEMES[x].name}</span>
+        {months.map((_, i) => <span class:list={['cell', { on: CAL[x].includes(i + 1) }]} data-m={i + 1}></span>)}
+      </a>
+    ))}
+  </section>
+
+  <section class="wrap section">
+    <div class="grid g-3">
+      {THEME_SLUGS.map((x) => (
+        <a class="place reveal" href={`/japan/themes/${x}/`}>
+          <div class="pic"><img src={`/img/themes/${x}-640.webp`} alt={covers.themes[x].alt} loading="lazy" width="640" height="427" /></div>
+          <div class="body">
+            <h3>{THEMES[x].name}</h3>
+            <p>{THEMES[x].season} · {t('{n} 个景点', { n: allSpots.filter((s) => s.themes.includes(x)).length })}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .th-head { padding: 48px 0 24px; }
+  .th-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 10px; }
+  .cal { padding: 14px 18px 12px; overflow-x: auto; }
+  .cal-row { display: grid; grid-template-columns: 84px repeat(12, minmax(28px, 1fr)); gap: 3px; align-items: center; min-width: 560px; padding: 3px 0; border-radius: 8px; transition: background var(--t-fast); }
+  :global(html[lang="en"]) .cal-row { grid-template-columns: 124px repeat(12, minmax(28px, 1fr)); min-width: 600px; }
+  a.cal-row:hover { background: var(--paper-2); }
+  .cal-hd span { font-size: 11.5px; color: var(--mut); text-align: center; }
+  .cal-name { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; padding-left: 4px; }
+  .cal-name i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+  .cell { height: 16px; border-radius: 4px; background: var(--paper-2); }
+  .cell.on { background: color-mix(in srgb, var(--dot) 75%, var(--card)); }
+  .cell.now { outline: 2px solid var(--ink); outline-offset: 1px; }
+</style>
+<script>
+  const m = String(new Date().getMonth() + 1);
+  document.querySelectorAll<HTMLElement>(`.cell[data-m="${m}"]`).forEach((c) => c.classList.add('now'));
+</script>

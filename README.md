@@ -1,6 +1,6 @@
 # 栖云旅行 · travel.cloudborne.cn
 
-Cloudborne 栖云的旅行指南，覆盖日本（47 个都道府县）、澳大利亚（8 个州和领地）、美国（15 个热门州）：原创攻略、互动地图（景点悬停看图）、写实风格配图、每月天气表、行程模板、一分钟生成攻略（选择题）、行程规划（拖拽排天、一键排顺序、路线图、分享链接和长图）、预算计算（汇率每天更新）、出行须知和离线随身工具。纯静态站（Astro 7），不登录、无后端、无数据库；用户数据只存在浏览器 localStorage。深色模式跟随系统。
+Cloudborne 栖云的旅行指南，覆盖日本（47 个都道府县）、澳大利亚（8 个州和领地）、美国（15 个热门州）：原创攻略、互动地图（景点悬停看图）、写实风格配图、每月天气表、行程模板、一分钟生成攻略（选择题）、行程规划（拖拽排天、一键排顺序、路线图、分享链接和长图）、预算计算（汇率每天更新）、出行须知和离线随身工具。中文、English（`/en/`）、日本語（`/ja/`）三种语言。纯静态站（Astro 7），不登录、无后端、无数据库；用户数据只存在浏览器 localStorage。深色模式跟随系统。
 
 ## 目录
 
@@ -18,10 +18,12 @@ Cloudborne 栖云的旅行指南，覆盖日本（47 个都道府县）、澳大
 | `src/data/japan/covers.json` | 首页长图、47 县、7 地区、9 主题插画的场景描述和 alt |
 | `src/data/toolkit/*.json` | 日语卡、紧急求助、退税、行前清单、交通、2026 新规 |
 | `src/data/geo/*.json` | 日本县界、澳大利亚和美国州界（Natural Earth 10m admin-1，公有领域），由 `scripts/prepare-geo.mjs`、`scripts/prepare-geo-world.mjs` 生成 |
+| `src/i18n/` | 多语言：`cache/{en,ja}.json` 翻译缓存（进 Git）、`ui-source.json` 界面文字清单、`ui-overrides.json` 手改界面词、`content-overrides.json` 按读者改写的正文（签证途径）；`en/`、`ja/` 是构建时生成的译文 JSON，不进 Git |
 | `src/lib/` | 数据加载（`content.ts`、`toolkit.ts`）、三国统一视图（`world.ts`）、国家与地区常量（`japan.ts`、`countries.ts`）、地图投影（`geo.ts`、`atlas.ts`）、行程条目键（`keys.ts`） |
 | `src/components/WorldMap.astro` | 地图：国家页「全国→地区→州/县」缩放 + 侧栏；州/县/地区页固定视角；景点悬停/轻点弹出照片 |
 | `src/components/PlacePage.astro`、`CountryHome.astro`、`TripPage.astro`、`GuidePage.astro`、`ClimateTable.astro` | 三国共用的州/县页、国家首页、行程页、出行须知、天气表 |
-| `src/pages/quick.astro` + `src/scripts/quick.ts` | 一分钟生成攻略：选择题 → 按天排好的草稿行程 |
+| `src/pages/[...lang]/` | 全部页面，`lang` 为空（中文）/`en`/`ja`；`src/middleware.ts` 设定渲染语言，并给英日页面里的站内链接加前缀 |
+| `src/pages/[...lang]/quick.astro` + `src/scripts/quick.ts` | 一分钟生成攻略：选择题 → 按天排好的草稿行程 |
 | `src/scripts/share-image.ts` | 行程长图（canvas 绘制 PNG） |
 | `src/scripts/` | 全站脚本：搜索、加入行程、行程存储与分享编码 |
 | `public/img/` | 日本木刻风插画 WebP（1200/640 宽，首页长图 2304/1280）；`photos/` 写实风格配图（景点/美食 400/800，州封面 800/1600） |
@@ -41,6 +43,10 @@ node scripts/prepare-geo.mjs    # 重新生成县界
 node scripts/prepare-geo-world.mjs <ne_10m_admin_1_states_provinces.geojson>   # 澳大利亚、美国州界
 npm run climate    # 补齐每月天气（Open-Meteo 免费额度每天 1 万次，缓存在 research/climate-cache/）
 npm run photos     # 按 public/img/photos/ 重建照片清单
+npm run i18n -- extract                 # 收集代码里 t('…') / ct('…') 的界面文字
+npm run i18n -- translate --lang en     # 只翻新增或改过的正文和界面文字（ja 同理）
+npm run i18n -- check                   # 列出还没翻译的部分
+npm run i18n -- prune                   # 删掉不再用到的旧译文
 ```
 
 ## 插画与照片
@@ -54,14 +60,22 @@ npm run photos     # 按 public/img/photos/ 重建照片清单
 
 改内容后跑 `npm run check`，再 `npm run build`。
 
+## 多语言
+
+- 中文是原文。英文、日文由 `scripts/i18n.py` 用 AI 翻译（中转站临时限额 Key，`CBT_I18N_KEY_FILE` 指向 Key 文件，模型 `gpt-6.1-sol`），译文按「每个景点/条目」缓存在 `src/i18n/cache/`，只有改过的条目才重翻。构建时 `i18n.py build` 把缓存套到中文 JSON 上生成 `src/i18n/{en,ja}/**`；没译到的部分显示中文，CI 的 `i18n.py check` 会列出来。
+- 写给中国大陆读者的内容，英日版改成通用说法（签证和驾照「看你的护照/驾照」、联系「你所持护照国家的使领馆」）；中国使领馆和 12308 只在中文版出现。美国、澳洲的签证途径（ESTA / ETA / eVisitor）是按读者写的，在 `content-overrides.json` 里手工维护。
+- 界面文字：代码里写 `t('中文')`（构建时）或 `ct('中文')`（浏览器），中文原文就是查找键。`npm run i18n -- extract` 后再 `translate`。
+- 日文版没有「日语大字卡」页（`src/lib/i18n.ts` 的 `MISSING`）。英日版不显示高德、小红书链接；预算按读者货币算（英文美元、日文日元，机票留空自填）。
+- 语言切换在页头；选过的语言记在 `cbt-lang`，之后打开中文首页时自动转到该语言（只首页、每次访问一次）。分享链接、其他页面不跳转。
+
 ## 本地数据（localStorage）
 
 - `cbt.trip.v1`：行程（天数组、待安排、标题、出发日）。条目键 `s:<地点>/<id>`、`f:<地点>/<id>`，日本地点是县 slug（`kyoto`），澳美加前缀（`au.victoria`、`us.utah`），见 `src/lib/keys.ts`。分享链接把它 deflate + base64url 放在 `/plan/#t=…`，服务器不接收。
-- `cbt.budget.v1`：预算输入（含所选国家）。`cbt.checklist.v1`：清单勾选。`cbt.phrases.fav`：日语卡收藏。
+- `cbt-lang`：选过的界面语言。`cbt.budget.v1`：预算输入（含所选国家）。`cbt.checklist.v1`：清单勾选。`cbt.phrases.fav`：日语卡收藏。
 
 ## 离线
 
-`/sw.js`（由 `src/pages/sw.js.ts` 生成，`scripts/finalize-sw.mjs` 在构建后按内容算版本、补上 CSS/JS 预缓存）预缓存首页、行程、快速攻略、预算、日本随身工具和澳美出行须知，其它页面访问过即缓存，图片单独缓存（最多 400 张）。
+`/sw.js`（由 `src/pages/sw.js.ts` 生成，`scripts/finalize-sw.mjs` 在构建后按内容算版本、补上 CSS/JS 预缓存）预缓存首页、行程、快速攻略、预算、日本随身工具和澳美出行须知（英日版预缓存首页和行程），其它页面访问过即缓存，图片单独缓存（最多 400 张）。
 
 ## 部署
 

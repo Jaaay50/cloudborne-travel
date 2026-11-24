@@ -3,6 +3,7 @@
 import WorldMap from './WorldMap.astro';
 import { placesOf, regionsOf, tripsAll, themesOf, type WPlace } from '../lib/world';
 import { monthRanges, type CountrySlug } from '../lib/countries';
+import { t, lang, hasPage } from '../lib/i18n';
 
 export interface HomeTool { href: string; t: string; d: string; ico: string }
 interface Props {
@@ -13,7 +14,9 @@ interface Props {
   tools: HomeTool[];
   toolsHref: string;
 }
-const { country, name, hero, themeCards = [], tools, toolsHref } = Astro.props;
+const { country, name, hero, themeCards = [], toolsHref } = Astro.props;
+// Tools this language has (Japanese readers get no Japanese phrase cards).
+const tools = Astro.props.tools.filter((x) => hasPage(lang(), x.href));
 const places = placesOf(country);
 const regions = regionsOf(country);
 const themes = themesOf(country);
@@ -22,7 +25,9 @@ const spotCount = places.reduce((n, p) => n + p.spots.length, 0);
 const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
 // Cover photos come in 800 / 1600; Japan illustrations in 640 / 1200.
 const placeImg = (p: WPlace | undefined, _small = true) => (p?.cover ? `${p.cover}-${p.coverPhoto ? 800 : 640}.webp` : '');
-const usedThemes = Object.keys(themes).filter((t) => places.some((p) => p.spots.some((s) => s.themes.includes(t))));
+const usedThemes = Object.keys(themes).filter((x) => places.some((p) => p.spots.some((s) => s.themes.includes(x))));
+// Seasonal featured themes (Japan): titles go to the browser script, which picks one by the visitor's month.
+const seasonTitles = { winter: t('冬天去哪'), spring: t('春天去哪'), summer: t('夏天去哪'), autumn: t('秋天去哪') };
 const [hs, hl] = hero.sizes;
 ---
 <section class="hero">
@@ -33,8 +38,8 @@ const [hs, hl] = hero.sizes;
     <h1 set:html={hero.title} />
     <p class="lead">{hero.lead}</p>
     <div class="hero-cta">
-      <a class="btn primary" href="#explore">打开地图</a>
-      <a class="btn" href={`/quick/?c=${country}`}>快速生成攻略</a>
+      <a class="btn primary" href="#explore">{t('打开地图')}</a>
+      <a class="btn" href={`/quick/?c=${country}`}>{t('快速生成攻略')}</a>
     </div>
   </div>
 </section>
@@ -43,17 +48,17 @@ const [hs, hl] = hero.sizes;
   <div class="wrap">
     <div class="section-hd">
       <div>
-        <h2>探索地图</h2>
-        <p>{places.length} 个{country === 'japan' ? '都道府县' : '州'} · {spotCount} 个景点</p>
+        <h2>{t('探索地图')}</h2>
+        <p>{country === 'japan' ? t('{n} 个都道府县 · {spots} 个景点', { n: places.length, spots: spotCount }) : t('{n} 个州 · {spots} 个景点', { n: places.length, spots: spotCount })}</p>
       </div>
     </div>
     <div class="explore-grid">
       <div class="explore-map">
         <WorldMap country={country} mode="explore" />
         {usedThemes.length > 0 && (
-          <div class="theme-bar" role="group" aria-label="按主题在地图上标出景点">
-            {usedThemes.map((t) => (
-              <button type="button" class="chip" data-theme={t} aria-pressed="false" style={`--dot:${themes[t].tone}`}><i></i>{themes[t].name}</button>
+          <div class="theme-bar" role="group" aria-label={t('按主题在地图上标出景点')}>
+            {usedThemes.map((x) => (
+              <button type="button" class="chip" data-theme={x} aria-pressed="false" style={`--dot:${themes[x].tone}`}><i></i>{themes[x].name}</button>
             ))}
           </div>
         )}
@@ -94,7 +99,7 @@ const [hs, hl] = hero.sizes;
                 ) : null;
               })}
             </div>
-            {country === 'japan' && r.href && <a class="btn sm" href={r.href}>{r.name}完整攻略 →</a>}
+            {country === 'japan' && r.href && <a class="btn sm" href={r.href}>{t('{name}完整攻略 →', { name: r.name })}</a>}
           </div>
         ))}
         {places.map((p) => {
@@ -104,19 +109,19 @@ const [hs, hl] = hero.sizes;
               {placeImg(p) && <div class="pv-pic"><img src={placeImg(p, false)} alt="" loading="lazy" width="640" height="427" /></div>}
               <h3>{p.name}</h3>
               <p class="pv-lead">{p.tagline}</p>
-              <p class="pv-meta"><span>建议 {p.days}</span><span>最佳 {monthRanges(p.months)}</span></p>
+              <p class="pv-meta"><span>{t('建议 {days}', { days: p.days })}</span><span>{t('最佳 {months}', { months: monthRanges(p.months) })}</span></p>
               <ul class="pv-spots">
                 {p.spots.slice(0, 6).map((s) => (
                   <li>
                     {s.img ? <img class="pv-thumb" src={`${s.img}-400.webp`} alt="" loading="lazy" width="400" height="267" /> : <span class="pv-thumb ph" />}
                     <a href={`${p.href}#spot-${s.id}`} data-hover-key={s.key}>{s.name}</a>
-                    <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={`把${s.name}加入行程`}>
+                    <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: s.name })}>
                       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
                     </button>
                   </li>
                 ))}
               </ul>
-              <a class="btn primary sm" href={p.href}>看{p.name}完整攻略 →</a>
+              <a class="btn primary sm" href={p.href}>{t('看{name}完整攻略 →', { name: p.name })}</a>
             </div>
           );
         })}
@@ -129,18 +134,18 @@ const [hs, hl] = hero.sizes;
   <section class="section season-sec">
     <div class="wrap">
       <div class="section-hd">
-        <div><h2 data-season-title>按季节去</h2></div>
-        <a class="more" href="/japan/themes/">全部主题 →</a>
+        <div><h2 data-season-title data-titles={JSON.stringify(seasonTitles)}>{t('按季节去')}</h2></div>
+        <a class="more" href="/japan/themes/">{t('全部主题 →')}</a>
       </div>
       <div class="theme-grid">
         <div class="theme-feat"></div>
         <div class="theme-rest">
-          {themeCards.map((t) => (
-            <a class="theme-card" href={t.href} data-theme-card={t.slug} style={`--dot:${themes[t.slug].tone}`}>
-              <div class="pic"><img src={`${t.img}-640.webp`} alt={t.alt} loading="lazy" width="640" height="427" /></div>
+          {themeCards.map((c) => (
+            <a class="theme-card" href={c.href} data-theme-card={c.slug} data-now={t('当季')} style={`--dot:${themes[c.slug].tone}`}>
+              <div class="pic"><img src={`${c.img}-640.webp`} alt={c.alt} loading="lazy" width="640" height="427" /></div>
               <div class="tc-body">
-                <b>{themes[t.slug].name}</b>
-                <small>{themes[t.slug].season}</small>
+                <b>{themes[c.slug].name}</b>
+                <small>{themes[c.slug].season}</small>
               </div>
             </a>
           ))}
@@ -153,7 +158,7 @@ const [hs, hl] = hero.sizes;
 {country !== 'japan' && (
   <section class="section">
     <div class="wrap">
-      <div class="section-hd"><div><h2>{places.length} 个{country === 'usa' ? '热门州' : '州和领地'}</h2></div></div>
+      <div class="section-hd"><div><h2>{country === 'usa' ? t('{n} 个热门州', { n: places.length }) : t('{n} 个州和领地', { n: places.length })}</h2></div></div>
       <div class="grid g-4">
         {places.map((p) => (
           <a class="place reveal" href={p.href}>
@@ -170,19 +175,19 @@ const [hs, hl] = hero.sizes;
   <section class="section">
     <div class="wrap">
       <div class="section-hd">
-        <div><h2>拿来就能用的行程</h2></div>
-        <a class="more" href={`/trips/#${country}`}>全部 {trips.length} 条 →</a>
+        <div><h2>{t('拿来就能用的行程')}</h2></div>
+        <a class="more" href={`/trips/#${country}`}>{t('全部 {n} 条 →', { n: trips.length })}</a>
       </div>
       <div class="grid g-3">
-        {trips.slice(0, 6).map((t) => (
-          <a class="place reveal" href={t.href}>
+        {trips.slice(0, 6).map((x) => (
+          <a class="place reveal" href={x.href}>
             <div class="pic">
-              {t.cover && <img src={`${t.cover}-${country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
-              <span class="badge">{t.daysCount} 天</span>
+              {x.cover && <img src={`${x.cover}-${country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
             </div>
             <div class="body">
-              <h3>{t.title}</h3>
-              <p>{t.for}</p>
+              <h3>{x.title}</h3>
+              <p>{x.for}</p>
             </div>
           </a>
         ))}
@@ -194,14 +199,14 @@ const [hs, hl] = hero.sizes;
 <section class="section">
   <div class="wrap">
     <div class="section-hd">
-      <div><h2>到了{name}用得上</h2></div>
-      <a class="more" href={toolsHref}>全部 →</a>
+      <div><h2>{t('到了{name}用得上', { name })}</h2></div>
+      <a class="more" href={toolsHref}>{t('全部 →')}</a>
     </div>
     <div class="grid g-3 tools">
-      {tools.map((t) => (
-        <a class="tool reveal" href={t.href}>
-          <span class="tool-ico">{t.ico}</span>
-          <span><b>{t.t}</b><small>{t.d}</small></span>
+      {tools.map((x) => (
+        <a class="tool reveal" href={x.href}>
+          <span class="tool-ico">{x.ico}</span>
+          <span><b>{x.t}</b><small>{x.d}</small></span>
         </a>
       ))}
     </div>
@@ -291,7 +296,7 @@ const [hs, hl] = hero.sizes;
   .theme-feat .tc-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px; color: #fff; background: linear-gradient(0deg, rgba(20, 18, 14, .6), rgba(20, 18, 14, 0)); }
   .theme-feat .tc-body b { font-size: 26px; }
   .theme-feat .tc-body small { color: rgba(255, 255, 255, .88); font-size: 13.5px; }
-  .theme-feat .theme-card::after { content: "当季"; position: absolute; top: 12px; left: 12px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .theme-feat .theme-card::after { content: attr(data-now); position: absolute; top: 12px; left: 12px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
   @media (max-width: 900px) { .theme-rest { grid-template-columns: repeat(7, 132px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; } .theme-rest > * { scroll-snap-align: start; } }
   @media (max-width: 560px) { .theme-feat { grid-template-columns: 1fr; } .theme-feat .pic { aspect-ratio: 16 / 9; } .theme-feat .tc-body b { font-size: 22px; } }
 
@@ -366,13 +371,13 @@ const [hs, hl] = hero.sizes;
   if (feat) {
     const m = new Date().getMonth() + 1;
     const season = m <= 2 || m === 12 ? 'winter' : m <= 5 ? 'spring' : m <= 8 ? 'summer' : 'autumn';
-    const meta: Record<string, [string, string[]]> = {
-      winter: ['冬天去哪', ['snow', 'onsen']], spring: ['春天去哪', ['sakura', 'flowers']],
-      summer: ['夏天去哪', ['sea', 'nature']], autumn: ['秋天去哪', ['autumn', 'onsen']],
+    const featuredBy: Record<string, string[]> = {
+      winter: ['snow', 'onsen'], spring: ['sakura', 'flowers'], summer: ['sea', 'nature'], autumn: ['autumn', 'onsen'],
     };
-    const [title, featured] = meta[season];
-    const h = document.querySelector('[data-season-title]');
-    if (h) h.textContent = title;
+    const featured = featuredBy[season];
+    const h = document.querySelector<HTMLElement>('[data-season-title]');
+    const titles = JSON.parse(h?.dataset.titles || '{}') as Record<string, string>;
+    if (h && titles[season]) h.textContent = titles[season];
     featured.forEach((t) => {
       const c = document.querySelector<HTMLElement>(`[data-theme-card="${t}"]`);
       if (!c) return;

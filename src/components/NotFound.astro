@@ -1,0 +1,17 @@
+---
+// "Page not found" body shared by /404.html (Chinese) and /en/404.html, /ja/404.html.
+import { t, L } from '../lib/i18n';
+---
+<section class="wrap nf">
+  <img src="/img/themes/heritage-640.webp" alt="" width="640" height="427" />
+  <h1>{t('这条路好像走不通')}</h1>
+  <p>{t('页面可能搬家了，或者链接打错了。')}</p>
+  <div class="nf-a"><a class="btn primary" href={L('/')}>{t('回首页')}</a><button class="btn" type="button" data-open-search>{t('搜一搜')}</button></div>
+</section>
+<style>
+  .nf { text-align: center; padding: 60px 0; display: grid; justify-items: center; gap: 12px; }
+  .nf img { width: min(420px, 90%); border-radius: 20px; box-shadow: var(--sh-2); margin-bottom: 10px; }
+  .nf h1 { font-size: 32px; }
+  .nf p { color: var(--mut); }
+  .nf-a { display: flex; gap: 10px; margin-top: 8px; }
+</style>

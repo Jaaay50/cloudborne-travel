@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { t, lang, L, basePath, hasPage, clientDict, LANGS, HTML_LANG, LANG_LABEL, LANG_SHORT } from '../lib/i18n';
 
 interface Props {
   title: string;
@@ -10,20 +11,26 @@ interface Props {
 }
 const { title, description, image = '/og.jpg', nav, noindex = false } = Astro.props;
 const site = Astro.site!;
-const canonical = new URL(Astro.url.pathname, site).href;
-const fullTitle = title === '栖云旅行' ? '栖云旅行 · 日本、澳大利亚、美国旅行指南' : `${title} · 栖云旅行`;
+const l = lang();
+const here = basePath(Astro.url.pathname);
+const canonical = new URL(L(here), site).href;
+const brand = t('栖云旅行');
+const fullTitle = title === brand ? t('栖云旅行 · 日本、澳大利亚、美国旅行指南') : `${title} · ${brand}`;
 const ogImage = new URL(image, site).href;
 const links = [
-  { id: 'japan', href: '/japan/', text: '日本' },
-  { id: 'australia', href: '/australia/', text: '澳大利亚' },
-  { id: 'usa', href: '/usa/', text: '美国' },
-  { id: 'quick', href: '/quick/', text: '快速攻略' },
-  { id: 'trips', href: '/trips/', text: '行程模板' },
-  { id: 'budget', href: '/budget/', text: '算预算' },
-];
+  { id: 'japan', href: '/japan/', text: t('日本') },
+  { id: 'australia', href: '/australia/', text: t('澳大利亚') },
+  { id: 'usa', href: '/usa/', text: t('美国') },
+  { id: 'quick', href: '/quick/', text: t('快速攻略') },
+  { id: 'trips', href: '/trips/', text: t('行程模板') },
+  { id: 'budget', href: '/budget/', text: t('算预算') },
+].map((x) => ({ ...x, href: L(x.href) }));
+// Same page in the other languages (falls back to that language's home when a page is missing there).
+const alternates = LANGS.map((x) => ({ l: x, href: hasPage(x, here) ? L(here, x) : L('/', x) }));
+const dict = clientDict();
 ---
 <!doctype html>
-<html lang="zh-Hans">
+<html lang={HTML_LANG[l]} data-lang={l} data-lp={l === 'zh' ? '' : `/${l}`}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -31,14 +38,17 @@ const links = [
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
+    {!noindex && alternates.filter((a) => hasPage(a.l, here)).map((a) => <link rel="alternate" hreflang={HTML_LANG[a.l]} href={new URL(a.href, site).href} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(here, site).href} />}
     <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="manifest" href={L('/manifest.webmanifest')} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="栖云旅行" />
+    <meta property="og:site_name" content={brand} />
+    <meta property="og:locale" content={{ zh: 'zh_CN', en: 'en_US', ja: 'ja_JP' }[l]} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -49,31 +59,41 @@ const links = [
   <body>
     <header class="hdr" id="hdr">
       <div class="wrap">
-        <a class="brand" href="/" aria-label="栖云旅行 首页">
+        <a class="brand" href={L('/')} aria-label={t('栖云旅行 首页')}>
           <img src="/favicon.svg" alt="" width="30" height="30" />
-          <b>栖云旅行</b>
+          <b>{brand}</b>
         </a>
-        <nav class="nav" aria-label="主导航">
-          {links.map((l) => <a href={l.href} aria-current={nav === l.id ? 'page' : undefined}>{l.text}</a>)}
+        <nav class="nav" aria-label={t('主导航')}>
+          {links.map((x) => <a href={x.href} aria-current={nav === x.id ? 'page' : undefined}>{x.text}</a>)}
         </nav>
         <div class="hdr-tools">
-          <button class="search-btn" type="button" data-open-search aria-label="搜索目的地、景点或美食">
+          <button class="search-btn" type="button" data-open-search aria-label={t('搜索目的地、景点或美食')}>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-            <span>搜索</span><kbd>/</kbd>
+            <span>{t('搜索')}</span><kbd>/</kbd>
           </button>
-          <a class="trip-btn" href="/plan/" aria-label="我的行程">
+          <div class="lang-sw" data-lang-sw>
+            <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label={t('切换语言')} data-lang-btn>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.2" stroke="currentColor" stroke-width="1.5" /><path d="M2.8 10h14.4M10 2.8c2 2.1 3 4.5 3 7.2s-1 5.1-3 7.2c-2-2.1-3-4.5-3-7.2s1-5.1 3-7.2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
+              <span>{LANG_SHORT[l]}</span>
+            </button>
+            <div class="lang-menu" role="menu" hidden data-lang-menu>
+              {alternates.map((a) => <a role="menuitemradio" aria-checked={a.l === l ? 'true' : 'false'} href={a.href} hreflang={HTML_LANG[a.l]} lang={HTML_LANG[a.l]} data-set-lang={a.l} data-no-lp>{LANG_LABEL[a.l]}</a>)}
+            </div>
+          </div>
+          <a class="trip-btn" href={L('/plan/')} aria-label={t('我的行程')}>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5 7.5 3.5l5 2 4.5-2v11l-4.5 2-5-2L3 16.5v-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M7.5 3.5v11M12.5 5.5v11" stroke="currentColor" stroke-width="1.6" /></svg>
-            行程<span class="trip-count" data-trip-count>0</span>
+            <span class="trip-word">{t('行程')}</span><span class="trip-count" data-trip-count>0</span>
           </a>
-          <button class="menu-btn" type="button" aria-label="菜单" aria-expanded="false" data-menu>
+          <button class="menu-btn" type="button" aria-label={t('菜单')} aria-expanded="false" data-menu>
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
           </button>
         </div>
       </div>
     </header>
-    <nav class="mobile-nav" aria-label="移动端导航" hidden data-mobile-nav>
-      {links.map((l) => <a href={l.href}>{l.text}</a>)}
-      <a href="/plan/">我的行程</a>
+    <nav class="mobile-nav" aria-label={t('移动端导航')} hidden data-mobile-nav>
+      {links.map((x) => <a href={x.href}>{x.text}</a>)}
+      <a href={L('/plan/')}>{t('我的行程')}</a>
+      <div class="mobile-lang">{alternates.map((a) => <a href={a.href} hreflang={HTML_LANG[a.l]} lang={HTML_LANG[a.l]} aria-current={a.l === l ? 'true' : undefined} data-set-lang={a.l}>{LANG_LABEL[a.l]}</a>)}</div>
     </nav>
 
     <main id="main"><slot /></main>
@@ -81,31 +101,33 @@ const links = [
     <footer class="ftr">
       <div class="wrap">
         <div class="row">
-          <a class="brand" href="/"><img src="/favicon.svg" alt="" width="24" height="24" /><b>栖云旅行</b></a>
+          <a class="brand" href={L('/')}><img src="/favicon.svg" alt="" width="24" height="24" /><b>{brand}</b></a>
         </div>
         <div class="row">
-          <a href="/japan/">日本</a><a href="/australia/">澳大利亚</a><a href="/usa/">美国</a><a href="/quick/">快速攻略</a>
-          <a href="/trips/">行程模板</a><a href="/japan/themes/">季节与主题</a><a href="/japan/tools/">随身工具</a>
-          <a href="/plan/">我的行程</a><a href="/budget/">算预算</a><a href="/about/">关于</a>
+          <a href={L('/japan/')}>{t('日本')}</a><a href={L('/australia/')}>{t('澳大利亚')}</a><a href={L('/usa/')}>{t('美国')}</a><a href={L('/quick/')}>{t('快速攻略')}</a>
+          <a href={L('/trips/')}>{t('行程模板')}</a><a href={L('/japan/themes/')}>{t('季节与主题')}</a><a href={L('/japan/tools/')}>{t('随身工具')}</a>
+          <a href={L('/plan/')}>{t('我的行程')}</a><a href={L('/budget/')}>{t('算预算')}</a><a href={L('/about/')}>{t('关于')}</a>
         </div>
         <div class="row">
-          <span>© {new Date().getFullYear()} <a href="https://cloudborne.cn">Cloudborne 栖云</a> · 票价和政策会变，出发前以官方为准</span>
+          <span>© {new Date().getFullYear()} <a href="https://cloudborne.cn">{t('Cloudborne 栖云')}</a> · {t('票价和政策会变，出发前以官方为准')}</span>
+          <span class="ftr-lang">{alternates.map((a, i) => <>{i > 0 && ' · '}<a href={a.href} hreflang={HTML_LANG[a.l]} lang={HTML_LANG[a.l]} aria-current={a.l === l ? 'true' : undefined} data-set-lang={a.l}>{LANG_LABEL[a.l]}</a></>)}</span>
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026056740号-1</a>
         </div>
       </div>
     </footer>
 
-    <dialog class="dlg" id="search-dlg" aria-label="搜索">
+    <dialog class="dlg" id="search-dlg" aria-label={t('搜索')}>
       <div class="search-box">
         <div class="field">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-          <input id="search-input" type="search" placeholder="京都、大堡礁、黄石、拉面…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="search-list" aria-autocomplete="list" />
+          <input id="search-input" type="search" placeholder={t('京都、大堡礁、黄石、拉面…')} autocomplete="off" role="combobox" aria-expanded="true" aria-controls="search-list" aria-autocomplete="list" />
           <button type="button" data-close-search>Esc</button>
         </div>
         <div class="search-results" id="search-list" role="listbox"></div>
       </div>
     </dialog>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    {Object.keys(dict).length > 0 && <script is:inline type="application/json" id="i18n-dict" set:html={JSON.stringify(dict).replace(/</g, '\\u003c')} />}
 
     <script>
       import '../scripts/site.ts';

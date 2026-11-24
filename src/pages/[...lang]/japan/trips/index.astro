@@ -1,0 +1,11 @@
+---
+// Old URL: the trip list now covers every country.
+import { t, L, lang, langPaths, HTML_LANG } from '../../../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+const to = L('/trips/') + '#japan';
+const canonical = new URL(L('/trips/'), Astro.site).href;
+---
+<html lang={HTML_LANG[lang()]}><head><meta charset="utf-8" /><title>{t('行程模板')} · {t('栖云旅行')}</title><meta name="robots" content="noindex" />
+<link rel="canonical" href={canonical} /><meta http-equiv="refresh" content={`0; url=${to}`} />
+<script is:inline define:vars={{ to }}>location.replace(to);</script></head><body><a href={to}>{t('行程模板')}</a></body></html>

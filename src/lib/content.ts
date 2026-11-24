@@ -1,8 +1,9 @@
-// Loads the hand-written Japan content (src/data/japan/**) at build time.
+// Loads the hand-written content (src/data/**, or its English / Japanese copy in src/i18n/<lang>/**)
+// at build time. Every export reads as the current render language (see lib/data.ts `live`).
 import { PREF_SLUGS, REGION_OF_PREF, REGIONS, type PrefSlug, type RegionSlug, type Season, type ThemeSlug } from './japan';
-import coversRaw from '../data/japan/covers.json';
 import { COUNTRIES, regionOf, type XCountry } from './countries';
 import photoIndex from '../data/photo-index.json';
+import { dataDir, dataFile, live, perLang } from './data';
 
 export interface Source { title: string; url: string }
 export interface Spot {
@@ -30,49 +31,41 @@ export interface Trip {
 }
 export interface Cover { scene: string; alt: string }
 
-const prefMods = import.meta.glob<Pref>('../data/japan/prefectures/*.json', { eager: true, import: 'default' });
-const regionMods = import.meta.glob<Region>('../data/japan/regions/*.json', { eager: true, import: 'default' });
-const tripMods = import.meta.glob<Trip>('../data/japan/trips/*.json', { eager: true, import: 'default' });
-
-const bySlug = <T extends { slug: string }>(mods: Record<string, T>) =>
-  Object.fromEntries(Object.values(mods).map((m) => [m.slug, m])) as Record<string, T>;
-
 // Optional fields default to empty so pages never crash on a spot without themes.
-for (const p of Object.values(prefMods)) for (const s of p.spots ?? []) s.themes ??= [];
-const prefMap = bySlug(prefMods) as Partial<Record<PrefSlug, Pref>>;
-const regionMap = bySlug(regionMods) as Partial<Record<RegionSlug, Region>>;
-
-export const prefs: Pref[] = PREF_SLUGS.map((s) => prefMap[s]).filter((p): p is Pref => !!p);
-export const getPref = (slug: PrefSlug) => prefMap[slug];
-export const getRegion = (slug: RegionSlug) => regionMap[slug];
-export const trips: Trip[] = Object.values(tripMods).sort((a, b) => {
-  const ra = REGIONS.findIndex((r) => r.slug === a.region);
-  const rb = REGIONS.findIndex((r) => r.slug === b.region);
-  return ra - rb || a.daysCount - b.daysCount;
+const loadJapan = perLang((l) => {
+  const prefList = dataDir<Pref>('japan/prefectures', l);
+  for (const p of prefList) for (const s of p.spots ?? []) s.themes ??= [];
+  const prefMap = Object.fromEntries(prefList.map((p) => [p.slug, p])) as Partial<Record<PrefSlug, Pref>>;
+  const regionMap = Object.fromEntries(dataDir<Region>('japan/regions', l).map((r) => [r.slug, r])) as Partial<Record<RegionSlug, Region>>;
+  const tripList = dataDir<Trip>('japan/trips', l).sort((a, b) => {
+    const ra = REGIONS.findIndex((r) => r.slug === a.region);
+    const rb = REGIONS.findIndex((r) => r.slug === b.region);
+    return ra - rb || a.daysCount - b.daysCount;
+  });
+  return {
+    prefs: PREF_SLUGS.map((s) => prefMap[s]).filter((p): p is Pref => !!p),
+    prefMap, regionMap, trips: tripList,
+    covers: dataFile<Covers>('japan/covers.json', l)!,
+  };
 });
 
-export const covers = coversRaw as {
-  hero: Cover; prefectures: Record<PrefSlug, Cover>; regions: Partial<Record<RegionSlug, Cover>>; themes: Record<ThemeSlug, Cover>;
-};
+export const prefs: Pref[] = live((l) => loadJapan(l).prefs);
+export const getPref = (slug: PrefSlug) => loadJapan().prefMap[slug];
+export const getRegion = (slug: RegionSlug) => loadJapan().regionMap[slug];
+export const trips: Trip[] = live((l) => loadJapan(l).trips);
+
+interface Covers { hero: Cover; prefectures: Record<PrefSlug, Cover>; regions: Partial<Record<RegionSlug, Cover>>; themes: Record<ThemeSlug, Cover> }
+export const covers: Covers = live((l) => loadJapan(l).covers);
 
 export interface SpotRef extends Spot { pref: PrefSlug; prefName: string; region: RegionSlug; key: string }
-export const allSpots: SpotRef[] = prefs.flatMap((p) =>
+export const allSpots: SpotRef[] = live((l) => loadJapan(l).prefs.flatMap((p) =>
   p.spots.map((s) => ({ ...s, pref: p.slug, prefName: p.name, region: REGION_OF_PREF[p.slug], key: `${p.slug}/${s.id}` })),
-);
+));
 export interface FoodRef extends Food { pref: PrefSlug; prefName: string; key: string }
-export const allFoods: FoodRef[] = prefs.flatMap((p) => p.foods.map((f) => ({ ...f, pref: p.slug, prefName: p.name, key: `${p.slug}/${f.id}` })));
+export const allFoods: FoodRef[] = live((l) => loadJapan(l).prefs.flatMap((p) => p.foods.map((f) => ({ ...f, pref: p.slug, prefName: p.name, key: `${p.slug}/${f.id}` }))));
 
 export const spotByKey = (key: string) => allSpots.find((s) => s.key === key);
 export const foodByKey = (key: string) => allFoods.find((f) => f.key === key);
-
-/** Compact catalogue used by the client (planner, search). */
-export function clientCatalog() {
-  return {
-    p: prefs.map((p) => ({ s: p.slug, n: p.name, k: p.kana, e: p.en, r: p.region, t: p.tagline })),
-    s: allSpots.map((s) => ({ k: s.key, n: s.name, l: s.local ?? '', e: s.en ?? '', d: s.kind, t: s.time, ll: s.ll, th: s.themes, f: s.fee ?? '' })),
-    f: allFoods.map((f) => ({ k: f.key, n: f.name, l: f.local ?? '', w: f.where, pr: f.price ?? '' })),
-  };
-}
 
 export const mapLinks = (name: string, [lon, lat]: [number, number]) => ({
   amap: `https://uri.amap.com/marker?position=${lon},${lat}&name=${encodeURIComponent(name)}&coordinate=wgs84&callnative=1`,
@@ -105,26 +98,24 @@ export interface Guide {
   sources: Source[]; checked: string;
 }
 
-const auStates = import.meta.glob<XState>('../data/australia/states/*.json', { eager: true, import: 'default' });
-const usStates = import.meta.glob<XState>('../data/usa/states/*.json', { eager: true, import: 'default' });
-const auTrips = import.meta.glob<XTrip>('../data/australia/trips/*.json', { eager: true, import: 'default' });
-const usTrips = import.meta.glob<XTrip>('../data/usa/trips/*.json', { eager: true, import: 'default' });
-const guides = import.meta.glob<Guide>('../data/*/guide.json', { eager: true, import: 'default' });
-
 const order = (c: XCountry) => COUNTRIES[c].regions.flatMap((r) => r.states);
-const sortStates = (c: XCountry, list: XState[]) => list.sort((a, b) => order(c).indexOf(a.slug) - order(c).indexOf(b.slug));
-for (const s of [...Object.values(auStates), ...Object.values(usStates)]) for (const x of s.spots ?? []) x.themes ??= [];
+const loadX = perLang((l) => {
+  const states = (c: XCountry) => {
+    const list = dataDir<XState>(`${c}/states`, l);
+    for (const s of list) for (const x of s.spots ?? []) x.themes ??= [];
+    return list.sort((a, b) => order(c).indexOf(a.slug) - order(c).indexOf(b.slug));
+  };
+  const trips = (c: XCountry) => dataDir<XTrip>(`${c}/trips`, l).sort((a, b) => a.daysCount - b.daysCount);
+  return {
+    states: { australia: states('australia'), usa: states('usa') } as Record<XCountry, XState[]>,
+    trips: { australia: trips('australia'), usa: trips('usa') } as Record<XCountry, XTrip[]>,
+  };
+});
 
-export const statesOf: Record<XCountry, XState[]> = {
-  australia: sortStates('australia', Object.values(auStates)),
-  usa: sortStates('usa', Object.values(usStates)),
-};
-export const getState = (c: XCountry, slug: string) => statesOf[c].find((s) => s.slug === slug);
-export const tripsOf: Record<XCountry, XTrip[]> = {
-  australia: Object.values(auTrips).sort((a, b) => a.daysCount - b.daysCount),
-  usa: Object.values(usTrips).sort((a, b) => a.daysCount - b.daysCount),
-};
-export const guideOf = (c: XCountry) => guides[`../data/${c}/guide.json`] as Guide | undefined;
+export const statesOf: Record<XCountry, XState[]> = live((l) => loadX(l).states);
+export const getState = (c: XCountry, slug: string) => loadX().states[c].find((s) => s.slug === slug);
+export const tripsOf: Record<XCountry, XTrip[]> = live((l) => loadX(l).trips);
+export const guideOf = (c: XCountry) => dataFile<Guide>(`${c}/guide.json`);
 
 export interface XSpotRef extends XSpot { country: XCountry; state: string; stateName: string; region: string; key: string }
 export interface XFoodRef extends XFood { country: XCountry; state: string; stateName: string; key: string }

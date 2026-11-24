@@ -1,7 +1,8 @@
 // Lazily loaded catalogue of prefectures, spots, foods, themes, trips and tools (built by /catalog.json).
 /** Place: s = place key ("kyoto", "us.utah"), c = country, i = cover image prefix, ph = cover is a photo, m = best months. */
 export interface CatPref { s: string; c: string; n: string; k: string; e: string; r: string; t: string; d: string; m: number[]; i: string; ph: number }
-export interface CatSpot { k: string; n: string; l: string; e: string; d: string; t: string; ll: [number, number]; th: string[]; f: string; ph?: number; o?: number[] }
+/** Spot: t = time text; h = rough hours [quick planner, day planner]; x = 1 when pricey. Both come from the Chinese source. */
+export interface CatSpot { k: string; n: string; l: string; e: string; d: string; t: string; h: [number, number]; x: number; ll: [number, number]; th: string[]; f: string; ph?: number; o?: number[] }
 export interface CatFood { k: string; n: string; l: string; w: string; pr: string; ph?: number }
 export interface CatLink { n: string; u: string; d: string; k?: string }
 export interface Catalog {
@@ -17,7 +18,7 @@ export interface Catalog {
 let cache: Promise<Catalog> | null = null;
 export function getCatalog(): Promise<Catalog> {
   if (!cache) {
-    cache = fetch('/catalog.json').then((r) => {
+    cache = fetch(`${document.documentElement.dataset.lp || ''}/catalog.json`).then((r) => {
       if (!r.ok) throw new Error('catalog ' + r.status);
       return r.json();
     });

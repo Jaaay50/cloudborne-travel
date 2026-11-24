@@ -1,14 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import { TOOLS, type Src } from '../lib/toolkit';
+import { t, lang, hasPage, listSep } from '../lib/i18n';
 interface Props { slug: string; title: string; description: string; lead?: string; sources?: Src[] | null; checked?: string }
 const { slug, title, description, lead, sources, checked = '2026-11' } = Astro.props;
+// Tools this language has (Japanese readers get no Japanese phrase cards).
+const tools = TOOLS.filter((x) => hasPage(lang(), `/japan/tools/${x.slug}/`));
 ---
 <Base title={title} description={description} nav="japan">
   <div class="wrap tool-layout">
-    <nav class="tool-nav no-print" aria-label="随身工具">
-      <a href="/japan/tools/" class="tn-all">随身工具</a>
-      {TOOLS.map((t) => <a href={`/japan/tools/${t.slug}/`} aria-current={t.slug === slug ? 'page' : undefined}><span>{t.ico}</span>{t.t}</a>)}
+    <nav class="tool-nav no-print" aria-label={t('随身工具')}>
+      <a href="/japan/tools/" class="tn-all">{t('随身工具')}</a>
+      {tools.map((x) => <a href={`/japan/tools/${x.slug}/`} aria-current={x.slug === slug ? 'page' : undefined}><span>{x.ico}</span>{x.t}</a>)}
     </nav>
     <div class="tool-main">
       <header class="tool-head">
@@ -17,7 +20,7 @@ const { slug, title, description, lead, sources, checked = '2026-11' } = Astro.p
       </header>
       <slot />
       {sources && sources.length > 0 && (
-        <details class="tool-src"><summary>来源（{checked}）</summary><p>{sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p></details>
+        <details class="tool-src"><summary>{t('来源（{date}）', { date: checked })}</summary><p>{sources.map((s, i) => <>{i > 0 && listSep()}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p></details>
       )}
     </div>
   </div>

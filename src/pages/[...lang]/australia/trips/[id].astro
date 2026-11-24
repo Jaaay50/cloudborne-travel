@@ -1,0 +1,16 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import TripPage from '../../../../components/TripPage.astro';
+import { tripsAll } from '../../../../lib/world';
+import { t, LANGS, runLang } from '../../../../lib/i18n';
+
+export function getStaticPaths() {
+  const ids = runLang('zh', () => tripsAll('australia').map((x) => x.id));
+  return LANGS.flatMap((l) => ids.map((id) => ({ params: { lang: l === 'zh' ? undefined : l, id } })));
+}
+const trip = tripsAll('australia').find((x) => x.id === Astro.params.id)!;
+const crumbs = [{ href: '/australia/', text: t('澳大利亚') }, { href: '/trips/', text: t('行程模板') }];
+---
+<Base title={trip.title} description={t('{title}：{summary}', { title: trip.title, summary: trip.summary })} image={trip.cover ? `${trip.cover}-1600.webp` : undefined} nav="trips">
+  <TripPage t={trip} crumbs={crumbs} />
+</Base>

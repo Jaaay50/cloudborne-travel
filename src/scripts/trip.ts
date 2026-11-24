@@ -1,5 +1,6 @@
 // Trip state kept in localStorage. Items are "s:<place>/<spot>" (spot) or "f:<place>/<food>" (food); see lib/keys.ts.
 import { ITEM_RE } from '../lib/keys';
+import { ct } from './i18n';
 export interface TripState {
   v: 1;
   title: string;
@@ -12,7 +13,7 @@ export interface TripState {
 const KEY = 'cbt.trip.v1';
 const listeners = new Set<(s: TripState) => void>();
 
-export const emptyTrip = (): TripState => ({ v: 1, title: '我的行程', start: null, days: [[]], pool: [], notes: {} });
+export const emptyTrip = (): TripState => ({ v: 1, title: ct('我的行程'), start: null, days: [[]], pool: [], notes: {} });
 
 function sanitize(raw: unknown): TripState {
   const s = emptyTrip();

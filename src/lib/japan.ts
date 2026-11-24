@@ -1,8 +1,10 @@
 // Static facts about Japan's 47 prefectures and 9 travel regions.
+// Exported name tables are translated() views (see lib/i18n.ts); slugs and colours are unchanged.
+import { translated } from './i18n';
 export const PREF_SLUGS = ['hokkaido', 'aomori', 'iwate', 'miyagi', 'akita', 'yamagata', 'fukushima', 'ibaraki', 'tochigi', 'gunma', 'saitama', 'chiba', 'tokyo', 'kanagawa', 'niigata', 'toyama', 'ishikawa', 'fukui', 'yamanashi', 'nagano', 'gifu', 'shizuoka', 'aichi', 'mie', 'shiga', 'kyoto', 'osaka', 'hyogo', 'nara', 'wakayama', 'tottori', 'shimane', 'okayama', 'hiroshima', 'yamaguchi', 'tokushima', 'kagawa', 'ehime', 'kochi', 'fukuoka', 'saga', 'nagasaki', 'kumamoto', 'oita', 'miyazaki', 'kagoshima', 'okinawa'] as const;
 export type PrefSlug = (typeof PREF_SLUGS)[number];
 
-export const PREF_NAMES: Record<PrefSlug, string> = {
+const PREF_NAMES_ZH: Record<PrefSlug, string> = {
   hokkaido: '北海道', aomori: '青森', iwate: '岩手', miyagi: '宫城', akita: '秋田', yamagata: '山形', fukushima: '福岛',
   ibaraki: '茨城', tochigi: '栃木', gunma: '群马', saitama: '埼玉', chiba: '千叶', tokyo: '东京', kanagawa: '神奈川',
   niigata: '新潟', toyama: '富山', ishikawa: '石川', fukui: '福井', yamanashi: '山梨', nagano: '长野', gifu: '岐阜',
@@ -34,19 +36,21 @@ const TONES: Record<RegionSlug, [string, string, string]> = {
   okinawa: ['冲绳', '#7fbccb', '#23687a'],
 };
 
-export const REGIONS: RegionMeta[] = RANGES.map(([slug, lo, hi]) => ({
+const REGIONS_ZH: RegionMeta[] = RANGES.map(([slug, lo, hi]) => ({
   slug,
   name: TONES[slug][0],
   tone: TONES[slug][1],
   ink: TONES[slug][2],
   prefs: PREF_SLUGS.slice(lo - 1, hi) as PrefSlug[],
 }));
-export const REGION_BY_SLUG = Object.fromEntries(REGIONS.map((r) => [r.slug, r])) as Record<RegionSlug, RegionMeta>;
+export const PREF_NAMES = translated(PREF_NAMES_ZH);
+export const REGIONS = translated(REGIONS_ZH);
+export const REGION_BY_SLUG = translated(Object.fromEntries(REGIONS_ZH.map((r) => [r.slug, r])) as Record<RegionSlug, RegionMeta>);
 export const REGION_OF_PREF = Object.fromEntries(REGIONS.flatMap((r) => r.prefs.map((p) => [p, r.slug]))) as Record<PrefSlug, RegionSlug>;
 /** Regions that consist of a single prefecture share its page. */
 export const SINGLE_PREF_REGIONS = new Set<RegionSlug>(['hokkaido', 'okinawa']);
 
-export const THEMES = {
+const THEMES_ZH = {
   sakura: { name: '赏樱', tone: '#d77b92', season: '3 月下旬 – 5 月上旬' },
   flowers: { name: '花海', tone: '#9a7bc2', season: '4 月 – 8 月' },
   autumn: { name: '红叶', tone: '#c9532f', season: '10 月中 – 12 月上旬' },
@@ -57,12 +61,15 @@ export const THEMES = {
   nature: { name: '山野', tone: '#5c8a4e', season: '春 – 秋' },
   art: { name: '艺术', tone: '#4a5fa0', season: '全年' },
 } as const;
-export type ThemeSlug = keyof typeof THEMES;
+export const THEMES = translated(THEMES_ZH);
+export type ThemeSlug = keyof typeof THEMES_ZH;
 export const THEME_SLUGS = Object.keys(THEMES) as ThemeSlug[];
 
-export const KIND_NAMES: Record<string, string> = {
+const KIND_NAMES_ZH: Record<string, string> = {
   temple: '寺院', shrine: '神社', castle: '城郭', nature: '自然', onsen: '温泉', city: '街区', street: '老街',
   museum: '美术馆', garden: '庭园', market: '市场', park: '公园', island: '海岛', viewpoint: '观景', 'theme-park': '乐园', hiking: '徒步',
 };
-export const SEASON_NAMES = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' } as const;
-export type Season = keyof typeof SEASON_NAMES;
+const SEASON_NAMES_ZH = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' } as const;
+export type Season = keyof typeof SEASON_NAMES_ZH;
+export const KIND_NAMES = translated(KIND_NAMES_ZH);
+export const SEASON_NAMES = translated(SEASON_NAMES_ZH);

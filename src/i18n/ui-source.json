@@ -1,0 +1,2846 @@
+{
+  "strings": [
+    "+ 加一天",
+    "10 月中 – 12 月上旬",
+    "10–4 月",
+    "12 月 – 2 月",
+    "12–3 月",
+    "2026 年 11 月 1 日起日本免税改为出境退税：先付含税价，出境时海关确认后退还消费税。规则、步骤、常见问题和速算。",
+    "2026 年 11 月起出境退税",
+    "2026 年 11 月起改为出境退税",
+    "2026 年去日本要知道的新变化：出国税涨到 3,000 日元、免税改出境退税、京都和北海道住宿税等，附官方来源。",
+    "2026 新规",
+    "2026 新规速览",
+    "2–5 月采收季",
+    "3 天以内",
+    "3 月下旬 – 5 月上旬",
+    "3–5 月、9–10 月",
+    "4 月 – 8 月",
+    "47 个都道府县",
+    "4–10 月",
+    "4–6 天",
+    "5 月 – 10 月",
+    "5–9 月",
+    "6–9 月",
+    "7 个主要机场怎么进市区、多久、多少钱",
+    "7 个机场怎么进市区",
+    "7 天以上",
+    "8 个州和领地",
+    "8–11 月",
+    "9 月底–10 月",
+    "9–3 月",
+    "<b>内容</b>：景点、美食、交通和提醒都是我们自己写的，票价和政策尽量对照官方来源核对，每页底部能展开看来源。这些信息会变，出发前请再确认一次。",
+    "<b>图片</b>：日本各地的封面是木刻版画风格插画；景点、美食和澳大利亚、美国各州的图片由 AI 按实景描述生成，用来帮你认出地方，不是实拍照片。",
+    "<b>地图</b>：边界来自 Natural Earth（公有领域），做过简化，不适合测量。导航请点景点旁的地图链接。",
+    "<b>天气</b>：每月气温和降水来自 <a href=\"https://open-meteo.com/\" target=\"_blank\" rel=\"noopener\">Open-Meteo</a>（ERA5 再分析数据，1996–2025 年平均），是大致参考。",
+    "<b>离线</b>：打开过的页面会存到手机里，没信号也能看。在浏览器里「添加到主屏幕」，用起来像 App。",
+    "<b>隐私</b>：不用注册。行程、清单、收藏只存在你自己的浏览器里，我们看不到。分享链接把行程编码在网址里，只有拿到链接的人能看到。",
+    "Apple 地图",
+    "Cloudborne 栖云",
+    "Google 地图",
+    "IC 卡 新干线 行李 周游券",
+    "IC 卡、新干线行李、周游券值不值",
+    "iPhone：用 Safari 打开本站 → 点底部「分享」→「添加到主屏幕」。",
+    "{country} {days} 天 · {people} 人 预算（{cur}）",
+    "{country}出行须知 →",
+    "{country}的小费和退税 →",
+    "{days} 天，{spots} 个景点，{foods} 个美食",
+    "{month}：最高 {hi}°C，最低 {lo}°C，降水 {mm} 毫米，约 {days} 天有雨",
+    "{name}出行须知",
+    "{name}在{region}",
+    "{name}地图",
+    "{name}完整攻略 →",
+    "{name}旅行攻略",
+    "{name}旅行攻略：{tagline}。{n} 个都道府县的看点、交通、周游券与行程。",
+    "{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种地方美食、交通与住宿建议。",
+    "{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种美食、交通与住宿建议。",
+    "{name}行程模板",
+    "{name}适合",
+    "{n} 个地区",
+    "{n} 个地点",
+    "{n} 个州 · {spots} 个景点",
+    "{n} 个州和领地",
+    "{n} 个州和领地 · {spots} 个景点",
+    "{n} 个景点",
+    "{n} 个热门州",
+    "{n} 个热门州 · {spots} 个景点",
+    "{n} 个都道府县",
+    "{n} 个都道府县 · {spots} 个景点",
+    "{n} 天",
+    "{n} 项",
+    "{place} {n} 晚",
+    "{spots} 个景点 · {foods} 种美食",
+    "— 栖云旅行",
+    "— 用栖云旅行排的行程",
+    "一个人",
+    "一分钟生成攻略",
+    "一分钟生成攻略 →",
+    "一周以上、跨很多县，可以对比一下 JR Pass 或地区周游券的价格。",
+    "一天跨 {n} 个地方，路上时间会很长",
+    "一般商品 {pct}%",
+    "一键安装",
+    "一页算清日本、澳大利亚、美国旅行花费：机票、住宿、交通、吃饭、门票和购物，按人数和天数分摊，汇率每天更新。",
+    "三重",
+    "上一步",
+    "上移",
+    "下一步",
+    "下移",
+    "不太在意",
+    "不知道怎么排？回答 5 个问题。",
+    "东京",
+    "东北",
+    "东北部",
+    "两个人",
+    "中国地方",
+    "中西部",
+    "中部",
+    "主导航",
+    "主要城市",
+    "主题",
+    "主题月历",
+    "乐园",
+    "乐园亲子",
+    "九州",
+    "亚利桑那",
+    "亚拉巴马",
+    "交通",
+    "交通与自驾",
+    "交通住宿",
+    "交通常识",
+    "交通常识 →",
+    "京都",
+    "京都、大堡礁、黄石、拉面…",
+    "人数",
+    "人民币",
+    "什么时候去",
+    "什么时候去，去看什么",
+    "从{a}到{b}",
+    "从{from}",
+    "从一座城、一碗面、一场红叶开始。",
+    "从直岛的地中美术馆到城市里的建筑，日本的当代艺术和建筑值得专门安排一天。不少美术馆要预约，周一常休。",
+    "以{city}为准",
+    "价格类型",
+    "伊利诺伊",
+    "位置",
+    "住 {stay}",
+    "住京都",
+    "住哪里",
+    "住宿",
+    "住：{bases}",
+    "佐治亚",
+    "佐贺",
+    "佛罗里达",
+    "佛蒙特",
+    "你正在看别人分享的行程。",
+    "你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）",
+    "你的行程里已经有内容。用这份攻略替换掉吗？",
+    "例如 33000",
+    "俄亥俄",
+    "俄克拉何马",
+    "俄勒冈",
+    "保存为我的行程",
+    "保存图片",
+    "保险（{cur}）",
+    "先去挑几个想去的地方吧。",
+    "先在行程里列出要坐的长途段，把单程票价加起来，再和周游券比。只在一个城市玩，基本不需要。",
+    "全国",
+    "全国几千处温泉，各有泉质和气氛。老温泉街适合住一晚，穿着浴衣散步；城市近郊的适合当天来回。",
+    "全年",
+    "全年，冬天最好",
+    "全澳",
+    "全美",
+    "全部",
+    "全部 {n} 条 →",
+    "全部 →",
+    "全部主题 →",
+    "全部地区",
+    "公园",
+    "关东",
+    "关于",
+    "关于栖云旅行",
+    "关西",
+    "关闭",
+    "兵库",
+    "其他主题",
+    "具",
+    "内华达",
+    "内容整理中。",
+    "内布拉斯加",
+    "冈山",
+    "再试一次",
+    "冬",
+    "冬天去哪",
+    "冰雪",
+    "冲绳",
+    "冲绳 · 奄美",
+    "冲绳和九州南部的海是热带色，濑户内海是平静的岛群，太平洋一侧有大浪和海岸线。夏秋要留意台风。",
+    "几人一间",
+    "几月出发？",
+    "出发前知道这些",
+    "出发日",
+    "出国税 住宿税 免税改退税",
+    "出国税、住宿税、免税改退税",
+    "出行须知",
+    "分享",
+    "分享链接",
+    "分享链接已复制，发给同行的人就能看到这份行程",
+    "分类",
+    "切换语言",
+    "删除这天",
+    "到了{name}用得上",
+    "到了日本，打开就能用",
+    "刷卡、小费、退税",
+    "加入行程",
+    "加州",
+    "勾选，自动保存",
+    "北卡",
+    "北海道",
+    "北达科他",
+    "北领地",
+    "千叶",
+    "华盛顿州",
+    "华盛顿特区",
+    "南半球的海、<br />红土和城市。",
+    "南卡",
+    "南澳",
+    "南达科他",
+    "南部",
+    "印第安纳",
+    "即将生效",
+    "历史古迹",
+    "去{city}",
+    "去{name}之前",
+    "去哪、几天、几个人、预算、喜欢什么。马上给你一份按天排好的行程，可以直接改。",
+    "去哪儿？",
+    "去挑几个 →",
+    "去排行程",
+    "去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。",
+    "去日本用得上的日语句子：点餐忌口、购物退税、酒店、交通、寄行李、药店就医、求助。点一下放大给店员看。",
+    "去日本用得上的离线工具：日语大字卡、机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。",
+    "去日本用得上的离线工具：机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。",
+    "去澳大利亚之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。",
+    "去看看 →",
+    "去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。",
+    "县",
+    "发现错误或有建议，写信到 <a href=\"mailto:contact@cloudborne.cn\">contact@cloudborne.cn</a>。",
+    "古迹",
+    "可多选",
+    "可退的消费税",
+    "吃 {name}",
+    "吃什么",
+    "吃饭",
+    "合计（{cur}）",
+    "合计：{total}，每人 {per}",
+    "含税价",
+    "周游券值不值",
+    "和歌山",
+    "和谁一起？",
+    "哪些是 8%，哪些是 10%",
+    "商品类型",
+    "喜欢什么？",
+    "四国",
+    "回到我的行程",
+    "回答几个选择题：去哪、什么时候、几天、几个人、预算和喜好，马上生成一份按天排好的行程。",
+    "回首页",
+    "国内航班 / 租车",
+    "国家",
+    "国家公园",
+    "国家公园、<br />海岸和大城市。",
+    "在地图上，<br />找到你的日本。",
+    "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。",
+    "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线，以及护照丢失、就医、地震时怎么办。",
+    "在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。",
+    "在景点旁点「加入行程」，会先放在这里。",
+    "地",
+    "地图",
+    "地图：点击地区放大，再点{unit}查看",
+    "地标",
+    "坐车常识",
+    "城市",
+    "城郭",
+    "埼玉",
+    "堪萨斯",
+    "塔斯马尼亚",
+    "填你的往返机票价",
+    "复制下面的文字：",
+    "复制到我的行程",
+    "复制文字",
+    "复制明细给同行",
+    "复制这个链接：",
+    "复制：",
+    "夏",
+    "夏天去哪",
+    "夏威夷",
+    "多看几个",
+    "大交通与其他",
+    "大分",
+    "大堡礁、乌鲁鲁、大洋路，再加一杯澳白。",
+    "大阪",
+    "天",
+    "天数",
+    "奈良",
+    "套用模板 →",
+    "威斯康星",
+    "存成我的行程，接着改",
+    "季",
+    "季节与主题",
+    "安全与天气",
+    "安卓：用 Chrome 打开 → 右上角菜单 →「添加到主屏幕」或「安装应用」。",
+    "官方说明",
+    "官网",
+    "宫城",
+    "宫崎",
+    "宽裕",
+    "宾州",
+    "密歇根",
+    "密苏里",
+    "密西西比",
+    "富山",
+    "寺社、城郭和老街，是日本旅行最不受季节影响的部分。去得早一点，人少、光线也好。",
+    "寺院",
+    "导航",
+    "小票上的金额（日元）",
+    "山口",
+    "山形",
+    "山梨",
+    "山野",
+    "山野自然",
+    "岐阜",
+    "岛根",
+    "岩手",
+    "州",
+    "州和领地",
+    "已从行程移除「{name}」",
+    "已加入",
+    "已复制文字版，可以直接粘贴到微信",
+    "已复制预算明细",
+    "已完成",
+    "已把「{name}」加入行程",
+    "已经是顺路的顺序了",
+    "市内交通",
+    "市场",
+    "带孩子",
+    "带孩子的话，每天只排一个重点，其余随缘。",
+    "带父母",
+    "常见问题",
+    "平均最低气温（°C）",
+    "平均最高气温（°C）",
+    "广岛",
+    "庭园",
+    "康涅狄格",
+    "建议 {days}",
+    "开始 →",
+    "弗吉尼亚",
+    "当季",
+    "待安排",
+    "徒步",
+    "得州",
+    "德岛",
+    "快速攻略",
+    "快速生成攻略",
+    "怀俄明",
+    "怎么去 · 住哪里",
+    "怎么进出",
+    "怎么退",
+    "恢复默认",
+    "想去哪儿，<br />先在这儿排好。",
+    "慢慢玩",
+    "成田 羽田 关西 中部 新千岁 福冈 那霸",
+    "成田、羽田、关西、中部、新千岁、福冈、那霸机场到市区的交通方式、时间和票价。",
+    "我的行程",
+    "打印",
+    "打印 / 存 PDF",
+    "打开地图",
+    "打开我的行程",
+    "把{name}加入行程",
+    "把想去的地方，排成一份行程。",
+    "把收藏的景点和美食排进每一天，看路线、估移动，生成分享链接。不用注册，存在你的浏览器里。",
+    "把景点拖到这里",
+    "报警 急救 使领馆",
+    "报警急救、使领馆",
+    "报警急救、使领馆、护照丢失",
+    "拨打 {number}",
+    "拨打 {n}",
+    "拿来就能用的行程",
+    "按 {n} 天算预算 →",
+    "按主题在地图上标出景点",
+    "按主题筛选景点",
+    "按同一店、同一天的税前合计判断是否满 {min} 日元，食品和其他商品可以合并凑数。算出来的是消费税全额，实际到手要减去退税公司的手续费（各家不同）。",
+    "按地区筛选",
+    "按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。",
+    "按季节去",
+    "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。",
+    "按距离排好每天的先后顺序",
+    "换一版",
+    "排好了，路上大约少走 {n} 公里",
+    "排顺序",
+    "探索地图",
+    "提前一个月以上订住宿和交通，价格差别很大。",
+    "提醒",
+    "搜一搜",
+    "搜目的地",
+    "搜索",
+    "搜索数据加载失败，请检查网络后重试。",
+    "搜索目的地、景点或美食",
+    "支付与小费",
+    "收藏",
+    "攻略整理中",
+    "数据没加载上，检查一下网络。",
+    "整理中",
+    "新",
+    "新南威尔士",
+    "新墨西哥",
+    "新州与堪培拉",
+    "新干线 / 周游券",
+    "新泽西",
+    "新潟",
+    "新罕布什尔",
+    "旅行预算计算",
+    "日元",
+    "日本",
+    "日本 2026 年 11 月起出境退税",
+    "日本 47 个都道府县的原创旅行指南：互动地图、{n} 个景点与地方美食、季节主题、行程模板和离线随身工具。",
+    "日本{name}去哪",
+    "日本{name}：{intro}… {n} 个精选景点。",
+    "日本、澳大利亚、美国。看攻略、排行程、算预算。",
+    "日本、澳大利亚、美国的原创旅行指南：互动地图、景点与美食配图、行程模板、一分钟生成攻略、预算计算和离线随身工具。",
+    "日本出国税和住宿税 →",
+    "日本坐车要知道的事：IC 卡、新干线大件行李预约、寄行李、出租车、末班车，以及 JR Pass 和地区周游券值不值。",
+    "日本旅行攻略",
+    "日本海一侧是世界上雪最多的地方之一。冬天去北海道、东北和北陆，看雪景、泡温泉、吃螃蟹，比夏天更有味道。",
+    "日语大字卡",
+    "昆士兰",
+    "明尼苏达",
+    "春",
+    "春 – 秋",
+    "春天去哪",
+    "晚（另收住宿税）",
+    "景",
+    "景点",
+    "景点加起来约 {n} 小时，可能排太满",
+    "最佳 {months}",
+    "最佳月份：{months}",
+    "月份",
+    "月降水量（毫米）",
+    "朋友结伴",
+    "本页目录",
+    "机场往返",
+    "机场进城",
+    "机票",
+    "机票 住宿 交通 吃喝 一页算清",
+    "机票、住宿、吃喝一页算清",
+    "来源（{date}）",
+    "极光星空",
+    "栃木",
+    "栖云旅行",
+    "栖云旅行 · 日本、澳大利亚、美国旅行指南",
+    "栖云旅行 · 行程",
+    "栖云旅行 首页",
+    "栖云旅行是 <a href=\"https://cloudborne.cn\">Cloudborne 栖云</a> 做的旅行指南，目前覆盖日本、澳大利亚和美国。把「去哪、怎么去、花多少、到了怎么办」放进一个打开就能用的地方。",
+    "栖云旅行是 Cloudborne 栖云做的旅行指南：日本、澳大利亚、美国。内容原创，不登录、不追踪。",
+    "概览",
+    "横过来",
+    "樱花之后还有一整季的花：4 月底紫藤和粉蝶花，6 月绣球，7 月北海道薰衣草。花期比樱花稳定，人也少一些。",
+    "樱花前线每年 3 月下旬从九州、东京一带出发，4 月中下旬到东北，5 月上旬抵达北海道。同一棵树满开只有一周左右，赶不上平地的，就往北走或者往山上走。",
+    "正在加载…",
+    "正常",
+    "每人",
+    "每人往返 · {cur}",
+    "每人每天",
+    "每天留出午休时间，长距离移动尽量放在上午。",
+    "每晚房费",
+    "每晚每间",
+    "每月天气",
+    "每月天气，以{city}为准，{source}",
+    "求助电话",
+    "汇率",
+    "没找到这一页",
+    "没有找到「{q}」，换个说法试试。",
+    "流量 / 保险 / 税",
+    "流量卡 / eSIM",
+    "浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。",
+    "浏览器不允许保存，关闭页面后行程会丢失。",
+    "海岛",
+    "海岛海滩",
+    "海滩",
+    "消费档位",
+    "涉及：{list}",
+    "清空",
+    "清空所有勾选？",
+    "清空整个行程？此操作无法撤销。",
+    "温泉",
+    "游玩 {time}",
+    "滋贺",
+    "澳元",
+    "澳大利亚",
+    "澳大利亚 8 个州和领地的原创旅行指南：互动地图、景点和美食实拍风格配图、行程模板、签证与入境须知。",
+    "澳大利亚出行须知",
+    "澳大利亚旅行攻略",
+    "火山、湖泊、峡谷和高原步道。很多山岳地带冬季封路，春末到秋天最好去，提前查开放期。",
+    "点一句，全屏给对方看。",
+    "点下面的「出行须知」看签证和入境要求。",
+    "点号码直接拨打。",
+    "点餐、忌口、购物、交通、求助",
+    "点餐、忌口、购物、交通、求助，放大给店员看",
+    "点餐、忌口、退税，直接给店员看",
+    "热门州与国家公园",
+    "熊本",
+    "爱媛",
+    "爱知",
+    "爱达荷",
+    "特拉华",
+    "犹他",
+    "玩几天？",
+    "生成中…",
+    "生成攻略",
+    "生成长图",
+    "田纳西",
+    "目录",
+    "目的地",
+    "省着花",
+    "省钱",
+    "看{name}完整攻略 →",
+    "看{region}全部 {n} 个县 →",
+    "石川",
+    "神奈川",
+    "神社",
+    "票价和政策会变，出发前以官方为准",
+    "福井",
+    "福冈",
+    "福岛",
+    "秋",
+    "秋天去哪",
+    "秋田",
+    "秋色",
+    "科罗拉多",
+    "移到",
+    "移到…",
+    "移动端导航",
+    "移除",
+    "程",
+    "税前 {pre} 日元。实际到手可能扣除退税机构的手续费。",
+    "税前 {pre} 日元，未满 {min} 日元，同一店当天合计要满这个数才能退。",
+    "税前价",
+    "第 {n} 天",
+    "第一次去",
+    "筛选",
+    "签证 EVUS 小费 自驾 紧急电话",
+    "签证 入境 小费 自驾 紧急电话",
+    "签证、入境、小费、自驾和紧急电话",
+    "签证与入境",
+    "算预算",
+    "紧急求助",
+    "紧急电话",
+    "紧急电话、使领馆",
+    "红叶",
+    "红叶从 9 月底的北海道大雪山开始，10 月中旬到东北和日光，11 月中下旬是京都、关西的高峰，九州和关东平地要到 12 月初。",
+    "约 {n} 小时",
+    "纽约",
+    "给对方看",
+    "维多利亚",
+    "缅因",
+    "罗得岛",
+    "美元",
+    "美国",
+    "美国出行须知",
+    "美国旅行攻略",
+    "美国热门州的原创旅行指南：国家公园、自驾路线、城市、景点和美食配图、行程模板、签证与入境须知。",
+    "美术馆",
+    "美食",
+    "群马",
+    "老街",
+    "肯塔基",
+    "自然",
+    "自由活动",
+    "自由活动，或去周边转转",
+    "自驾公路",
+    "自驾路线",
+    "舒服就好",
+    "舒适",
+    "艺术",
+    "艺术建筑",
+    "艾奥瓦",
+    "节奏",
+    "花海",
+    "茨城",
+    "菜单",
+    "蒙大拿",
+    "行前清单",
+    "行程",
+    "行程名称",
+    "行程模板",
+    "行程路线图",
+    "行程里换了约 {n} 次落脚地。考虑用寄行李服务，或减少换酒店的次数。",
+    "行程长图",
+    "街区",
+    "装到手机桌面",
+    "西弗吉尼亚",
+    "西海岸",
+    "西澳",
+    "西部山地",
+    "要准备什么、怎么申请",
+    "观景",
+    "规则要点",
+    "证",
+    "证件 支付 网络 行李",
+    "证件、支付、网络、插头，勾选自动保存",
+    "试试「京都」「大堡礁」「黄石」「温泉」「拉面」",
+    "读出来",
+    "购物",
+    "购物预算",
+    "赏樱",
+    "路易斯安那",
+    "运营方官网",
+    "还有 {n} 项没排进具体哪天。",
+    "还没定",
+    "还没有收藏。点句子右上角的 ★ 收藏常用的。",
+    "这一天还没安排",
+    "这个主题的景点还在整理中。",
+    "这个分享链接打不开，可能复制不完整。请让对方重新发一次。",
+    "这份行程",
+    "这是别人分享的行程。要保存成你自己的行程再修改吗？\n（会替换掉你现有的行程）",
+    "这条路好像走不通",
+    "这趟换 {n} 个地方住，行李尽量轻。",
+    "这趟要花多少钱",
+    "退税与计算",
+    "退税计算",
+    "适合去",
+    "选几个选项，马上出一份行程",
+    "选几个选项，马上生成一份行程",
+    "遇到证件丢失或被捕等情况，联系你所持护照国家的大使馆或领事馆。",
+    "遇到这些情况",
+    "酒庄",
+    "酒庄美食",
+    "重新选",
+    "重置",
+    "野生动物",
+    "长图没生成出来，再试一次。",
+    "长崎",
+    "长野",
+    "门票体验",
+    "阿拉斯加",
+    "阿肯色",
+    "降水 1 毫米以上的天数",
+    "随身工具",
+    "雪国",
+    "青森",
+    "静冈",
+    "页面不存在",
+    "页面可能搬家了，或者链接打错了。",
+    "顺路去",
+    "预算",
+    "食",
+    "食品饮料 {pct}%",
+    "首都领地",
+    "香川",
+    "马里兰",
+    "驾照、租车、国内航班",
+    "高知",
+    "鸟取",
+    "鹿儿岛",
+    "麻省",
+    "黄石、大峡谷、1 号公路，还有纽约的夜。",
+    "（适合去）"
+  ],
+  "client": [
+    "{country} {days} 天 · {people} 人 预算（{cur}）",
+    "{country}出行须知 →",
+    "{country}的小费和退税 →",
+    "{days} 天，{spots} 个景点，{foods} 个美食",
+    "{n} 个地点",
+    "{n} 个景点",
+    "{n} 天",
+    "{n} 项",
+    "{place} {n} 晚",
+    "— 栖云旅行",
+    "— 用栖云旅行排的行程",
+    "一周以上、跨很多县，可以对比一下 JR Pass 或地区周游券的价格。",
+    "一天跨 {n} 个地方，路上时间会很长",
+    "下一步",
+    "主题",
+    "交通",
+    "交通常识 →",
+    "从{a}到{b}",
+    "住宿",
+    "你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）",
+    "你的行程里已经有内容。用这份攻略替换掉吗？",
+    "先去挑几个想去的地方吧。",
+    "全国",
+    "具",
+    "再试一次",
+    "分享链接已复制，发给同行的人就能看到这份行程",
+    "删除这天",
+    "加入行程",
+    "即将生效",
+    "去排行程",
+    "吃 {name}",
+    "吃饭",
+    "合计：{total}，每人 {per}",
+    "国内航班 / 租车",
+    "地",
+    "复制下面的文字：",
+    "复制这个链接：",
+    "复制：",
+    "季",
+    "已从行程移除「{name}」",
+    "已加入",
+    "已复制文字版，可以直接粘贴到微信",
+    "已复制预算明细",
+    "已把「{name}」加入行程",
+    "已经是顺路的顺序了",
+    "带孩子的话，每天只排一个重点，其余随缘。",
+    "待安排",
+    "我的行程",
+    "按 {n} 天算预算 →",
+    "排好了，路上大约少走 {n} 公里",
+    "提前一个月以上订住宿和交通，价格差别很大。",
+    "搜索数据加载失败，请检查网络后重试。",
+    "数据没加载上，检查一下网络。",
+    "新干线 / 周游券",
+    "日本",
+    "景",
+    "景点",
+    "景点加起来约 {n} 小时，可能排太满",
+    "机票",
+    "栖云旅行",
+    "栖云旅行 · 行程",
+    "正在加载…",
+    "每天留出午休时间，长距离移动尽量放在上午。",
+    "没有找到「{q}」，换个说法试试。",
+    "流量 / 保险 / 税",
+    "浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。",
+    "浏览器不允许保存，关闭页面后行程会丢失。",
+    "涉及：{list}",
+    "清空所有勾选？",
+    "清空整个行程？此操作无法撤销。",
+    "游玩 {time}",
+    "澳大利亚",
+    "点下面的「出行须知」看签证和入境要求。",
+    "生成中…",
+    "生成攻略",
+    "目的地",
+    "移到…",
+    "程",
+    "税前 {pre} 日元。实际到手可能扣除退税机构的手续费。",
+    "税前 {pre} 日元，未满 {min} 日元，同一店当天合计要满这个数才能退。",
+    "第 {n} 天",
+    "约 {n} 小时",
+    "美国",
+    "美食",
+    "自由活动",
+    "自由活动，或去周边转转",
+    "行程",
+    "行程模板",
+    "行程里换了约 {n} 次落脚地。考虑用寄行李服务，或减少换酒店的次数。",
+    "试试「京都」「大堡礁」「黄石」「温泉」「拉面」",
+    "购物",
+    "还有 {n} 项没排进具体哪天。",
+    "这一天还没安排",
+    "这个分享链接打不开，可能复制不完整。请让对方重新发一次。",
+    "这份行程",
+    "这是别人分享的行程。要保存成你自己的行程再修改吗？\n（会替换掉你现有的行程）",
+    "这趟换 {n} 个地方住，行李尽量轻。",
+    "长图没生成出来，再试一次。",
+    "门票体验",
+    "随身工具",
+    "食"
+  ],
+  "where": {
+    "+ 加一天": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "10 月中 – 12 月上旬": [
+      "src/lib/japan.ts"
+    ],
+    "10–4 月": [
+      "src/lib/countries.ts"
+    ],
+    "12 月 – 2 月": [
+      "src/lib/japan.ts"
+    ],
+    "12–3 月": [
+      "src/lib/countries.ts"
+    ],
+    "2026 年 11 月 1 日起日本免税改为出境退税：先付含税价，出境时海关确认后退还消费税。规则、步骤、常见问题和速算。": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "2026 年 11 月起出境退税": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "2026 年 11 月起改为出境退税": [
+      "src/lib/toolkit.ts"
+    ],
+    "2026 年去日本要知道的新变化：出国税涨到 3,000 日元、免税改出境退税、京都和北海道住宿税等，附官方来源。": [
+      "src/pages/[...lang]/japan/tools/rules-2026.astro"
+    ],
+    "2026 新规": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "2026 新规速览": [
+      "src/pages/[...lang]/japan/tools/rules-2026.astro"
+    ],
+    "2–5 月采收季": [
+      "src/lib/countries.ts"
+    ],
+    "3 天以内": [
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "3 月下旬 – 5 月上旬": [
+      "src/lib/japan.ts"
+    ],
+    "3–5 月、9–10 月": [
+      "src/lib/countries.ts"
+    ],
+    "4 月 – 8 月": [
+      "src/lib/japan.ts"
+    ],
+    "47 个都道府县": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "4–10 月": [
+      "src/lib/countries.ts"
+    ],
+    "4–6 天": [
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "5 月 – 10 月": [
+      "src/lib/japan.ts"
+    ],
+    "5–9 月": [
+      "src/lib/countries.ts"
+    ],
+    "6–9 月": [
+      "src/lib/countries.ts"
+    ],
+    "7 个主要机场怎么进市区、多久、多少钱": [
+      "src/lib/toolkit.ts"
+    ],
+    "7 个机场怎么进市区": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "7 天以上": [
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "8 个州和领地": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "8–11 月": [
+      "src/lib/countries.ts"
+    ],
+    "9 月底–10 月": [
+      "src/lib/countries.ts"
+    ],
+    "9–3 月": [
+      "src/lib/countries.ts"
+    ],
+    "<b>内容</b>：景点、美食、交通和提醒都是我们自己写的，票价和政策尽量对照官方来源核对，每页底部能展开看来源。这些信息会变，出发前请再确认一次。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "<b>图片</b>：日本各地的封面是木刻版画风格插画；景点、美食和澳大利亚、美国各州的图片由 AI 按实景描述生成，用来帮你认出地方，不是实拍照片。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "<b>地图</b>：边界来自 Natural Earth（公有领域），做过简化，不适合测量。导航请点景点旁的地图链接。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "<b>天气</b>：每月气温和降水来自 <a href=\"https://open-meteo.com/\" target=\"_blank\" rel=\"noopener\">Open-Meteo</a>（ERA5 再分析数据，1996–2025 年平均），是大致参考。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "<b>离线</b>：打开过的页面会存到手机里，没信号也能看。在浏览器里「添加到主屏幕」，用起来像 App。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "<b>隐私</b>：不用注册。行程、清单、收藏只存在你自己的浏览器里，我们看不到。分享链接把行程编码在网址里，只有拿到链接的人能看到。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "Apple 地图": [
+      "src/components/PlacePage.astro"
+    ],
+    "Cloudborne 栖云": [
+      "src/layouts/Base.astro"
+    ],
+    "Google 地图": [
+      "src/components/PlacePage.astro"
+    ],
+    "IC 卡 新干线 行李 周游券": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "IC 卡、新干线行李、周游券值不值": [
+      "src/lib/toolkit.ts"
+    ],
+    "iPhone：用 Safari 打开本站 → 点底部「分享」→「添加到主屏幕」。": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "{country} {days} 天 · {people} 人 预算（{cur}）": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "{country}出行须知 →": [
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "{country}的小费和退税 →": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "{days} 天，{spots} 个景点，{foods} 个美食": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "{month}：最高 {hi}°C，最低 {lo}°C，降水 {mm} 毫米，约 {days} 天有雨": [
+      "src/components/ClimateTable.astro"
+    ],
+    "{name}出行须知": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "{name}在{region}": [
+      "src/pages/[...lang]/japan/[pref].astro"
+    ],
+    "{name}地图": [
+      "src/components/WorldMap.astro"
+    ],
+    "{name}完整攻略 →": [
+      "src/components/CountryHome.astro"
+    ],
+    "{name}旅行攻略": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "{name}旅行攻略：{tagline}。{n} 个都道府县的看点、交通、周游券与行程。": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种地方美食、交通与住宿建议。": [
+      "src/pages/[...lang]/japan/[pref].astro"
+    ],
+    "{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种美食、交通与住宿建议。": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "{name}行程模板": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "{name}适合": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "{n} 个地区": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "{n} 个地点": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "{n} 个州 · {spots} 个景点": [
+      "src/components/CountryHome.astro"
+    ],
+    "{n} 个州和领地": [
+      "src/components/CountryHome.astro"
+    ],
+    "{n} 个州和领地 · {spots} 个景点": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "{n} 个景点": [
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/japan/themes/[theme].astro",
+      "src/pages/[...lang]/japan/themes/index.astro",
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "{n} 个热门州": [
+      "src/components/CountryHome.astro"
+    ],
+    "{n} 个热门州 · {spots} 个景点": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "{n} 个都道府县": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "{n} 个都道府县 · {spots} 个景点": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/index.astro"
+    ],
+    "{n} 天": [
+      "src/components/CountryHome.astro",
+      "src/components/TripPage.astro",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/pages/[...lang]/trips/index.astro",
+      "src/scripts/quick.ts"
+    ],
+    "{n} 项": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "{place} {n} 晚": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "{spots} 个景点 · {foods} 种美食": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "— 栖云旅行": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "— 用栖云旅行排的行程": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "一个人": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "一分钟生成攻略": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "一分钟生成攻略 →": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "一周以上、跨很多县，可以对比一下 JR Pass 或地区周游券的价格。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "一天跨 {n} 个地方，路上时间会很长": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "一般商品 {pct}%": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "一键安装": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "一页算清日本、澳大利亚、美国旅行花费：机票、住宿、交通、吃饭、门票和购物，按人数和天数分摊，汇率每天更新。": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "三重": [
+      "src/lib/japan.ts"
+    ],
+    "上一步": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "上移": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "下一步": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "下移": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "不太在意": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "不知道怎么排？回答 5 个问题。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "东京": [
+      "src/lib/japan.ts"
+    ],
+    "东北": [
+      "src/lib/japan.ts"
+    ],
+    "东北部": [
+      "src/lib/countries.ts"
+    ],
+    "两个人": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "中国地方": [
+      "src/lib/japan.ts"
+    ],
+    "中西部": [
+      "src/lib/countries.ts"
+    ],
+    "中部": [
+      "src/lib/japan.ts"
+    ],
+    "主导航": [
+      "src/layouts/Base.astro"
+    ],
+    "主要城市": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "主题": [
+      "src/scripts/site.ts"
+    ],
+    "主题月历": [
+      "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "乐园": [
+      "src/lib/japan.ts"
+    ],
+    "乐园亲子": [
+      "src/lib/countries.ts"
+    ],
+    "九州": [
+      "src/lib/japan.ts"
+    ],
+    "亚利桑那": [
+      "src/lib/countries.ts"
+    ],
+    "亚拉巴马": [
+      "src/lib/countries.ts"
+    ],
+    "交通": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "交通与自驾": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "交通住宿": [
+      "src/components/PlacePage.astro"
+    ],
+    "交通常识": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "交通常识 →": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "京都": [
+      "src/lib/japan.ts"
+    ],
+    "京都、大堡礁、黄石、拉面…": [
+      "src/layouts/Base.astro"
+    ],
+    "人数": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "人民币": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "什么时候去": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "什么时候去，去看什么": [
+      "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "从{a}到{b}": [
+      "src/scripts/quick.ts"
+    ],
+    "从{from}": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "从一座城、一碗面、一场红叶开始。": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "从直岛的地中美术馆到城市里的建筑，日本的当代艺术和建筑值得专门安排一天。不少美术馆要预约，周一常休。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "以{city}为准": [
+      "src/components/ClimateTable.astro"
+    ],
+    "价格类型": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "伊利诺伊": [
+      "src/lib/countries.ts"
+    ],
+    "位置": [
+      "src/components/PlacePage.astro",
+      "src/components/TripPage.astro",
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "住 {stay}": [
+      "src/components/TripPage.astro"
+    ],
+    "住京都": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "住哪里": [
+      "src/components/PlacePage.astro"
+    ],
+    "住宿": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "住：{bases}": [
+      "src/components/TripPage.astro"
+    ],
+    "佐治亚": [
+      "src/lib/countries.ts"
+    ],
+    "佐贺": [
+      "src/lib/japan.ts"
+    ],
+    "佛罗里达": [
+      "src/lib/countries.ts"
+    ],
+    "佛蒙特": [
+      "src/lib/countries.ts"
+    ],
+    "你正在看别人分享的行程。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "你的行程里已经有内容。用这个模板替换掉吗？\n（取消则不改动）": [
+      "src/components/TripPage.astro"
+    ],
+    "你的行程里已经有内容。用这份攻略替换掉吗？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "例如 33000": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "俄亥俄": [
+      "src/lib/countries.ts"
+    ],
+    "俄克拉何马": [
+      "src/lib/countries.ts"
+    ],
+    "俄勒冈": [
+      "src/lib/countries.ts"
+    ],
+    "保存为我的行程": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "保存图片": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "保险（{cur}）": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "先去挑几个想去的地方吧。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "先在行程里列出要坐的长途段，把单程票价加起来，再和周游券比。只在一个城市玩，基本不需要。": [
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "全国": [
+      "src/components/WorldMap.astro",
+      "src/lib/atlas.ts"
+    ],
+    "全国几千处温泉，各有泉质和气氛。老温泉街适合住一晚，穿着浴衣散步；城市近郊的适合当天来回。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "全年": [
+      "src/lib/countries.ts",
+      "src/lib/japan.ts"
+    ],
+    "全年，冬天最好": [
+      "src/lib/japan.ts"
+    ],
+    "全澳": [
+      "src/lib/atlas.ts"
+    ],
+    "全美": [
+      "src/lib/atlas.ts"
+    ],
+    "全部": [
+      "src/components/PlacePage.astro",
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "全部 {n} 条 →": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/index.astro"
+    ],
+    "全部 →": [
+      "src/components/CountryHome.astro"
+    ],
+    "全部主题 →": [
+      "src/components/CountryHome.astro"
+    ],
+    "全部地区": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "公园": [
+      "src/lib/japan.ts"
+    ],
+    "关东": [
+      "src/lib/japan.ts"
+    ],
+    "关于": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/about.astro"
+    ],
+    "关于栖云旅行": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "关西": [
+      "src/lib/japan.ts"
+    ],
+    "关闭": [
+      "src/pages/[...lang]/japan/tools/phrases.astro",
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "兵库": [
+      "src/lib/japan.ts"
+    ],
+    "其他主题": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "具": [
+      "src/scripts/site.ts"
+    ],
+    "内华达": [
+      "src/lib/countries.ts"
+    ],
+    "内容整理中。": [
+      "src/components/GuidePage.astro",
+      "src/pages/[...lang]/japan/tools/airports.astro",
+      "src/pages/[...lang]/japan/tools/emergency.astro",
+      "src/pages/[...lang]/japan/tools/phrases.astro",
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "内布拉斯加": [
+      "src/lib/countries.ts"
+    ],
+    "冈山": [
+      "src/lib/japan.ts"
+    ],
+    "再试一次": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "冬": [
+      "src/lib/japan.ts"
+    ],
+    "冬天去哪": [
+      "src/components/CountryHome.astro"
+    ],
+    "冰雪": [
+      "src/lib/countries.ts"
+    ],
+    "冲绳": [
+      "src/lib/japan.ts"
+    ],
+    "冲绳 · 奄美": [
+      "src/lib/atlas.ts"
+    ],
+    "冲绳和九州南部的海是热带色，濑户内海是平静的岛群，太平洋一侧有大浪和海岸线。夏秋要留意台风。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "几人一间": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "几月出发？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "出发前知道这些": [
+      "src/components/PlacePage.astro"
+    ],
+    "出发日": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "出国税 住宿税 免税改退税": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "出国税、住宿税、免税改退税": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "出行须知": [
+      "src/components/GuidePage.astro"
+    ],
+    "分享": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "分享链接": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "分享链接已复制，发给同行的人就能看到这份行程": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "分类": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "切换语言": [
+      "src/layouts/Base.astro"
+    ],
+    "删除这天": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "到了{name}用得上": [
+      "src/components/CountryHome.astro"
+    ],
+    "到了日本，打开就能用": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "刷卡、小费、退税": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "加入行程": [
+      "src/components/PlacePage.astro",
+      "src/scripts/site.ts"
+    ],
+    "加州": [
+      "src/lib/countries.ts"
+    ],
+    "勾选，自动保存": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "北卡": [
+      "src/lib/countries.ts"
+    ],
+    "北海道": [
+      "src/lib/japan.ts"
+    ],
+    "北达科他": [
+      "src/lib/countries.ts"
+    ],
+    "北领地": [
+      "src/lib/countries.ts"
+    ],
+    "千叶": [
+      "src/lib/japan.ts"
+    ],
+    "华盛顿州": [
+      "src/lib/countries.ts"
+    ],
+    "华盛顿特区": [
+      "src/lib/countries.ts"
+    ],
+    "南半球的海、<br />红土和城市。": [
+      "src/pages/[...lang]/australia/index.astro"
+    ],
+    "南卡": [
+      "src/lib/countries.ts"
+    ],
+    "南澳": [
+      "src/lib/countries.ts"
+    ],
+    "南达科他": [
+      "src/lib/countries.ts"
+    ],
+    "南部": [
+      "src/lib/countries.ts"
+    ],
+    "印第安纳": [
+      "src/lib/countries.ts"
+    ],
+    "即将生效": [
+      "src/pages/[...lang]/japan/tools/rules-2026.astro"
+    ],
+    "历史古迹": [
+      "src/lib/countries.ts"
+    ],
+    "去{city}": [
+      "src/pages/[...lang]/japan/tools/airports.astro"
+    ],
+    "去{name}之前": [
+      "src/components/GuidePage.astro"
+    ],
+    "去哪、几天、几个人、预算、喜欢什么。马上给你一份按天排好的行程，可以直接改。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "去哪儿？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "去挑几个 →": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "去排行程": [
+      "src/scripts/site.ts"
+    ],
+    "去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。": [
+      "src/pages/[...lang]/japan/tools/checklist.astro"
+    ],
+    "去日本用得上的日语句子：点餐忌口、购物退税、酒店、交通、寄行李、药店就医、求助。点一下放大给店员看。": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "去日本用得上的离线工具：日语大字卡、机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "去日本用得上的离线工具：机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "去澳大利亚之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。": [
+      "src/pages/[...lang]/australia/guide.astro"
+    ],
+    "去看看 →": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。": [
+      "src/pages/[...lang]/usa/guide.astro"
+    ],
+    "县": [
+      "src/lib/atlas.ts"
+    ],
+    "发现错误或有建议，写信到 <a href=\"mailto:contact@cloudborne.cn\">contact@cloudborne.cn</a>。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "古迹": [
+      "src/lib/japan.ts"
+    ],
+    "可多选": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "可退的消费税": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "吃 {name}": [
+      "src/components/TripPage.astro",
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "吃什么": [
+      "src/components/PlacePage.astro"
+    ],
+    "吃饭": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "合计（{cur}）": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "合计：{total}，每人 {per}": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "含税价": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "周游券值不值": [
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "和歌山": [
+      "src/lib/japan.ts"
+    ],
+    "和谁一起？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "哪些是 8%，哪些是 10%": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "商品类型": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "喜欢什么？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "四国": [
+      "src/lib/japan.ts"
+    ],
+    "回到我的行程": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "回答几个选择题：去哪、什么时候、几天、几个人、预算和喜好，马上生成一份按天排好的行程。": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "回首页": [
+      "src/components/NotFound.astro"
+    ],
+    "国内航班 / 租车": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "国家": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "国家公园": [
+      "src/lib/countries.ts"
+    ],
+    "国家公园、<br />海岸和大城市。": [
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "在地图上，<br />找到你的日本。": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线，以及护照丢失、就医、地震时怎么办。": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "在景点旁点「加入行程」，会先放在这里。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "地": [
+      "src/scripts/site.ts"
+    ],
+    "地图": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "地图：点击地区放大，再点{unit}查看": [
+      "src/components/WorldMap.astro"
+    ],
+    "地标": [
+      "src/lib/countries.ts"
+    ],
+    "坐车常识": [
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "城市": [
+      "src/lib/countries.ts"
+    ],
+    "城郭": [
+      "src/lib/japan.ts"
+    ],
+    "埼玉": [
+      "src/lib/japan.ts"
+    ],
+    "堪萨斯": [
+      "src/lib/countries.ts"
+    ],
+    "塔斯马尼亚": [
+      "src/lib/countries.ts"
+    ],
+    "填你的往返机票价": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "复制下面的文字：": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "复制到我的行程": [
+      "src/components/TripPage.astro"
+    ],
+    "复制文字": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "复制明细给同行": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "复制这个链接：": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "复制：": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "夏": [
+      "src/lib/japan.ts"
+    ],
+    "夏天去哪": [
+      "src/components/CountryHome.astro"
+    ],
+    "夏威夷": [
+      "src/lib/countries.ts"
+    ],
+    "多看几个": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "大交通与其他": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "大分": [
+      "src/lib/japan.ts"
+    ],
+    "大堡礁、乌鲁鲁、大洋路，再加一杯澳白。": [
+      "src/pages/[...lang]/australia/index.astro"
+    ],
+    "大阪": [
+      "src/lib/japan.ts"
+    ],
+    "天": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "天数": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "奈良": [
+      "src/lib/japan.ts"
+    ],
+    "套用模板 →": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "威斯康星": [
+      "src/lib/countries.ts"
+    ],
+    "存成我的行程，接着改": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "季": [
+      "src/scripts/site.ts"
+    ],
+    "季节与主题": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/japan/themes/[theme].astro",
+      "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "安全与天气": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "安卓：用 Chrome 打开 → 右上角菜单 →「添加到主屏幕」或「安装应用」。": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "官方说明": [
+      "src/pages/[...lang]/japan/tools/rules-2026.astro"
+    ],
+    "官网": [
+      "src/components/GuidePage.astro",
+      "src/pages/[...lang]/japan/tools/checklist.astro",
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "宫城": [
+      "src/lib/japan.ts"
+    ],
+    "宫崎": [
+      "src/lib/japan.ts"
+    ],
+    "宽裕": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "宾州": [
+      "src/lib/countries.ts"
+    ],
+    "密歇根": [
+      "src/lib/countries.ts"
+    ],
+    "密苏里": [
+      "src/lib/countries.ts"
+    ],
+    "密西西比": [
+      "src/lib/countries.ts"
+    ],
+    "富山": [
+      "src/lib/japan.ts"
+    ],
+    "寺社、城郭和老街，是日本旅行最不受季节影响的部分。去得早一点，人少、光线也好。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "寺院": [
+      "src/lib/japan.ts"
+    ],
+    "导航": [
+      "src/components/TripPage.astro"
+    ],
+    "小票上的金额（日元）": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "山口": [
+      "src/lib/japan.ts"
+    ],
+    "山形": [
+      "src/lib/japan.ts"
+    ],
+    "山梨": [
+      "src/lib/japan.ts"
+    ],
+    "山野": [
+      "src/lib/japan.ts"
+    ],
+    "山野自然": [
+      "src/lib/countries.ts"
+    ],
+    "岐阜": [
+      "src/lib/japan.ts"
+    ],
+    "岛根": [
+      "src/lib/japan.ts"
+    ],
+    "岩手": [
+      "src/lib/japan.ts"
+    ],
+    "州": [
+      "src/lib/atlas.ts",
+      "src/lib/countries.ts"
+    ],
+    "州和领地": [
+      "src/lib/countries.ts"
+    ],
+    "已从行程移除「{name}」": [
+      "src/scripts/site.ts"
+    ],
+    "已加入": [
+      "src/scripts/site.ts"
+    ],
+    "已复制文字版，可以直接粘贴到微信": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "已复制预算明细": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "已完成": [
+      "src/pages/[...lang]/japan/tools/checklist.astro"
+    ],
+    "已把「{name}」加入行程": [
+      "src/scripts/site.ts"
+    ],
+    "已经是顺路的顺序了": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "市内交通": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "市场": [
+      "src/lib/japan.ts"
+    ],
+    "带孩子": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "带孩子的话，每天只排一个重点，其余随缘。": [
+      "src/scripts/quick.ts"
+    ],
+    "带父母": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "常见问题": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "平均最低气温（°C）": [
+      "src/components/ClimateTable.astro"
+    ],
+    "平均最高气温（°C）": [
+      "src/components/ClimateTable.astro"
+    ],
+    "广岛": [
+      "src/lib/japan.ts"
+    ],
+    "庭园": [
+      "src/lib/japan.ts"
+    ],
+    "康涅狄格": [
+      "src/lib/countries.ts"
+    ],
+    "建议 {days}": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "开始 →": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "弗吉尼亚": [
+      "src/lib/countries.ts"
+    ],
+    "当季": [
+      "src/components/CountryHome.astro"
+    ],
+    "待安排": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "徒步": [
+      "src/lib/japan.ts"
+    ],
+    "得州": [
+      "src/lib/countries.ts"
+    ],
+    "德岛": [
+      "src/lib/japan.ts"
+    ],
+    "快速攻略": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "快速生成攻略": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "怀俄明": [
+      "src/lib/countries.ts"
+    ],
+    "怎么去 · 住哪里": [
+      "src/components/PlacePage.astro"
+    ],
+    "怎么进出": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "怎么退": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "恢复默认": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "想去哪儿，<br />先在这儿排好。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "慢慢玩": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "成田 羽田 关西 中部 新千岁 福冈 那霸": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "成田、羽田、关西、中部、新千岁、福冈、那霸机场到市区的交通方式、时间和票价。": [
+      "src/pages/[...lang]/japan/tools/airports.astro"
+    ],
+    "我的行程": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/plan.astro",
+      "src/scripts/quick.ts",
+      "src/scripts/share-image.ts",
+      "src/scripts/trip.ts"
+    ],
+    "打印": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "打印 / 存 PDF": [
+      "src/components/TripPage.astro"
+    ],
+    "打开地图": [
+      "src/components/CountryHome.astro"
+    ],
+    "打开我的行程": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "把{name}加入行程": [
+      "src/components/CountryHome.astro",
+      "src/components/PlacePage.astro",
+      "src/components/SpotCard.astro"
+    ],
+    "把想去的地方，排成一份行程。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "把收藏的景点和美食排进每一天，看路线、估移动，生成分享链接。不用注册，存在你的浏览器里。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "把景点拖到这里": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "报警 急救 使领馆": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "报警急救、使领馆": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "报警急救、使领馆、护照丢失": [
+      "src/lib/toolkit.ts"
+    ],
+    "拨打 {number}": [
+      "src/components/GuidePage.astro"
+    ],
+    "拨打 {n}": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "拿来就能用的行程": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "按 {n} 天算预算 →": [
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "按主题在地图上标出景点": [
+      "src/components/CountryHome.astro"
+    ],
+    "按主题筛选景点": [
+      "src/components/PlacePage.astro"
+    ],
+    "按同一店、同一天的税前合计判断是否满 {min} 日元，食品和其他商品可以合并凑数。算出来的是消费税全额，实际到手要减去退税公司的手续费（各家不同）。": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "按地区筛选": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。": [
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "按季节去": [
+      "src/components/CountryHome.astro"
+    ],
+    "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。": [
+      "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "按距离排好每天的先后顺序": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "换一版": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "排好了，路上大约少走 {n} 公里": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "排顺序": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "探索地图": [
+      "src/components/CountryHome.astro"
+    ],
+    "提前一个月以上订住宿和交通，价格差别很大。": [
+      "src/scripts/quick.ts"
+    ],
+    "提醒": [
+      "src/components/PlacePage.astro"
+    ],
+    "搜一搜": [
+      "src/components/NotFound.astro"
+    ],
+    "搜目的地": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "搜索": [
+      "src/layouts/Base.astro"
+    ],
+    "搜索数据加载失败，请检查网络后重试。": [
+      "src/scripts/site.ts"
+    ],
+    "搜索目的地、景点或美食": [
+      "src/layouts/Base.astro"
+    ],
+    "支付与小费": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "收藏": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "攻略整理中": [
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "数据没加载上，检查一下网络。": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "整理中": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "新": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "新南威尔士": [
+      "src/lib/countries.ts"
+    ],
+    "新墨西哥": [
+      "src/lib/countries.ts"
+    ],
+    "新州与堪培拉": [
+      "src/lib/countries.ts"
+    ],
+    "新干线 / 周游券": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "新泽西": [
+      "src/lib/countries.ts"
+    ],
+    "新潟": [
+      "src/lib/japan.ts"
+    ],
+    "新罕布什尔": [
+      "src/lib/countries.ts"
+    ],
+    "旅行预算计算": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "日元": [
+      "src/pages/[...lang]/budget.astro",
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "日本": [
+      "src/layouts/Base.astro",
+      "src/lib/countries.ts",
+      "src/pages/[...lang]/budget.astro",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/japan/index.astro",
+      "src/pages/[...lang]/japan/region/[region].astro",
+      "src/pages/[...lang]/japan/themes/[theme].astro",
+      "src/pages/[...lang]/japan/trips/[id].astro",
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/pages/[...lang]/trips/index.astro",
+      "src/scripts/site.ts"
+    ],
+    "日本 2026 年 11 月起出境退税": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "日本 47 个都道府县的原创旅行指南：互动地图、{n} 个景点与地方美食、季节主题、行程模板和离线随身工具。": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "日本{name}去哪": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "日本{name}：{intro}… {n} 个精选景点。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "日本、澳大利亚、美国。看攻略、排行程、算预算。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "日本、澳大利亚、美国的原创旅行指南：互动地图、景点与美食配图、行程模板、一分钟生成攻略、预算计算和离线随身工具。": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "日本出国税和住宿税 →": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "日本坐车要知道的事：IC 卡、新干线大件行李预约、寄行李、出租车、末班车，以及 JR Pass 和地区周游券值不值。": [
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "日本旅行攻略": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "日本海一侧是世界上雪最多的地方之一。冬天去北海道、东北和北陆，看雪景、泡温泉、吃螃蟹，比夏天更有味道。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "日语大字卡": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro",
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "昆士兰": [
+      "src/lib/countries.ts"
+    ],
+    "明尼苏达": [
+      "src/lib/countries.ts"
+    ],
+    "春": [
+      "src/lib/japan.ts"
+    ],
+    "春 – 秋": [
+      "src/lib/japan.ts"
+    ],
+    "春天去哪": [
+      "src/components/CountryHome.astro"
+    ],
+    "晚（另收住宿税）": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "景": [
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/scripts/site.ts"
+    ],
+    "景点": [
+      "src/components/PlacePage.astro",
+      "src/scripts/site.ts"
+    ],
+    "景点加起来约 {n} 小时，可能排太满": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "最佳 {months}": [
+      "src/components/CountryHome.astro",
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/japan/[pref].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "最佳月份：{months}": [
+      "src/components/PlacePage.astro"
+    ],
+    "月份": [
+      "src/components/ClimateTable.astro"
+    ],
+    "月降水量（毫米）": [
+      "src/components/ClimateTable.astro"
+    ],
+    "朋友结伴": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "本页目录": [
+      "src/components/PlacePage.astro"
+    ],
+    "机场往返": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "机场进城": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro",
+      "src/pages/[...lang]/japan/tools/airports.astro",
+      "src/pages/[...lang]/japan/tools/transport.astro"
+    ],
+    "机票": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "机票 住宿 交通 吃喝 一页算清": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "机票、住宿、吃喝一页算清": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "来源（{date}）": [
+      "src/components/GuidePage.astro",
+      "src/components/PlacePage.astro",
+      "src/components/ToolShell.astro",
+      "src/pages/[...lang]/japan/region/[region].astro"
+    ],
+    "极光星空": [
+      "src/lib/countries.ts"
+    ],
+    "栃木": [
+      "src/lib/japan.ts"
+    ],
+    "栖云旅行": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/japan/trips/index.astro",
+      "src/pages/[...lang]/manifest.webmanifest.ts",
+      "src/scripts/share-image.ts"
+    ],
+    "栖云旅行 · 日本、澳大利亚、美国旅行指南": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/manifest.webmanifest.ts"
+    ],
+    "栖云旅行 · 行程": [
+      "src/scripts/share-image.ts"
+    ],
+    "栖云旅行 首页": [
+      "src/layouts/Base.astro"
+    ],
+    "栖云旅行是 <a href=\"https://cloudborne.cn\">Cloudborne 栖云</a> 做的旅行指南，目前覆盖日本、澳大利亚和美国。把「去哪、怎么去、花多少、到了怎么办」放进一个打开就能用的地方。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "栖云旅行是 Cloudborne 栖云做的旅行指南：日本、澳大利亚、美国。内容原创，不登录、不追踪。": [
+      "src/pages/[...lang]/about.astro"
+    ],
+    "概览": [
+      "src/components/PlacePage.astro"
+    ],
+    "横过来": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "樱花之后还有一整季的花：4 月底紫藤和粉蝶花，6 月绣球，7 月北海道薰衣草。花期比樱花稳定，人也少一些。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "樱花前线每年 3 月下旬从九州、东京一带出发，4 月中下旬到东北，5 月上旬抵达北海道。同一棵树满开只有一周左右，赶不上平地的，就往北走或者往山上走。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "正在加载…": [
+      "src/scripts/site.ts"
+    ],
+    "正常": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "每人": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "每人往返 · {cur}": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "每人每天": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "每天留出午休时间，长距离移动尽量放在上午。": [
+      "src/scripts/quick.ts"
+    ],
+    "每晚房费": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "每晚每间": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "每月天气": [
+      "src/components/ClimateTable.astro"
+    ],
+    "每月天气，以{city}为准，{source}": [
+      "src/components/ClimateTable.astro"
+    ],
+    "求助电话": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "汇率": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "没找到这一页": [
+      "src/pages/404.astro",
+      "src/pages/[...lang]/404.astro"
+    ],
+    "没有找到「{q}」，换个说法试试。": [
+      "src/scripts/site.ts"
+    ],
+    "流量 / 保险 / 税": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "流量卡 / eSIM": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "浏览器不允许保存，关闭页面后行程会丢失。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "海岛": [
+      "src/lib/japan.ts"
+    ],
+    "海岛海滩": [
+      "src/lib/countries.ts"
+    ],
+    "海滩": [
+      "src/lib/countries.ts"
+    ],
+    "消费档位": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "涉及：{list}": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "清空": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "清空所有勾选？": [
+      "src/pages/[...lang]/japan/tools/checklist.astro"
+    ],
+    "清空整个行程？此操作无法撤销。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "温泉": [
+      "src/lib/japan.ts"
+    ],
+    "游玩 {time}": [
+      "src/components/WorldMap.astro"
+    ],
+    "滋贺": [
+      "src/lib/japan.ts"
+    ],
+    "澳元": [
+      "src/lib/countries.ts",
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "澳大利亚": [
+      "src/layouts/Base.astro",
+      "src/lib/countries.ts",
+      "src/pages/[...lang]/australia/guide.astro",
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/australia/trips/[id].astro",
+      "src/pages/[...lang]/budget.astro",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/pages/[...lang]/trips/index.astro",
+      "src/scripts/site.ts"
+    ],
+    "澳大利亚 8 个州和领地的原创旅行指南：互动地图、景点和美食实拍风格配图、行程模板、签证与入境须知。": [
+      "src/pages/[...lang]/australia/index.astro"
+    ],
+    "澳大利亚出行须知": [
+      "src/pages/[...lang]/australia/guide.astro",
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "澳大利亚旅行攻略": [
+      "src/pages/[...lang]/australia/index.astro"
+    ],
+    "火山、湖泊、峡谷和高原步道。很多山岳地带冬季封路，春末到秋天最好去，提前查开放期。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "点一句，全屏给对方看。": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "点下面的「出行须知」看签证和入境要求。": [
+      "src/scripts/quick.ts"
+    ],
+    "点号码直接拨打。": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "点餐、忌口、购物、交通、求助": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "点餐、忌口、购物、交通、求助，放大给店员看": [
+      "src/lib/toolkit.ts"
+    ],
+    "点餐、忌口、退税，直接给店员看": [
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "热门州与国家公园": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "熊本": [
+      "src/lib/japan.ts"
+    ],
+    "爱媛": [
+      "src/lib/japan.ts"
+    ],
+    "爱知": [
+      "src/lib/japan.ts"
+    ],
+    "爱达荷": [
+      "src/lib/countries.ts"
+    ],
+    "特拉华": [
+      "src/lib/countries.ts"
+    ],
+    "犹他": [
+      "src/lib/countries.ts"
+    ],
+    "玩几天？": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "生成中…": [
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "生成攻略": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "生成长图": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "田纳西": [
+      "src/lib/countries.ts"
+    ],
+    "目录": [
+      "src/components/GuidePage.astro"
+    ],
+    "目的地": [
+      "src/scripts/site.ts"
+    ],
+    "省着花": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "省钱": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "看{name}完整攻略 →": [
+      "src/components/CountryHome.astro"
+    ],
+    "看{region}全部 {n} 个县 →": [
+      "src/pages/[...lang]/japan/[pref].astro"
+    ],
+    "石川": [
+      "src/lib/japan.ts"
+    ],
+    "神奈川": [
+      "src/lib/japan.ts"
+    ],
+    "神社": [
+      "src/lib/japan.ts"
+    ],
+    "票价和政策会变，出发前以官方为准": [
+      "src/layouts/Base.astro"
+    ],
+    "福井": [
+      "src/lib/japan.ts"
+    ],
+    "福冈": [
+      "src/lib/japan.ts"
+    ],
+    "福岛": [
+      "src/lib/japan.ts"
+    ],
+    "秋": [
+      "src/lib/japan.ts"
+    ],
+    "秋天去哪": [
+      "src/components/CountryHome.astro"
+    ],
+    "秋田": [
+      "src/lib/japan.ts"
+    ],
+    "秋色": [
+      "src/lib/countries.ts"
+    ],
+    "科罗拉多": [
+      "src/lib/countries.ts"
+    ],
+    "移到": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "移到…": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "移动端导航": [
+      "src/layouts/Base.astro"
+    ],
+    "移除": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "程": [
+      "src/scripts/site.ts"
+    ],
+    "税前 {pre} 日元。实际到手可能扣除退税机构的手续费。": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "税前 {pre} 日元，未满 {min} 日元，同一店当天合计要满这个数才能退。": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "税前价": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "第 {n} 天": [
+      "src/pages/[...lang]/plan.astro",
+      "src/scripts/share-image.ts"
+    ],
+    "第一次去": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "筛选": [
+      "src/pages/[...lang]/trips/index.astro"
+    ],
+    "签证 EVUS 小费 自驾 紧急电话": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "签证 入境 小费 自驾 紧急电话": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "签证、入境、小费、自驾和紧急电话": [
+      "src/pages/[...lang]/australia/[state].astro",
+      "src/pages/[...lang]/usa/[state].astro"
+    ],
+    "签证与入境": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "算预算": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "紧急求助": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro",
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "紧急电话": [
+      "src/components/GuidePage.astro"
+    ],
+    "紧急电话、使领馆": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "红叶": [
+      "src/lib/japan.ts"
+    ],
+    "红叶从 9 月底的北海道大雪山开始，10 月中旬到东北和日光，11 月中下旬是京都、关西的高峰，九州和关东平地要到 12 月初。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "约 {n} 小时": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "纽约": [
+      "src/lib/countries.ts"
+    ],
+    "给对方看": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "维多利亚": [
+      "src/lib/countries.ts"
+    ],
+    "缅因": [
+      "src/lib/countries.ts"
+    ],
+    "罗得岛": [
+      "src/lib/countries.ts"
+    ],
+    "美元": [
+      "src/lib/countries.ts",
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "美国": [
+      "src/layouts/Base.astro",
+      "src/lib/countries.ts",
+      "src/pages/[...lang]/budget.astro",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/index.astro",
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/pages/[...lang]/trips/index.astro",
+      "src/pages/[...lang]/usa/guide.astro",
+      "src/pages/[...lang]/usa/index.astro",
+      "src/pages/[...lang]/usa/trips/[id].astro",
+      "src/scripts/site.ts"
+    ],
+    "美国出行须知": [
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/usa/guide.astro"
+    ],
+    "美国旅行攻略": [
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "美国热门州的原创旅行指南：国家公园、自驾路线、城市、景点和美食配图、行程模板、签证与入境须知。": [
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "美术馆": [
+      "src/lib/japan.ts"
+    ],
+    "美食": [
+      "src/components/PlacePage.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/scripts/site.ts"
+    ],
+    "群马": [
+      "src/lib/japan.ts"
+    ],
+    "老街": [
+      "src/lib/japan.ts"
+    ],
+    "肯塔基": [
+      "src/lib/countries.ts"
+    ],
+    "自然": [
+      "src/lib/japan.ts"
+    ],
+    "自由活动": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "自由活动，或去周边转转": [
+      "src/scripts/quick.ts"
+    ],
+    "自驾公路": [
+      "src/lib/countries.ts"
+    ],
+    "自驾路线": [
+      "src/lib/countries.ts"
+    ],
+    "舒服就好": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "舒适": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "艺术": [
+      "src/lib/japan.ts"
+    ],
+    "艺术建筑": [
+      "src/lib/countries.ts"
+    ],
+    "艾奥瓦": [
+      "src/lib/countries.ts"
+    ],
+    "节奏": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "花海": [
+      "src/lib/countries.ts",
+      "src/lib/japan.ts"
+    ],
+    "茨城": [
+      "src/lib/japan.ts"
+    ],
+    "菜单": [
+      "src/layouts/Base.astro"
+    ],
+    "蒙大拿": [
+      "src/lib/countries.ts"
+    ],
+    "行前清单": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro",
+      "src/pages/[...lang]/japan/tools/checklist.astro"
+    ],
+    "行程": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "行程名称": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "行程模板": [
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/australia/trips/[id].astro",
+      "src/pages/[...lang]/japan/trips/[id].astro",
+      "src/pages/[...lang]/japan/trips/index.astro",
+      "src/pages/[...lang]/trips/index.astro",
+      "src/pages/[...lang]/usa/trips/[id].astro",
+      "src/scripts/site.ts"
+    ],
+    "行程路线图": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "行程里换了约 {n} 次落脚地。考虑用寄行李服务，或减少换酒店的次数。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "行程长图": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "街区": [
+      "src/lib/japan.ts"
+    ],
+    "装到手机桌面": [
+      "src/pages/[...lang]/japan/tools/index.astro"
+    ],
+    "西弗吉尼亚": [
+      "src/lib/countries.ts"
+    ],
+    "西海岸": [
+      "src/lib/countries.ts"
+    ],
+    "西澳": [
+      "src/lib/countries.ts"
+    ],
+    "西部山地": [
+      "src/lib/countries.ts"
+    ],
+    "要准备什么、怎么申请": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "观景": [
+      "src/lib/japan.ts"
+    ],
+    "规则要点": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "证": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "证件 支付 网络 行李": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "证件、支付、网络、插头，勾选自动保存": [
+      "src/lib/toolkit.ts"
+    ],
+    "试试「京都」「大堡礁」「黄石」「温泉」「拉面」": [
+      "src/scripts/site.ts"
+    ],
+    "读出来": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "购物": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "购物预算": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "赏樱": [
+      "src/lib/japan.ts"
+    ],
+    "路易斯安那": [
+      "src/lib/countries.ts"
+    ],
+    "运营方官网": [
+      "src/pages/[...lang]/japan/tools/airports.astro"
+    ],
+    "还有 {n} 项没排进具体哪天。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "还没定": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "还没有收藏。点句子右上角的 ★ 收藏常用的。": [
+      "src/pages/[...lang]/japan/tools/phrases.astro"
+    ],
+    "这一天还没安排": [
+      "src/scripts/share-image.ts"
+    ],
+    "这个主题的景点还在整理中。": [
+      "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "这个分享链接打不开，可能复制不完整。请让对方重新发一次。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "这份行程": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "这是别人分享的行程。要保存成你自己的行程再修改吗？\n（会替换掉你现有的行程）": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "这条路好像走不通": [
+      "src/components/NotFound.astro"
+    ],
+    "这趟换 {n} 个地方住，行李尽量轻。": [
+      "src/scripts/quick.ts"
+    ],
+    "这趟要花多少钱": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "退税与计算": [
+      "src/lib/toolkit.ts",
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "退税计算": [
+      "src/pages/[...lang]/catalog.json.ts",
+      "src/pages/[...lang]/japan/index.astro"
+    ],
+    "适合去": [
+      "src/components/ClimateTable.astro"
+    ],
+    "选几个选项，马上出一份行程": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "选几个选项，马上生成一份行程": [
+      "src/pages/[...lang]/catalog.json.ts"
+    ],
+    "遇到证件丢失或被捕等情况，联系你所持护照国家的大使馆或领事馆。": [
+      "src/components/GuidePage.astro",
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "遇到这些情况": [
+      "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "酒庄": [
+      "src/lib/countries.ts"
+    ],
+    "酒庄美食": [
+      "src/lib/countries.ts"
+    ],
+    "重新选": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "重置": [
+      "src/pages/[...lang]/japan/tools/checklist.astro"
+    ],
+    "野生动物": [
+      "src/lib/countries.ts"
+    ],
+    "长图没生成出来，再试一次。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "长崎": [
+      "src/lib/japan.ts"
+    ],
+    "长野": [
+      "src/lib/japan.ts"
+    ],
+    "门票体验": [
+      "src/pages/[...lang]/budget.astro"
+    ],
+    "阿拉斯加": [
+      "src/lib/countries.ts"
+    ],
+    "阿肯色": [
+      "src/lib/countries.ts"
+    ],
+    "降水 1 毫米以上的天数": [
+      "src/components/ClimateTable.astro"
+    ],
+    "随身工具": [
+      "src/components/ToolShell.astro",
+      "src/layouts/Base.astro",
+      "src/pages/[...lang]/japan/tools/index.astro",
+      "src/scripts/site.ts"
+    ],
+    "雪国": [
+      "src/lib/japan.ts"
+    ],
+    "青森": [
+      "src/lib/japan.ts"
+    ],
+    "静冈": [
+      "src/lib/japan.ts"
+    ],
+    "页面不存在": [
+      "src/pages/404.astro",
+      "src/pages/[...lang]/404.astro"
+    ],
+    "页面可能搬家了，或者链接打错了。": [
+      "src/components/NotFound.astro"
+    ],
+    "顺路去": [
+      "src/components/PlacePage.astro"
+    ],
+    "预算": [
+      "src/pages/[...lang]/quick.astro"
+    ],
+    "食": [
+      "src/pages/[...lang]/plan.astro",
+      "src/pages/[...lang]/quick.astro",
+      "src/scripts/site.ts"
+    ],
+    "食品饮料 {pct}%": [
+      "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "首都领地": [
+      "src/lib/countries.ts"
+    ],
+    "香川": [
+      "src/lib/japan.ts"
+    ],
+    "马里兰": [
+      "src/lib/countries.ts"
+    ],
+    "驾照、租车、国内航班": [
+      "src/pages/[...lang]/australia/index.astro",
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "高知": [
+      "src/lib/japan.ts"
+    ],
+    "鸟取": [
+      "src/lib/japan.ts"
+    ],
+    "鹿儿岛": [
+      "src/lib/japan.ts"
+    ],
+    "麻省": [
+      "src/lib/countries.ts"
+    ],
+    "黄石、大峡谷、1 号公路，还有纽约的夜。": [
+      "src/pages/[...lang]/usa/index.astro"
+    ],
+    "（适合去）": [
+      "src/components/ClimateTable.astro"
+    ]
+  }
+}

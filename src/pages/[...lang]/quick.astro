@@ -1,0 +1,267 @@
+---
+import Base from '../../layouts/Base.astro';
+import { themesOf } from '../../lib/world';
+import { t, langPaths, monthSpan } from '../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa: themesOf('usa') };
+---
+<Base title={t('快速生成攻略')} description={t('回答几个选择题：去哪、什么时候、几天、几个人、预算和喜好，马上生成一份按天排好的行程。')} nav="quick">
+  <div class="qk wrap">
+    <div class="qk-progress" aria-hidden="true"><i id="qk-bar"></i></div>
+    <form id="qk" autocomplete="off">
+      <section class="qs" data-step="0">
+        <h1>{t('去哪儿？')}</h1>
+        <div class="opts big">
+          <label><input type="radio" name="country" value="japan" checked /><span><b>{t('日本')}</b></span></label>
+          <label><input type="radio" name="country" value="australia" /><span><b>{t('澳大利亚')}</b></span></label>
+          <label><input type="radio" name="country" value="usa" /><span><b>{t('美国')}</b></span></label>
+        </div>
+      </section>
+
+      <section class="qs" data-step="1" hidden>
+        <h2>{t('几月出发？')}</h2>
+        <div class="opts months">
+          {Array.from({ length: 12 }, (_, i) => <label><input type="radio" name="month" value={i + 1} /><span>{monthSpan(i + 1)}</span></label>)}
+          <label class="wide"><input type="radio" name="month" value="0" /><span>{t('还没定')}</span></label>
+        </div>
+      </section>
+
+      <section class="qs" data-step="2" hidden>
+        <h2>{t('玩几天？')}</h2>
+        <div class="opts">
+          {[3, 5, 7, 10, 14].map((d) => <label><input type="radio" name="days" value={d} checked={d === 5} /><span><b>{t('{n} 天', { n: d })}</b></span></label>)}
+        </div>
+      </section>
+
+      <section class="qs" data-step="3" hidden>
+        <h2>{t('和谁一起？')}</h2>
+        <div class="opts">
+          <label><input type="radio" name="people" value="solo" /><span>{t('一个人')}</span></label>
+          <label><input type="radio" name="people" value="couple" checked /><span>{t('两个人')}</span></label>
+          <label><input type="radio" name="people" value="friends" /><span>{t('朋友结伴')}</span></label>
+          <label><input type="radio" name="people" value="family" /><span>{t('带孩子')}</span></label>
+          <label><input type="radio" name="people" value="elders" /><span>{t('带父母')}</span></label>
+        </div>
+        <h2 class="sub">{t('预算')}</h2>
+        <div class="opts">
+          <label><input type="radio" name="budget" value="save" /><span>{t('省着花')}</span></label>
+          <label><input type="radio" name="budget" value="mid" checked /><span>{t('舒服就好')}</span></label>
+          <label><input type="radio" name="budget" value="lux" /><span>{t('不太在意')}</span></label>
+        </div>
+      </section>
+
+      <section class="qs" data-step="4" hidden>
+        <h2>{t('喜欢什么？')}<small>{t('可多选')}</small></h2>
+        {Object.entries(themes).map(([c, th]) => (
+          <div class="opts likes" data-for={c} hidden={c !== 'japan'}>
+            {Object.entries(th).map(([k, v]) => <label><input type="checkbox" name="likes" value={k} /><span style={`--dot:${v.tone}`}><i></i>{v.name}</span></label>)}
+            <label><input type="checkbox" name="likes" value="food" /><span style="--dot:var(--gold)"><i></i>{t('美食')}</span></label>
+          </div>
+        ))}
+        <h2 class="sub">{t('节奏')}</h2>
+        <div class="opts">
+          <label><input type="radio" name="pace" value="easy" /><span>{t('慢慢玩')}</span></label>
+          <label><input type="radio" name="pace" value="normal" checked /><span>{t('正常')}</span></label>
+          <label><input type="radio" name="pace" value="packed" /><span>{t('多看几个')}</span></label>
+        </div>
+        <label class="first"><input type="checkbox" name="first" checked /> {t('第一次去')}</label>
+      </section>
+
+      <div class="qk-nav">
+        <button type="button" class="btn ghost" id="qk-back" hidden>{t('上一步')}</button>
+        <button type="button" class="btn primary" id="qk-next">{t('下一步')}</button>
+      </div>
+    </form>
+
+    <section class="qk-result" id="qk-result" hidden aria-live="polite">
+      <div class="qr-head">
+        <h2 id="qr-title"></h2>
+        <p id="qr-bases"></p>
+      </div>
+      <ol class="qr-days" id="qr-days"></ol>
+      <ul class="qr-tips" id="qr-tips"></ul>
+      <div class="qr-actions">
+        <button type="button" class="btn primary" id="qr-save">{t('存成我的行程，接着改')}</button>
+        <button type="button" class="btn" id="qr-again">{t('换一版')}</button>
+        <button type="button" class="btn ghost" id="qr-reset">{t('重新选')}</button>
+      </div>
+      <p class="qr-more" id="qr-more"></p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .qk { max-width: 760px; padding: 40px 0 30px; }
+  .qk-progress { height: 4px; border-radius: 2px; background: var(--paper-2); overflow: hidden; margin-bottom: 30px; }
+  .qk-progress i { display: block; height: 100%; width: 20%; background: var(--vermilion); border-radius: 2px; transition: width 520ms var(--ease-out); }
+  .qs h1, .qs h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 18px; }
+  .qs h2.sub { font-size: 20px; margin: 26px 0 12px; }
+  .qs h2 small { font: 400 14px var(--sans); color: var(--mut); margin-left: 10px; }
+  .qs:not([hidden]) { animation: stepIn 480ms var(--ease-out) both; }
+  .qs.back:not([hidden]) { animation-name: stepBack; }
+  @keyframes stepIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+  @keyframes stepBack { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+  .opts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .opts label { position: relative; cursor: pointer; }
+  .opts input { position: absolute; opacity: 0; pointer-events: none; }
+  .opts span {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 14px; border: 1.5px solid var(--line-2);
+    background: var(--card); font-size: 16px; color: var(--ink); transition: border-color 160ms, background 160ms, transform 260ms var(--spring), box-shadow 200ms;
+  }
+  .opts span i { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
+  .opts label:hover span { border-color: var(--hover-line); }
+  .opts input:checked + span { border-color: var(--vermilion); background: var(--vermilion-bg); box-shadow: 0 0 0 3px color-mix(in srgb, var(--vermilion) 16%, transparent); }
+  .opts label:active span { transform: scale(.96); }
+  .opts input:focus-visible + span { outline: 2px solid var(--vermilion); outline-offset: 2px; }
+  .opts.big { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .opts.big span { min-height: 96px; justify-content: center; font-size: 22px; font-family: var(--serif); width: 100%; }
+  .opts.big label { display: block; }
+  .opts.months { display: grid; grid-template-columns: repeat(6, 1fr); }
+  .opts.months span { width: 100%; justify-content: center; padding: 0; }
+  .opts.months .wide { grid-column: span 2; }
+  .first { display: inline-flex; gap: 8px; align-items: center; margin-top: 22px; font-size: 15px; color: var(--ink-2); cursor: pointer; }
+  .first input { width: 18px; height: 18px; accent-color: var(--vermilion); }
+  .qk-nav { display: flex; justify-content: space-between; margin-top: 34px; }
+  .qk-nav .primary { margin-left: auto; min-width: 140px; }
+  @media (max-width: 560px) { .opts.months { grid-template-columns: repeat(4, 1fr); } .opts.big { grid-template-columns: 1fr; } .opts.big span { min-height: 64px; } }
+
+</style>
+
+<style is:global>
+  /* The result is rendered by the script (innerHTML), so these rules cannot be scoped. */
+  .qk-result { animation: stepIn 520ms var(--ease-out) both; }
+  .qr-head h2 { font-size: clamp(26px, 3.6vw, 36px); }
+  .qr-head p { color: var(--mut); margin-top: 6px; }
+  .qr-days { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+  .qr-day { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 16px 18px; animation: stepIn 520ms var(--ease-out) both; animation-delay: calc(var(--i) * 50ms); }
+  .qr-day header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .qr-day .dn { width: 34px; height: 34px; border-radius: 50%; background: var(--vermilion); color: #fff; display: grid; place-items: center; font: 600 13px var(--sans); flex-shrink: 0; }
+  .qr-day header b { font-family: var(--serif); font-size: 18px; }
+  .qr-day header small { color: var(--mut); font-size: 13px; }
+  .qr-items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .qr-items li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; }
+  .qr-items img, .qr-items .ph { width: 64px; height: 48px; border-radius: 9px; object-fit: cover; background: var(--paper-2); display: grid; place-items: center; font-size: 13px; color: var(--mut); }
+  .qr-items a { font-weight: 600; }
+  .qr-items a:hover { color: var(--vermilion); }
+  .qr-items small { display: block; color: var(--mut); font-size: 12.5px; }
+  .qr-tips { margin: 18px 0 0; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; display: grid; gap: 4px; }
+  .qr-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .qr-more { margin-top: 14px; font-size: 14px; }
+  .qr-more a { color: var(--vermilion); }
+</style>
+
+<script>
+  import { getCatalog, photoUrl, type Catalog } from '../../scripts/catalog';
+  import { buildPlan, type QuickAnswers } from '../../scripts/quick';
+  import { load, save } from '../../scripts/trip';
+  import { placeHref, parseItem } from '../../lib/keys';
+  import { ct, lp } from '../../scripts/i18n';
+
+  const form = document.getElementById('qk') as HTMLFormElement;
+  const steps = [...form.querySelectorAll<HTMLElement>('.qs')];
+  const bar = document.getElementById('qk-bar')!;
+  const back = document.getElementById('qk-back') as HTMLButtonElement;
+  const next = document.getElementById('qk-next') as HTMLButtonElement;
+  const result = document.getElementById('qk-result')!;
+  let step = 0;
+  let cat: Catalog | null = null;
+  let seed = 0;
+  // Warm the catalogue; generate() asks again so a failed first load can be retried.
+  getCatalog().then((c) => (cat = c)).catch(() => {});
+
+  // Preselect from ?c= and today's month (+1, people plan ahead).
+  const qc = new URLSearchParams(location.search).get('c');
+  if (qc && ['japan', 'australia', 'usa'].includes(qc)) (form.querySelector(`[name=country][value=${qc}]`) as HTMLInputElement).checked = true;
+  const nm = (new Date().getMonth() + 1) % 12 + 1;
+  (form.querySelector(`[name=month][value="${nm}"]`) as HTMLInputElement).checked = true;
+
+  const val = (n: string) => (form.querySelector(`[name=${n}]:checked`) as HTMLInputElement | null)?.value ?? '';
+  const answers = (): QuickAnswers => ({
+    country: val('country') as QuickAnswers['country'],
+    month: +val('month') || 0,
+    days: +val('days') || 5,
+    people: (val('people') || 'couple') as QuickAnswers['people'],
+    budget: (val('budget') || 'mid') as QuickAnswers['budget'],
+    pace: (val('pace') || 'normal') as QuickAnswers['pace'],
+    likes: [...form.querySelectorAll<HTMLInputElement>(`.likes[data-for="${val('country')}"] [name=likes]:checked`)].map((x) => x.value),
+    first: (form.querySelector('[name=first]') as HTMLInputElement).checked,
+  });
+
+  const go = (to: number) => {
+    const backwards = to < step;
+    step = to;
+    steps.forEach((s, i) => { s.hidden = i !== step; s.classList.toggle('back', backwards); });
+    bar.style.width = `${((step + 1) / (steps.length + 1)) * 100}%`;
+    back.hidden = step === 0;
+    next.textContent = step === steps.length - 1 ? ct('生成攻略') : ct('下一步');
+    form.querySelectorAll<HTMLElement>('.likes').forEach((l) => (l.hidden = l.dataset.for !== val('country')));
+  };
+  // Single-choice questions advance by themselves after a short beat (pointer only: arrow keys just select).
+  let pointerPick = false, advanceT = 0;
+  form.addEventListener('pointerdown', () => (pointerPick = true));
+  form.addEventListener('keydown', () => (pointerPick = false));
+  form.addEventListener('change', (e) => {
+    const t = e.target as HTMLInputElement;
+    if (!pointerPick || t.type !== 'radio' || !(t.name === 'country' || t.name === 'month' || t.name === 'days')) return;
+    const from = step;
+    clearTimeout(advanceT);
+    advanceT = window.setTimeout(() => { if (step === from) go(Math.min(from + 1, steps.length - 1)); }, 220);
+  });
+  back.addEventListener('click', () => go(Math.max(0, step - 1)));
+  next.addEventListener('click', () => (step < steps.length - 1 ? go(step + 1) : generate()));
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const COUNTRY_NAME: Record<string, string> = { japan: ct('日本'), australia: ct('澳大利亚'), usa: ct('美国') };
+
+  async function generate() {
+    next.disabled = true;
+    next.textContent = ct('生成中…');
+    try { cat = await getCatalog(); } catch { next.disabled = false; next.textContent = ct('再试一次'); (window as any).cbtToast?.(ct('数据没加载上，检查一下网络。')); return; }
+    const a = answers();
+    const plan = buildPlan(cat, a, seed);
+    const place = Object.fromEntries(cat.p.map((p) => [p.s, p]));
+    const spot = Object.fromEntries(cat.s.map((s) => [s.k, s]));
+    const food = Object.fromEntries(cat.f.map((f) => [f.k, f]));
+    document.getElementById('qr-title')!.textContent = plan.title;
+    document.getElementById('qr-bases')!.textContent = plan.bases.map((b) => ct('{place} {n} 晚', { place: place[b.place]?.n ?? b.place, n: b.nights })).join(' → ');
+    document.getElementById('qr-days')!.innerHTML = plan.days.map((d, i) => `
+      <li class="qr-day" style="--i:${i}">
+        <header><span class="dn">D${i + 1}</span><b>${esc(place[d.place]?.n ?? '')}</b>${d.note ? `<small>${esc(d.note)}</small>` : ''}</header>
+        <ul class="qr-items">${d.items.map((it) => {
+          const p = parseItem(it);
+          const key = it.slice(2);
+          const s = spot[key], f = food[key];
+          const name = s?.n ?? f?.n ?? key;
+          const sub = s ? s.t : f ? f.w : '';
+          const ph = (s?.ph || f?.ph) ? `<img src="${photoUrl(it)}" alt="" loading="lazy">` : `<span class="ph">${p.kind === 'food' ? ct('食') : ct('景')}</span>`;
+          return `<li>${ph}<span><a href="${p.href}">${p.kind === 'food' ? ct('吃 {name}', { name: esc(name) }) : esc(name)}</a><small>${esc(sub)}</small></span></li>`;
+        }).join('') || `<li><span class="ph">·</span><span><small>${ct('自由活动')}</small></span></li>`}</ul>
+      </li>`).join('');
+    document.getElementById('qr-tips')!.innerHTML = plan.tips.map((t) => `<li>${esc(t)}</li>`).join('');
+    const c = a.country;
+    document.getElementById('qr-more')!.innerHTML = c === 'japan'
+      ? `<a href="${lp(`/budget/?c=japan&days=${a.days}`)}">${ct('按 {n} 天算预算 →', { n: a.days })}</a>`
+      : `<a href="${lp(`/${c}/guide/`)}">${ct('{country}出行须知 →', { country: COUNTRY_NAME[c] })}</a>　<a href="${lp(`/budget/?c=${c}&days=${a.days}`)}">${ct('按 {n} 天算预算 →', { n: a.days })}</a>`;
+    form.hidden = true;
+    result.hidden = false;
+    bar.style.width = '100%';
+    (result as HTMLElement & { _plan?: typeof plan })._plan = plan;
+    next.disabled = false;
+    scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('qr-again')!.addEventListener('click', () => { seed++; generate(); });
+  document.getElementById('qr-reset')!.addEventListener('click', () => { seed = 0; result.hidden = true; form.hidden = false; go(0); });
+  document.getElementById('qr-save')!.addEventListener('click', () => {
+    const plan = (result as HTMLElement & { _plan?: ReturnType<typeof buildPlan> })._plan;
+    if (!plan) return;
+    const cur = load();
+    if (cur.days.flat().length + cur.pool.length > 0 && !confirm(ct('你的行程里已经有内容。用这份攻略替换掉吗？'))) return;
+    save({ v: 1, title: plan.title.slice(0, 40), start: cur.start, days: plan.days.map((d) => d.items), pool: [], notes: {} });
+    location.href = lp('/plan/');
+  });
+  void placeHref;
+  go(0);
+</script>

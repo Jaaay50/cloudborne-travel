@@ -13,9 +13,12 @@ export function parsePlace(key: string): { country: Country; slug: string } {
   return { country: 'japan', slug: key };
 }
 
+// In the browser, links get the page's language prefix (<html data-lp="/en">); build-time HTML is
+// prefixed by the middleware instead.
+const LP = typeof document !== 'undefined' ? document.documentElement.dataset.lp || '' : '';
 export const placeHref = (key: string) => {
   const { country, slug } = parsePlace(key);
-  return `/${country}/${slug}/`;
+  return `${LP}/${country}/${slug}/`;
 };
 
 /** "s:us.california/golden-gate-bridge" -> parts. */

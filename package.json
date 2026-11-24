@@ -7,13 +7,14 @@
     "geo": "node scripts/build-geo.mjs",
     "images": "node scripts/build-images.mjs",
     "check": "python3 -I scripts/check_content.py --all",
-    "dev": "astro dev",
-    "build": "node scripts/fetch-rates.mjs && node scripts/photo-index.mjs && astro build && node scripts/finalize-sw.mjs",
+    "dev": "python3 -I scripts/i18n.py build && astro dev",
+    "build": "node scripts/fetch-rates.mjs && node scripts/photo-index.mjs && python3 -I scripts/i18n.py build && astro build && node scripts/finalize-sw.mjs",
     "preview": "astro preview",
     "rates": "node scripts/fetch-rates.mjs",
     "climate": "node scripts/fetch-climate.mjs",
     "geo:world": "node scripts/prepare-geo-world.mjs",
-    "photos": "node scripts/photo-index.mjs"
+    "photos": "node scripts/photo-index.mjs",
+    "i18n": "python3 -I scripts/i18n.py"
   },
   "dependencies": {
     "astro": "^7.4.13",

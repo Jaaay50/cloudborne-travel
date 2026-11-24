@@ -1,6 +1,9 @@
-// Toolkit data (src/data/toolkit/*.json). Each file is optional while content is being written.
-const mods = import.meta.glob<unknown>('../data/toolkit/*.json', { eager: true, import: 'default' });
-const get = <T>(name: string): T | null => (mods[`../data/toolkit/${name}.json`] as T) ?? null;
+// Toolkit data (src/data/toolkit/*.json, translated copies in src/i18n/<lang>/toolkit/).
+import { dataFile, live } from './data';
+import { translated } from './i18n';
+// null when the Chinese file is missing, so pages can still show "内容整理中" for a tool being written.
+const get = <T extends object>(name: string): T | null =>
+  dataFile<T>(`toolkit/${name}.json`, 'zh') ? live((l) => dataFile<T>(`toolkit/${name}.json`, l)!) : null;
 
 export interface Src { title: string; url: string }
 export interface Phrase { id: string; zh: string; ja: string; kana: string; note?: string }
@@ -34,7 +37,7 @@ export const checklist = get<Checklist>('checklist');
 export const transport = get<Transport>('transport');
 export const rules = get<Rules>('rules2026');
 
-export const TOOLS = [
+const TOOLS_ZH = [
   { slug: 'phrases', t: '日语大字卡', d: '点餐、忌口、购物、交通、求助，放大给店员看', ico: 'あ', ready: !!phrases },
   { slug: 'airports', t: '机场进城', d: '7 个主要机场怎么进市区、多久、多少钱', ico: '✈', ready: !!transport },
   { slug: 'transport', t: '交通常识', d: 'IC 卡、新干线行李、周游券值不值', ico: '⇄', ready: !!transport },
@@ -43,3 +46,4 @@ export const TOOLS = [
   { slug: 'emergency', t: '紧急求助', d: '报警急救、使领馆、护照丢失', ico: '!', ready: !!emergency },
   { slug: 'rules-2026', t: '2026 新规', d: '出国税、住宿税、免税改退税', ico: '新', ready: !!rules },
 ] as const;
+export const TOOLS = translated(TOOLS_ZH);

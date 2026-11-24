@@ -1,5 +1,6 @@
 ---
 import type { Guide } from '../lib/content';
+import { t, lang, listSep } from '../lib/i18n';
 interface Props { country: string; name: string; g: Guide | undefined }
 const { country, name, g } = Astro.props;
 const tel = (s: string) => {
@@ -7,18 +8,20 @@ const tel = (s: string) => {
   return m ? 'tel:' + m[0].replace(/[\s-]/g, '') : undefined;
 };
 const firstNum = (s: string) => s.match(/\+?\d[\d\s-]{1,}\d/)?.[0] ?? s;
+// The English / Japanese guides carry no Chinese-embassy contacts; those readers get one general line instead.
+const zh = lang() === 'zh';
 ---
 <section class="wrap gd-head">
-  <nav class="crumbs-plain"><a href={`/${country}/`}>{name}</a><span>/</span><span>出行须知</span></nav>
-  <h1>去{name}之前</h1>
+  <nav class="crumbs-plain"><a href={`/${country}/`}>{name}</a><span>/</span><span>{t('出行须知')}</span></nav>
+  <h1>{t('去{name}之前', { name })}</h1>
   {g && (
-    <nav class="gd-toc" aria-label="目录">
+    <nav class="gd-toc" aria-label={t('目录')}>
       {g.sections.map((s) => <a href={`#${s.id}`}>{s.title}</a>)}
-      <a href="#sos">紧急电话</a>
+      <a href="#sos">{t('紧急电话')}</a>
     </nav>
   )}
 </section>
-{!g && <section class="wrap"><p>内容整理中。</p></section>}
+{!g && <section class="wrap"><p>{t('内容整理中。')}</p></section>}
 {g && (
   <div class="wrap gd">
     {g.sections.map((s) => (
@@ -30,7 +33,7 @@ const firstNum = (s: string) => s.match(/\+?\d[\d\s-]{1,}\d/)?.[0] ?? s;
       </section>
     ))}
     <section class="gd-sec reveal" id="sos">
-      <h2>紧急电话</h2>
+      <h2>{t('紧急电话')}</h2>
       <div class="nums">
         {g.numbers.map((n) => (
           <a class="num" href={tel(n.number)}>
@@ -39,21 +42,22 @@ const firstNum = (s: string) => s.match(/\+?\d[\d\s-]{1,}\d/)?.[0] ?? s;
           </a>
         ))}
       </div>
-      <div class="contacts">
+      {!zh && <p class="c-own">{t('遇到证件丢失或被捕等情况，联系你所持护照国家的大使馆或领事馆。')}</p>}
+      {g.contacts.length > 0 && <div class="contacts">
         {g.contacts.map((c) => (
           <div class="contact">
             <div><b>{c.name}</b>{c.note && <p>{c.note}</p>}</div>
             <div class="c-act">
-              <a class="btn sm" href={tel(c.phone)}>拨打 {firstNum(c.phone)}</a>
-              {c.url && <a class="c-url" href={c.url} target="_blank" rel="noopener nofollow">官网</a>}
+              <a class="btn sm" href={tel(c.phone)}>{t('拨打 {number}', { number: firstNum(c.phone) })}</a>
+              {c.url && <a class="c-url" href={c.url} target="_blank" rel="noopener nofollow">{t('官网')}</a>}
             </div>
           </div>
         ))}
-      </div>
+      </div>}
     </section>
     <details class="gd-src">
-      <summary>来源（{g.checked}）</summary>
-      <p>{g.sources.map((s, i) => <>{i > 0 && '、'}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
+      <summary>{t('来源（{date}）', { date: g.checked })}</summary>
+      <p>{g.sources.map((s, i) => <>{i > 0 && listSep()}<a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a></>)}</p>
     </details>
   </div>
 )}
@@ -83,6 +87,7 @@ const firstNum = (s: string) => s.match(/\+?\d[\d\s-]{1,}\d/)?.[0] ?? s;
   .contact p { font-size: 13.5px; color: var(--mut); margin-top: 2px; }
   .c-act { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
   .c-url { font-size: 13px; color: var(--indigo); }
+  .c-own { margin-top: 12px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; font-size: 14.5px; color: var(--ink-2); }
   .gd-src { margin-top: 26px; }
   .gd-src summary { font-size: 13px; color: var(--mut); cursor: pointer; }
   .gd-src p { font-size: 12.5px; color: var(--mut); line-height: 1.8; margin-top: 8px; }

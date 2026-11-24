@@ -1,6 +1,7 @@
 // Quick planner: turns a handful of multiple-choice answers into a day-by-day draft trip.
 // Pure functions over the client catalogue so it runs offline and instantly.
 import type { Catalog, CatPref, CatSpot } from './catalog';
+import { ct } from './i18n';
 
 export interface QuickAnswers {
   country: 'japan' | 'australia' | 'usa';
@@ -16,15 +17,6 @@ export interface QuickAnswers {
 export interface QuickDay { place: string; items: string[]; note?: string }
 export interface QuickPlan { title: string; days: QuickDay[]; bases: { place: string; nights: number }[]; tips: string[] }
 
-const hours = (t: string) => {
-  if (!t) return 1.5;
-  if (/半天/.test(t)) return 4;
-  if (/晚|夜/.test(t)) return 6;
-  const m = t.match(/(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*(小时|分钟|天)/);
-  if (!m) return /天/.test(t) ? 7 : 2;
-  const v = m[2] ? (+m[1] + +m[2]) / 2 : +m[1];
-  return m[3] === '分钟' ? v / 60 : m[3] === '天' ? 7 : v;
-};
 const dist = (a: [number, number], b: [number, number]) => {
   const R = 6371, rad = Math.PI / 180;
   const dLat = (b[1] - a[1]) * rad, dLon = (b[0] - a[0]) * rad;
@@ -87,7 +79,7 @@ export function buildPlan(cat: Catalog, a: QuickAnswers, variant = 0): QuickPlan
     ranked.splice(ranked.indexOf(pick), 1);
     ranked.unshift(pick);
   }
-  if (!ranked.length) return { title: '我的行程', days: Array.from({ length: a.days }, () => ({ place: '', items: [] })), bases: [], tips: [] };
+  if (!ranked.length) return { title: ct('我的行程'), days: Array.from({ length: a.days }, () => ({ place: '', items: [] })), bases: [], tips: [] };
   const want = baseCount(a.days, a.pace);
   // Greedy pick: best place first, then good places that are not too far from what we have.
   // Distances are between spot centroids; domestic flights make longer hops OK in AU / US.
@@ -182,8 +174,8 @@ export function buildPlan(cat: Catalog, a: QuickAnswers, variant = 0): QuickPlan
       // Files list the best-known spots first; first-timers lean on that order more.
       let sc = 1 + ((o.spots.length - idx) / o.spots.length) * (a.first ? 3 : 1.2) + (a.first && idx === 0 ? 3 : a.first && idx === 1 ? 1.5 : 0);
       for (const t of s.th) { if (a.likes.includes(t)) sc += inSeason(t) ? 3 : -2; else if (!inSeason(t)) sc -= 1; }
-      if ((a.people === 'elders' || a.people === 'family') && (s.d === 'hiking' || hours(s.t) >= 6)) sc -= 2.5;
-      if (a.budget === 'save' && /[0-9]{3,}/.test(s.f.replace(/,/g, '')) && +s.f.replace(/[^0-9]/g, '') > 3000) sc -= 0.5;
+      if ((a.people === 'elders' || a.people === 'family') && (s.d === 'hiking' || s.h[0] >= 6)) sc -= 2.5;
+      if (a.budget === 'save' && s.x) sc -= 0.5;
       return { s, sc };
     }).sort((x, y) => y.sc - x.sc);
     // Stay around one hub (the best spot) so days at the same base don't sit hundreds of km apart.
@@ -210,7 +202,7 @@ export function buildPlan(cat: Catalog, a: QuickAnswers, variant = 0): QuickPlan
           spots.slice(0, 6).forEach((s, i) => { const km = dist(cur!.ll, s.ll); if (km < best) { best = km; idx = i; } });
         }
         const s = spots[idx];
-        const t = hours(s.t);
+        const t = s.h[0];
         if (day.items.length && t > h + 0.5) break;
         spots.splice(idx, 1);
         day.items.push(`s:${s.k}`);
@@ -221,21 +213,21 @@ export function buildPlan(cat: Catalog, a: QuickAnswers, variant = 0): QuickPlan
       if (foods.length && (a.likes.includes('food') || foodI < foods.length) && (foodI < foods.length)) {
         if (a.likes.includes('food') || d % 2 === 0) day.items.push(`f:${foods[foodI++].k}`);
       }
-      if (isTravelDay(d)) day.note = `从${placeName(cat, order[bi - 1].p)}到${placeName(cat, o.p)}`;
-      else if (!day.items.some((k) => k[0] === 's')) day.note = '自由活动，或去周边转转';
+      if (isTravelDay(d)) day.note = ct('从{a}到{b}', { a: placeName(cat, order[bi - 1].p), b: placeName(cat, o.p) });
+      else if (!day.items.some((k) => k[0] === 's')) day.note = ct('自由活动，或去周边转转');
       days.push(day);
     }
   });
 
   const names = order.map((o) => placeName(cat, o.p));
   const tips: string[] = [];
-  if (order.length >= 3) tips.push(`这趟换 ${order.length} 个地方住，行李尽量轻。`);
-  if (a.people === 'elders') tips.push('每天留出午休时间，长距离移动尽量放在上午。');
-  if (a.people === 'family') tips.push('带孩子的话，每天只排一个重点，其余随缘。');
-  if (a.budget === 'save') tips.push('提前一个月以上订住宿和交通，价格差别很大。');
-  if (a.country !== 'japan') tips.push('点下面的「出行须知」看签证和入境要求。');
+  if (order.length >= 3) tips.push(ct('这趟换 {n} 个地方住，行李尽量轻。', { n: order.length }));
+  if (a.people === 'elders') tips.push(ct('每天留出午休时间，长距离移动尽量放在上午。'));
+  if (a.people === 'family') tips.push(ct('带孩子的话，每天只排一个重点，其余随缘。'));
+  if (a.budget === 'save') tips.push(ct('提前一个月以上订住宿和交通，价格差别很大。'));
+  if (a.country !== 'japan') tips.push(ct('点下面的「出行须知」看签证和入境要求。'));
   return {
-    title: `${names.slice(0, 3).join(' · ')} ${a.days} 天`,
+    title: `${names.slice(0, 3).join(' · ')} ${ct('{n} 天', { n: a.days })}`,
     days,
     bases: order.map((o, i) => ({ place: o.p.s, nights: nights[i] })),
     tips,

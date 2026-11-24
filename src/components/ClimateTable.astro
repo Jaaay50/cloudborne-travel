@@ -1,13 +1,17 @@
 ---
 // Monthly climate strip for one place (`<country>/<slug>` key in src/data/climate.json, built by
 // scripts/fetch-climate.mjs). Renders nothing when the place has no data yet.
-import climate from '../data/climate.json';
+// The translated copy (src/i18n/<lang>/climate.json) carries the city names in the page's language.
+import { dataFile } from '../lib/data';
+import { t, monthName } from '../lib/i18n';
 
 interface Props { place: string; highlight?: number[] }
 type Place = { city: string; ll: number[]; m: number[][] };
+type Climate = { source: string; places: Record<string, Place | undefined> };
 
 const { place, highlight = [] } = Astro.props;
-const raw = (climate.places as Record<string, Place | undefined>)[place];
+const climate = dataFile<Climate>('climate.json')!;
+const raw = climate.places[place];
 const data = raw && Array.isArray(raw.m) && raw.m.length === 12 ? raw : undefined;
 const best = new Set(highlight.filter((n) => Number.isInteger(n) && n >= 1 && n <= 12));
 
@@ -36,20 +40,20 @@ const months = data ? data.m.map(([hi, lo, mm, days], i) => ({
   hi, lo, mm, days,
   best: best.has(i + 1),
   style: `--top:${pct(100 - pos(hi))};--bot:${pct(pos(lo))};--c-hi:${tint(hi)};--c-lo:${tint(lo)};--rain:${pct((mm / rainTop) * 100)}`,
-  title: `${i + 1}月：最高 ${hi}°C，最低 ${lo}°C，降水 ${mm} 毫米，约 ${days} 天有雨`,
+  title: t('{month}：最高 {hi}°C，最低 {lo}°C，降水 {mm} 毫米，约 {days} 天有雨', { month: monthName(i + 1), hi, lo, mm, days }),
 })) : [];
 ---
 {data && (
   <div class="climate">
     <div class="cl-hd">
-      <h3>每月天气</h3>
-      <span>以{data.city}为准</span>
+      <h3>{t('每月天气')}</h3>
+      <span>{t('以{city}为准', { city: data.city })}</span>
     </div>
 
     <ol class="cl-strip" aria-hidden="true">
       {months.map((m) => (
         <li class:list={['cl-m', { best: m.best }]} style={m.style} title={m.title}>
-          <span class="cl-mon">{m.n}月</span>
+          <span class="cl-mon">{monthName(m.n)}</span>
           <span class="cl-plot"><span class="cl-track">
             <span class="cl-bar">
               <span class="cl-hi">{deg(m.hi)}</span>
@@ -63,27 +67,27 @@ const months = data ? data.m.map(([hi, lo, mm, days], i) => ({
     </ol>
 
     <p class="cl-ft">
-      {best.size > 0 && <span class="cl-key"><i></i>适合去</span>}
-      <span>月降水量（毫米）</span>
+      {best.size > 0 && <span class="cl-key"><i></i>{t('适合去')}</span>}
+      <span>{t('月降水量（毫米）')}</span>
       <a href="https://open-meteo.com/" rel="noopener" target="_blank">{climate.source}</a>
     </p>
 
     <div class="visually-hidden">
       <table>
-        <caption>每月天气，以{data.city}为准，{climate.source}</caption>
+        <caption>{t('每月天气，以{city}为准，{source}', { city: data.city, source: climate.source })}</caption>
         <thead>
           <tr>
-            <th scope="col">月份</th>
-            <th scope="col">平均最高气温（°C）</th>
-            <th scope="col">平均最低气温（°C）</th>
-            <th scope="col">月降水量（毫米）</th>
-            <th scope="col">降水 1 毫米以上的天数</th>
+            <th scope="col">{t('月份')}</th>
+            <th scope="col">{t('平均最高气温（°C）')}</th>
+            <th scope="col">{t('平均最低气温（°C）')}</th>
+            <th scope="col">{t('月降水量（毫米）')}</th>
+            <th scope="col">{t('降水 1 毫米以上的天数')}</th>
           </tr>
         </thead>
         <tbody>
           {months.map((m) => (
             <tr>
-              <th scope="row">{m.n}月{m.best && '（适合去）'}</th>
+              <th scope="row">{monthName(m.n)}{m.best && t('（适合去）')}</th>
               <td>{m.hi}</td>
               <td>{m.lo}</td>
               <td>{m.mm}</td>

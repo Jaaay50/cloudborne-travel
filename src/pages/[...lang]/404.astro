@@ -1,0 +1,11 @@
+---
+// English and Japanese "page not found" pages (/en/404.html, /ja/404.html). Chinese uses src/pages/404.astro.
+import Base from '../../layouts/Base.astro';
+import NotFound from '../../components/NotFound.astro';
+import { t } from '../../lib/i18n';
+
+export const getStaticPaths = () => [{ params: { lang: 'en' } }, { params: { lang: 'ja' } }];
+---
+<Base title={t('没找到这一页')} description={t('页面不存在')} noindex>
+  <NotFound />
+</Base>

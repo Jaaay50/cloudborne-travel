@@ -41,8 +41,14 @@ const COLOR = {
   gold: '#b88a2e',
   goldBg: '#f4ecd9',
 };
-const SERIF = '"Songti SC", "Noto Serif SC", "Source Han Serif SC", serif';
-const SANS = '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif';
+import { ct, LANG } from './i18n';
+
+// Fonts follow the page language (Japanese text in Chinese fonts picks the wrong glyph shapes).
+const SERIF = LANG === 'ja' ? '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif'
+  : LANG === 'en' ? '"Iowan Old Style", Palatino, Georgia, "Songti SC", serif'
+  : '"Songti SC", "Noto Serif SC", "Source Han Serif SC", serif';
+const SANS = LANG === 'ja' ? '"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif'
+  : '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif';
 const font = (weight: number, px: number, family = SANS) => `${weight} ${px}px ${family}`;
 
 const W = 1080; // design width; everything below is in these units
@@ -302,7 +308,7 @@ function cardOp(top: number, h: number): Op {
 }
 
 function layoutHeader(trip: ShareTrip, cover: HTMLImageElement | null, m: Ctx, ops: Op[]): number {
-  const title = clean(trip.title, 120) || '我的行程';
+  const title = clean(trip.title, 120) || ct('我的行程');
   const subtitle = clean(trip.subtitle, 80);
   let y = PAD;
 
@@ -335,7 +341,7 @@ function layoutHeader(trip: ShareTrip, cover: HTMLImageElement | null, m: Ctx, o
       c.shadowColor = 'rgba(0,0,0,0.30)';
       c.shadowBlur = 16 * k;
       setSpacing(c, '4px');
-      text(c, '栖云旅行 · 行程', tx, top + 64, F.eyebrow, 'rgba(255,255,255,0.92)');
+      text(c, ct('栖云旅行 · 行程'), tx, top + 64, F.eyebrow, 'rgba(255,255,255,0.92)');
       setSpacing(c, '0px');
       let ty = titleTop;
       for (const line of tLines) {
@@ -356,7 +362,7 @@ function layoutHeader(trip: ShareTrip, cover: HTMLImageElement | null, m: Ctx, o
     c.arc(PAD + 6, ey + 17, 6, 0, Math.PI * 2);
     c.fill();
     setSpacing(c, '4px');
-    text(c, '栖云旅行 · 行程', PAD + 24, ey + 17, F.eyebrow, COLOR.red);
+    text(c, ct('栖云旅行 · 行程'), PAD + 24, ey + 17, F.eyebrow, COLOR.red);
     setSpacing(c, '0px');
   });
   y += 34 + 26;
@@ -398,7 +404,7 @@ function layoutDay(day: ShareDay, di: number, top: number, thumbMode: boolean, l
   }
   const lx = x0 + bd + 22;
   m.font = F.dayLabel;
-  const label = ellipsize(m, clean(day.label, 60) || `第 ${di + 1} 天`, xEnd - lx - (pillW ? pillW + 20 : 0));
+  const label = ellipsize(m, clean(day.label, 60) || ct('第 {n} 天', { n: di + 1 }), xEnd - lx - (pillW ? pillW + 20 : 0));
   ops.push((c) => {
     c.fillStyle = COLOR.red;
     c.beginPath();
@@ -427,7 +433,7 @@ function layoutDay(day: ShareDay, di: number, top: number, thumbMode: boolean, l
       rr(c, x0 + 1, ey + 1, INNER_W - 2, 92, 16);
       c.stroke();
       c.restore();
-      text(c, '这一天还没安排', x0 + INNER_W / 2, ey + 47, F.empty, COLOR.mut, 'center');
+      text(c, ct('这一天还没安排'), x0 + INNER_W / 2, ey + 47, F.empty, COLOR.mut, 'center');
     });
     cy += 94;
   } else {
@@ -541,7 +547,7 @@ function layout(trip: ShareTrip, loaded: Loaded, m: Ctx): { ops: Op[]; height: n
   let y = layoutHeader(trip, loaded.cover, m, ops);
   // Once any thumbnail loads, every row gets a thumbnail slot so the text column stays aligned.
   const thumbMode = Array.from(loaded.imgs.values()).some(Boolean);
-  const days: ShareDay[] = Array.isArray(trip.days) && trip.days.length ? trip.days : [{ label: '第 1 天', items: [] }];
+  const days: ShareDay[] = Array.isArray(trip.days) && trip.days.length ? trip.days : [{ label: ct('第 {n} 天', { n: 1 }), items: [] }];
   days.forEach((day, di) => {
     y = layoutDay(day || { label: '', items: [] }, di, y, thumbMode, loaded, m, ops) + 28;
   });
@@ -551,7 +557,7 @@ function layout(trip: ShareTrip, loaded: Loaded, m: Ctx): { ops: Op[]; height: n
   const fy = y;
   ops.push((c) => {
     setSpacing(c, '2px');
-    text(c, '栖云旅行 · travel.cloudborne.cn', W / 2, fy + 16, F.footer, COLOR.mut, 'center');
+    text(c, `${ct('栖云旅行')} · travel.cloudborne.cn`, W / 2, fy + 16, F.footer, COLOR.mut, 'center');
     setSpacing(c, '0px');
   });
   y += 32 + PAD + 8;
@@ -574,7 +580,7 @@ export async function renderTripImage(trip: ShareTrip, opts: { width?: number; s
   const [cover, entries] = await Promise.all([
     trip.cover ? loadImage(trip.cover) : Promise.resolve(null),
     Promise.all(Array.from(urls, async (u) => [u, await loadImage(u)] as const)),
-    waitFonts(samples + '栖云旅行行程这一天还没安排D0123456789'),
+    waitFonts(samples + ct('栖云旅行 · 行程') + ct('这一天还没安排') + 'D0123456789'),
   ]);
   const loaded: Loaded = { cover, imgs: new Map(entries) };
 

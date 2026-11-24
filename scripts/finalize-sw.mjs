@@ -5,7 +5,11 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 
 const dist = path.join(path.dirname(path.dirname(new URL(import.meta.url).pathname)), 'dist');
-const tpl = fs.readFileSync(path.join(dist, 'sw.js'), 'utf8');
+// One worker per language: dist/sw.js, dist/en/sw.js, dist/ja/sw.js.
+for (const sw of ['sw.js', 'en/sw.js', 'ja/sw.js']) finalize(sw);
+
+function finalize(sw) {
+const tpl = fs.readFileSync(path.join(dist, sw), 'utf8');
 const pages = JSON.parse(tpl.match(/const PRECACHE = (\[[^\n]*\]);/)[1]);
 const assets = new Set();
 for (const p of pages.filter((p) => p.endsWith('/'))) {
@@ -34,5 +38,6 @@ const version = h.digest('hex').slice(0, 12);
 const out = tpl
   .replace(/const V = "[^"]*";/, `const V = ${JSON.stringify(version)};`)
   .replace(/const PRECACHE = \[[^\n]*\];/, `const PRECACHE = ${JSON.stringify(all)};`);
-fs.writeFileSync(path.join(dist, 'sw.js'), out);
-console.log(`sw.js: version ${version}, ${pages.length} pages + ${assets.size} assets precached`);
+fs.writeFileSync(path.join(dist, sw), out);
+console.log(`${sw}: version ${version}, ${pages.length} pages + ${assets.size} assets precached`);
+}

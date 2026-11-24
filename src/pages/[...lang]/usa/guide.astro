@@ -1,0 +1,16 @@
+---
+import Base from '../../../layouts/Base.astro';
+import GuidePage from '../../../components/GuidePage.astro';
+import { guideOf } from '../../../lib/content';
+import { t, lang, langPaths } from '../../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+const g = guideOf('usa');
+// The English / Japanese guides have no Chinese-embassy contacts, so their description leaves them out.
+const desc = lang() === 'zh'
+  ? '去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气、紧急电话和中国使领馆。'
+  : t('去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。');
+---
+<Base title={t('美国出行须知')} description={desc} nav="usa">
+  <GuidePage country="usa" name={t('美国')} g={g} />
+</Base>

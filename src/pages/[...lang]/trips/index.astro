@@ -1,0 +1,72 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { tripsAll } from '../../../lib/world';
+import { t, langPaths } from '../../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const trips = tripsAll();
+const groups = [
+  { c: 'japan', name: t('日本') },
+  { c: 'australia', name: t('澳大利亚') },
+  { c: 'usa', name: t('美国') },
+].filter((g) => trips.some((x) => x.country === g.c));
+const spans = [['short', t('3 天以内')], ['mid', t('4–6 天')], ['long', t('7 天以上')]];
+---
+<Base title={t('行程模板')} description={t('按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。')} nav="trips">
+  <section class="wrap tp-head">
+    <h1>{t('拿来就能用的行程')}</h1>
+    <div class="filter" role="group" aria-label={t('筛选')}>
+      <button type="button" class="chip on" data-c="" aria-pressed="true">{t('全部')}</button>
+      {groups.map((g) => <button type="button" class="chip" data-c={g.c} aria-pressed="false">{g.name}</button>)}
+      <span class="sep"></span>
+      {spans.map(([k, v]) => <button type="button" class="chip" data-d={k} aria-pressed="false">{v}</button>)}
+    </div>
+  </section>
+  <section class="wrap">
+    <div class="grid g-3">
+      {trips.map((x) => {
+        const d = x.daysCount <= 3 ? 'short' : x.daysCount <= 6 ? 'mid' : 'long';
+        const w = x.country === 'japan' ? 640 : 800;
+        return (
+          <a class="place trip reveal" href={x.href} data-c={x.country} data-d={d}>
+            <div class="pic">
+              {x.cover && <img src={`${x.cover}-${w}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
+            </div>
+            <div class="body">
+              <h3>{x.title}</h3>
+              <p>{x.for}</p>
+              <p class="bases">{x.season}</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Base>
+<style>
+  .tp-head { padding: 48px 0 22px; }
+  .tp-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 0 0 10px; }
+  .filter { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; align-items: center; }
+  .sep { width: 1px; height: 20px; background: var(--line-2); margin: 0 4px; }
+  .trip[hidden] { display: none; }
+  .trip .pic { position: relative; }
+  .badge { position: absolute; left: 12px; top: 12px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 13px; padding: 3px 11px; border-radius: 999px; }
+  .bases { font-size: 12.5px !important; color: var(--mut) !important; margin-top: 4px; }
+</style>
+<script>
+  let c = location.hash.slice(1), d = '';
+  const cards = [...document.querySelectorAll<HTMLElement>('.trip')];
+  const cc = [...document.querySelectorAll<HTMLButtonElement>('button[data-c]')];
+  const dc = [...document.querySelectorAll<HTMLButtonElement>('button[data-d]')];
+  const apply = () => {
+    cards.forEach((x) => (x.hidden = (!!c && x.dataset.c !== c) || (!!d && x.dataset.d !== d)));
+    cc.forEach((x) => { const on = x.dataset.c === c; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+    dc.forEach((x) => { const on = x.dataset.d === d; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+  };
+  if (!cc.some((x) => x.dataset.c === c)) c = '';
+  cc.forEach((x) => x.addEventListener('click', () => { c = x.dataset.c!; history.replaceState(null, '', c ? `#${c}` : location.pathname); apply(); }));
+  dc.forEach((x) => x.addEventListener('click', () => { d = d === x.dataset.d ? '' : x.dataset.d!; apply(); }));
+  apply();
+</script>

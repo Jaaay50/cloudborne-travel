@@ -42,9 +42,9 @@ self.addEventListener('fetch', (e) => {
       .then((r) => r || Response.error())));
     return;
   }
-  // Hashed build assets: cache first, kept separately so page churn never evicts them.
-  if (url.pathname.startsWith('/_astro/')) {
-    e.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => { if (res.ok) put(ASSETS, req, res, 120); return res; })));
+  // Hashed build assets and self-hosted fonts: cache first, kept separately so page churn never evicts them.
+  if (url.pathname.startsWith('/_astro/') || url.pathname.startsWith('/fonts/')) {
+    e.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => { if (res.ok) put(ASSETS, req, res, 240); return res; })));
     return;
   }
   // Illustrations and photos: cache first, in their own cache so page visits don't evict them.

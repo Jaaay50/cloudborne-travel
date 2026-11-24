@@ -30,23 +30,23 @@ type Ctx = CanvasRenderingContext2D;
 type Op = (c: Ctx, k: number) => void;
 
 const COLOR = {
-  paper: '#f6f1e7',
-  card: '#fffdf8',
-  line: '#e3dccd',
-  ink: '#1f2430',
-  ink2: '#4d5361',
-  mut: '#7a7f8a',
+  paper: '#f3ede0',
+  card: '#fdfaf3',
+  line: '#ded5c3',
+  ink: '#1e2430',
+  ink2: '#484f5e',
+  mut: '#757780',
   red: '#c2412b',
-  redBg: '#f8e6df',
-  gold: '#b88a2e',
+  redBg: '#f8e5dd',
+  gold: '#b58529',
   goldBg: '#f4ecd9',
 };
 import { ct, LANG } from './i18n';
 
 // Fonts follow the page language (Japanese text in Chinese fonts picks the wrong glyph shapes).
-const SERIF = LANG === 'ja' ? '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif'
-  : LANG === 'en' ? '"Iowan Old Style", Palatino, Georgia, "Songti SC", serif'
-  : '"Songti SC", "Noto Serif SC", "Source Han Serif SC", serif';
+const SERIF = LANG === 'ja' ? '"LXGW WenKai Screen", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif'
+  : LANG === 'en' ? '"Iowan Old Style", Palatino, Georgia, "LXGW WenKai Screen", serif'
+  : '"LXGW WenKai Screen", "Songti SC", "Noto Serif SC", serif';
 const SANS = LANG === 'ja' ? '"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif'
   : '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif';
 const font = (weight: number, px: number, family = SANS) => `${weight} ${px}px ${family}`;
@@ -604,11 +604,46 @@ export async function renderTripImage(trip: ShareTrip, opts: { width?: number; s
   c.imageSmoothingQuality = 'high';
   c.fillStyle = COLOR.paper;
   c.fillRect(0, 0, W, height);
+  // Subtle topographic contour rings across the paper background
+  c.save();
+  c.strokeStyle = 'rgba(155, 131, 94, 0.14)';
+  c.lineWidth = 2;
+  for (let ty = 120; ty < height; ty += 520) {
+    c.beginPath();
+    c.moveTo(-40, ty);
+    c.bezierCurveTo(260, ty - 90, 620, ty + 110, W + 40, ty - 20);
+    c.stroke();
+    c.beginPath();
+    c.moveTo(-40, ty + 46);
+    c.bezierCurveTo(280, ty - 42, 640, ty + 156, W + 40, ty + 28);
+    c.stroke();
+  }
+  c.restore();
   for (const op of ops) {
     c.save();
     op(c, k);
     c.restore();
   }
+  // Vintage passport stamp accent in top-right corner of header
+  c.save();
+  c.translate(W - PAD - 88, PAD + 92);
+  c.rotate(0.22);
+  c.strokeStyle = 'rgba(194, 65, 43, 0.42)';
+  c.fillStyle = 'rgba(194, 65, 43, 0.48)';
+  c.lineWidth = 3;
+  c.beginPath();
+  c.arc(0, 0, 56, 0, Math.PI * 2);
+  c.stroke();
+  c.setLineDash([5, 5]);
+  c.lineWidth = 1.6;
+  c.beginPath();
+  c.arc(0, 0, 46, 0, Math.PI * 2);
+  c.stroke();
+  c.setLineDash([]);
+  text(c, 'CLOUDBORNE', 0, -14, font(700, 12), 'rgba(194, 65, 43, 0.55)', 'center');
+  text(c, '★ STAMPED ★', 0, 6, font(700, 13), 'rgba(194, 65, 43, 0.62)', 'center');
+  text(c, String(new Date().getFullYear()), 0, 24, font(600, 12), 'rgba(194, 65, 43, 0.52)', 'center');
+  c.restore();
 
   return new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('图片生成失败'))), 'image/png');

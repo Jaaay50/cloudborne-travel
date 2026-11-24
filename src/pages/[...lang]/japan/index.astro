@@ -19,8 +19,8 @@ const tools = [
 ];
 ---
 <Base title={t('日本旅行攻略')} description={t('日本 47 个都道府县的原创旅行指南：互动地图、{n} 个景点与地方美食、季节主题、行程模板和离线随身工具。', { n: allSpots.length })} nav="japan">
-  <link slot="head" rel="preload" as="image" href="/img/hero-1280.webp" imagesrcset="/img/hero-1280.webp 1280w, /img/hero-2304.webp 2304w" imagesizes="100vw" />
+  <link slot="head" rel="preload" as="image" href="/img/hero-1280.webp" imagesrcset="/img/hero-1280.webp 1280w, /img/hero-2560.webp 2560w" imagesizes="100vw" />
   <CountryHome country="japan" name={t('日本')}
-    hero={{ img: '/img/hero', sizes: [1280, 2304], alt: covers.hero.alt, title: t('在地图上，<br />找到你的日本。'), lead: t('从一座城、一碗面、一场红叶开始。') }}
+    hero={{ img: '/img/hero', sizes: [1280, 2560], alt: covers.hero.alt, title: t('在地图上，<br />找到你的日本。'), lead: t('从一座城、一碗面、一场红叶开始。') }}
     themeCards={themeCards} tools={tools} toolsHref="/japan/tools/" />
 </Base>

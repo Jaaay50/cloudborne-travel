@@ -26,7 +26,8 @@ Cloudborne 栖云的旅行指南，覆盖日本（47 个都道府县）、澳大
 | `src/pages/[...lang]/quick.astro` + `src/scripts/quick.ts` | 一分钟生成攻略：选择题 → 按天排好的草稿行程 |
 | `src/scripts/share-image.ts` | 行程长图（canvas 绘制 PNG） |
 | `src/scripts/` | 全站脚本：搜索、加入行程、行程存储与分享编码 |
-| `public/img/` | 日本木刻风插画 WebP（1200/640 宽，首页长图 2304/1280）；`photos/` 写实风格配图（景点/美食 400/800，州封面 800/1600） |
+| `public/img/` | 日本高清木刻风插画 WebP（960/1920 宽，首页长图 1280/2560）；`photos/` 高清写实配图（景点/美食 640/1280，澳美州封面 960/1920） |
+| `public/fonts/wenkai/` | 自托管霞鹜文楷屏幕版（LXGW WenKai Screen，按 `unicode-range` 拆片加载，SIL OFL 1.1） |
 | `art-src/` | 插画原图 PNG，**不进 Git**（体积大）；本机另有备份时可删 |
 | `research/` | Natural Earth 日本子集原始数据 |
 

@@ -128,7 +128,7 @@ export const xFoods = (c: XCountry): XFoodRef[] => statesOf[c].flatMap((st) =>
 // photo-index.json lists every generated photo as "<country>/<place>/<s|f>-<id>" (plus "<country>/<place>/cover").
 const PHOTOS = new Set<string>(photoIndex as string[]);
 /** URL prefix of a photo, or null when there is none yet.
- *  Spots/foods: append "-400.webp" or "-800.webp". Covers: append "-800.webp" or "-1600.webp". */
+ *  Spots/foods: append "-640.webp" or "-1280.webp". Covers: append "-960.webp" or "-1920.webp". */
 export function photo(country: string, place: string, kind: 's' | 'f' | 'cover', id = ''): string | null {
   const key = kind === 'cover' ? `${country}/${place}/cover` : `${country}/${place}/${kind}-${id}`;
   return PHOTOS.has(key) ? `/img/photos/${key}` : null;

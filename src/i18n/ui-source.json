@@ -1,6 +1,7 @@
 {
   "strings": [
     "+ 加一天",
+    "1 号公路",
     "10 月中 – 12 月上旬",
     "10–4 月",
     "12 月 – 2 月",
@@ -45,6 +46,7 @@
     "{country}出行须知 →",
     "{country}的小费和退税 →",
     "{days} 天，{spots} 个景点，{foods} 个美食",
+    "{month}去哪",
     "{month}：最高 {hi}°C，最低 {lo}°C，降水 {mm} 毫米，约 {days} 天有雨",
     "{name}出行须知",
     "{name}在{region}",
@@ -92,12 +94,14 @@
     "东北部",
     "两个人",
     "中国地方",
+    "中央公园秋",
     "中西部",
     "中部",
     "主导航",
     "主要城市",
     "主题",
     "主题月历",
+    "乌鲁鲁佳季",
     "乐园",
     "乐园亲子",
     "九州",
@@ -170,6 +174,8 @@
     "再试一次",
     "冬",
     "冬天去哪",
+    "冬季极光",
+    "冰川观熊",
     "冰雪",
     "冲绳",
     "冲绳 · 奄美",
@@ -186,6 +192,9 @@
     "分享链接已复制，发给同行的人就能看到这份行程",
     "分类",
     "切换语言",
+    "初夏海滩",
+    "初夏漫步",
+    "初夏碧海",
     "删除这天",
     "到了{name}用得上",
     "到了日本，打开就能用",
@@ -196,6 +205,7 @@
     "北卡",
     "北海道",
     "北达科他",
+    "北部旱季",
     "北领地",
     "千叶",
     "华盛顿州",
@@ -205,6 +215,7 @@
     "南澳",
     "南达科他",
     "南部",
+    "印度洋晴日",
     "印第安纳",
     "即将生效",
     "历史古迹",
@@ -213,7 +224,6 @@
     "去哪、几天、几个人、预算、喜欢什么。马上给你一份按天排好的行程，可以直接改。",
     "去哪儿？",
     "去挑几个 →",
-    "去排行程",
     "去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。",
     "去日本用得上的日语句子：点餐忌口、购物退税、酒店、交通、寄行李、药店就医、求助。点一下放大给店员看。",
     "去日本用得上的离线工具：日语大字卡、机场进城、交通常识、退税计算、行前清单、紧急求助和 2026 新规。",
@@ -223,12 +233,15 @@
     "去美国之前要知道的：签证与入境、海关申报、支付与小费、交通与自驾、电话网络、安全与天气和紧急电话。",
     "县",
     "发现错误或有建议，写信到 <a href=\"mailto:contact@cloudborne.cn\">contact@cloudborne.cn</a>。",
+    "古寺红叶",
     "古迹",
+    "古都赏樱",
     "可多选",
     "可退的消费税",
     "吃 {name}",
     "吃什么",
     "吃饭",
+    "合掌村雪灯",
     "合计（{cur}）",
     "合计：{total}，每人 {per}",
     "含税价",
@@ -246,11 +259,12 @@
     "国家",
     "国家公园",
     "国家公园、<br />海岸和大城市。",
+    "圣诞季夜景",
     "在地图上，<br />找到你的日本。",
     "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线、中国驻日使领馆电话，以及护照丢失、就医、地震时怎么办。",
     "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线，以及护照丢失、就医、地震时怎么办。",
-    "在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。",
-    "在景点旁点「加入行程」，会先放在这里。",
+    "在景点和美食旁点「加入行程」盖章收藏，再拖进每一天。能生成链接和长图发给同行的人，不用注册。",
+    "在景点旁点「加入行程」盖章收藏，会先放在这里。",
     "地",
     "地图",
     "地图：点击地区放大，再点{unit}查看",
@@ -259,6 +273,7 @@
     "城市",
     "城郭",
     "埼玉",
+    "堪培拉秋叶",
     "堪萨斯",
     "塔斯马尼亚",
     "填你的往返机票价",
@@ -271,10 +286,15 @@
     "夏",
     "夏天去哪",
     "夏威夷",
+    "夏日祭典",
     "多看几个",
     "大交通与其他",
     "大分",
     "大堡礁、乌鲁鲁、大洋路，再加一杯澳白。",
+    "大堡礁旱季",
+    "大堡礁晴季",
+    "大提顿盛夏",
+    "大洋路晴夏",
     "大阪",
     "天",
     "天数",
@@ -293,13 +313,16 @@
     "宽裕",
     "宾州",
     "密歇根",
+    "密歇根湖畔",
     "密苏里",
     "密西西比",
     "富山",
+    "富良野花海",
     "寺社、城郭和老街，是日本旅行最不受季节影响的部分。去得早一点，人少、光线也好。",
     "寺院",
     "导航",
     "小票上的金额（日元）",
+    "尚未盖章",
     "山口",
     "山形",
     "山梨",
@@ -308,15 +331,17 @@
     "岐阜",
     "岛根",
     "岩手",
+    "峡谷秋色",
     "州",
     "州和领地",
     "已从行程移除「{name}」",
-    "已加入",
     "已复制文字版，可以直接粘贴到微信",
     "已复制预算明细",
     "已完成",
     "已把「{name}」加入行程",
+    "已盖章",
     "已经是顺路的顺序了",
+    "已集 {places} 枚印章 · {items} 项",
     "市内交通",
     "市场",
     "带孩子",
@@ -331,6 +356,7 @@
     "建议 {days}",
     "开始 →",
     "弗吉尼亚",
+    "弘前樱花",
     "当季",
     "待安排",
     "徒步",
@@ -351,10 +377,9 @@
     "打印",
     "打印 / 存 PDF",
     "打开地图",
-    "打开我的行程",
     "把{name}加入行程",
     "把想去的地方，排成一份行程。",
-    "把收藏的景点和美食排进每一天，看路线、估移动，生成分享链接。不用注册，存在你的浏览器里。",
+    "把收藏的景点和美食排进每一天，收集目的地旅行印章，看路线、估移动，生成分享链接和长图。不用注册，存在你的浏览器里。",
     "把景点拖到这里",
     "报警 急救 使领馆",
     "报警急救、使领馆",
@@ -370,6 +395,7 @@
     "按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。",
     "按季节去",
     "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。",
+    "按月份切换推荐",
     "按距离排好每天的先后顺序",
     "换一版",
     "排好了，路上大约少走 {n} 公里",
@@ -395,8 +421,11 @@
     "新泽西",
     "新潟",
     "新罕布什尔",
+    "新英格兰秋",
+    "旅行集章本",
     "旅行预算计算",
     "日元",
+    "日光红叶",
     "日本",
     "日本 2026 年 11 月起出境退税",
     "日本 47 个都道府县的原创旅行指南：互动地图、{n} 个景点与地方美食、季节主题、行程模板和离线随身工具。",
@@ -414,16 +443,24 @@
     "春",
     "春 – 秋",
     "春天去哪",
+    "春日海港",
+    "春日酒乡",
+    "春末山海",
     "晚（另收住宿税）",
     "景",
     "景点",
     "景点加起来约 {n} 小时，可能排太满",
+    "暖冬海岛",
+    "暖冬海滩",
+    "暖秋峡谷",
     "最佳 {months}",
     "最佳月份：{months}",
+    "最早红叶",
     "月份",
     "月降水量（毫米）",
     "朋友结伴",
     "本页目录",
+    "札幌雪祭",
     "机场往返",
     "机场进城",
     "机票",
@@ -431,6 +468,7 @@
     "机票、住宿、吃喝一页算清",
     "来源（{date}）",
     "极光星空",
+    "极昼冰川",
     "栃木",
     "栖云旅行",
     "栖云旅行 · 日本、澳大利亚、美国旅行指南",
@@ -441,6 +479,7 @@
     "概览",
     "横过来",
     "樱花之后还有一整季的花：4 月底紫藤和粉蝶花，6 月绣球，7 月北海道薰衣草。花期比樱花稳定，人也少一些。",
+    "樱花初开",
     "樱花前线每年 3 月下旬从九州、东京一带出发，4 月中下旬到东北，5 月上旬抵达北海道。同一棵树满开只有一周左右，赶不上平地的，就往北走或者往山上走。",
     "正在加载…",
     "正常",
@@ -448,34 +487,44 @@
     "每人往返 · {cur}",
     "每人每天",
     "每天留出午休时间，长距离移动尽量放在上午。",
+    "每收藏一个目的地，这里就会盖上一枚邮戳。",
     "每晚房费",
     "每晚每间",
     "每月天气",
     "每月天气，以{city}为准，{source}",
     "求助电话",
     "汇率",
+    "沙漠星空",
     "没找到这一页",
     "没有找到「{q}」，换个说法试试。",
+    "河津早樱",
     "流量 / 保险 / 税",
     "流量卡 / eSIM",
     "浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。",
     "浏览器不允许保存，关闭页面后行程会丢失。",
+    "浮潜观鲸",
     "海岛",
     "海岛海滩",
+    "海岸野花",
+    "海港夏日",
     "海滩",
     "消费档位",
     "涉及：{list}",
+    "清爽避暑",
     "清空",
     "清空所有勾选？",
     "清空整个行程？此操作无法撤销。",
     "温泉",
     "游玩 {time}",
     "滋贺",
+    "满城樱吹雪",
+    "潮汐湖樱花",
     "澳元",
     "澳大利亚",
     "澳大利亚 8 个州和领地的原创旅行指南：互动地图、景点和美食实拍风格配图、行程模板、签证与入境须知。",
     "澳大利亚出行须知",
     "澳大利亚旅行攻略",
+    "濑户内海",
     "火山、湖泊、峡谷和高原步道。很多山岳地带冬季封路，春末到秋天最好去，提前查开放期。",
     "点一句，全屏给对方看。",
     "点下面的「出行须知」看签证和入境要求。",
@@ -495,6 +544,7 @@
     "生成攻略",
     "生成长图",
     "田纳西",
+    "盛夏海岸",
     "目录",
     "目的地",
     "省着花",
@@ -508,10 +558,12 @@
     "福井",
     "福冈",
     "福岛",
+    "离岛浮潜",
     "秋",
     "秋天去哪",
     "秋田",
     "秋色",
+    "秋高气爽",
     "科罗拉多",
     "移到",
     "移到…",
@@ -529,11 +581,17 @@
     "签证、入境、小费、自驾和紧急电话",
     "签证与入境",
     "算预算",
+    "箱根枫叶温泉",
+    "粉雪温泉",
     "紧急求助",
     "紧急电话",
     "紧急电话、使领馆",
     "红叶",
     "红叶从 9 月底的北海道大雪山开始，10 月中旬到东北和日光，11 月中下旬是京都、关西的高峰，九州和关东平地要到 12 月初。",
+    "红叶巅峰",
+    "红土旱季",
+    "红岩春徒步",
+    "红岩暖冬",
     "约 {n} 小时",
     "纽约",
     "给对方看",
@@ -548,6 +606,8 @@
     "美术馆",
     "美食",
     "群马",
+    "翻开我的集章本",
+    "翻开集章本",
     "老街",
     "肯塔基",
     "自然",
@@ -556,15 +616,19 @@
     "自驾公路",
     "自驾路线",
     "舒服就好",
+    "舒爽盛夏",
     "舒适",
     "艺术",
     "艺术建筑",
     "艾奥瓦",
     "节奏",
+    "芝樱新绿",
     "花海",
     "茨城",
     "菜单",
     "蒙大拿",
+    "蓝花楹初开",
+    "薰衣草季",
     "行前清单",
     "行程",
     "行程名称",
@@ -572,14 +636,17 @@
     "行程路线图",
     "行程里换了约 {n} 次落脚地。考虑用寄行李服务，或减少换酒店的次数。",
     "行程长图",
+    "行程集章本",
     "街区",
     "装到手机桌面",
     "西弗吉尼亚",
     "西海岸",
     "西澳",
+    "西澳野花季",
     "西部山地",
     "要准备什么、怎么申请",
     "观景",
+    "观鲸避寒",
     "规则要点",
     "证",
     "证件 支付 网络 行李",
@@ -589,6 +656,7 @@
     "购物",
     "购物预算",
     "赏樱",
+    "跨年海港",
     "路易斯安那",
     "运营方官网",
     "还有 {n} 项没排进具体哪天。",
@@ -609,20 +677,28 @@
     "选几个选项，马上生成一份行程",
     "遇到证件丢失或被捕等情况，联系你所持护照国家的大使馆或领事馆。",
     "遇到这些情况",
+    "避寒海岛",
     "酒庄",
     "酒庄美食",
+    "酒庄采收",
     "重新选",
     "重置",
     "野生动物",
+    "金秋白杨",
+    "银山雪温泉",
+    "镰仓绣球花",
     "长图没生成出来，再试一次。",
     "长崎",
     "长野",
     "门票体验",
+    "阳光旱季",
     "阿拉斯加",
     "阿肯色",
     "降水 1 毫米以上的天数",
     "随身工具",
     "雪国",
+    "雪猴滑雪",
+    "雷尼尔花谷",
     "青森",
     "静冈",
     "页面不存在",
@@ -635,11 +711,13 @@
     "香川",
     "马里兰",
     "驾照、租车、国内航班",
+    "高原避暑",
     "高知",
     "鸟取",
     "鹿儿岛",
     "麻省",
     "黄石、大峡谷、1 号公路，还有纽约的夜。",
+    "黄石全开",
     "（适合去）"
   ],
   "client": [
@@ -654,6 +732,7 @@
     "{place} {n} 晚",
     "— 栖云旅行",
     "— 用栖云旅行排的行程",
+    "一分钟生成攻略 →",
     "一周以上、跨很多县，可以对比一下 JR Pass 或地区周游券的价格。",
     "一天跨 {n} 个地方，路上时间会很长",
     "下一步",
@@ -672,7 +751,6 @@
     "删除这天",
     "加入行程",
     "即将生效",
-    "去排行程",
     "吃 {name}",
     "吃饭",
     "合计：{total}，每人 {per}",
@@ -681,13 +759,16 @@
     "复制下面的文字：",
     "复制这个链接：",
     "复制：",
+    "套用模板 →",
     "季",
+    "尚未盖章",
     "已从行程移除「{name}」",
-    "已加入",
     "已复制文字版，可以直接粘贴到微信",
     "已复制预算明细",
     "已把「{name}」加入行程",
+    "已盖章",
     "已经是顺路的顺序了",
+    "已集 {places} 枚印章 · {items} 项",
     "带孩子的话，每天只排一个重点，其余随缘。",
     "待安排",
     "我的行程",
@@ -706,6 +787,7 @@
     "栖云旅行 · 行程",
     "正在加载…",
     "每天留出午休时间，长距离移动尽量放在上午。",
+    "每收藏一个目的地，这里就会盖上一枚邮戳。",
     "没有找到「{q}」，换个说法试试。",
     "流量 / 保险 / 税",
     "浏览器不允许保存（无痕模式或空间已满），关闭页面后行程会丢失。可以先「分享链接」保存一份。",
@@ -727,6 +809,7 @@
     "约 {n} 小时",
     "美国",
     "美食",
+    "翻开集章本",
     "自由活动",
     "自由活动，或去周边转转",
     "行程",
@@ -748,6 +831,9 @@
   "where": {
     "+ 加一天": [
       "src/pages/[...lang]/plan.astro"
+    ],
+    "1 号公路": [
+      "src/components/MonthPicks.astro"
     ],
     "10 月中 – 12 月上旬": [
       "src/lib/japan.ts"
@@ -883,6 +969,9 @@
     ],
     "{days} 天，{spots} 个景点，{foods} 个美食": [
       "src/pages/[...lang]/plan.astro"
+    ],
+    "{month}去哪": [
+      "src/components/MonthPicks.astro"
     ],
     "{month}：最高 {hi}°C，最低 {lo}°C，降水 {mm} 毫米，约 {days} 天有雨": [
       "src/components/ClimateTable.astro"
@@ -1042,6 +1131,9 @@
     "中国地方": [
       "src/lib/japan.ts"
     ],
+    "中央公园秋": [
+      "src/components/MonthPicks.astro"
+    ],
     "中西部": [
       "src/lib/countries.ts"
     ],
@@ -1059,6 +1151,9 @@
     ],
     "主题月历": [
       "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "乌鲁鲁佳季": [
+      "src/components/MonthPicks.astro"
     ],
     "乐园": [
       "src/lib/japan.ts"
@@ -1294,6 +1389,12 @@
     "冬天去哪": [
       "src/components/CountryHome.astro"
     ],
+    "冬季极光": [
+      "src/components/MonthPicks.astro"
+    ],
+    "冰川观熊": [
+      "src/components/MonthPicks.astro"
+    ],
     "冰雪": [
       "src/lib/countries.ts"
     ],
@@ -1343,6 +1444,15 @@
     "切换语言": [
       "src/layouts/Base.astro"
     ],
+    "初夏海滩": [
+      "src/components/MonthPicks.astro"
+    ],
+    "初夏漫步": [
+      "src/components/MonthPicks.astro"
+    ],
+    "初夏碧海": [
+      "src/components/MonthPicks.astro"
+    ],
     "删除这天": [
       "src/pages/[...lang]/plan.astro"
     ],
@@ -1375,6 +1485,9 @@
     "北达科他": [
       "src/lib/countries.ts"
     ],
+    "北部旱季": [
+      "src/components/MonthPicks.astro"
+    ],
     "北领地": [
       "src/lib/countries.ts"
     ],
@@ -1402,6 +1515,9 @@
     "南部": [
       "src/lib/countries.ts"
     ],
+    "印度洋晴日": [
+      "src/components/MonthPicks.astro"
+    ],
     "印第安纳": [
       "src/lib/countries.ts"
     ],
@@ -1425,9 +1541,6 @@
     ],
     "去挑几个 →": [
       "src/pages/[...lang]/plan.astro"
-    ],
-    "去排行程": [
-      "src/scripts/site.ts"
     ],
     "去日本前要准备的：护照签证、Visit Japan Web、现金和支付、eSIM、IC 卡、插头、禁带物品和礼仪。可勾选，自动保存。": [
       "src/pages/[...lang]/japan/tools/checklist.astro"
@@ -1457,8 +1570,14 @@
     "发现错误或有建议，写信到 <a href=\"mailto:contact@cloudborne.cn\">contact@cloudborne.cn</a>。": [
       "src/pages/[...lang]/about.astro"
     ],
+    "古寺红叶": [
+      "src/components/MonthPicks.astro"
+    ],
     "古迹": [
       "src/lib/japan.ts"
+    ],
+    "古都赏樱": [
+      "src/components/MonthPicks.astro"
     ],
     "可多选": [
       "src/pages/[...lang]/quick.astro"
@@ -1475,6 +1594,9 @@
     ],
     "吃饭": [
       "src/pages/[...lang]/budget.astro"
+    ],
+    "合掌村雪灯": [
+      "src/components/MonthPicks.astro"
     ],
     "合计（{cur}）": [
       "src/pages/[...lang]/budget.astro"
@@ -1523,10 +1645,14 @@
       "src/pages/[...lang]/budget.astro"
     ],
     "国家公园": [
+      "src/components/MonthPicks.astro",
       "src/lib/countries.ts"
     ],
     "国家公园、<br />海岸和大城市。": [
       "src/pages/[...lang]/usa/index.astro"
+    ],
+    "圣诞季夜景": [
+      "src/components/MonthPicks.astro"
     ],
     "在地图上，<br />找到你的日本。": [
       "src/pages/[...lang]/japan/index.astro"
@@ -1537,10 +1663,10 @@
     "在日本遇到紧急情况：报警 110、火警急救 119、海上 118、访日外国人热线，以及护照丢失、就医、地震时怎么办。": [
       "src/pages/[...lang]/japan/tools/emergency.astro"
     ],
-    "在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。": [
+    "在景点和美食旁点「加入行程」盖章收藏，再拖进每一天。能生成链接和长图发给同行的人，不用注册。": [
       "src/pages/[...lang]/index.astro"
     ],
-    "在景点旁点「加入行程」，会先放在这里。": [
+    "在景点旁点「加入行程」盖章收藏，会先放在这里。": [
       "src/pages/[...lang]/plan.astro"
     ],
     "地": [
@@ -1569,6 +1695,9 @@
     ],
     "埼玉": [
       "src/lib/japan.ts"
+    ],
+    "堪培拉秋叶": [
+      "src/components/MonthPicks.astro"
     ],
     "堪萨斯": [
       "src/lib/countries.ts"
@@ -1606,6 +1735,9 @@
     "夏威夷": [
       "src/lib/countries.ts"
     ],
+    "夏日祭典": [
+      "src/components/MonthPicks.astro"
+    ],
     "多看几个": [
       "src/pages/[...lang]/quick.astro"
     ],
@@ -1617,6 +1749,18 @@
     ],
     "大堡礁、乌鲁鲁、大洋路，再加一杯澳白。": [
       "src/pages/[...lang]/australia/index.astro"
+    ],
+    "大堡礁旱季": [
+      "src/components/MonthPicks.astro"
+    ],
+    "大堡礁晴季": [
+      "src/components/MonthPicks.astro"
+    ],
+    "大提顿盛夏": [
+      "src/components/MonthPicks.astro"
+    ],
+    "大洋路晴夏": [
+      "src/components/MonthPicks.astro"
     ],
     "大阪": [
       "src/lib/japan.ts"
@@ -1677,6 +1821,9 @@
     "密歇根": [
       "src/lib/countries.ts"
     ],
+    "密歇根湖畔": [
+      "src/components/MonthPicks.astro"
+    ],
     "密苏里": [
       "src/lib/countries.ts"
     ],
@@ -1685,6 +1832,9 @@
     ],
     "富山": [
       "src/lib/japan.ts"
+    ],
+    "富良野花海": [
+      "src/components/MonthPicks.astro"
     ],
     "寺社、城郭和老街，是日本旅行最不受季节影响的部分。去得早一点，人少、光线也好。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
@@ -1697,6 +1847,9 @@
     ],
     "小票上的金额（日元）": [
       "src/pages/[...lang]/japan/tools/tax-free.astro"
+    ],
+    "尚未盖章": [
+      "src/pages/[...lang]/plan.astro"
     ],
     "山口": [
       "src/lib/japan.ts"
@@ -1722,6 +1875,9 @@
     "岩手": [
       "src/lib/japan.ts"
     ],
+    "峡谷秋色": [
+      "src/components/MonthPicks.astro"
+    ],
     "州": [
       "src/lib/atlas.ts",
       "src/lib/countries.ts"
@@ -1730,9 +1886,6 @@
       "src/lib/countries.ts"
     ],
     "已从行程移除「{name}」": [
-      "src/scripts/site.ts"
-    ],
-    "已加入": [
       "src/scripts/site.ts"
     ],
     "已复制文字版，可以直接粘贴到微信": [
@@ -1747,7 +1900,13 @@
     "已把「{name}」加入行程": [
       "src/scripts/site.ts"
     ],
+    "已盖章": [
+      "src/scripts/site.ts"
+    ],
     "已经是顺路的顺序了": [
+      "src/pages/[...lang]/plan.astro"
+    ],
+    "已集 {places} 枚印章 · {items} 项": [
       "src/pages/[...lang]/plan.astro"
     ],
     "市内交通": [
@@ -1795,6 +1954,9 @@
     ],
     "弗吉尼亚": [
       "src/lib/countries.ts"
+    ],
+    "弘前樱花": [
+      "src/components/MonthPicks.astro"
     ],
     "当季": [
       "src/components/CountryHome.astro"
@@ -1864,9 +2026,6 @@
     "打开地图": [
       "src/components/CountryHome.astro"
     ],
-    "打开我的行程": [
-      "src/pages/[...lang]/index.astro"
-    ],
     "把{name}加入行程": [
       "src/components/CountryHome.astro",
       "src/components/PlacePage.astro",
@@ -1875,7 +2034,7 @@
     "把想去的地方，排成一份行程。": [
       "src/pages/[...lang]/index.astro"
     ],
-    "把收藏的景点和美食排进每一天，看路线、估移动，生成分享链接。不用注册，存在你的浏览器里。": [
+    "把收藏的景点和美食排进每一天，收集目的地旅行印章，看路线、估移动，生成分享链接和长图。不用注册，存在你的浏览器里。": [
       "src/pages/[...lang]/plan.astro"
     ],
     "把景点拖到这里": [
@@ -1925,6 +2084,9 @@
     ],
     "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。": [
       "src/pages/[...lang]/japan/themes/index.astro"
+    ],
+    "按月份切换推荐": [
+      "src/components/MonthPicks.astro"
     ],
     "按距离排好每天的先后顺序": [
       "src/pages/[...lang]/plan.astro"
@@ -2003,6 +2165,12 @@
     "新罕布什尔": [
       "src/lib/countries.ts"
     ],
+    "新英格兰秋": [
+      "src/components/MonthPicks.astro"
+    ],
+    "旅行集章本": [
+      "src/pages/[...lang]/plan.astro"
+    ],
     "旅行预算计算": [
       "src/pages/[...lang]/budget.astro"
     ],
@@ -2010,7 +2178,11 @@
       "src/pages/[...lang]/budget.astro",
       "src/pages/[...lang]/japan/tools/tax-free.astro"
     ],
+    "日光红叶": [
+      "src/components/MonthPicks.astro"
+    ],
     "日本": [
+      "src/components/MonthPicks.astro",
       "src/layouts/Base.astro",
       "src/lib/countries.ts",
       "src/pages/[...lang]/budget.astro",
@@ -2077,6 +2249,15 @@
     "春天去哪": [
       "src/components/CountryHome.astro"
     ],
+    "春日海港": [
+      "src/components/MonthPicks.astro"
+    ],
+    "春日酒乡": [
+      "src/components/MonthPicks.astro"
+    ],
+    "春末山海": [
+      "src/components/MonthPicks.astro"
+    ],
     "晚（另收住宿税）": [
       "src/pages/[...lang]/budget.astro"
     ],
@@ -2092,6 +2273,15 @@
     "景点加起来约 {n} 小时，可能排太满": [
       "src/pages/[...lang]/plan.astro"
     ],
+    "暖冬海岛": [
+      "src/components/MonthPicks.astro"
+    ],
+    "暖冬海滩": [
+      "src/components/MonthPicks.astro"
+    ],
+    "暖秋峡谷": [
+      "src/components/MonthPicks.astro"
+    ],
     "最佳 {months}": [
       "src/components/CountryHome.astro",
       "src/pages/[...lang]/australia/[state].astro",
@@ -2100,6 +2290,9 @@
     ],
     "最佳月份：{months}": [
       "src/components/PlacePage.astro"
+    ],
+    "最早红叶": [
+      "src/components/MonthPicks.astro"
     ],
     "月份": [
       "src/components/ClimateTable.astro"
@@ -2112,6 +2305,9 @@
     ],
     "本页目录": [
       "src/components/PlacePage.astro"
+    ],
+    "札幌雪祭": [
+      "src/components/MonthPicks.astro"
     ],
     "机场往返": [
       "src/pages/[...lang]/budget.astro"
@@ -2141,6 +2337,9 @@
     ],
     "极光星空": [
       "src/lib/countries.ts"
+    ],
+    "极昼冰川": [
+      "src/components/MonthPicks.astro"
     ],
     "栃木": [
       "src/lib/japan.ts"
@@ -2177,6 +2376,9 @@
     "樱花之后还有一整季的花：4 月底紫藤和粉蝶花，6 月绣球，7 月北海道薰衣草。花期比樱花稳定，人也少一些。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
     ],
+    "樱花初开": [
+      "src/components/MonthPicks.astro"
+    ],
     "樱花前线每年 3 月下旬从九州、东京一带出发，4 月中下旬到东北，5 月上旬抵达北海道。同一棵树满开只有一周左右，赶不上平地的，就往北走或者往山上走。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
     ],
@@ -2198,6 +2400,9 @@
     "每天留出午休时间，长距离移动尽量放在上午。": [
       "src/scripts/quick.ts"
     ],
+    "每收藏一个目的地，这里就会盖上一枚邮戳。": [
+      "src/pages/[...lang]/plan.astro"
+    ],
     "每晚房费": [
       "src/pages/[...lang]/budget.astro"
     ],
@@ -2216,12 +2421,18 @@
     "汇率": [
       "src/pages/[...lang]/budget.astro"
     ],
+    "沙漠星空": [
+      "src/components/MonthPicks.astro"
+    ],
     "没找到这一页": [
       "src/pages/404.astro",
       "src/pages/[...lang]/404.astro"
     ],
     "没有找到「{q}」，换个说法试试。": [
       "src/scripts/site.ts"
+    ],
+    "河津早樱": [
+      "src/components/MonthPicks.astro"
     ],
     "流量 / 保险 / 税": [
       "src/pages/[...lang]/budget.astro"
@@ -2235,11 +2446,20 @@
     "浏览器不允许保存，关闭页面后行程会丢失。": [
       "src/pages/[...lang]/plan.astro"
     ],
+    "浮潜观鲸": [
+      "src/components/MonthPicks.astro"
+    ],
     "海岛": [
       "src/lib/japan.ts"
     ],
     "海岛海滩": [
       "src/lib/countries.ts"
+    ],
+    "海岸野花": [
+      "src/components/MonthPicks.astro"
+    ],
+    "海港夏日": [
+      "src/components/MonthPicks.astro"
     ],
     "海滩": [
       "src/lib/countries.ts"
@@ -2249,6 +2469,9 @@
     ],
     "涉及：{list}": [
       "src/pages/[...lang]/plan.astro"
+    ],
+    "清爽避暑": [
+      "src/components/MonthPicks.astro"
     ],
     "清空": [
       "src/pages/[...lang]/plan.astro"
@@ -2268,11 +2491,18 @@
     "滋贺": [
       "src/lib/japan.ts"
     ],
+    "满城樱吹雪": [
+      "src/components/MonthPicks.astro"
+    ],
+    "潮汐湖樱花": [
+      "src/components/MonthPicks.astro"
+    ],
     "澳元": [
       "src/lib/countries.ts",
       "src/pages/[...lang]/budget.astro"
     ],
     "澳大利亚": [
+      "src/components/MonthPicks.astro",
       "src/layouts/Base.astro",
       "src/lib/countries.ts",
       "src/pages/[...lang]/australia/guide.astro",
@@ -2295,6 +2525,9 @@
     ],
     "澳大利亚旅行攻略": [
       "src/pages/[...lang]/australia/index.astro"
+    ],
+    "濑户内海": [
+      "src/components/MonthPicks.astro"
     ],
     "火山、湖泊、峡谷和高原步道。很多山岳地带冬季封路，春末到秋天最好去，提前查开放期。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
@@ -2354,6 +2587,9 @@
     "田纳西": [
       "src/lib/countries.ts"
     ],
+    "盛夏海岸": [
+      "src/components/MonthPicks.astro"
+    ],
     "目录": [
       "src/components/GuidePage.astro"
     ],
@@ -2393,6 +2629,9 @@
     "福岛": [
       "src/lib/japan.ts"
     ],
+    "离岛浮潜": [
+      "src/components/MonthPicks.astro"
+    ],
     "秋": [
       "src/lib/japan.ts"
     ],
@@ -2404,6 +2643,9 @@
     ],
     "秋色": [
       "src/lib/countries.ts"
+    ],
+    "秋高气爽": [
+      "src/components/MonthPicks.astro"
     ],
     "科罗拉多": [
       "src/lib/countries.ts"
@@ -2463,6 +2705,12 @@
       "src/pages/[...lang]/index.astro",
       "src/pages/[...lang]/usa/index.astro"
     ],
+    "箱根枫叶温泉": [
+      "src/components/MonthPicks.astro"
+    ],
+    "粉雪温泉": [
+      "src/components/MonthPicks.astro"
+    ],
     "紧急求助": [
       "src/lib/toolkit.ts",
       "src/pages/[...lang]/catalog.json.ts",
@@ -2481,6 +2729,18 @@
     ],
     "红叶从 9 月底的北海道大雪山开始，10 月中旬到东北和日光，11 月中下旬是京都、关西的高峰，九州和关东平地要到 12 月初。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "红叶巅峰": [
+      "src/components/MonthPicks.astro"
+    ],
+    "红土旱季": [
+      "src/components/MonthPicks.astro"
+    ],
+    "红岩春徒步": [
+      "src/components/MonthPicks.astro"
+    ],
+    "红岩暖冬": [
+      "src/components/MonthPicks.astro"
     ],
     "约 {n} 小时": [
       "src/pages/[...lang]/plan.astro"
@@ -2505,6 +2765,7 @@
       "src/pages/[...lang]/budget.astro"
     ],
     "美国": [
+      "src/components/MonthPicks.astro",
       "src/layouts/Base.astro",
       "src/lib/countries.ts",
       "src/pages/[...lang]/budget.astro",
@@ -2539,6 +2800,12 @@
     "群马": [
       "src/lib/japan.ts"
     ],
+    "翻开我的集章本": [
+      "src/pages/[...lang]/index.astro"
+    ],
+    "翻开集章本": [
+      "src/scripts/site.ts"
+    ],
     "老街": [
       "src/lib/japan.ts"
     ],
@@ -2563,6 +2830,9 @@
     "舒服就好": [
       "src/pages/[...lang]/quick.astro"
     ],
+    "舒爽盛夏": [
+      "src/components/MonthPicks.astro"
+    ],
     "舒适": [
       "src/pages/[...lang]/budget.astro"
     ],
@@ -2578,6 +2848,9 @@
     "节奏": [
       "src/pages/[...lang]/quick.astro"
     ],
+    "芝樱新绿": [
+      "src/components/MonthPicks.astro"
+    ],
     "花海": [
       "src/lib/countries.ts",
       "src/lib/japan.ts"
@@ -2590,6 +2863,12 @@
     ],
     "蒙大拿": [
       "src/lib/countries.ts"
+    ],
+    "蓝花楹初开": [
+      "src/components/MonthPicks.astro"
+    ],
+    "薰衣草季": [
+      "src/components/MonthPicks.astro"
     ],
     "行前清单": [
       "src/lib/toolkit.ts",
@@ -2622,6 +2901,9 @@
     "行程长图": [
       "src/pages/[...lang]/plan.astro"
     ],
+    "行程集章本": [
+      "src/pages/[...lang]/plan.astro"
+    ],
     "街区": [
       "src/lib/japan.ts"
     ],
@@ -2637,6 +2919,9 @@
     "西澳": [
       "src/lib/countries.ts"
     ],
+    "西澳野花季": [
+      "src/components/MonthPicks.astro"
+    ],
     "西部山地": [
       "src/lib/countries.ts"
     ],
@@ -2646,6 +2931,9 @@
     ],
     "观景": [
       "src/lib/japan.ts"
+    ],
+    "观鲸避寒": [
+      "src/components/MonthPicks.astro"
     ],
     "规则要点": [
       "src/pages/[...lang]/japan/tools/tax-free.astro"
@@ -2674,6 +2962,9 @@
     ],
     "赏樱": [
       "src/lib/japan.ts"
+    ],
+    "跨年海港": [
+      "src/components/MonthPicks.astro"
     ],
     "路易斯安那": [
       "src/lib/countries.ts"
@@ -2739,11 +3030,17 @@
     "遇到这些情况": [
       "src/pages/[...lang]/japan/tools/emergency.astro"
     ],
+    "避寒海岛": [
+      "src/components/MonthPicks.astro"
+    ],
     "酒庄": [
       "src/lib/countries.ts"
     ],
     "酒庄美食": [
       "src/lib/countries.ts"
+    ],
+    "酒庄采收": [
+      "src/components/MonthPicks.astro"
     ],
     "重新选": [
       "src/pages/[...lang]/quick.astro"
@@ -2753,6 +3050,15 @@
     ],
     "野生动物": [
       "src/lib/countries.ts"
+    ],
+    "金秋白杨": [
+      "src/components/MonthPicks.astro"
+    ],
+    "银山雪温泉": [
+      "src/components/MonthPicks.astro"
+    ],
+    "镰仓绣球花": [
+      "src/components/MonthPicks.astro"
     ],
     "长图没生成出来，再试一次。": [
       "src/pages/[...lang]/plan.astro"
@@ -2765,6 +3071,9 @@
     ],
     "门票体验": [
       "src/pages/[...lang]/budget.astro"
+    ],
+    "阳光旱季": [
+      "src/components/MonthPicks.astro"
     ],
     "阿拉斯加": [
       "src/lib/countries.ts"
@@ -2783,6 +3092,12 @@
     ],
     "雪国": [
       "src/lib/japan.ts"
+    ],
+    "雪猴滑雪": [
+      "src/components/MonthPicks.astro"
+    ],
+    "雷尼尔花谷": [
+      "src/components/MonthPicks.astro"
     ],
     "青森": [
       "src/lib/japan.ts"
@@ -2824,6 +3139,9 @@
       "src/pages/[...lang]/australia/index.astro",
       "src/pages/[...lang]/usa/index.astro"
     ],
+    "高原避暑": [
+      "src/components/MonthPicks.astro"
+    ],
     "高知": [
       "src/lib/japan.ts"
     ],
@@ -2838,6 +3156,9 @@
     ],
     "黄石、大峡谷、1 号公路，还有纽约的夜。": [
       "src/pages/[...lang]/usa/index.astro"
+    ],
+    "黄石全开": [
+      "src/components/MonthPicks.astro"
     ],
     "（适合去）": [
       "src/components/ClimateTable.astro"

@@ -27,11 +27,10 @@ const spans = [['short', t('3 天以内')], ['mid', t('4–6 天')], ['long', t(
     <div class="grid g-3">
       {trips.map((x) => {
         const d = x.daysCount <= 3 ? 'short' : x.daysCount <= 6 ? 'mid' : 'long';
-        const w = x.country === 'japan' ? 640 : 800;
         return (
           <a class="place trip reveal" href={x.href} data-c={x.country} data-d={d}>
             <div class="pic">
-              {x.cover && <img src={`${x.cover}-${w}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" data-fade data-vt-img />}
               <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
             </div>
             <div class="body">

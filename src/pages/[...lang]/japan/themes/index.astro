@@ -32,7 +32,7 @@ const CAL: Record<string, number[]> = {
     <div class="grid g-3">
       {THEME_SLUGS.map((x) => (
         <a class="place reveal" href={`/japan/themes/${x}/`}>
-          <div class="pic"><img src={`/img/themes/${x}-640.webp`} alt={covers.themes[x].alt} loading="lazy" width="640" height="427" /></div>
+          <div class="pic"><img src={`/img/themes/${x}-960.webp`} alt={covers.themes[x].alt} loading="lazy" width="960" height="640" data-vt-img /></div>
           <div class="body">
             <h3>{THEMES[x].name}</h3>
             <p>{THEMES[x].season} · {t('{n} 个景点', { n: allSpots.filter((s) => s.themes.includes(x)).length })}</p>

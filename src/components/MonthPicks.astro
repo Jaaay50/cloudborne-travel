@@ -1,0 +1,428 @@
+---
+// "Where to go this month" — interactive 12-month travel journal spread on the home page.
+// Pre-renders 6 curated destinations per month (2 Japan, 2 Australia, 2 USA) using real place data + climate averages.
+import { placesOf, type WPlace } from '../lib/world';
+import type { CountrySlug } from '../lib/countries';
+import { t, monthName } from '../lib/i18n';
+import climateData from '../data/climate.json';
+
+interface PickSpec {
+  c: CountrySlug;
+  slug: string;
+  tag: string;
+}
+
+// Curated monthly highlights across Japan, Australia & USA (2 each per month).
+const MONTHLY: Record<number, PickSpec[]> = {
+  1: [
+    { c: 'japan', slug: 'hokkaido', tag: t('粉雪温泉') },
+    { c: 'japan', slug: 'nagano', tag: t('雪猴滑雪') },
+    { c: 'australia', slug: 'victoria', tag: t('盛夏海岸') },
+    { c: 'australia', slug: 'tasmania', tag: t('薰衣草季') },
+    { c: 'usa', slug: 'hawaii', tag: t('观鲸避寒') },
+    { c: 'usa', slug: 'florida', tag: t('暖冬海滩') },
+  ],
+  2: [
+    { c: 'japan', slug: 'hokkaido', tag: t('札幌雪祭') },
+    { c: 'japan', slug: 'shizuoka', tag: t('河津早樱') },
+    { c: 'australia', slug: 'tasmania', tag: t('舒爽盛夏') },
+    { c: 'australia', slug: 'new-south-wales', tag: t('海港夏日') },
+    { c: 'usa', slug: 'arizona', tag: t('红岩暖冬') },
+    { c: 'usa', slug: 'alaska', tag: t('冬季极光') },
+  ],
+  3: [
+    { c: 'japan', slug: 'tokyo', tag: t('樱花初开') },
+    { c: 'japan', slug: 'kyoto', tag: t('古都赏樱') },
+    { c: 'australia', slug: 'south-australia', tag: t('酒庄采收') },
+    { c: 'australia', slug: 'western-australia', tag: t('印度洋晴日') },
+    { c: 'usa', slug: 'washington-dc', tag: t('潮汐湖樱花') },
+    { c: 'usa', slug: 'utah', tag: t('红岩春徒步') },
+  ],
+  4: [
+    { c: 'japan', slug: 'kyoto', tag: t('满城樱吹雪') },
+    { c: 'japan', slug: 'aomori', tag: t('弘前樱花') },
+    { c: 'australia', slug: 'australian-capital-territory', tag: t('堪培拉秋叶') },
+    { c: 'australia', slug: 'victoria', tag: t('秋高气爽') },
+    { c: 'usa', slug: 'utah', tag: t('国家公园') },
+    { c: 'usa', slug: 'california', tag: t('海岸野花') },
+  ],
+  5: [
+    { c: 'japan', slug: 'hokkaido', tag: t('芝樱新绿') },
+    { c: 'japan', slug: 'okinawa', tag: t('初夏碧海') },
+    { c: 'australia', slug: 'northern-territory', tag: t('红土旱季') },
+    { c: 'australia', slug: 'queensland', tag: t('大堡礁晴季') },
+    { c: 'usa', slug: 'california', tag: t('1 号公路') },
+    { c: 'usa', slug: 'new-york', tag: t('初夏漫步') },
+  ],
+  6: [
+    { c: 'japan', slug: 'kanagawa', tag: t('镰仓绣球花') },
+    { c: 'japan', slug: 'hokkaido', tag: t('清爽避暑') },
+    { c: 'australia', slug: 'queensland', tag: t('浮潜观鲸') },
+    { c: 'australia', slug: 'northern-territory', tag: t('乌鲁鲁佳季') },
+    { c: 'usa', slug: 'wyoming', tag: t('黄石全开') },
+    { c: 'usa', slug: 'alaska', tag: t('极昼冰川') },
+  ],
+  7: [
+    { c: 'japan', slug: 'hokkaido', tag: t('富良野花海') },
+    { c: 'japan', slug: 'okinawa', tag: t('离岛浮潜') },
+    { c: 'australia', slug: 'queensland', tag: t('大堡礁旱季') },
+    { c: 'australia', slug: 'northern-territory', tag: t('沙漠星空') },
+    { c: 'usa', slug: 'alaska', tag: t('冰川观熊') },
+    { c: 'usa', slug: 'washington', tag: t('雷尼尔花谷') },
+  ],
+  8: [
+    { c: 'japan', slug: 'aomori', tag: t('夏日祭典') },
+    { c: 'japan', slug: 'nagano', tag: t('高原避暑') },
+    { c: 'australia', slug: 'queensland', tag: t('暖冬海岛') },
+    { c: 'australia', slug: 'western-australia', tag: t('北部旱季') },
+    { c: 'usa', slug: 'wyoming', tag: t('大提顿盛夏') },
+    { c: 'usa', slug: 'illinois', tag: t('密歇根湖畔') },
+  ],
+  9: [
+    { c: 'japan', slug: 'hokkaido', tag: t('最早红叶') },
+    { c: 'japan', slug: 'kagawa', tag: t('濑户内海') },
+    { c: 'australia', slug: 'western-australia', tag: t('西澳野花季') },
+    { c: 'australia', slug: 'new-south-wales', tag: t('春日海港') },
+    { c: 'usa', slug: 'colorado', tag: t('金秋白杨') },
+    { c: 'usa', slug: 'massachusetts', tag: t('新英格兰秋') },
+  ],
+  10: [
+    { c: 'japan', slug: 'tochigi', tag: t('日光红叶') },
+    { c: 'japan', slug: 'akita', tag: t('峡谷秋色') },
+    { c: 'australia', slug: 'new-south-wales', tag: t('蓝花楹初开') },
+    { c: 'australia', slug: 'south-australia', tag: t('春日酒乡') },
+    { c: 'usa', slug: 'massachusetts', tag: t('红叶巅峰') },
+    { c: 'usa', slug: 'new-york', tag: t('中央公园秋') },
+  ],
+  11: [
+    { c: 'japan', slug: 'kyoto', tag: t('古寺红叶') },
+    { c: 'japan', slug: 'kanagawa', tag: t('箱根枫叶温泉') },
+    { c: 'australia', slug: 'new-south-wales', tag: t('初夏海滩') },
+    { c: 'australia', slug: 'tasmania', tag: t('春末山海') },
+    { c: 'usa', slug: 'arizona', tag: t('暖秋峡谷') },
+    { c: 'usa', slug: 'florida', tag: t('阳光旱季') },
+  ],
+  12: [
+    { c: 'japan', slug: 'gifu', tag: t('合掌村雪灯') },
+    { c: 'japan', slug: 'yamagata', tag: t('银山雪温泉') },
+    { c: 'australia', slug: 'victoria', tag: t('大洋路晴夏') },
+    { c: 'australia', slug: 'new-south-wales', tag: t('跨年海港') },
+    { c: 'usa', slug: 'hawaii', tag: t('避寒海岛') },
+    { c: 'usa', slug: 'new-york', tag: t('圣诞季夜景') },
+  ],
+};
+
+const byCountry: Record<CountrySlug, Map<string, WPlace>> = {
+  japan: new Map(placesOf('japan').map((p) => [p.slug, p])),
+  australia: new Map(placesOf('australia').map((p) => [p.slug, p])),
+  usa: new Map(placesOf('usa').map((p) => [p.slug, p])),
+};
+const COUNTRY_LABEL: Record<CountrySlug, string> = {
+  japan: t('日本'),
+  australia: t('澳大利亚'),
+  usa: t('美国'),
+};
+const COUNTRY_CODE: Record<CountrySlug, string> = { japan: 'JPN', australia: 'AUS', usa: 'USA' };
+const climatePlaces = (climateData as { places: Record<string, { m: number[][] }> }).places;
+
+const monthLabels = Array.from({ length: 12 }, (_, i) => monthName(i + 1));
+const headingTemplates = Array.from({ length: 12 }, (_, i) => t('{month}去哪', { month: monthName(i + 1) }));
+
+const monthsData = Array.from({ length: 12 }, (_, idx) => {
+  const m = idx + 1;
+  const items = MONTHLY[m]
+    .map((spec) => {
+      const p = byCountry[spec.c].get(spec.slug);
+      if (!p) return null;
+      const cl = climatePlaces[`${spec.c}/${spec.slug}`]?.m?.[idx];
+      const temp = cl ? `${Math.round(cl[0])}° / ${Math.round(cl[1])}°C` : '';
+      return {
+        country: spec.c,
+        countryName: COUNTRY_LABEL[spec.c],
+        code: COUNTRY_CODE[spec.c],
+        name: p.name,
+        tagline: p.tagline,
+        href: p.href,
+        cover: p.cover,
+        alt: p.coverAlt || p.name,
+        tag: spec.tag,
+        temp,
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => !!x);
+  return { m, label: monthLabels[idx], items };
+});
+// Default SSR month matches build month; browser script immediately switches to visitor's actual month.
+const defaultMonth = new Date().getMonth() + 1;
+const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
+---
+
+<section class="section mp-sec" id="this-month" data-mp data-headings={JSON.stringify(headingTemplates)}>
+  <div class="wrap">
+    <div class="mp-head">
+      <div class="mp-title-wrap">
+        <span class="mp-pin" aria-hidden="true">✦</span>
+        <h2 data-mp-heading>{headingTemplates[defaultMonth - 1]}</h2>
+      </div>
+      <div class="mp-months" role="tablist" aria-label={t('按月份切换推荐')}>
+        {monthsData.map(({ m, label }) => (
+          <button
+            type="button"
+            class:list={['mp-tab', { on: m === defaultMonth }]}
+            role="tab"
+            aria-selected={m === defaultMonth ? 'true' : 'false'}
+            data-mp-tab={m}
+          >
+            <span>{label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="mp-panels">
+      {monthsData.map(({ m, items }) => (
+        <div class="mp-grid" role="tabpanel" data-mp-panel={m} hidden={m !== defaultMonth}>
+          {items.map((it, idx) => (
+            <a class="mp-card" href={it.href} style={`--i:${idx};--tape-rot:${tapeRots[idx % tapeRots.length]}`}>
+              <span class="tape" aria-hidden="true"></span>
+              <div class="mp-pic pic">
+                {it.cover && (
+                  <img
+                    src={`${it.cover}-960.webp`}
+                    alt={it.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="960"
+                    height="640"
+                    data-fade
+                    data-vt-img
+                  />
+                )}
+                <span class={`mp-stamp mp-${it.country}`}>{it.code} · {it.countryName}</span>
+                {it.temp && <span class="mp-temp">{it.temp}</span>}
+              </div>
+              <div class="mp-body">
+                <div class="mp-top">
+                  <h3>{it.name}</h3>
+                  <span class="mp-tag">{it.tag}</span>
+                </div>
+                <p>{it.tagline}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mp-sec { padding: 48px 0 54px; }
+  .mp-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .mp-title-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mp-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--vermilion-bg);
+    color: var(--vermilion);
+    border: 1px dashed color-mix(in srgb, var(--vermilion) 45%, transparent);
+    font-size: 13px;
+  }
+  .mp-head h2 {
+    font-size: clamp(25px, 3vw, 34px);
+    letter-spacing: .03em;
+  }
+  .mp-months {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding: 5px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--card) 82%, var(--paper-2));
+    border: 1px solid var(--line);
+    box-shadow: var(--sh-1);
+  }
+  .mp-tab {
+    position: relative;
+    height: 30px;
+    padding: 0 11px;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  }
+  .mp-tab:hover { background: var(--paper-2); color: var(--ink); }
+  .mp-tab:active { transform: scale(.95); }
+  .mp-tab.on {
+    background: var(--ink);
+    color: var(--on-ink);
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(30, 36, 48, .18);
+  }
+  .mp-tab.now::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--vermilion);
+  }
+  .mp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 18px;
+    padding-top: 8px;
+  }
+  .mp-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px 0;
+    border-radius: 18px;
+    background: var(--frame-bg);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1);
+    transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color var(--t-fast);
+    animation: mpIn 340ms var(--ease-out) calc(var(--i, 0) * 45ms) both;
+  }
+  @keyframes mpIn {
+    from { opacity: 0; transform: translateY(12px) scale(.985); }
+    to { opacity: 1; transform: none; }
+  }
+  .mp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sh-2);
+    border-color: var(--line-2);
+  }
+  .mp-card:active { transform: translateY(-1px) scale(.99); }
+  .mp-pic {
+    aspect-ratio: 3 / 2;
+    border-radius: 12px;
+  }
+  .mp-stamp {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font: 600 11.5px/1.2 var(--sans);
+    letter-spacing: .05em;
+    color: #fff;
+    background: rgba(20, 24, 34, .64);
+    border: 1px solid rgba(255, 255, 255, .26);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .mp-stamp.mp-japan { border-color: rgba(235, 130, 108, .55); }
+  .mp-stamp.mp-australia { border-color: rgba(114, 194, 214, .55); }
+  .mp-stamp.mp-usa { border-color: rgba(226, 174, 108, .55); }
+  .mp-temp {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font: 600 12px/1.4 var(--sans);
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+    background: rgba(18, 22, 30, .62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .mp-body {
+    padding: 13px 8px 15px;
+    display: grid;
+    gap: 5px;
+  }
+  .mp-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .mp-body h3 {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+  .mp-tag {
+    flex-shrink: 0;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vermilion);
+    background: var(--vermilion-bg);
+  }
+  .mp-body p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  @media (max-width: 960px) {
+    .mp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mp-months { border-radius: 16px; }
+  }
+  @media (max-width: 640px) {
+    .mp-months {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
+      scrollbar-width: none;
+      border-radius: 999px;
+    }
+    .mp-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+
+<script>
+  const sec = document.querySelector<HTMLElement>('[data-mp]');
+  if (sec) {
+    const headings = JSON.parse(sec.dataset.headings || '[]') as string[];
+    const headingEl = sec.querySelector<HTMLElement>('[data-mp-heading]');
+    const tabs = [...sec.querySelectorAll<HTMLButtonElement>('[data-mp-tab]')];
+    const panels = [...sec.querySelectorAll<HTMLElement>('[data-mp-panel]')];
+    const realMonth = new Date().getMonth() + 1;
+    tabs.find((b) => Number(b.dataset.mpTab) === realMonth)?.classList.add('now');
+
+    const showMonth = (m: number) => {
+      tabs.forEach((b) => {
+        const on = Number(b.dataset.mpTab) === m;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', String(on));
+      });
+      panels.forEach((p) => {
+        const on = Number(p.dataset.mpPanel) === m;
+        p.hidden = !on;
+      });
+      if (headingEl && headings[m - 1]) headingEl.textContent = headings[m - 1];
+    };
+
+    showMonth(realMonth);
+    tabs.forEach((b) => b.addEventListener('click', () => showMonth(Number(b.dataset.mpTab))));
+  }
+</script>

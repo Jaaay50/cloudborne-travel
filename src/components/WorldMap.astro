@@ -128,10 +128,20 @@ const placeHref = (slug: string) => (have.has(slug) ? A.href(slug) : undefined);
     </div>
   )}
   <a class="jmap-peek" hidden aria-hidden="true" tabindex="-1"><img alt="" /><span><b></b><small></small></span></a>
+  <span class="jmap-compass" aria-hidden="true">
+    <svg viewBox="0 0 40 40" width="34" height="34">
+      <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2.5 2.5" opacity=".55" />
+      <path d="M20 6 L23 18 L20 20 L17 18 Z" fill="var(--vermilion)" opacity=".88" />
+      <path d="M20 34 L23 22 L20 20 L17 22 Z" fill="currentColor" opacity=".45" />
+      <text x="20" y="5" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" opacity=".8">N</text>
+    </svg>
+  </span>
 </div>
 
 <style is:global>
-  .jmap { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--sea); border: 1px solid var(--line); box-shadow: var(--sh-1); }
+  .jmap { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--sea); border: 1px solid var(--line-2); box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--card) 48%, transparent), var(--sh-2); }
+  .jmap-compass { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; display: block; color: var(--map-text); pointer-events: none; opacity: .76; z-index: 2; }
+  .jmap-compass svg { display: block; width: 34px; height: 34px; }
   .jmap > svg { display: block; width: 100%; height: auto; aspect-ratio: var(--ar, 1); touch-action: manipulation; user-select: none; -webkit-user-select: none; }
   .jmap-focus > svg { aspect-ratio: 4 / 3; }
   .jmap .sea { fill: var(--sea-fill); }
@@ -456,7 +466,7 @@ const placeHref = (slug: string) => (have.has(slug) ? A.href(slug) : undefined);
       cur = pin;
       const src = pin.dataset.img;
       peek.classList.toggle('noimg', !src);
-      if (src) img.src = `${src}-400.webp`; else img.removeAttribute('src');
+      if (src) img.src = `${src}-640.webp`; else img.removeAttribute('src');
       title.textContent = pin.dataset.name || '';
       sub.textContent = pin.dataset.time ? ct('游玩 {time}', { time: pin.dataset.time }) : '';
       peek.href = (pin as unknown as SVGAElement).href.baseVal || pin.getAttribute('href') || '#';

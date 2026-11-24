@@ -10,7 +10,7 @@ const img = photo('japan', s.pref, 's', s.id);
 ---
 <article class="scard reveal" data-region={s.region} data-pref={s.pref} data-themes={s.themes.join(' ')} data-kind={s.kind}>
   <a class="scard-link" href={`/japan/${s.pref}/#spot-${s.id}`}>
-    {img && <span class="scard-pic"><img src={`${img}-400.webp`} srcset={`${img}-400.webp 400w, ${img}-800.webp 800w`} sizes="(max-width: 520px) 100vw, 400px" alt="" loading="lazy" width="400" height="267" data-fade /></span>}
+    {img && <span class="scard-pic"><img src={`${img}-640.webp`} srcset={`${img}-640.webp 640w, ${img}-1280.webp 1280w`} sizes="(max-width: 520px) 100vw, 420px" alt="" loading="lazy" decoding="async" width="640" height="427" data-fade /></span>}
     <span class="scard-top">
       {showPref && <span class="scard-pref" style={`--tone:${r.tone};--ink:${r.ink}`}>{s.prefName}</span>}
       <span class="scard-kind">{KIND_NAMES[s.kind] ?? s.kind} · {s.time}</span>
@@ -27,13 +27,14 @@ const img = photo('japan', s.pref, 's', s.id);
 </article>
 
 <style>
-  .scard { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 15px 16px 13px; overflow: hidden; transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out), border-color var(--t); }
-  .scard:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .scard { display: flex; flex-direction: column; background: var(--frame-bg); border: 1px solid var(--line); border-radius: 18px; padding: 7px 7px 13px; overflow: hidden; box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1); transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color var(--t-fast); }
+  .scard:hover { transform: translateY(-4px); box-shadow: var(--sh-2); border-color: var(--line-2); }
   .scard[hidden] { display: none; }
   .scard-link { display: grid; gap: 5px; flex: 1; }
-  .scard-pic { display: block; margin: -15px -16px 8px; aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2); }
-  .scard-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .scard-pic { display: block; border-radius: 12px; margin-bottom: 6px; aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2); }
+  .scard-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 800ms var(--ease-out), opacity 420ms var(--ease); }
   .scard:hover .scard-pic img { transform: scale(1.05); }
+  .scard-top, .scard b, .scard-text, .scard-ft { padding-inline: 8px; }
   .scard-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .scard-pref { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--tone) 22%, var(--card)); color: var(--ink); }
   .scard-kind { font-size: 12px; color: var(--mut); }

@@ -30,12 +30,12 @@ const m: PlaceModel = {
   access: p.access.map((a) => ({ from: t('从{from}', { from: a.from }), how: a.how })), stay: p.stay, tips: p.tips,
   nearby: p.nearby.map((s) => places.find((x) => x.slug === s)).filter((x): x is NonNullable<typeof x> => !!x),
   sources: p.sources, checked: p.checked,
-  heroImg: `/img/prefectures/${p.slug}`, heroSizes: [640, 1200], heroAlt: covers.prefectures[p.slug]?.alt ?? '',
+  heroImg: `/img/prefectures/${p.slug}`, heroSizes: [960, 1920], heroAlt: covers.prefectures[p.slug]?.alt ?? '',
   side: { title: t('{name}在{region}', { name: p.name, region: region.name }), text: regionInfo?.tagline, href: single ? undefined : `/japan/region/${p.region}/`, link: t('看{region}全部 {n} 个县 →', { region: region.name, n: region.prefs.length }) },
   climateKey: `japan/${p.slug}`,
 };
 const desc = t('{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种地方美食、交通与住宿建议。', { name: p.name, tagline: p.tagline, spots: p.spots.length, foods: p.foods.length });
 ---
-<Base title={t('{name}旅行攻略', { name: p.name })} description={desc} image={`/img/prefectures/${p.slug}-1200.webp`} nav="japan">
+<Base title={t('{name}旅行攻略', { name: p.name })} description={desc} image={`/img/prefectures/${p.slug}-1920.webp`} nav="japan">
   <PlacePage m={m} />
 </Base>

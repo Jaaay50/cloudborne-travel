@@ -27,9 +27,9 @@ const INTRO: Record<ThemeSlug, string> = {
 // Meta description: the start of the intro (English needs more characters for the same content).
 const introCut = INTRO[slug].slice(0, lang() === 'en' ? 150 : 60);
 ---
-<Base title={t('日本{name}去哪', { name: th.name })} description={t('日本{name}：{intro}… {n} 个精选景点。', { name: th.name, intro: introCut, n: spots.length })} image={`/img/themes/${slug}-1200.webp`} nav="japan">
+<Base title={t('日本{name}去哪', { name: th.name })} description={t('日本{name}：{intro}… {n} 个精选景点。', { name: th.name, intro: introCut, n: spots.length })} image={`/img/themes/${slug}-1920.webp`} nav="japan">
   <section class="phero">
-    <img src={`/img/themes/${slug}-1200.webp`} alt={covers.themes[slug].alt} width="1200" height="800" fetchpriority="high" />
+    <img class="vt-hero-img" src={`/img/themes/${slug}-1920.webp`} srcset={`/img/themes/${slug}-960.webp 960w, /img/themes/${slug}-1920.webp 1920w`} sizes="100vw" alt={covers.themes[slug].alt} width="1920" height="1280" fetchpriority="high" />
     <div class="wrap">
       <nav class="crumbs" aria-label={t('位置')}><a href="/japan/">{t('日本')}</a><span>/</span><a href="/japan/themes/">{t('季节与主题')}</a></nav>
       <h1>{th.name}</h1>

@@ -31,12 +31,12 @@ const m: PlaceModel = {
   access: s.access.map((a) => ({ from: lang() === 'zh' && a.from.startsWith('从') ? a.from : t('从{from}', { from: a.from }), how: a.how })), stay: s.stay, tips: s.tips,
   nearby: s.nearby.map((n) => places.find((x) => x.slug === n)).filter((x): x is NonNullable<typeof x> => !!x),
   sources: s.sources, checked: s.checked,
-  heroImg: place.cover || '/img/hero', heroSizes: place.cover ? [800, 1600] : [1280, 2304], heroAlt: s.cover.alt,
+  heroImg: place.cover || '/img/hero', heroSizes: place.cover ? [960, 1920] : [1280, 2560], heroAlt: s.cover.alt,
   side: { title: t('{name}出行须知', { name: meta.name }), text: t('签证、入境、小费、自驾和紧急电话'), href: '/usa/guide/', link: t('去看看 →') },
   climateKey: `usa/${s.slug}`,
 };
 const desc = t('{name}旅行攻略：{tagline}。{spots} 个景点、{foods} 种美食、交通与住宿建议。', { name: s.name, tagline: s.tagline, spots: s.spots.length, foods: s.foods.length });
 ---
-<Base title={t('{name}旅行攻略', { name: s.name })} description={desc} image={place.cover ? `${place.cover}-1600.webp` : undefined} nav="usa">
+<Base title={t('{name}旅行攻略', { name: s.name })} description={desc} image={place.cover ? `${place.cover}-1920.webp` : undefined} nav="usa">
   <PlacePage m={m} />
 </Base>

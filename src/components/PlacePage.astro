@@ -25,7 +25,7 @@ export interface PlaceModel {
   sources: { title: string; url: string }[];
   checked: string;
   heroImg: string; // URL without size suffix
-  heroSizes: [number, number]; // e.g. [800, 1600] for photos, [640, 1200] for illustrations
+  heroSizes: [number, number]; // [960, 1920] for HD covers, [1280, 2560] for fallback hero
   heroAlt: string;
   side?: { title: string; text?: string; href?: string; link?: string };
   climateKey: string;
@@ -44,7 +44,7 @@ const subNames = (s: { name: string; local?: string; en?: string }) => [s.local,
 const [hs, hl] = m.heroSizes;
 ---
 <section class="phero">
-  <img src={`${m.heroImg}-${hl}.webp`} srcset={`${m.heroImg}-${hs}.webp ${hs}w, ${m.heroImg}-${hl}.webp ${hl}w`} sizes="100vw" alt={m.heroAlt} width={hl} height={Math.round((hl * 2) / 3)} fetchpriority="high" />
+  <img class="vt-hero-img" src={`${m.heroImg}-${hl}.webp`} srcset={`${m.heroImg}-${hs}.webp ${hs}w, ${m.heroImg}-${hl}.webp ${hl}w`} sizes="100vw" alt={m.heroAlt} width={hl} height={Math.round((hl * 2) / 3)} fetchpriority="high" />
   <div class="wrap">
     <nav class="crumbs" aria-label={t('位置')}>
       {m.crumbs.map((c, i) => <>{i > 0 && <span>/</span>}<a href={c.href}>{c.text}</a></>)}
@@ -92,7 +92,7 @@ const [hs, hl] = m.heroSizes;
             <li class:list={['spot reveal', { 'has-img': !!s.img }]} id={`spot-${s.id}`} data-themes={s.themes.join(' ')} data-key={s.key}>
               {s.img && (
                 <figure class="spot-pic">
-                  <img src={`${s.img}-800.webp`} srcset={`${s.img}-400.webp 400w, ${s.img}-800.webp 800w`} sizes="(max-width: 640px) 100vw, 300px" alt={s.name} loading="lazy" decoding="async" width="800" height="533" data-fade />
+                  <img src={`${s.img}-1280.webp`} srcset={`${s.img}-640.webp 640w, ${s.img}-1280.webp 1280w`} sizes="(max-width: 760px) 100vw, 340px" alt={s.name} loading="lazy" decoding="async" width="1280" height="853" data-fade />
                   <span class="spot-n">{i + 1}</span>
                 </figure>
               )}
@@ -133,7 +133,7 @@ const [hs, hl] = m.heroSizes;
       <div class="foods">
         {p.foods.map((f) => (
           <div class:list={['food reveal', { 'has-img': !!f.img }]} id={`food-${f.id}`}>
-            {f.img && <div class="food-pic"><img src={`${f.img}-800.webp`} srcset={`${f.img}-400.webp 400w, ${f.img}-800.webp 800w`} sizes="(max-width: 640px) 100vw, 420px" alt={f.name} loading="lazy" decoding="async" width="800" height="533" data-fade /></div>}
+            {f.img && <div class="food-pic"><img src={`${f.img}-1280.webp`} srcset={`${f.img}-640.webp 640w, ${f.img}-1280.webp 1280w`} sizes="(max-width: 640px) 100vw, 440px" alt={f.name} loading="lazy" decoding="async" width="1280" height="853" data-fade /></div>}
             <div class="food-body">
               <div class="food-hd">
                 <h3>{f.name}</h3>
@@ -191,7 +191,7 @@ const [hs, hl] = m.heroSizes;
       <div class="grid g-4">
         {m.nearby.map((n) => (
           <a class="place reveal" href={n.href}>
-            <div class="pic">{n.cover && <img src={`${n.cover}-${n.coverPhoto ? 800 : 640}.webp`} alt={n.coverAlt} loading="lazy" width="640" height="427" data-fade />}</div>
+            <div class="pic">{n.cover && <img src={`${n.cover}-960.webp`} alt={n.coverAlt} loading="lazy" width="960" height="640" data-fade data-vt-img />}</div>
             <div class="body"><h3>{n.name}</h3><p>{n.tagline}</p></div>
           </a>
         ))}
@@ -202,7 +202,7 @@ const [hs, hl] = m.heroSizes;
 
 <style is:global>
   .pref-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; padding-top: 8px; }
-  .toc { position: sticky; top: var(--hdr); z-index: 5; display: flex; gap: 4px; padding: 10px 0; background: var(--paper); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+  .toc { position: sticky; top: var(--hdr); z-index: 5; display: flex; gap: 4px; padding: 10px 0; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px dashed var(--line-2); overflow-x: auto; scrollbar-width: none; }
   .toc a { padding: 6px 12px; border-radius: 999px; font-size: 14px; color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
   .toc a:hover { background: var(--paper-2); color: var(--ink); }
   .toc a.cur { background: var(--ink); color: var(--on-ink); }
@@ -210,43 +210,43 @@ const [hs, hl] = m.heroSizes;
   .block-hd { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
   .block-hd h2 { font-size: 26px; }
   .filter { display: flex; flex-wrap: wrap; gap: 6px; }
-  .season-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+  .season-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1); }
   .months { display: flex; gap: 3px; }
   .mo { width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; font-size: 11.5px; font-variant-numeric: tabular-nums; background: var(--paper-2); color: var(--mut); }
   .mo.on { background: var(--vermilion); color: #fff; font-weight: 600; }
   .season-row p { flex: 1 1 240px; color: var(--ink-2); font-size: 14.5px; line-height: 1.6; }
   #overview .climate { margin-top: 12px; }
 
-  .spots { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .spot { position: relative; display: grid; grid-template-columns: 1fr; background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: box-shadow 360ms var(--ease-out), border-color var(--t), opacity var(--t), transform 360ms var(--ease-out); scroll-margin-top: calc(var(--hdr) + 64px); }
-  .spot.has-img { grid-template-columns: 300px minmax(0, 1fr); }
-  .spot:hover, .spot.hot { box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .spots { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .spot { position: relative; display: grid; grid-template-columns: 1fr; background: var(--frame-bg); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1); transition: box-shadow 320ms var(--ease-out), border-color var(--t-fast), opacity var(--t), transform 320ms var(--ease-out); scroll-margin-top: calc(var(--hdr) + 64px); }
+  .spot.has-img { grid-template-columns: 320px minmax(0, 1fr); }
+  .spot:hover, .spot.hot { box-shadow: var(--sh-2); border-color: var(--line-2); transform: translateY(-2px); }
   .spot:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
   .spot.hide { display: none; }
   .spot-pic { position: relative; margin: 0; overflow: hidden; background: var(--paper-2); min-height: 100%; }
-  .spot-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .spot-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 800ms var(--ease-out), opacity 420ms var(--ease); }
   .spot:hover .spot-pic img { transform: scale(1.04); }
-  .spot-n { position: absolute; left: 12px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: rgba(20, 18, 14, .62); color: #fff; display: grid; place-items: center; font: 600 14px var(--serif); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-  .spot-n.inline { position: static; display: inline-grid; width: 26px; height: 26px; margin-right: 8px; font-size: 13px; background: var(--ink); color: var(--on-ink); vertical-align: 2px; backdrop-filter: none; }
+  .spot-n { position: absolute; left: 12px; top: 12px; width: 32px; height: 32px; border-radius: 50%; background: rgba(20, 24, 34, .68); border: 1px dashed rgba(255, 255, 255, .42); color: #fff; display: grid; place-items: center; font: 600 14px var(--hand); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .spot-n.inline { position: static; display: inline-grid; width: 26px; height: 26px; margin-right: 8px; font-size: 13px; background: var(--ink); color: var(--on-ink); border: 0; vertical-align: 2px; backdrop-filter: none; }
   .spot-body { padding: 18px 20px; min-width: 0; }
   .spot-hd { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
   .spot h3 { font-size: 20px; }
   .spot-sub { font-size: 12.5px; color: var(--mut); margin-top: 1px; }
   .spot-text { margin-top: 8px; color: var(--ink-2); font-size: 15.5px; line-height: 1.8; }
   .spot-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .spot-tip { margin-top: 10px; font-size: 14px; color: var(--ink-2); background: var(--tip-bg); border-radius: 10px; padding: 8px 12px; }
+  .spot-tip { margin-top: 10px; font-size: 14px; color: var(--ink-2); background: var(--tip-bg); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 8px 12px; }
   .spot-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 13px; }
   .spot-links a { color: var(--indigo); }
   .spot-links a:hover { text-decoration: underline; }
 
-  .foods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  .food { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; scroll-margin-top: calc(var(--hdr) + 64px); transition: box-shadow 360ms var(--ease-out), transform 360ms var(--ease-out); }
-  .food:hover { box-shadow: var(--sh-2); }
+  .foods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .food { background: var(--frame-bg); border: 1px solid var(--line); border-radius: 20px; padding: 7px 7px 0; overflow: hidden; box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1); scroll-margin-top: calc(var(--hdr) + 64px); transition: box-shadow 320ms var(--ease-out), transform 320ms var(--ease-out), border-color var(--t-fast); }
+  .food:hover { box-shadow: var(--sh-2); border-color: var(--line-2); transform: translateY(-3px); }
   .food:target { border-color: var(--vermilion); box-shadow: 0 0 0 3px var(--vermilion-bg); }
-  .food-pic { aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2); }
-  .food-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-out), opacity 500ms var(--ease); }
+  .food-pic { aspect-ratio: 3 / 2; border-radius: 13px; overflow: hidden; background: var(--paper-2); }
+  .food-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 800ms var(--ease-out), opacity 420ms var(--ease); }
   .food:hover .food-pic img { transform: scale(1.04); }
-  .food-body { padding: 14px 18px 16px; }
+  .food-body { padding: 14px 12px 16px; }
   .food-hd { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
   .food-hd .add { width: 30px; padding: 0; justify-content: center; flex-shrink: 0; }
   .food h3 { font-size: 18px; }

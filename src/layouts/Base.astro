@@ -40,9 +40,11 @@ const dict = clientDict();
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && alternates.filter((a) => hasPage(a.l, here)).map((a) => <link rel="alternate" hreflang={HTML_LANG[a.l]} href={new URL(a.href, site).href} />)}
     {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(here, site).href} />}
-    <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#15171c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3ede0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#11161f" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="/fonts/wenkai/wenkai.css" />
+    <style is:inline>@view-transition { navigation: auto; }</style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href={L('/manifest.webmanifest')} />
@@ -60,7 +62,7 @@ const dict = clientDict();
     <header class="hdr" id="hdr">
       <div class="wrap">
         <a class="brand" href={L('/')} aria-label={t('栖云旅行 首页')}>
-          <img src="/favicon.svg" alt="" width="30" height="30" />
+          <img src="/favicon.svg" alt="" width="32" height="32" />
           <b>{brand}</b>
         </a>
         <nav class="nav" aria-label={t('主导航')}>
@@ -80,8 +82,8 @@ const dict = clientDict();
               {alternates.map((a) => <a role="menuitemradio" aria-checked={a.l === l ? 'true' : 'false'} href={a.href} hreflang={HTML_LANG[a.l]} lang={HTML_LANG[a.l]} data-set-lang={a.l} data-no-lp>{LANG_LABEL[a.l]}</a>)}
             </div>
           </div>
-          <a class="trip-btn" href={L('/plan/')} aria-label={t('我的行程')}>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5 7.5 3.5l5 2 4.5-2v11l-4.5 2-5-2L3 16.5v-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M7.5 3.5v11M12.5 5.5v11" stroke="currentColor" stroke-width="1.6" /></svg>
+          <a class="trip-btn" href={L('/plan/')} aria-label={t('我的行程')} data-trip-btn>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4" y="2.8" width="12" height="14.4" rx="2.2" stroke="currentColor" stroke-width="1.6" /><circle cx="10" cy="9.2" r="2.7" stroke="currentColor" stroke-width="1.4" /><path d="M7.3 14h5.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
             <span class="trip-word">{t('行程')}</span><span class="trip-count" data-trip-count>0</span>
           </a>
           <button class="menu-btn" type="button" aria-label={t('菜单')} aria-expanded="false" data-menu>

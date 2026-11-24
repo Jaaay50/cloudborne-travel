@@ -28,7 +28,7 @@ export function getCatalog(): Promise<Catalog> {
 }
 
 export const prefOfKey = (key: string) => key.slice(2).split('/')[0];
-export const photoUrl = (item: string, size: 400 | 800 = 400) => {
+export const photoUrl = (item: string, size: 640 | 1280 = 640) => {
   const [place, id] = item.slice(2).split('/');
   const country = place.startsWith('au.') ? 'australia' : place.startsWith('us.') ? 'usa' : 'japan';
   const slug = place.replace(/^(au|us)\./, '');

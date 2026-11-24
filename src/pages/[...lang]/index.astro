@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import MonthPicks from '../../components/MonthPicks.astro';
 import { placesOf, tripsAll } from '../../lib/world';
 import { covers } from '../../lib/content';
 import { t, lang, langPaths } from '../../lib/i18n';
@@ -11,47 +12,122 @@ const coverOf = (list: typeof au, slug: string) => list.find((p) => p.slug === s
 const auHero = coverOf(au, 'new-south-wales');
 const usHero = coverOf(us, 'utah');
 const count = (list: typeof jp) => list.reduce((n, p) => n + p.spots.length, 0);
-// The small English name above each country name; English pages already show it as the name.
 const showEn = lang() !== 'en';
 const countries = [
-  { href: '/japan/', name: t('日本'), en: 'Japan', line: t('{n} 个都道府县 · {spots} 个景点', { n: jp.length, spots: count(jp) }), img: '/img/hero-1280.webp', alt: covers.hero.alt },
-  { href: '/australia/', name: t('澳大利亚'), en: 'Australia', line: t('{n} 个州和领地 · {spots} 个景点', { n: au.length, spots: count(au) }), img: auHero ? `${auHero.cover}-800.webp` : '/img/hero-1280.webp', alt: auHero?.coverAlt ?? '' },
-  { href: '/usa/', name: t('美国'), en: 'United States', line: t('{n} 个热门州 · {spots} 个景点', { n: us.length, spots: count(us) }), img: usHero ? `${usHero.cover}-800.webp` : '/img/hero-1280.webp', alt: usHero?.coverAlt ?? '' },
+  {
+    code: 'JPN',
+    href: '/japan/',
+    name: t('日本'),
+    en: 'Japan',
+    line: t('{n} 个都道府县 · {spots} 个景点', { n: jp.length, spots: count(jp) }),
+    img: '/img/hero-1280.webp',
+    srcset: '/img/hero-1280.webp 1280w, /img/hero-2560.webp 2560w',
+    sizes: '(max-width: 900px) 100vw, 48vw',
+    alt: covers.hero.alt,
+    rot: '-0.8deg',
+  },
+  {
+    code: 'AUS',
+    href: '/australia/',
+    name: t('澳大利亚'),
+    en: 'Australia',
+    line: t('{n} 个州和领地 · {spots} 个景点', { n: au.length, spots: count(au) }),
+    img: auHero ? `${auHero.cover}-960.webp` : '/img/hero-1280.webp',
+    srcset: auHero ? `${auHero.cover}-960.webp 960w, ${auHero.cover}-1920.webp 1920w` : undefined,
+    sizes: '(max-width: 900px) 50vw, 30vw',
+    alt: auHero?.coverAlt ?? '',
+    rot: '0.6deg',
+  },
+  {
+    code: 'USA',
+    href: '/usa/',
+    name: t('美国'),
+    en: 'United States',
+    line: t('{n} 个热门州 · {spots} 个景点', { n: us.length, spots: count(us) }),
+    img: usHero ? `${usHero.cover}-960.webp` : '/img/hero-1280.webp',
+    srcset: usHero ? `${usHero.cover}-960.webp 960w, ${usHero.cover}-1920.webp 1920w` : undefined,
+    sizes: '(max-width: 900px) 50vw, 30vw',
+    alt: usHero?.coverAlt ?? '',
+    rot: '-0.5deg',
+  },
 ];
 const trips = tripsAll();
-const pick = [...trips.filter((t) => t.country === 'japan').slice(0, 2), ...trips.filter((t) => t.country === 'australia').slice(0, 2), ...trips.filter((t) => t.country === 'usa').slice(0, 2)];
+const pick = [
+  ...trips.filter((x) => x.country === 'japan').slice(0, 2),
+  ...trips.filter((x) => x.country === 'australia').slice(0, 2),
+  ...trips.filter((x) => x.country === 'usa').slice(0, 2),
+];
 ---
 <Base title={t('栖云旅行')} description={t('日本、澳大利亚、美国的原创旅行指南：互动地图、景点与美食配图、行程模板、一分钟生成攻略、预算计算和离线随身工具。')} nav="home">
   <script slot="head" is:inline>
     // The Japan map used to live on the home page: keep old deep links (#explore, #p=kyoto, #r=kansai) working.
     if (/^#(explore|[pr]=[a-z-]+)$/.test(location.hash)) location.replace((document.documentElement.dataset.lp || '') + '/japan/' + location.hash);
   </script>
-  <section class="w-hero wrap">
-    <h1 set:html={t('想去哪儿，<br />先在这儿排好。')} />
-    <p class="lead">{t('日本、澳大利亚、美国。看攻略、排行程、算预算。')}</p>
-    <div class="w-cta">
-      <a class="btn primary" href="/quick/">{t('一分钟生成攻略')}</a>
-      <button class="btn" type="button" data-open-search>{t('搜目的地')}</button>
+
+  <section class="w-hero-wrap">
+    <!-- Decorative Pacific flight arcs & compass rose integrated into the map-journal canvas -->
+    <svg class="w-flight-bg" viewBox="0 0 1240 340" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <path class="arc arc-1" d="M 520 265 Q 760 40 1120 130" stroke="currentColor" stroke-width="1.4" stroke-dasharray="6 7" />
+      <path class="arc arc-2" d="M 520 265 Q 690 245 860 320" stroke="currentColor" stroke-width="1.2" stroke-dasharray="5 7" />
+      <circle cx="520" cy="265" r="4.5" fill="var(--vermilion)" opacity=".65" />
+      <circle cx="520" cy="265" r="11" stroke="var(--vermilion)" stroke-width="1" opacity=".28" />
+      <circle cx="1120" cy="130" r="4" fill="var(--indigo)" opacity=".55" />
+      <circle cx="860" cy="320" r="3.5" fill="var(--gold)" opacity=".55" />
+      <!-- Minimal plane silhouette riding arc 1 -->
+      <g transform="translate(888 94) rotate(-6)" opacity=".72">
+        <path d="M-8 0 L8 0 M1 -6 L5 0 L1 6 M-5 -3 L-3 0 L-5 3" stroke="var(--vermilion)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <!-- Minimal cartographic compass rose -->
+      <g transform="translate(1135 258)" stroke="currentColor" stroke-width="1" opacity=".28">
+        <circle r="38" stroke-dasharray="3 4" />
+        <circle r="24" />
+        <path d="M0 -46 L4 -6 L46 0 L4 6 L0 46 L-4 6 L-46 0 L-4 -6 Z" fill="currentColor" fill-opacity=".12" />
+        <path d="M0 -46 L0 46 M-46 0 L46 0" />
+      </g>
+    </svg>
+
+    <div class="w-hero wrap">
+      <h1 set:html={t('想去哪儿，<br />先在这儿排好。')} />
+      <p class="lead">{t('日本、澳大利亚、美国。看攻略、排行程、算预算。')}</p>
+      <div class="w-cta">
+        <a class="btn primary" href="/quick/">{t('一分钟生成攻略')}</a>
+        <button class="btn" type="button" data-open-search>{t('搜目的地')}</button>
+      </div>
     </div>
   </section>
 
   <section class="wrap w-countries">
     {countries.map((c, i) => (
-      <a class="w-country reveal" href={c.href} style={`--i:${i}`}>
-        <img src={c.img} alt={c.alt} width="800" height="533" fetchpriority={i === 0 ? 'high' : undefined} />
-        <span class="w-c-body">
-          {showEn && <small>{c.en}</small>}
-          <b>{c.name}</b>
-          <span>{c.line}</span>
-        </span>
-        <span class="w-go" aria-hidden="true">→</span>
+      <a class="w-country reveal" href={c.href} style={`--i:${i};--rot:${c.rot}`}>
+        <div class="w-c-frame">
+          <img
+            src={c.img}
+            srcset={c.srcset}
+            sizes={c.sizes}
+            alt={c.alt}
+            width="960"
+            height="640"
+            fetchpriority={i === 0 ? 'high' : undefined}
+            data-vt-img
+          />
+          <span class="w-code" aria-hidden="true">{c.code}</span>
+          <span class="w-go" aria-hidden="true">→</span>
+          <span class="w-c-body">
+            {showEn && <small>{c.en}</small>}
+            <b>{c.name}</b>
+            <span>{c.line}</span>
+          </span>
+        </div>
       </a>
     ))}
   </section>
 
-  <section class="section">
+  <MonthPicks />
+
+  <section class="section quick-sec">
     <div class="wrap">
       <a class="quick-card reveal" href="/quick/">
+        <span class="tape" aria-hidden="true" style="--tape-rot:-1.5deg"></span>
         <div>
           <h2>{t('不知道怎么排？回答 5 个问题。')}</h2>
           <p>{t('去哪、几天、几个人、预算、喜欢什么。马上给你一份按天排好的行程，可以直接改。')}</p>
@@ -71,7 +147,7 @@ const pick = [...trips.filter((t) => t.country === 'japan').slice(0, 2), ...trip
         {pick.map((x) => (
           <a class="place reveal" href={x.href}>
             <div class="pic">
-              {x.cover && <img src={`${x.cover}-${x.country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" decoding="async" width="960" height="640" data-fade data-vt-img />}
               <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
             </div>
             <div class="body"><h3>{x.title}</h3><p>{x.for}</p></div>
@@ -84,12 +160,17 @@ const pick = [...trips.filter((t) => t.country === 'japan').slice(0, 2), ...trip
   <section class="section plan-cta">
     <div class="wrap">
       <div class="cta-card reveal">
+        <div class="cta-stamp" aria-hidden="true">
+          <span>CLOUDBORNE</span>
+          <b>PASSPORT</b>
+          <span>JPN · AUS · USA</span>
+        </div>
         <div>
           <h2>{t('把想去的地方，排成一份行程。')}</h2>
-          <p>{t('在景点和美食旁点「加入行程」，再拖进每一天。能生成链接和长图发给同行的人，不用注册。')}</p>
+          <p>{t('在景点和美食旁点「加入行程」盖章收藏，再拖进每一天。能生成链接和长图发给同行的人，不用注册。')}</p>
         </div>
         <div class="cta-actions">
-          <a class="btn primary" href="/plan/">{t('打开我的行程')} <span class="trip-count" data-trip-count>0</span></a>
+          <a class="btn primary" href="/plan/">{t('翻开我的集章本')} <span class="trip-count" data-trip-count>0</span></a>
           <a class="btn" href="/budget/">{t('算预算')}</a>
         </div>
       </div>
@@ -98,45 +179,151 @@ const pick = [...trips.filter((t) => t.country === 'japan').slice(0, 2), ...trip
 </Base>
 
 <style>
-  .w-hero { padding: 64px 0 30px; }
-  .w-hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.16; animation: rise 900ms var(--ease-out) both; }
-  .w-hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); margin-top: 16px; animation: rise 900ms 90ms var(--ease-out) both; }
-  .w-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; animation: rise 900ms 180ms var(--ease-out) both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(16px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+  .w-hero-wrap { position: relative; overflow: hidden; }
+  .w-flight-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--ink-2);
+    opacity: .65;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .w-flight-bg .arc {
+    animation: dashDrift 26s linear infinite;
+  }
+  @keyframes dashDrift {
+    to { stroke-dashoffset: -130; }
+  }
+  .w-hero { position: relative; z-index: 1; padding: 62px 0 34px; }
+  .w-hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.15; animation: rise 780ms var(--ease-out) both; }
+  .w-hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); margin-top: 16px; animation: rise 780ms 80ms var(--ease-out) both; }
+  .w-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; animation: rise 780ms 160ms var(--ease-out) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-  .w-countries { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; padding-bottom: 8px; }
-  .w-country { position: relative; display: block; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 5; isolation: isolate; color: #fff; box-shadow: var(--sh-2); transition: transform 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
-  .w-country:first-child { aspect-ratio: auto; }
-  .w-country.reveal { transition-delay: calc(var(--i) * 80ms); }
-  .w-country img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1200ms var(--ease-out); }
-  .w-country::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(14, 12, 10, .72) 0%, rgba(14, 12, 10, .1) 48%, rgba(14, 12, 10, 0) 70%); }
-  .w-country:hover { transform: translateY(-6px); box-shadow: var(--sh-3); }
+  .w-countries { display: grid; grid-template-columns: 1.32fr 1fr 1fr; gap: 18px; padding-bottom: 10px; }
+  .w-country {
+    position: relative;
+    display: block;
+    padding: 8px;
+    border-radius: 24px;
+    background: var(--frame-bg);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-2);
+    transition: transform 380ms var(--ease-out), box-shadow 380ms var(--ease-out), border-color var(--t-fast);
+  }
+  .w-country.reveal { transition-delay: calc(var(--i) * 75ms); }
+  .w-c-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 17px;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff;
+  }
+  .w-country:first-child .w-c-frame { aspect-ratio: auto; min-height: 100%; }
+  .w-c-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1000ms var(--ease-out); }
+  .w-c-frame::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(14, 16, 22, .76) 0%, rgba(14, 16, 22, .12) 48%, rgba(14, 16, 22, 0) 70%); }
+  .w-country:hover { transform: translateY(-7px) rotate(var(--rot, 0deg)); box-shadow: var(--sh-3); border-color: var(--line-2); }
   .w-country:hover img { transform: scale(1.06); }
-  .w-c-body { position: absolute; left: 24px; right: 24px; bottom: 22px; display: grid; gap: 2px; }
-  .w-c-body small { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
-  .w-c-body b { font: 600 clamp(30px, 3.4vw, 42px)/1.15 var(--serif); letter-spacing: .06em; }
-  .w-c-body span { font-size: 14px; opacity: .9; }
-  .w-go { position: absolute; right: 22px; top: 20px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 18px; transition: transform 400ms var(--spring), background 300ms; }
-  .w-country:hover .w-go { transform: translateX(4px); background: rgba(255, 255, 255, .3); }
-  @media (max-width: 900px) { .w-countries { grid-template-columns: 1fr 1fr; } .w-country:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; } }
-  @media (max-width: 560px) { .w-countries { grid-template-columns: 1fr; } .w-country, .w-country:first-child { aspect-ratio: 16 / 10; } }
+  .w-code {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    padding: 4px 10px;
+    border-radius: 7px;
+    border: 1px dashed rgba(255, 255, 255, .5);
+    background: rgba(16, 20, 28, .44);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font: 700 12px/1 var(--sans);
+    letter-spacing: .16em;
+  }
+  .w-c-body { position: absolute; left: 22px; right: 22px; bottom: 20px; display: grid; gap: 3px; }
+  .w-c-body small { font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; opacity: .86; }
+  .w-c-body b { font: 600 clamp(30px, 3.4vw, 42px)/1.15 var(--hand); letter-spacing: .05em; }
+  :global(html[lang="ja"]) .w-c-body b { font-size: clamp(24px, 2.35vw, 33px); letter-spacing: .02em; }
+  :global(html[lang="en"]) .w-c-body b { font-size: clamp(26px, 2.7vw, 36px); letter-spacing: .01em; }
+  .w-c-body span { font-size: 14px; opacity: .92; }
+  .w-go {
+    position: absolute; right: 16px; top: 16px; width: 38px; height: 38px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .28);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 18px;
+    transition: transform 360ms var(--spring), background 240ms;
+  }
+  .w-country:hover .w-go { transform: translateX(4px); background: var(--vermilion); border-color: var(--vermilion); }
+  @media (max-width: 900px) {
+    .w-countries { grid-template-columns: 1fr 1fr; }
+    .w-country:first-child { grid-column: 1 / -1; }
+    .w-country:first-child .w-c-frame { aspect-ratio: 16 / 9; }
+    .w-flight-bg { opacity: .4; }
+  }
+  @media (max-width: 560px) {
+    .w-countries { grid-template-columns: 1fr; }
+    .w-c-frame, .w-country:first-child .w-c-frame { aspect-ratio: 16 / 10; }
+  }
 
-  .quick-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px 34px; border-radius: 26px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-1); transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
-  .quick-card:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
+  .quick-sec { padding: 12px 0 36px; }
+  .quick-card {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 32px 36px; border-radius: 22px; background: var(--card);
+    border: 1px solid var(--line); box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1);
+    transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color var(--t-fast);
+  }
+  .quick-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); border-color: var(--line-2); }
   .quick-card h2 { font-size: clamp(22px, 2.6vw, 30px); }
   .quick-card p { color: var(--ink-2); margin-top: 8px; max-width: 620px; }
-  @media (max-width: 640px) { .quick-card { flex-direction: column; align-items: flex-start; padding: 24px 22px; } }
+  @media (max-width: 640px) { .quick-card { flex-direction: column; align-items: flex-start; padding: 26px 22px; } }
 
   .place .pic { position: relative; }
-  .badge { position: absolute; left: 12px; top: 12px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 13px; padding: 3px 11px; border-radius: 999px; }
+  .badge { position: absolute; left: 10px; top: 10px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 12.5px; padding: 3px 10px; border-radius: 999px; box-shadow: 0 2px 8px rgba(194, 65, 43, .3); }
 
   .cta-card {
-    display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; padding: 36px 40px; border-radius: 28px;
-    background: #1f2430; color: #fff; position: relative; overflow: hidden; isolation: isolate;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: center; padding: 38px 42px; border-radius: 24px;
+    background: linear-gradient(135deg, #1b2536 0%, #24334a 100%);
+    border: 1px solid rgba(214, 171, 86, .32);
+    box-shadow: var(--sh-3);
+    color: #f5efe2; position: relative; overflow: hidden; isolation: isolate;
   }
-  .cta-card h2 { font-size: clamp(24px, 3vw, 32px); }
-  .cta-card p { color: rgba(255, 255, 255, .78); margin-top: 10px; font-size: 15px; max-width: 560px; }
+  .cta-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 16px;
+    border: 1px dashed rgba(214, 171, 86, .22);
+    pointer-events: none;
+  }
+  .cta-stamp {
+    position: absolute;
+    right: 26px;
+    top: -18px;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 2px solid rgba(228, 101, 78, .35);
+    outline: 1px dashed rgba(228, 101, 78, .28);
+    outline-offset: -7px;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 2px;
+    color: rgba(235, 134, 112, .42);
+    transform: rotate(14deg);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .cta-stamp span { font-size: 8.5px; letter-spacing: .16em; font-weight: 600; }
+  .cta-stamp b { font: 700 13px/1 var(--sans); letter-spacing: .12em; }
+  .cta-card h2 { font-size: clamp(24px, 3vw, 32px); color: #fdfaf3; }
+  .cta-card p { color: rgba(245, 239, 226, .8); margin-top: 10px; font-size: 15px; max-width: 560px; }
   .cta-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-  .cta-actions .btn:not(.primary) { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .25); color: #fff; }
-  @media (max-width: 760px) { .cta-card { grid-template-columns: 1fr; padding: 26px 22px; } .cta-actions { justify-content: flex-start; } }
+  .cta-actions .btn:not(.primary) { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .28); color: #fff; box-shadow: none; }
+  .cta-actions .btn:not(.primary):hover { background: rgba(255, 255, 255, .18); }
+  @media (max-width: 760px) { .cta-card { grid-template-columns: 1fr; padding: 28px 24px; } .cta-actions { justify-content: flex-start; } .cta-stamp { width: 88px; height: 88px; right: 14px; top: -10px; } }
 </style>

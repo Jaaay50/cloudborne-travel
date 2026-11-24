@@ -1,4 +1,4 @@
-// Site-wide behaviour: header, mobile menu, search dialog, trip buttons, toast, reveal-on-scroll.
+// Site-wide behaviour: header, mobile menu, search dialog, trip stamp buttons, toast, shared-image view transitions, reveal-on-scroll.
 import { load, subscribe, toggle, has, count, type TripState } from './trip';
 import { getCatalog, type Catalog } from './catalog';
 import { placeHref, parseItem, parsePlace } from '../lib/keys';
@@ -6,6 +6,7 @@ import { ct, lp, LANG } from './i18n';
 
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel);
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)];
+const REDUCE_MOTION = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- header ---------- */
 const hdr = $('#hdr');
@@ -79,7 +80,39 @@ export function toast(html: string, ms = 2600) {
 }
 (window as unknown as { cbtToast: typeof toast }).cbtToast = toast;
 
-/* ---------- trip buttons ---------- */
+/* ---------- trip buttons + rubber stamp drop VFX ---------- */
+function spawnStamp(btn: HTMLButtonElement) {
+  if (REDUCE_MOTION) return;
+  btn.classList.remove('just-stamped');
+  void btn.offsetWidth;
+  btn.classList.add('just-stamped');
+
+  const card = btn.closest<HTMLElement>('.spot, .food, .scard');
+  if (card) {
+    card.classList.remove('stamp-shake');
+    void card.offsetWidth;
+    card.classList.add('stamp-shake');
+  }
+
+  const tripBtn = $<HTMLElement>('[data-trip-btn]');
+  if (tripBtn) {
+    tripBtn.classList.remove('stamped-pop');
+    void tripBtn.offsetWidth;
+    tripBtn.classList.add('stamped-pop');
+  }
+
+  const r = btn.getBoundingClientRect();
+  const fx = document.createElement('span');
+  fx.className = 'stamp-fx';
+  fx.setAttribute('aria-hidden', 'true');
+  fx.textContent = ct('已盖章');
+  fx.style.left = `${Math.min(Math.max(r.left + r.width / 2, 68), window.innerWidth - 68)}px`;
+  fx.style.top = `${Math.max(r.top - 10, 44)}px`;
+  document.body.appendChild(fx);
+  fx.addEventListener('animationend', () => fx.remove(), { once: true });
+  window.setTimeout(() => fx.remove(), 900);
+}
+
 function paintTrip(s: TripState) {
   const n = count(s);
   $$('[data-trip-count]').forEach((el) => {
@@ -94,7 +127,7 @@ function paintTrip(s: TripState) {
     const on = has(s, b.dataset.add!);
     b.setAttribute('aria-pressed', String(on));
     const label = b.querySelector('[data-label]');
-    if (label) label.textContent = on ? ct('已加入') : ct('加入行程');
+    if (label) label.textContent = on ? ct('已盖章') : ct('加入行程');
   });
 }
 paintTrip(load());
@@ -104,9 +137,89 @@ document.addEventListener('click', (e) => {
   if (!b) return;
   e.preventDefault();
   const added = toggle(b.dataset.add!);
+  if (added) spawnStamp(b);
   const name = b.dataset.name || '';
   const nm = esc(name);
-  toast(added ? `${ct('已把「{name}」加入行程', { name: nm })} <a href="${lp('/plan/')}">${ct('去排行程')}</a>` : ct('已从行程移除「{name}」', { name: nm }));
+  toast(added ? `${ct('已把「{name}」加入行程', { name: nm })} <a href="${lp('/plan/')}">${ct('翻开集章本')}</a>` : ct('已从行程移除「{name}」', { name: nm }));
+});
+
+/* ---------- shared-element cross-document View Transitions ---------- */
+// Clicking any card with an image tagged [data-vt-img] promotes that image to `vt-hero`
+// right before navigation so it morphs cleanly into the destination's `.vt-hero-img`.
+const normPath = (raw: string) => {
+  try {
+    const u = new URL(raw, location.origin);
+    return u.pathname.replace(/\/+$/, '') + '/';
+  } catch {
+    return raw;
+  }
+};
+
+function clearDynamicVt() {
+  $$<HTMLElement>('[data-vt-active]').forEach((el) => {
+    el.style.viewTransitionName = '';
+    el.removeAttribute('data-vt-active');
+  });
+}
+
+function promoteCardImage(img: HTMLImageElement) {
+  clearDynamicVt();
+  // If the current page also has a hero image (e.g. clicking a "nearby" card on a PlacePage),
+  // detach the old hero's transition name so only one element holds `vt-hero`.
+  $$<HTMLElement>('.vt-hero-img').forEach((hero) => {
+    if (hero !== img) hero.style.viewTransitionName = 'none';
+  });
+  img.style.viewTransitionName = 'vt-hero';
+  img.setAttribute('data-vt-active', '1');
+}
+
+document.addEventListener('click', (e) => {
+  if (REDUCE_MOTION || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href]');
+  if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+  const img = a.querySelector<HTMLImageElement>('img[data-vt-img]');
+  if (!img) return;
+  const dest = new URL(a.href, location.origin);
+  if (dest.origin !== location.origin || normPath(dest.pathname) === normPath(location.pathname)) return;
+  promoteCardImage(img);
+  try {
+    sessionStorage.setItem('cbt-vt', JSON.stringify({ from: normPath(location.pathname), to: normPath(dest.pathname), ts: Date.now() }));
+  } catch { /* private mode */ }
+});
+
+// When navigating back from a detail page to a listing page, match the card whose link matches
+// the page we just left so the hero smoothly shrinks back into its card.
+window.addEventListener('pagereveal', (ev) => {
+  const e = ev as Event & { viewTransition?: { finished?: Promise<unknown> } };
+  if (REDUCE_MOTION || !e.viewTransition) return;
+  let prevPath = '';
+  const nav = (window as unknown as { navigation?: { activation?: { from?: { url?: string } } } }).navigation;
+  if (nav?.activation?.from?.url) prevPath = normPath(nav.activation.from.url);
+  if (!prevPath) {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('cbt-vt') || 'null') as { from?: string; to?: string; ts?: number } | null;
+      if (saved && Date.now() - (saved.ts || 0) < 12000 && saved.from === normPath(location.pathname) && saved.to) {
+        prevPath = saved.to;
+      }
+    } catch { /* ignore */ }
+  }
+  if (!prevPath || prevPath === normPath(location.pathname)) return;
+  // Find a visible card pointing to prevPath (prefer one inside or near the viewport)
+  const matches = $$<HTMLAnchorElement>('a[href]').filter((a) => {
+    if (normPath(a.href) !== prevPath) return false;
+    const img = a.querySelector<HTMLImageElement>('img[data-vt-img]');
+    if (!img) return false;
+    const r = img.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 && r.bottom > -200 && r.top < window.innerHeight + 200;
+  });
+  const hitImg = matches[0]?.querySelector<HTMLImageElement>('img[data-vt-img]');
+  if (hitImg) {
+    promoteCardImage(hitImg);
+    e.viewTransition.finished?.catch(() => {}).finally(() => {
+      clearDynamicVt();
+      $$<HTMLElement>('.vt-hero-img').forEach((hero) => { hero.style.viewTransitionName = ''; });
+    });
+  }
 });
 
 /* ---------- search ---------- */
@@ -149,7 +262,7 @@ function search(qRaw: string): Hit[] {
   const hits: Hit[] = [];
   for (const p of cat.p) {
     const sc = score(q, [p.n, p.k, p.e, p.t, COUNTRY_NAME[p.c] ?? '']);
-    const ico = p.i ? `<img src="${p.i}-${p.ph ? '800' : '640'}.webp" alt="" loading="lazy">` : ct('地');
+    const ico = p.i ? `<img src="${p.i}-960.webp" alt="" loading="lazy">` : ct('地');
     if (sc) hits.push({ href: hrefOf(p.s), title: p.n, sub: `${COUNTRY_NAME[p.c]} · ${p.t}`, ico, score: sc + 20, grp: G.dest });
   }
   for (const r of cat.r) {
@@ -160,7 +273,7 @@ function search(qRaw: string): Hit[] {
     if (!ph) return fallback;
     const { place: pk, id } = parseItem(`${kind}:${key}`);
     const { country, slug } = parsePlace(pk);
-    return `<img src="/img/photos/${country}/${slug}/${kind}-${id}-400.webp" alt="" loading="lazy">`;
+    return `<img src="/img/photos/${country}/${slug}/${kind}-${id}-640.webp" alt="" loading="lazy">`;
   };
   for (const s of cat.s) {
     const pk = s.k.split('/')[0];
@@ -269,18 +382,17 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- reveal on scroll ---------- */
-// Siblings that enter together are staggered by 60 ms each.
 const io = 'IntersectionObserver' in window
   ? new IntersectionObserver(
       (entries) => {
         const entering = entries.filter((en) => en.isIntersecting);
         entering.forEach((en, i) => {
-          (en.target as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 60}ms`);
+          (en.target as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 55}ms`);
           en.target.classList.add('in');
           io?.unobserve(en.target);
         });
       },
-      { rootMargin: '0px 0px -6% 0px' },
+      { rootMargin: '0px 0px -5% 0px' },
     )
   : null;
 $$('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('in')));
@@ -297,6 +409,5 @@ $$<HTMLImageElement>('img[data-fade]').forEach(fadeIn);
 
 /* ---------- service worker (offline) ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  // One worker per language (/sw.js, /en/sw.js, /ja/sw.js); each one's scope is its own language's pages.
   window.addEventListener('load', () => navigator.serviceWorker.register(lp('/sw.js')).catch(() => {}));
 }

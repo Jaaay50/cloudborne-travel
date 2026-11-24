@@ -17,7 +17,7 @@ const xy: Record<string, [string, number, number]> = {};
 for (const { c, A } of maps) for (const p of placesOf(c)) for (const s of p.spots) { const q = A.project(s.ll); xy[s.key] = [c, q[0], q[1]]; }
 const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]]));
 ---
-<Base title={t('我的行程')} description={t('把收藏的景点和美食排进每一天，看路线、估移动，生成分享链接。不用注册，存在你的浏览器里。')} nav="plan" noindex>
+<Base title={t('我的行程')} description={t('把收藏的景点和美食排进每一天，收集目的地旅行印章，看路线、估移动，生成分享链接和长图。不用注册，存在你的浏览器里。')} nav="plan" noindex>
   <div class="plan-page" style={`--drop-hint: ${JSON.stringify(t('把景点拖到这里'))}`}>
   <section class="wrap plan-head">
     <div class="ph-title">
@@ -40,6 +40,21 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
     </div>
   </section>
 
+  <!-- Passport Stamp Collection Book -->
+  <section class="wrap passport-wrap" aria-label={t('行程集章本')}>
+    <div class="passport card" id="passport">
+      <div class="pp-hd">
+        <div class="pp-id">
+          <span class="pp-emblem" aria-hidden="true">✦</span>
+          <b>{t('旅行集章本')}</b>
+          <span class="pp-code">PASSPORT · CLOUDBORNE</span>
+        </div>
+        <span class="pp-stat" id="pp-stat"></span>
+      </div>
+      <div class="pp-stamps" id="pp-stamps"></div>
+    </div>
+  </section>
+
   <div class="wrap import-bar" id="import-bar" hidden>
     <span>{t('你正在看别人分享的行程。')}</span>
     <button type="button" class="btn sm primary" id="import-yes">{t('保存为我的行程')}</button>
@@ -52,7 +67,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
         <div class="col-hd">
           <b>{t('待安排')}</b><small id="pool-n"></small>
         </div>
-        <p class="pool-empty" id="pool-empty">{t('在景点旁点「加入行程」，会先放在这里。')}<br /><a href="/quick/">{t('一分钟生成攻略 →')}</a>　<a href="/trips/">{t('套用模板 →')}</a>　<a href="/">{t('去挑几个 →')}</a></p>
+        <p class="pool-empty" id="pool-empty">{t('在景点旁点「加入行程」盖章收藏，会先放在这里。')}<br /><a href="/quick/">{t('一分钟生成攻略 →')}</a>　<a href="/trips/">{t('套用模板 →')}</a>　<a href="/">{t('去挑几个 →')}</a></p>
         <ul class="items" data-drop="pool"></ul>
       </div>
       <div class="days" id="days"></div>
@@ -106,26 +121,170 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
 
 <style is:global>
 @keyframes flash { 0% { background: var(--vermilion-bg); } 100% { background: var(--card); } }
+@keyframes stampAppear {
+  0% { opacity: 0; transform: scale(1.38) rotate(calc(var(--rot, 0deg) - 10deg)); }
+  65% { opacity: 1; transform: scale(.96) rotate(var(--rot, 0deg)); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--rot, 0deg)); }
+}
   .plan-page {
-  .plan-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 36px 0 18px; }
-  .title-input { font: 600 clamp(26px, 3.6vw, 38px) var(--serif); border: 0; background: transparent; color: var(--ink); padding: 2px 0; width: min(560px, 100%); border-bottom: 1px dashed transparent; outline: 0; }
-  .title-input:hover, .title-input:focus { border-bottom-color: var(--line-2); }
+  .plan-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 34px 0 18px; }
+  .title-input { font: 600 clamp(26px, 3.6vw, 38px) var(--hand); border: 0; background: transparent; color: var(--ink); padding: 2px 0; width: min(560px, 100%); border-bottom: 1.5px dashed transparent; outline: 0; }
+  .title-input:hover, .title-input:focus { border-bottom-color: var(--vermilion); }
   .ph-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--mut); margin-top: 6px; }
   .ph-meta input { font: inherit; color: var(--ink); border: 1px solid var(--line-2); border-radius: 8px; padding: 3px 8px; background: var(--card); }
   .ph-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Passport Stamp Book */
+  .passport-wrap { margin-bottom: 22px; }
+  .passport {
+    position: relative;
+    padding: 18px 22px 20px;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(-45deg, transparent 0 14px, color-mix(in srgb, var(--line) 24%, transparent) 14px 15px),
+      var(--card);
+    border: 1px solid var(--line-2);
+  }
+  .passport::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 13px;
+    border: 1px dashed color-mix(in srgb, var(--line-2) 72%, transparent);
+    pointer-events: none;
+  }
+  .pp-hd {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--line-2);
+  }
+  .pp-id { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .pp-emblem {
+    width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--vermilion-bg); color: var(--vermilion); font-size: 12px;
+  }
+  .pp-id b { font-family: var(--hand); font-size: 19px; letter-spacing: .04em; }
+  .pp-code { font: 600 11px/1 var(--sans); letter-spacing: .16em; color: var(--mut); }
+  .pp-stat { font-size: 13px; color: var(--ink-2); font-weight: 500; }
+  .pp-stamps {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    align-items: center;
+    min-height: 92px;
+    padding: 4px 2px;
+  }
+  .pstamp {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 10px 14px;
+    min-width: 112px;
+    min-height: 86px;
+    color: var(--st-c, var(--stamp-jp));
+    border: 2px solid currentColor;
+    background: color-mix(in srgb, currentColor 5%, transparent);
+    text-align: center;
+    transform: rotate(var(--rot, -3deg));
+    opacity: .9;
+    animation: stampAppear 340ms var(--spring) calc(var(--i, 0) * 45ms) both;
+    transition: transform 220ms var(--spring), opacity var(--t-fast), background var(--t-fast);
+  }
+  .pstamp::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px dashed currentColor;
+    opacity: .6;
+    pointer-events: none;
+  }
+  .pstamp:hover {
+    transform: rotate(0deg) scale(1.06);
+    opacity: 1;
+    background: color-mix(in srgb, currentColor 7%, transparent);
+  }
+  .pstamp.st-japan {
+    --st-c: var(--stamp-jp);
+    border-radius: 50%;
+    width: 102px;
+    height: 102px;
+    min-width: 102px;
+    padding: 10px 8px;
+  }
+  .pstamp.st-japan::before { border-radius: 50%; }
+  .pstamp.st-australia {
+    --st-c: var(--stamp-au);
+    border-radius: 999px;
+    min-width: 132px;
+    min-height: 80px;
+    padding: 10px 18px;
+  }
+  .pstamp.st-australia::before { border-radius: 999px; }
+  .pstamp.st-usa {
+    --st-c: var(--stamp-us);
+    border-radius: 12px;
+    min-width: 124px;
+    min-height: 82px;
+    padding: 10px 16px;
+  }
+  .pstamp.st-usa::before { border-radius: 8px; }
+  .pstamp-cc { font: 700 9.5px/1 var(--sans); letter-spacing: .16em; opacity: .82; }
+  .pstamp-nm { font: 700 17px/1.15 var(--hand); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pstamp-ct { font: 600 10.5px/1 var(--sans); letter-spacing: .04em; opacity: .88; margin-top: 2px; }
+  .pstamp-dt { font: 600 9px/1 var(--sans); letter-spacing: .08em; opacity: .66; }
+
+  .pp-empty {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 6px 0;
+  }
+  .pp-slot {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--line-2);
+    display: grid;
+    place-items: center;
+    font: 600 11px/1.2 var(--sans);
+    letter-spacing: .12em;
+    color: var(--mut);
+    opacity: .62;
+    transform: rotate(var(--rot, -4deg));
+  }
+  .pp-slot.oval { width: 104px; height: 68px; border-radius: 999px; }
+  .pp-slot.rect { width: 98px; height: 68px; border-radius: 10px; }
+  .pp-hint { font-size: 14px; color: var(--mut); line-height: 1.7; }
+  .pp-hint a { color: var(--vermilion); font-weight: 600; }
+
   .import-bar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 12px 16px; background: var(--indigo-bg); border-radius: 14px; margin-bottom: 14px; font-size: 14.5px; }
   .plan-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 24px; align-items: start; }
   .board { display: grid; gap: 14px; }
-  .pool { padding: 14px 16px; border-style: dashed; background: color-mix(in srgb, var(--card) 70%, transparent); }
+  .pool { padding: 14px 16px; border-style: dashed; background: color-mix(in srgb, var(--card) 75%, transparent); }
   .pool-empty { font-size: 14px; color: var(--mut); line-height: 1.8; padding: 4px 0 8px; }
   .pool-empty a { color: var(--vermilion); font-weight: 600; }
   .col-hd { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
-  .col-hd b { font-family: var(--serif); font-size: 18px; }
+  .col-hd b { font-family: var(--hand); font-size: 19px; }
   .col-hd small { color: var(--mut); font-size: 13px; }
   .col-hd .day-del { margin-left: auto; border: 0; background: none; color: var(--mut); cursor: pointer; font-size: 13px; padding: 4px 6px; border-radius: 6px; }
   .col-hd .day-del:hover { background: var(--paper-2); color: var(--vermilion); }
-  .day { padding: 14px 16px; border-left: 4px solid var(--c, var(--ink)); }
-  .day .badge { display: inline-grid; place-items: center; min-width: 34px; height: 26px; border-radius: 8px; background: var(--c); color: #fff; font: 600 13px var(--sans); padding: 0 7px; }
+  .day { padding: 15px 17px; border-left: 4px solid var(--c, var(--ink)); }
+  .day .badge { display: inline-grid; place-items: center; min-width: 36px; height: 26px; border-radius: 8px; background: var(--c); color: #fff; font: 700 13px var(--sans); padding: 0 8px; }
   .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; min-height: 44px; border-radius: 12px; transition: background var(--t-fast); }
   .items.over { background: var(--vermilion-bg); outline: 2px dashed color-mix(in srgb, var(--vermilion) 45%, var(--card)); outline-offset: 2px; }
   .items:empty::after { content: var(--drop-hint); display: grid; place-items: center; height: 44px; font-size: 13px; color: var(--mut); border: 1px dashed var(--line-2); border-radius: 12px; }
@@ -136,7 +295,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   .grip { color: var(--line-2); font-size: 12px; letter-spacing: -2px; cursor: grab; }
   .ic { width: 26px; height: 26px; flex-shrink: 0; border-radius: 8px; display: grid; place-items: center; font-size: 12px; font-weight: 600; color: #fff; background: var(--vermilion); }
   .ic.food { background: var(--gold); }
-  .ic.pic { width: 40px; height: 32px; background: var(--paper-2); overflow: hidden; }
+  .ic.pic { width: 42px; height: 34px; background: var(--paper-2); overflow: hidden; }
   .ic.pic img { width: 100%; height: 100%; object-fit: cover; }
   .txt { flex: 1; min-width: 0; display: grid; }
   .nm { font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -148,7 +307,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   .op:hover { background: var(--paper-2); }
   select.op { width: auto; font-size: 12px; padding: 0 2px; border: 1px solid var(--line); background: var(--card); }
   .op.del:hover { color: var(--vermilion); }
-  .add-day { border: 1px dashed var(--line-2); background: transparent; border-radius: 16px; padding: 14px; cursor: pointer; color: var(--ink-2); font-size: 15px; transition: background var(--t-fast), border-color var(--t-fast); }
+  .add-day { border: 1.5px dashed var(--line-2); background: transparent; border-radius: 16px; padding: 14px; cursor: pointer; color: var(--ink-2); font-size: 15px; transition: background var(--t-fast), border-color var(--t-fast); }
   .add-day:hover { background: var(--card); border-color: var(--hover-line); }
   .day-warn { font-size: 12.5px; color: var(--warn-ink); background: var(--warn-bg); border-radius: 8px; padding: 5px 10px; margin-top: 8px; }
   .side-sticky { position: sticky; top: calc(var(--hdr) + 16px); display: grid; gap: 12px; }
@@ -163,14 +322,14 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   .img-scroll { max-height: 74vh; overflow: auto; background: var(--paper-2); }
   .img-scroll img { width: 100%; display: block; }
   .img-acts { display: flex; gap: 8px; padding: 12px; justify-content: flex-end; flex-wrap: wrap; }
-  .legend { display: flex; flex-wrap: wrap; gap: 6px 12px; padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--line); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 12px; padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); border-top: 1px dashed var(--line); }
   .legend span { display: inline-flex; align-items: center; gap: 5px; }
   .legend i { width: 14px; height: 4px; border-radius: 2px; background: var(--c); }
   .insights { padding: 14px 16px; font-size: 14px; color: var(--ink-2); display: grid; gap: 8px; }
   .insights b { color: var(--ink); }
   .insights ul { margin: 0; padding-left: 18px; }
   @media (max-width: 1000px) { .plan-grid { grid-template-columns: 1fr; } .plan-side { order: -1; } .side-sticky { position: static; grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .side-sticky { grid-template-columns: 1fr; } .grip { display: none; } .ops { opacity: 1; } .op.up, .op.down { display: none; } }
+  @media (max-width: 640px) { .side-sticky { grid-template-columns: 1fr; } .grip { display: none; } .ops { opacity: 1; } .op.up, .op.down { display: none; } .passport { padding: 14px 14px 16px; } }
   @media print { .plan-grid { grid-template-columns: 1fr; } .ops, .grip { display: none !important; } .pool { display: none; } .item { break-inside: avoid; } }
   }
 </style>
@@ -179,7 +338,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   import { load, save, subscribe, encodeShare, decodeShare, emptyTrip, type TripState } from '../../scripts/trip';
   import * as tripStore from '../../scripts/trip';
   import { getCatalog, photoUrl, type Catalog } from '../../scripts/catalog';
-  import { parseItem } from '../../lib/keys';
+  import { parseItem, placeHref } from '../../lib/keys';
   import { ct, lp, LANG, LOCALE } from '../../scripts/i18n';
 
   const COLORS = ['#c2412b', '#2c6e8f', '#5c8a4e', '#b88a2e', '#7a4f9a', '#c0607a', '#2f8f80', '#8a5a3c', '#4a5fa0', '#a0522d'];
@@ -206,18 +365,58 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
     if (!state.start) return '';
     const d = new Date(state.start + 'T00:00:00');
     d.setDate(d.getDate() + i);
-    // Chinese keeps its original "11/24 周二"; other languages use the browser's own format.
     if (LANG === 'zh') return `${d.getMonth() + 1}/${d.getDate()} 周${'日一二三四五六'[d.getDay()]}`;
     return d.toLocaleDateString(LOCALE, { month: 'numeric', day: 'numeric', weekday: 'short' });
   };
-  // Rough hours a spot takes within one day come from the catalogue (s.h[1], computed from the Chinese
-  // time text at build time). Anything a day or longer counts as a full day (8 h), so a single multi-day
-  // stop never triggers the "too full" warning on its own.
-  // List separators: "、" / "；" in Chinese, ", " / "; " in English.
   const SEP = LANG === 'en' ? ', ' : '、';
   const SEMI = LANG === 'en' ? '; ' : LANG === 'ja' ? '。' : '；';
   const heading = (x: string) => (LANG === 'en' ? `[${x}]` : `【${x}】`);
   const paren = (x: string) => (LANG === 'en' ? ` (${x})` : `（${x}）`);
+  const CC: Record<string, string> = { japan: 'JPN', australia: 'AUS', usa: 'USA' };
+
+  function hashRot(str: string): number {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
+    return ((Math.abs(h) % 13) - 6); // -6deg to +6deg
+  }
+
+  function renderPassport() {
+    const all = [...state.days.flat(), ...state.pool];
+    const box = $('pp-stamps');
+    const stat = $('pp-stat');
+    if (!all.length) {
+      stat.textContent = ct('尚未盖章');
+      box.innerHTML = `<div class="pp-empty">
+        <span class="pp-slot" style="--rot:-5deg">JPN</span>
+        <span class="pp-slot oval" style="--rot:3deg">AUS</span>
+        <span class="pp-slot rect" style="--rot:-3deg">USA</span>
+        <span class="pp-hint">${ct('每收藏一个目的地，这里就会盖上一枚邮戳。')}<br /><a href="${lp('/quick/')}">${ct('一分钟生成攻略 →')}</a>　<a href="${lp('/trips/')}">${ct('套用模板 →')}</a></span>
+      </div>`;
+      return;
+    }
+    const groups = new Map<string, { pref: string; country: string; count: number }>();
+    for (const k of all) {
+      const it = info(k);
+      const g = groups.get(it.pref);
+      if (g) g.count++;
+      else groups.set(it.pref, { pref: it.pref, country: it.country, count: 1 });
+    }
+    const entries = [...groups.values()];
+    const stampDate = state.start ? state.start.slice(0, 7).replace('-', '.') : `${new Date().getFullYear()}.${String(new Date().getMonth() + 1).padStart(2, '0')}`;
+    stat.textContent = ct('已集 {places} 枚印章 · {items} 项', { places: entries.length, items: all.length });
+    box.innerHTML = entries
+      .map((g, i) => {
+        const nm = esc(prefName(g.pref));
+        const rot = hashRot(g.pref);
+        return `<a class="pstamp st-${g.country}" href="${placeHref(g.pref)}" style="--rot:${rot}deg;--i:${i}">
+          <span class="pstamp-cc">★ ${CC[g.country] ?? 'TRV'} ★</span>
+          <span class="pstamp-nm">${nm}</span>
+          <span class="pstamp-ct">${ct('{n} 项', { n: g.count })}</span>
+          <span class="pstamp-dt">${stampDate}</span>
+        </a>`;
+      })
+      .join('');
+  }
 
   function makeItem(key: string, where: string) {
     const li = tpl.content.firstElementChild!.cloneNode(true) as HTMLLIElement;
@@ -239,6 +438,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   function render() {
     $<HTMLInputElement>('trip-title').value = state.title;
     $<HTMLInputElement>('trip-start').value = state.start ?? '';
+    renderPassport();
     // pool
     const poolUl = document.querySelector<HTMLUListElement>('[data-drop="pool"]')!;
     poolUl.replaceChildren(...state.pool.map((k) => makeItem(k, 'pool')));
@@ -274,7 +474,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   }
 
   function drawMap() {
-    // Show the map of the country that has the most items.
     const all = [...state.pool, ...state.days.flat()].filter((k) => XY[k.slice(2)]);
     const tally: Record<string, number> = {};
     all.forEach((k) => { const c = XY[k.slice(2)][0]; tally[c] = (tally[c] || 0) + 1; });
@@ -295,7 +494,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
     state.pool.map(at).filter((p): p is [number, number] => !!p).forEach((p) => { pts.push(p); d += `<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#fff" stroke="#7a7f8a" stroke-width="1.5" vector-effect="non-scaling-stroke" class="pd"/>`; });
     routes.innerHTML = r;
     dots.innerHTML = d;
-    // fit view, keeping the map's aspect ratio
     let vb = [0, 0, VW, VH];
     if (pts.length) {
       const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
@@ -308,7 +506,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
     const k = vb[2] / VW;
     svg.querySelectorAll<SVGGElement>('.dots g').forEach((g) => g.setAttribute('transform', g.getAttribute('transform')!.replace(/ scale\([^)]*\)/, '') + ` scale(${k.toFixed(3)})`));
     svg.querySelectorAll<SVGCircleElement>('.dots > circle').forEach((c) => c.setAttribute('r', String(6 * k)));
-    // draw the routes in
     svg.querySelectorAll<SVGPolylineElement>('.route').forEach((pl) => {
       const len = pl.getTotalLength?.() || 0;
       if (!len || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -323,13 +520,11 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
     const all = [...state.pool, ...state.days.flat()];
     const spots = all.filter((k) => k.startsWith('s:'));
     const prefs = [...new Set(all.map((k) => info(k).pref))];
-    const nights: string[] = [];
     let moves = 0, last = '';
     state.days.forEach((d) => {
       const main = d.length ? info(d[d.length - 1]).pref : last;
       if (last && main && main !== last) moves++;
       if (main) last = main;
-      nights.push(main);
     });
     const tips: string[] = [];
     if (state.pool.length) tips.push(ct('还有 {n} 项没排进具体哪天。', { n: state.pool.length }));
@@ -346,7 +541,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   let warnedStorage = false;
   const commit = (flashKey?: string, focusSel?: string) => {
     if (viewOnly) {
-      // Editing someone else's shared trip: offer to keep it, otherwise the edit would vanish on reload.
       if (!adoptShared()) { state = sharedState ? structuredClone(sharedState) : state; render(); return; }
     }
     if (!save(state) && !warnedStorage) {
@@ -399,7 +593,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   $<HTMLInputElement>('trip-start').addEventListener('change', (e) => { state.start = (e.target as HTMLInputElement).value || null; commit(); });
 
   // ---- drag and drop (desktop) ----
-  // Only drags that started on one of our items (custom type) are accepted, and state is always reset.
   const DRAG_TYPE = 'application/x-cbt-item';
   let dragKey = '';
   const endDrag = () => { document.querySelectorAll('.dragging, .over').forEach((x) => x.classList.remove('dragging', 'over')); dragKey = ''; };
@@ -459,7 +652,6 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
   function bestOrder(keys: string[], from?: [number, number]): string[] {
     const ll = (k: string) => info(k).ll!;
     if (keys.length < 2) return keys;
-    // nearest neighbour from the spot closest to where the previous day ended, then 2-opt
     let rest = [...keys];
     let start = 0;
     if (from) rest.forEach((k, i) => { if (km(from, ll(k)) < km(from, ll(rest[start]))) start = i; });
@@ -487,12 +679,10 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
       const spots = d.filter((k) => info(k).ll);
       const was = pathLen(spots.map((k) => info(k).ll!));
       let sorted = bestOrder(spots, prev);
-      // Only reorder a day when it actually saves distance.
       if (pathLen(sorted.map((k) => info(k).ll!)) > was - 0.3) sorted = spots;
       before += was;
       after += pathLen(sorted.map((k) => info(k).ll!));
       if (sorted.length) prev = info(sorted[sorted.length - 1]).ll;
-      // foods and unknown items keep their slots
       let i = 0;
       return d.map((k) => (info(k).ll ? sorted[i++] : k));
     });
@@ -519,7 +709,7 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
       const trip = {
         title: state.title,
         subtitle: [countries.map((c) => cn[c]).join(' · '), ct('{n} 天', { n: state.days.length }), ct('{n} 个地点', { n: all.length })].filter(Boolean).join(' · '),
-        cover: coverKey ? photoUrl(coverKey, 800) : undefined,
+        cover: coverKey ? photoUrl(coverKey, 1280) : undefined,
         days: state.days.map((d, i) => ({
           label: `${ct('第 {n} 天', { n: i + 1 })}${dateOf(i) ? ' · ' + dateOf(i) : ''}`,
           place: [...new Set(d.map((k) => prefName(info(k).pref)))].slice(0, 2).join(' · '),
@@ -530,10 +720,10 @@ const views = Object.fromEntries(maps.map(({ c, A }) => [c, [A.view.w, A.view.h]
       if (imgUrl) URL.revokeObjectURL(imgUrl);
       imgUrl = URL.createObjectURL(imgBlob);
       $<HTMLImageElement>('img-out').src = imgUrl;
-      const save = $<HTMLAnchorElement>('img-save');
-      save.href = imgUrl;
-      save.download = `${state.title || ct('行程')}.png`;
-      const file = new File([imgBlob], save.download, { type: 'image/png' });
+      const saveLink = $<HTMLAnchorElement>('img-save');
+      saveLink.href = imgUrl;
+      saveLink.download = `${state.title || ct('行程')}.png`;
+      const file = new File([imgBlob], saveLink.download, { type: 'image/png' });
       $('img-share').hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
       imgDlg.showModal();
     } catch {

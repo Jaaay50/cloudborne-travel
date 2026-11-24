@@ -11,6 +11,6 @@ export function getStaticPaths() {
 const trip = tripsAll('usa').find((x) => x.id === Astro.params.id)!;
 const crumbs = [{ href: '/usa/', text: t('美国') }, { href: '/trips/', text: t('行程模板') }];
 ---
-<Base title={trip.title} description={t('{title}：{summary}', { title: trip.title, summary: trip.summary })} image={trip.cover ? `${trip.cover}-1600.webp` : undefined} nav="trips">
+<Base title={trip.title} description={t('{title}：{summary}', { title: trip.title, summary: trip.summary })} image={trip.cover ? `${trip.cover}-1920.webp` : undefined} nav="trips">
   <TripPage t={trip} crumbs={crumbs} />
 </Base>

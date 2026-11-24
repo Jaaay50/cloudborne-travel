@@ -17,6 +17,6 @@ const crumbs = [
   { href: SINGLE_PREF_REGIONS.has(r.slug) ? `/japan/${r.prefs[0]}/` : `/japan/region/${r.slug}/`, text: r.name },
 ];
 ---
-<Base title={trip.title} description={t('{title}：{summary}', { title: trip.title, summary: trip.summary })} image={`${trip.cover}-1200.webp`} nav="trips">
+<Base title={trip.title} description={t('{title}：{summary}', { title: trip.title, summary: trip.summary })} image={`${trip.cover}-1920.webp`} nav="trips">
   <TripPage t={trip} crumbs={crumbs} />
 </Base>

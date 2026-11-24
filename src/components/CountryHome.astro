@@ -23,8 +23,8 @@ const themes = themesOf(country);
 const trips = tripsAll(country);
 const spotCount = places.reduce((n, p) => n + p.spots.length, 0);
 const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
-// Cover photos come in 800 / 1600; Japan illustrations in 640 / 1200.
-const placeImg = (p: WPlace | undefined, _small = true) => (p?.cover ? `${p.cover}-${p.coverPhoto ? 800 : 640}.webp` : '');
+// All covers (woodblock & photo) come in 960 / 1920.
+const placeImg = (p: WPlace | undefined) => (p?.cover ? `${p.cover}-960.webp` : '');
 const usedThemes = Object.keys(themes).filter((x) => places.some((p) => p.spots.some((s) => s.themes.includes(x))));
 // Seasonal featured themes (Japan): titles go to the browser script, which picks one by the visitor's month.
 const seasonTitles = { winter: t('冬天去哪'), spring: t('春天去哪'), summer: t('夏天去哪'), autumn: t('秋天去哪') };
@@ -32,7 +32,7 @@ const [hs, hl] = hero.sizes;
 ---
 <section class="hero">
   <picture>
-    <img src={`${hero.img}-${hs}.webp`} srcset={`${hero.img}-${hs}.webp ${hs}w, ${hero.img}-${hl}.webp ${hl}w`} sizes="100vw" alt={hero.alt} width={hl} height={Math.round(hl / 2.25)} fetchpriority="high" />
+    <img class="vt-hero-img" src={`${hero.img}-${hs}.webp`} srcset={`${hero.img}-${hs}.webp ${hs}w, ${hero.img}-${hl}.webp ${hl}w`} sizes="100vw" alt={hero.alt} width={hl} height={Math.round(hl / 2.25)} fetchpriority="high" />
   </picture>
   <div class="wrap hero-copy">
     <h1 set:html={hero.title} />
@@ -71,8 +71,8 @@ const [hs, hl] = hero.sizes;
               return (
                 <button type="button" class="region-row" data-go-region={r.slug} style={`--tone:${r.tone};--rink:${r.ink}`}>
                   {country === 'japan'
-                    ? <img src={`${r.cover}-640.webp`} alt="" loading="lazy" width="640" height="427" />
-                    : placeImg(first) ? <img src={placeImg(first)} alt="" loading="lazy" width="400" height="267" /> : <span class="ph" />}
+                    ? <img src={`${r.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" />
+                    : placeImg(first) ? <img src={placeImg(first)} alt="" loading="lazy" width="960" height="640" /> : <span class="ph" />}
                   <span>
                     <b>{r.name}</b>
                     <small>{r.tagline}</small>
@@ -85,7 +85,7 @@ const [hs, hl] = hero.sizes;
         </div>
         {regions.filter((r) => r.places.filter((k) => byKey[k]).length > 1).map((r) => (
           <div class="panel-view" data-view={`region:${r.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
-            {(country === 'japan' || placeImg(byKey[r.places.find((k) => byKey[k])!])) && <div class="pv-pic"><img src={country === 'japan' ? `${r.cover}-640.webp` : placeImg(byKey[r.places.find((k) => byKey[k])!], false)} alt="" loading="lazy" width="640" height="427" /></div>}
+            {(country === 'japan' || placeImg(byKey[r.places.find((k) => byKey[k])!])) && <div class="pv-pic"><img src={country === 'japan' ? `${r.cover}-960.webp` : placeImg(byKey[r.places.find((k) => byKey[k])!])} alt="" loading="lazy" width="960" height="640" /></div>}
             <h3>{r.name}</h3>
             <p class="pv-lead">{r.tagline}</p>
             <div class="pv-prefs">
@@ -106,14 +106,14 @@ const [hs, hl] = hero.sizes;
           const r = regions.find((x) => x.slug === p.region)!;
           return (
             <div class="panel-view" data-view={`pref:${p.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
-              {placeImg(p) && <div class="pv-pic"><img src={placeImg(p, false)} alt="" loading="lazy" width="640" height="427" /></div>}
+              {placeImg(p) && <div class="pv-pic"><img src={placeImg(p)} alt="" loading="lazy" width="960" height="640" /></div>}
               <h3>{p.name}</h3>
               <p class="pv-lead">{p.tagline}</p>
               <p class="pv-meta"><span>{t('建议 {days}', { days: p.days })}</span><span>{t('最佳 {months}', { months: monthRanges(p.months) })}</span></p>
               <ul class="pv-spots">
                 {p.spots.slice(0, 6).map((s) => (
                   <li>
-                    {s.img ? <img class="pv-thumb" src={`${s.img}-400.webp`} alt="" loading="lazy" width="400" height="267" /> : <span class="pv-thumb ph" />}
+                    {s.img ? <img class="pv-thumb" src={`${s.img}-640.webp`} alt="" loading="lazy" width="640" height="427" /> : <span class="pv-thumb ph" />}
                     <a href={`${p.href}#spot-${s.id}`} data-hover-key={s.key}>{s.name}</a>
                     <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: s.name })}>
                       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
@@ -142,7 +142,7 @@ const [hs, hl] = hero.sizes;
         <div class="theme-rest">
           {themeCards.map((c) => (
             <a class="theme-card" href={c.href} data-theme-card={c.slug} data-now={t('当季')} style={`--dot:${themes[c.slug].tone}`}>
-              <div class="pic"><img src={`${c.img}-640.webp`} alt={c.alt} loading="lazy" width="640" height="427" /></div>
+              <div class="pic"><img src={`${c.img}-960.webp`} alt={c.alt} loading="lazy" width="960" height="640" data-vt-img /></div>
               <div class="tc-body">
                 <b>{themes[c.slug].name}</b>
                 <small>{themes[c.slug].season}</small>
@@ -162,7 +162,7 @@ const [hs, hl] = hero.sizes;
       <div class="grid g-4">
         {places.map((p) => (
           <a class="place reveal" href={p.href}>
-            <div class="pic">{placeImg(p) && <img src={placeImg(p, false)} alt={p.coverAlt} loading="lazy" width="800" height="533" data-fade />}</div>
+            <div class="pic">{placeImg(p) && <img src={placeImg(p)} alt={p.coverAlt} loading="lazy" width="960" height="640" data-fade data-vt-img />}</div>
             <div class="body"><h3>{p.name}</h3><p>{p.tagline}</p></div>
           </a>
         ))}
@@ -182,7 +182,7 @@ const [hs, hl] = hero.sizes;
         {trips.slice(0, 6).map((x) => (
           <a class="place reveal" href={x.href}>
             <div class="pic">
-              {x.cover && <img src={`${x.cover}-${country === 'japan' ? 640 : 800}.webp`} alt="" loading="lazy" width="640" height="427" data-fade />}
+              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" data-fade data-vt-img />}
               <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
             </div>
             <div class="body">
@@ -236,10 +236,10 @@ const [hs, hl] = hero.sizes;
   .explore-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
   .explore-map { position: sticky; top: calc(var(--hdr) + 12px); }
   .theme-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; }
-  .panel { padding: 18px; min-height: 560px; }
-  .panel-view { animation: panelIn 420ms var(--ease-out) both; }
+  .panel { padding: 18px; min-height: 560px; border: 1px solid var(--line-2); }
+  .panel-view { animation: panelIn 380ms var(--ease-out) both; }
   .panel-view[hidden] { display: none; }
-  .panel-view > * { animation: panelIn 480ms var(--ease-out) both; }
+  .panel-view > * { animation: panelIn 420ms var(--ease-out) both; }
   .panel-view > :nth-child(2) { animation-delay: 40ms; }
   .panel-view > :nth-child(3) { animation-delay: 80ms; }
   .panel-view > :nth-child(4) { animation-delay: 120ms; }
@@ -248,12 +248,12 @@ const [hs, hl] = hero.sizes;
   .region-list { display: grid; gap: 8px; }
   .region-row {
     display: grid; grid-template-columns: 74px 1fr 18px; gap: 12px; align-items: center; text-align: left; padding: 7px; border-radius: 14px;
-    border: 1px solid var(--line); background: var(--card); cursor: pointer; transition: border-color var(--t-fast), box-shadow var(--t-fast), transform 240ms var(--ease-out);
+    border: 1px solid var(--line); background: var(--frame-bg); cursor: pointer; transition: border-color var(--t-fast), box-shadow var(--t-fast), transform 240ms var(--ease-out);
   }
-  .region-row:hover { border-color: color-mix(in srgb, var(--tone) 70%, var(--card)); box-shadow: var(--sh-1); transform: translateX(2px); }
+  .region-row:hover { border-color: color-mix(in srgb, var(--tone) 70%, var(--card)); box-shadow: var(--sh-1); transform: translateX(3px); }
   .region-row:active { transform: scale(.99); }
   .region-row img, .region-row .ph { width: 74px; height: 50px; object-fit: cover; border-radius: 9px; background: color-mix(in srgb, var(--tone) 40%, var(--card)); }
-  .region-row b { font-family: var(--serif); font-size: 17px; display: block; color: var(--rink, var(--ink)); line-height: 1.3; }
+  .region-row b { font-family: var(--hand); font-size: 17.5px; display: block; color: var(--rink, var(--ink)); line-height: 1.3; }
   @media (prefers-color-scheme: dark) { .region-row b { color: color-mix(in srgb, var(--rink) 45%, #fff); } }
   .region-row small { font-size: 12.5px; color: var(--mut); display: block; line-height: 1.45; }
   .region-row svg { width: 16px; height: 16px; color: var(--mut); transition: transform var(--t-fast) var(--ease); }
@@ -285,18 +285,19 @@ const [hs, hl] = hero.sizes;
   .theme-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .theme-feat:empty { display: none; }
   .theme-rest { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
-  .theme-card { display: block; position: relative; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-1); transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
-  .theme-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
-  .theme-rest .pic { aspect-ratio: 4 / 5; }
-  .tc-body { padding: 9px 11px 11px; }
-  .tc-body b { font-family: var(--serif); font-size: 17px; display: flex; align-items: center; gap: 6px; }
+  .theme-card { display: block; position: relative; border-radius: 17px; padding: 6px 6px 0; overflow: hidden; background: var(--frame-bg); border: 1px solid var(--line); box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1); transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color var(--t-fast); }
+  .theme-card:hover { transform: translateY(-5px); box-shadow: var(--sh-2); border-color: var(--line-2); }
+  .theme-rest .pic { aspect-ratio: 4 / 5; border-radius: 11px; }
+  .tc-body { padding: 9px 7px 11px; }
+  .tc-body b { font-family: var(--hand); font-size: 17px; display: flex; align-items: center; gap: 6px; }
   .tc-body b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
   .tc-body small { font-size: 11.5px; color: var(--mut); display: block; line-height: 1.4; margin-top: 2px; }
-  .theme-feat .pic { aspect-ratio: 16 / 8; }
-  .theme-feat .tc-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px; color: #fff; background: linear-gradient(0deg, rgba(20, 18, 14, .6), rgba(20, 18, 14, 0)); }
+  .theme-feat .theme-card { padding: 7px; }
+  .theme-feat .pic { aspect-ratio: 16 / 8; border-radius: 12px; }
+  .theme-feat .tc-body { position: absolute; left: 7px; right: 7px; bottom: 7px; border-radius: 0 0 12px 12px; padding: 40px 20px 16px; color: #fff; background: linear-gradient(0deg, rgba(16, 18, 24, .7), rgba(16, 18, 24, 0)); }
   .theme-feat .tc-body b { font-size: 26px; }
   .theme-feat .tc-body small { color: rgba(255, 255, 255, .88); font-size: 13.5px; }
-  .theme-feat .theme-card::after { content: attr(data-now); position: absolute; top: 12px; left: 12px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .theme-feat .theme-card::after { content: attr(data-now); position: absolute; top: 18px; left: 18px; background: var(--vermilion); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; box-shadow: 0 2px 8px rgba(194, 65, 43, .3); }
   @media (max-width: 900px) { .theme-rest { grid-template-columns: repeat(7, 132px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; } .theme-rest > * { scroll-snap-align: start; } }
   @media (max-width: 560px) { .theme-feat { grid-template-columns: 1fr; } .theme-feat .pic { aspect-ratio: 16 / 9; } .theme-feat .tc-body b { font-size: 22px; } }
 
@@ -382,7 +383,7 @@ const [hs, hl] = hero.sizes;
       const c = document.querySelector<HTMLElement>(`[data-theme-card="${t}"]`);
       if (!c) return;
       const img = c.querySelector('img');
-      if (img) img.src = img.src.replace('-640.webp', '-1200.webp');
+      if (img) img.src = img.src.replace('-960.webp', '-1920.webp');
       feat.appendChild(c);
     });
   }

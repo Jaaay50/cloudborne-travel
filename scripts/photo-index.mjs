@@ -1,6 +1,6 @@
 // List the photos that exist in public/img/photos/ into src/data/photo-index.json, so pages only
 // reference images that were actually generated. Keys: "<country>/<place>/<s|f>-<id>" or ".../cover".
-// A key is listed only when both sizes exist (400+800 for spots/foods, 800+1600 for covers).
+// A key is listed only when both sizes exist (640+1280 for spots/foods, 960+1920 for covers).
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -11,10 +11,10 @@ const walk = (d) => { if (!fs.existsSync(d)) return; for (const f of fs.readdirS
 walk(dir);
 const keys = new Set();
 for (const f of files) {
-  const m = f.match(/^(.+)-(400|800|1600)\.webp$/);
+  const m = f.match(/^(.+)-(640|960|1280|1920)\.webp$/);
   if (!m) continue;
   const key = m[1];
-  const need = key.endsWith('/cover') ? [800, 1600] : [400, 800];
+  const need = key.endsWith('/cover') ? [960, 1920] : [640, 1280];
   if (need.every((w) => files.has(`${key}-${w}.webp`))) keys.add(key);
 }
 const list = [...keys].sort();

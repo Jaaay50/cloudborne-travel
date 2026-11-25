@@ -91,16 +91,16 @@ const amap = trip.country === 'japan' && lang() === 'zh'; // Amap is for Chinese
   .trip-layout .bases { font-size: 14px; color: var(--mut); margin-top: 8px; }
   .trip-layout .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 10px; }
   .trip-layout .days { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 16px; }
-  .trip-layout .day { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 20px 22px; box-shadow: var(--sh-1); break-inside: avoid; }
-  .trip-layout .day-hd { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
-  .trip-layout .dn { width: 48px; height: 48px; border-radius: 14px; background: var(--ink); color: var(--on-ink); display: grid; place-items: center; font: 600 17px var(--serif); flex-shrink: 0; }
-  .trip-layout .day-hd h2 { font-size: 21px; }
-  .trip-layout .day-hd p { font-size: 13.5px; color: var(--mut); }
-  .trip-layout .items { list-style: none; padding: 0 0 0 22px; margin: 0; border-left: 2px dashed var(--line-2); margin-left: 23px; display: grid; gap: 14px; }
+  .trip-layout .day { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; break-inside: avoid; }
+  .trip-layout .day-hd { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .trip-layout .dn { width: 44px; height: 44px; border-radius: var(--r-sm); background: var(--indigo); color: var(--on-ink); display: grid; place-items: center; font: 700 14px var(--mono); flex-shrink: 0; }
+  .trip-layout .day-hd h2 { font-size: 20px; }
+  .trip-layout .day-hd p { font-size: 13px; color: var(--mut); }
+  .trip-layout .items { list-style: none; padding: 0 0 0 22px; margin: 0; border-left: 1.5px solid var(--line-2); margin-left: 21px; display: grid; gap: 14px; }
   .trip-layout .it { position: relative; display: flex; gap: 12px; align-items: flex-start; }
   .trip-layout .it > div { flex: 1; min-width: 0; }
-  .trip-layout .it-pic { width: 76px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; background: var(--paper-2); }
-  .trip-layout .dot { position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper-2); border: 3px solid var(--card); box-shadow: 0 0 0 1px var(--line-2); }
+  .trip-layout .it-pic { width: 76px; height: 54px; border-radius: var(--r-xs); object-fit: cover; flex-shrink: 0; background: var(--paper-2); }
+  .trip-layout .dot { position: absolute; left: -28px; top: 7px; width: 11px; height: 11px; border-radius: 2px; background: var(--paper-2); border: 2px solid var(--card); box-shadow: 0 0 0 1px var(--line-2); }
   .trip-layout .dot.spot { background: var(--vermilion); }
   .trip-layout .dot.food { background: var(--gold); }
   .trip-layout .it b { font-size: 16px; }

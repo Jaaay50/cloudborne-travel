@@ -27,7 +27,7 @@ const items = [...(rules?.items ?? [])].sort((a, b) => a.date.localeCompare(b.da
   .tl-date { font: 600 13px var(--sans); color: var(--vermilion); letter-spacing: .04em; }
   .tl-item .tcard { margin-top: 4px; }
   .tl-item a { display: inline-block; margin-top: 6px; font-size: 13px; color: var(--indigo); }
-  .tl-item .badge { font-size: 11.5px; padding: 1px 7px; border-radius: 999px; background: var(--paper-2); color: var(--mut); margin-left: 6px; font-weight: 600; }
+  .tl-item .badge { font-size: 11px; padding: 1px 6px; border-radius: var(--r-xs); background: var(--paper); border: 1px solid var(--line); color: var(--mut); margin-left: 6px; font-weight: 600; }
 </style>
 <script>
   import { ct } from '../../../../scripts/i18n';

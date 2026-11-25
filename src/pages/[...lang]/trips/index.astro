@@ -12,31 +12,45 @@ const groups = [
   { c: 'usa', name: t('美国') },
 ].filter((g) => trips.some((x) => x.country === g.c));
 const spans = [['short', t('3 天以内')], ['mid', t('4–6 天')], ['long', t('7 天以上')]];
+const CC: Record<string, string> = { japan: 'JPN', australia: 'AUS', usa: 'USA' };
+const regionCode = (region: string) => region.replace(/-/g, ' ').toUpperCase();
 ---
 <Base title={t('行程模板')} description={t('按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。')} nav="trips">
   <section class="wrap tp-head">
-    <h1>{t('拿来就能用的行程')}</h1>
+    <p class="eyebrow">ARCHIVE INDEX · JPN · AUS · USA</p>
+    <div class="tp-title-row">
+      <h1>{t('拿来就能用的行程')}</h1>
+      <p class="tp-count">{trips.length} ROUTES</p>
+    </div>
     <div class="filter" role="group" aria-label={t('筛选')}>
-      <button type="button" class="chip on" data-c="" aria-pressed="true">{t('全部')}</button>
-      {groups.map((g) => <button type="button" class="chip" data-c={g.c} aria-pressed="false">{g.name}</button>)}
-      <span class="sep"></span>
-      {spans.map(([k, v]) => <button type="button" class="chip" data-d={k} aria-pressed="false">{v}</button>)}
+      <div class="f-group">
+        <button type="button" class="chip on" data-c="" aria-pressed="true">{t('全部')}</button>
+        {groups.map((g) => <button type="button" class="chip" data-c={g.c} aria-pressed="false">{g.name}</button>)}
+      </div>
+      <div class="f-spans">
+        {spans.map(([k, v]) => <button type="button" class="chip span-chip" data-d={k} aria-pressed="false">{v}</button>)}
+      </div>
     </div>
   </section>
-  <section class="wrap">
+  <section class="wrap tp-sec">
     <div class="grid g-3">
-      {trips.map((x) => {
+      {trips.map((x, idx) => {
         const d = x.daysCount <= 3 ? 'short' : x.daysCount <= 6 ? 'mid' : 'long';
+        const no = String(idx + 1).padStart(2, '0');
+        const eager = idx < 6;
         return (
-          <a class="place trip reveal" href={x.href} data-c={x.country} data-d={d}>
+          <a class:list={['place trip', { reveal: !eager }]} href={x.href} data-c={x.country} data-d={d}>
+            <div class="plate-hd">
+              <span>NO.{no} · {CC[x.country] ?? x.country.toUpperCase()}{x.region ? ` / ${regionCode(x.region)}` : ''}</span>
+              <b>{t('{n} 天', { n: x.daysCount })}</b>
+            </div>
             <div class="pic">
-              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" data-fade data-vt-img />}
-              <span class="badge">{t('{n} 天', { n: x.daysCount })}</span>
+              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading={eager ? 'eager' : 'lazy'} fetchpriority={idx < 3 ? 'high' : undefined} decoding={eager ? 'sync' : 'async'} width="960" height="640" data-fade={!eager ? '' : undefined} data-vt-img />}
             </div>
             <div class="body">
               <h3>{x.title}</h3>
               <p>{x.for}</p>
-              <p class="bases">{x.season}</p>
+              <p class="plate-ft">{x.season}</p>
             </div>
           </a>
         );
@@ -45,14 +59,24 @@ const spans = [['short', t('3 天以内')], ['mid', t('4–6 天')], ['long', t(
   </section>
 </Base>
 <style>
-  .tp-head { padding: 48px 0 22px; }
-  .tp-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 0 0 10px; }
-  .filter { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; align-items: center; }
-  .sep { width: 1px; height: 20px; background: var(--line-2); margin: 0 4px; }
+  .tp-head { padding: 40px 0 24px; }
+  .tp-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+  .tp-head h1 { font-size: clamp(32px, 4.2vw, 44px); margin: 0; }
+  .tp-count { font: 600 11.5px/1 var(--mono); letter-spacing: .16em; color: var(--mut); }
+  .filter {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+    gap: 10px 16px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line);
+  }
+  .f-group, .f-spans { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .span-chip { background: transparent; border-color: var(--line); }
+  .span-chip:hover { background: var(--card); border-color: var(--indigo); }
+  .span-chip.on, .span-chip[aria-pressed="true"] {
+    background: var(--card);
+    border-color: var(--vermilion);
+    color: var(--vermilion);
+  }
+  .tp-sec { padding-bottom: 24px; }
   .trip[hidden] { display: none; }
-  .trip .pic { position: relative; }
-  .badge { position: absolute; left: 12px; top: 12px; background: var(--vermilion); color: #fff; font-weight: 600; font-size: 13px; padding: 3px 11px; border-radius: 999px; }
-  .bases { font-size: 12.5px !important; color: var(--mut) !important; margin-top: 4px; }
 </style>
 <script>
   let c = location.hash.slice(1), d = '';

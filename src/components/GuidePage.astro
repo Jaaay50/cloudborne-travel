@@ -66,28 +66,28 @@ const zh = lang() === 'zh';
   .crumbs-plain { display: flex; gap: 6px; font-size: 13.5px; color: var(--mut); }
   .crumbs-plain a:hover { color: var(--ink); }
   .gd-head h1 { font-size: clamp(32px, 4.4vw, 48px); margin: 8px 0 18px; }
-  .gd-toc { display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: var(--hdr); z-index: 4; background: var(--paper); padding: 8px 0; }
-  .gd-toc a { padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); font-size: 14px; color: var(--ink-2); transition: border-color 160ms, color 160ms; }
-  .gd-toc a:hover { border-color: var(--hover-line); color: var(--ink); }
+  .gd-toc { display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: var(--hdr); z-index: 4; background: var(--paper); padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .gd-toc a { padding: 6px 12px; border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--card); font-size: 13.5px; color: var(--ink-2); transition: border-color 160ms, color 160ms; }
+  .gd-toc a:hover { border-color: var(--indigo); color: var(--indigo); }
   .gd { max-width: 860px; padding-bottom: 20px; }
   .gd-sec { padding: 26px 0 4px; scroll-margin-top: calc(var(--hdr) + 60px); }
   .gd-sec h2 { font-size: 24px; margin-bottom: 14px; }
   .gd-items { display: grid; gap: 10px; }
-  .gd-item { padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
-  .gd-item b { font-size: 16px; }
-  .gd-item p { color: var(--ink-2); font-size: 15px; line-height: 1.75; margin-top: 4px; }
+  .gd-item { padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
+  .gd-item b { font-size: 15.5px; }
+  .gd-item p { color: var(--ink-2); font-size: 14.5px; line-height: 1.75; margin-top: 4px; }
   .nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
-  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); transition: transform 300ms var(--ease-out), box-shadow 300ms; }
-  .num:hover { transform: translateY(-2px); box-shadow: var(--sh-2); }
-  .num .n { font: 700 26px var(--serif); color: var(--vermilion); min-width: 56px; }
+  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: var(--r); background: var(--card); border: 1px solid var(--line); transform: translate3d(0, 0, 0); transition: transform 220ms var(--ease-out), border-color 180ms ease; }
+  .num:hover { transform: translate3d(0, -2px, 0); border-color: var(--indigo); }
+  .num .n { font: 700 24px var(--mono); color: var(--vermilion); min-width: 56px; }
   .num b { display: block; font-size: 15px; }
   .num small { display: block; font-size: 12.5px; color: var(--mut); line-height: 1.45; }
   .contacts { display: grid; gap: 10px; margin-top: 12px; }
-  .contact { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+  .contact { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
   .contact p { font-size: 13.5px; color: var(--mut); margin-top: 2px; }
   .c-act { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
   .c-url { font-size: 13px; color: var(--indigo); }
-  .c-own { margin-top: 12px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; font-size: 14.5px; color: var(--ink-2); }
+  .c-own { margin-top: 12px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); font-size: 14.5px; color: var(--ink-2); }
   .gd-src { margin-top: 26px; }
   .gd-src summary { font-size: 13px; color: var(--mut); cursor: pointer; }
   .gd-src p { font-size: 12.5px; color: var(--mut); line-height: 1.8; margin-top: 8px; }

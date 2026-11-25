@@ -382,28 +382,44 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- reveal on scroll ---------- */
+const cleanupReveal = (el: HTMLElement) => {
+  el.classList.remove('reveal', 'in');
+  el.style.removeProperty('--d');
+};
+const revealEl = (el: HTMLElement, idx = 0) => {
+  if (REDUCE_MOTION) { cleanupReveal(el); return; }
+  const delay = Math.min(idx, 5) * 35;
+  el.style.setProperty('--d', `${delay}ms`);
+  el.classList.add('in');
+  el.addEventListener('animationend', () => cleanupReveal(el), { once: true });
+  window.setTimeout(() => cleanupReveal(el), delay + 560);
+};
 const io = 'IntersectionObserver' in window
   ? new IntersectionObserver(
       (entries) => {
         const entering = entries.filter((en) => en.isIntersecting);
         entering.forEach((en, i) => {
-          (en.target as HTMLElement).style.setProperty('--d', `${Math.min(i, 6) * 55}ms`);
-          en.target.classList.add('in');
+          revealEl(en.target as HTMLElement, i);
           io?.unobserve(en.target);
         });
       },
-      { rootMargin: '0px 0px -5% 0px' },
+      { rootMargin: '0px 0px 40px 0px' },
     )
   : null;
-$$('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('in')));
+$$('.reveal').forEach((el) => {
+  const r = el.getBoundingClientRect();
+  if (!io || r.top < window.innerHeight * 0.96) cleanupReveal(el);
+  else io.observe(el);
+});
 
 /* ---------- photos fade in once decoded ---------- */
 const fadeIn = (img: HTMLImageElement) => {
-  if (img.complete && img.naturalWidth) { img.classList.add('ok'); return; }
+  if (img.complete && img.naturalWidth) return;
   img.classList.add('fade');
-  const done = () => img.classList.add('ok');
+  const done = () => img.classList.remove('fade');
   img.addEventListener('load', done, { once: true });
   img.addEventListener('error', done, { once: true });
+  window.setTimeout(done, 1800);
 };
 $$<HTMLImageElement>('img[data-fade]').forEach(fadeIn);
 

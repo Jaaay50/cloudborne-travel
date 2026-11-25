@@ -40,9 +40,8 @@ const dict = clientDict();
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && alternates.filter((a) => hasPage(a.l, here)).map((a) => <link rel="alternate" hreflang={HTML_LANG[a.l]} href={new URL(a.href, site).href} />)}
     {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(here, site).href} />}
-    <meta name="theme-color" content="#f3ede0" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#11161f" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#eeeae1" />
+    <meta name="color-scheme" content="light" />
     <link rel="stylesheet" href="/fonts/wenkai/wenkai.css" />
     <style is:inline>@view-transition { navigation: auto; }</style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -62,8 +61,9 @@ const dict = clientDict();
     <header class="hdr" id="hdr">
       <div class="wrap">
         <a class="brand" href={L('/')} aria-label={t('栖云旅行 首页')}>
-          <img src="/favicon.svg" alt="" width="32" height="32" />
+          <img src="/favicon.svg" alt="" width="28" height="28" />
           <b>{brand}</b>
+          <span class="brand-code" aria-hidden="true">ATLAS · JPN · AUS · USA</span>
         </a>
         <nav class="nav" aria-label={t('主导航')}>
           {links.map((x) => <a href={x.href} aria-current={nav === x.id ? 'page' : undefined}>{x.text}</a>)}

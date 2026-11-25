@@ -1,5 +1,5 @@
 ---
-// "Where to go this month" — interactive 12-month travel journal spread on the home page.
+// "Where to go this month" — interactive 12-month Swiss cartographic spread on the home page.
 // Pre-renders 6 curated destinations per month (2 Japan, 2 Australia, 2 USA) using real place data + climate averages.
 import { placesOf, type WPlace } from '../lib/world';
 import type { CountrySlug } from '../lib/countries';
@@ -154,14 +154,13 @@ const monthsData = Array.from({ length: 12 }, (_, idx) => {
 });
 // Default SSR month matches build month; browser script immediately switches to visitor's actual month.
 const defaultMonth = new Date().getMonth() + 1;
-const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
 ---
 
 <section class="section mp-sec" id="this-month" data-mp data-headings={JSON.stringify(headingTemplates)}>
   <div class="wrap">
     <div class="mp-head">
-      <div class="mp-title-wrap">
-        <span class="mp-pin" aria-hidden="true">✦</span>
+      <div>
+        <p class="eyebrow">SEASONAL CALENDAR · 12 MONTHS</p>
         <h2 data-mp-heading>{headingTemplates[defaultMonth - 1]}</h2>
       </div>
       <div class="mp-months" role="tablist" aria-label={t('按月份切换推荐')}>
@@ -182,9 +181,12 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
     <div class="mp-panels">
       {monthsData.map(({ m, items }) => (
         <div class="mp-grid" role="tabpanel" data-mp-panel={m} hidden={m !== defaultMonth}>
-          {items.map((it, idx) => (
-            <a class="mp-card" href={it.href} style={`--i:${idx};--tape-rot:${tapeRots[idx % tapeRots.length]}`}>
-              <span class="tape" aria-hidden="true"></span>
+          {items.map((it) => (
+            <a class="place mp-card" href={it.href}>
+              <div class="plate-hd">
+                <span>{it.code} · {it.countryName}</span>
+                {it.temp && <b>{it.temp}</b>}
+              </div>
               <div class="mp-pic pic">
                 {it.cover && (
                   <img
@@ -198,8 +200,6 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
                     data-vt-img
                   />
                 )}
-                <span class={`mp-stamp mp-${it.country}`}>{it.code} · {it.countryName}</span>
-                {it.temp && <span class="mp-temp">{it.temp}</span>}
               </div>
               <div class="mp-body">
                 <div class="mp-top">
@@ -217,141 +217,72 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
 </section>
 
 <style>
-  .mp-sec { padding: 48px 0 54px; }
+  .mp-sec { padding: 48px 0 42px; }
   .mp-head {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 16px 24px;
     flex-wrap: wrap;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
   }
-  .mp-title-wrap {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .mp-pin {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: var(--vermilion-bg);
-    color: var(--vermilion);
-    border: 1px dashed color-mix(in srgb, var(--vermilion) 45%, transparent);
-    font-size: 13px;
-  }
+  .mp-head .eyebrow { margin-bottom: 6px; }
   .mp-head h2 {
-    font-size: clamp(25px, 3vw, 34px);
-    letter-spacing: .03em;
+    font-size: clamp(24px, 2.8vw, 32px);
+    letter-spacing: .02em;
   }
   .mp-months {
     display: flex;
-    gap: 5px;
+    gap: 3px;
     flex-wrap: wrap;
-    padding: 5px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--card) 82%, var(--paper-2));
-    border: 1px solid var(--line);
-    box-shadow: var(--sh-1);
+    padding: 3px;
+    border-radius: var(--r-sm);
+    background: var(--card);
+    border: 1px solid var(--line-2);
   }
   .mp-tab {
     position: relative;
-    height: 30px;
-    padding: 0 11px;
-    border-radius: 999px;
+    height: 28px;
+    padding: 0 9px;
+    border-radius: var(--r-xs);
     border: 0;
     background: transparent;
     color: var(--ink-2);
-    font-size: 13px;
-    font-weight: 500;
+    font: 500 12.5px/1 var(--sans);
+    font-variant-numeric: tabular-nums;
     cursor: pointer;
     white-space: nowrap;
-    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
   }
-  .mp-tab:hover { background: var(--paper-2); color: var(--ink); }
-  .mp-tab:active { transform: scale(.95); }
+  .mp-tab:hover { background: var(--paper); color: var(--ink); }
   .mp-tab.on {
-    background: var(--ink);
+    background: var(--indigo);
     color: var(--on-ink);
     font-weight: 600;
-    box-shadow: 0 2px 6px rgba(30, 36, 48, .18);
   }
   .mp-tab.now::after {
     content: "";
     position: absolute;
-    right: 4px;
-    top: 4px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
+    right: 3px;
+    top: 3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
     background: var(--vermilion);
   }
   .mp-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px 18px;
-    padding-top: 8px;
+    gap: 20px;
   }
-  .mp-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 8px 8px 0;
-    border-radius: 18px;
-    background: var(--frame-bg);
-    border: 1px solid var(--line);
-    box-shadow: inset 0 1px 0 var(--card-edge), var(--sh-1);
-    transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color var(--t-fast);
-    animation: mpIn 340ms var(--ease-out) calc(var(--i, 0) * 45ms) both;
-  }
-  @keyframes mpIn {
-    from { opacity: 0; transform: translateY(12px) scale(.985); }
-    to { opacity: 1; transform: none; }
-  }
-  .mp-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--sh-2);
-    border-color: var(--line-2);
-  }
-  .mp-card:active { transform: translateY(-1px) scale(.99); }
   .mp-pic {
     aspect-ratio: 3 / 2;
-    border-radius: 12px;
-  }
-  .mp-stamp {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    padding: 3px 9px;
-    border-radius: 6px;
-    font: 600 11.5px/1.2 var(--sans);
-    letter-spacing: .05em;
-    color: #fff;
-    background: rgba(20, 24, 34, .64);
-    border: 1px solid rgba(255, 255, 255, .26);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .mp-stamp.mp-japan { border-color: rgba(235, 130, 108, .55); }
-  .mp-stamp.mp-australia { border-color: rgba(114, 194, 214, .55); }
-  .mp-stamp.mp-usa { border-color: rgba(226, 174, 108, .55); }
-  .mp-temp {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    padding: 2px 8px;
-    border-radius: 999px;
-    font: 600 12px/1.4 var(--sans);
-    font-variant-numeric: tabular-nums;
-    color: #fff;
-    background: rgba(18, 22, 30, .62);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--r-xs);
   }
   .mp-body {
-    padding: 13px 8px 15px;
+    padding: 13px 2px 0;
     display: grid;
     gap: 5px;
   }
@@ -362,22 +293,23 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
     gap: 8px;
   }
   .mp-body h3 {
-    font-size: 19px;
-    line-height: 1.3;
+    font-size: 18.5px;
+    line-height: 1.35;
   }
   .mp-tag {
     flex-shrink: 0;
-    padding: 2px 9px;
-    border-radius: 999px;
-    font-size: 12px;
+    padding: 2px 7px;
+    border-radius: var(--r-xs);
+    font-size: 11.5px;
     font-weight: 600;
     color: var(--vermilion);
     background: var(--vermilion-bg);
+    border: 1px solid color-mix(in srgb, var(--vermilion) 25%, transparent);
   }
   .mp-body p {
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--ink-2);
-    line-height: 1.55;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -385,7 +317,6 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
   }
   @media (max-width: 960px) {
     .mp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .mp-months { border-radius: 16px; }
   }
   @media (max-width: 640px) {
     .mp-months {
@@ -393,9 +324,8 @@ const tapeRots = ['-2.6deg', '1.8deg', '-1.4deg', '2.4deg', '-2deg', '1.6deg'];
       overflow-x: auto;
       max-width: 100%;
       scrollbar-width: none;
-      border-radius: 999px;
     }
-    .mp-grid { grid-template-columns: 1fr; gap: 20px; }
+    .mp-grid { grid-template-columns: 1fr; gap: 16px; }
   }
 </style>
 

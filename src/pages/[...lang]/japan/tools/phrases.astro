@@ -44,12 +44,12 @@ const cats = phrases?.categories ?? [];
   </div>
 </ToolShell>
 <style>
-  .ph-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 22px 0 14px; position: sticky; top: var(--hdr); padding: 10px 0; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 4; }
+  .ph-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 22px 0 14px; position: sticky; top: var(--hdr); padding: 10px 0; background: rgba(238, 234, 225, .96); border-bottom: 1px solid var(--line); z-index: 4; }
   .ph-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .ph { position: relative; }
   .ph[hidden] { display: none; }
-  .ph-main { width: 100%; text-align: left; display: grid; gap: 3px; padding: 14px 44px 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast), border-color var(--t-fast); }
-  .ph-main:hover { box-shadow: var(--sh-1); border-color: var(--line-2); }
+  .ph-main { width: 100%; text-align: left; display: grid; gap: 3px; padding: 14px 44px 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); cursor: pointer; transition: border-color var(--t-fast); }
+  .ph-main:hover { border-color: var(--indigo); }
   .ph-main:active { transform: scale(.985); }
   .ph-zh { font-size: 13.5px; color: var(--mut); }
   .ph-ja { font: 600 19px/1.5 var(--jp); color: var(--ink); }

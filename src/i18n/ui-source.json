@@ -122,6 +122,7 @@
     "从{from}",
     "从一座城、一碗面、一场红叶开始。",
     "从直岛的地中美术馆到城市里的建筑，日本的当代艺术和建筑值得专门安排一天。不少美术馆要预约，周一常休。",
+    "从街头小吃到当地餐桌",
     "以{city}为准",
     "价格类型",
     "伊利诺伊",
@@ -308,6 +309,7 @@
     "安卓：用 Chrome 打开 → 右上角菜单 →「添加到主屏幕」或「安装应用」。",
     "官方说明",
     "官网",
+    "实用的出行与住宿经验",
     "宫城",
     "宫崎",
     "宽裕",
@@ -358,6 +360,7 @@
     "弗吉尼亚",
     "弘前樱花",
     "当季",
+    "当季实况",
     "待安排",
     "徒步",
     "得州",
@@ -395,6 +398,7 @@
     "按天排好的日本、澳大利亚、美国行程模板，一键复制到自己的行程里再改。",
     "按季节去",
     "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。",
+    "按时间走完一段旅程",
     "按月份切换推荐",
     "按距离排好每天的先后顺序",
     "换一版",
@@ -402,6 +406,7 @@
     "排顺序",
     "探索地图",
     "提前一个月以上订住宿和交通，价格差别很大。",
+    "提前了解常见的旅行误区",
     "提醒",
     "搜一搜",
     "搜目的地",
@@ -594,6 +599,7 @@
     "红岩暖冬",
     "约 {n} 小时",
     "纽约",
+    "细算旅途中的每一笔开支",
     "给对方看",
     "维多利亚",
     "缅因",
@@ -605,6 +611,7 @@
     "美国热门州的原创旅行指南：国家公园、自驾路线、城市、景点和美食配图、行程模板、签证与入境须知。",
     "美术馆",
     "美食",
+    "美食探店",
     "群马",
     "翻开我的集章本",
     "翻开集章本",
@@ -656,8 +663,10 @@
     "购物",
     "购物预算",
     "赏樱",
+    "跟着季节安排旅行",
     "跨年海港",
     "路易斯安那",
+    "路线实录",
     "运营方官网",
     "还有 {n} 项没排进具体哪天。",
     "还没定",
@@ -677,6 +686,7 @@
     "选几个选项，马上生成一份行程",
     "遇到证件丢失或被捕等情况，联系你所持护照国家的大使馆或领事馆。",
     "遇到这些情况",
+    "避坑指南",
     "避寒海岛",
     "酒庄",
     "酒庄美食",
@@ -705,6 +715,7 @@
     "页面可能搬家了，或者链接打错了。",
     "顺路去",
     "预算",
+    "预算复盘",
     "食",
     "食品饮料 {pct}%",
     "首都领地",
@@ -1178,7 +1189,8 @@
       "src/pages/[...lang]/usa/index.astro"
     ],
     "交通住宿": [
-      "src/components/PlacePage.astro"
+      "src/components/PlacePage.astro",
+      "src/lib/posts.ts"
     ],
     "交通常识": [
       "src/lib/toolkit.ts",
@@ -1219,6 +1231,9 @@
     ],
     "从直岛的地中美术馆到城市里的建筑，日本的当代艺术和建筑值得专门安排一天。不少美术馆要预约，周一常休。": [
       "src/pages/[...lang]/japan/themes/[theme].astro"
+    ],
+    "从街头小吃到当地餐桌": [
+      "src/lib/posts.ts"
     ],
     "以{city}为准": [
       "src/components/ClimateTable.astro"
@@ -1806,6 +1821,9 @@
       "src/pages/[...lang]/japan/tools/checklist.astro",
       "src/pages/[...lang]/japan/tools/emergency.astro"
     ],
+    "实用的出行与住宿经验": [
+      "src/lib/posts.ts"
+    ],
     "宫城": [
       "src/lib/japan.ts"
     ],
@@ -1961,6 +1979,9 @@
     "当季": [
       "src/components/CountryHome.astro"
     ],
+    "当季实况": [
+      "src/lib/posts.ts"
+    ],
     "待安排": [
       "src/pages/[...lang]/plan.astro"
     ],
@@ -2085,6 +2106,9 @@
     "按季节和兴趣找日本旅行灵感：赏樱、花海、红叶、雪国、温泉、海岛、古迹、山野、艺术，每个主题列出最值得去的景点。": [
       "src/pages/[...lang]/japan/themes/index.astro"
     ],
+    "按时间走完一段旅程": [
+      "src/lib/posts.ts"
+    ],
     "按月份切换推荐": [
       "src/components/MonthPicks.astro"
     ],
@@ -2105,6 +2129,9 @@
     ],
     "提前一个月以上订住宿和交通，价格差别很大。": [
       "src/scripts/quick.ts"
+    ],
+    "提前了解常见的旅行误区": [
+      "src/lib/posts.ts"
     ],
     "提醒": [
       "src/components/PlacePage.astro"
@@ -2748,6 +2775,9 @@
     "纽约": [
       "src/lib/countries.ts"
     ],
+    "细算旅途中的每一笔开支": [
+      "src/lib/posts.ts"
+    ],
     "给对方看": [
       "src/pages/[...lang]/japan/tools/phrases.astro"
     ],
@@ -2796,6 +2826,9 @@
       "src/components/PlacePage.astro",
       "src/pages/[...lang]/quick.astro",
       "src/scripts/site.ts"
+    ],
+    "美食探店": [
+      "src/lib/posts.ts"
     ],
     "群马": [
       "src/lib/japan.ts"
@@ -2963,11 +2996,17 @@
     "赏樱": [
       "src/lib/japan.ts"
     ],
+    "跟着季节安排旅行": [
+      "src/lib/posts.ts"
+    ],
     "跨年海港": [
       "src/components/MonthPicks.astro"
     ],
     "路易斯安那": [
       "src/lib/countries.ts"
+    ],
+    "路线实录": [
+      "src/lib/posts.ts"
     ],
     "运营方官网": [
       "src/pages/[...lang]/japan/tools/airports.astro"
@@ -3029,6 +3068,9 @@
     ],
     "遇到这些情况": [
       "src/pages/[...lang]/japan/tools/emergency.astro"
+    ],
+    "避坑指南": [
+      "src/lib/posts.ts"
     ],
     "避寒海岛": [
       "src/components/MonthPicks.astro"
@@ -3117,6 +3159,9 @@
     ],
     "预算": [
       "src/pages/[...lang]/quick.astro"
+    ],
+    "预算复盘": [
+      "src/lib/posts.ts"
     ],
     "食": [
       "src/pages/[...lang]/plan.astro",

@@ -5,6 +5,7 @@
     python3 -I scripts/i18n.py build      # assemble src/i18n/<lang>/** from src/data/** + the caches
     python3 -I scripts/i18n.py check      # list units without a translation (exit 1 with --strict)
     python3 -I scripts/i18n.py extract    # rescan the code for t('…') strings -> src/i18n/ui-source.json
+    python3 -I scripts/i18n.py import-cache --lang en|ja <mapping.json>
     python3 -I scripts/i18n.py prune      # drop cached translations nothing uses any more
 
 How it works
@@ -41,8 +42,9 @@ MODEL = os.environ.get("CBT_I18N_MODEL", "gpt-6.1-sol")
 
 HAN = re.compile(r"[㐀-鿿]")
 # Fields that are never translated: Japanese originals, readings, image prompts, identifiers.
-KEEP_KEYS = {"local", "kana", "ja", "scene", "photo", "url", "id", "slug", "k", "abbr", "code", "number", "phone"}
-SKIP_FILES = ("geo/", "photo-index.json", "rates.json", "japan/photos/")
+KEEP_KEYS = {"local", "kana", "ja", "scene", "photo", "url", "id", "slug", "k", "abbr", "code", "number", "phone",
+             "country", "places", "category", "date", "checked", "featured", "handle", "tone", "spotRefs", "platform"}
+SKIP_FILES = ("geo/", "photo-index.json", "post-photo-index.json", "rates.json", "japan/photos/")
 # Entries that only help mainland-Chinese travellers (Chinese embassies, the 12308 hotline, the 中国领事 app).
 # The English and Japanese builds drop them; pages show a "contact your own embassy" line instead.
 CN_ONLY = re.compile(r"中国驻|12308|中国领事|中国大使馆|中国总领事馆|领事保护")
@@ -56,11 +58,16 @@ BATCH_CHARS = 2600
 
 # ---------------------------------------------------------------- units
 
+def kept(k, v):
+    # Post photo objects contain captions/alt; the climate place map contains city names.
+    return k in KEEP_KEYS and not (k in {"photo", "places"} and isinstance(v, dict))
+
+
 def flat(obj, prefix=""):
     """Yield (relpath, string) for every translatable string in obj."""
     if isinstance(obj, dict):
         for k, v in obj.items():
-            if k in KEEP_KEYS:
+            if kept(k, v):
                 continue
             yield from flat(v, f"{prefix}{k}.")
     elif isinstance(obj, list):
@@ -78,7 +85,7 @@ def refs(obj, prefix=""):
         if names:
             out[prefix[:-1] or "."] = names
         for k, v in obj.items():
-            if k not in KEEP_KEYS:
+            if not kept(k, v):
                 out.update(refs(v, f"{prefix}{k}."))
     elif isinstance(obj, list):
         for i, v in enumerate(obj):
@@ -91,11 +98,30 @@ def file_units(rel, data):
     total = sum(len(s) for _, s in flat(data))
     if total == 0:
         return []
+    if rel.startswith("posts/") and isinstance(data, dict):
+        units, meta = [], {}
+        for k, v in data.items():
+            if kept(k, v):
+                continue
+            if k == "steps":
+                for i, step in enumerate(v):
+                    strings = dict(flat(step))
+                    if strings:
+                        units.append((f"steps#{step['id']}", f"steps.{i}.", strings, refs(step)))
+            elif k in {"meta", "lead", "highlights", "pitfalls", "budgetBreakdown"}:
+                strings = dict(flat(v))
+                if strings:
+                    units.append((k, f"{k}.", strings, refs(v)))
+            else:
+                meta.update(flat(v, f"{k}."))
+        if meta:
+            units.insert(0, ("@meta", "", meta, refs(data)))
+        return units
     if total <= SMALL_FILE or not isinstance(data, dict):
         return [("*", "", dict(flat(data)), refs(data))]
     units, meta = [], {}
     for k, v in data.items():
-        if k in KEEP_KEYS:
+        if kept(k, v):
             continue
         if isinstance(v, list) and v and all(isinstance(x, dict) and isinstance(x.get("id"), str) for x in v):
             for i, x in enumerate(v):
@@ -145,7 +171,8 @@ def drop_cn_only(obj):
 
 def load(rel):
     with open(os.path.join(DATA, rel), encoding="utf-8") as fh:
-        return drop_cn_only(json.load(fh))
+        data = json.load(fh)
+        return data if rel.startswith("posts/") else drop_cn_only(data)
 
 
 def ui_source():
@@ -190,6 +217,8 @@ def all_jobs(lang, only=None):
 def context_line(rel, data):
     parts = rel.split("/")
     country = {"japan": "Japan", "australia": "Australia", "usa": "the United States"}.get(parts[0], "")
+    if parts[0] == "posts":
+        return f"Travel post \"{data['title']}\" in {data['country']}. Preserve the author voice and cited facts."
     if isinstance(data, dict) and data.get("name"):
         bits = [f"{data['name']}"] + [data[k] for k in ("local", "en") if isinstance(data.get(k), str)]
         return f"Guide page for {' / '.join(bits)}, {country}."
@@ -245,7 +274,7 @@ def api_key():
     if kf:
         with open(kf) as fh:
             return fh.read().strip()
-    k = os.environ.get("OPENAI_API_KEY")
+    k = os.environ.get("CBT_API_KEY") or os.environ.get("OPENAI_API_KEY")
     if not k:
         sys.exit("set CBT_I18N_KEY_FILE or OPENAI_API_KEY")
     return k
@@ -327,11 +356,14 @@ def write_json(path, obj, compact=False):
 
 def cmd_translate(a):
     lang = a.lang
-    key = api_key()
     cache = read_cache(lang)
     jobs = [j for j in all_jobs(lang, a.only) if j[5] not in cache]
     if a.limit:
         jobs = jobs[: a.limit]
+    if not jobs:
+        print(f"{lang}: 0 units to translate")
+        return
+    key = api_key()
     # Batch units of the same file so names stay consistent inside a request.
     batches, cur, size, cur_file = [], [], 0, None
     for j in jobs:
@@ -378,8 +410,7 @@ def cmd_translate(a):
             except (urllib.error.URLError, TimeoutError, ValueError, KeyError, json.JSONDecodeError, OSError) as e:
                 err = e
                 if isinstance(e, urllib.error.HTTPError) and e.code in (400, 401, 403):
-                    body = e.read(300).decode(errors="replace")
-                    err = f"HTTP {e.code} {body}"
+                    err = f"HTTP {e.code}"
                     if e.code != 400:
                         break
                 time.sleep(4 * (attempt + 1))
@@ -405,6 +436,64 @@ def cmd_translate(a):
                       f"tokens in {stats['in']} out {stats['out']}, {int(time.time() - t0)} s", flush=True)
     write_json(cache_path(lang), cache, compact=True)
     log.close()
+    if stats["fail"]:
+        sys.exit(1)
+
+
+def get_path(obj, path):
+    for part in path.split(".") if path else ():
+        obj = obj[int(part)] if isinstance(obj, list) else obj[part]
+    return obj
+
+
+def cmd_import_cache(a):
+    """Validate all supplied translated units before atomically updating the cache."""
+    with open(a.mapping, encoding="utf-8") as fh:
+        mapping = json.load(fh)
+    if not isinstance(mapping, dict):
+        raise ValueError("mapping must be a JSON object")
+    if "files" in mapping or "ui" in mapping:
+        if set(mapping) - {"files", "ui"}:
+            raise ValueError("wrapped mapping may only have files and ui keys")
+        files, ui = mapping.get("files", {}), mapping.get("ui", {})
+    else:
+        files, ui = mapping, {}
+    if not isinstance(files, dict) or not isinstance(ui, dict):
+        raise ValueError("files and ui must be JSON objects")
+    allowed = set(content_files()) - set(LANG_SKIP.get(a.lang, ()))
+    unknown = set(files) - allowed
+    if unknown:
+        raise ValueError(f"unknown content file(s): {sorted(unknown)}")
+    entries, warnings = {}, []
+
+    def add(strings, ref, out, context):
+        clean, warns = validate(a.lang, strings, out)
+        h = unit_hash(a.lang, strings, ref)
+        if h in entries and entries[h] != clean:
+            raise ValueError(f"conflicting translations for unit {h} ({context})")
+        entries[h] = clean
+        warnings.extend(f"{context}: {w}" for w in warns)
+
+    for rel, translated_obj in files.items():
+        for key, prefix, strings, ref in file_units(rel, load(rel)):
+            try:
+                out = {p: get_path(translated_obj, (prefix + p) if p else prefix[:-1]) for p in strings}
+                add(strings, ref, out, f"{rel} {key}")
+            except (KeyError, IndexError, TypeError, ValueError) as e:
+                raise ValueError(f"{rel} {key}: {e}") from e
+    ui_map = {key: (strings, ref) for key, _, strings, ref in ui_units()}
+    for key, tr in ui.items():
+        if key not in ui_map:
+            raise ValueError(f"unknown UI string: {key}")
+        strings, ref = ui_map[key]
+        add(strings, ref, {"s": tr}, key)
+
+    cache = read_cache(a.lang)
+    cache.update(entries)
+    write_json(cache_path(a.lang), cache, compact=True)
+    for warning in warnings:
+        print(f"WARN {warning}")
+    print(f"{a.lang}: imported {len(entries)} units ({len(files)} files, {len(ui)} UI strings)")
 
 
 def set_path(obj, path, value):
@@ -472,7 +561,8 @@ def cmd_build(a):
                 for p in strings:
                     full = (prefix + p) if p else prefix[:-1]
                     data = set_path(data, full, tr[p])
-            data = localise_urls(data, lang)
+            if not rel.startswith("posts/"):
+                data = localise_urls(data, lang)
             for path, text in ov.get(lang, {}).get(rel, {}).items():
                 data = set_path(data, path, text)
             write_json(os.path.join(OUT, lang, rel), data)
@@ -523,7 +613,7 @@ def cmd_check(a):
 T_CALL = re.compile(r"""\b(t|tr|ct)\(\s*(['"`])((?:\\.|(?!\2).)*?)\2""", re.S)
 STR_LIT = re.compile(r"""(['"])((?:\\.|(?!\1).)*?)\1""")
 # Files whose Chinese string literals are all UI strings (constant tables read through translated()).
-TABLE_FILES = ("src/lib/countries.ts", "src/lib/japan.ts", "src/lib/toolkit.ts")
+TABLE_FILES = ("src/lib/countries.ts", "src/lib/japan.ts", "src/lib/toolkit.ts", "src/lib/posts.ts")
 CLIENT_DIRS = ("src/scripts/",)
 
 
@@ -572,13 +662,16 @@ def main():
     t.add_argument("--jobs", type=int, default=6)
     t.add_argument("--only")
     t.add_argument("--limit", type=int)
+    im = sub.add_parser("import-cache")
+    im.add_argument("--lang", choices=LANGS, required=True)
+    im.add_argument("mapping")
     sub.add_parser("build")
     c = sub.add_parser("check")
     c.add_argument("--strict", action="store_true")
     sub.add_parser("extract")
     sub.add_parser("prune")
     a = ap.parse_args()
-    {"translate": cmd_translate, "build": cmd_build, "check": cmd_check, "extract": cmd_extract, "prune": cmd_prune}[a.cmd](a)
+    {"translate": cmd_translate, "import-cache": cmd_import_cache, "build": cmd_build, "check": cmd_check, "extract": cmd_extract, "prune": cmd_prune}[a.cmd](a)
 
 
 if __name__ == "__main__":

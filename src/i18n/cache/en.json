@@ -495,6 +495,9 @@
 "0faac010dd0dedc6a69f": {
 "s": "West Virginia"
 },
+"0fe1c7c55b4a6df097d4": {
+"s": "Plan a trip around the season"
+},
 "0ff517356458536f6cf4": {
 "s": "Search destinations"
 },
@@ -1497,6 +1500,9 @@
 "summary": "Fly in and out of Jackson Hole. Spend the first day viewing the peaks in Grand Teton, then enter Yellowstone through the south entrance and follow a counterclockwise loop through the geysers, Mammoth, Lamar Valley, and the Grand Canyon. Stay in a different area each night to avoid backtracking. Look for animals in the early morning and visit geothermal areas during the day. Park lodging must be booked well in advance. If you can't find a room, stay in West Yellowstone or Gardiner instead.",
 "title": "Yellowstone and Grand Teton · 6 days"
 },
+"2fa57cf28244c3c56e91": {
+"s": "Learn about common travel pitfalls in advance"
+},
 "2fa88f62afc7069b3530": {
 "s": "June–September"
 },
@@ -1708,6 +1714,9 @@
 "35081e54c26cb42d2b41": {
 "s": "Rhode Island"
 },
+"3577c3a6bea46b33c981": {
+"s": "Food discoveries"
+},
 "357c2570fc5a98d187dc": {
 "s": "Theme park"
 },
@@ -1766,6 +1775,9 @@
 },
 "3afb1dc5099510a72686": {
 "s": "Nationwide"
+},
+"3b2bd928db8ed9a675a6": {
+"s": "Practical transport and lodging tips"
 },
 "3b66c0f85304a94d9644": {
 "access.0.from": "Osaka Namba",
@@ -2410,6 +2422,9 @@
 "4dc0cb5b517bc6229583": {
 "s": "Explore for {time}"
 },
+"4dced96ab7d0929ee2ee": {
+"s": "Seasonal updates"
+},
 "4e00715bac197dc6e391": {
 "cities.0": "Takamatsu",
 "cities.1": "Matsuyama",
@@ -2897,6 +2912,9 @@
 "5a7c0250307db89ff71f": {
 "s": "Road trip"
 },
+"5c8236cdb8077c486bf1": {
+"s": "Follow a journey in chronological order"
+},
 "5c91a272133642b0453c": {
 "s": "Pennsylvania"
 },
@@ -3189,6 +3207,9 @@
 },
 "61ba9d7bac91c16d08a6": {
 "s": "7+ days"
+},
+"61ca91529d1fb7215d37": {
+"s": "From street food to local tables"
 },
 "61f2af3583df5c0f3666": {
 "s": "Copy the text below:"
@@ -4756,6 +4777,9 @@
 "tips.2": "Ferries and flights to Yakushima are easily canceled because of weather. Leave at least 1 buffer day after your return trip.",
 "tips.3": "Driving in Japan depends on your licence and the required documents. To visit Yakushima and Chiran, you can use buses, private cars with drivers, or guided tours."
 },
+"84c6f502fcbda80cfa87": {
+"s": "Budget breakdown"
+},
 "8547376d7a52e0b5dd90": {
 "s": "{country} travel information →"
 },
@@ -5349,6 +5373,9 @@
 },
 "97527944592a92f87588": {
 "s": "Travel by season"
+},
+"9766d75834831a1c4b3b": {
+"s": "Route walkthrough"
 },
 "97ed067251bf2f8aa03d": {
 "s": "All"
@@ -7733,6 +7760,9 @@
 "e0555b1c44f469200ce0": {
 "s": "{spots} attractions · {foods} foods"
 },
+"e05707fb7f31848253df": {
+"s": "Break down every travel expense"
+},
 "e0f76fe87560356ae495": {
 "s": "Open map"
 },
@@ -8913,6 +8943,9 @@
 },
 "fd1127ec22f453489638": {
 "s": "A full season of flowers follows the cherry blossoms: wisteria and nemophila in late April, hydrangeas in June, and Hokkaido lavender in July. Bloom periods are more stable, and crowds are lighter."
+},
+"fda093091112bbfecb7b": {
+"s": "Pitfall guide"
 },
 "fdc71fa40d70d3712172": {
 "s": "Map: Click a region to zoom in, then click {unit} to view"

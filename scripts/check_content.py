@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Validate content JSON files against CONTENT-SCHEMA.md (Japan) and CONTENT-SCHEMA-AU-US.md.
+"""Validate content JSON files against CONTENT-SCHEMA.md, CONTENT-SCHEMA-AU-US.md and POST-SCHEMA.md.
 
 Usage: python3 -I scripts/check_content.py <file.json> [...]
        python3 -I scripts/check_content.py --all
 Exit code 1 when any file has errors; warnings do not fail.
 """
+from datetime import date
+from functools import lru_cache
+from pathlib import Path
+from urllib.parse import urlsplit
+
 import json
 import os
 import re
@@ -525,6 +530,170 @@ def check_guide(r, d, country):
     check_sources(r, d)
 
 
+POST_PLACES = {
+    "japan": ("prefectures", ""),
+    "australia": ("states", "au."),
+    "usa": ("states", "us."),
+}
+POST_CATEGORIES = ("route", "pitfall", "food", "season", "transport", "budget")
+
+
+@lru_cache(maxsize=3)
+def post_places(country):
+    """Place and item keys from the same source JSON that world.ts reads."""
+    folder, prefix = POST_PLACES[country]
+    places = {}
+    for path in sorted(Path(DATA_ROOT, country, folder).glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        places[prefix + data["slug"]] = data
+    return places
+
+
+def post_item_keys(places):
+    return {
+        f"{kind}:{key}/{item['id']}"
+        for key, place in places.items()
+        for field, kind in (("spots", "s"), ("foods", "f"))
+        for item in place.get(field, [])
+    }
+
+
+def is_https(value):
+    if not isinstance(value, str) or re.search(r"[\s\x00-\x1f\x7f]", value):
+        return False
+    try:
+        url = urlsplit(value)
+        return url.scheme == "https" and bool(url.hostname) and url.username is None and url.password is None
+    except ValueError:
+        return False
+
+
+def post_object(r, value, where, required="", optional="", nested=""):
+    if not isinstance(value, dict):
+        r.err(f"{where} must be an object")
+        return None
+    extra = set(value) - set((required + " " + optional + " " + nested).split())
+    if extra:
+        r.err(f"{where} has unknown fields: {', '.join(sorted(extra))}")
+    for key in required.split() + [k for k in optional.split() if k in value]:
+        if not isinstance(value.get(key), str) or not value[key].strip():
+            r.err(f"{where}.{key} must be a non-empty string")
+    return value
+
+
+def post_list(r, value, where, minimum=0, maximum=None, text=False):
+    if not isinstance(value, list) or len(value) < minimum or (maximum is not None and len(value) > maximum):
+        size = f"{minimum}-{maximum}" if maximum is not None else f"at least {minimum}"
+        r.err(f"{where} must be an array with {size} entries")
+    if not isinstance(value, list):
+        return []
+    if text and any(not isinstance(s, str) or not s.strip() for s in value):
+        r.err(f"{where} must contain only non-empty strings")
+    return value
+
+
+def post_id(value):
+    return isinstance(value, str) and ID_RE.fullmatch(value) is not None
+
+
+def post_date(value, monthly=False):
+    pattern = r"[0-9]{4}-[0-9]{2}" if monthly else r"[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    if isinstance(value, str) and re.fullmatch(pattern, value):
+        try:
+            date.fromisoformat(value + "-01" if monthly else value)
+            return True
+        except ValueError:
+            pass
+    return False
+
+
+def check_post(r, d, fname, indexed_photos=None):
+    d = post_object(r, d, "post", "slug country category date checked title subtitle excerpt", nested=(
+        "featured places author meta tags cover lead highlights steps budgetBreakdown pitfalls sources"
+    ))
+    if d is None:
+        return
+    slug = d.get("slug")
+    if not post_id(slug) or fname != f"{slug}.json":
+        r.err("slug must be kebab-case and match file name")
+    country = d.get("country")
+    if not isinstance(country, str) or country not in POST_PLACES:
+        r.err("country must be japan, australia or usa")
+        places = {}
+    else:
+        places = post_places(country)
+    for key in post_list(r, d.get("places"), "places", minimum=1):
+        if not isinstance(key, str) or key not in places:
+            r.err("places contains an unknown key for this country")
+    if d.get("category") not in POST_CATEGORIES:
+        r.err("category is unknown")
+    if not post_date(d.get("date")):
+        r.err("date must be a valid YYYY-MM-DD")
+    if not post_date(d.get("checked"), monthly=True):
+        r.err("checked must be a valid YYYY-MM")
+    if "featured" in d and not isinstance(d["featured"], bool):
+        r.err("featured must be a boolean")
+    post_object(r, d.get("author"), "author", "id name handle role avatar tone")
+    post_object(r, d.get("meta"), "meta", "days budget season pace audience")
+    for key in ("tags", "lead", "highlights"):
+        post_list(r, d.get(key), key, text=True)
+    post_list(r, d.get("pitfalls"), "pitfalls", minimum=1, text=True)
+    for i, row in enumerate(post_list(r, d.get("budgetBreakdown"), "budgetBreakdown", minimum=1)):
+        post_object(r, row, f"budgetBreakdown[{i}]", "item detail amount")
+
+    def photo(value, where, cover=False):
+        spec = post_object(r, value, where, "id scene caption alt")
+        if spec is None:
+            return
+        pid, scene = spec.get("id"), spec.get("scene")
+        if not post_id(pid) or (pid == "cover") != cover:
+            r.err(f"{where}.id must be " + ("cover" if cover else "kebab-case and different from cover"))
+        elif indexed_photos is not None and f"{slug}/{pid}" not in indexed_photos:
+            r.warn(f"{where} photo {slug}/{pid} missing from post-photo-index.json")
+        if not isinstance(scene, str) or not re.search(r"[A-Za-z]{2,}", scene) or re.search(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]", scene):
+            r.err(f"{where}.scene must be English")
+
+    photo(d.get("cover"), "cover", cover=True)
+    item_keys = post_item_keys(places)
+    item_keys |= {key[2:] for key in item_keys}
+    ids = set()
+    for i, step in enumerate(post_list(r, d.get("steps"), "steps", minimum=5, maximum=10)):
+        where = f"steps[{i}]"
+        step = post_object(r, step, where, "id phase title location", "duration cost tip", "paragraphs spotRefs photo")
+        if step is None:
+            continue
+        sid = step.get("id")
+        if not post_id(sid) or sid in ids:
+            r.err(f"{where}.id must be unique and kebab-case")
+        else:
+            ids.add(sid)
+        post_list(r, step.get("paragraphs"), f"{where}.paragraphs", minimum=1, text=True)
+        if "spotRefs" in step:
+            for ref in post_list(r, step["spotRefs"], f"{where}.spotRefs"):
+                if not isinstance(ref, str) or ref not in item_keys:
+                    r.err(f"{where}.spotRefs contains an unknown country item key")
+        if "photo" in step:
+            photo(step["photo"], f"{where}.photo")
+
+    urls = set()
+    for i, source in enumerate(post_list(r, d.get("sources"), "sources", minimum=2)):
+        where = f"sources[{i}]"
+        source = post_object(r, source, where, "title url", "platform")
+        if source is not None:
+            if is_https(source.get("url")):
+                urls.add(source["url"])
+            else:
+                r.err(f"{where}.url must be a valid HTTPS URL")
+    if len(urls) < 2:
+        r.err("sources must include at least two distinct HTTPS URLs")
+
+
+@lru_cache(maxsize=1)
+def post_photo_keys():
+    path = Path(DATA_ROOT, "post-photo-index.json")
+    return set(json.loads(path.read_text(encoding="utf-8"))) if path.exists() else set()
+
+
 def check_file(path):
     r = Report(path)
     try:
@@ -536,7 +705,9 @@ def check_file(path):
     fname = os.path.basename(path)
     kind = os.path.basename(os.path.dirname(path))
     parent = os.path.basename(os.path.dirname(os.path.dirname(path)))
-    if fname == "guide.json" and kind in COUNTRY_STATES:
+    if kind == "posts":
+        check_post(r, d, fname, post_photo_keys())
+    elif fname == "guide.json" and kind in COUNTRY_STATES:
         check_guide(r, d, kind)
     elif parent in COUNTRY_STATES and kind == "states":
         check_state(r, d, fname, parent)
@@ -553,7 +724,7 @@ def check_file(path):
 
 def main(argv):
     if argv == ["--all"]:
-        files = []
+        files = sorted(str(p) for p in Path(DATA_ROOT, "posts").glob("*.json") if p.is_file())
         for sub in ("regions", "prefectures", "trips"):
             p = os.path.join(DATA, sub)
             if not os.path.isdir(p):

@@ -1,0 +1,87 @@
+name: Publish daily travel posts
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 06:00 Beijing
+  workflow_dispatch:
+    inputs:
+      count:
+        description: Number of posts
+        type: number
+        default: 1
+      country:
+        description: Destination
+        type: choice
+        options: [auto, japan, australia, usa]
+        default: auto
+      topic:
+        description: Optional research topic
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-posts-main
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - id: credentials
+        name: Check publishing credentials
+        env:
+          CBT_API_KEY: ${{ secrets.CBT_API_KEY }}
+        run: |
+          if [[ -z "$CBT_API_KEY" ]]; then
+            echo "::notice::CBT_API_KEY is missing. Skipping daily post publication."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.credentials.outputs.ready == 'true'
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        if: steps.credentials.outputs.ready == 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        if: steps.credentials.outputs.ready == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+          npm ci
+      - name: Research, draft, illustrate and translate
+        if: steps.credentials.outputs.ready == 'true'
+        env:
+          CBT_API_KEY: ${{ secrets.CBT_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          POST_COUNT: ${{ inputs.count || '1' }}
+          POST_COUNTRY: ${{ inputs.country || 'auto' }}
+          POST_TOPIC: ${{ inputs.topic || '' }}
+        run: |
+          python3 -I scripts/auto-post.py --count "$POST_COUNT" --country "$POST_COUNTRY" --topic "$POST_TOPIC" --translate
+      - name: Check and build
+        if: steps.credentials.outputs.ready == 'true'
+        run: npm run check && npm run build
+      - name: Commit and push posts
+        if: steps.credentials.outputs.ready == 'true'
+        run: |
+          git add src/data/posts public/img/posts src/data/post-photo-index.json \
+            src/i18n/cache/en.json src/i18n/cache/ja.json research/auto-post-history.json
+          if git diff --cached --quiet; then
+            echo "::notice::No new post changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish daily travel posts'
+          git push origin HEAD:main

@@ -9,7 +9,7 @@ import { LANGS, L, HTML_LANG, hasPage } from '../lib/i18n';
 export function GET({ site }: { site: URL }) {
   const paths = [
     '/', '/japan/', '/australia/', '/usa/', '/australia/guide/', '/usa/guide/', '/quick/', '/trips/',
-    '/japan/themes/', '/japan/tools/', '/budget/', '/about/', '/posts/',
+    '/japan/themes/', '/japan/tools/', '/budget/', '/about/',
     ...allPosts().map((p) => p.href),
     ...REGIONS.filter((r) => !SINGLE_PREF_REGIONS.has(r.slug)).map((r) => `/japan/region/${r.slug}/`),
     ...prefs.map((p) => `/japan/${p.slug}/`),

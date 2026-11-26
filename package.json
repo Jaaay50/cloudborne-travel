@@ -14,7 +14,10 @@
     "climate": "node scripts/fetch-climate.mjs",
     "geo:world": "node scripts/prepare-geo-world.mjs",
     "photos": "node scripts/photo-index.mjs",
-    "i18n": "python3 -I scripts/i18n.py"
+    "i18n": "python3 -I scripts/i18n.py",
+    "post:auto": "python3 -I scripts/auto-post.py",
+    "post:research": "python3 -I scripts/auto-post.py --research-only",
+    "post:images": "node scripts/build-post-images.mjs"
   },
   "dependencies": {
     "astro": "^7.4.13",

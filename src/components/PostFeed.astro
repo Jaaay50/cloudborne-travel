@@ -1,0 +1,699 @@
+---
+// Social-forum style travel guide feed with live client-side filtering (country, category, tag, place, bookmarks, sort)
+// and multi-photo preview strips on each post card.
+import { POST_CATEGORIES, allPostTags, type PostCategory, type PostView } from '../lib/posts';
+import type { CountrySlug } from '../lib/countries';
+import type { WPlace } from '../lib/world';
+import { t, L } from '../lib/i18n';
+
+interface Props {
+  posts: PostView[];
+  country?: CountrySlug;
+  showCountryFilter?: boolean;
+  places?: WPlace[];
+  showSidebar?: boolean;
+}
+
+const { posts, country, showCountryFilter = false, places = [], showSidebar = true } = Astro.props;
+const categories = Object.entries(POST_CATEGORIES) as [PostCategory, { label: string; desc: string; tone: string }][];
+const usedCategories = categories.filter(([key]) => posts.some((p) => p.category === key));
+const topTags = allPostTags(country).slice(0, 14);
+const latestDate = posts[0]?.date ?? '2026-11-26';
+const totalPhotos = posts.reduce((n, p) => n + p.photoCount, 0);
+
+const countryNames: Record<CountrySlug, string> = {
+  japan: t('日本'),
+  australia: t('澳大利亚'),
+  usa: t('美国'),
+};
+const countryCounts: Record<CountrySlug, number> = {
+  japan: posts.filter((p) => p.country === 'japan').length,
+  australia: posts.filter((p) => p.country === 'australia').length,
+  usa: posts.filter((p) => p.country === 'usa').length,
+};
+
+// Places in this country that actually have posts, for quick sub-destination filtering.
+const activePlaces = places.filter((pl) => posts.some((p) => p.places.includes(pl.key)));
+const feedId = `feed-${country ?? 'all'}`;
+---
+<section class="feed-shell" id={feedId} data-post-feed>
+  <div class="feed-controls" role="region" aria-label={t('筛选攻略帖子')}>
+    {showCountryFilter && (
+      <div class="fc-row fc-countries" role="group" aria-label={t('按国家筛选')}>
+        <button type="button" class="fc-pill on" data-f-country="" aria-pressed="true">
+          {t('全部')} <span>{posts.length}</span>
+        </button>
+        {(['japan', 'australia', 'usa'] as const).map((c) => (
+          <button type="button" class="fc-pill" data-f-country={c} aria-pressed="false">
+            {countryNames[c]} <span>{countryCounts[c]}</span>
+          </button>
+        ))}
+      </div>
+    )}
+
+    <div class="fc-row fc-cats">
+      <div class="fc-scroll" role="group" aria-label={t('按类型筛选')}>
+        <button type="button" class="chip on" data-f-cat="" aria-pressed="true">{t('全部板块')}</button>
+        {usedCategories.map(([key, info]) => (
+          <button type="button" class="chip" data-f-cat={key} aria-pressed="false" style={`--dot:${info.tone}`}>
+            <i></i>{info.label}
+          </button>
+        ))}
+      </div>
+      <div class="fc-actions">
+        <button type="button" class="fc-saved-btn" data-f-saved aria-pressed="false">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3.5h10a1 1 0 0 1 1 1v12.8l-6-3.7-6 3.7V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+          <span>{t('收藏')}</span>
+          <b data-saved-count>0</b>
+        </button>
+        <label class="fc-sort">
+          <span class="visually-hidden">{t('排序方式')}</span>
+          <select data-f-sort>
+            <option value="latest">{t('最新发布')}</option>
+            <option value="featured">{t('精选优先')}</option>
+            <option value="photos">{t('配图最多')}</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    {!showCountryFilter && activePlaces.length > 1 && (
+      <div class="fc-row fc-places" role="group" aria-label={t('按目的地筛选')}>
+        <span class="fc-lbl">{t('目的地')}</span>
+        <button type="button" class="fc-tag on" data-f-place="" aria-pressed="true">{t('全部地区')}</button>
+        {activePlaces.map((pl) => (
+          <button type="button" class="fc-tag" data-f-place={pl.key} aria-pressed="false">{pl.name}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="fc-active" data-active-bar hidden>
+      <span data-active-text></span>
+      <button type="button" class="fc-reset" data-f-reset>{t('清除筛选')}</button>
+    </div>
+  </div>
+
+  <div class:list={['feed-grid', { 'no-side': !showSidebar }]}>
+    <div class="feed-stream" data-feed-list>
+      {posts.map((post, idx) => {
+        const previewPhotos = post.gallery.slice(0, 3);
+        const extraPhotos = Math.max(0, post.photoCount - previewPhotos.length);
+        const catInfo = POST_CATEGORIES[post.category];
+        const isTopFeatured = idx === 0 && post.featured;
+        return (
+          <article
+            class:list={['post-card', { 'is-featured': isTopFeatured }]}
+            data-post-card
+            data-slug={post.slug}
+            data-country={post.country}
+            data-cat={post.category}
+            data-places={post.places.join(' ')}
+            data-tags={JSON.stringify(post.tags)}
+            data-date={post.date}
+            data-featured={post.featured ? '1' : '0'}
+            data-photos={String(post.photoCount)}
+          >
+            <div class="pc-head">
+              <div class="pc-author">
+                <span class="pc-avatar" style={`--av:${post.author.tone}`} aria-hidden="true">{post.author.avatar}</span>
+                <div class="pc-who">
+                  <div class="pc-name-row">
+                    <b>{post.author.name}</b>
+                    <span class="pc-handle">{post.author.handle}</span>
+                    <span class="pc-dot" aria-hidden="true">·</span>
+                    <time datetime={post.date}>{post.date}</time>
+                  </div>
+                  <small>{post.author.role}</small>
+                </div>
+              </div>
+              <div class="pc-badges">
+                {post.featured && <span class="pc-pin">{t('置顶精选')}</span>}
+                <span class="pc-cat" style={`--dot:${catInfo.tone}`}><i></i>{post.categoryLabel}</span>
+                <button
+                  type="button"
+                  class="pc-save"
+                  data-save-post={post.slug}
+                  aria-pressed="false"
+                  aria-label={t('收藏「{title}」', { title: post.title })}
+                  title={t('收藏帖子')}
+                >
+                  <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3.5h10a1 1 0 0 1 1 1v12.8l-6-3.7-6 3.7V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <a class="pc-main" href={L(post.href)}>
+              <h3 class="pc-title">{post.title}</h3>
+              <p class="pc-excerpt">{post.excerpt}</p>
+
+              {previewPhotos.length > 0 && (
+                <div class:list={['pc-photos', `n-${previewPhotos.length}`]}>
+                  {previewPhotos.map((ph, pIdx) => {
+                    const smallW = ph.widths[0];
+                    const largeW = ph.widths[1];
+                    const isLast = pIdx === previewPhotos.length - 1;
+                    return (
+                      <div class="pc-ph">
+                        <img
+                          src={`${ph.prefix}-${smallW}.webp`}
+                          srcset={`${ph.prefix}-${smallW}.webp ${smallW}w, ${ph.prefix}-${largeW}.webp ${largeW}w`}
+                          sizes={isTopFeatured && pIdx === 0 ? '(max-width: 760px) 100vw, 480px' : '(max-width: 760px) 33vw, 260px'}
+                          alt={ph.alt}
+                          loading={idx < 2 ? 'eager' : 'lazy'}
+                          decoding="async"
+                          width={smallW}
+                          height={Math.round((smallW * 2) / 3)}
+                          data-vt-img={pIdx === 0 ? '' : undefined}
+                        />
+                        {isLast && extraPhotos > 0 && (
+                          <span class="pc-more-ph">+{extraPhotos} {t('图')}</span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </a>
+
+            <div class="pc-stats">
+              <span class="pc-loc">
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 17.5s5.5-4.7 5.5-9.2a5.5 5.5 0 1 0-11 0c0 4.5 5.5 9.2 5.5 9.2Z" stroke="currentColor" stroke-width="1.6" /><circle cx="10" cy="8.3" r="1.8" stroke="currentColor" stroke-width="1.5" /></svg>
+                {countryNames[post.country]}
+                {post.placeNames.length > 0 && ` · ${post.placeNames.slice(0, 2).join(' / ')}`}
+              </span>
+              <span>{post.meta.days}</span>
+              <span>{post.meta.budget}</span>
+              <span>{t('{n} 步实操', { n: post.steps.length })}</span>
+              <span>{t('{n} 张实景图', { n: post.photoCount })}</span>
+            </div>
+
+            <div class="pc-foot">
+              <div class="pc-tags">
+                {post.tags.slice(0, 4).map((tg) => (
+                  <button type="button" class="pc-tag" data-f-tag={tg}>#{tg}</button>
+                ))}
+              </div>
+              <a class="pc-go" href={L(post.href)}>{t('看分步攻略 →')}</a>
+            </div>
+          </article>
+        );
+      })}
+
+      <div class="feed-empty" data-feed-empty hidden>
+        <p>{t('当前筛选条件下还没有匹配的攻略帖。')}</p>
+        <button type="button" class="btn sm" data-f-reset>{t('查看全部帖子')}</button>
+      </div>
+    </div>
+
+    {showSidebar && (
+      <aside class="feed-side">
+        <div class="side-sticky">
+          <div class="side-box pulse-box">
+            <div class="pulse-hd">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <b>{t('社区每日自动更新')}</b>
+            </div>
+            <p>{t('结合国内外真实旅人游记与官方公告交叉核验改写，配图均由 AI 按实景生成。')}</p>
+            <div class="pulse-nums">
+              <div><b>{posts.length}</b><small>{t('篇详尽攻略')}</small></div>
+              <div><b>{totalPhotos}</b><small>{t('张实景配图')}</small></div>
+              <div><b>{latestDate.slice(5)}</b><small>{t('最近更新')}</small></div>
+            </div>
+            <div class="pulse-links">
+              <a href="/rss.xml" data-no-lp>{t('RSS 订阅')}</a>
+              <a href={L('/about/')}>{t('内容说明')}</a>
+            </div>
+          </div>
+
+          {showCountryFilter && (
+            <div class="side-box">
+              <h3 class="side-title">{t('目的地版块')}</h3>
+              <div class="dest-links">
+                <a href={L('/japan/')}>
+                  <span><b>{t('日本版块')}</b><small>{t('47 县地图 + 实测攻略')}</small></span>
+                  <span class="dl-cnt">{countryCounts.japan}</span>
+                </a>
+                <a href={L('/australia/')}>
+                  <span><b>{t('澳大利亚版块')}</b><small>{t('8 州自驾 + 海港城漫游')}</small></span>
+                  <span class="dl-cnt">{countryCounts.australia}</span>
+                </a>
+                <a href={L('/usa/')}>
+                  <span><b>{t('美国版块')}</b><small>{t('国家公园 + 城市地铁指南')}</small></span>
+                  <span class="dl-cnt">{countryCounts.usa}</span>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {topTags.length > 0 && (
+            <div class="side-box">
+              <h3 class="side-title">{t('热门话题')}</h3>
+              <div class="tag-cloud">
+                {topTags.map(({ tag, count }) => (
+                  <button type="button" class="tc-btn" data-f-tag={tag}>
+                    #{tag} <small>{count}</small>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="side-box">
+            <h3 class="side-title">{t('行前工具箱')}</h3>
+            <ul class="tool-mini">
+              <li><a href={L(country ? `/${country}/#atlas` : '/japan/#atlas')}><span>🗺</span><b>{t('互动探索地图与百科')}</b></a></li>
+              <li><a href={L(country ? `/quick/?c=${country}` : '/quick/')}><span>✦</span><b>{t('一分钟生成行程草稿')}</b></a></li>
+              <li><a href={L('/plan/')}><span>★</span><b>{t('我的行程集章本')}</b></a></li>
+              <li><a href={L(country ? `/budget/?c=${country}` : '/budget/')}><span>¥</span><b>{t('实时汇率预算表')}</b></a></li>
+              <li><a href={L(country === 'australia' ? '/australia/guide/' : country === 'usa' ? '/usa/guide/' : '/japan/tools/')}><span>⚑</span><b>{country === 'australia' || country === 'usa' ? t('签证与出行须知') : t('日本离线随身工具')}</b></a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    )}
+  </div>
+</section>
+
+<style is:global>
+  .feed-shell { display: grid; gap: 18px; }
+  .feed-controls {
+    display: grid; gap: 10px; padding: 14px 16px;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+    box-shadow: var(--sh-1);
+  }
+  .fc-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .fc-countries { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .fc-pill {
+    display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px;
+    border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--paper);
+    color: var(--ink-2); font-size: 13.5px; font-weight: 600; cursor: pointer;
+    transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+  }
+  .fc-pill span {
+    font: 600 11px/1 var(--mono); padding: 2px 6px; border-radius: var(--r-xs);
+    background: var(--card); color: var(--mut);
+  }
+  .fc-pill:hover { border-color: var(--indigo); color: var(--ink); }
+  .fc-pill.on { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); }
+  .fc-pill.on span { background: color-mix(in srgb, var(--on-ink) 18%, transparent); color: var(--on-ink); }
+
+  .fc-cats { justify-content: space-between; gap: 10px; }
+  .fc-scroll { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; min-width: 0; }
+  .fc-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .fc-saved-btn {
+    display: inline-flex; align-items: center; gap: 5px; height: 34px; padding: 0 11px;
+    border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--paper);
+    color: var(--ink-2); font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+  }
+  .fc-saved-btn b { font: 700 11.5px var(--mono); color: var(--vermilion); }
+  .fc-saved-btn:hover { border-color: var(--vermilion); color: var(--ink); }
+  .fc-saved-btn[aria-pressed="true"] { background: var(--vermilion-bg); border-color: var(--vermilion); color: var(--vermilion); }
+  .fc-saved-btn[aria-pressed="true"] svg { fill: currentColor; }
+
+  .fc-sort select {
+    height: 34px; padding: 0 28px 0 10px; border-radius: var(--r-sm);
+    border: 1px solid var(--line-2); background: var(--input-bg); color: var(--ink);
+    font: 500 13px var(--sans); cursor: pointer;
+  }
+  .fc-places { padding-top: 8px; border-top: 1px dashed var(--line); }
+  .fc-lbl { font: 600 11.5px var(--mono); color: var(--mut); letter-spacing: .08em; text-transform: uppercase; margin-right: 4px; }
+  .fc-tag {
+    height: 28px; padding: 0 10px; border-radius: var(--r-xs); border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink-2); font-size: 12.5px; cursor: pointer;
+    transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+  }
+  .fc-tag:hover { border-color: var(--indigo); color: var(--ink); }
+  .fc-tag.on { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); font-weight: 600; }
+
+  .fc-active {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 8px 12px; border-radius: var(--r-sm); background: var(--indigo-bg);
+    color: var(--indigo); font-size: 13px; font-weight: 500;
+  }
+  .fc-reset {
+    border: 0; background: transparent; color: var(--vermilion); font-weight: 600;
+    font-size: 12.5px; cursor: pointer; text-decoration: underline;
+  }
+
+  .feed-grid { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 24px; align-items: start; }
+  .feed-grid.no-side { grid-template-columns: 1fr; }
+  .feed-stream { display: grid; gap: 18px; min-width: 0; }
+
+  .post-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 18px 20px 16px; display: grid; gap: 13px; min-width: 0;
+    transition: border-color var(--t-fast) var(--ease), box-shadow var(--t) var(--ease), transform 220ms var(--ease-out);
+  }
+  .post-card:hover { border-color: var(--indigo); box-shadow: var(--sh-2); transform: translate3d(0, -2px, 0); }
+  .post-card.is-featured { border-color: color-mix(in srgb, var(--vermilion) 42%, var(--line)); }
+
+  .pc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .pc-author { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .pc-avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    background: var(--av, var(--indigo)); color: #faf8f3;
+    display: grid; place-items: center; font: 700 15px var(--serif);
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, #fff 24%, transparent);
+  }
+  .pc-who { min-width: 0; }
+  .pc-name-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.3; }
+  .pc-name-row b { color: var(--ink); font-weight: 600; }
+  .pc-handle, .pc-dot, .pc-name-row time { color: var(--mut); font-size: 12px; font-family: var(--mono); }
+  .pc-who small { display: block; color: var(--mut); font-size: 12px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .pc-badges { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .pc-pin {
+    font: 600 11px/1 var(--sans); padding: 4px 8px; border-radius: var(--r-xs);
+    background: var(--vermilion); color: var(--on-ink);
+  }
+  .pc-cat {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+    padding: 3px 9px; border-radius: var(--r-xs);
+    background: color-mix(in srgb, var(--dot) 13%, var(--paper));
+    color: color-mix(in srgb, var(--dot) 78%, var(--ink));
+    border: 1px solid color-mix(in srgb, var(--dot) 26%, var(--line));
+  }
+  .pc-cat i { width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  .pc-save {
+    width: 30px; height: 30px; border-radius: var(--r-sm); border: 1px solid var(--line);
+    background: var(--paper); color: var(--mut); display: grid; place-items: center; cursor: pointer;
+    transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+  }
+  .pc-save:hover { border-color: var(--vermilion); color: var(--vermilion); }
+  .pc-save[aria-pressed="true"] { background: var(--vermilion-bg); border-color: var(--vermilion); color: var(--vermilion); }
+  .pc-save[aria-pressed="true"] svg { fill: currentColor; }
+
+  .pc-main { display: grid; gap: 10px; }
+  .pc-title {
+    font-family: var(--serif); font-size: clamp(18.5px, 2.2vw, 22px); font-weight: 700;
+    line-height: 1.38; color: var(--ink); letter-spacing: .01em;
+    transition: color var(--t-fast);
+  }
+  .post-card:hover .pc-title { color: var(--indigo); }
+  .pc-excerpt {
+    font-size: 14.5px; color: var(--ink-2); line-height: 1.72;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* Multi-photo social mosaic */
+  .pc-photos { display: grid; gap: 7px; margin-top: 2px; }
+  .pc-photos.n-1 { grid-template-columns: 1fr; }
+  .pc-photos.n-2 { grid-template-columns: 1fr 1fr; }
+  .pc-photos.n-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .post-card.is-featured .pc-photos.n-3 {
+    grid-template-columns: 1.55fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .post-card.is-featured .pc-photos.n-3 .pc-ph:first-child { grid-row: 1 / span 2; aspect-ratio: auto; height: 100%; }
+  .post-card.is-featured .pc-photos.n-3 .pc-ph { aspect-ratio: 16 / 10; }
+  .pc-ph {
+    position: relative; aspect-ratio: 3 / 2; border-radius: var(--r-sm); overflow: hidden;
+    background: var(--paper-2); contain: paint;
+  }
+  .pc-ph img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1) translateZ(0); transition: transform 420ms var(--ease-out);
+  }
+  .pc-main:hover .pc-ph img { transform: scale(1.035) translateZ(0); }
+  .pc-more-ph {
+    position: absolute; right: 8px; bottom: 8px; padding: 4px 9px; border-radius: var(--r-xs);
+    background: rgba(17, 20, 24, .74); color: #faf8f3; backdrop-filter: blur(4px);
+    font: 600 12px/1 var(--mono); letter-spacing: .04em;
+  }
+
+  .pc-stats {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+    padding: 9px 12px; border-radius: var(--r-sm); background: var(--paper);
+    border: 1px solid var(--line); font-size: 12.5px; color: var(--ink-2);
+  }
+  .pc-loc { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: var(--ink); }
+  .pc-loc svg { color: var(--vermilion); flex-shrink: 0; }
+
+  .pc-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pc-tag {
+    border: 0; background: transparent; padding: 2px 4px; color: var(--indigo);
+    font-size: 12.5px; font-weight: 500; cursor: pointer; border-radius: var(--r-xs);
+  }
+  .pc-tag:hover { background: var(--indigo-bg); text-decoration: underline; }
+  .pc-go {
+    font-size: 13.5px; font-weight: 600; color: var(--vermilion); white-space: nowrap;
+    margin-left: auto; transition: transform 180ms var(--ease-out);
+  }
+  .post-card:hover .pc-go { transform: translateX(3px); }
+
+  .feed-empty {
+    padding: 44px 20px; text-align: center; background: var(--card);
+    border: 1px dashed var(--line-2); border-radius: var(--r-lg); color: var(--mut);
+    display: grid; justify-items: center; gap: 12px;
+  }
+
+  /* Sticky community sidebar */
+  .feed-side .side-sticky { position: sticky; top: calc(var(--hdr) + 16px); display: grid; gap: 16px; }
+  .side-box {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 16px 18px; display: grid; gap: 12px;
+  }
+  .side-title { font-size: 15px; font-family: var(--serif); letter-spacing: .02em; color: var(--ink); }
+  .pulse-box { border-top: 3px solid var(--vermilion); }
+  .pulse-hd { display: flex; align-items: center; gap: 8px; font-size: 14.5px; }
+  .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 3px color-mix(in srgb, var(--moss) 22%, transparent); }
+  .pulse-box p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
+  .pulse-nums {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    padding: 10px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .pulse-nums b { display: block; font: 700 18px/1.2 var(--mono); color: var(--ink); }
+  .pulse-nums small { display: block; font-size: 11px; color: var(--mut); margin-top: 3px; }
+  .pulse-links { display: flex; gap: 14px; font-size: 12.5px; font-weight: 600; color: var(--indigo); }
+  .pulse-links a:hover { text-decoration: underline; }
+
+  .dest-links { display: grid; gap: 8px; }
+  .dest-links a {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 9px 11px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--paper);
+    transition: border-color var(--t-fast), transform 180ms var(--ease-out);
+  }
+  .dest-links a:hover { border-color: var(--indigo); transform: translateX(2px); }
+  .dest-links b { display: block; font-size: 14px; color: var(--ink); }
+  .dest-links small { display: block; font-size: 11.5px; color: var(--mut); }
+  .dl-cnt {
+    font: 700 12px/1 var(--mono); padding: 4px 8px; border-radius: var(--r-xs);
+    background: var(--card); border: 1px solid var(--line); color: var(--indigo);
+  }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tc-btn {
+    display: inline-flex; align-items: center; gap: 4px; padding: 4px 9px;
+    border-radius: var(--r-xs); border: 1px solid var(--line); background: var(--paper);
+    font-size: 12px; color: var(--ink-2); cursor: pointer;
+    transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+  }
+  .tc-btn small { font-family: var(--mono); color: var(--mut); font-size: 11px; }
+  .tc-btn:hover { border-color: var(--indigo); color: var(--ink); }
+  .tc-btn.on { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); }
+  .tc-btn.on small { color: color-mix(in srgb, var(--on-ink) 75%, transparent); }
+
+  .tool-mini { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .tool-mini a {
+    display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+    border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--paper);
+    font-size: 13.5px; color: var(--ink-2); transition: border-color var(--t-fast), color var(--t-fast);
+  }
+  .tool-mini a:hover { border-color: var(--indigo); color: var(--ink); }
+  .tool-mini span {
+    width: 26px; height: 26px; border-radius: var(--r-xs); background: var(--indigo-bg); color: var(--indigo);
+    display: grid; place-items: center; font-size: 13px; flex-shrink: 0;
+  }
+  .tool-mini b { font-weight: 600; font-size: 13px; }
+
+  @media (max-width: 980px) {
+    .feed-grid { grid-template-columns: minmax(0, 1fr); }
+    .feed-side .side-sticky { position: static; }
+  }
+  @media (max-width: 640px) {
+    .feed-controls { padding: 12px; }
+    .fc-cats { flex-direction: column; align-items: stretch; }
+    .fc-scroll { width: 100%; }
+    .fc-actions { width: 100%; justify-content: space-between; }
+    .post-card { padding: 14px 14px 13px; }
+    .pc-head { flex-wrap: wrap; gap: 8px; }
+    .pc-author { flex: 1 1 200px; }
+    .pc-badges { gap: 4px; margin-left: auto; }
+    .pc-pin { display: none; }
+    .post-card.is-featured .pc-photos.n-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto; }
+    .post-card.is-featured .pc-photos.n-3 .pc-ph:first-child { grid-row: auto; aspect-ratio: 3 / 2; height: auto; }
+    .post-card.is-featured .pc-photos.n-3 .pc-ph { aspect-ratio: 3 / 2; }
+    .pc-photos.n-3 { gap: 5px; }
+    .pc-stats { font-size: 12px; gap: 4px 10px; padding: 8px 10px; }
+  }
+</style>
+
+<script>
+  import { ct } from '../scripts/i18n';
+
+  const SAVE_KEY = 'cbt.saved-posts.v1';
+  const loadSaved = (): Set<string> => {
+    try { return new Set(JSON.parse(localStorage.getItem(SAVE_KEY) || '[]') as string[]); }
+    catch { return new Set(); }
+  };
+  const writeSaved = (set: Set<string>) => {
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify([...set])); } catch { /* private mode */ }
+  };
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-post-feed]')) {
+    const stream = root.querySelector<HTMLElement>('[data-feed-list]');
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-post-card]')];
+    const emptyEl = root.querySelector<HTMLElement>('[data-feed-empty]');
+    const activeBar = root.querySelector<HTMLElement>('[data-active-bar]');
+    const activeText = root.querySelector<HTMLElement>('[data-active-text]');
+    const sortSel = root.querySelector<HTMLSelectElement>('[data-f-sort]');
+    const savedToggle = root.querySelector<HTMLButtonElement>('[data-f-saved]');
+
+    let fCountry = '';
+    let fCat = '';
+    let fPlace = '';
+    let fTag = '';
+    let fSaved = false;
+    let saved = loadSaved();
+
+    const syncSavedUI = () => {
+      root.querySelectorAll<HTMLElement>('[data-saved-count]').forEach((el) => (el.textContent = String(saved.size)));
+      root.querySelectorAll<HTMLButtonElement>('[data-save-post]').forEach((b) => {
+        b.setAttribute('aria-pressed', String(saved.has(b.dataset.savePost!)));
+      });
+    };
+
+    const apply = () => {
+      const mode = sortSel?.value || 'latest';
+      const sorted = [...cards].sort((a, b) => {
+        if (mode === 'featured') {
+          const df = Number(b.dataset.featured) - Number(a.dataset.featured);
+          if (df) return df;
+        } else if (mode === 'photos') {
+          const dp = Number(b.dataset.photos) - Number(a.dataset.photos);
+          if (dp) return dp;
+        }
+        return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+      });
+      let visible = 0;
+      for (const card of sorted) {
+        const okC = !fCountry || card.dataset.country === fCountry;
+        const okCat = !fCat || card.dataset.cat === fCat;
+        const okPl = !fPlace || (card.dataset.places || '').split(' ').includes(fPlace);
+        let cardTags: string[] = [];
+        try { cardTags = JSON.parse(card.dataset.tags || '[]') as string[]; } catch { cardTags = []; }
+        const okTag = !fTag || cardTags.includes(fTag);
+        const okSave = !fSaved || saved.has(card.dataset.slug || '');
+        const show = okC && okCat && okPl && okTag && okSave;
+        card.hidden = !show;
+        if (show) visible++;
+        stream?.appendChild(card);
+      }
+      if (emptyEl) {
+        emptyEl.hidden = visible > 0;
+        if (emptyEl.parentElement === stream) stream?.appendChild(emptyEl);
+      }
+      const parts: string[] = [];
+      if (fTag) parts.push(`#${fTag}`);
+      if (fSaved) parts.push(ct('仅看收藏'));
+      if (activeBar && activeText) {
+        activeBar.hidden = parts.length === 0;
+        activeText.textContent = ct('当前筛选：{parts}（共 {n} 篇）', { parts: parts.join(' · '), n: visible });
+      }
+      root.querySelectorAll<HTMLButtonElement>('[data-f-tag]').forEach((b) => {
+        b.classList.toggle('on', b.dataset.fTag === fTag);
+      });
+    };
+
+    root.querySelectorAll<HTMLButtonElement>('[data-f-country]').forEach((b) =>
+      b.addEventListener('click', () => {
+        fCountry = b.dataset.fCountry || '';
+        root.querySelectorAll<HTMLButtonElement>('[data-f-country]').forEach((x) => {
+          x.classList.toggle('on', x === b);
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+        apply();
+      }),
+    );
+
+    root.querySelectorAll<HTMLButtonElement>('[data-f-cat]').forEach((b) =>
+      b.addEventListener('click', () => {
+        fCat = b.dataset.fCat || '';
+        root.querySelectorAll<HTMLButtonElement>('[data-f-cat]').forEach((x) => {
+          x.classList.toggle('on', x === b);
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+        apply();
+      }),
+    );
+
+    root.querySelectorAll<HTMLButtonElement>('[data-f-place]').forEach((b) =>
+      b.addEventListener('click', () => {
+        fPlace = b.dataset.fPlace || '';
+        root.querySelectorAll<HTMLButtonElement>('[data-f-place]').forEach((x) => {
+          x.classList.toggle('on', x === b);
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+        apply();
+      }),
+    );
+
+    root.addEventListener('click', (e) => {
+      const tEl = e.target as HTMLElement;
+      const tagBtn = tEl.closest<HTMLButtonElement>('[data-f-tag]');
+      if (tagBtn) {
+        const val = tagBtn.dataset.fTag || '';
+        fTag = fTag === val ? '' : val;
+        apply();
+        return;
+      }
+      const saveBtn = tEl.closest<HTMLButtonElement>('[data-save-post]');
+      if (saveBtn) {
+        e.preventDefault();
+        const slug = saveBtn.dataset.savePost!;
+        saved = loadSaved();
+        if (saved.has(slug)) saved.delete(slug);
+        else saved.add(slug);
+        writeSaved(saved);
+        syncSavedUI();
+        if (fSaved) apply();
+        return;
+      }
+      if (tEl.closest('[data-f-reset]')) {
+        fCountry = '';
+        fCat = '';
+        fPlace = '';
+        fTag = '';
+        fSaved = false;
+        savedToggle?.setAttribute('aria-pressed', 'false');
+        root.querySelectorAll<HTMLButtonElement>('[data-f-country], [data-f-cat], [data-f-place]').forEach((b) => {
+          const isAll = (b.dataset.fCountry ?? b.dataset.fCat ?? b.dataset.fPlace) === '';
+          b.classList.toggle('on', isAll);
+          b.setAttribute('aria-pressed', String(isAll));
+        });
+        apply();
+      }
+    });
+
+    savedToggle?.addEventListener('click', () => {
+      fSaved = !fSaved;
+      savedToggle.setAttribute('aria-pressed', String(fSaved));
+      apply();
+    });
+    sortSel?.addEventListener('change', apply);
+
+    const refreshSaved = () => {
+      saved = loadSaved();
+      syncSavedUI();
+      if (fSaved) apply();
+    };
+    window.addEventListener('storage', (e) => { if (!e.key || e.key === SAVE_KEY) refreshSaved(); });
+    window.addEventListener('pageshow', refreshSaved);
+
+    syncSavedUI();
+    apply();
+  }
+</script>

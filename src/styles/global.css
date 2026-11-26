@@ -1,30 +1,32 @@
-/* 栖云旅行 · Swiss Cartographic Atlas (瑞士地图典藏馆) */
+/* 栖云旅行 · Editorial Travel Community (Light & Dark Dual Theme) */
 :root {
-  --paper: #eeeae1;
-  --paper-2: #e3ded1;
+  --paper: #f2efe9;
+  --paper-2: #e7e2d7;
   --card: #faf8f3;
   --card-edge: rgba(255, 255, 255, .86);
+  --hdr-bg: rgba(242, 239, 233, .92);
+  --hdr-bg-scrolled: rgba(242, 239, 233, .98);
   --ink: #1d211e;
-  --ink-2: #4e524b;
-  --mut: #787a71;
-  --line: #d7d1c4;
-  --line-2: #bfb7a6;
-  --vermilion: #b24c2e;
-  --vermilion-h: #943c22;
-  --vermilion-bg: #f4e4dc;
+  --ink-2: #4b5049;
+  --mut: #757870;
+  --line: #dbd5c9;
+  --line-2: #c5bdb0;
+  --vermilion: #b84b2c;
+  --vermilion-h: #9a3c21;
+  --vermilion-bg: #f6e5dd;
   --indigo: #214563;
   --indigo-h: #17334b;
   --indigo-bg: #e2eaf0;
   --moss: #3e6347;
   --gold: #a97d28;
   --sea: #d2e0e3;
-  --r-xs: 2px;
-  --r-sm: 4px;
-  --r: 4px;
-  --r-lg: 6px;
+  --r-xs: 3px;
+  --r-sm: 6px;
+  --r: 8px;
+  --r-lg: 12px;
   --sh-1: 0 1px 2px rgba(29, 33, 30, .05);
-  --sh-2: 0 4px 14px rgba(29, 33, 30, .08);
-  --sh-3: 0 12px 32px rgba(29, 33, 30, .14);
+  --sh-2: 0 4px 16px rgba(29, 33, 30, .08);
+  --sh-3: 0 14px 36px rgba(29, 33, 30, .14);
   --serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "LXGW WenKai Screen", Georgia, serif;
   --hand: "Songti SC", "STSong", "LXGW WenKai Screen", "Noto Serif SC", Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
@@ -36,10 +38,10 @@
   --t-fast: 160ms;
   --t: 220ms;
   --max: 1240px;
-  --hdr: 68px;
+  --hdr: 64px;
   --on-ink: #faf8f3;
-  --tip-bg: #f4eedf;
-  --warn-bg: #f6ead4;
+  --tip-bg: #f5efe1;
+  --warn-bg: #f7ebd6;
   --warn-ink: #8b5110;
   --hover-line: #214563;
   --input-bg: #fdfcf9;
@@ -47,21 +49,72 @@
   --sel: #dce5ee;
   /* archival accents */
   --frame-bg: #faf8f3;
-  --stamp-jp: #b24c2e;
+  --stamp-jp: #b84b2c;
   --stamp-au: #214563;
   --stamp-us: #8c5228;
   /* map */
   --sea-fill: #d4e2e4;
   --sea-wave: #9ab3b8;
   --inset-fill: rgba(250, 248, 243, .55);
+  --inset-label: #5d7c80;
   --land-edge: #faf8f3;
   --land-dim: #e2dcd0;
   --land-dim-h: #d5cebf;
   --land-off: #e7e2d7;
   --map-text: #272b26;
   --map-halo: rgba(250, 248, 243, .92);
-  --hero-fade: 238, 234, 225;
+  --hero-fade: 242, 239, 233;
   color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #111418;
+  --paper-2: #181c22;
+  --card: #1b2028;
+  --card-edge: rgba(255, 255, 255, .06);
+  --hdr-bg: rgba(17, 20, 24, .90);
+  --hdr-bg-scrolled: rgba(17, 20, 24, .97);
+  --ink: #ece8df;
+  --ink-2: #bab7ad;
+  --mut: #868c97;
+  --line: #29303b;
+  --line-2: #394352;
+  --vermilion: #e66b4e;
+  --vermilion-h: #f07e63;
+  --vermilion-bg: rgba(230, 107, 78, .17);
+  --indigo: #7db0df;
+  --indigo-h: #97c3ec;
+  --indigo-bg: rgba(125, 176, 223, .14);
+  --moss: #79b487;
+  --gold: #dbac4d;
+  --sea: #16232b;
+  --sh-1: 0 1px 3px rgba(0, 0, 0, .35);
+  --sh-2: 0 6px 20px rgba(0, 0, 0, .42);
+  --sh-3: 0 16px 42px rgba(0, 0, 0, .58);
+  --on-ink: #111418;
+  --tip-bg: #262118;
+  --warn-bg: #2c2215;
+  --warn-ink: #e8b768;
+  --hover-line: #7db0df;
+  --input-bg: #14181f;
+  --mark: rgba(230, 107, 78, .34);
+  --sel: rgba(125, 176, 223, .28);
+  --frame-bg: #1b2028;
+  --stamp-jp: #e66b4e;
+  --stamp-au: #7db0df;
+  --stamp-us: #d4925e;
+  --sea-fill: #142129;
+  --sea-wave: #2a4350;
+  --inset-fill: rgba(27, 32, 40, .62);
+  --inset-label: #83a3ab;
+  --land-edge: #111418;
+  --land-dim: #262d36;
+  --land-dim-h: #323b47;
+  --land-off: #1d222a;
+  --map-text: #e6e2d8;
+  --map-halo: rgba(17, 20, 24, .92);
+  --hero-fade: 17, 20, 24;
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -90,17 +143,19 @@ p { margin: 0; }
 .wrap { width: min(var(--max), 100% - 48px); margin-inline: auto; }
 @media (max-width: 640px) { .wrap { width: calc(100% - 28px); } }
 
-/* ---------- header (Swiss Cartographic Masthead) ---------- */
+/* ---------- header ---------- */
 .hdr {
   position: sticky; top: 0; z-index: 50;
   height: var(--hdr);
-  background: rgba(238, 234, 225, .96);
-  border-bottom: 1px solid var(--line-2);
-  transition: background var(--t) var(--ease), box-shadow var(--t) var(--ease);
+  background: var(--hdr-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  transition: background var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
 }
 .hdr.scrolled {
-  background: rgba(238, 234, 225, .98);
-  box-shadow: 0 2px 12px rgba(29, 33, 30, .06);
+  background: var(--hdr-bg-scrolled);
+  box-shadow: var(--sh-1);
 }
 .hdr .wrap { height: 100%; display: flex; align-items: center; gap: 20px; }
 .brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
@@ -162,12 +217,54 @@ p { margin: 0; }
 
 .trip-count {
   min-width: 20px; height: 19px; padding: 0 5px; border-radius: var(--r-xs);
-  background: rgba(250, 248, 243, .18); color: #faf8f3;
+  background: color-mix(in srgb, var(--on-ink) 18%, transparent); color: var(--on-ink);
   font: 700 11.5px/19px var(--mono); text-align: center;
   font-variant-numeric: tabular-nums;
 }
 .trip-count.bump { animation: bump 360ms var(--ease); }
 @keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.22); } 100% { transform: scale(1); } }
+
+/* theme switch */
+.theme-btn {
+  height: 34px; display: inline-flex; align-items: center; gap: 6px; padding: 0 10px;
+  border: 1px solid var(--line-2); border-radius: var(--r-sm); background: var(--card);
+  color: var(--ink-2); font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+}
+.theme-btn:hover { border-color: var(--indigo); color: var(--ink); }
+.theme-btn .ico-sun { display: none; }
+.theme-btn .ico-moon { display: block; }
+:root[data-theme="dark"] .theme-btn .ico-sun { display: block; color: var(--gold); }
+:root[data-theme="dark"] .theme-btn .ico-moon { display: none; }
+.theme-btn .theme-lbl-dark { display: none; }
+:root[data-theme="dark"] .theme-btn .theme-lbl-light { display: none; }
+:root[data-theme="dark"] .theme-btn .theme-lbl-dark { display: inline; }
+@media (max-width: 900px) {
+  .theme-btn { width: 34px; padding: 0; justify-content: center; }
+  .theme-btn span { display: none !important; }
+}
+
+.mobile-theme {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+  padding: 10px 4px 4px; border-top: 1px solid var(--line); margin-top: 6px;
+}
+.mobile-theme button {
+  padding: 8px 4px; border: 1px solid var(--line-2); border-radius: var(--r-sm);
+  background: var(--paper); color: var(--ink-2); font-size: 13px; font-weight: 500; cursor: pointer;
+}
+.mobile-theme button[aria-pressed="true"] {
+  border-color: var(--indigo); background: var(--indigo); color: var(--on-ink); font-weight: 600;
+}
+.ftr-theme { display: inline-flex; align-items: center; gap: 4px; }
+.ftr-theme button {
+  border: 1px solid transparent; background: transparent; color: var(--mut); cursor: pointer;
+  padding: 2px 7px; border-radius: var(--r-xs); font-size: 12.5px;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+.ftr-theme button:hover { color: var(--ink); }
+.ftr-theme button[aria-pressed="true"] {
+  color: var(--ink); font-weight: 600; background: var(--card); border-color: var(--line-2);
+}
 
 /* language switch */
 .lang-sw { position: relative; }
@@ -472,7 +569,7 @@ a:hover .pic img, .hover-zoom:hover .pic img { transform: scale(1.032) translate
   transition: opacity var(--t) var(--ease), transform var(--t) var(--ease); display: flex; gap: 12px; align-items: center;
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
-.toast a { color: #f6dfd5; font-weight: 600; text-decoration: underline; }
+.toast a { color: var(--on-ink); font-weight: 700; text-decoration: underline; }
 
 /* ---------- dialog (search) ---------- */
 .dlg {

@@ -15,13 +15,13 @@ const l = lang();
 const here = basePath(Astro.url.pathname);
 const canonical = new URL(L(here), site).href;
 const brand = t('栖云旅行');
-const fullTitle = title === brand ? t('栖云旅行 · 日本、澳大利亚、美国旅行指南') : `${title} · ${brand}`;
+const fullTitle = title === brand ? t('栖云旅行 · 真实旅行攻略社区与行程指南') : `${title} · ${brand}`;
 const ogImage = new URL(image, site).href;
 const links = [
+  { id: 'home', href: '/', text: t('攻略广场') },
   { id: 'japan', href: '/japan/', text: t('日本') },
   { id: 'australia', href: '/australia/', text: t('澳大利亚') },
   { id: 'usa', href: '/usa/', text: t('美国') },
-  { id: 'quick', href: '/quick/', text: t('快速攻略') },
   { id: 'trips', href: '/trips/', text: t('行程模板') },
   { id: 'budget', href: '/budget/', text: t('算预算') },
 ].map((x) => ({ ...x, href: L(x.href) }));
@@ -40,8 +40,23 @@ const dict = clientDict();
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && alternates.filter((a) => hasPage(a.l, here)).map((a) => <link rel="alternate" hreflang={HTML_LANG[a.l]} href={new URL(a.href, site).href} />)}
     {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(here, site).href} />}
-    <meta name="theme-color" content="#eeeae1" />
-    <meta name="color-scheme" content="light" />
+    <link rel="alternate" type="application/rss+xml" title={brand} href={new URL('/rss.xml', site).href} />
+    <meta name="theme-color" content="#f2efe9" id="meta-theme-color" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('cbt-theme'); } catch (e) {}
+        var mode = saved === 'light' || saved === 'dark' ? saved : 'system';
+        var dark = false;
+        try { dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+        var theme = mode === 'system' ? (dark ? 'dark' : 'light') : mode;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.themeMode = mode;
+        var meta = document.getElementById('meta-theme-color');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#111418' : '#f2efe9');
+      })();
+    </script>
     <link rel="stylesheet" href="/fonts/wenkai/wenkai.css" />
     <style is:inline>@view-transition { navigation: auto; }</style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -63,15 +78,21 @@ const dict = clientDict();
         <a class="brand" href={L('/')} aria-label={t('栖云旅行 首页')}>
           <img src="/favicon.svg" alt="" width="28" height="28" />
           <b>{brand}</b>
-          <span class="brand-code" aria-hidden="true">ATLAS · JPN · AUS · USA</span>
+          <span class="brand-code" aria-hidden="true">TRAVEL FEED · JPN · AUS · USA</span>
         </a>
         <nav class="nav" aria-label={t('主导航')}>
           {links.map((x) => <a href={x.href} aria-current={nav === x.id ? 'page' : undefined}>{x.text}</a>)}
         </nav>
         <div class="hdr-tools">
-          <button class="search-btn" type="button" data-open-search aria-label={t('搜索目的地、景点或美食')}>
+          <button class="search-btn" type="button" data-open-search aria-label={t('搜索攻略、目的地、景点或美食')}>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
             <span>{t('搜索')}</span><kbd>/</kbd>
+          </button>
+          <button class="theme-btn" type="button" data-theme-toggle aria-label={t('切换浅色或深色模式')} title={t('切换明暗模式')}>
+            <svg class="ico-moon" width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.6 12.2A6.8 6.8 0 0 1 7.8 3.4a7 7 0 1 0 8.8 8.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+            <svg class="ico-sun" width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3.6" stroke="currentColor" stroke-width="1.6" /><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M15.3 4.7l-1.4 1.4M6.1 13.9l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            <span class="theme-lbl-light">{t('深色')}</span>
+            <span class="theme-lbl-dark">{t('浅色')}</span>
           </button>
           <div class="lang-sw" data-lang-sw>
             <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label={t('切换语言')} data-lang-btn>
@@ -94,7 +115,13 @@ const dict = clientDict();
     </header>
     <nav class="mobile-nav" aria-label={t('移动端导航')} hidden data-mobile-nav>
       {links.map((x) => <a href={x.href}>{x.text}</a>)}
+      <a href={L('/quick/')}>{t('快速攻略')}</a>
       <a href={L('/plan/')}>{t('我的行程')}</a>
+      <div class="mobile-theme" role="group" aria-label={t('明暗主题')}>
+        <button type="button" data-theme-set="light" aria-pressed="false">{t('浅色')}</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">{t('深色')}</button>
+        <button type="button" data-theme-set="system" aria-pressed="false">{t('跟随系统')}</button>
+      </div>
       <div class="mobile-lang">{alternates.map((a) => <a href={a.href} hreflang={HTML_LANG[a.l]} lang={HTML_LANG[a.l]} aria-current={a.l === l ? 'true' : undefined} data-set-lang={a.l}>{LANG_LABEL[a.l]}</a>)}</div>
     </nav>
 
@@ -104,11 +131,16 @@ const dict = clientDict();
       <div class="wrap">
         <div class="row">
           <a class="brand" href={L('/')}><img src="/favicon.svg" alt="" width="24" height="24" /><b>{brand}</b></a>
+          <div class="ftr-theme" role="group" aria-label={t('明暗主题')}>
+            <button type="button" data-theme-set="light" aria-pressed="false">{t('浅色')}</button>
+            <button type="button" data-theme-set="dark" aria-pressed="false">{t('深色')}</button>
+            <button type="button" data-theme-set="system" aria-pressed="false">{t('跟随系统')}</button>
+          </div>
         </div>
         <div class="row">
-          <a href={L('/japan/')}>{t('日本')}</a><a href={L('/australia/')}>{t('澳大利亚')}</a><a href={L('/usa/')}>{t('美国')}</a><a href={L('/quick/')}>{t('快速攻略')}</a>
+          <a href={L('/')}>{t('攻略广场')}</a><a href={L('/japan/')}>{t('日本')}</a><a href={L('/australia/')}>{t('澳大利亚')}</a><a href={L('/usa/')}>{t('美国')}</a><a href={L('/quick/')}>{t('快速攻略')}</a>
           <a href={L('/trips/')}>{t('行程模板')}</a><a href={L('/japan/themes/')}>{t('季节与主题')}</a><a href={L('/japan/tools/')}>{t('随身工具')}</a>
-          <a href={L('/plan/')}>{t('我的行程')}</a><a href={L('/budget/')}>{t('算预算')}</a><a href={L('/about/')}>{t('关于')}</a>
+          <a href={L('/plan/')}>{t('我的行程')}</a><a href={L('/budget/')}>{t('算预算')}</a><a href="/rss.xml" data-no-lp>RSS</a><a href={L('/about/')}>{t('关于')}</a>
         </div>
         <div class="row">
           <span>© {new Date().getFullYear()} <a href="https://cloudborne.cn">{t('Cloudborne 栖云')}</a> · {t('票价和政策会变，出发前以官方为准')}</span>
@@ -122,7 +154,7 @@ const dict = clientDict();
       <div class="search-box">
         <div class="field">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8" /><path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-          <input id="search-input" type="search" placeholder={t('京都、大堡礁、黄石、拉面…')} autocomplete="off" role="combobox" aria-expanded="true" aria-controls="search-list" aria-autocomplete="list" />
+          <input id="search-input" type="search" placeholder={t('搜帖子、京都红叶、先付后退、大洋路、OMNY…')} autocomplete="off" role="combobox" aria-expanded="true" aria-controls="search-list" aria-autocomplete="list" />
           <button type="button" data-close-search>Esc</button>
         </div>
         <div class="search-results" id="search-list" role="listbox"></div>

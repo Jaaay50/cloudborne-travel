@@ -3,8 +3,9 @@
 import WorldMap from './WorldMap.astro';
 import ClimateTable from './ClimateTable.astro';
 import { mapLinks, xhs } from '../lib/content';
+import { postsForPlace } from '../lib/posts';
 import { monthRanges, type CountrySlug } from '../lib/countries';
-import { t, lang, listSep } from '../lib/i18n';
+import { t, lang, listSep, L } from '../lib/i18n';
 import { atlas } from '../lib/atlas';
 import type { WPlace } from '../lib/world';
 
@@ -42,6 +43,7 @@ const spotThemes = [...new Set(p.spots.flatMap((s) => s.themes))].filter((x) => 
 // Secondary names under a spot title; translated titles often equal one of them, so skip that repeat outside Chinese.
 const subNames = (s: { name: string; local?: string; en?: string }) => [s.local, s.en].filter((x): x is string => !!x && (zh || x !== s.name));
 const [hs, hl] = m.heroSizes;
+const placePosts = postsForPlace(p.key);
 ---
 <section class="phero">
   <img class="vt-hero-img" src={`${m.heroImg}-${hl}.webp`} srcset={`${m.heroImg}-${hs}.webp ${hs}w, ${m.heroImg}-${hl}.webp ${hl}w`} sizes="100vw" alt={m.heroAlt} width={hl} height={Math.round((hl * 2) / 3)} fetchpriority="high" />
@@ -72,6 +74,30 @@ const [hs, hl] = m.heroSizes;
       </div>
       <ClimateTable place={m.climateKey} highlight={m.months} />
     </section>
+
+    {placePosts.length > 0 && (
+      <section class="block place-posts">
+        <div class="block-hd"><h2>{t('{name}实测攻略帖', { name: p.name })}</h2></div>
+        <div class="pp-inline-grid">
+          {placePosts.map((po) => (
+            <a class="place" href={L(po.href)}>
+              <div class="plate-hd">
+                <span>{po.date} · {po.author.name}</span>
+                <b>{t('{n} 图', { n: po.photoCount })}</b>
+              </div>
+              <div class="pic">
+                {po.coverImg && <img src={`${po.coverImg.prefix}-960.webp`} alt={po.coverImg.alt} loading="lazy" width="960" height="640" data-vt-img />}
+              </div>
+              <div class="body">
+                <h3>{po.title}</h3>
+                <p>{po.excerpt}</p>
+                <p class="plate-ft">{po.meta.days} · {po.meta.budget}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <section id="spots" class="block">
       <div class="block-hd">
@@ -204,7 +230,7 @@ const [hs, hl] = m.heroSizes;
   .pref-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; padding-top: 8px; }
   .toc {
     position: sticky; top: var(--hdr); z-index: 5; display: flex; gap: 4px; padding: 10px 0;
-    background: rgba(238, 234, 225, .96); border-bottom: 1px solid var(--line-2); overflow-x: auto; scrollbar-width: none;
+    background: var(--hdr-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-2); overflow-x: auto; scrollbar-width: none;
   }
   .toc a {
     padding: 6px 12px; border-radius: var(--r-sm); font-size: 13.5px; font-weight: 500;
@@ -222,6 +248,7 @@ const [hs, hl] = m.heroSizes;
   .mo.on { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); font-weight: 600; }
   .season-row p { flex: 1 1 240px; color: var(--ink-2); font-size: 14px; line-height: 1.6; }
   #overview .climate { margin-top: 12px; }
+  .pp-inline-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 
   .spots { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
   .spot {

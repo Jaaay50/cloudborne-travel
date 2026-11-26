@@ -57,8 +57,8 @@ const contacts = emergency?.contacts ?? [];
 </ToolShell>
 <style>
   .nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 22px; }
-  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 18px; background: var(--vermilion); color: #fff; transition: transform var(--t-fast) var(--ease), background var(--t-fast); }
-  .num:nth-child(n + 3) { background: var(--ink); }
+  .num { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 18px; background: var(--vermilion); color: var(--on-ink); transition: transform var(--t-fast) var(--ease), background var(--t-fast); }
+  .num:nth-child(n + 3) { background: var(--ink); color: var(--on-ink); }
   .num:hover { transform: translateY(-2px); }
   .num:active { transform: scale(.98); }
   .num .n { font: 700 32px/1 var(--sans); letter-spacing: .02em; font-variant-numeric: tabular-nums; }

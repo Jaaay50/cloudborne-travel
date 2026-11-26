@@ -4,18 +4,16 @@ import { t, langPaths } from '../../lib/i18n';
 
 export const getStaticPaths = langPaths;
 ---
-<Base title={t('关于')} description={t('栖云旅行是 Cloudborne 栖云做的旅行指南：日本、澳大利亚、美国。内容原创，不登录、不追踪。')} nav="home">
+<Base title={t('关于')} description={t('栖云旅行是 Cloudborne 栖云做的真实攻略社区与目的地指南：日本、澳大利亚、美国。每日自动追踪更新，支持明暗模式，不登录、不追踪。')} nav="home">
   <section class="wrap about">
     <h1>{t('关于栖云旅行')}</h1>
     <div class="prose">
-      <p set:html={t('栖云旅行是 <a href="https://cloudborne.cn">Cloudborne 栖云</a> 做的旅行指南，目前覆盖日本、澳大利亚和美国。把「去哪、怎么去、花多少、到了怎么办」放进一个打开就能用的地方。')} />
-      <p set:html={t('<b>内容</b>：景点、美食、交通和提醒都是我们自己写的，票价和政策尽量对照官方来源核对，每页底部能展开看来源。这些信息会变，出发前请再确认一次。')} />
-      <p set:html={t('<b>图片</b>：日本各地的封面是木刻版画风格插画；景点、美食和澳大利亚、美国各州的图片由 AI 按实景描述生成，用来帮你认出地方，不是实拍照片。')} />
-      <p set:html={t('<b>地图</b>：边界来自 Natural Earth（公有领域），做过简化，不适合测量。导航请点景点旁的地图链接。')} />
-      <p set:html={t('<b>天气</b>：每月气温和降水来自 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>（ERA5 再分析数据，1996–2025 年平均），是大致参考。')} />
-      <p set:html={t('<b>隐私</b>：不用注册。行程、清单、收藏只存在你自己的浏览器里，我们看不到。分享链接把行程编码在网址里，只有拿到链接的人能看到。')} />
-      <p set:html={t('<b>离线</b>：打开过的页面会存到手机里，没信号也能看。在浏览器里「添加到主屏幕」，用起来像 App。')} />
-      <p set:html={t('发现错误或有建议，写信到 <a href="mailto:contact@cloudborne.cn">contact@cloudborne.cn</a>。')} />
+      <p set:html={t('栖云旅行是 <a href="https://cloudborne.cn">Cloudborne 栖云</a> 做的旅行攻略社区与目的地指南，覆盖日本、澳大利亚和美国。把「真实感分步攻略帖、避坑实录、互动地图与行程规划」装进一个干净、好读、打开就能用的地方。')} />
+      <p set:html={t('<b>攻略帖与每日更新</b>：社区里的每一篇攻略帖，都会参考国内外公开游记与真实讨论（如小红书、马蜂窝、穷游、Reddit 及各国官方交通与观光公告）进行交叉核验后原创改写，以分步实操的方式呈现交通衔接、耗时、预算与避坑细节，并在文末标明参考来源与核验月份。栏目采用编辑部专栏笔名体系，配合每日定时调研流水线持续上新。')} />
+      <p set:html={t('<b>配图说明</b>：攻略帖插图、日本木刻版画封面以及各地景点美食图片，均由我们的 AI 生图管线按实景场景描述统一生成，用于直观还原氛围与认路参考，并非现场实拍照片。')} />
+      <p set:html={t('<b>地图与天气</b>：地图边界来自 Natural Earth（公有领域），仅作概览参考；每月气温与降水来自 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>（ERA5 再分析数据，1996–2025 年平均）。导航请点景点旁的地图链接。')} />
+      <p set:html={t('<b>明暗主题与隐私</b>：页头支持随时自主切换浅色/深色主题（页脚和移动端菜单可切回跟随系统）。全站无需注册登录，你的行程、收藏的帖子、清单与明暗偏好只保存在本地浏览器中，服务器不收集任何个人数据。')} />
+      <p set:html={t('<b>离线与订阅</b>：打开过的页面会缓存到本地；也提供 <a href="/rss.xml" data-no-lp>RSS 订阅</a> 追踪每日新帖。发现信息过期或有建议，欢迎写信到 <a href="mailto:contact@cloudborne.cn">contact@cloudborne.cn</a>。')} />
     </div>
   </section>
 </Base>

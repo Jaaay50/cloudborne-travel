@@ -10,8 +10,8 @@ export function GET() {
     start_url: L('/'),
     scope: '/',
     display: 'standalone',
-    background_color: '#f6f1e7',
-    theme_color: '#f6f1e7',
+    background_color: '#f2efe9',
+    theme_color: '#f2efe9',
     lang: HTML_LANG[lang()],
     icons: [
       { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' },

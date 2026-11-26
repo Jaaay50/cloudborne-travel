@@ -148,7 +148,7 @@ const placeHref = (slug: string) => (have.has(slug) ? A.href(slug) : undefined);
   .jmap .wave { stroke: var(--sea-wave); }
   .jmap { --u: calc(var(--s) * var(--k)); }
   .jmap .inset-frame { fill: var(--inset-fill); stroke: var(--sea-wave); stroke-width: calc(1px * var(--u)); stroke-dasharray: calc(4px * var(--u)) calc(3px * var(--u)); }
-  .jmap .inset-label { font: calc(11px * var(--u)) var(--sans); fill: #5d7c80; letter-spacing: .1em; }
+  .jmap .inset-label { font: calc(11px * var(--u)) var(--sans); fill: var(--inset-label); letter-spacing: .1em; }
   .jmap .pref path {
     fill: var(--tone); stroke: var(--land-edge); stroke-width: calc(1px * var(--u)); stroke-linejoin: round;
     transition: fill 220ms var(--ease), opacity 320ms var(--ease);

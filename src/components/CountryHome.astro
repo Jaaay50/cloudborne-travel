@@ -1,9 +1,11 @@
 ---
-// Country landing page: hero, explore map with side panel, themes, trips, tools.
+// Country community hub: compact atmospheric banner + primary Social Forum Post Feed tab + Interactive Map & Atlas tab.
 import WorldMap from './WorldMap.astro';
+import PostFeed from './PostFeed.astro';
 import { placesOf, regionsOf, tripsAll, themesOf, type WPlace } from '../lib/world';
+import { postsOf } from '../lib/posts';
 import { monthRanges, type CountrySlug } from '../lib/countries';
-import { t, lang, hasPage } from '../lib/i18n';
+import { t, lang, hasPage, L } from '../lib/i18n';
 
 export interface HomeTool { href: string; t: string; d: string; ico: string }
 interface Props {
@@ -15,239 +17,257 @@ interface Props {
   toolsHref: string;
 }
 const { country, name, hero, themeCards = [], toolsHref } = Astro.props;
-// Tools this language has (Japanese readers get no Japanese phrase cards).
 const tools = Astro.props.tools.filter((x) => hasPage(lang(), x.href));
 const places = placesOf(country);
 const regions = regionsOf(country);
 const themes = themesOf(country);
 const trips = tripsAll(country);
+const posts = postsOf(country);
 const spotCount = places.reduce((n, p) => n + p.spots.length, 0);
 const byKey = Object.fromEntries(places.map((p) => [p.key, p]));
-// All covers (woodblock & photo) come in 960 / 1920.
 const placeImg = (p: WPlace | undefined) => (p?.cover ? `${p.cover}-960.webp` : '');
 const usedThemes = Object.keys(themes).filter((x) => places.some((p) => p.spots.some((s) => s.themes.includes(x))));
-// Seasonal featured themes (Japan): titles go to the browser script, which picks one by the visitor's month.
 const seasonTitles = { winter: t('冬天去哪'), spring: t('春天去哪'), summer: t('夏天去哪'), autumn: t('秋天去哪') };
 const [hs, hl] = hero.sizes;
+const plainTitle = hero.title.replace(/<br\s*\/?>/gi, ' ');
 ---
-<section class="hero">
+<section class="ch-banner">
   <picture>
     <img class="vt-hero-img" src={`${hero.img}-${hs}.webp`} srcset={`${hero.img}-${hs}.webp ${hs}w, ${hero.img}-${hl}.webp ${hl}w`} sizes="100vw" alt={hero.alt} width={hl} height={Math.round(hl / 2.25)} fetchpriority="high" />
   </picture>
-  <div class="wrap hero-copy">
-    <h1 set:html={hero.title} />
-    <p class="lead">{hero.lead}</p>
-    <div class="hero-cta">
-      <a class="btn primary" href="#explore">{t('打开地图')}</a>
-      <a class="btn" href={`/quick/?c=${country}`}>{t('快速生成攻略')}</a>
-    </div>
+  <div class="wrap ch-copy">
+    <p class="ch-kicker">{name} · {t('{n} 篇实测攻略帖', { n: posts.length })} · {country === 'japan' ? t('{n} 个都道府县', { n: places.length }) : t('{n} 个目的地州', { n: places.length })}</p>
+    <h1>{plainTitle}</h1>
+    <p class="ch-lead">{hero.lead}</p>
   </div>
 </section>
 
-<section class="section explore" id="explore">
-  <div class="wrap">
-    <div class="section-hd">
-      <div>
-        <h2>{t('探索地图')}</h2>
-        <p>{country === 'japan' ? t('{n} 个都道府县 · {spots} 个景点', { n: places.length, spots: spotCount }) : t('{n} 个州 · {spots} 个景点', { n: places.length, spots: spotCount })}</p>
-      </div>
-    </div>
-    <div class="explore-grid">
-      <div class="explore-map">
-        <WorldMap country={country} mode="explore" />
-        {usedThemes.length > 0 && (
-          <div class="theme-bar" role="group" aria-label={t('按主题在地图上标出景点')}>
-            {usedThemes.map((x) => (
-              <button type="button" class="chip" data-theme={x} aria-pressed="false" style={`--dot:${themes[x].tone}`}><i></i>{themes[x].name}</button>
-            ))}
-          </div>
-        )}
-      </div>
-      <aside class="panel card" id="panel" aria-live="polite">
-        <div class="panel-view" data-view="nation">
-          <div class="region-list">
-            {regions.map((r) => {
-              const first = byKey[r.places.find((k) => byKey[k]) ?? ''];
-              return (
-                <button type="button" class="region-row" data-go-region={r.slug} style={`--tone:${r.tone};--rink:${r.ink}`}>
-                  {country === 'japan'
-                    ? <img src={`${r.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" />
-                    : placeImg(first) ? <img src={placeImg(first)} alt="" loading="lazy" width="960" height="640" /> : <span class="ph" />}
-                  <span>
-                    <b>{r.name}</b>
-                    <small>{r.tagline}</small>
-                  </span>
-                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </button>
-              );
-            })}
-          </div>
+<div class="wrap ch-tabs-wrap" data-country-tabs>
+  <div class="ch-tabs" role="tablist" aria-label={t('切换攻略社区与地图百科')}>
+    <button type="button" class="ch-tab on" role="tab" aria-selected="true" data-ctab="feed">
+      {t('实测攻略帖')} <span>{posts.length}</span>
+    </button>
+    <button type="button" class="ch-tab" role="tab" aria-selected="false" data-ctab="atlas">
+      {t('探索地图与百科')} <span>{places.length}</span>
+    </button>
+    <a class="ch-quick-link" href={L(`/quick/?c=${country}`)}>{t('一分钟生成{name}行程 →', { name })}</a>
+  </div>
+
+  <div class="ch-panel" data-cpanel="feed" role="tabpanel">
+    <PostFeed posts={posts} country={country} showCountryFilter={false} places={places} showSidebar={true} />
+  </div>
+
+  <div class="ch-panel" data-cpanel="atlas" role="tabpanel" hidden>
+    <section class="section explore" id="explore">
+      <div class="section-hd">
+        <div>
+          <h2>{t('探索地图')}</h2>
+          <p>{country === 'japan' ? t('{n} 个都道府县 · {spots} 个景点', { n: places.length, spots: spotCount }) : t('{n} 个州 · {spots} 个景点', { n: places.length, spots: spotCount })}</p>
         </div>
-        {regions.filter((r) => r.places.filter((k) => byKey[k]).length > 1).map((r) => (
-          <div class="panel-view" data-view={`region:${r.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
-            {(country === 'japan' || placeImg(byKey[r.places.find((k) => byKey[k])!])) && <div class="pv-pic"><img src={country === 'japan' ? `${r.cover}-960.webp` : placeImg(byKey[r.places.find((k) => byKey[k])!])} alt="" loading="lazy" width="960" height="640" /></div>}
-            <h3>{r.name}</h3>
-            <p class="pv-lead">{r.tagline}</p>
-            <div class="pv-prefs">
-              {r.places.map((k) => {
-                const pd = byKey[k];
-                return pd ? (
-                  <button type="button" class="pv-pref" data-go-pref={pd.slug}>
-                    <b>{pd.name}</b>
-                    <small>{pd.tagline}</small>
+      </div>
+      <div class="explore-grid">
+        <div class="explore-map">
+          <WorldMap country={country} mode="explore" />
+          {usedThemes.length > 0 && (
+            <div class="theme-bar" role="group" aria-label={t('按主题在地图上标出景点')}>
+              {usedThemes.map((x) => (
+                <button type="button" class="chip" data-theme={x} aria-pressed="false" style={`--dot:${themes[x].tone}`}><i></i>{themes[x].name}</button>
+              ))}
+            </div>
+          )}
+        </div>
+        <aside class="panel card" id="panel" aria-live="polite">
+          <div class="panel-view" data-view="nation">
+            <div class="region-list">
+              {regions.map((r) => {
+                const first = byKey[r.places.find((k) => byKey[k]) ?? ''];
+                return (
+                  <button type="button" class="region-row" data-go-region={r.slug} style={`--tone:${r.tone};--rink:${r.ink}`}>
+                    {country === 'japan'
+                      ? <img src={`${r.cover}-960.webp`} alt="" loading="lazy" width="960" height="640" />
+                      : placeImg(first) ? <img src={placeImg(first)} alt="" loading="lazy" width="960" height="640" /> : <span class="ph" />}
+                    <span>
+                      <b>{r.name}</b>
+                      <small>{r.tagline}</small>
+                    </span>
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m8 5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
                   </button>
-                ) : null;
+                );
               })}
             </div>
-            {country === 'japan' && r.href && <a class="btn sm" href={r.href}>{t('{name}完整攻略 →', { name: r.name })}</a>}
           </div>
-        ))}
-        {places.map((p) => {
-          const r = regions.find((x) => x.slug === p.region)!;
-          return (
-            <div class="panel-view" data-view={`pref:${p.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
-              {placeImg(p) && <div class="pv-pic"><img src={placeImg(p)} alt="" loading="lazy" width="960" height="640" /></div>}
-              <h3>{p.name}</h3>
-              <p class="pv-lead">{p.tagline}</p>
-              <p class="pv-meta"><span>{t('建议 {days}', { days: p.days })}</span><span>{t('最佳 {months}', { months: monthRanges(p.months) })}</span></p>
-              <ul class="pv-spots">
-                {p.spots.slice(0, 6).map((s) => (
-                  <li>
-                    {s.img ? <img class="pv-thumb" src={`${s.img}-640.webp`} alt="" loading="lazy" width="640" height="427" /> : <span class="pv-thumb ph" />}
-                    <a href={`${p.href}#spot-${s.id}`} data-hover-key={s.key}>{s.name}</a>
-                    <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: s.name })}>
-                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          {regions.filter((r) => r.places.filter((k) => byKey[k]).length > 1).map((r) => (
+            <div class="panel-view" data-view={`region:${r.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
+              {(country === 'japan' || placeImg(byKey[r.places.find((k) => byKey[k])!])) && <div class="pv-pic"><img src={country === 'japan' ? `${r.cover}-960.webp` : placeImg(byKey[r.places.find((k) => byKey[k])!])} alt="" loading="lazy" width="960" height="640" /></div>}
+              <h3>{r.name}</h3>
+              <p class="pv-lead">{r.tagline}</p>
+              <div class="pv-prefs">
+                {r.places.map((k) => {
+                  const pd = byKey[k];
+                  return pd ? (
+                    <button type="button" class="pv-pref" data-go-pref={pd.slug}>
+                      <b>{pd.name}</b>
+                      <small>{pd.tagline}</small>
                     </button>
-                  </li>
-                ))}
-              </ul>
-              <a class="btn primary sm" href={p.href}>{t('看{name}完整攻略 →', { name: p.name })}</a>
+                  ) : null;
+                })}
+              </div>
+              {country === 'japan' && r.href && <a class="btn sm" href={r.href}>{t('{name}完整攻略 →', { name: r.name })}</a>}
             </div>
-          );
-        })}
-      </aside>
-    </div>
-  </div>
-</section>
-
-{themeCards.length > 0 && (
-  <section class="section season-sec">
-    <div class="wrap">
-      <div class="section-hd">
-        <div><h2 data-season-title data-titles={JSON.stringify(seasonTitles)}>{t('按季节去')}</h2></div>
-        <a class="more" href="/japan/themes/">{t('全部主题 →')}</a>
+          ))}
+          {places.map((p) => {
+            const r = regions.find((x) => x.slug === p.region)!;
+            return (
+              <div class="panel-view" data-view={`pref:${p.slug}`} hidden style={`--tone:${r.tone};--rink:${r.ink}`}>
+                {placeImg(p) && <div class="pv-pic"><img src={placeImg(p)} alt="" loading="lazy" width="960" height="640" /></div>}
+                <h3>{p.name}</h3>
+                <p class="pv-lead">{p.tagline}</p>
+                <p class="pv-meta"><span>{t('建议 {days}', { days: p.days })}</span><span>{t('最佳 {months}', { months: monthRanges(p.months) })}</span></p>
+                <ul class="pv-spots">
+                  {p.spots.slice(0, 6).map((s) => (
+                    <li>
+                      {s.img ? <img class="pv-thumb" src={`${s.img}-640.webp`} alt="" loading="lazy" width="640" height="427" /> : <span class="pv-thumb ph" />}
+                      <a href={`${p.href}#spot-${s.id}`} data-hover-key={s.key}>{s.name}</a>
+                      <button type="button" class="add" data-add={s.item} data-name={s.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: s.name })}>
+                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <a class="btn primary sm" href={p.href}>{t('看{name}完整攻略 →', { name: p.name })}</a>
+              </div>
+            );
+          })}
+        </aside>
       </div>
-      <div class="theme-grid">
-        <div class="theme-feat"></div>
-        <div class="theme-rest">
-          {themeCards.map((c) => (
-            <a class="theme-card" href={c.href} data-theme-card={c.slug} data-now={t('当季')} style={`--dot:${themes[c.slug].tone}`}>
-              <div class="pic"><img src={`${c.img}-960.webp`} alt={c.alt} loading="lazy" width="960" height="640" data-vt-img /></div>
-              <div class="tc-body">
-                <b>{themes[c.slug].name}</b>
-                <small>{themes[c.slug].season}</small>
+    </section>
+
+    {themeCards.length > 0 && (
+      <section class="section season-sec">
+        <div class="section-hd">
+          <div><h2 data-season-title data-titles={JSON.stringify(seasonTitles)}>{t('按季节去')}</h2></div>
+          <a class="more" href="/japan/themes/">{t('全部主题 →')}</a>
+        </div>
+        <div class="theme-grid">
+          <div class="theme-feat"></div>
+          <div class="theme-rest">
+            {themeCards.map((c) => (
+              <a class="theme-card" href={c.href} data-theme-card={c.slug} data-now={t('当季')} style={`--dot:${themes[c.slug].tone}`}>
+                <div class="pic"><img src={`${c.img}-960.webp`} alt={c.alt} loading="lazy" width="960" height="640" data-vt-img /></div>
+                <div class="tc-body">
+                  <b>{themes[c.slug].name}</b>
+                  <small>{themes[c.slug].season}</small>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {country !== 'japan' && (
+      <section class="section">
+        <div class="section-hd"><div><h2>{country === 'usa' ? t('{n} 个热门州', { n: places.length }) : t('{n} 个州和领地', { n: places.length })}</h2></div></div>
+        <div class="grid g-4">
+          {places.map((p) => (
+            <a class="place reveal" href={p.href}>
+              <div class="pic">{placeImg(p) && <img src={placeImg(p)} alt={p.coverAlt} loading="lazy" width="960" height="640" data-fade data-vt-img />}</div>
+              <div class="body"><h3>{p.name}</h3><p>{p.tagline}</p></div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {trips.length > 0 && (
+      <section class="section">
+        <div class="section-hd">
+          <div><h2>{t('拿来就能用的行程')}</h2></div>
+          <a class="more" href={`/trips/#${country}`}>{t('全部 {n} 条 →', { n: trips.length })}</a>
+        </div>
+        <div class="grid g-3">
+          {trips.slice(0, 6).map((x, idx) => (
+            <a class="place reveal" href={x.href}>
+              <div class="plate-hd">
+                <span>NO.{String(idx + 1).padStart(2, '0')} · {x.country.slice(0, 3).toUpperCase()}</span>
+                <b>{t('{n} 天', { n: x.daysCount })}</b>
+              </div>
+              <div class="pic">
+                {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" decoding="async" width="960" height="640" data-fade data-vt-img />}
+              </div>
+              <div class="body">
+                <h3>{x.title}</h3>
+                <p>{x.for}</p>
+                <p class="plate-ft">{x.season}</p>
               </div>
             </a>
           ))}
         </div>
-      </div>
-    </div>
-  </section>
-)}
+      </section>
+    )}
 
-{country !== 'japan' && (
-  <section class="section">
-    <div class="wrap">
-      <div class="section-hd"><div><h2>{country === 'usa' ? t('{n} 个热门州', { n: places.length }) : t('{n} 个州和领地', { n: places.length })}</h2></div></div>
-      <div class="grid g-4">
-        {places.map((p) => (
-          <a class="place reveal" href={p.href}>
-            <div class="pic">{placeImg(p) && <img src={placeImg(p)} alt={p.coverAlt} loading="lazy" width="960" height="640" data-fade data-vt-img />}</div>
-            <div class="body"><h3>{p.name}</h3><p>{p.tagline}</p></div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-)}
-
-{trips.length > 0 && (
-  <section class="section">
-    <div class="wrap">
+    <section class="section">
       <div class="section-hd">
-        <div><h2>{t('拿来就能用的行程')}</h2></div>
-        <a class="more" href={`/trips/#${country}`}>{t('全部 {n} 条 →', { n: trips.length })}</a>
+        <div><h2>{t('到了{name}用得上', { name })}</h2></div>
+        <a class="more" href={toolsHref}>{t('全部 →')}</a>
       </div>
-      <div class="grid g-3">
-        {trips.slice(0, 6).map((x, idx) => (
-          <a class="place reveal" href={x.href}>
-            <div class="plate-hd">
-              <span>NO.{String(idx + 1).padStart(2, '0')} · {x.country.slice(0, 3).toUpperCase()}</span>
-              <b>{t('{n} 天', { n: x.daysCount })}</b>
-            </div>
-            <div class="pic">
-              {x.cover && <img src={`${x.cover}-960.webp`} alt="" loading="lazy" decoding="async" width="960" height="640" data-fade data-vt-img />}
-            </div>
-            <div class="body">
-              <h3>{x.title}</h3>
-              <p>{x.for}</p>
-              <p class="plate-ft">{x.season}</p>
-            </div>
+      <div class="grid g-3 tools">
+        {tools.map((x) => (
+          <a class="tool reveal" href={x.href}>
+            <span class="tool-ico">{x.ico}</span>
+            <span><b>{x.t}</b><small>{x.d}</small></span>
           </a>
         ))}
       </div>
-    </div>
-  </section>
-)}
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-hd">
-      <div><h2>{t('到了{name}用得上', { name })}</h2></div>
-      <a class="more" href={toolsHref}>{t('全部 →')}</a>
-    </div>
-    <div class="grid g-3 tools">
-      {tools.map((x) => (
-        <a class="tool reveal" href={x.href}>
-          <span class="tool-ico">{x.ico}</span>
-          <span><b>{x.t}</b><small>{x.d}</small></span>
-        </a>
-      ))}
-    </div>
+    </section>
   </div>
-</section>
+</div>
 
 <style is:global>
-  .hero { position: relative; min-height: min(calc(80vh - var(--hdr)), 660px); display: flex; align-items: center; overflow: hidden; isolation: isolate; }
-  .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -2; }
-  .hero picture img { animation: settle 1.8s var(--ease-out) both; }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(var(--hero-fade), .94) 0%, rgba(var(--hero-fade), .78) 30%, rgba(var(--hero-fade), 0) 58%), linear-gradient(0deg, var(--paper) 0%, rgba(var(--hero-fade), 0) 18%); }
-  .hero-copy { padding: 40px 0 70px; }
-  .hero h1 { font-size: clamp(38px, 6vw, 72px); letter-spacing: .04em; line-height: 1.18; margin: 0 0 16px; animation: rise 900ms var(--ease-out) both; }
-  .hero .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); max-width: 460px; animation: rise 900ms 90ms var(--ease-out) both; }
-  .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; animation: rise 900ms 180ms var(--ease-out) both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(16px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
-  @media (max-width: 760px) {
-    .hero { min-height: auto; display: block; }
-    .hero picture { position: relative; display: block; aspect-ratio: 16 / 9; }
-    .hero picture img { position: absolute; }
-    .hero::after { background: linear-gradient(0deg, var(--paper) 0%, rgba(var(--hero-fade), 0) 22%); height: 56.25vw; }
-    .hero-copy { padding: 4px 0 18px; }
-    .hero h1 br { display: none; }
+  .ch-banner {
+    position: relative; min-height: 230px; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate;
+    color: #faf8f3; border-bottom: 1px solid var(--line);
   }
+  .ch-banner picture, .ch-banner picture img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; z-index: -2;
+  }
+  .ch-banner::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(16, 20, 26, .18) 0%, rgba(16, 20, 26, .42) 55%, rgba(16, 20, 26, .82) 100%);
+  }
+  .ch-copy { padding: 34px 0 24px; display: grid; gap: 6px; }
+  .ch-kicker { font: 600 12px/1.2 var(--mono); letter-spacing: .1em; color: rgba(250, 248, 243, .88); text-transform: uppercase; }
+  .ch-copy h1 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.2; text-shadow: 0 2px 16px rgba(0, 0, 0, .35); }
+  .ch-lead { font-size: 15px; color: rgba(250, 248, 243, .9); max-width: 580px; }
 
-  .explore { padding-top: 24px; }
+  .ch-tabs-wrap { padding-top: 18px; padding-bottom: 20px; }
+  .ch-tabs {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .ch-tab {
+    display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px;
+    border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--card);
+    color: var(--ink-2); font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+  }
+  .ch-tab span {
+    font: 700 11.5px/1 var(--mono); padding: 2px 6px; border-radius: var(--r-xs);
+    background: var(--paper); color: var(--mut);
+  }
+  .ch-tab:hover { border-color: var(--indigo); color: var(--ink); }
+  .ch-tab.on { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); }
+  .ch-tab.on span { background: color-mix(in srgb, var(--on-ink) 18%, transparent); color: var(--on-ink); }
+  .ch-quick-link { margin-left: auto; font-size: 13.5px; font-weight: 600; color: var(--vermilion); }
+  .ch-quick-link:hover { text-decoration: underline; }
+
+  .explore { padding-top: 10px; }
   .explore-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
   .explore-map { position: sticky; top: calc(var(--hdr) + 12px); }
   .theme-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; }
   .panel { padding: 18px; min-height: 560px; border: 1px solid var(--line-2); }
   .panel-view { animation: panelIn 380ms var(--ease-out) both; }
   .panel-view[hidden] { display: none; }
-  .panel-view > * { animation: panelIn 420ms var(--ease-out) both; }
-  .panel-view > :nth-child(2) { animation-delay: 40ms; }
-  .panel-view > :nth-child(3) { animation-delay: 80ms; }
-  .panel-view > :nth-child(4) { animation-delay: 120ms; }
-  .panel-view > :nth-child(n + 5) { animation-delay: 160ms; }
   @keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   .region-list { display: grid; gap: 8px; }
   .region-row {
@@ -257,7 +277,7 @@ const [hs, hl] = hero.sizes;
   }
   .region-row:hover { border-color: var(--indigo); transform: translate3d(2px, 0, 0); }
   .region-row img, .region-row .ph { width: 74px; height: 50px; object-fit: cover; border-radius: var(--r-xs); background: color-mix(in srgb, var(--tone) 40%, var(--card)); }
-  .region-row b { font-family: var(--serif); font-size: 16.5px; display: block; color: var(--rink, var(--ink)); line-height: 1.3; }
+  .region-row b { font-family: var(--serif); font-size: 16.5px; display: block; color: var(--ink); line-height: 1.3; }
   .region-row small { font-size: 12.5px; color: var(--mut); display: block; line-height: 1.45; }
   .region-row svg { width: 16px; height: 16px; color: var(--mut); transition: transform var(--t-fast) var(--ease); }
   .region-row:hover svg { transform: translateX(2px); color: var(--indigo); }
@@ -291,9 +311,7 @@ const [hs, hl] = hero.sizes;
   .theme-card {
     display: block; position: relative; border-radius: var(--r); padding: 7px 7px 0; overflow: hidden;
     background: var(--card); border: 1px solid var(--line);
-    transform: translate3d(0, 0, 0);
-    transition: transform 240ms var(--ease-out), border-color 200ms ease;
-    will-change: transform;
+    transform: translate3d(0, 0, 0); transition: transform 240ms var(--ease-out), border-color 200ms ease;
   }
   .theme-card:hover { transform: translate3d(0, -3px, 0); border-color: var(--indigo); }
   .theme-rest .pic { aspect-ratio: 4 / 5; border-radius: var(--r-xs); }
@@ -312,8 +330,7 @@ const [hs, hl] = hero.sizes;
 
   .tools .tool {
     display: flex; gap: 14px; align-items: center; padding: 15px 16px; border-radius: var(--r); background: var(--card); border: 1px solid var(--line);
-    transform: translate3d(0, 0, 0);
-    transition: transform 240ms var(--ease-out), border-color 200ms ease;
+    transform: translate3d(0, 0, 0); transition: transform 240ms var(--ease-out), border-color 200ms ease;
   }
   .tools .tool:hover { transform: translate3d(0, -2px, 0); border-color: var(--indigo); }
   .tool-ico { width: 42px; height: 42px; flex-shrink: 0; border-radius: var(--r-sm); display: grid; place-items: center; background: var(--indigo-bg); color: var(--indigo); font: 600 19px var(--jp); }
@@ -322,6 +339,35 @@ const [hs, hl] = hero.sizes;
 </style>
 
 <script>
+  // Country hub tabs (Feed default, auto-switch to Atlas on #atlas / #explore / #p= / #r= deep links)
+  const tabRoot = document.querySelector<HTMLElement>('[data-country-tabs]');
+  if (tabRoot) {
+    const tabs = [...tabRoot.querySelectorAll<HTMLButtonElement>('[data-ctab]')];
+    const panels = [...tabRoot.querySelectorAll<HTMLElement>('[data-cpanel]')];
+    const switchTab = (name: 'feed' | 'atlas') => {
+      tabs.forEach((b) => {
+        const on = b.dataset.ctab === name;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', String(on));
+      });
+      panels.forEach((p) => { p.hidden = p.dataset.cpanel !== name; });
+      if (name === 'atlas') {
+        requestAnimationFrame(() => {
+          document.querySelectorAll<HTMLElement>('.jmap').forEach((m) => {
+            (window as unknown as { jmapDeclutter?: (el: HTMLElement) => void }).jmapDeclutter?.(m);
+          });
+        });
+      }
+    };
+    tabs.forEach((b) => b.addEventListener('click', () => switchTab((b.dataset.ctab as 'feed' | 'atlas') || 'feed')));
+    const checkHash = () => {
+      if (/^#(atlas|explore|[pr]=[a-z-]+)$/.test(location.hash)) switchTab('atlas');
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+  }
+
+  // Explore map side panel
   const panel = document.getElementById('panel');
   if (panel) {
     const views = [...panel.querySelectorAll<HTMLElement>('.panel-view')];
@@ -343,7 +389,6 @@ const [hs, hl] = hero.sizes;
       }
     });
     const fire = (name: string, detail: unknown) => document.dispatchEvent(new CustomEvent(name, { detail }));
-    // The map may have restored a deep link (#r= / #p=) before this script ran: sync the panel to it.
     const mapEl = document.querySelector<HTMLElement>('.jmap-explore');
     if (mapEl?.dataset.level && mapEl.dataset.level !== 'nation') {
       show(mapEl.dataset.level === 'region' ? `region:${mapEl.dataset.region}` : `pref:${mapEl.dataset.pref}`);

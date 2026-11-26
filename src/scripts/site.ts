@@ -8,6 +8,64 @@ const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = docu
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)];
 const REDUCE_MOTION = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ---------- theme (light / dark / system) ---------- */
+type ThemeMode = 'light' | 'dark' | 'system';
+const darkMedia = matchMedia('(prefers-color-scheme: dark)');
+
+function resolveTheme(mode: ThemeMode): 'light' | 'dark' {
+  return mode === 'system' ? (darkMedia.matches ? 'dark' : 'light') : mode;
+}
+
+function applyTheme(mode: ThemeMode, persist = false) {
+  const theme = resolveTheme(mode);
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.dataset.themeMode = mode;
+  const meta = document.getElementById('meta-theme-color');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#111418' : '#f2efe9');
+  if (persist) {
+    try {
+      if (mode === 'system') localStorage.removeItem('cbt-theme');
+      else localStorage.setItem('cbt-theme', mode);
+    } catch { /* private mode */ }
+  }
+  $$<HTMLButtonElement>('[data-theme-set]').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.themeSet === mode));
+  });
+  $$<HTMLButtonElement>('[data-theme-toggle]').forEach((b) => {
+    b.setAttribute('aria-pressed', String(theme === 'dark'));
+    b.setAttribute('aria-label', theme === 'dark' ? ct('切换到浅色模式') : ct('切换到深色模式'));
+  });
+}
+
+let currentThemeMode: ThemeMode = (() => {
+  try {
+    const saved = localStorage.getItem('cbt-theme');
+    return saved === 'light' || saved === 'dark' ? saved : 'system';
+  } catch {
+    return 'system';
+  }
+})();
+applyTheme(currentThemeMode, false);
+
+darkMedia.addEventListener('change', () => {
+  if (currentThemeMode === 'system') applyTheme('system', false);
+});
+
+$$<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) =>
+  btn.addEventListener('click', () => {
+    const next: ThemeMode = resolveTheme(currentThemeMode) === 'dark' ? 'light' : 'dark';
+    currentThemeMode = next;
+    applyTheme(next, true);
+  }),
+);
+$$<HTMLButtonElement>('[data-theme-set]').forEach((btn) =>
+  btn.addEventListener('click', () => {
+    const next = (btn.dataset.themeSet as ThemeMode) || 'system';
+    currentThemeMode = next;
+    applyTheme(next, true);
+  }),
+);
+
 /* ---------- header ---------- */
 const hdr = $('#hdr');
 const onScroll = () => hdr?.classList.toggle('scrolled', window.scrollY > 4);
@@ -252,7 +310,7 @@ function score(q: string, fields: string[]) {
 }
 
 const COUNTRY_NAME: Record<string, string> = { japan: ct('日本'), australia: ct('澳大利亚'), usa: ct('美国') };
-const G = { dest: ct('目的地'), spot: ct('景点'), food: ct('美食'), theme: ct('主题'), trip: ct('行程模板'), tool: ct('随身工具') };
+const G = { post: ct('攻略帖'), dest: ct('目的地'), spot: ct('景点'), food: ct('美食'), theme: ct('主题'), trip: ct('行程模板'), tool: ct('随身工具') };
 function search(qRaw: string): Hit[] {
   if (!cat) return [];
   const q = norm(qRaw);
@@ -260,6 +318,11 @@ function search(qRaw: string): Hit[] {
   const place = Object.fromEntries(cat.p.map((p) => [p.s, p]));
   const hrefOf = (key: string) => placeHref(key);
   const hits: Hit[] = [];
+  for (const po of (cat as unknown as { po?: { s: string; c: string; n: string; d: string; cat: string; dt: string; tg: string[]; pl: string[]; i: string; u: string }[] }).po ?? []) {
+    const sc = score(q, [po.n, po.d, po.tg.join(' '), po.pl.map((k) => place[k]?.n ?? k).join(' '), COUNTRY_NAME[po.c] ?? '', po.cat]);
+    const ico = po.i ? `<img src="${po.i}-960.webp" alt="" loading="lazy">` : ct('帖');
+    if (sc) hits.push({ href: lp(po.u), title: po.n, sub: `${COUNTRY_NAME[po.c] ?? ''} · ${po.dt} · ${po.d}`, ico, score: sc + 28, grp: G.post });
+  }
   for (const p of cat.p) {
     const sc = score(q, [p.n, p.k, p.e, p.t, COUNTRY_NAME[p.c] ?? '']);
     const ico = p.i ? `<img src="${p.i}-960.webp" alt="" loading="lazy">` : ct('地');
@@ -315,7 +378,7 @@ function renderResults() {
   const nq = norm(q);
   let html = '';
   let last = '';
-  const order = [G.dest, G.spot, G.food, G.theme, G.trip, G.tool];
+  const order = [G.post, G.dest, G.spot, G.food, G.theme, G.trip, G.tool];
   hits.sort((a, b) => order.indexOf(a.grp) - order.indexOf(b.grp) || b.score - a.score);
   hits.forEach((h, i) => {
     if (h.grp !== last) {

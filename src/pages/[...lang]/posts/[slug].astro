@@ -1,0 +1,704 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { allPosts, POST_CATEGORIES, relatedPosts, type PostView } from '../../../lib/posts';
+import { allPlaces } from '../../../lib/world';
+import { LANGS, L, t, runLang } from '../../../lib/i18n';
+import type { CountrySlug } from '../../../lib/countries';
+
+export function getStaticPaths() {
+  const posts = runLang('zh', () => allPosts());
+  return LANGS.flatMap((l) =>
+    posts.map((p) => ({
+      params: { lang: l === 'zh' ? undefined : l, slug: p.slug },
+    })),
+  );
+}
+
+const slug = Astro.params.slug!;
+const post = allPosts().find((p) => p.slug === slug) as PostView;
+const related = relatedPosts(post, 3);
+const catInfo = POST_CATEGORIES[post.category];
+const countryLabel: Record<CountrySlug, string> = {
+  japan: t('日本'),
+  australia: t('澳大利亚'),
+  usa: t('美国'),
+};
+
+// Build lookup map of existing spots & foods so inline step `spotRefs` link directly to PlacePage + Add-to-Trip stamp button!
+const places = allPlaces();
+interface RefTarget { item: string; name: string; href: string; sub: string; img: string | null }
+const refMap = new Map<string, RefTarget>();
+for (const pl of places) {
+  for (const sp of pl.spots) {
+    refMap.set(sp.item, { item: sp.item, name: sp.name, href: `${pl.href}#spot-${sp.id}`, sub: `${pl.name} · ${sp.time}`, img: sp.img });
+  }
+  for (const fd of pl.foods) {
+    refMap.set(fd.item, { item: fd.item, name: fd.name, href: `${pl.href}#food-${fd.id}`, sub: `${pl.name} · ${fd.where}`, img: fd.img });
+  }
+}
+
+const resolveRef = (k: string): RefTarget | undefined =>
+  refMap.get(k) ?? refMap.get(`s:${k}`) ?? refMap.get(`f:${k}`);
+
+const allRefItems = [...new Set(post.steps.flatMap((s) => s.spotRefs ?? []))]
+  .map((k) => resolveRef(k))
+  .filter((x): x is RefTarget => !!x);
+
+const galleryJson = JSON.stringify(
+  post.gallery.map((g) => ({
+    src: `${g.prefix}-${g.widths[1]}.webp`,
+    caption: g.caption,
+    alt: g.alt,
+  })),
+);
+const photoIndexOf = (id: string) => post.gallery.findIndex((g) => g.id === id);
+---
+<Base
+  title={post.title}
+  description={post.excerpt}
+  image={post.coverImg ? `${post.coverImg.prefix}-1920.webp` : undefined}
+  nav={post.country}
+>
+  <article class="wrap post-page" data-post-article data-slug={post.slug}>
+    <header class="pp-header">
+      <nav class="pp-crumbs" aria-label={t('位置')}>
+        <a href={L('/')}>{t('攻略广场')}</a>
+        <span>/</span>
+        <a href={L(`/${post.country}/`)}>{countryLabel[post.country]}</a>
+        <span>/</span>
+        <span class="pp-cat" style={`--dot:${catInfo.tone}`}><i></i>{post.categoryLabel}</span>
+      </nav>
+
+      <h1>{post.title}</h1>
+      <p class="pp-sub">{post.subtitle}</p>
+
+      <div class="pp-byline">
+        <div class="pp-author">
+          <span class="pc-avatar" style={`--av:${post.author.tone}`} aria-hidden="true">{post.author.avatar}</span>
+          <div>
+            <div class="pp-aname">
+              <b>{post.author.name}</b>
+              <span>{post.author.handle}</span>
+            </div>
+            <small>{post.author.role} · {t('发布于 {date}', { date: post.date })} · {t('核验 {date}', { date: post.checked })}</small>
+          </div>
+        </div>
+        <div class="pp-actions no-print">
+          <button type="button" class="btn sm" data-save-single={post.slug} aria-pressed="false">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3.5h10a1 1 0 0 1 1 1v12.8l-6-3.7-6 3.7V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg>
+            <span data-save-lbl>{t('收藏帖子')}</span>
+          </button>
+          <button type="button" class="btn sm ghost" data-share-post>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M13 6.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM5 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM13 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM7.2 8.8l3.6-2.1M7.2 11.2l3.6 2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            <span>{t('复制链接')}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pp-meta-grid">
+        <div><small>{t('建议天数')}</small><b>{post.meta.days}</b></div>
+        <div><small>{t('实测预算')}</small><b>{post.meta.budget}</b></div>
+        <div><small>{t('推荐季节')}</small><b>{post.meta.season}</b></div>
+        <div><small>{t('行程节奏')}</small><b>{post.meta.pace}</b></div>
+        <div><small>{t('适合人群')}</small><b>{post.meta.audience}</b></div>
+      </div>
+    </header>
+
+    {post.coverImg && (
+      <figure class="pp-hero">
+        <button type="button" class="pp-photo-btn" data-lb-open={photoIndexOf('cover')} aria-label={t('查看大图')}>
+          <img
+            class="vt-hero-img"
+            src={`${post.coverImg.prefix}-1920.webp`}
+            srcset={`${post.coverImg.prefix}-960.webp 960w, ${post.coverImg.prefix}-1920.webp 1920w`}
+            sizes="(max-width: 900px) 100vw, 1140px"
+            alt={post.coverImg.alt}
+            width="1920"
+            height="1280"
+            fetchpriority="high"
+          />
+          <span class="pp-zoom-hint">{t('全篇 {n} 张配图 · 点击放大', { n: post.photoCount })}</span>
+        </button>
+        <figcaption>{post.coverImg.caption}</figcaption>
+      </figure>
+    )}
+
+    <div class="pp-layout">
+      <div class="pp-body">
+        <section class="pp-lead prose">
+          {post.lead.map((para) => <p>{para}</p>)}
+        </section>
+
+        <section class="pp-tldr" id="highlights">
+          <div class="pp-tldr-hd">
+            <span class="eyebrow">KEY TAKEAWAYS</span>
+            <h2>{t('先看结论：这篇攻略帮你省下的坑')}</h2>
+          </div>
+          <ul>
+            {post.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </section>
+
+        <div class="pp-steps" id="walkthrough">
+          <div class="pp-sec-hd">
+            <span class="eyebrow">STEP-BY-STEP WALKTHROUGH</span>
+            <h2>{t('一步一步实操路线（共 {n} 步）', { n: post.steps.length })}</h2>
+          </div>
+
+          {post.steps.map((step, i) => {
+            const ph = post.stepPhotos[step.id];
+            const lbIdx = ph ? photoIndexOf(ph.id) : -1;
+            const refs = (step.spotRefs ?? []).map((k) => resolveRef(k)).filter((x): x is RefTarget => !!x);
+            return (
+              <section class="step-card" id={`post-step-${step.id}`}>
+                <div class="step-top">
+                  <span class="step-num">{String(i + 1).padStart(2, '0')}</span>
+                  <div class="step-titles">
+                    <p class="step-phase">{step.phase}</p>
+                    <h3>{step.title}</h3>
+                  </div>
+                </div>
+
+                <div class="step-facts">
+                  <span>📍 {step.location}</span>
+                  {step.duration && <span>⏱ {step.duration}</span>}
+                  {step.cost && <span>💰 {step.cost}</span>}
+                </div>
+
+                {ph && (
+                  <figure class="step-figure">
+                    <button type="button" class="pp-photo-btn" data-lb-open={lbIdx} aria-label={t('查看大图')}>
+                      <img
+                        src={`${ph.prefix}-1280.webp`}
+                        srcset={`${ph.prefix}-640.webp 640w, ${ph.prefix}-1280.webp 1280w`}
+                        sizes="(max-width: 760px) 100vw, 760px"
+                        alt={ph.alt}
+                        loading="lazy"
+                        decoding="async"
+                        width="1280"
+                        height="853"
+                      />
+                    </button>
+                    <figcaption>{ph.caption}</figcaption>
+                  </figure>
+                )}
+
+                <div class="step-prose prose">
+                  {step.paragraphs.map((para) => <p>{para}</p>)}
+                </div>
+
+                {step.tip && (
+                  <aside class="step-tip">
+                    <b>{t('实测贴士')}</b>
+                    <p>{step.tip}</p>
+                  </aside>
+                )}
+
+                {refs.length > 0 && (
+                  <div class="step-refs no-print">
+                    <span class="sr-lbl">{t('本步关联地点 · 可直接盖章加入行程')}</span>
+                    <div class="sr-list">
+                      {refs.map((r) => (
+                        <div class="sr-item">
+                          <a href={L(r.href)}>
+                            <b>{r.name}</b>
+                            <small>{r.sub}</small>
+                          </a>
+                          <button type="button" class="add" data-add={r.item} data-name={r.name} aria-pressed="false">
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                            <span data-label>{t('加入行程')}</span>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </div>
+
+        <section class="pp-block" id="budget">
+          <div class="pp-sec-hd">
+            <span class="eyebrow">REAL COST BREAKDOWN</span>
+            <h2>{t('实测花费参考明细')}</h2>
+          </div>
+          <div class="budget-table-wrap">
+            <table class="budget-tbl">
+              <thead>
+                <tr>
+                  <th>{t('项目')}</th>
+                  <th>{t('说明')}</th>
+                  <th>{t('参考金额')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {post.budgetBreakdown.map((row) => (
+                  <tr>
+                    <td><b>{row.item}</b></td>
+                    <td>{row.detail}</td>
+                    <td class="bt-amt">{row.amount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pp-block" id="pitfalls">
+          <div class="pp-sec-hd">
+            <span class="eyebrow">AVOID THESE TRAPS</span>
+            <h2>{t('行前与现场高频避坑清单')}</h2>
+          </div>
+          <ul class="pitfall-list">
+            {post.pitfalls.map((p) => <li>{p}</li>)}
+          </ul>
+        </section>
+
+        <section class="pp-sources" id="sources">
+          <h3>{t('参考来源与实景配图说明（核验：{date}）', { date: post.checked })}</h3>
+          <ul>
+            {post.sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener nofollow">{s.title}</a>
+                {s.platform && <span>{s.platform}</span>}
+              </li>
+            ))}
+          </ul>
+          <p class="pp-ai-note">{t('本文综合国内外真实游记与官方信息交叉核验后原创撰写；所有插图均为 AI 按实景场景生成，仅作行程参考，票价与班次请以出发前官方公告为准。')}</p>
+        </section>
+      </div>
+
+      <aside class="pp-side no-print">
+        <div class="side-sticky">
+          <nav class="pp-toc" aria-label={t('步骤导航')}>
+            <div class="pp-toc-hd">
+              <b>{t('分步目录')}</b>
+              <span>{t('约 {n} 分钟', { n: post.readMinutes })}</span>
+            </div>
+            <ol>
+              {post.steps.map((s, i) => (
+                <li>
+                  <a href={`#post-step-${s.id}`} data-toc-link>
+                    <span>{String(i + 1).padStart(2, '0')}</span>
+                    <b>{s.title}</b>
+                  </a>
+                </li>
+              ))}
+            </ol>
+            <div class="pp-toc-extra">
+              <a href="#budget">{t('实测花费明细')}</a>
+              <a href="#pitfalls">{t('避坑清单')}</a>
+              <a href="#sources">{t('参考来源')}</a>
+            </div>
+          </nav>
+
+          {allRefItems.length > 0 && (
+            <div class="side-box">
+              <h3 class="side-title">{t('文中提及景点与美食')}</h3>
+              <ul class="pp-ref-rail">
+                {allRefItems.slice(0, 6).map((r) => (
+                  <li>
+                    <a href={L(r.href)}>{r.name}</a>
+                    <button type="button" class="add" data-add={r.item} data-name={r.name} aria-pressed="false" aria-label={t('把{name}加入行程', { name: r.name })}>
+                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <a class="btn sm primary" href={L('/plan/')}>{t('打开我的行程集章本 →')}</a>
+            </div>
+          )}
+
+          <div class="side-box">
+            <h3 class="side-title">{t('帖子标签')}</h3>
+            <div class="pp-tags">
+              {post.tags.map((tg) => <span class="tag">#{tg}</span>)}
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="pp-related">
+        <div class="section-hd">
+          <div>
+            <p class="eyebrow">KEEP BROWSING</p>
+            <h2>{t('相关实测攻略继续刷')}</h2>
+          </div>
+          <a class="more" href={L(`/${post.country}/`)}>{t('看更多{name}帖子 →', { name: countryLabel[post.country] })}</a>
+        </div>
+        <div class="grid g-3">
+          {related.map((r) => (
+            <a class="place" href={L(r.href)}>
+              <div class="plate-hd">
+                <span>{r.date} · {r.author.name}</span>
+                <b>{t('{n} 图', { n: r.photoCount })}</b>
+              </div>
+              <div class="pic">
+                {r.coverImg && (
+                  <img
+                    src={`${r.coverImg.prefix}-960.webp`}
+                    alt={r.coverImg.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="960"
+                    height="640"
+                    data-vt-img
+                  />
+                )}
+              </div>
+              <div class="body">
+                <h3>{r.title}</h3>
+                <p>{r.excerpt}</p>
+                <p class="plate-ft">{r.meta.days} · {r.meta.budget}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <dialog class="lb-dlg" id="post-lightbox" aria-label={t('图片预览')} data-gallery={galleryJson}>
+    <div class="lb-box">
+      <div class="lb-top">
+        <span data-lb-counter>1 / {post.photoCount}</span>
+        <button type="button" class="lb-close" data-lb-close aria-label={t('关闭')}>✕</button>
+      </div>
+      <div class="lb-stage">
+        <button type="button" class="lb-nav lb-prev" data-lb-prev aria-label={t('上一张')}>‹</button>
+        <img data-lb-img alt="" />
+        <button type="button" class="lb-nav lb-next" data-lb-next aria-label={t('下一张')}>›</button>
+      </div>
+      <p class="lb-cap" data-lb-cap></p>
+    </div>
+  </dialog>
+</Base>
+
+<style is:global>
+  .post-page { padding-top: 26px; padding-bottom: 20px; }
+  .pp-header { max-width: 920px; display: grid; gap: 14px; }
+  .pp-crumbs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--mut); }
+  .pp-crumbs a:hover { color: var(--indigo); text-decoration: underline; }
+  .pp-cat {
+    display: inline-flex; align-items: center; gap: 5px; font-weight: 600; font-size: 12px;
+    padding: 2px 8px; border-radius: var(--r-xs);
+    background: color-mix(in srgb, var(--dot) 14%, var(--card));
+    color: color-mix(in srgb, var(--dot) 78%, var(--ink));
+  }
+  .pp-cat i { width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  .pp-header h1 { font-size: clamp(26px, 3.8vw, 40px); line-height: 1.28; letter-spacing: .01em; }
+  .pp-sub { font-size: clamp(15px, 1.7vw, 17.5px); color: var(--ink-2); line-height: 1.65; }
+
+  .pp-byline {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .pp-author { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .pp-author .pc-avatar {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    background: var(--av, var(--indigo)); color: #faf8f3;
+    display: grid; place-items: center; font: 700 16px var(--serif);
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, #fff 24%, transparent);
+  }
+  .pp-aname { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+  .pp-aname span { font: 500 12.5px var(--mono); color: var(--mut); }
+  .pp-author small { display: block; font-size: 12.5px; color: var(--mut); margin-top: 2px; }
+  .pp-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pp-actions [data-save-single][aria-pressed="true"] {
+    background: var(--vermilion-bg); border-color: var(--vermilion); color: var(--vermilion);
+  }
+  .pp-actions [data-save-single][aria-pressed="true"] svg { fill: currentColor; }
+
+  .pp-meta-grid {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px;
+    padding: 14px 16px; border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line);
+  }
+  .pp-meta-grid small { display: block; font-size: 11.5px; color: var(--mut); margin-bottom: 3px; }
+  .pp-meta-grid b { display: block; font-size: 13.5px; color: var(--ink); line-height: 1.4; }
+
+  .pp-hero { margin: 22px 0 30px; }
+  .pp-photo-btn {
+    position: relative; display: block; width: 100%; padding: 0; border: 0; background: var(--paper-2);
+    border-radius: var(--r-lg); overflow: hidden; cursor: zoom-in; text-align: left;
+  }
+  .pp-hero img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform 420ms var(--ease-out); }
+  .pp-photo-btn:hover img { transform: scale(1.018); }
+  .pp-zoom-hint {
+    position: absolute; right: 14px; bottom: 14px; padding: 6px 12px; border-radius: var(--r-sm);
+    background: rgba(17, 20, 24, .72); color: #faf8f3; backdrop-filter: blur(6px);
+    font-size: 12px; font-weight: 600;
+  }
+  .pp-hero figcaption, .step-figure figcaption {
+    margin-top: 9px; font-size: 13px; color: var(--mut); line-height: 1.6;
+    padding-left: 10px; border-left: 2px solid var(--line-2);
+  }
+
+  .pp-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 38px; align-items: start; }
+  .pp-body { min-width: 0; display: grid; gap: 28px; }
+  .pp-lead p { font-size: 16.5px; line-height: 1.92; color: var(--ink); }
+
+  .pp-tldr {
+    padding: 20px 22px; border-radius: var(--r-lg); background: var(--card);
+    border: 1px solid var(--line); border-left: 4px solid var(--vermilion);
+    display: grid; gap: 12px;
+  }
+  .pp-tldr-hd h2 { font-size: 20px; margin-top: 4px; }
+  .pp-tldr ul { margin: 0; padding-left: 18px; display: grid; gap: 9px; }
+  .pp-tldr li { font-size: 14.5px; color: var(--ink-2); line-height: 1.72; }
+
+  .pp-sec-hd { display: grid; gap: 5px; margin-bottom: 14px; }
+  .pp-sec-hd h2 { font-size: clamp(21px, 2.5vw, 26px); }
+
+  .pp-steps { display: grid; gap: 24px; }
+  .step-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 22px 24px; display: grid; gap: 14px;
+    scroll-margin-top: calc(var(--hdr) + 18px);
+  }
+  .step-top { display: flex; align-items: flex-start; gap: 14px; }
+  .step-num {
+    width: 38px; height: 38px; border-radius: var(--r-sm); flex-shrink: 0;
+    background: var(--indigo); color: var(--on-ink);
+    display: grid; place-items: center; font: 700 15px/1 var(--mono);
+  }
+  .step-phase { font: 600 12px/1.3 var(--mono); color: var(--vermilion); letter-spacing: .04em; margin-bottom: 4px; }
+  .step-titles h3 { font-size: clamp(18.5px, 2.2vw, 22px); line-height: 1.38; color: var(--ink); }
+
+  .step-facts {
+    display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 9px 12px;
+    border-radius: var(--r-sm); background: var(--paper); border: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-2);
+  }
+  .step-figure { margin: 2px 0; }
+  .step-figure .pp-photo-btn { border-radius: var(--r); }
+  .step-figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform 420ms var(--ease-out); }
+
+  .step-prose p { font-size: 15.8px; line-height: 1.9; color: var(--ink); }
+  .step-tip {
+    padding: 13px 16px; border-radius: var(--r-sm); background: var(--tip-bg);
+    border-left: 3px solid var(--vermilion); display: grid; gap: 4px;
+  }
+  .step-tip b { font-size: 13px; color: var(--vermilion); letter-spacing: .04em; }
+  .step-tip p { font-size: 14px; color: var(--ink-2); line-height: 1.72; }
+
+  .step-refs {
+    padding-top: 12px; border-top: 1px dashed var(--line); display: grid; gap: 8px;
+  }
+  .sr-lbl { font-size: 12px; color: var(--mut); font-weight: 600; }
+  .sr-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+  .sr-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 8px 11px; border-radius: var(--r-sm); background: var(--paper); border: 1px solid var(--line);
+  }
+  .sr-item a { min-width: 0; }
+  .sr-item a b { display: block; font-size: 13.5px; color: var(--ink); }
+  .sr-item a:hover b { color: var(--indigo); text-decoration: underline; }
+  .sr-item a small { display: block; font-size: 11.5px; color: var(--mut); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .pp-block { scroll-margin-top: calc(var(--hdr) + 18px); }
+  .budget-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--card); }
+  .budget-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .budget-tbl th, .budget-tbl td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .budget-tbl th { font-size: 12px; font-weight: 600; color: var(--mut); background: var(--paper); text-transform: uppercase; letter-spacing: .06em; }
+  .budget-tbl tr:last-child td { border-bottom: 0; }
+  .budget-tbl td { color: var(--ink-2); }
+  .budget-tbl td b { color: var(--ink); }
+  .bt-amt { font: 600 13.5px var(--mono); color: var(--vermilion) !important; white-space: nowrap; }
+
+  .pitfall-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .pitfall-list li {
+    position: relative; padding: 13px 16px 13px 42px; border-radius: var(--r);
+    background: var(--card); border: 1px solid var(--line); font-size: 14.5px; color: var(--ink-2); line-height: 1.72;
+  }
+  .pitfall-list li::before {
+    content: "!"; position: absolute; left: 14px; top: 15px; width: 19px; height: 19px;
+    border-radius: var(--r-xs); background: var(--vermilion); color: #faf8f3;
+    font: 700 12px/19px var(--mono); text-align: center;
+  }
+
+  .pp-sources {
+    padding: 18px 20px; border-radius: var(--r-lg); background: var(--paper-2);
+    border: 1px solid var(--line); display: grid; gap: 10px; scroll-margin-top: calc(var(--hdr) + 18px);
+  }
+  .pp-sources h3 { font-size: 15px; color: var(--ink); }
+  .pp-sources ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 13.5px; }
+  .pp-sources li a { color: var(--indigo); text-decoration: underline; text-decoration-color: var(--line-2); }
+  .pp-sources li span { margin-left: 8px; font-size: 11.5px; color: var(--mut); background: var(--card); padding: 1px 6px; border-radius: var(--r-xs); border: 1px solid var(--line); }
+  .pp-ai-note { font-size: 12.5px; color: var(--mut); line-height: 1.65; }
+
+  /* Sticky reading sidebar */
+  .pp-side .side-sticky { position: sticky; top: calc(var(--hdr) + 18px); display: grid; gap: 16px; }
+  .pp-toc {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 16px; display: grid; gap: 10px;
+  }
+  .pp-toc-hd { display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .pp-toc-hd span { font: 500 12px var(--mono); color: var(--mut); }
+  .pp-toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .pp-toc li a {
+    display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: start;
+    padding: 6px 8px; border-radius: var(--r-xs); font-size: 12.5px; color: var(--ink-2);
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .pp-toc li a span { font: 700 11px/1.4 var(--mono); color: var(--mut); }
+  .pp-toc li a b { font-weight: 500; line-height: 1.45; }
+  .pp-toc li a:hover, .pp-toc li a.cur { background: var(--indigo-bg); color: var(--indigo); }
+  .pp-toc li a.cur span { color: var(--indigo); }
+  .pp-toc-extra {
+    display: flex; flex-wrap: wrap; gap: 6px; padding-top: 8px; border-top: 1px solid var(--line);
+  }
+  .pp-toc-extra a { font-size: 12px; color: var(--mut); padding: 3px 8px; border-radius: var(--r-xs); background: var(--paper); border: 1px solid var(--line); }
+  .pp-toc-extra a:hover { color: var(--indigo); border-color: var(--indigo); }
+
+  .pp-ref-rail { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .pp-ref-rail li {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13.5px;
+  }
+  .pp-ref-rail li:last-child { border-bottom: 0; }
+  .pp-ref-rail a { font-weight: 500; color: var(--ink); }
+  .pp-ref-rail a:hover { color: var(--indigo); }
+  .pp-ref-rail .add { width: 28px; height: 28px; padding: 0; justify-content: center; flex-shrink: 0; }
+  .pp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .pp-related { margin-top: 48px; }
+
+  /* Photo Lightbox */
+  .lb-dlg {
+    border: 0; padding: 0; background: transparent; max-width: min(1080px, calc(100vw - 24px)); width: 100%;
+    margin: auto; overflow: visible;
+  }
+  .lb-dlg::backdrop { background: rgba(10, 12, 16, .86); backdrop-filter: blur(6px); }
+  .lb-box {
+    background: #14181e; color: #ece8df; border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: var(--r-lg); padding: 14px; display: grid; gap: 10px; box-shadow: 0 24px 70px rgba(0, 0, 0, .6);
+  }
+  .lb-top { display: flex; align-items: center; justify-content: space-between; font: 600 13px var(--mono); color: #a7abb4; padding: 0 4px; }
+  .lb-close {
+    width: 32px; height: 32px; border-radius: var(--r-sm); border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .06); color: #ece8df; cursor: pointer;
+  }
+  .lb-stage { position: relative; display: grid; place-items: center; min-height: 240px; }
+  .lb-stage img { max-height: 74vh; width: auto; max-width: 100%; border-radius: var(--r-sm); object-fit: contain; }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px;
+    border-radius: 50%; border: 1px solid rgba(255, 255, 255, .24); background: rgba(17, 20, 24, .7);
+    color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+  }
+  .lb-prev { left: 10px; }
+  .lb-next { right: 10px; }
+  .lb-cap { font-size: 13.5px; color: #d1cdc4; line-height: 1.6; padding: 2px 6px; }
+
+  @media (max-width: 980px) {
+    .pp-meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pp-layout { grid-template-columns: 1fr; }
+    .pp-side { order: -1; }
+    .pp-side .side-sticky { position: static; }
+  }
+  @media (max-width: 640px) {
+    .step-card { padding: 16px 15px; }
+    .pp-meta-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+  }
+</style>
+
+<script>
+  import { ct } from '../../../scripts/i18n';
+
+  const SAVE_KEY = 'cbt.saved-posts.v1';
+  const loadSaved = (): Set<string> => {
+    try { return new Set(JSON.parse(localStorage.getItem(SAVE_KEY) || '[]') as string[]); }
+    catch { return new Set(); }
+  };
+  const writeSaved = (set: Set<string>) => {
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify([...set])); } catch { /* private mode */ }
+  };
+
+  const saveBtn = document.querySelector<HTMLButtonElement>('[data-save-single]');
+  if (saveBtn) {
+    const slug = saveBtn.dataset.saveSingle!;
+    const lbl = saveBtn.querySelector<HTMLElement>('[data-save-lbl]');
+    const paint = () => {
+      const on = loadSaved().has(slug);
+      saveBtn.setAttribute('aria-pressed', String(on));
+      if (lbl) lbl.textContent = on ? ct('已收藏') : ct('收藏帖子');
+    };
+    paint();
+    window.addEventListener('storage', (e) => { if (!e.key || e.key === SAVE_KEY) paint(); });
+    window.addEventListener('pageshow', paint);
+    saveBtn.addEventListener('click', () => {
+      const s = loadSaved();
+      if (s.has(slug)) s.delete(slug);
+      else s.add(slug);
+      writeSaved(s);
+      paint();
+    });
+  }
+
+  const shareBtn = document.querySelector<HTMLButtonElement>('[data-share-post]');
+  shareBtn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      (window as unknown as { cbtToast?: (h: string) => void }).cbtToast?.(ct('已复制攻略链接'));
+    } catch { /* fallback */ }
+  });
+
+  // Step TOC active highlight (use getElementById so numeric/custom step IDs never break selector syntax)
+  const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')];
+  const targets = tocLinks
+    .map((a) => {
+      const href = a.getAttribute('href') || '';
+      return href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
+    })
+    .filter((el): el is HTMLElement => !!el);
+  if ('IntersectionObserver' in window && targets.length) {
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => {
+        if (e.isIntersecting) {
+          tocLinks.forEach((a) => a.classList.toggle('cur', a.getAttribute('href') === '#' + e.target.id));
+        }
+      }),
+      { rootMargin: '-20% 0px -65% 0px' },
+    );
+    targets.forEach((el) => io.observe(el));
+  }
+
+  // Lightbox
+  const dlg = document.getElementById('post-lightbox') as HTMLDialogElement | null;
+  if (dlg) {
+    const photos = JSON.parse(dlg.dataset.gallery || '[]') as { src: string; caption: string; alt: string }[];
+    const imgEl = dlg.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const capEl = dlg.querySelector<HTMLElement>('[data-lb-cap]')!;
+    const cntEl = dlg.querySelector<HTMLElement>('[data-lb-counter]')!;
+    let cur = 0;
+
+    const show = (idx: number) => {
+      if (!photos.length) return;
+      cur = (idx + photos.length) % photos.length;
+      imgEl.src = photos[cur].src;
+      imgEl.alt = photos[cur].alt;
+      capEl.textContent = photos[cur].caption;
+      cntEl.textContent = `${cur + 1} / ${photos.length}`;
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('[data-lb-open]').forEach((b) =>
+      b.addEventListener('click', () => {
+        const idx = Number(b.dataset.lbOpen);
+        if (idx >= 0) {
+          show(idx);
+          if (!dlg.open) dlg.showModal();
+        }
+      }),
+    );
+    dlg.querySelector('[data-lb-close]')?.addEventListener('click', () => dlg.close());
+    dlg.querySelector('[data-lb-prev]')?.addEventListener('click', () => show(cur - 1));
+    dlg.querySelector('[data-lb-next]')?.addEventListener('click', () => show(cur + 1));
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      else if (e.key === 'ArrowRight') show(cur + 1);
+    });
+  }
+</script>

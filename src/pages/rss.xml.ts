@@ -8,7 +8,7 @@ function xml(text: string): string {
 }
 
 export function GET({ site }: { site: URL }) {
-  const link = xml(new URL('/posts/', site).href);
+  const link = xml(new URL('/', site).href);
   const items = runLang('zh', () => allPosts().map((post) => {
     const url = xml(new URL(post.href, site).href);
     return `    <item>
@@ -23,9 +23,9 @@ export function GET({ site }: { site: URL }) {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>栖云旅行 · 游记</title>
+    <title>栖云旅行 · 真实旅行攻略</title>
     <link>${link}</link>
-    <description>栖云旅行的路线、攻略与旅行见闻</description>
+    <description>栖云旅行的实测攻略、分步路线与避坑清单</description>
     <language>zh-cn</language>
     <atom:link href="${xml(new URL('/rss.xml', site).href)}" rel="self" type="application/rss+xml"/>
 ${items.join('\n')}

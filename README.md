@@ -1,11 +1,13 @@
 # 栖云旅行 · travel.cloudborne.cn
 
-Cloudborne 栖云的旅行指南，覆盖日本（47 个都道府县）、澳大利亚（8 个州和领地）、美国（15 个热门州）：原创攻略、互动地图（景点悬停看图）、写实风格配图、每月天气表、行程模板、一分钟生成攻略（选择题）、行程规划（拖拽排天、一键排顺序、路线图、分享链接和长图）、预算计算（汇率每天更新）、出行须知和离线随身工具。中文、English（`/en/`）、日本語（`/ja/`）三种语言。纯静态站（Astro 7），不登录、无后端、无数据库；用户数据只存在浏览器 localStorage。瑞士地图典藏馆浅色纸感主题。
+Cloudborne 栖云的真实攻略社区与旅行指南，覆盖日本（47 个都道府县）、澳大利亚（8 个州和领地）、美国（15 个热门州）：社交论坛式攻略信息流（多图、分步、含实测花费与避坑清单，支持国家/板块/标签/收藏筛选、文内一键加入行程与全屏灯箱）、每日自动调研/写作/生图/翻译流水线、自主切换明暗主题（浅色/深色/跟随系统），以及原有的互动地图、写实风格配图、每月天气表、行程模板、一分钟生成攻略、行程规划、预算计算与离线随身工具。中文、English（`/en/`）、日本語（`/ja/`）三种语言。纯静态站（Astro 7），不登录、无后端、无数据库；用户数据只存在浏览器 localStorage。
 
 ## 目录
 
 | 路径 | 内容 |
 | --- | --- |
+| `src/data/posts/*.json` | 真实感分步多图攻略帖（路线实录/避坑指南/美食探店/当季实况/交通住宿/预算复盘）。格式见 `POST-SCHEMA.md` |
+| `src/data/post-photo-index.json` | 已生成的攻略帖配图清单（`npm run photos` 按 `public/img/posts/` 重建，构建时自动跑） |
 | `src/data/japan/prefectures/*.json` | 47 个县的正文、景点（含坐标）、美食、交通、提醒、来源。格式见 `CONTENT-SCHEMA.md` |
 | `src/data/{australia,usa}/states/*.json` | 澳大利亚、美国各州，含每个景点/美食的英文 `photo` 描述和州封面 `cover.scene`（生图用）。格式见 `CONTENT-SCHEMA-AU-US.md` |
 | `src/data/{australia,usa}/trips/*.json`、`guide.json` | 行程模板；出行须知（签证、入境、小费、自驾、紧急电话、使领馆、预算档位） |
@@ -48,6 +50,9 @@ npm run i18n -- extract                 # 收集代码里 t('…') / ct('…') �
 npm run i18n -- translate --lang en     # 只翻新增或改过的正文和界面文字（ja 同理）
 npm run i18n -- check                   # 列出还没翻译的部分
 npm run i18n -- prune                   # 删掉不再用到的旧译文
+npm run post:research -- --count 2 --country japan   # 仅调研公开旅游攻略线索并去重
+npm run post:auto -- --count 1 --country auto --translate   # 调研 → 原创分步写作 → AI 生图转 WebP → 校验 → 英日翻译
+npm run post:images                     # 将 art-src/posts/ 下的手工原图转为双尺寸 WebP 并刷新索引
 ```
 
 ## 插画与照片
@@ -71,6 +76,8 @@ npm run i18n -- prune                   # 删掉不再用到的旧译文
 
 ## 本地数据（localStorage）
 
+- `cbt-theme`：用户手动选择的明暗主题（`light` / `dark`；未设置时跟随系统 `prefers-color-scheme`）。
+- `cbt.saved-posts.v1`：本地收藏的攻略帖 slug 列表。
 - `cbt.trip.v1`：行程（天数组、待安排、标题、出发日）。条目键 `s:<地点>/<id>`、`f:<地点>/<id>`，日本地点是县 slug（`kyoto`），澳美加前缀（`au.victoria`、`us.utah`），见 `src/lib/keys.ts`。分享链接把它 deflate + base64url 放在 `/plan/#t=…`，服务器不接收。
 - `cbt-lang`：选过的界面语言。`cbt.budget.v1`：预算输入（含所选国家）。`cbt.checklist.v1`：清单勾选。`cbt.phrases.fav`：日语卡收藏。
 
@@ -80,7 +87,7 @@ npm run i18n -- prune                   # 删掉不再用到的旧译文
 
 ## 部署
 
-公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效；每天北京时间 06:17 自动重建一次（更新汇率和当季推荐）。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
+公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效；每天北京时间 06:00 由 `.github/workflows/daily-posts.yml` 自动调研、写作、AI 生图、三语翻译并提交新攻略帖（需在仓库 Secrets 配置 `CBT_API_KEY`，可选配置 `TAVILY_API_KEY` / `SERPER_API_KEY` / `BRAVE_API_KEY` 扩展中文社媒检索），随后 06:17 的 `pages.yml` 自动重建上线（同步更新汇率和当季推荐）。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
 
 **国内线路**（2026-11-24 起）：DNSPod `travel` 分线路解析——「境内」CNAME → `travel.cloudborne.cn.eo.dnse0.com.`（腾讯云 EdgeOne 个人版，站点 `zone-3xsll1v25wlu`，加速区域中国大陆，免费证书由 EdgeOne 自动续期），「默认」继续 → GitHub Pages。EdgeOne 回源到广州服务器（`175.178.188.85`，nginx `sites-available/cloudborne-travel.conf`，文件在 `/srv/travel/current` → `releases/<时间>`，保留最近 5 版）。同一个工作流的 `mirror` 任务把构建产物 rsync 到广州并 `publish`；仓库 secret `GZ_DEPLOY_KEY` 只能写 `/srv/travel/stage` 和执行 `publish`（服务器 `/usr/local/sbin/cbt-deploy` 强制命令）。缓存跟随源站：页面 `no-cache`，`/_astro/` 一年，`/img/` 七天；改了图片要在 EdgeOne 刷新 `/img/` 目录。页脚备案号 粤ICP备2026056740号-1。
 

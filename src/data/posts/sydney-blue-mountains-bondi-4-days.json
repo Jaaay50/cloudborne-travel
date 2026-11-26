@@ -1,0 +1,172 @@
+{
+  "slug": "sydney-blue-mountains-bondi-4-days",
+  "country": "australia",
+  "places": ["au.new-south-wales"],
+  "category": "transport",
+  "date": "2026-11-17",
+  "checked": "2026-11",
+  "featured": false,
+  "title": "悉尼 4 天 3 晚刷手机畅行攻略：巧用周日 Opal 封顶去蓝山、走通邦迪 6 公里悬崖海景步道",
+  "subtitle": "完全不用买实体交通卡！Apple Pay 直接刷火车渡轮享全天封顶，顺手排好歌剧院夕阳、蓝山三姐妹与鱼市早午餐",
+  "excerpt": "在悉尼自由行交通爽到飞起——手机绑定 Visa/Mastercard 直接进出站刷闸机，把最远的蓝山和跨海渡轮塞进周日，全天交通封顶不到十澳元！这份 4 天 3 晚实测涵盖交通省钱技巧、邦迪到库吉悬崖步走与 Surry Hills 必吃松饼。",
+  "author": {
+    "id": "chenmi",
+    "name": "陈米",
+    "handle": "@chenmi_eats",
+    "role": "城市漫步与食录 · 南半球常客",
+    "avatar": "米",
+    "tone": "#0369a1"
+  },
+  "meta": {
+    "days": "4 天 3 晚",
+    "budget": "人均 ¥4,600（不含国际机票）",
+    "season": "10 月 – 次年 4 月（蓝花楹/晴朗海滩季）",
+    "pace": "纯公交渡轮步行 · 极松弛海港城市感",
+    "audience": "首次赴澳 / 不自驾城市与海岸控"
+  },
+  "tags": ["悉尼自由行", "Opal卡刷手机", "周日交通封顶", "蓝山国家公园", "邦迪海岸步道", "SurryHills美食"],
+  "cover": {
+    "id": "cover",
+    "scene": "Iconic Bondi Icebergs ocean rock pool in Sydney with dramatic white Pacific surf crashing over the turquoise lap pool edge at sunlit morning, golden sandy beach and coastal cliffs curving into the background, editorial travel photography, no text.",
+    "caption": "阳光砸在邦迪冰山海景泳池的湛蓝池水上，太平洋浪花每隔几秒就翻过白墙拍进池里，是悉尼最让人心动的早安画面。",
+    "alt": "海浪拍打池壁的悉尼邦迪冰山海景泳池与海滩"
+  },
+  "lead": [
+    "如果要在全球挑一座最适合「完全不租车、光靠双脚和公共交通就能玩出度假天花板」的大城市，悉尼一定排进前三：火车、地铁、轻轨、海港渡轮和海滩巴士全都打通，而且早就全面支持直接拿手机里的 Apple Pay / Google Pay 或非接触 Visa/Mastercard 刷闸机，连实体 Opal 卡都不用花钱去买。",
+    "这篇 4 天 3 晚实测攻略最大的省钱巧思，就是把耗时最长的「蓝山国家公园往返火车」和「跨海渡轮」统统排在星期日——利用新州公交的「周日低价全天封顶」政策，一天坐遍山海只要不到十澳元！同时把歌剧院黄金机位、邦迪到库吉 6 公里悬崖徒步和悉尼本地人排队的早午餐一网打尽。"
+  ],
+  "highlights": [
+    "【不用买实体 Opal 卡】成人直接拿手机 Apple Pay / 芯片信用卡进站刷（Tap on）、出站刷（Tap off），费率与 Opal 成人卡完全一致，且享受同等的每日/每周封顶（注意全程固定用同一张卡/同一台设备）。",
+    "【周日神级省钱法】周五到周日享低价日封顶（周日封顶约 A$9.65 全天无限次坐火车/巴士/渡轮），把单程 2 小时的蓝山火车和去曼利海滩的渡轮全排在周日最爽！",
+    "【机场线避坑】悉尼机场火车站（Domestic/International）会加收一笔约 A$17 的「机场站台附加费」，且不计入日封顶！2–3 人同行或带大箱子，直接打 Uber 去市中心往往比每人买机场火车还便宜。",
+    "【防晒与蓝山温差】澳洲紫外线极毒，阴天也要涂 SPF50+；蓝山海拔高，气温常比悉尼市区低 6–8°C，夏天去也要带件防风薄外套。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · Day 1 落地与经典海港黄金动线",
+      "title": "岩石区鹅卵石巷起步，走通歌剧院 → 皇家植物园 → 麦考利夫人椅子看夕阳",
+      "location": "环形码头（Circular Quay）→ 岩石区 → 悉尼歌剧院 → 皇家植物园",
+      "duration": "下午至黄昏约 4 小时",
+      "cost": "全部步道免费；Opera Bar 饮品约 A$16",
+      "paragraphs": [
+        "第一天放完行李（推荐住市中心 Wynyard / Town Hall / Circular Quay 周边，去哪都方便），从环形码头西侧钻进悉尼历史起点「岩石区（The Rocks）」：砂岩老仓库、爬满绿藤的鹅卵石窄巷和周末手作市集极具英伦海港气息，顺手可以去老字号 Pancakes on the Rocks 或岩石区咖啡店垫垫肚子。",
+        "午后四点沿着海滨木栈道走到「悉尼歌剧院」近看一百万片瑞典微黄瓷砖在阳光下的质感，接着一头扎进紧邻的「皇家植物园（Royal Botanic Garden）」，沿着水岸花圃慢步 25 分钟抵达尽头的「麦考利夫人椅子（Mrs Macquaries Point）」——这里是全悉尼唯一能把歌剧院白帆与海港大桥铁拱无遮挡框进同一张夕阳明信片的绝佳机位。入夜走回歌剧院楼下的 Opera Bar 吹着海风喝一杯精酿，仪式感直接拉满。"
+      ],
+      "tip": "无论坐火车还是轮渡，记得千万「上车刷、下车刷」！如果在悉尼巴士或轻轨上忘记 Tap off，系统会直接按该路线最远距离封顶扣费。",
+      "spotRefs": ["s:au.new-south-wales/sydney-opera-house", "s:au.new-south-wales/harbour-bridge"],
+      "photo": {
+        "id": "s1",
+        "scene": "Sydney Opera House white tiled sails and Sydney Harbour Bridge glowing in warm golden twilight viewed from Mrs Macquaries Point across shimmering dark blue harbor water, crisp architectural travel photography, no text.",
+        "caption": "傍晚站在麦考利夫人角隔海远望，晚霞把悉尼歌剧院的贝壳屋顶与海港大桥染成一片流金。",
+        "alt": "暮色晚霞中的悉尼歌剧院与海港大桥全景"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · Day 2（强烈建议排在周日！）蓝山森呼吸",
+      "title": "从中央车站搭双层蓝山火车 2 小时进山，打卡三姐妹峰与 52° 矿坑小火车",
+      "location": "Central Station → Katoomba 站 → 回声角（Echo Point）→ 景观世界（Scenic World）",
+      "duration": "全天（往返火车各约 2 小时）",
+      "cost": "周日全天交通封顶约 A$9.65；景观世界通票约 A$58–65",
+      "paragraphs": [
+        "早上 08:15 左右到达中央车站（Central Station），看站台屏幕找「BMT Blue Mountains Line」开往 Katoomba / Lithgow 的双层城际火车（建议提前下好 TripView App 实时看月台），刷手机进站后直奔二层靠窗位——火车翻山越岭两小时后抵达卡通巴小镇（Katoomba）。",
+        "出站门口刷同一部手机转乘 686 路循环巴士，10 分钟即达「回声角（Echo Point）」。整片杰米逊峡谷（Jamison Valley）漫山遍野的桉树林挥发出天然桉树油薄雾，在阳光折射下呈现梦幻的淡蓝色——这就是「蓝山」名字的由来！拍完三姐妹峰奇岩，坐 686 路两站到「景观世界（Scenic World）」连刷三项硬核项目：全球最陡的 52° 红色矿坑小火车直冲谷底、走一圈原始雨林栈道，再乘透明底空中缆车横跨峡谷。"
+      ],
+      "tip": "回声角往三姐妹峰深处有段「巨人阶梯（Giant Stairway）」通向谷底，共九百多级极陡台阶，膝盖不好或时间紧张的朋友只走前两百级到蜜月桥感受一下就够，别盲目一路冲到谷底。",
+      "spotRefs": ["s:au.new-south-wales/blue-mountains"],
+      "photo": {
+        "id": "s2",
+        "scene": "Sweeping misty panorama of the Blue Mountains Jamison Valley and the Three Sisters sandstone rock formations in NSW Australia bathed in characteristic soft blue eucalyptus haze under crisp morning sunlight, landscape travel photography, no text.",
+        "caption": "晨雾与桉树挥发油给蓝山峡谷披上一层独一无二的淡蓝滤镜，坐周日封顶火车往返只要不到十澳元。",
+        "alt": "笼罩在淡蓝薄雾中的澳大利亚蓝山三姐妹峰与峡谷"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · Day 3 上午：邦迪海滩与 6 公里悬崖步道",
+      "title": "坐 333 路海滩专线直抵邦迪冰山泳池，一路向南走通世界最美城市海岸线",
+      "location": "Bondi Beach → Icebergs Pool → Tamarama → Bronte → Coogee Beach",
+      "duration": "边走边拍约 2.5–3 小时（6 公里）",
+      "cost": "步道全免费；进冰山泳池游泳/拍照约 A$9",
+      "paragraphs": [
+        "早上从环形码头直接搭 333 路巴士（或坐 T4 火车到 Bondi Junction 再无缝换 333，约 35 分钟），下车迎面就是南太平洋扑面而来的阳光、冲浪板和白浪。沿着沙滩南端走到大名鼎鼎的「邦迪冰山海景泳池（Bondi Icebergs）」，从上方观景露台就能免费俯拍海浪砸进碧蓝泳池的史诗大片；带了泳衣的话花不到 10 澳元进去游两圈更是顶级体验。",
+        "接着正式踏上「邦迪至库吉海岸步道（Bondi to Coogee Coastal Walk）」：全程 6 公里几乎沿着高耸的黄金砂岩悬崖修筑，每隔十几分钟就拐进一个气质迥异的秘密海湾——冲浪高手云集的 Tamarama、适合野餐浮潜且自带免费天然岩石海泳池的 Bronte、风景绝佳的海崖墓园 Waverley，最后在开阔的库吉海滩脱鞋踩水喝冰拿铁，坐巴士轻松回市中心。"
+      ],
+      "tip": "步道沿途几乎没有高大树荫！除了 SPF50+ 防晒霜、太阳镜和鸭舌帽，务必带上一个 500ml 水壶——每隔 1 公里就有免费直饮冰水接水柱（Water Fountain），随时可以补满。",
+      "spotRefs": ["s:au.new-south-wales/bondi-coogee-walk"],
+      "photo": {
+        "id": "s3",
+        "scene": "Sunlit coastal cliff boardwalk trail winding from Bondi to Coogee above dramatic sandstone ledges, turquoise ocean coves, and foamy swells under clear Australian summer sky, editorial travel photography, no text.",
+        "caption": "从邦迪走到库吉的 6 公里悬崖步道把悉尼最精华的海岸线串成一条线，每过一个弯角海水的蓝度都在变化。",
+        "alt": "悉尼邦迪至库吉的金色砂岩悬崖海岸木栈道"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · Day 3 傍晚：乘海港渡轮去曼利看落日",
+      "title": "别花钱买观光游船！刷公交卡坐 F1 公共渡轮去曼利海滩，30 分钟尽览海港全景",
+      "location": "环形码头 3 号船坞（Wharf 3）→ Manly Wharf",
+      "duration": "单程 30 分钟 + 曼利海滨散步 2 小时",
+      "cost": "含在每日 Opal 封顶内",
+      "paragraphs": [
+        "游客常花五六十澳元买悉尼港观光游船，其实老手全都坐环形码头 3 号船坞发车的公共「F1 曼利渡轮（Manly Ferry）」！上船直接抢船尾露天甲板座位，开船三分钟歌剧院和海港大桥就在身后徐徐展开，迎着咸湿海风穿越宽阔的海港入口，风景和观光船一模一样，票价却只是公交白菜价。",
+        "下船顺着松树林立的 The Corso 步行街 5 分钟穿过半岛就是开阔的曼利冲浪海滩，买一份炸鱼薯条坐在沙滩台阶上等夕阳，天黑后再坐返程渡轮回环形码头——船头正对着灯火璀璨的歌剧院与中央商务区天际线驶近，堪称悉尼之夜最浪漫的 30 分钟。"
+      ],
+      "tip": "在码头和海滩捧着炸鱼薯条或生蚝吃时，千万提防四周成群虎视眈眈的大海鸥！它们胆大包天会直接从你手边刁走薯条，最好背靠墙角或选有遮阳伞的座位吃。",
+      "spotRefs": ["s:au.new-south-wales/manly-ferry", "s:au.new-south-wales/sydney-opera-house"]
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · Day 4 早午餐与文青街区 Surry Hills",
+      "title": "Surry Hills 打卡世界级松饼与澳白，顺逛维多利亚女王大厦和悉尼鱼市场",
+      "location": "Surry Hills（Bills / Single O）→ 悉尼鱼市场 → QVB 维多利亚女王大厦",
+      "duration": "约 4 小时悠闲扫街",
+      "cost": "早午餐约 A$32；鱼市场生蚝拼盘约 A$30–45",
+      "paragraphs": [
+        "悉尼的咖啡和早午餐文化绝对值得专门留出一个上午。早上 08:30 搭轻轨或步行进文艺街区「Surry Hills」，去澳洲早午餐殿堂「Bills」点一份热乎松软的乳清芝士香蕉松饼（Ricotta Hotcakes）配融化的蜂巢黄油，再来一杯丝绒奶泡的澳白（Flat White）或去旁边的 Single O 尝尝精品手冲。",
+        "午间坐 L1 轻轨到「Fish Market 站」打卡南半球最大海鲜市场——悉尼鱼市场！现场挑一打鲜甜爽脆的悉尼岩牡蛎（Sydney Rock Oysters）、现剖海胆、蒜蓉芝士烤扇贝和奶油鲜虾刺身，坐在水边木桌大快朵颐。返程前顺路逛一圈百余年历史的「维多利亚女王大厦（QVB）」，彩绘玻璃穹顶和古董挂钟美得像宫殿。"
+      ],
+      "tip": "悉尼鱼市场中午 12:00–13:30 旅游团极度集中且室外抢位难，推荐上午 10:30–11:30 错峰先去吃一顿早午海鲜大餐，鲜货最齐且位置随便挑。",
+      "spotRefs": ["f:au.new-south-wales/sydney-rock-oysters", "f:au.new-south-wales/fish-market-seafood", "f:au.new-south-wales/smashed-avo"],
+      "photo": {
+        "id": "s4",
+        "scene": "Fluffy golden ricotta hotcakes stacked with sliced caramelized banana, melting honeycomb butter, and a creamy latte art flat white coffee on a bright marble cafe table in Sydney's Surry Hills in sunlit morning, 50mm food photography, no text.",
+        "caption": "在 Surry Hills 阳光洒满的转角咖啡馆里，用一盘澳洲招牌牛油果酸面包吐司配澳白开启悉尼最后一天。",
+        "alt": "悉尼咖啡馆里的澳式牛油果吐司与早午餐"
+      }
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · 离境机场省钱走法",
+      "title": "回悉尼机场怎么省掉高额站台附加费？单人 vs 多人实测对比",
+      "location": "市中心 → 悉尼国际机场（T1）",
+      "duration": "车程 20–30 分钟",
+      "cost": "单人火车约 A$21；2–3 人拼 Uber 约 A$40–55",
+      "paragraphs": [
+        "悉尼国际机场离市中心其实只有 9 公里，但如果坐 T8 机场线火车直达 International Station，因为轨道私营特许协议，每位成人会被额外扣一笔约 A$17 的站台进入费（合计单程超过 A$21，且不进日封顶）。",
+        "算账非常直观：独自轻装出行直接坐火车 15 分钟准点不堵车最稳；如果是 2–3 人结伴还拎着两三个大箱子，直接叫 Uber 或出租车从市中心直达 T1 出发层，摊下来每人只要十几澳元，省钱还免去上下站台搬箱子。离境购物满 A$300 可用澳洲 TRS 退税 App 提前录好发票，到机场快速通道退 10% GST。"
+      ],
+      "tip": "悉尼机场周日下午与工作日早高峰（07:30–09:00）去机场的高速段容易缓行，选择打车的话记得多预留 25 分钟路程缓冲。",
+      "spotRefs": ["f:au.new-south-wales/meat-pie"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "3 晚市区住宿", "detail": "CBD / 环形码头 / Surry Hills 精品酒店（双人分摊）", "amount": "约 A$390 / 人" },
+    { "item": "4 天公共交通", "detail": "刷 Apple Pay 享每日与周日低价封顶 + 机场往返", "amount": "约 A$70 / 人" },
+    { "item": "景点门票", "detail": "蓝山景观世界无限通票 + 邦迪冰山泳池（可选）", "amount": "约 A$72 / 人" },
+    { "item": "餐饮早午餐与海鲜", "detail": "Bills 早午餐、鱼市场海鲜生蚝、Opera Bar 与日常正餐", "amount": "约 A$320 / 人" },
+    { "item": "咖啡与零食杂项", "detail": "每日 1–2 杯澳白、炸鱼薯条与澳式肉派", "amount": "约 A$80 / 人" }
+  ],
+  "pitfalls": [
+    "坐悉尼公交忘刷下车（Tap off）或来回切换实体卡与手机 Apple Pay——前者会按最远里程扣最高费，后者会让系统无法累计你的每日/每周封顶优惠。",
+    "高估自己晒太阳的耐受力不涂防晒——澳洲臭氧层薄、紫外线指数常年破表，走一趟 2.5 小时邦迪海岸步道不补防晒必脱皮。",
+    "在鱼市场和环形码头举着食物边走边拍——悉尼海鸥俯冲抢食速度堪比猛禽，食物一定要盯紧。",
+    "忽略蓝山与市区的巨大温差——哪怕悉尼海滩 28°C，山谷里起风后可能只有 17°C，薄风衣必带。"
+  ],
+  "sources": [
+    { "title": "Transport for NSW 官方：Opal 非接触刷卡与每日/周日封顶票价", "url": "https://transportnsw.info/tickets-opal/opal/fares-payments", "platform": "悉尼交通官方" },
+    { "title": "Sydney.com 官方：邦迪至库吉海岸步道与岩石区旅游指引", "url": "https://www.sydney.com/", "platform": "新州官方观光" },
+    { "title": "Scenic World Blue Mountains 官方：蓝山缆车与矿坑小火车信息", "url": "https://www.scenicworld.com.au/", "platform": "景点官方" }
+  ]
+}

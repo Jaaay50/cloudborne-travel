@@ -1,0 +1,172 @@
+{
+  "slug": "new-york-5-days-omny-subway-walkthrough",
+  "country": "usa",
+  "places": ["us.new-york"],
+  "category": "route",
+  "date": "2026-11-15",
+  "checked": "2026-11",
+  "featured": true,
+  "title": "纽约 5 天手把手地铁实走：告别旧卡玩转 OMNY $35 封顶、五大观景台选哪个、曼哈顿到布鲁克林吃住避坑",
+  "subtitle": "经典磁条 MetroCard 彻底退出历史！用手机 OMNY 刷满 12 次后免费坐，按片区不绕路走通大中央、高线、DUMBO 与大都会",
+  "excerpt": "纽约地铁全面进入 OMNY 非接触感应时代，不用再在售票机前买易消磁的黄卡了。这篇 5 天曼哈顿 + 布鲁克林实测把五大高空观景台优缺点一次讲透，附切尔西市场 Tacos、百年熏牛肉三明治和地铁站台安全铁律。",
+  "author": {
+    "id": "zhouxun",
+    "name": "周寻",
+    "handle": "@zhouxun_nyc",
+    "role": "全球大都市线 · 纽约深度行走",
+    "avatar": "寻",
+    "tone": "#1f364d"
+  },
+  "meta": {
+    "days": "5 天 4 晚",
+    "budget": "人均 ¥8,500（不含国际机票，酒店占大头）",
+    "season": "4–6 月 / 9–11 月（春秋最舒服）",
+    "pace": "日均 1.8 万步 · 地铁按区串联",
+    "audience": "首次纽约自由行 / 城市建筑与艺术控"
+  },
+  "tags": ["纽约5天攻略", "OMNY地铁封顶", "纽约观景台对比", "布鲁克林DUMBO", "高线公园", "纽约安全避坑"],
+  "cover": {
+    "id": "cover",
+    "scene": "Iconic cobblestone street in DUMBO Brooklyn framed by historic red-brick warehouses leading straight toward the steel blue arch of the Manhattan Bridge and distant Empire State Building under crisp autumn morning sunlight, editorial New York travel photography, no readable signs.",
+    "caption": "早上九点前的布鲁克林 DUMBO 石板街还没被长队占领，红砖老仓库精准把曼哈顿大桥和远方帝国大厦框在正中央。",
+    "alt": "秋日晨光下的纽约布鲁克林 DUMBO 红砖巷与曼哈顿大桥"
+  },
+  "lead": [
+    "纽约是一座能把肾上腺素拉到满格的城市，但也最容易让第一次来的人在头两小时就晕头转向：地铁快车慢车同轨、五个高空观景台门票加起来快两百刀、时代广场一不留神就被人偶拉着合影要小费、吃顿饭税和小费叠完直接多出近 30%。",
+    "好消息是，陪伴纽约客三十多年的老旧磁条黄卡（MetroCard）已彻底告别舞台，现在全网全面走 OMNY 手机感应支付，丝滑程度直线上升。下面这份 5 天实走路线按「中城 → 哈德逊西区 → 下城金融区 → 布鲁克林 → 上城博物馆」五大片区垂直切割，绝不让你在曼哈顿南北反复横跳。"
+  ],
+  "highlights": [
+    "【OMNY 省钱神技】直接用手机 Apple Pay / Google Pay 刷闸机，单程 $3.00；同一张卡/同一台设备在 7 天内刷满约 $35（12 次）后，该周期剩余全部地铁与本地巴士自动免费！切记别一会儿刷手机一会儿刷实体卡，否则累计会断开。",
+    "【五大观景台二选一】想要「露天无玻璃 + 帝国大厦和中央公园同框」选 Top of the Rock；想要「镜面未来艺术大片」选 SUMMIT One Vanderbilt；别五个全买，又贵又视觉疲劳。",
+    "【免费看自由女神】如果不执着登皇冠，直接去下城南码头坐 24 小时免费的橙色「斯塔滕岛渡轮（Staten Island Ferry）」，站右侧甲板就能超近距离拍到自由女神像与下城天际线，省下几十刀和半天排队。",
+    "【安全底线意识】等地铁务必背靠立柱或远离黄色站台边缘；时代广场遇卡通人偶拉合影、街头硬塞免费 CD 统统目不斜视直接走开。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · Day 1 落地与中城地标暴走",
+      "title": "开通手机 OMNY 直接刷进曼哈顿，走大中央车站、第五大道与 Top of the Rock 日落",
+      "location": "大中央车站 → 纽约公共图书馆 → 第五大道 → 洛克菲勒中心 → 时代广场",
+      "duration": "下午至夜晚",
+      "cost": "OMNY 地铁每次 $3；Top of the Rock 约 $45–60（日落场略贵）",
+      "paragraphs": [
+        "从肯尼迪机场（JFK）进曼哈顿，坐 AirTrain 到 Jamaica 站（$8.50 同样支持 OMNY 刷手机）无缝换长岛铁路 LIRR 20 分钟直达大中央车站或宾州车站，比堵车打车稳且便宜得多。踏进「大中央车站（Grand Central Terminal）」挑高拱顶大厅，看上午或午后的阳光从高窗斜劈下来照在四面铜钟上，立刻秒入美剧现场。",
+        "顺着 42 街步行 8 分钟打卡雄狮镇守的纽约公共图书馆与布莱恩特公园，北拐第五大道逛过圣帕特里克教堂，提前在官网约好「日落前 1 小时」的 Top of the Rock（巨石之巅）门票上楼：一次把白昼、日落金光和曼哈顿璀璨夜景全收齐！下楼步行 10 分钟感受夜幕下亮如白昼的时代广场，或者提前在 TKTS 亭/官网买好一场百老汇音乐剧。"
+      ],
+      "tip": "所有纽约热门观景台都采取严格的分时段预约制（Timed Entry），黄金日落档期经常提前 1–2 周售罄，且部分场次会加收 $10–15 日落附加费，确认行程后第一时间锁票。",
+      "spotRefs": ["s:us.new-york/times-square-broadway", "s:us.new-york/empire-state-building"],
+      "photo": {
+        "id": "s1",
+        "scene": "Majestic Beaux-Arts vaulted ceiling and towering arched windows of Grand Central Terminal main concourse in New York with dramatic diagonal shafts of morning sunlight illuminating marble floor and distant silhouettes of commuters, architectural photography, no text.",
+        "caption": "傍晚从洛克菲勒中心或中城观景台下楼走十分钟就是霓虹闪烁的时代广场，初抵纽约的都市能量瞬间拉满。",
+        "alt": "暮色霓虹璀璨的纽约曼哈顿中城时代广场"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · Day 2 现代建筑线：SUMMIT + 高线公园 + 切尔西市场",
+      "title": "上午冲 SUMMIT 镜面奇观，下午从哈德逊广场走通空中高线公园吃顶级 Taco",
+      "location": "SUMMIT One Vanderbilt → Hudson Yards → High Line → Chelsea Market",
+      "duration": "全天轻松串联",
+      "cost": "SUMMIT 约 $45–55；高线公园免费；切尔西午餐约 $20",
+      "paragraphs": [
+        "如果打算打卡第二个观景台，早上 09:30 第一波去大中央车站旁的「SUMMIT One Vanderbilt」：三层全镜面玻璃空间把克莱斯勒大厦和蓝天白云无限折射，出片率炸裂（友情提醒：镜面地板反光极强，务必穿长裤和戴墨镜防眩光！）。",
+        "下午坐 7 号线西行到终点站「Hudson Yards（哈德逊广场）」，打卡蜂巢雕塑 Vessel 后直接走上由废弃高架货运铁路改造的「高线公园（High Line）」。沿着野草花园和艺术雕塑一路向南慢走 2.3 公里，两侧掠过扎哈等建筑大师的玻璃豪宅，终点刚好无缝滑进由老饼干厂改造的「切尔西市场（Chelsea Market）」。直接排队冲里面的 Los Tacos No. 1，现烤玉米饼卷炭烤牛肉配辣莎莎酱只要几美元一个，排队虽长但 10 分钟就能吃上。"
+      ],
+      "tip": "纽约地铁一定要分清「Uptown（往北/上城）」和「Downtown（往南/下城）」入口！不少老站点两个方向入口在马路对面且站内不互通，刷卡进错了要重新出站多扣一次 $3。",
+      "spotRefs": ["s:us.new-york/high-line"],
+      "photo": {
+        "id": "s3",
+        "scene": "Elevated urban park walkway of the High Line in Manhattan lined with golden autumn grasses, steel railway tracks, and striking modern glass architecture of Chelsea and Hudson Yards under crisp afternoon sky, travel photography, no text.",
+        "caption": "从废弃高架铁路变身而来的高线公园，把哈德逊广场的摩天玻璃森林与切尔西红砖旧区柔和地缝合在一起。",
+        "alt": "秋草摇曳穿过曼哈顿西区楼群的纽约高线公园"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · Day 3 下曼哈顿：免费渡轮看女神 + 华尔街 + 走过布鲁克林大桥",
+      "title": "早起坐免费橙色渡轮远眺自由女神，走过 9/11 纪念池与华尔街，黄昏徒步跨河",
+      "location": "白厅渡轮码头 → 华尔街铜牛 → 9/11 纪念馆 → 布鲁克林大桥",
+      "duration": "全天",
+      "cost": "斯塔滕岛渡轮免费；9/11 室外纪念池免费（室内馆约 $33）",
+      "paragraphs": [
+        "早上 09:00 搭 1 号线到终点 South Ferry，进站免费搭乘每 30 分钟一班的「斯塔滕岛渡轮（Staten Island Ferry）」。去程站右侧户外甲板，渡轮会从自由女神像正面不远处缓缓滑过，随手拍清楚铜像与曼哈顿摩天大楼群，下船后直接跟人流走回乘船口搭下一班免费回曼哈顿，往返 1 小时零花销。",
+        "回到下城顺路逛华尔街三一教堂、纽约证交所和铜牛（摸牛排队人极多，侧拍更省时），走 8 分钟到两座巨大黑色水幕纪念池的「9/11 纪念广场」与如白鸽展翅的交通枢纽 Oculus。下午 16:00 踏上「布鲁克林大桥」木板人行道由西向东漫步 40 分钟（记得只走内侧行人道，别误踩旁边的自行车高速道），看着夕阳把下曼哈顿变成金色剪影。"
+      ],
+      "tip": "自由女神像如果想真正「登岛甚至爬进皇冠」，唯一官方售票网站是 Statue City Cruises，且皇冠票常常要提前 2–3 个月抢；街边穿亮色背心拉客卖「自由女神船票」的全是高价代理游船，千万别理。",
+      "spotRefs": ["s:us.new-york/statue-of-liberty", "s:us.new-york/brooklyn-bridge-dumbo"],
+      "photo": {
+        "id": "s2",
+        "scene": "Breathtaking sunset view from an open-air Midtown Manhattan observation deck looking directly south at the illuminated Empire State Building and glowing grid of skyscrapers turning amber and indigo at twilight, editorial city photography, no text.",
+        "caption": "选对日落前 1 小时的露天观景台档期，能亲眼看着曼哈顿在 40 分钟内从金色白昼切入万家灯火的蓝调时刻。",
+        "alt": "黄昏蓝调时刻从曼哈顿露天高空观景台眺望帝国大厦"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · Day 4 布鲁克林文艺慢游 + 下东区百年三明治",
+      "title": "08:30 拍无人 DUMBO 经典机位、逛威廉斯堡 vintage，回曼哈顿大啃 Katz's 熏牛肉",
+      "location": "DUMBO Washington St → Brooklyn Bridge Park → 威廉斯堡 → 下东区 Katz's",
+      "duration": "全天",
+      "cost": "Katz's 熏牛肉三明治约 $29（巨量够 2 人分）",
+      "paragraphs": [
+        "早上 08:30 坐 F 线到 York St 站，快步走 5 分钟到 DUMBO 的 Washington St 与 Water St 交叉口——早起半小时就能拍到干净无路人的曼哈顿大桥拱洞经典大片。拍完去河畔的「Brooklyn Bridge Park」和 Time Out Market 喝杯热咖啡，隔着东河静静欣赏对面整个曼哈顿下城天际线。",
+        "中午坐地铁或 NYC Ferry 渡轮（单程 $4.5 同样吹风超爽）往北去布鲁克林潮流腹地「威廉斯堡（Williamsburg）」，逛逛黑胶唱片店、中古衣铺和独立买手店。傍晚过河回到曼哈顿下东区，钻进 1888 年开业的传奇熟食店「Katz's Delicatessen」：进门先领一张纸票（绝不能弄丢！），在切肉台直接点一份招牌热熏牛肉黑麦三明治（Pastrami on Rye），师傅会先顺手切两片烫手爆汁的烟熏肉片塞给你试吃，厚如砖头的一份两人分食配脆酸黄瓜刚好，回程顺路在街头 Joe's Pizza 来一块 $4 薄脆芝士披萨才算真正到过纽约。"
+      ],
+      "tip": "在 Katz's 进门发的纸质消费票据（Ticket）是离店结账的唯一凭证，就算你最后什么都没买也要凭票出门，弄丢会被罚款 $50，一定攥手里或塞进上衣口袋！",
+      "spotRefs": ["s:us.new-york/brooklyn-bridge-dumbo", "f:us.new-york/pastrami-sandwich", "f:us.new-york/ny-pizza-slice"],
+      "photo": {
+        "id": "s4",
+        "scene": "Classic towering New York hot pastrami on rye sandwich stacked generously with tender smoked pepper-crusted beef slices beside crisp kosher dill pickles and deli mustard on waxed paper on a diner counter, authentic 50mm food photography, no text.",
+        "caption": "Katz's 百年老店的现切热熏牛肉三明治厚到一口咬不下去，肉香混着黑胡椒与黄芥末，两人分食刚刚好。",
+        "alt": "纽约百年熟食店堆叠厚实的热熏牛肉三明治与酸黄瓜"
+      }
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · Day 5 上城艺术收官：大都会博物馆 + 中央公园",
+      "title": "至少留 3.5 小时逛透大都会镇馆之宝，午后在中央公园弓桥与上西区曲奇店收尾",
+      "location": "大都会艺术博物馆（The Met）→ 中央公园（Central Park）→ Levain Bakery",
+      "duration": "约 5–6 小时",
+      "cost": "The Met 成人门票 $30；Levain 曲奇约 $5.5 / 块",
+      "paragraphs": [
+        "把第五天留给全美最重磅的文化盛宴——位于第五大道东侧的「大都会艺术博物馆（The Met）」。馆藏超过两百万件，千万别妄想一天看完！实测最高效的 3.5 小时精华动线是：一楼直奔玻璃幕墙采光绝美的埃及丹铎神庙（Temple of Dendur）和美国翼庭院，上二楼扫一遍梵高、莫奈、维米尔所在的欧洲绘画馆，再走过气势磅礴的中国苏州明轩庭院和佛教壁画展厅。",
+        "走出大都会正面石阶（《绯闻女孩》经典取景台阶），转身直接融进「中央公园」。顺着树荫大道漫步过毕士达喷泉（Bethesda Terrace）和浪漫的铸铁「弓桥（Bow Bridge）」，穿出西侧到上西区老店「Levain Bakery」买一块刚出炉半斤重的巧克力核桃流心巨型曲奇，边走边吃，完美收官 5 天纽约行。"
+      ],
+      "tip": "大都会博物馆每周三闭馆！此外纽约自然历史博物馆（AMNH）和现代艺术博物馆（MoMA）同样各自值得半天，出发前核对每家周几闭馆，避免撞墙。",
+      "spotRefs": ["s:us.new-york/the-met", "s:us.new-york/central-park", "s:us.new-york/moma", "f:us.new-york/bagel-lox"]
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · 纽约吃住与小费实测生存守则",
+      "title": "住哪片安全又省钱？餐厅小费怎么给不尴尬？三条老实经验帮你少交学费",
+      "location": "曼哈顿中城 / 长岛市（LIC）酒店与全市餐厅",
+      "duration": "行前订房与每日用餐参考",
+      "cost": "酒店淡旺季 $180–350 / 晚；堂食小费 18%–20%",
+      "paragraphs": [
+        "曼哈顿酒店价格常年高企，想兼顾安全、新设施和高性价比，强推跨东河一站地铁的皇后区「长岛市（Long Island City, LIC）」——坐 7/E/M/N/W 多条地铁只要 8–12 分钟直达中城时代广场和大中央车站，街区现代安静、新酒店面积比曼哈顿老酒店大一圈，房价经常便宜 30%–40%。",
+        "吃饭算账务必心理有底：菜单标价是不含 8.875% 纽约消费税和 18%–20% 堂食小费的！省钱诀窍是早餐吃 6 美元的街头手推车贝果配熏三文鱼奶油奶酪（Bagel & Lox）或咖啡店牛角包，午餐吃切尔西 Tacos、Joe's Pizza 或街头清真鸡肉饭（无需坐堂付 20% 小费），把正餐预算留给一两顿高水准晚餐和 Katz's。"
+      ],
+      "tip": "很多柜台自取（Counter Service）的咖啡店或快餐店刷卡机屏幕也会自动弹出 18%/20%/25% 小费界面，属于默认软件设置——纯自取不坐堂没有服务员端盘子时，完全可以坦然点「No Tip」或象征性给 $1，不需要心理负担。",
+      "spotRefs": ["f:us.new-york/chicken-over-rice", "f:us.new-york/bagel-lox"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "4 晚住宿（中城或长岛市）", "detail": "长岛市高分地铁旁酒店（双人分摊单人价，含纽约酒店税）", "amount": "约 $520 / 人" },
+    { "item": "5 天地铁与机场轨交", "detail": "OMNY 7 天封顶 $35 + 往返 JFK AirTrain & LIRR", "amount": "约 $65 / 人" },
+    { "item": "观景台与博物馆门票", "detail": "Top of the Rock + SUMMIT + 大都会博物馆", "amount": "约 $135 / 人" },
+    { "item": "5 天纽约餐饮（含税和小费）", "detail": "贝果、披萨、切尔西 Tacos、Katz's、Shake Shack 与两顿正餐", "amount": "约 $340 / 人" },
+    { "item": "演出或购物机动（可选）", "detail": "百老汇折扣票或纪念品预算", "amount": "约 $120 / 人" }
+  ],
+  "pitfalls": [
+    "刷地铁时混用实体信用卡和同一张卡的 Apple Pay——OMNY 系统会把它们认作两张不同卡片，导致你白白错过 $35/7 天的封顶免费福利。",
+    "在纽约地铁站台贴着黄色盲道边线低头玩手机——候车时务必站在站台内侧或靠柱子保持警觉。",
+    "时代广场被卡通人偶强行搂肩合照或接过陌生人递来的「免费 CD」——下一秒就会围上来索要 $20 现金小费，一律挥手快步走过。",
+    "订大都会或观景台没核对闭馆日与日落场——The Met 周三闭馆，观景台日落黄金场不提前订基本只能剩深夜场。"
+  ],
+  "sources": [
+    { "title": "纽约大都会运输署 MTA 官方：OMNY 感应支付与 7 日 $35 票价封顶规则", "url": "https://new.mta.info/fares", "platform": "MTA 官方交通" },
+    { "title": "大都会艺术博物馆 The Met 官方：开闭馆时间、票价与展馆地图", "url": "https://www.metmuseum.org/visit/plan-your-visit", "platform": "博物馆官方" },
+    { "title": "NYC Tourism 官方：曼哈顿五大观景台、斯塔滕岛免费渡轮与布鲁克林指引", "url": "https://www.nyctourism.com/", "platform": "纽约官方观光" }
+  ]
+}

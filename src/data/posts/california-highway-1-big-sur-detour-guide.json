@@ -1,0 +1,172 @@
+{
+  "slug": "california-highway-1-big-sur-detour-guide",
+  "country": "usa",
+  "places": ["us.california"],
+  "category": "pitfall",
+  "date": "2026-11-16",
+  "checked": "2026-11",
+  "featured": false,
+  "title": "旧金山到洛杉矶加州一号公路实测：Big Sur 封路怎么科学绕 US-101、Bixby 大桥禁停避罚单",
+  "subtitle": "别迷信过时旧攻略！虽然 Regent's Slide 主大修已通，但暴雨泥石流随时短封，教你用 Caltrans QuickMap 稳稳开完最美海陆拼接",
+  "excerpt": "2026 年自驾加州一号公路（SF → LA）最怕两件事：一是开到大苏尔半路撞上临时滑坡封路白折返两小时，二是在 Bixby 大桥路肩乱停吃几百刀罚单。这份 3 天实测把实时查路神器、US-101 绕行切点与南北两段精华全拆明明白白。",
+  "author": {
+    "id": "luchen",
+    "name": "陆沉",
+    "handle": "@luchen_drive",
+    "role": "美西公路线编辑 · 一号公路 5 次实开",
+    "avatar": "沉",
+    "tone": "#9a4b26"
+  },
+  "meta": {
+    "days": "3 天 2 晚（北→南顺海方向）",
+    "budget": "人均 ¥4,100（双人分摊租车与住宿）",
+    "season": "4 月 – 11 月（避开冬春强暴雨期更稳）",
+    "pace": "总程约 750km · 灵活应对大苏尔路况",
+    "audience": "美西经典公路旅行 / 自驾玩家"
+  },
+  "tags": ["加州一号公路", "BigSur封路绕行", "Bixby大桥新规", "旧金山到洛杉矶", "US101", "美西自驾"],
+  "cover": {
+    "id": "cover",
+    "scene": "Iconic concrete single-arch Bixby Creek Bridge spanning a rugged coastal canyon along California Highway 1 in Big Sur at golden hour, dramatic Pacific Ocean surf below misty coastal headlands, sweeping road-trip travel photography, no text.",
+    "caption": "夕阳打在 Bixby 单拱水泥大桥和汹涌的太平洋峭壁上，是一号公路最难忘的瞬间——但现在桥头两侧严禁路肩违停，必须认准正规观景位。",
+    "alt": "黄金日落时分跨越加州大苏尔海崖的 Bixby 大桥"
+  },
+  "lead": [
+    "开一次从旧金山到洛杉矶的加州一号公路（Pacific Coast Highway），是无数人美西旅行清单里的头号梦想。方向一定记住「由北向南（SF → LA）」：这样靠右行驶的车道紧贴大海一侧，看海无遮挡、想拐进海边观景台也不用横穿对向来车。",
+    "不过 2026 年跑这条线，绝不能照搬几年前的静态地图！虽然困住大家三年的 Big Sur 核心滑坡点（Regent's Slide）已完成大修，但加州沿海山体松软，一场秋冬暴雨或山火过后的落石随时会让加州交通厅（Caltrans）实施临时封路或单向交替放行。这篇手把手教你出发前 3 分钟查实时通车、一旦遇封路如何优雅切上 US-101 不浪费半天，顺手避开 Bixby 大桥最新禁停罚单坑。"
+  ],
+  "highlights": [
+    "【出发前必查神器】上车前 1 周、前 1 天及当天早上，一定打开加州交通厅官方「Caltrans QuickMap（quickmap.dot.ca.gov）」勾选 Road Closures，并看一眼 X 账号 @CaltransD5 的中央海岸快报。",
+    "【Big Sur 遇封路黄金切法】从卡梅尔南下打卡完 Bixby 大桥后，若前方中段临时封闭，立刻退回卡梅尔走 CA-68 东行接内陆「US-101 南下」，经 Salinas 与 Paso Robles，再走 CA-41 西行重返海边莫罗贝（Morro Bay），多花约 2–2.5 小时但南北精华一段不落！",
+    "【Bixby 大桥禁停红线】桥头周边及 Old Coast Road 已实施严格禁停与限停执法，停黄线或窄路肩极易领罚单！改为停在正规停车港湾或退一点去「Hurricane Point」俯拍大片更震撼。",
+    "【大苏尔无信号无油站】进入 Big Sur 之前务必在蒙特雷/卡梅尔把油箱加满、把离线地图下载完——大苏尔村里的零星油站油价往往贵到离谱，且全段手机几乎失联。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · 出发前夜 & Day 1 08:30 旧金山出发",
+      "title": "先刷 Caltrans QuickMap 确认当日路况，沿半月湾、鸽点灯塔开到蒙特雷与卡梅尔",
+      "location": "旧金山 → Half Moon Bay → Pigeon Point → 蒙特雷 / 卡梅尔",
+      "duration": "行车约 2.5 小时 + 沿线游玩 3 小时",
+      "cost": "17 英里景观路（17-Mile Drive）每车约 $12",
+      "paragraphs": [
+        "早上八点半从旧金山取车向南驶出（避开市区早高峰并切记任何行李物品绝不要明目张胆留在车座上防砸窗！），接上 1 号公路很快就开进雾气散去的半月湾与红白相间的鸽点灯塔。中午抵达「蒙特雷（Monterey）」，在老渔人码头喝一碗盛在酸面包碗里的浓稠蛤蜊浓汤，如果时间宽裕，花 $12 开进「17 英里景观道」看孤独柏树和海豹晒太阳。",
+        "傍晚入住童话般的「卡梅尔小镇（Carmel-by-the-Sea）」：这里整个小镇都没有门牌号、没有霓虹连锁店，柏树掩映下全是尖顶木屋画廊和花草小院。步行去卡梅尔白沙滩看一场太平洋日落，再找家本地意餐或美式小酒馆吃晚餐，记得今晚就在卡梅尔附近把油箱加到跳枪！"
+      ],
+      "tip": "旧金山湾区砸车盗窃仍需高度警惕：取车后去半月湾或蒙特雷中途下车吃饭看海时，所有背包和行李箱务必锁进有遮板遮挡的后备箱，且提前在上一个地点就收好，不要停进停车场后再当众打开后备箱塞电脑包。",
+      "spotRefs": ["s:us.california/golden-gate-bridge", "f:us.california/clam-chowder"],
+      "photo": {
+        "id": "s1",
+        "scene": "Storybook cypress-lined lane and quaint European-style shingled cottages near a sunlit white-sand beach cove in Carmel-by-the-Sea California, coastal morning light, realistic editorial travel photography, no signs.",
+        "caption": "从旧金山金门大桥一路向南驶出，沿途先打卡半月湾与蒙特雷渔人码头，顺手给车加满油再进大苏尔。",
+        "alt": "晨雾渐散中的旧金山金门大桥与加州海湾"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · Day 2 09:00 Big Sur 北段精华",
+      "title": "过 Hurricane Point 俯瞰全景、合规拍 Bixby 大桥，避开桥头乱停罚单",
+      "location": "卡梅尔 → Point Lobos → Hurricane Point → Bixby Creek Bridge",
+      "duration": "约 2.5 小时",
+      "cost": "Point Lobos 停车费 $10 / 车；沿路观景台免费",
+      "paragraphs": [
+        "早上 09:00 从卡梅尔往南开 10 分钟先看「Point Lobos 州立保护区」（海獭与翠绿海湾美到失真，早到才有车位），紧接着公路猛地攀上百米峭壁，正式进入大苏尔（Big Sur）心脏地带！",
+        "离 Bixby 大桥还有两分钟车程时，先在「Hurricane Point」宽敞的观景台停车——回望蜿蜒贴海的公路和奔腾白浪，这里是整条北段最安全开阔的机位。开到标志性的「Bixby Creek Bridge」时切记睁大眼睛看清「No Parking」红牌：近年为防止拥堵与事故，桥头窄路肩和 Old Coast Road 入口巡警盯得极紧，只停在桥北侧合规划线的观景停车区，如果车位爆满宁可过桥南侧正规港湾调头，绝对别侥幸斜停黄线吃罚单。"
+      ],
+      "tip": "就算全线通车，Big Sur 沿线仍可能保留 1–2 处边坡加固的「红绿灯单向交替放行段」，每次等灯大约 10–15 分钟，心态放平听着歌看海即可。",
+      "spotRefs": ["s:us.california/big-sur"],
+      "photo": {
+        "id": "s2",
+        "scene": "Elevated coastal overlook at Hurricane Point looking south down the winding Highway 1 cliffs curving along turquoise Pacific surf and rolling emerald coastal hills under bright blue sky, crisp wide-angle landscape photography, no text.",
+        "caption": "路过蒙特雷渔人码头别忘喝一碗酸面包碗盛装的热蛤蜊浓汤，海风吹久了吃起来格外暖胃。",
+        "alt": "蒙特雷海边热腾腾的酸面包碗蛤蜊浓汤"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · 遇封路怎么办？科学绕行 US-101 实操",
+      "title": "中段畅通就直冲 McWay 瀑布；若遇临时滑坡封路，果断切 CA-68 → US-101 不盲闯土路",
+      "location": "方案 A：直穿 Big Sur → Ragged Point；方案 B：CA-68 → US-101 → CA-41 → 莫罗贝",
+      "duration": "畅通约 2.5 小时；走 US-101 绕行约多花 2 小时",
+      "cost": "全免费高速",
+      "paragraphs": [
+        "【若当日 QuickMap 显示全线畅通】：恭喜中大奖！继续沿 1 号公路向南停靠 Julia Pfeiffer Burns 州立公园，走 10 分钟步道看 24 米高的「McWay Falls」瀑布直接跌进无人碧玉海湾（海滩严禁下水，只能观景台远看），一路开过 Ragged Point 直抵圣西米恩（San Simeon）看成百上千头象海豹瘫在沙滩上互相甩沙子。",
+        "【若当日中段因暴雨/落石临时封路】：绝不要跟着某些导航盲目拐进未铺装的山区窄土路（如 Nacimiento-Fergusson 或 Old Coast Road，租车保险通常不赔非铺装路底盘刮伤且极其危险！）。拍完 Bixby 大桥后，干脆利落原路折返到卡梅尔，沿「CA-68 东行」接上宽阔平坦的「US-101 南下」，途经连绵金黄色橡树丘陵和 Paso Robles 酒乡产区（顺路喝杯咖啡歇腿超惬意），再转「CA-41 西行」切回海边莫罗贝（Morro Bay），完美接回南段海岸！"
+      ],
+      "tip": "不管走海岸还是走 101 绕行，都把第二晚住宿定在「坎布里亚（Cambria）」、「莫罗贝（Morro Bay）」或「圣路易斯奥比斯波（SLO）」——这三个小镇进退自如，既不怕封路被困，第二天去洛杉矶也只剩 3.5 小时。",
+      "spotRefs": ["s:us.california/big-sur"],
+      "photo": {
+        "id": "s3",
+        "scene": "Sweeping golden rolling ranch hills and vineyard valleys along California's inland US-101 corridor near Paso Robles bathed in late afternoon warm sunlight, open highway curving peacefully through oak-dotted hills, road trip photography, no text.",
+        "caption": "就算遇上大苏尔封路改走 US-101 内陆线也完全不用扫兴，Paso Robles 一带起伏的金色牧场与酒庄山谷另有一番加州野性美。",
+        "alt": "夕阳下加州内陆 US-101 公路两侧的金色丘陵与酒庄山谷"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · Day 2 傍晚：莫罗贝巨岩日落",
+      "title": "在莫罗贝守候海上火山巨岩落日，顺路往北 40 分钟看圣西米恩象海豹滩",
+      "location": "莫罗贝（Morro Bay）/ 圣西米恩（San Simeon）",
+      "duration": "傍晚约 2 小时",
+      "cost": "象海豹滩与海湾码头免费",
+      "paragraphs": [
+        "如果走 US-101 绕行下来还有余力，从莫罗贝往北反开 35 分钟就能无缝打卡南段的「圣西米恩象海豹滩（Elephant Seal Vista Point）」与赫氏古堡山脚，不用任何回头焦虑。数百头圆滚滚的象海豹在沙滩上打呼噜、仰天拍肚皮，冬季繁殖季更是热闹非凡。",
+        "黄昏前回到安静的海港小镇「莫罗贝」，176 米高的古老火山塞「Morro Rock」像一座海上金字塔立在平静港湾入口。沿着 Embarcadero 木码头找一家现炸海鲜小店买份酥脆炸鱼塔可（Fish Tacos），坐在长椅上看夕阳把整片海湾染成紫红色，还能看见野生海獭抱着肚皮浮在港湾水草里打盹。"
+      ],
+      "tip": "加州沿海哪怕夏天傍晚一旦太阳落海，气温也会瞬间掉到 12–14°C，莫罗贝和蒙特雷尤其容易起寒雾，车厢里永远给每人留一件抓绒或轻薄羽绒服。",
+      "spotRefs": ["f:us.california/fish-tacos"],
+      "photo": {
+        "id": "s4",
+        "scene": "Dramatic sunset silhouette of Morro Rock volcanic sea stack rising out of calm reflective bay water in Morro Bay California with warm orange and violet twilight sky and small sailboats moored gently, travel photography, no text.",
+        "caption": "南下抵达洛杉矶圣莫尼卡码头，在夕阳与摩天轮灯光下为 750 公里加州一号公路旅程画上句号。",
+        "alt": "夕阳下的洛杉矶圣莫尼卡海滩木码头与摩天轮"
+      }
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · Day 3 上午：丹麦村与圣巴巴拉红瓦海岸",
+      "title": "逛索尔万风车面包房，在圣巴巴拉法院钟楼俯瞰南加州红顶白墙与棕榈海滩",
+      "location": "索尔万（Solvang）→ 圣巴巴拉（Santa Barbara）",
+      "duration": "行车约 2 小时 + 游玩 2.5 小时",
+      "cost": "圣巴巴拉县法院登顶免费；停车约 $3–6",
+      "paragraphs": [
+        "第三天从莫罗贝向南驶向洛杉矶，画风从冷峻荒凉的北加礁石逐渐转成阳光炙热、棕榈摇曳的南加风情。中途顺路停靠丹麦移民建成的童话小镇「索尔万（Solvang）」，在传统烘焙店买个热腾腾的丹麦酥皮卷和苹果球配咖啡。",
+        "再开 45 分钟就到被称为「美国蔚蓝海岸」的圣巴巴拉。强烈推荐走进免费开放的西班牙复兴风格「圣巴巴拉县法院（Santa Barbara County Courthouse）」，坐免费电梯直上四楼钟楼观景台，360° 俯瞰整座城市的红瓦白墙、绿树山脉与远方太平洋。午饭在 State Street 步行街找家墨西哥馆子吃份牛油果卷饼再上路。"
+      ],
+      "tip": "从圣巴巴拉继续往洛杉矶方向开，会经过著名的马里布（Malibu）海岸段，下午 15:30 之后进入圣莫尼卡和洛杉矶西区的 10 号 / 405 号高速极度拥堵，尽量 14:00 前离开圣巴巴拉。",
+      "spotRefs": ["f:us.california/mission-burrito"]
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · Day 3 傍晚：圣莫尼卡码头终点与洛杉矶夜景",
+      "title": "驶入马里布落日海岸，在圣莫尼卡码头与格里菲斯天文台为公路之旅画上句号",
+      "location": "马里布 → 圣莫尼卡码头（Santa Monica Pier）→ 格里菲斯天文台",
+      "duration": "行车约 2 小时 + 傍晚打卡",
+      "cost": "码头海滩停车约 $12–15；天文台免费（停车按小时计）",
+      "paragraphs": [
+        "顺着 PCH 海岸大道掠过马里布海滩的冲浪客和崖边豪宅，傍晚前把车停进圣莫尼卡海滩停车场，踏上同时也是 66 号公路历史终点的「圣莫尼卡木栈桥码头」：复古摩天轮在粉色夕阳下亮起彩灯，街头乐队弹着吉他，整整 750 公里的太平洋海岸线在这里圆满收官。",
+        "如果晚上体力还足，驱车直上「格里菲斯天文台（Griffith Observatory）」山坡（傍晚停车位紧俏，可停在山脚坐 50 美分的 DASH 接驳小巴上山），俯瞰整片洛杉矶盆地铺到地平线尽头的万家灯火，顺便夜宵去韩国城搓一顿滋滋冒油的炭火烤牛肋条。"
+      ],
+      "tip": "如果这趟旅程串联了优胜美地国家公园，别忘检查出发当月国家公园是否实行入园预约或早到抢车位策略——旺季周末 08:30 后进优胜美地谷底常常绕圈一小时找不到车位。",
+      "spotRefs": ["s:us.california/santa-monica-pier", "s:us.california/griffith-observatory", "f:us.california/ktown-bbq"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "3 天异地租车 + 保险", "detail": "旧金山取车洛杉矶还车（含单程费与基本责任/车损险，双人分摊）", "amount": "约 $185 / 人" },
+    { "item": "汽油与停车", "detail": "加州油价较高（全程约 750km）+ 17 英里/公园/码头停车", "amount": "约 $65 / 人" },
+    { "item": "2 晚沿线住宿", "detail": "卡梅尔/蒙特雷 + 莫罗贝/圣路易斯奥比斯波（双人分摊）", "amount": "约 $210 / 人" },
+    { "item": "3 天美西餐饮", "detail": "酸面包蛤蜊浓汤、炸鱼塔可、丹麦烘焙、墨西哥卷与韩式烤肉（含小费）", "amount": "约 $160 / 人" },
+    { "item": "机动备用", "detail": "饮用水、防寒补给或酒庄咖啡", "amount": "约 $30 / 人" }
+  ],
+  "pitfalls": [
+    "出发前不看 Caltrans QuickMap 实时封路图——开到 Big Sur 断头处才知道封路，白白折返消耗两小时油和时间。",
+    "在 Bixby 大桥窄路肩或禁停黄线违章停车拍照——巡警高频执法，违停罚单与拖车费轻松破数百美元。",
+    "遇封路后盲信小导航拐进未铺装山间土路抄近道——极易托底爆胎且租车保险通常拒赔非铺装路损，只走 US-101 绕行。",
+    "在旧金山与湾区景点停车后将背包行李留在车内可见处——砸窗盗窃高发，务必清空车厢视野、贵重物随身带。"
+  ],
+  "sources": [
+    { "title": "加州交通厅 Caltrans QuickMap：1 号公路实时封路与施工管制地图", "url": "https://quickmap.dot.ca.gov/", "platform": "加州交通官方" },
+    { "title": "See Monterey 官方：卡梅尔、大苏尔路段通车公告与 Bixby 停车提示", "url": "https://www.seemonterey.com/", "platform": "官方观光" },
+    { "title": "加州州立公园 California State Parks：Point Lobos 与 McWay Falls 开放状态", "url": "https://www.parks.ca.gov/", "platform": "州立公园官方" }
+  ]
+}

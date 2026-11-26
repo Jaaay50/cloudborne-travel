@@ -1,0 +1,172 @@
+{
+  "slug": "osaka-kizu-market-ura-namba-food-walk",
+  "country": "japan",
+  "places": ["osaka"],
+  "category": "food",
+  "date": "2026-11-23",
+  "checked": "2026-11",
+  "featured": false,
+  "title": "别只在黑门市场当冤大头！本地人路线：清晨 6 点木津市场海鲜丼 + 深夜里难波立吞串炸",
+  "subtitle": "从大黑町清晨批发市场、顺路避雷黑门市场，到黄昏钻进南海难波东侧小巷和新世界老店，一天吃透大阪烟火气",
+  "excerpt": "黑门市场如今几乎只剩观光客高价摊，想吃高性价比海鲜和真大阪味道，早上坐两站地铁去「木津批发市场」吃海鲜丼、200 年老店炭烤鳗鱼，晚上转战「里难波」和新世界炸串，人均不到五百吃扶墙。",
+  "author": {
+    "id": "chenmi",
+    "name": "陈米",
+    "handle": "@chenmi_eats",
+    "role": "关西食录 · 专注早市与小巷立吞",
+    "avatar": "米",
+    "tone": "#c05621"
+  },
+  "meta": {
+    "days": "1 天暴吃动线",
+    "budget": "全天 5 顿人均约 ¥420",
+    "season": "全年（避开木津市场周三/周日休市）",
+    "pace": "吃货慢逛 · 地铁御堂筋线串联",
+    "audience": "海鲜控 / 想吃出真实市井味的老饕"
+  },
+  "tags": ["大阪美食", "木津市场", "黑门市场避雷", "里难波", "新世界炸串", "早市攻略"],
+  "cover": {
+    "id": "cover",
+    "scene": "Atmospheric twilight narrow alley in Osaka's Ura-Namba district glowing with warm paper lanterns, intimate wooden izakaya storefronts, steam drifting from open kitchen doors, wet stone paving reflecting warm amber light, authentic street travel photography, no readable text on lanterns.",
+    "caption": "傍晚六点后的「里难波」亮起暖黄灯笼，没有道顿堀的嘈杂旅游团，小巷里全是刚下班来喝一杯的大阪本地人。",
+    "alt": "灯火温暖的傍晚大阪里难波居酒屋小巷"
+  },
+  "lead": [
+    "刷小红书和 Reddit 问大阪美食，十条里有八条都在吐槽黑门市场——三颗草莓卖 1,500 日元、一串烤和牛标价直逼银座，连大阪本地大叔早就十年不踏进黑门买菜了。很多人花了一上午挤在黑门，钱包空了却根本没吃到真正的大阪日常。",
+    "其实离难波只有一站地铁的「木津卸売市场」才是大阪人真正的厨房，早上六点开市，海胆金枪鱼丼价格只有黑门的一半还多。这篇按从早到晚 6 个时间节点，带你从木津市场早市出发，客观拆解黑门里仅剩的值得吃的 2 家老摊，再一路吃到深夜的里难波立吞酒场和新世界老派串炸。"
+  ],
+  "highlights": [
+    "【木津市场时间红线】它是真批发市场，06:00 开市、11:00 后陆续收摊！且周三、周日及日本法定节假日通常休市，去前一定核对官网休市日历。",
+    "【黑门市场防坑法】别在入口前三家下手，看清帝王蟹与生鱼片是「单份价」还是「每 100g 价」，只想吃正经味道认准高桥食品豆浆和石桥关东煮。",
+    "【里难波打开方式】就在南海难波站东侧、道具屋筋附近的小巷群，站着喝酒吃关东煮/烧鸟（立吞）性价比无敌，一顿下来两三千日元管饱。",
+    "【串炸铁规】新世界串炸虽然很多店已改用挤瓶酱汁，但遇到传统共用铁盆酱汁时仍严禁「二次沾酱」，想多沾用桌上的免费生卷心菜舀。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · 07:15 地铁大国町站",
+      "title": "钻进真正的大阪早市「木津卸卖市场」，先在鱼市大厅感受开市烟火气",
+      "location": "大阪木津卸卖市场 · 地铁御堂筋线/四桥线「大国町站」1 号口步行 3 分钟",
+      "duration": "约 40 分钟逛场 + 排队",
+      "cost": "入场免费",
+      "paragraphs": [
+        "从难波坐御堂筋线往南只要 1 站就到「大国町站」，1 号出口走 3 分钟，一排复古招牌和货车卸货声就是拥有三百年历史的木津批发市场。和已经彻底变成观光小吃街的黑门不同，这里早上七点多依然能看到大阪各家寿司店、料亭老板推着小车挑活鱼、海胆和时令蜜瓜。",
+        "进场后别挡在电动搬运小车通道正中，先绕着水产区和蔬果区转一圈。想买草莓、晴王葡萄或静冈网纹瓜带回酒店吃，这里的整盒批发价往往比百货地下便宜三四成；市场最里侧还藏着一家本地人疯狂扫货的「ODA 业务超市」，抹茶粉、日高昆布、日式调味料和零食一应俱全，顺手就能把伴手礼买齐。"
+      ],
+      "tip": "去木津市场最容易扑空的原因是撞上休市日——原则上每周三和周日不营业（每月最后一个周六上午则有面向普通市民的「木津朝市」特卖活动），出门前一天务必确认日期。",
+      "spotRefs": ["s:osaka/kuromon-market"],
+      "photo": {
+        "id": "s1",
+        "scene": "Bustling early morning Japanese wholesale fish market hall in Osaka (Kizu Market style), wooden crates of sparkling fresh sea bream, tuna fillets, and sea urchin on crushed ice under warm industrial market lights, authentic documentary photo, no readable signs.",
+        "caption": "清晨七点半的木津市场水产区还在热火朝天分拣鲜鱼，扑面而来的冰鲜气味和讲价声才是真实的大阪早晨。",
+        "alt": "清晨摆放着新鲜渔获的大阪木津批发市场大厅"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · 08:00 木津市场重头戏早餐",
+      "title": "木津鱼市食堂海鲜丼 + 200 年老店川上商店现烤关西鳗鱼",
+      "location": "木津市场内餐饮区 · 鱼市食堂 / 川上商店",
+      "duration": "约 1 小时",
+      "cost": "海鲜丼 2,200–3,500 日元；烤鳗鱼约 2,500 日元起",
+      "paragraphs": [
+        "来木津市场肚子一定要空着！「木津鱼市食堂」的招牌海鲜丼和海胆鲑鱼卵丼是每天早上十点前就会售罄的狠角色——因为鱼货就在三十米外的水产摊直供，金枪鱼大腹油脂饱满、甜虾脆甜、海胆完全没有明矾苦味，一碗满满堆尖只要黑门观光摊一半出头的价钱。",
+        "如果两人同行，极其推荐一人点海鲜丼，另一人去旁边拥有两百年历史的炭烤老店「川上商店」买份关西流现烤鳗鱼。关西鳗鱼不先蒸、直接架在炭火上反复刷酱烤到外皮焦脆微卷、内里油香爆汁，趁热配一碗热米饭，比很多排队两小时的网红店还要惊艳。"
+      ],
+      "tip": "木津鱼市食堂在 07:30–09:00 之间排队相对可控（约 15–25 分钟），超过 10:00 不仅排长队，最受欢迎的海胆丼和特上金枪鱼丼很容易直接挂出售罄牌。",
+      "spotRefs": ["s:osaka/kuromon-market"],
+      "photo": {
+        "id": "s2",
+        "scene": "Overflowing luxury Japanese kaisendon seafood rice bowl packed with vibrant orange salmon roe, creamy sea urchin, glossy fatty tuna slices, and sweet shrimp over seasoned rice, alongside miso soup on a worn wooden counter, 50mm food photography, no text.",
+        "caption": "清晨八点在木津市场木吧台前吃上一碗现切海胆金枪鱼丼，鲜甜的油脂感瞬间唤醒一整天的食欲。",
+        "alt": "满载海胆鲑鱼卵与肥美金枪鱼的大阪早市海鲜盖饭"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · 11:00 客观逛黑门市场的正确方式",
+      "title": "如果第一次来大阪还是想看黑门，怎么避开刺客只挑 2 家真老店？",
+      "location": "黑门市场 · 地铁「日本桥站」10 号口",
+      "duration": "约 45 分钟顺路走过",
+      "cost": "仅花 500–1,000 日元试小吃",
+      "paragraphs": [
+        "从木津市场步行约 15 分钟（或坐地铁到日本桥）就能穿过黑门市场。我的建议很坦诚：完全没必要在这里吃正餐，也别被入口几家举着中文大招牌的烤蟹腿、烤和牛串吸引——许多高价摊标的是「每 100 克」价格，一结账轻松破万日元。",
+        "把黑门当成逛街去道顿堀前的一段热身走廊，只买两样本地人自己也喝、也吃的平价老摊就够了：一是「高桥食品」现磨热豆浆（浓稠得像豆腐脑，一杯不到 150 日元），二是「石桥食品」的关西出汁关东煮（白萝卜、牛筋和魔芋炖得透亮入味，站在店口吃两串暖胃又实在）。"
+      ],
+      "tip": "顺路走到旁边的「千日前道具屋筋商店街」，整条街专卖专业厨具、章鱼烧铸铁锅、陶瓷碗盘和逼真食物模型，比在黑门买纪念品有意思十倍。",
+      "spotRefs": ["s:osaka/kuromon-market", "f:osaka/kitsune-udon"],
+      "photo": {
+        "id": "s3",
+        "scene": "Charcoal-grilled Kansai-style unagi eel glazed in glossy caramelized tare sauce over steaming white rice in a dark lacquer box, crispy skin texture, smoky wisps rising, moody natural side light food photo, no text.",
+        "caption": "黑门市场如今以观光客小吃街为主，逛街顺路走过时认准豆浆与关东煮老摊，比跟风买高价蟹腿划算得多。",
+        "alt": "热闹的日本大阪黑门市场商店街"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · 14:30 道顿堀与法善寺横丁消食",
+      "title": "别在道顿堀干排一小时网红店，拐进法善寺石板巷吃大阪烧和 551 肉包",
+      "location": "难波 · 法善寺横丁 / 道顿堀周边",
+      "duration": "约 2 小时逛吃",
+      "cost": "约 1,500–2,000 日元",
+      "paragraphs": [
+        "下午两点半避开饭点，正好去吃大阪灵魂粉物（面食）：躲开道顿堀主街水泄不通的拍照人群，往南拐两步进「法善寺横丁」——这是一条铺着湿润石板、只有五十米长的静谧老巷，深处供奉着长满翠绿青苔的水挂不动尊。",
+        "巷口老字号大阪烧（如美津の或周边老铁板店）下午三点前后排队最短，看着师傅在滋滋作响的铁板上把山药糊、卷心菜和猪五花煎得外焦里嫩，刷上甜咸酱汁和木鱼花，热乎切块分着吃刚好留肚子给晚饭。顺路在难波本店买两颗刚出炉的「551 蓬莱肉包」，外皮微甜、洋葱猪肉馅爆汁，是大阪人从车站带回家的国民点心。"
+      ],
+      "tip": "买完 551 蓬莱肉包尽量现吃，千万别拎着热腾腾的肉包挤进新干线车厢——它洋葱肉香太霸道，被日本网友公认为「新干线气味炸弹」头号选手。",
+      "spotRefs": ["s:osaka/dotonbori", "f:osaka/okonomiyaki", "f:osaka/takoyaki", "f:osaka/butaman"]
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · 17:45 钻进新世界吃老派炸串",
+      "title": "通天阁灯火亮起时进新世界：现炸酥脆串炸配冰生啤，记住不二次沾酱",
+      "location": "新世界ジャンジャン横丁 · 地铁「动物园前站」或「惠美须町站」",
+      "duration": "约 1.5 小时",
+      "cost": "人均约 2,000–2,800 日元",
+      "paragraphs": [
+        "黄昏时分坐地铁两站来到「新世界」，高耸的通天阁亮起霓虹，夸张的立体招牌和叮当响的复古弹珠店让你瞬间掉进昭和年代的大阪平民区。这里的物价肉眼可见比心斋桥亲民一大截。",
+        "往南钻进狭长的「JanJan 横丁（ジャンジャン横丁）」，老字号炸串店「八重胜」或「天狗」门口飘着炸油香。落座后先来一杯冰得冒霜的生啤，点上招牌牛肉串（どて焼き土手烧炖牛筋必点！）、整只炸虾、莲藕、鹌鹑蛋和芝士竹轮。面衣极薄酥脆、咬下去不油腻，记得拿桌边免费冰水泡着的生卷心菜解腻。"
+      ],
+      "tip": "新世界夜间街道虽然游客多、主干道安全，但往南越过 JR 铁路高架的西成区深处环境较杂乱，吃完炸串顺着通天阁北侧或惠美须町站直接坐车回难波即可。",
+      "spotRefs": ["s:osaka/shinsekai", "f:osaka/kushikatsu"],
+      "photo": {
+        "id": "s4",
+        "scene": "Golden crispy Osaka kushikatsu deep-fried skewers (shrimp, lotus root, quail egg, beef) resting on a stainless steel wire tray beside fresh crisp cabbage leaves and a frosty mug of draft beer on a cozy retro izakaya counter, warm evening lighting, food photography, no text.",
+        "caption": "新世界老派炸串讲究极薄脆衣、现点现炸，配一把冰脆生卷心菜和扎啤，瞬间理解大阪平民美食的快乐。",
+        "alt": "吧台上的金黄酥脆大阪炸串与冰镇啤酒"
+      }
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · 20:30 深夜压轴「里难波」续摊",
+      "title": "南海难波站东侧小巷寻宝：挑一家坐满本地上班族的立吞酒场收尾",
+      "location": "里难波（Ura-Namba）· 难波千日前至日本桥西侧小巷",
+      "duration": "约 1.5 小时",
+      "cost": "人均约 2,000–3,000 日元",
+      "paragraphs": [
+        "真正懂吃的大阪夜生活压轴，从来不是心斋桥主干道，而是南海难波站东边、道具屋筋与黑门之间的那几条迷宫小巷——本地人叫它「里难波（ウラなんば）」。每家店往往只有八到十二个站位或木吧台位，门帘半掀，能直接看见厨师在面前切刺身、炭烤鸡胗或煮热乎关东煮。",
+        "找店的黄金法则很简单：不用迷信小红书单一网红店，看哪家玻璃窗里坐满说话带着关西腔的本地上班族、门口菜单明码标价（单品多在 380–680 日元）、烟火气最足就推门进去比个「一人/二人」手势。点两碟炭烤鸡肉串、一盘炙烤青花鱼和一杯柚子 Highball，站着聊着就把大阪最松弛的夜晚喝完了。"
+      ],
+      "tip": "日本部分传统居酒屋会收每人 300–500 日元的「お通し（开胃小菜座位费）」，属于正常本地文化而非坑客；而纯粹的立吞站饮店大多不收座位费，性价比更高。",
+      "spotRefs": ["s:osaka/dotonbori"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "木津市场早餐", "detail": "鱼市食堂海鲜丼 + 分食半份川上商店烤鳗鱼", "amount": "约 3,600 日元" },
+    { "item": "黑门顺路小吃", "detail": "高桥热豆浆 + 石桥关东煮两串", "amount": "约 550 日元" },
+    { "item": "下午粉物与点心", "detail": "法善寺大阪烧分食 + 551 蓬莱肉包两颗", "amount": "约 1,500 日元" },
+    { "item": "新世界炸串", "detail": "土手烧炖牛筋 + 炸串 6 支 + 生啤", "amount": "约 2,400 日元" },
+    { "item": "里难波宵夜小酌", "detail": "立吞居酒屋下酒菜两份 + 柚子沙瓦/Highball", "amount": "约 2,000 日元" }
+  ],
+  "pitfalls": [
+    "周三或周日早起兴冲冲奔去木津市场——结果吃闭门羹！务必提前确认市场休市日历。",
+    "在黑门市场没看清「/100g」小字直接让老板剪帝王蟹或和牛——一称重直接翻倍变成天价。",
+    "把 551 蓬莱热肉包带进密闭新干线或特急车厢吃——香味浓郁到整节车厢行注目礼，最好在车站外现吃。",
+    "吃完新世界炸串误走入南侧西成区深巷——夜晚游览保持在新世界主街、JanJan 横丁与北侧地铁站范围即可。"
+  ],
+  "sources": [
+    { "title": "大阪木津卸売市场官方营业日历与场内店铺指引", "url": "https://kizu-ichiba.com/", "platform": "官方市场" },
+    { "title": "大阪观光局官方：难波、新世界与本地庶民美食指南", "url": "https://osaka-info.jp/", "platform": "大阪官方" },
+    { "title": "MATCHA 日本旅游：木津市场与大阪平价早市实测对比", "url": "https://matcha-jp.com/", "platform": "旅游实测" }
+  ]
+}

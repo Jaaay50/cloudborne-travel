@@ -1,0 +1,172 @@
+{
+  "slug": "melbourne-great-ocean-road-3-days-drive",
+  "country": "australia",
+  "places": ["au.victoria"],
+  "category": "route",
+  "date": "2026-11-18",
+  "checked": "2026-11",
+  "featured": true,
+  "title": "墨尔本大洋路 3 天 2 晚自驾实录：十二门徒日落、阿波罗湾住法、左行右舵与袋鼠夜驾避坑",
+  "subtitle": "去程贴海看尽悬崖雨林、回程走内陆 A1 省 2 小时！附奥特威无信号离线导航与右舵上路 5 分钟适应法",
+  "excerpt": "一天来回大洋路累成赶鸭子，真正能把大洋路开爽的黄金节奏是 3 天 2 晚：第一晚住阿波罗湾、第二晚住坎贝尔港守十二门徒日落，顺手把澳洲靠左行驶、17 点后防撞袋鼠和小镇早关门这些血泪坑全部排雷。",
+  "author": {
+    "id": "luchen",
+    "name": "陆沉",
+    "handle": "@luchen_drive",
+    "role": "南半球与美西自驾编辑 · 公里数 8 万+",
+    "avatar": "沉",
+    "tone": "#1e4e68"
+  },
+  "meta": {
+    "days": "3 天 2 晚",
+    "budget": "人均 ¥3,400（双人分摊租车与住宿）",
+    "season": "11 月 – 次年 4 月（南半球春夏晴日多）",
+    "pace": "总车程约 650km · 去海回陆不走回头路",
+    "audience": "自驾游玩家 / 情侣与朋友小队"
+  },
+  "tags": ["墨尔本大洋路", "十二门徒日落", "澳洲自驾避坑", "左行右舵", "阿波罗湾", "坎贝尔港"],
+  "cover": {
+    "id": "cover",
+    "scene": "Dramatic golden hour sunset over the Twelve Apostles limestone sea stacks rising from crashing turquoise Southern Ocean waves along Victoria's Great Ocean Road, warm amber cliffs glowing under pink-orange clouds, sweeping editorial coastal landscape photography, no text.",
+    "caption": "只有第二晚住在 10 分钟车程外的坎贝尔港，才能从容守到十二门徒岩被南大洋夕阳彻底点亮的黄金二十分钟。",
+    "alt": "金色夕阳下的澳大利亚大洋路十二门徒海蚀柱群"
+  },
+  "lead": [
+    "很多人来墨尔本只给大洋路留了一天，早上七点跟大巴出发、一路晕弯道，到十二门徒岩刚好赶上逆光大晴天打卡 25 分钟就摸黑往回赶。大洋路（Great Ocean Road）全长近三百公里，悬崖、灯塔、野生考拉树林、温带雨林和沉船海岸密密麻麻排在南大洋边上，真正不后悔的打开方式是自己租辆车，用「3 天 2 晚、去海回陆」的节奏慢慢开。",
+    "这套路线我按实测车程拆成了 6 步，重点解决新手在澳洲自驾最慌的四件事：刚出车库的左行右舵肌肉记忆、奥特威雨林段长达一小时的手机零信号、黄昏野生袋鼠突然冲上马路的致命风险，以及海边小镇晚上七点半餐厅就集体打烊的现实。"
+  ],
+  "highlights": [
+    "【住法黄金分割】第一晚宿中点大镇「阿波罗湾（Apollo Bay）」补给吃海鲜；第二晚宿「坎贝尔港（Port Campbell）」——距十二门徒岩仅 10 分钟车程，看完日落绝不摸黑开夜山路！",
+    "【最致命安全红线】严禁 17:30 之后在大洋路和内陆乡道开夜车！黄昏至深夜是袋鼠与袋熊高频横穿公路时段，撞上几乎必报废前脸且极其危险。",
+    "【离线地图刚需】进入大奥特威国家公园雨林段后，手机 4G/5G 信号会彻底归零，出发前务必在墨尔本 Wi-Fi 下把 Google Maps 维多利亚州西南区离线包下载好。",
+    "【一天四季穿搭】哪怕澳洲 1 月盛夏，南大洋吹上来的海风照样能冻透短袖！车里常备一件防风冲锋衣、高倍防晒霜和墨镜。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · Day 1 08:30 墨尔本取车与右舵适应",
+      "title": "备齐中国驾照 + NAATI 译本取车，先绕机场外环开 10 分钟找回「左行右舵」手感",
+      "location": "墨尔本市区 / 机场租车点 → M1 高速 → 吉朗（Geelong）",
+      "duration": "取车适应 30 分钟 + 车程 1 小时至吉朗",
+      "cost": "SUV 租车含全险约 A$95–130 / 天",
+      "paragraphs": [
+        "在维多利亚州自驾，中国大陆驾照原件配一份合规的 NAATI 认证英文翻译件（或租车平台合规译本）即可合法上路，强烈建议购买零起赔额（Zero Excess）全险——澳洲海边飞石磕玻璃、停车场小刮擦的维修账单动辄上千澳元，买全险开起来心态稳得多。",
+        "澳洲靠左行驶、驾驶座在右侧，国内老司机前二十分钟最容易闹笑话的就是「想打转向灯结果刮起了雨刷」和「身体不自觉往左贴压到左边白线」。口诀很简单：记住「驾驶员永远紧贴道路中线」，进环岛（Roundabout）永远「礼让右侧来车」并顺时针绕行！在城郊宽路适应 10 分钟顺手了，走 M1 经吉朗海滨看一眼彩绘木偶柱，在超市 Coles 买满两箱水和车上零食，正式切入 B100 大洋路。"
+      ],
+      "tip": "澳洲限速摄像头极其隐蔽且超速罚款天价（超 10km/h 罚单就能飙到几百澳元），大洋路山道限速在 80、60、50 之间频繁切换，看见路牌立刻收油门，绝对别跟本地老司机的尾巴飙车。",
+      "spotRefs": ["s:au.victoria/great-ocean-road", "f:au.victoria/flat-white"]
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · Day 1 11:30 起点牌坊、小红帽灯塔与野生考拉",
+      "title": "打卡纪念牌坊与小红帽灯塔，拐进肯耐特河树冠找野生考拉和彩色鹦鹉",
+      "location": "小红帽灯塔（Split Point）→ 纪念牌坊 → 洛恩（Lorne）→ 肯耐特河 → 阿波罗湾",
+      "duration": "约 4.5 小时（边开边停）",
+      "cost": "全部沿线观景台与灯塔外景免费",
+      "paragraphs": [
+        "过了冲浪圣地托基（Torquay），先拐去白墙红顶的「小红帽灯塔（Split Point Lighthouse）」，沿木栈道俯瞰鹰岩海礁，再顺路在经典的「Great Ocean Road 纪念木牌坊」路边正规停车位打卡（这座公路是一战退伍老兵手工凿出来的纪念工程）。随后进入全线颜值最高的一段贴海悬崖弯道，每一拐弯都是一张南大洋壁纸。",
+        "在洛恩小镇喝杯地道澳白咖啡配炸鱼薯条歇脚，下午三点前开到「肯耐特河（Kennett River）」：从主路往 Kafe Koala 旁边的 Grey River Road 慢慢开进去两百米停车，抬头仔细扫视高大桉树的树杈——大概率能看见三四只毛茸茸的野生灰考拉正抱着树干酣睡，旁边还有红绿相间的国王鹦鹉落到枝头，全程野生免费，切记别投喂或大声惊扰。17:00 前稳稳开进「阿波罗湾」入住。"
+      ],
+      "tip": "阿波罗湾的大超市 FoodWorks 和海边餐厅晚上 19:30–20:00 就会陆续关门打烊！如果打算吃当地口碑极佳的炸扇贝派或海鲜大餐，放完行李 18:00 就赶紧去吃。",
+      "spotRefs": ["s:au.victoria/great-ocean-road"],
+      "photo": {
+        "id": "s1",
+        "scene": "Scenic coastal highway winding tightly along dramatic steep emerald cliffs above sparkling blue Southern Ocean surf near Lorne in Victoria Australia, sunlit road trip view, editorial travel photography, no signs.",
+        "caption": "从洛恩到阿波罗湾这一段公路紧贴悬崖切出，左手是碎浪拍岸的南大洋，右手是苍翠峭壁，记得把车停进正规观景港湾再下车拍照。",
+        "alt": "蜿蜒在维多利亚州碧海悬崖边的大洋路沿海公路"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · Day 2 09:00 深入大奥特威温带雨林",
+      "title": "离开海岸钻进侏罗纪蕨类森林：Maits Rest 雨林步道与奥特威角灯塔",
+      "location": "大奥特威国家公园（Great Otway National Park）",
+      "duration": "约 2.5 小时",
+      "cost": "Maits Rest 步道免费；奥特威灯塔门票约 A$20",
+      "paragraphs": [
+        "离开阿波罗湾后，大洋路会突然折进内陆高地，画风一秒从蔚蓝海岸切换成遮天蔽日的南半球温带雨林。在这里手机信号基本断绝，提前下好的离线地图立刻派上用场。",
+        "强烈推荐在「Maits Rest Rainforest Walk」停 40 分钟走一圈 800 米木栈道：参天冷杉与两三米高的巨型树蕨层层叠叠，满树干垂挂着青苔，晨雾和阳光斜穿透下来像闯进了史前世界，空气清甜得想打包带走。走完可顺路开支线去澳洲大陆最古老的「奥特威角灯塔」，沿途桉树林也是野生考拉高频出没地。"
+      ],
+      "tip": "奥特威林区支线弯多路窄且偶尔有倒树和野生小袋鼠窜出，保持 50–60km/h 柔和巡航；如果遇到大洋路著名的「慢车避让港湾（Slow Vehicle Turnout）」，后面压着长队本地车时礼貌靠边让行一下，大家都会竖大拇指致谢。",
+      "spotRefs": ["s:au.victoria/great-ocean-road"],
+      "photo": {
+        "id": "s3",
+        "scene": "Lush ancient temperate rainforest boardwalk winding beneath towering tree ferns and mossy mountain ash trees in Great Otway National Park, soft misty morning sunbeams filtering through canopy, travel photography, no text.",
+        "caption": "离开海岸切入维多利亚州内陆绿丘与雨林林区，一路桉树绵延，空气清甜得像天然氧吧。",
+        "alt": "维多利亚州葱郁山谷与岩石地貌风光"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · Day 2 15:00 高潮直击：吉布森台阶 + 十二门徒日落",
+      "title": "先下吉布森台阶贴身仰望巨岩，再去十二门徒观景台守一场南大洋金红日落",
+      "location": "吉布森台阶（Gibson Steps）→ 十二门徒岩（Twelve Apostles）→ 坎贝尔港",
+      "duration": "约 3 小时（按当地日落时间提前 1.5 小时到场）",
+      "cost": "观景台免费；可选直升机俯瞰约 A$175 / 人（15 分钟）",
+      "paragraphs": [
+        "午后重新回到海边就进入了整条路的高潮「沉船海岸」。千万别跳过十二门徒岩东侧 2 分钟车程的「吉布森台阶（Gibson Steps）」——沿着开凿在 70 米垂直悬崖壁上的 86 级石阶直接下到金色沙滩，站在海浪边缘抬头仰望两根巨型海蚀柱，那种人类在南大洋面前的渺小感比高处远眺震撼十倍（大浪涨潮时沙滩会关闭，注意入口警示）。",
+        "接着开车 3 分钟进入「十二门徒岩」游客中心。预算宽裕的话强烈建议花 15 分钟坐一趟旁边停机坪的观光直升机，从空中看断崖海岸线毕生难忘！日落前 45 分钟去东侧和西侧观景台卡位，夕阳把石灰岩峭壁染成灼热的金橙色，随着海风卷起海雾，天空从金色渐变到紫粉。拍完趁天还没完全黑透，开短短 10 分钟稳稳回「坎贝尔港」吃顿热烤羊排歇息。"
+      ],
+      "tip": "南半球盛夏（12–2 月）日落时间晚至 20:30 左右，而冬季（6–8 月）17:15 就落山！出发前一天查好当地精确 Sunset 时间，别傻等或错过了黄金二十分钟；同时风大到能吹飞手机，拍照抓紧！",
+      "spotRefs": ["s:au.victoria/twelve-apostles"],
+      "photo": {
+        "id": "s2",
+        "scene": "Wild grey koala curled peacefully in the fork of a towering eucalyptus gum tree along Kennett River in Victoria Australia, dappled afternoon sunlight through silver-green leaves, telephoto wildlife travel photography, no text.",
+        "caption": "维多利亚西南沿岸从山丘森林一路延伸至原始海岸保护区，车窗外每一程都是壮阔的南半球自然画卷。",
+        "alt": "维多利亚州原始海岸与苍翠山海全景"
+      }
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · Day 3 08:30 晨光收官：洛克阿德峡 + 伦敦断桥",
+      "title": "趁旅游大巴还没杀到，独享清晨澄澈的洛克阿德峡湾、伦敦桥与神仙洞穴",
+      "location": "洛克阿德峡谷（Loch Ard Gorge）→ 伦敦桥 → 拱门（The Grotto）",
+      "duration": "约 2.5 小时",
+      "cost": "全部免费",
+      "paragraphs": [
+        "坎贝尔港住一晚的第二个巨大红利就是「清晨独享周边神级峡湾」！早上 08:30 顺路先去距十二门徒仅 3 分钟的「洛克阿德峡谷」：上午柔和的顺光把两座刀削般的赭石峭壁和中间那片碧绿小海湾照得晶莹剔透，顺台阶下到峡谷沙滩上几乎只有海浪回声，这里也是 1878 年沉船幸存者上岸的传奇海湾。",
+        "随后往西再开 15 分钟，依次打卡 1990 年内侧拱门突然坍塌变成海上孤桥的「伦敦桥（London Bridge）」，以及走到底下能透过天然海蚀拱洞望向平静潮池与汹涌海浪的「神仙洞穴（The Grotto）」。这些点在上午十点半以前人少景清，拍照完全不用排队。"
+      ],
+      "tip": "伦敦桥与神仙洞穴往西的悬崖边缘土质松软、经常发生崩塌，拍照千万待在木栏杆以内，不要为了找网红角度跨过警戒线。",
+      "spotRefs": ["s:au.victoria/twelve-apostles"],
+      "photo": {
+        "id": "s4",
+        "scene": "Calm golden cove of Loch Ard Gorge framed by sheer ochre sandstone cliffs and turquoise waves gently lapping wet sand in bright morning sunlight, dramatic coastal travel photography, no text.",
+        "caption": "走完大洋路悬崖与峡湾切回内陆前，在沿途小镇来一杯澳洲国民澳白咖啡配早午餐，把长途驾驶的疲惫彻底抚平。",
+        "alt": "墨尔本与大洋路小镇咖啡馆里的丝绒澳白咖啡"
+      }
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · Day 3 12:30 切内陆高速 A1 丝滑回墨尔本",
+      "title": "千万别原路沿海倒开回去！走内陆王子高速（Princes Hwy）3 小时直回市区吃大餐",
+      "location": "坎贝尔港 → Camperdown → Colac → M1 → 墨尔本市区",
+      "duration": "约 3 小时直达（比原路绕沿海省 2 小时）",
+      "cost": "油费三日全程约 A$95–120",
+      "paragraphs": [
+        "新手最容易犯的傻就是回程又原路按弯弯曲曲的大洋路往回开——不仅景色重复，连续三百公里山弯会把司机开到肩颈僵硬。中午在坎贝尔港加满油（小镇油价略贵，加半箱够开到内陆大镇 Colac 再加满更划算），直接往北切进牧场草原，接上宽敞笔直的「A1 王子高速（Princes Highway）」。",
+        "内陆段一路都是成群牛羊、圆滚滚的草垛和火山湖群，巡航 100km/h 极其轻松，不到三小时就稳稳回到墨尔本市区还车。傍晚正好去涂鸦巷喝杯收尾澳白、去维多利亚女王市场或南岸吃顿热乎帕尔玛鸡排或炭烤牛排。"
+      ],
+      "tip": "快进入墨尔本市区路段（如 West Gate / CityLink 收费高速）采用全电子无杆收费（Linkt），租车行通常自带电子标签按次代扣外加几澳元手续费；如果不想走收费路段，在 Google Maps 里提前勾上「避开收费站（Avoid Tolls）」也只多 10 分钟。",
+      "spotRefs": ["s:au.victoria/melbourne-laneways", "f:au.victoria/chicken-parma"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "3 天 SUV 租车 + 全险", "detail": "墨尔本取还，含 Zero Excess 零起赔全险（双人分摊）", "amount": "约 A$180 / 人" },
+    { "item": "全程油费", "detail": "约 650 公里综合路况（阿波罗湾与 Colac 加油）", "amount": "约 A$55 / 人" },
+    { "item": "2 晚海边小镇住宿", "detail": "阿波罗湾海景旅馆 + 坎贝尔港公寓（双人分摊）", "amount": "约 A$240 / 人" },
+    { "item": "3 天餐饮与咖啡", "detail": "炸鱼薯条、澳白咖啡、超市补给与烤羊排晚餐", "amount": "约 A$180 / 人" },
+    { "item": "体验项目（选配）", "detail": "十二门徒 15 分钟观光直升机或奥特威灯塔门票", "amount": "A$0–175 / 人" }
+  ],
+  "pitfalls": [
+    "傍晚天黑后还在大洋路或内陆高速赶路——袋鼠有迎着车灯停在路中央的习性，夜间撞击事故极多，务必 17:00 前抵达当晚小镇。",
+    "出发前没下离线地图——大奥特威森林与部分海岸段手机完全没信号，没离线包连加油站和营地都找不到。",
+    "低估小镇关门速度——阿波罗湾与坎贝尔港大量餐馆 19:30 就停止点餐，别按国内晚上九点吃晚饭的习惯拖拉。",
+    "把 3 天硬压缩成 1 天往返——单程开车加停留就要 6 小时以上，一日游基本等于全程在赶路。"
+  ],
+  "sources": [
+    { "title": "大洋路官方旅游局 Visit Great Ocean Road：沿线城镇、景点与实时路况", "url": "https://visitgreatoceanroad.org.au/", "platform": "澳洲官方" },
+    { "title": "维多利亚州国家公园 Parks Victoria：十二门徒、洛克阿德峡与奥特威步道公告", "url": "https://www.parks.vic.gov.au/", "platform": "国家公园官方" },
+    { "title": "维州交通厅 VicRoads：海外驾照认证译本与靠左行驶交规说明", "url": "https://www.vicroads.vic.gov.au/", "platform": "官方交规" }
+  ]
+}

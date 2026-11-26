@@ -1,0 +1,172 @@
+{
+  "slug": "tokyo-kamakura-enoshima-one-day-loop",
+  "country": "japan",
+  "places": ["tokyo", "kanagawa"],
+  "category": "route",
+  "date": "2026-11-24",
+  "checked": "2026-11",
+  "featured": false,
+  "title": "东京出发镰仓江之岛一日实走：坐悬挂单轨进岛、避开江之电排长队，附车票省钱算账",
+  "subtitle": "别只知道傻买江之电一日券！从大船换「倒挂过山车」湘南单轨顺时针玩回镰仓，不走回头路还能顺路看富士山",
+  "excerpt": "东京往返镰仓最容易踩的两个坑：一是周末硬挤江之电等三趟都上不去，二是随便买通票反而亏钱。按「大船湘南单轨 → 江之岛 → 镰仓高校前 → 长谷大佛 → 小町通」顺时针走通，一天节奏顺畅不走回头路。",
+  "author": {
+    "id": "linyu",
+    "name": "林屿",
+    "handle": "@linyu_rail",
+    "role": "铁道与海岸摄影 · 关东通勤线通",
+    "avatar": "屿",
+    "tone": "#214563"
+  },
+  "meta": {
+    "days": "1 天当日往返",
+    "budget": "约 ¥280 / 人（含交通门票餐饮）",
+    "season": "全年（秋冬晴天见富士山概率最高）",
+    "pace": "轻松顺时针环线 · 约 1.4 万步",
+    "audience": "首次东京自由行 / 动漫与海景控"
+  },
+  "tags": ["镰仓一日游", "江之岛", "湘南单轨", "江之电", "东京近郊", "车票算账"],
+  "cover": {
+    "id": "cover",
+    "scene": "Classic dark green and cream vintage coastal tram (Enoden style) gliding along the sparkling blue Pacific coastline near Kamakura with Mount Fuji faintly visible across Sagami Bay on a crisp clear winter morning, editorial travel photograph, no text on train.",
+    "caption": "秋冬晴朗上午的湘南海面清澈见底，墨绿色的江之电贴着海堤滑过，远处的富士山剪影就像画在天空里。",
+    "alt": "行驶在镰仓海岸线旁的绿色复古电车与远方富士山"
+  },
+  "lead": [
+    "几乎每个来东京的人都会留一天给镰仓和江之岛，但网上攻略大多千篇一律叫你从新宿买小田急周游券直杀片濑江之岛。如果你住在上野、东京站、银座或品川一带，绕去新宿换小田急反而多花半小时，还错过了一段全日本最酷的通勤体验——轨道在车顶、整列车像过山车一样挂在山谷上空飞驰的「湘南悬挂单轨电车」。",
+    "下面这条我走了四次的「顺时针环线」，去程搭 JR 到大船转湘南单轨进江之岛，下午沿着江之电一路向东打卡海岸与古都，傍晚直接从镰仓站坐 JR 横须贺线直达回东京站或品川。全程零折返，还帮你把小田急周游券、江之电一日券和直接刷 Suica 的差价算得明明白白。"
+  ],
+  "highlights": [
+    "【车票防坑算账】住新宿/涩谷选小田急「江之岛—镰仓周游券」（约 1,640 日元）；住东京站/品川/银座直接刷 Suica 搭 JR + 湘南单轨，且江之电单日上下车少于 3 次时，别买 800 日元的江之电一日券（单刷更便宜）！",
+    "【最强纪律】能排在周一到周五工作日就千万别周末去——周末的江之电经常要排 2–3 趟车才挤得上去。",
+    "【生吻仔鱼盲区】每年 1 月至 3 月中下旬是湘南禁渔期，吃不到透明生吻仔鱼（生しらす），只能吃熟的釜扬吻仔鱼，别白跑一趟。",
+    "【爬岛省腿神器】带长辈或想留体力逛镰仓，上江之岛山顶直接在入口买「Escar 扶梯票」，省掉大半段暴晒陡阶梯。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · 08:10 东京/品川出发",
+      "title": "JR 直达大船站，换乘「倒挂过山车」湘南单轨冲向海边",
+      "location": "JR 大船站 → 湘南单轨「湘南江之岛站」",
+      "duration": "JR 约 45 分钟 + 单轨 14 分钟",
+      "cost": "JR 约 820 日元 + 湘南单轨 320 日元",
+      "paragraphs": [
+        "早上八点出头从东京站或品川站坐 JR 东海道线或横须贺线，约 45 分钟直达「大船站（Ofuna）」。出闸机后跟着头顶醒目的「Shonan Monorail（湘南モノレール）」指示牌走 3 分钟，刷手机 Suica 直接进站。",
+        "上车尽量抢第一节车厢最前面的驾驶室背后视角！列车整个悬吊在头顶钢轨下方，14 分钟车程里会高速穿隧道、掠过民居屋顶、俯冲山谷弯道，轻微失重感配上远方闪出来的相模湾海光，本身就像一场免费的游乐项目。终点站「湘南江之岛站」下车后，走 3 分钟过天桥就到通往江之岛的弁天桥入口。"
+      ],
+      "tip": "如果你住在新宿、代代木或下北泽，直接买小田急「江之岛—镰仓周游券」（约 1,640 日元，含新宿往返 + 江之电无限次）更划算；只需在藤泽换江之电，或者直达片濑江之岛站。",
+      "spotRefs": ["s:kanagawa/enoshima"],
+      "photo": {
+        "id": "s1",
+        "scene": "Sleek silver suspended monorail train hanging underneath an elevated steel track winding through green hills and suburban Japanese rooftops toward the ocean, crisp blue sky, dynamic documentary travel photography, no text.",
+        "caption": "大船到湘南江之岛的悬挂单轨列车全程仅 14 分钟，站在第一节车厢看轨道穿山入海，是这条顺时针环线最惊喜的开场。",
+        "alt": "穿行在翠绿山丘与民居上空的湘南悬挂式单轨电车"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · 09:30 上岛江之岛",
+      "title": "走青铜鸟居、坐扶梯登展望灯塔，天气通透时海天尽头就是富士山",
+      "location": "江之岛弁天桥 → 江岛神社 → 展望灯塔（Sea Candle）",
+      "duration": "约 2.5 小时",
+      "cost": "扶梯 + 庭园 + 灯塔套票约 1,100 日元",
+      "paragraphs": [
+        "走过 400 米长的弁天桥上岛，迎面就是复古青铜鸟居和两旁卖烤章鱼仙贝、温泉馒头的参道小街。走到红色木鸟居下往上看是一连串直通山腰的石阶——如果你下午还要走长谷寺和小町通，毫不犹豫在左侧售票窗买一张「Escar 扶梯 + 塞缪尔科金苑 + 展望灯塔」联票（注意扶梯只上不下，下山走台阶很轻松）。",
+        "坐完三段扶梯就能轻松逛遍江岛神社边津宫、中津宫并直抵山顶的 Sea Candle 展望灯塔。秋冬季节上午十点前空气最干爽，站在户外回廊往西望，整个相模湾连着雪顶富士山一览无余。时间充裕还可以顺台阶下到岛最南端的海蚀洞「江之岛岩屋」，听海浪撞击黑礁石的轰鸣。"
+      ],
+      "tip": "岛上山顶和海边有很多盘旋的黑鸢（老鹰），非常擅长从游客手里俯冲抢热狗、章鱼仙贝和冰淇淋！在户外端着食物走动时务必护好食物，最好坐进店内吃完再走。",
+      "spotRefs": ["s:kanagawa/enoshima"],
+      "photo": {
+        "id": "s2",
+        "scene": "Sunlit stone staircase and coastal overlook on Enoshima Island looking out over glistening turquoise Sagami Bay waves, dark volcanic cliffs, pine trees, and distant coastal horizon, natural daylight travel photo, no text.",
+        "caption": "顺着江之岛山脊走向海边悬崖，上午十点的阳光把相模湾照成通透的蓝绿色。",
+        "alt": "江之岛海边石阶与湛蓝相模湾海景"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · 12:00 午餐吃碗吻仔鱼丼",
+      "title": "在岛上老店或腰越渔港吃双拼吻仔鱼盖饭，顺手避开禁渔期误区",
+      "location": "江之岛参道 / 腰越站周边渔港食堂",
+      "duration": "约 50 分钟",
+      "cost": "约 1,500–2,000 日元 / 份",
+      "paragraphs": [
+        "来到湘南绕不开的名物就是「しらす丼（吻仔鱼盖饭）」。如果江之岛山顶的网红景观店（如鱼见亭）排队超过半小时，完全可以下岛在江之电「腰越站」附近找一家本地渔夫食堂，价格实在且不用苦等。点单时推荐选「生熟双拼（二色丼）」，一边是晶莹微甜的生吻仔鱼配生姜末，一边是蓬松咸香的熟吻仔鱼，淋两圈酱油扒饭停不下来。",
+        "如果恰好是 1 月到 3 月中下旬来玩，碰到店里告示没有「生しらす」别以为卖完了——这是湘南海岸法定的冬季禁渔保护期，全区都不允许捕捞生吻仔鱼，安心点一碗热腾腾的釜扬熟吻仔鱼配海苔味噌汤照样很鲜。"
+      ],
+      "tip": "很多海边老食堂和烤仙贝小摊只收现金，出发去镰仓前建议钱包里留 5,000 日元纸币和几枚百元硬币。",
+      "spotRefs": ["f:kanagawa/shirasu-don"],
+      "photo": {
+        "id": "s3",
+        "scene": "Appetizing Japanese shirasu-don rice bowl topped with glistening translucent fresh baby sardines, fluffy boiled whitebait, shredded nori, grated ginger, and chopped scallions in a handcrafted ceramic bowl on a seaside wooden cafe counter, natural light food photography, no text.",
+        "caption": "生熟双拼吻仔鱼盖饭配上现磨生姜与海苔丝，是爬完江之岛台阶后最清爽的一顿海味午餐。",
+        "alt": "木桌上的湘南生熟双拼吻仔鱼盖饭"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · 13:15 江之电沿海段",
+      "title": "镰仓高校前平交道守规矩速拍，七里滨海堤咖啡放空半小时",
+      "location": "江之电「镰仓高校前站」→「七里滨站」",
+      "duration": "约 1 小时",
+      "cost": "江之电单程 200–260 日元",
+      "paragraphs": [
+        "从江之岛站搭上墨绿色的复古江之电往镰仓方向，刚驶出腰越的路面段，右侧车窗就会突然豁然开朗撞进一整片太平洋。第 2 站就是《灌篮高手》片头取景地「镰仓高校前站」。",
+        "这两年因为游客涌入车道拍照造成严重交通隐患，路口现在长期有保安和警员值守劝导。一定要站在海侧人行道白线以内取景，绝不能跨到机动车道或铁轨警戒线里；其实沿着斜坡稍微往东走 100 米的下一个海景坡道，人少得多，照样能拍出电车、大海和斜坡同框。拍完别留恋，顺海堤散步到「七里滨」买杯热拿铁吹吹海风，才是湘南最松弛的打开方式。"
+      ],
+      "tip": "再次算一下江之电车费账：江之岛 → 镰仓高校前（200）→ 长谷（220）→ 镰仓（200），全天加起来才 620 日元，比买 800 日元的「江之电一日券（のりおりくん）」还便宜 180 日元！只有打算中途上下超过 4 站才值得买一日券。",
+      "spotRefs": ["s:kanagawa/enoshima"]
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · 14:30 长谷大佛与长谷寺",
+      "title": "下车步行 7 分钟看露天镰仓大佛，再登长谷寺观海平台",
+      "location": "江之电「长谷站」· 高德院与长谷寺",
+      "duration": "约 1.5 小时",
+      "cost": "镰仓大佛 300 日元 + 长谷寺 400 日元",
+      "paragraphs": [
+        "在江之电「长谷站」下车，顺着北侧街道走 7 分钟就到高德院。建于 13 世纪的青铜阿弥陀如来坐像原本藏在木造大佛殿内，室町时代被海啸冲毁殿宇后就一直端坐在露天群山之间，反而生出一种沧桑又宁静的气场。花 50 日元还能钻进大佛中空的青铜胎体内部看古代铸造接缝。",
+        "看完大佛往回走 5 分钟拐进「长谷寺」。除了六月满山坡的绣球花，秋冬季节这里一样精彩——寺内石阶错落、有锦鲤池与地藏小像，爬到上境的「见晴台」可以居高临下俯瞰由比滨海岸线的弯月海湾，坐长椅晒着午后暖阳能发呆很久。"
+      ],
+      "tip": "长谷寺如果遇到 6 月绣球花旺季需要提前预约绣球花小径入场券；平时秋冬季节直接现场售票机买票即可，16:30 左右停止入场，别拖到太晚。",
+      "spotRefs": ["s:kanagawa/kotoku-in", "s:kanagawa/hasedera"],
+      "photo": {
+        "id": "s4",
+        "scene": "Monumental weathered green-bronze seated Great Buddha statue outdoors in Kamakura surrounded by autumn pine and maple trees under soft golden late-afternoon sunlight, calm wide angle composition, realistic travel photo, no text.",
+        "caption": "午后三点半的柔和斜阳打在镰仓大佛斑驳的青铜绿锈上，背后松林与秋叶把古都气息衬得格外厚重。",
+        "alt": "秋日暖阳下的镰仓高德院露天青铜大佛"
+      }
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · 16:15 镰仓古都收尾与返程避峰",
+      "title": "逛小町通买鸽子饼干、走段葛参道拜鹤冈八幡宫，错峰搭 JR 回东京",
+      "location": "镰仓站东口 · 小町通 → 鹤冈八幡宫",
+      "duration": "约 1.5 小时",
+      "cost": "八幡宫免费；JR 返程约 950 日元",
+      "paragraphs": [
+        "搭江之电到终点「镰仓站」，从东口走出来左手边红色鸟居就是热闹的「小町通商店街」。一路试吃抹茶浓淡分级冰淇淋、现烤咖喱面包，顺手在老字号丰岛屋买一盒镰仓代表手信「鸽子黄油饼干（鳩サブレー）」。",
+        "穿过小町通尽头右转进入镰仓主神「鹤冈八幡宫」，走回程时建议改走平行的中央高架参道「段葛（若宫大路）」，两旁种满樱树，视野开阔且比小町通清静得多。最后直接在镰仓站刷卡坐 JR 横须贺线直达回东京站或品川（约 55 分钟），全程无需二次换乘。"
+      ],
+      "tip": "日落后的 17:30–18:30 是全天返程最拥挤的高峰波，如果正好撞上周末，不妨在镰仓站西口（御成通）找家安静的拉面店或居酒屋吃顿晚饭，19:30 后坐 JR 回东京基本一路有座。",
+      "spotRefs": ["s:kanagawa/tsurugaoka-hachimangu", "f:kanagawa/hato-sable"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "东京往返 JR 车费", "detail": "东京/品川→大船 + 镰仓→东京/品川（直接刷 Suica）", "amount": "约 1,770 日元" },
+    { "item": "湘南单轨 + 江之电", "detail": "大船→湘南江之岛 320 + 江之电三段单刷约 620", "amount": "约 940 日元" },
+    { "item": "江之岛与寺庙门票", "detail": "江之岛扶梯展望塔套票 1,100 + 大佛 300 + 长谷寺 400", "amount": "约 1,800 日元" },
+    { "item": "午餐与街边小吃", "detail": "吻仔鱼盖饭 + 抹茶冰淇淋 + 烤仙贝与咖啡", "amount": "约 2,600 日元" },
+    { "item": "伴手礼（可选）", "detail": "丰岛屋鸽子黄油饼干盒装", "amount": "约 1,200 日元" }
+  ],
+  "pitfalls": [
+    "周末节假日去镰仓——江之电发车间隔约 12 分钟但车厢仅 4 节，周末下午在镰仓高校前站常要干等 30 分钟挤沙丁鱼。",
+    "盲目买 800 日元江之电一日券——如果你只停江之岛、高校前、长谷和镰仓，单次刷卡反而更省钱。",
+    "在镰仓高校前站冲进马路中间拍照——当地居民和警方巡逻非常严格，不仅危险还会被当场吹哨劝离。",
+    "1–3 月期待吃透明生吻仔鱼——冬季是湘南法定禁渔期，这段时间全区只供应熟的釜扬吻仔鱼。"
+  ],
+  "sources": [
+    { "title": "小田急电铁官方：江之岛—镰仓周游券票价与范围", "url": "https://www.odakyu.jp/sc/passes/enoshima_kamakura/", "platform": "官方交通" },
+    { "title": "湘南单轨电车官方指南：大船至湘南江之岛路线", "url": "https://www.shonan-monorail.co.jp/en/", "platform": "官方交通" },
+    { "title": "江之岛电铁官方：车费表与一日乘车券说明", "url": "https://www.enoden.co.jp/en/", "platform": "官方交通" }
+  ]
+}

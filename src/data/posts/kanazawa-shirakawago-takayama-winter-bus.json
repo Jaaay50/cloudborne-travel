@@ -1,0 +1,172 @@
+{
+  "slug": "kanazawa-shirakawago-takayama-winter-bus",
+  "country": "japan",
+  "places": ["ishikawa", "gifu"],
+  "category": "transport",
+  "date": "2026-11-20",
+  "checked": "2026-11",
+  "featured": false,
+  "title": "冬季升龙道全攻略：金泽—白川乡—高山浓飞巴士 30 天抢票手把手教，附大雪延误缓冲法",
+  "subtitle": "白川乡没通火车！全车预约制的浓飞巴士冬天几分钟秒空，手把手拆解抢座时间、JR Pass 电话划位与雪地行程容错",
+  "excerpt": "金泽兼六园雪吊、白川乡合掌村厚雪、高山三町古街配飞驒牛是日本中部最梦幻的冬季动线，但卡死无数人的正是「浓飞巴士全车预约制」。这篇按实操顺序教你 30 天前定闹钟抢票，顺便把点灯日坑和大雪延误缓冲全讲清楚。",
+  "author": {
+    "id": "aze",
+    "name": "阿泽",
+    "handle": "@aze_kansai",
+    "role": "关西与北陆线编辑 · 巴士铁道实测",
+    "avatar": "泽",
+    "tone": "#a93f28"
+  },
+  "meta": {
+    "days": "3 天 2 晚",
+    "budget": "人均 ¥3,600（不含国际机票）",
+    "season": "12 月下旬 – 次年 2 月",
+    "pace": "北陆新干线 + 浓飞高速巴士串联",
+    "audience": "童话雪景党 / 避开东京大阪二刷日本"
+  },
+  "tags": ["白川乡合掌村", "浓飞巴士预约", "金泽兼六园", "飞驒高山", "升龙道冬季", "抢票指南"],
+  "cover": {
+    "id": "cover",
+    "scene": "Elevated panoramic view of Shirakawa-go historic village in winter, steep thatched-roof gassho-zukuri farmhouses blanketed in thick white snow with warm golden interior window light glowing at blue-hour dusk against snow-dusted pine mountains, National Geographic quality travel photography, no text.",
+    "caption": "厚雪压顶的白川乡合掌造木屋在暮色中透出暖黄灯光，但要顺利站上城山展望台，第一步是提前整整 30 天抢下浓飞巴士车票。",
+    "alt": "暮色积雪中亮起暖灯的白川乡合掌村全景"
+  },
+  "lead": [
+    "日本北陆与飞驒地区的「金泽 → 白川乡 → 高山」被称为冬季最美雪国走廊：前一天还在金泽看江户园林松树撑起的「雪吊」伞绳、在近江町市场大啖寒鰤鱼，第二天穿过豪雪隧道踏进合掌造茅草屋群，晚上住进高山古街炭烤一块入口即化的飞驒牛。",
+    "但这条路线有一个极其硬核的交通门槛：白川乡没有铁路，只能靠浓飞巴士与北铁联营高速巴士进出，而冬季全线核心班次采取「全车预约制（标记 R）」，热门时段往往在开售当早上几分钟就抢光。下面按真实操作步骤，从行前 30 天抢票开始一步步带你走通。"
+  ],
+  "highlights": [
+    "【抢票黄金窗口】Japan Bus Online / Highwaybus.com 于乘车日前整整 1 个月（日本时间 10:00，即北京时间 09:00）开售，金泽 08:40/09:40 出发、下午 14:30/15:30 离开白川乡的班次冬季极易秒空。",
+    "【JR Pass 持券痛点】买了「JR 高山·北陆地区周游券」虽然含巴士车费，但不能直接跳过预约排队上车！旺季建议开票日致电浓飞巴士预约中心留座，或干脆花两千多日元提前网上锁好自费席位更省心。",
+    "【大雪延误铁律】冬季北陆与东海北陆高速常因暴雪临时限速或封道，巴士晚点 1–2 小时不稀奇，切忌把白川乡下车时间紧贴着新干线发车或餐厅预约。",
+    "【点灯日完全不同玩法】白川乡一年仅数场的冬季夜间点灯日实施全村严格交通管制，常规巴士停运，必须提前数月抽中「点灯专用套票/住宿」才能留到天黑。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · 出发前 30 天北京时间 08:55",
+      "title": "手把手抢下「金泽→白川乡」与「白川乡→高山」两段预约制巴士票",
+      "location": "Japan Bus Online / Highwaybus.com 官网",
+      "duration": "提前 1 天注册账号，开售日 5 分钟完成下单",
+      "cost": "金泽→白川乡约 2,800 日元；白川乡→高山约 2,600 日元",
+      "paragraphs": [
+        "千万别等到飞抵日本才去车站碰运气！在出行前 31 天，先去 Japan Bus Online 或 Highwaybus.com 注册好账号、绑定能境外支付的 Visa/Mastercard，提前试走一遍搜索界面确认路线名称（Kanazawa → Shirakawa-go，以及 Shirakawa-go → Takayama）。",
+        "建议黄金衔接时间是：早上 08:40 或 09:40 从金泽站东口 2 号乘车处发车（车程 1 小时 15 分），在白川乡稳稳玩足 3–3.5 小时，再接 14:00 或 14:30 左右的预约制巴士去高山（车程 50 分钟）。两段票尽量开售第一时间一并拿下，电子确认单截图存手机即可直接扫码或报姓名上车。大件行李直接放车底行李舱，不另收费。"
+      ],
+      "tip": "如果你抢晚了、「白川乡 → 高山」预约制班次显示满席，别慌！高山—白川乡短途之间还保留了少量标注非 R 的「自由席普通班次」，只需提前 35–40 分钟到白川乡巴士总站排队，仍有机会上车（但金泽往返段几乎全预约，没票只能改天）。",
+      "spotRefs": ["s:gifu/shirakawago"]
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · Day 1 抵达金泽",
+      "title": "看日本三大名园兼六园冬季「雪吊」奇观，午后漫步东茶屋街吃金箔甜点",
+      "location": "金泽站 → 兼六园 → 东茶屋街 → 近江町市场",
+      "duration": "全天轻松游览",
+      "cost": "兼六园门票 320 日元；市内周游巴士单次 210 日元",
+      "paragraphs": [
+        "从东京坐北陆新干线（约 2.5 小时）或从京都大阪坐特急雷鸟号转北陆新干线（约 2 小时）直抵「金泽站」，出站抬头就能看见气势十足的木造「鼓门」。金泽市区景点极集中，第一站直奔「兼六园」：每年 11 月起园丁会给松树架起数以百计放射状的麻绳圆锥「雪吊（Yukitsuri）」，防止北陆湿重的豪雪压断古松枝干，下雪天配徽轸灯笼与霞之池静谧如古画。",
+        "午饭步行 15 分钟到「近江町市场」吃一碗堆满北陆冬季招牌甜虾、喉黑鱼（ノドグロ）与香箱蟹的豪华海鲜丼。下午逛江户风韵犹存的「东茶屋街」，在暗木格窗的百年茶屋里喝碗抹茶、尝一支视觉拉满的金箔霜淇淋，晚上顺路吃锅热乎乎的金泽关东煮配地酒。"
+      ],
+      "tip": "金泽冬季阴雨湿雪极多，本地有句老话叫「忘了带便当也不能忘带伞」。出门随身带把防风折叠伞并穿防水防滑鞋，比光靠帽子挡湿雪靠谱得多。",
+      "spotRefs": ["s:ishikawa/kenrokuen", "s:ishikawa/higashi-chaya", "s:ishikawa/omicho-market", "f:ishikawa/kanazawa-oden"],
+      "photo": {
+        "id": "s1",
+        "scene": "Traditional Japanese yukitsuri conical rope snow-supports protecting ancient pine trees around the misty pond and stone lantern of Kenrokuen Garden in Kanazawa on a crisp winter morning, serene travel photography, no text.",
+        "caption": "只有秋冬与寒冬才能见到的兼六园「雪吊」绳伞，既保护古松不被湿雪压断，也成就了北陆最具代表性的几何园林美学。",
+        "alt": "冬晨挂满雪吊绳索的日本金泽兼六园古松与水池"
+      }
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · Day 2 08:40 金泽出发进雪谷",
+      "title": "穿隧道进入白川乡合掌村：先寄行李、先坐接驳车登城山展望台！",
+      "location": "白川乡荻町巴士总站 → 城山展望台 → 和田家",
+      "duration": "村内停留约 3–3.5 小时",
+      "cost": "行李寄存 500–1,000 日元；展望台接驳小巴单程 200 日元",
+      "paragraphs": [
+        "巴士驶离金泽后一路钻进飞驒山脉的漫长隧道，出洞那一刻窗外突然被半人高的皑皑积雪填满，满车人几乎都会同时发出惊叹。抵达白川乡巴士总站后，立刻先把大行李箱塞进候车厅旁的投币储物柜（柜子满的话旁边有人工行李寄存处，按件收费非常方便）。",
+        "进村顺序极有讲究：不要在村口慢悠悠拍照把黄金光线耗光！下车直接去旁边排「城山展望台接驳小巴」（每 20 分钟一班、单程 200 日元，雪天强烈不建议自己走结冰陡坡上去），趁上午人少光线斜射，拿下整个合掌村童话全景。再坐车下山漫步村内，花 400 日元进最大的合掌造古宅「和田家」二楼三楼，亲眼看没有用一根钉子、全靠绳索与木榫咬合的巨大茅草屋架。"
+      ],
+      "tip": "白川乡主干道雪被踩实后像溜冰场一样滑，且每隔一阵会有屋顶厚雪滑落，走路时避开合掌屋檐正下方，同时把防滑冰爪套好再走田埂小径。",
+      "spotRefs": ["s:gifu/shirakawago"],
+      "photo": {
+        "id": "s2",
+        "scene": "Cozy timber-lined historic street of Higashi Chaya District in Kanazawa in soft winter afternoon light, dark wooden lattice teahouses and wet stone-paved lane with subtle snow along eaves, calm travel photography, no signs.",
+        "caption": "出发去白川乡前，不妨留一个安静的下午给金泽东茶屋街，细雪落在暗木格窗上格外温柔。",
+        "alt": "细雪映衬下的金泽东茶屋街传统木格茶屋古巷"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · Day 2 14:30 抵达「飞驒小京都」高山",
+      "title": "傍晚入住高山温泉酒店，钻进三町古街与炭火烧肉店吃 A5 飞驒牛",
+      "location": "JR 高山站 / 浓飞巴士中心 → 三町古街",
+      "duration": "巴士 50 分钟 + 傍晚逛吃",
+      "cost": "飞驒牛烧肉/朴叶味噌晚餐人均约 4,500–7,000 日元",
+      "paragraphs": [
+        "下午三点半前顺利坐巴士抵达高山浓飞巴士中心（就在 JR 高山站隔壁），拖着箱子 5 分钟就能住进市中心带顶楼天然温泉的商务酒店。高山古街「上三之町」的商铺大多在下午 17:00 陆续打烊，放好行李可以趁着黄昏人散，先溜达一圈清酒酿造老铺，花几百日元试饮几杯辛口飞驒清酒。",
+        "晚饭的重头戏毫无悬念是「飞驒牛」！推荐去当地老牌肉铺直营的炭火烧肉（如丸明或味藏天国，人气极高建议 17:00 刚开市就去拿号或提前订位），或者找家古民家餐厅点一份「飞驒牛朴叶味噌」——晒干的厚朴叶铺在小陶炉上，甜咸味增烤出焦香，牛肉油脂渗进味增里，配两碗越光米饭直接香迷糊。"
+      ],
+      "tip": "如果当天碰到白川乡暴雪导致巴士晚点 1 小时到达高山，千万别焦虑——晚餐改去高山站周边营业到 21:00 的高山酱油拉面老店或暖身居酒屋，第二天一早再好好逛古街，行程完全不亏。",
+      "spotRefs": ["s:gifu/takayama-sanmachi", "f:gifu/hida-gyu", "f:gifu/hoba-miso"],
+      "photo": {
+        "id": "s4",
+        "scene": "Marbled Hida beef skewers seared over glowing binchotan charcoal and sizzling Hida beef miso on a dried magnolia leaf over a tiny ceramic tabletop grill in a cozy Takayama wooden restaurant, 50mm food photography, no text.",
+        "caption": "高山寒夜里最抚慰人心的就是炙烤朴叶味噌飞驒牛，焦甜味噌裹着雪花油脂配热饭堪称一绝。",
+        "alt": "高山传统小炉炭烤飞驒牛与朴叶味噌料理"
+      }
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · Day 3 清晨宫川朝市与雪中三町",
+      "title": "08:00 逛宫川河畔早市喝热牛奶、吃炙烤飞驒牛寿司与高山阵屋",
+      "location": "宫川朝市 → 高山阵屋 → 上三之町古街",
+      "duration": "约 3 小时",
+      "cost": "高山阵屋门票 440 日元；街头小吃约 1,500 日元",
+      "paragraphs": [
+        "高山最舒服的时光其实是早上 08:00 到 10:00。沿着积雪的宫川河岸走过「宫川朝市」，摊位上卖着现烤飞驒牛串、甜脆蜜苹果、用饼干杯盛着能连杯子一起吃掉的浓醇浓缩咖啡，还有手工猿宝宝（さるぼぼ）布偶，一边呵着白气一边和笑眯眯的老奶奶聊天。",
+        "逛完早市走 8 分钟去日本唯一完整保留下来的江户幕府郡代官邸「高山阵屋」，看雪景映衬下的榻榻米大广间与古代年贡米仓；再回上三之町吃两贯现喷火枪炙烤的飞驒牛握寿司配仙贝托盘，顺手买一串咸甜焦香的御手洗团子。"
+      ],
+      "tip": "如果还有半天时间，从 JR 高山站坐 15 分钟普通电车就能到动画《你的名字》取景原型「飞驒古川」，白壁土藏沿着清澈水渠排列，游客只有高山的十分之一。",
+      "spotRefs": ["s:gifu/miyagawa-asaichi", "s:gifu/hida-furukawa", "f:gifu/mitarashi-dango"],
+      "photo": {
+        "id": "s3",
+        "scene": "Charming Edo-era dark cedar merchant houses of Takayama Sanmachi Suji old town street dusted with fresh winter snow, overhanging eaves, clear mountain runoff canal alongside lane, crisp morning light, travel photography, no readable text.",
+        "caption": "清晨九点前的高山三町古街还没有旅行团喧嚣，薄雪压在深褐木檐上，路旁清渠潺潺流过。",
+        "alt": "冬日清晨薄雪覆檐的日本高山三町江户古街"
+      }
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · Day 3 午后撤离：南下名古屋或北返金泽/东京",
+      "title": "搭 JR 特急飞驒号（Hida）一路看雪峡南下名古屋，记得留出 1.5 小时转乘缓冲",
+      "location": "JR 高山站 → 特急「飞驒号」→ 名古屋站（或富山转北陆新干线）",
+      "duration": "特急飞驒号约 2 小时 25 分钟",
+      "cost": "约 6,200 日元（含在 JR 高山北陆周游券内）",
+      "paragraphs": [
+        "离开高山时，强烈推荐坐上新换装的混动特急列车「JR 飞驒号（HC85 系）」南下名古屋——超大的全景玻璃窗沿着飞驒川溪谷蜿蜒穿行，冬日河谷雪石与翠绿激流美得像一幅水墨长卷。到达名古屋站后，无论是接东海道新干线回东京/京都，还是直接坐名铁去中部国际机场回国都极其顺畅。",
+        "最后再强调一次冬季北陆的铁律：不管搭浓飞巴士还是特急飞驒号，只要遇到大雪警报，务必给后续的新干线或国际航班留出至少 1.5–2 小时以上的转乘缓冲，别用夏季的掐点思维安排雪国交通。"
+      ],
+      "tip": "JR 飞驒号行进方向往名古屋时，靠左侧窗（A/B 座）能看到更多壮阔的飞驒川河谷雪景；在车站绿色窗口划位时顺口提一句「window seat」即可。",
+      "spotRefs": ["f:gifu/takayama-ramen"]
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "浓飞巴士（两段预约票）", "detail": "金泽→白川乡 + 白川乡→高山（若买 JR 高山北陆 5 日券约 19,800 日元全包）", "amount": "约 5,400 日元" },
+    { "item": "城际铁路（新干线/特急）", "detail": "入场北陆新干线或离场 JR 特急飞驒号（按单段参考）", "amount": "约 6,200–14,000 日元" },
+    { "item": "2 晚住宿（金泽 + 高山）", "detail": "车站周边高分温泉商务酒店（双人分摊单人价）", "amount": "约 22,000 日元 / 人" },
+    { "item": "餐饮大餐", "detail": "近江町海鲜丼、飞驒牛烧肉/朴叶味噌、朝市小吃与拉面", "amount": "约 16,000 日元" },
+    { "item": "门票与寄存", "detail": "兼六园、和田家、高山阵屋、展望台小巴与行李柜", "amount": "约 2,500 日元" }
+  ],
+  "pitfalls": [
+    "没提前 30 天预订浓飞巴士，临时到金泽站现场买票——冬季 90% 概率吃闭门羹，整趟白川乡行程直接泡汤。",
+    "误以为持有 JR 高山北陆周游券就能直接排队上全预约制巴士——必须提前通过电话或柜台划座拿到预约号。",
+    "撞上白川乡一年仅几场的冬季点灯日却没抢到点灯入场资格——当天下午起村子全面交通管制，无资格游客会被要求提前离村。",
+    "行程卡得太死不留大雪延误余量——冬季高速公路偶尔因除雪封路 1–2 小时，切忌当日紧接国际航班。"
+  ],
+  "sources": [
+    { "title": "浓飞巴士官方：金泽—白川乡—高山冬季时刻表与预约规则", "url": "https://www.nouhibus.co.jp/english/", "platform": "官方巴士" },
+    { "title": "Japan Bus Online 官方：全车预约制高速巴士在线订票系统", "url": "https://japanbusonline.com/", "platform": "官方订票" },
+    { "title": "白川乡观光协会官方：合掌村交通、行李寄存与冬季点灯管制通知", "url": "https://shirakawa-go.gr.jp/en/", "platform": "白川乡官方" }
+  ]
+}

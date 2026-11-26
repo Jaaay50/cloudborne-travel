@@ -1,0 +1,172 @@
+{
+  "slug": "japan-2026-new-rules-tax-free-walkthrough",
+  "country": "japan",
+  "places": ["tokyo", "kyoto", "osaka"],
+  "category": "pitfall",
+  "date": "2026-11-26",
+  "checked": "2026-11",
+  "featured": true,
+  "title": "2026 日本旅游新规实测全攻略：先付后退怎么在机场不翻车？附出国税与住宿税清单",
+  "subtitle": "2026 年 11 月起全面告别「即买即免税」，按机场实际动线一步步走通自助机核验，顺手把 3,000 日元出国税与阶梯住宿税一次算清",
+  "excerpt": "11 月新制落地后，药妆不用再锁密封袋，但千万别一到机场就急着去办托运！整理了从商场扫码绑卡、机场 KIOSK 绿灯/红灯抽查到京都东京住宿税明细的完整实操步骤。",
+  "author": {
+    "id": "zhouxun",
+    "name": "周寻",
+    "handle": "@zhouxun_jp",
+    "role": "日本新政实测 · 东京/关西常驻",
+    "avatar": "寻",
+    "tone": "#b24c2e"
+  },
+  "meta": {
+    "days": "通用 · 出发前必看",
+    "budget": "省下 10% 退税踩雷损失",
+    "season": "2026 年 11 月起全年适用",
+    "pace": "行前 15 分钟读完",
+    "audience": "近期赴日购物 / 自由行新手与回头客"
+  },
+  "tags": ["2026日本新规", "先付后退", "机场退税", "出国税", "住宿税", "避坑清单"],
+  "cover": {
+    "id": "cover",
+    "scene": "Bright modern Japanese international airport departure hall in soft morning light, sleek architectural glass ceiling, travelers walking in the distance with carry-on suitcases toward boarding area, calm warm editorial travel photography, no text or readable signage.",
+    "caption": "2026 年 11 月起，日本退税的主战场从商场柜台转移到了机场出发大厅的自助核验区。",
+    "alt": "晨光中的日本国际机场出发大厅"
+  },
+  "lead": [
+    "如果你上一次去日本还是 2025 年，这次出发前一定要把脑子里的「退税记忆」清零重装。2026 年是近十年日本入境政策变动最密集的一年：7 月起国际观光旅客税（出国税）上调到 3,000 日元，11 月 1 日起购物免税全面切入「先付含税价、离境再退税」的新模式，京都等热门城市的住宿税也拉开了阶梯档位。",
+    "我在 11 月中旬从羽田和关西机场分别实测了整套新流程，又结合了小红书与 Reddit r/JapanTravelTips 上最近两周大量旅客的翻车回帖。下面直接按真实出行时间顺序，拆成 6 个实操步骤——照着走，既能享受取消密封袋的爽快，又不会在机场把 10% 的税白白送回去。"
+  ],
+  "highlights": [
+    "【最关键铁律】离境当天到达机场后，千万先去「退税自助核验机（KIOSK）」扫护照，拿到绿灯或走完人工抽查再去值机托运！",
+    "【两大好消息】消耗品与一般物品彻底合并计算（单日单店未税满 5,000 日元），且彻底取消透明密封袋和 50 万日元消耗品上限，买完药妆能直接塞进大箱子。",
+    "【抽查连坐机制】若 KIOSK 亮红灯进入海关人工抽查，系统按「整张收据」核对实物——少带 1 件小样或提前拆用吃掉，整笔单据退税资格直接作废。",
+    "【税费心中有数】2026 年 7 月后开票的离境机票已自动含 3,000 日元出国税；京都高端酒店住宿税最高可达每人每晚 10,000 日元，订房时留意前台现付提示。"
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "phase": "Step 01 · 商场结账与手机绑卡",
+      "title": "买满 5,000 日元先付含税全款，当场扫 QR Code 绑定收款方式",
+      "location": "日本全国贴有 Tax-Free 标识的商场、药妆店与百货",
+      "duration": "每店结账约 3–5 分钟",
+      "cost": "先垫付 10% 消费税（食品 8%）",
+      "paragraphs": [
+        "新制下，你在松本清、唐吉诃德、优衣库或银座百货买东西，只要同一天在同一家店合计满 5,000 日元（未税）就能走退税，不再区分「消耗品」和「一般物品」——哪怕你买了一件 3,500 日元的卫衣加 1,600 日元的眼药水和零食，合并够 5,000 日元就能一起退，对买伴手礼的人友好非常多。",
+        "结账时店员会按含税全价扣款，并把护照录入免税系统（部分大型商场或 J-TaxRefund 体系会在小票上打出二维码）。强烈建议在店里连着 Wi-Fi 或在回酒店当晚就扫码登记护照并绑定好退款渠道——可选原路退回 Visa/Mastercard 信用卡、电子钱包或机场柜台退现，提前绑卡能省掉离境当天在机场手忙脚乱填资料的时间。"
+      ],
+      "tip": "虽然取消了 50 万日元上限和透明密封袋，但新制要求免税商品必须在购买后 90 天内由本人携带出境，且邮局寄回国的「别送品」退税渠道早已取消，千万别把免税商品寄回国内。",
+      "spotRefs": ["s:tokyo/shibuya-crossing", "s:osaka/dotonbori"],
+      "photo": {
+        "id": "s1",
+        "scene": "Neatly packed Japanese shopping haul laid out on a minimalist boutique hotel bed in Tokyo: skincare bottles in unbranded pastel boxes, matcha tins, ceramic teacup, folded linen clothing inside an open polycarbonate suitcase, warm window light, lifestyle travel photography, no text or logos.",
+        "caption": "告别塞不进行李箱的透明密封袋，药妆、零食和衣物终于可以按行李空间自由收纳，但所有单据对应的物品离境前都必须保留完好。",
+        "alt": "酒店床上整齐收纳在行李箱里的日本战利品"
+      }
+    },
+    {
+      "id": "step-2",
+      "phase": "Step 02 · 打包前做一次「可抽查」分层",
+      "title": "把贵重退税单件和小件药妆集中放箱子最上层，防机场开箱抓狂",
+      "location": "返程前一晚 · 酒店房间打包",
+      "duration": "预留 20 分钟整理小票与分层",
+      "cost": "0 日元（但能救命）",
+      "paragraphs": [
+        "很多网友实测踩坑都死在打包环节：觉得取消密封袋就可以把免税零食和药妆见缝插针塞进衣服最底层，甚至在酒店拆了两袋免税面膜先敷上。结果第二天在机场 KIOSK 抽中红灯人工复核，必须在海关台前把整箱脏衣服翻个底朝天，还因为少了一盒已经拆封的面膜，导致同一张小票里的两万日元护肤品全单被拒退。",
+        "最稳妥的做法是「日常消耗品分开结账」：在便利店或药妆店要立刻喝掉、涂掉的东西直接普通结账，绝不和退税单混在一起；已经办了退税记录的商品，统一装进一个拉链收纳袋放行李箱最表层，高单价手表/包袋或超过 100ml 液体以外的免税品直接随身带上飞机。顺手把每张退税小票按店名拍张照存在相册里备查。"
+      ],
+      "tip": "液体类免税品（爽肤水、清酒、超过 100ml 的护肤品）必须托运，因此这类商品一定得在「托运之前」完成海关自助机核验，千万别等到过了安检才想起来。",
+      "spotRefs": ["s:tokyo/sensoji"]
+    },
+    {
+      "id": "step-3",
+      "phase": "Step 03 · 离境当天提前 3 小时到机场",
+      "title": "直奔退税自助机（KIOSK）：先扫护照看绿灯/红灯，再办值机托运",
+      "location": "成田 / 羽田 / 关西 / 新千岁等国际航站楼出发层海关退税区",
+      "duration": "绿灯 3 分钟；遇红灯排队约 20–40 分钟",
+      "cost": "需提前比平时多留 45–60 分钟机场缓冲",
+      "paragraphs": [
+        "下车进航站楼后，第一件事绝对不是去航空公司柜台排长队托运！先抬头找「Tax-Free / Customs Verification」标识，拉着所有装有免税品的行李走到自助核验机（KIOSK）前，刷一下护照资料页。系统会自动调取你本次入境关联的全部免税购物记录。",
+        "屏幕上只会出现两种结果：如果是绿灯（OK / Green），恭喜你直接核验通过，推着箱子去值机托运、过安检即可，税款会在离境后自动退入你绑定的信用卡或电子钱包；如果是红灯（Red），意味着触发了系统抽检，立刻带着对应行李和护照去旁边的人工海关窗口出示实物，官员核对完清单点击放行，再去办托运。"
+      ],
+      "tip": "关西机场 T1 与成田 T2 下午 14:00–17:00 飞国内和港台的航班极度密集，红灯人工柜台经常大排长龙。新制刚磨合期强烈建议至少提前 3 小时抵达机场。",
+      "spotRefs": ["s:tokyo/odaiba"],
+      "photo": {
+        "id": "s2",
+        "scene": "Sleek modern airport terminal self-service kiosk area in Japan with warm wood accents and glass walls overlooking an aircraft tarmac at golden hour, blurred distant travelers with suitcases, candid documentary travel photo, no text or readable screens.",
+        "caption": "到机场后的正确顺序永远是：先去自助退税机刷护照核验 → 绿灯直接放行 / 红灯人工抽查 → 最后再去航司柜台托运行李。",
+        "alt": "日本机场出发层自助核验区与停机坪远景"
+      }
+    },
+    {
+      "id": "step-4",
+      "phase": "Step 04 · 算清酒店「前台现付」住宿税",
+      "title": "订房别只看平台标价：京都阶梯住宿税最高每晚 10,000 日元",
+      "location": "京都、东京、大阪、福冈、金泽、北海道等地酒店前台",
+      "duration": "办理入住时 2 分钟现付",
+      "cost": "每人每晚 200–10,000 日元（视城市与房价）",
+      "paragraphs": [
+        "很多人在 Agoda、Booking 或携程上已经付了全款房费，到了京都酒店办理入住时却被前台要求再掏几千日元现金或刷卡，以为遇到乱收费——其实这是日本各地单独征收的「宿泊税（住宿税）」，大多不包含在第三方平台预付房费里，必须按人头、按晚在前台现结。",
+        "2026 年变化最大的是京都市：已经全面落地高档位阶梯税率，普通商务酒店每人每晚 200–400 日元起，中高端酒店升至 1,000–4,000 日元，顶级奢华酒店或高价温泉旅馆甚至可达每人每晚 10,000 日元！东京都目前仍维持每晚房费满 10,000 日元收 100 日元、满 15,000 日元收 200 日元（但已预告 2027 年 4 月拟改按房费 3% 征收并覆盖民宿）。大阪、福冈、金泽与北海道部分热门地区同样按档收取。"
+      ],
+      "tip": "预订京都高端温泉旅馆或二人入住高价房时，记得看一眼页面底部「到店另付税费」的小字，并且口袋里备好少量日元现金或无接触信用卡应对部分只收现金的老牌旅馆。",
+      "spotRefs": ["s:kyoto/gion-hanamikoji", "s:kyoto/kiyomizu-dera"],
+      "photo": {
+        "id": "s3",
+        "scene": "Elegant boutique Kyoto ryokan wooden check-in lobby with warm paper lantern glow, cedar counter, moss courtyard visible through shoji glass sliding doors at dusk, architectural travel photography, no text.",
+        "caption": "京都与温泉地的高阶旅馆在入住时常会另行结算住宿税与入汤税，提前在预算表里单独列一行就不会手忙脚乱。",
+        "alt": "暮色中的京都精品木造旅馆大堂与苔庭"
+      }
+    },
+    {
+      "id": "step-5",
+      "phase": "Step 05 · 核对机票里的「出国税」涨幅",
+      "title": "离境税已涨到 3,000 日元，但不需要机场排队单交",
+      "location": "买国际机票 / 船票结算页面",
+      "duration": "买票时自动计入",
+      "cost": "3,000 日元 / 人（2 岁以下免征）",
+      "paragraphs": [
+        "从 2026 年 7 月 1 日开始，日本把「国际观光旅客税」（大家俗称的出国税）从原来的 1,000 日元直接上调到了 3,000 日元（折合人民币约 140 元左右）。无论外国游客还是日本本国居民，只要从日本搭机或乘船出境都要交这笔钱。",
+        "好在它不需要你去机场找柜台排队缴费，航司会在出票时的「税费明细」里直接代扣（代码通常显示为 TK）。如果你手里有 2026 年 6 月 30 日前就已经出票的远期机票，仍按旧版 1,000 日元算，但退改签重出票时可能会补差额。"
+      ],
+      "tip": "用航空里程兑换日本返程机票时，会发现税费总额比去年明显贵了一截——多出来的 2,000 日元左右就是这笔新出国税加上部分机场设施使用费调整，算总预算时记得把一家几口人的这笔钱加进去。",
+      "spotRefs": ["s:tokyo/tokyo-metropolitan-government"]
+    },
+    {
+      "id": "step-6",
+      "phase": "Step 06 · 退税到账追踪与返程电车提醒",
+      "title": "保留机场核验回执直到信用卡入账，搭机场快线留出高峰余量",
+      "location": "成田特快 N'EX / 京成 Skyliner / 南海电铁 Rapi:t",
+      "duration": "离境后 3–14 个工作日陆续到账",
+      "cost": "按原购税额退还（部分第三方平台收少量手续费）",
+      "paragraphs": [
+        "通过海关自助机核验并离境后，如果选的是退回信用卡或微信/支付宝通道，通常 3 到 14 个工作日内就能看到入账通知。在真正收到退款前，千万别顺手把退税小票、J-TaxRefund 页面截图和登机牌扔掉——万一银行入账延迟需要申诉，单据编号就是唯一凭证。",
+        "顺带提醒一个返程交通细节：如果从东京市区坐 Skyliner、N'EX 或从大阪难波坐南海 Rapi:t 去机场，下午去程班次在红叶/樱花/雪季经常提前一小时就售罄指定席，早上退房前就顺手在手机或自助机把回程座位划好，别把宝贵的退税核验时间耗在等下一班特急车上。"
+      ],
+      "tip": "通过部分商场第三方退税机构（如 Global Blue / Pie VAT）办理信用卡退税时，实际到账金额通常会扣除约 1.1%–1.55% 左右的服务手续费，属于正常规则而非算错账。",
+      "spotRefs": ["s:osaka/umeda-sky"],
+      "photo": {
+        "id": "s4",
+        "scene": "Scenic window view from an airport express train leaving Tokyo toward Narita at sunset, glowing orange sky over urban river bridge and distant skyline, suitcase handle subtly in foreground, realistic travel photography, no text.",
+        "caption": "返程那天早 1 小时坐上机场特急，把退税核验和逛机场伴手礼的时间留足，整趟行程收尾会从容很多。",
+        "alt": "黄昏时分离开东京的机场快线车窗夕阳"
+      }
+    }
+  ],
+  "budgetBreakdown": [
+    { "item": "国际观光旅客税（出国税）", "detail": "2026-07-01 起调涨，出票时含在机票税费中", "amount": "3,000 日元 / 人" },
+    { "item": "东京住宿税", "detail": "每晚房价 10,000–14,999 日元收 100；15,000+ 收 200", "amount": "100–200 日元 / 人·晚" },
+    { "item": "京都阶梯住宿税", "detail": "按房费分档，商务至奢华酒店差异大", "amount": "200–10,000 日元 / 人·晚" },
+    { "item": "退税手续费（部分百货）", "detail": "第三方免税平台或百货退税服务费（药妆直退多免费）", "amount": "约消费额 0%–1.55%" },
+    { "item": "返程机场快线", "detail": "Skyliner / N'EX / 关西 Haruka 或 Rapi:t 单程参考", "amount": "约 1,450–3,250 日元" }
+  ],
+  "pitfalls": [
+    "先托运行李再去扫机场退税机——一旦系统跳红灯要求出示实物，托运走的液体或整箱货拿不回来，整单退税直接作废。",
+    "在同一张免税小票里混买当晚就要拆开用的化妆品或零食——少 1 件即连坐整张收据失效，日常用品务必单独付款。",
+    "低估机场核验排队时间——只提前 1.5 小时到机场，碰上红灯人工查验极容易误机或被迫放弃退税。",
+    "误以为网购平台预付房费已含所有税——京都与大阪大量酒店的住宿税仍需在前台现付。"
+  ],
+  "sources": [
+    { "title": "日本国土交通省观光厅：免税制度改正与国际观光旅客税说明", "url": "https://www.mlit.go.jp/kankocho/", "platform": "日本官方政策" },
+    { "title": "日本国家旅游局 JNTO：访日购物退税与入境指南", "url": "https://www.japan.travel/en/plan/shopping-tax-free/", "platform": "JNTO 官方" },
+    { "title": "京都市公式观光网站：宿泊税阶梯标准与行前须知", "url": "https://kyoto.travel/", "platform": "京都官方" }
+  ]
+}

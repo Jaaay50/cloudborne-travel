@@ -10,18 +10,20 @@ import fcntl
 from html import unescape
 from html.parser import HTMLParser
 from http.client import HTTPException, IncompleteRead
+import ipaddress
 import json
 import os
 from pathlib import Path
 import re
 import runpy
 import shutil
+import socket
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -87,13 +89,69 @@ class PipelineError(Exception):
     pass
 
 
+_PROXY_FAKE_IP_NET = ipaddress.ip_network("198.18.0.0/15")
+
+
+def _is_blocked_ip(addr, *, literal_host=False):
+    if isinstance(addr, ipaddress.IPv6Address) and addr.ipv4_mapped is not None:
+        addr = addr.ipv4_mapped
+    if addr.is_global:
+        return False
+    # Local macOS TUN proxies commonly synthesize DNS answers from RFC 2544 (198.18.0.0/15).
+    # Always reject it in CI or when supplied as a literal IP URL.
+    if not literal_host and not os.environ.get("CI") and isinstance(addr, ipaddress.IPv4Address) and addr in _PROXY_FAKE_IP_NET:
+        return False
+    return True
+
+
+def assert_public_https(url):
+    if not is_https(url):
+        raise URLError("Only public HTTPS URLs are permitted")
+    parts = urlsplit(url)
+    host = (parts.hostname or "").strip().lower().rstrip(".")
+    if not host or parts.username is not None or parts.password is not None:
+        raise URLError("Rejected URL host or credentials")
+    if host == "localhost" or host.endswith((".local", ".internal", ".localhost")):
+        raise URLError("Rejected non-public host")
+    literal_host = False
+    try:
+        literal_ip = ipaddress.ip_address(host.split("%", 1)[0])
+        literal_host = True
+        if _is_blocked_ip(literal_ip, literal_host=True):
+            raise URLError("Rejected non-public IP literal")
+    except ValueError:
+        pass
+    try:
+        port = parts.port or 443
+    except ValueError:
+        raise URLError("Invalid URL port") from None
+    infos = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
+    if not infos:
+        raise URLError("Host could not be resolved")
+    for _, _, _, _, sockaddr in infos:
+        addr = ipaddress.ip_address(sockaddr[0].split("%", 1)[0])
+        if _is_blocked_ip(addr, literal_host=literal_host):
+            raise URLError("Rejected non-public IP destination")
+
+
+class _SafeRedirectHandler(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urljoin(req.full_url, newurl)
+        assert_public_https(target)
+        return super().redirect_request(req, fp, code, msg, headers, target)
+
+
+_SAFE_OPENER = build_opener(_SafeRedirectHandler())
+
+
 def request(url, payload=None, headers=None, timeout=8, limit=4_000_000):
+    assert_public_https(url)
     req = Request(url, data=None if payload is None else json.dumps(payload).encode(),
                   headers={"User-Agent": USER_AGENT, "Content-Type": "application/json"} if payload is not None else {"User-Agent": USER_AGENT})
     for key, value in (headers or {}).items():
         # urllib omits these headers if it follows a redirect.
         req.add_unredirected_header(key, value)
-    with urlopen(req, timeout=timeout) as response:
+    with _SAFE_OPENER.open(req, timeout=timeout) as response:
         try:
             return response.read(limit)
         except IncompleteRead as exc:

@@ -23,6 +23,7 @@ the endpoint is OPENAI_BASE_URL (default https://api.cloudborne.cn/v1). Nothing 
 """
 import argparse
 import concurrent.futures as cf
+import fcntl
 import hashlib
 import json
 import os
@@ -32,10 +33,12 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from contextlib import contextmanager
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "src", "data")
 OUT = os.path.join(ROOT, "src", "i18n")
+CACHE = os.environ.get("CBT_I18N_CACHE_DIR") or os.path.join(OUT, "cache")
 LANGS = ("en", "ja")
 PROMPT_VERSION = "v2"
 MODEL = os.environ.get("CBT_I18N_MODEL", "gpt-6.1-sol")
@@ -100,22 +103,26 @@ def file_units(rel, data):
         return []
     if rel.startswith("posts/") and isinstance(data, dict):
         units, meta = [], {}
+
+        def add_post_unit(key, prefix, value):
+            strings = dict(flat(value))
+            if strings:
+                ref = {**refs(value), "_post": {"file": rel, "unit": key}}
+                units.append((key, prefix, strings, ref))
+
         for k, v in data.items():
             if kept(k, v):
                 continue
             if k == "steps":
                 for i, step in enumerate(v):
-                    strings = dict(flat(step))
-                    if strings:
-                        units.append((f"steps#{step['id']}", f"steps.{i}.", strings, refs(step)))
+                    add_post_unit(f"steps#{step['id']}", f"steps.{i}.", step)
             elif k in {"meta", "lead", "highlights", "pitfalls", "budgetBreakdown"}:
-                strings = dict(flat(v))
-                if strings:
-                    units.append((k, f"{k}.", strings, refs(v)))
+                add_post_unit(k, f"{k}.", v)
             else:
                 meta.update(flat(v, f"{k}."))
         if meta:
-            units.insert(0, ("@meta", "", meta, refs(data)))
+            ref = {**refs(data), "_post": {"file": rel, "unit": "@meta"}}
+            units.insert(0, ("@meta", "", meta, ref))
         return units
     if total <= SMALL_FILE or not isinstance(data, dict):
         return [("*", "", dict(flat(data)), refs(data))]
@@ -262,7 +269,7 @@ The Chinese text was written for travellers from mainland China. The translation
 
 Format rules:
 - You get a JSON object. Translate every string value. Return a JSON object with exactly the same keys and nesting; values are the translations.
-- "_ref" maps item paths (e.g. "spots.3", or "." for the page itself) to that item's original-language names ("local" = name in the local language, "en" = English name). Use them for names, but leave "_ref" out of the output.
+- "_ref" maps item paths (e.g. "spots.3", or "." for the page itself) to that item's original-language names ("local" = name in the local language, "en" = English name). The optional "_post" entry identifies the source file and unit. Leave "_ref" out of the output.
 - Keep {{placeholders}} like {{n}} or {{name}}, HTML tags, emoji, arrows (→ ·), URLs and numbers exactly.
 - Output the JSON object only."""
 
@@ -276,7 +283,7 @@ def api_key():
             return fh.read().strip()
     k = os.environ.get("CBT_API_KEY") or os.environ.get("OPENAI_API_KEY")
     if not k:
-        sys.exit("set CBT_I18N_KEY_FILE or OPENAI_API_KEY")
+        sys.exit("set CBT_I18N_KEY_FILE, CBT_API_KEY or OPENAI_API_KEY")
     return k
 
 
@@ -291,12 +298,18 @@ def call_model(key, lang, context, payload, timeout=420):
         "response_format": {"type": "json_object"},
     }
     req = urllib.request.Request(base + "/chat/completions", data=json.dumps(body).encode(),
-                                 headers={"Authorization": "Bearer " + key, "Content-Type": "application/json", "User-Agent": "cbt-i18n/1"})
+                                 headers={"Content-Type": "application/json", "User-Agent": "cbt-i18n/1"})
+    req.add_unredirected_header("Authorization", "Bearer " + key)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         j = json.load(r)
     text = j["choices"][0]["message"]["content"].strip()
+    if key in text:
+        raise ValueError("translation response contained the API credential")
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-    return json.loads(text), j.get("usage", {})
+    translated = json.loads(text)
+    if key in json.dumps(translated, ensure_ascii=False):
+        raise ValueError("translation response contained the API credential")
+    return translated, j.get("usage", {})
 
 
 PLACEHOLDER = re.compile(r"\{[a-zA-Z_][a-zA-Z0-9_]*\}|<[^>]+>")
@@ -329,7 +342,7 @@ def validate(lang, strings, out):
 # ---------------------------------------------------------------- cache
 
 def cache_path(lang):
-    return os.path.join(OUT, "cache", f"{lang}.json")
+    return os.path.join(CACHE, f"{lang}.json")
 
 
 def read_cache(lang):
@@ -342,14 +355,37 @@ def read_cache(lang):
 
 def write_json(path, obj, compact=False):
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as fh:
-        if compact:
-            json.dump(obj, fh, ensure_ascii=False, sort_keys=True, indent=0)
-        else:
-            json.dump(obj, fh, ensure_ascii=False, indent=2)
-        fh.write("\n")
-    os.replace(tmp, path)
+    tmp = f"{path}.{os.getpid()}.tmp"
+    try:
+        with open(tmp, "w", encoding="utf-8") as fh:
+            if compact:
+                json.dump(obj, fh, ensure_ascii=False, sort_keys=True, indent=0)
+            else:
+                json.dump(obj, fh, ensure_ascii=False, indent=2)
+            fh.write("\n")
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+
+@contextmanager
+def cache_lock(directory=CACHE):
+    os.makedirs(directory, exist_ok=True)
+    fd = os.open(directory, os.O_RDONLY)
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX)
+        yield
+    finally:
+        os.close(fd)
+
+
+def merge_cache(lang, entries):
+    if entries:
+        with cache_lock():
+            cache = read_cache(lang)
+            cache.update(entries)
+            write_json(cache_path(lang), cache, compact=True)
 
 
 # ---------------------------------------------------------------- commands
@@ -379,8 +415,10 @@ def cmd_translate(a):
         batches.append(cur)
     print(f"{lang}: {len(jobs)} units to translate in {len(batches)} requests", flush=True)
     lock = threading.Lock()
+    pending = {}
     stats = {"done": 0, "fail": 0, "in": 0, "out": 0}
-    log = open(os.path.join(OUT, "cache", f"{lang}.log"), "a", encoding="utf-8")
+    os.makedirs(CACHE, exist_ok=True)
+    log = open(os.path.join(CACHE, f"{lang}.log"), "a", encoding="utf-8")
 
     def run(batch, depth=0):
         payload = {}
@@ -399,7 +437,7 @@ def cmd_translate(a):
                     results[h] = clean
                     warns += [f"{rel} {ukey}: {x}" for x in w]
                 with lock:
-                    cache.update(results)
+                    pending.update(results)
                     stats["done"] += len(batch)
                     stats["in"] += usage.get("prompt_tokens", 0)
                     stats["out"] += usage.get("completion_tokens", 0)
@@ -407,8 +445,8 @@ def cmd_translate(a):
                         log.write("WARN " + w + "\n")
                     log.flush()
                 return
-            except (urllib.error.URLError, TimeoutError, ValueError, KeyError, json.JSONDecodeError, OSError) as e:
-                err = e
+            except (OSError, ValueError, KeyError, TypeError, AttributeError, IndexError) as e:
+                err = type(e).__name__
                 if isinstance(e, urllib.error.HTTPError) and e.code in (400, 401, 403):
                     err = f"HTTP {e.code}"
                     if e.code != 400:
@@ -431,10 +469,10 @@ def cmd_translate(a):
             f.result()
             if i % 10 == 0 or i == len(futs):
                 with lock:
-                    write_json(cache_path(lang), cache, compact=True)
+                    merge_cache(lang, pending)
+                    pending.clear()
                 print(f"{lang}: {i}/{len(futs)} requests, {stats['done']} units ok, {stats['fail']} failed, "
                       f"tokens in {stats['in']} out {stats['out']}, {int(time.time() - t0)} s", flush=True)
-    write_json(cache_path(lang), cache, compact=True)
     log.close()
     if stats["fail"]:
         sys.exit(1)
@@ -488,9 +526,7 @@ def cmd_import_cache(a):
         strings, ref = ui_map[key]
         add(strings, ref, {"s": tr}, key)
 
-    cache = read_cache(a.lang)
-    cache.update(entries)
-    write_json(cache_path(a.lang), cache, compact=True)
+    merge_cache(a.lang, entries)
     for warning in warnings:
         print(f"WARN {warning}")
     print(f"{a.lang}: imported {len(entries)} units ({len(files)} files, {len(ui)} UI strings)")
@@ -581,10 +617,11 @@ def cmd_build(a):
 def cmd_prune(a):
     """Drop cache entries that no current unit uses (after content edits)."""
     for lang in LANGS:
-        cache = read_cache(lang)
         used = {j[5] for j in all_jobs(lang)}
-        keep = {h: v for h, v in cache.items() if h in used}
-        write_json(cache_path(lang), keep, compact=True)
+        with cache_lock():
+            cache = read_cache(lang)
+            keep = {h: v for h, v in cache.items() if h in used}
+            write_json(cache_path(lang), keep, compact=True)
         print(f"{lang}: kept {len(keep)}, dropped {len(cache) - len(keep)}")
 
 

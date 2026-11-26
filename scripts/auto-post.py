@@ -37,7 +37,8 @@ is_https = CHECK["is_https"]
 TODAY = datetime.now(timezone(timedelta(hours=8))).date()
 USER_AGENT = "CloudborneTravelBot/1.0 (+https://travel.cloudborne.cn/about/)"
 NETWORK_ERRORS = (OSError, HTTPException, ValueError, TypeError, KeyError, AttributeError, OverflowError, ET.ParseError)
-IMAGE_ERRORS = NETWORK_ERRORS + (IndexError, binascii.Error)
+RESPONSE_ERRORS = NETWORK_ERRORS + (IndexError,)
+IMAGE_ERRORS = RESPONSE_ERRORS + (binascii.Error,)
 RUN_ERRORS = NETWORK_ERRORS + (subprocess.CalledProcessError,)
 
 NAMES = {"japan": "Japan 日本", "australia": "Australia 澳大利亚 澳洲", "usa": "United States USA 美国"}
@@ -498,8 +499,10 @@ def draft(key, dossier, existing_slugs, existing_titles):
                 raise PipelineError("Draft response contained the API credential")
             content = re.sub(r"^\s*```(?:json)?\s*|\s*```\s*$", "", content)
             post = json.loads(content)
+            if key in json.dumps(post, ensure_ascii=False):
+                raise PipelineError("Draft response contained the API credential")
             errors = draft_errors(post, dossier, existing_slugs, existing_titles)
-        except NETWORK_ERRORS:
+        except RESPONSE_ERRORS:
             content = ""
             errors = ["Return one valid and complete PostData JSON object"]
         if not errors:
@@ -534,12 +537,14 @@ def generate_images(key, post, stage):
                 ext = ".png"
             elif image.startswith(b"\xff\xd8\xff"):
                 ext = ".jpg"
+            elif image.startswith(b"RIFF") and image[8:12] == b"WEBP":
+                ext = ".webp"
             else:
                 raise ValueError
         except IMAGE_ERRORS as exc:
             raise PipelineError(f"Invalid image response ({fail_reason(exc)})") from None
         (input_dir / (spec["id"] + ext)).write_bytes(image)
-    subprocess.run(["node", "scripts/build-post-images.mjs", stage / "art", stage / "images"],
+    subprocess.run(["node", "scripts/build-post-images.mjs", stage / "art", stage / "images", slug],
                    cwd=ROOT, check=True)
 
 
@@ -553,10 +558,57 @@ def write_json(path, data):
         tmp.unlink(missing_ok=True)
 
 
+def translate_posts(stage, key):
+    staged_cache = stage / "cache"
+    staged_cache.mkdir()
+    env = {**os.environ, "CBT_API_KEY": key, "CBT_I18N_CACHE_DIR": str(staged_cache)}
+    env.pop("CBT_I18N_KEY_FILE", None)
+    additions = {}
+    for lang in ("en", "ja"):
+        path = CACHE / f"{lang}.json"
+        staged = staged_cache / path.name
+        if path.exists():
+            shutil.copyfile(path, staged)
+        before = read_json(staged, {})
+        subprocess.run([sys.executable, "-I", "scripts/i18n.py", "translate", "--lang", lang, "--only", "posts/"],
+                       cwd=ROOT, env=env, check=True)
+        additions[path] = {h: text for h, text in read_json(staged, {}).items() if before.get(h) != text}
+    return additions
+
+
+def update_publication(history, translations, stage):
+    if not any(translations.values()):
+        write_json(HISTORY, history)
+        return
+    i18n = runpy.run_path(str(ROOT / "scripts/i18n.py"))
+    with i18n["cache_lock"](CACHE):
+        # Preserve translations written while the API calls were running.
+        backups = {}
+        try:
+            for path, additions in translations.items():
+                if additions:
+                    backups[path] = path.read_bytes() if path.exists() else None
+                    cache = read_json(path, {})
+                    cache.update(additions)
+                    i18n["write_json"](str(path), cache, compact=True)
+            write_json(HISTORY, history)
+        except BaseException:
+            restore_files(backups, stage)
+            raise
+
+
+def restore_files(snapshots, stage):
+    for path, old in snapshots.items():
+        if old is None:
+            path.unlink(missing_ok=True)
+        elif not path.exists() or old != path.read_bytes():
+            restore = stage / (path.name + ".restore")
+            restore.write_bytes(old)
+            restore.replace(path)
+
+
 def publish(posts, dossiers, stage, translate, key):
-    lang_cache = [CACHE / f"{lang}.json" for lang in ("en", "ja")]
-    snapshots = {path: path.read_bytes() if path.exists() else None
-                 for path in [HISTORY, INDEX, PHOTO_INDEX, *(lang_cache if translate else [])]}
+    snapshots = {path: path.read_bytes() if path.exists() else None for path in (HISTORY, INDEX, PHOTO_INDEX)}
     moved = []
     folders = [folder for folder in (POSTS, IMAGES) if not folder.exists()]
     try:
@@ -576,18 +628,13 @@ def publish(posts, dossiers, stage, translate, key):
         subprocess.run(["node", "scripts/photo-index.mjs"], cwd=ROOT, check=True)
         subprocess.run([sys.executable, "-I", "scripts/check_content.py",
                         *(str(POSTS / (p["slug"] + ".json")) for p in posts)], cwd=ROOT, check=True)
-        if translate:
-            env = {**os.environ, "CBT_API_KEY": key}
-            env.pop("CBT_I18N_KEY_FILE", None)
-            for lang in ("en", "ja"):
-                subprocess.run([sys.executable, "-I", "scripts/i18n.py", "translate", "--lang", lang, "--only", "posts/"],
-                               cwd=ROOT, env=env, check=True)
+        translations = translate_posts(stage, key) if translate else {}
         history = read_json(HISTORY, [])
         for post, dossier in zip(posts, dossiers):
             history.append({"slug": post["slug"], "title": post["title"], "country": post["country"], "date": post["date"],
                             "topic": dossier["topic"], "sources": list(dict.fromkeys(
                                 [dossier["primary"], *(s["url"] for s in post["sources"])]))})
-        write_json(HISTORY, history)
+        update_publication(history, translations, stage)
     except BaseException:
         for path in reversed(moved):
             if path.is_dir():
@@ -597,13 +644,7 @@ def publish(posts, dossiers, stage, translate, key):
         for path in folders:
             if path.is_dir() and not any(path.iterdir()):
                 path.rmdir()
-        for path, old in snapshots.items():
-            if old is None:
-                path.unlink(missing_ok=True)
-            elif not path.exists() or old != path.read_bytes():
-                restore = stage / (path.name + ".restore")
-                restore.write_bytes(old)
-                restore.replace(path)
+        restore_files(snapshots, stage)
         raise
 
 

@@ -9,18 +9,19 @@ const source = path.join(root, 'art-src', 'posts');
 const output = path.join(root, 'public', 'img', 'posts');
 const id = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-export function buildPostImages(input, out) {
+function buildPostImages(input, out, onlySlug) {
   if (!fs.existsSync(input)) return 0;
   let count = 0;
   for (const slug of fs.readdirSync(input, { withFileTypes: true })) {
-    if (!slug.isDirectory() || !id.test(slug.name)) continue;
+    if (!slug.isDirectory() || !id.test(slug.name) || (onlySlug && onlySlug !== slug.name)) continue;
     const folder = path.join(input, slug.name);
     const destination = path.join(out, slug.name);
     const sources = new Map();
     for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
       const ext = path.extname(entry.name);
       const name = path.basename(entry.name, ext);
-      if (!entry.isFile() || !/^\.(png|jpe?g)$/i.test(ext) || !id.test(name)) continue;
+      const supported = /^\.(png|jpe?g)$/i.test(ext) || (onlySlug && ext === '.webp');
+      if (!entry.isFile() || !supported || !id.test(name)) continue;
       if (sources.has(name)) throw new Error(`Multiple sources for ${slug.name}/${name}`);
       sources.set(name, path.join(folder, entry.name));
     }
@@ -47,8 +48,8 @@ export function buildPostImages(input, out) {
 }
 
 const args = process.argv.slice(2);
-if (args.length !== 0 && args.length !== 2) {
-  console.error('Usage: node scripts/build-post-images.mjs [source-dir output-dir]');
+if (args.length !== 0 && args.length !== 3) {
+  console.error('Usage: node scripts/build-post-images.mjs [source-dir output-dir slug]');
   process.exitCode = 2;
 } else {
   console.log('post images', buildPostImages(...(args.length ? args : [source, output])));

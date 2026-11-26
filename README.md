@@ -21,14 +21,15 @@ Cloudborne 栖云的真实攻略社区与旅行指南，覆盖日本（47 个都
 | `src/data/toolkit/*.json` | 日语卡、紧急求助、退税、行前清单、交通、2026 新规 |
 | `src/data/geo/*.json` | 日本县界、澳大利亚和美国州界（Natural Earth 10m admin-1，公有领域），由 `scripts/prepare-geo.mjs`、`scripts/prepare-geo-world.mjs` 生成 |
 | `src/i18n/` | 多语言：`cache/{en,ja}.json` 翻译缓存（进 Git）、`ui-source.json` 界面文字清单、`ui-overrides.json` 手改界面词、`content-overrides.json` 按读者改写的正文（签证途径）；`en/`、`ja/` 是构建时生成的译文 JSON，不进 Git |
-| `src/lib/` | 数据加载（`content.ts`、`toolkit.ts`）、三国统一视图（`world.ts`）、国家与地区常量（`japan.ts`、`countries.ts`）、地图投影（`geo.ts`、`atlas.ts`）、行程条目键（`keys.ts`） |
+| `src/lib/` | 数据加载（`content.ts`、`posts.ts`、`toolkit.ts`）、三国统一视图（`world.ts`）、国家与地区常量（`japan.ts`、`countries.ts`）、地图投影（`geo.ts`、`atlas.ts`）、行程条目键（`keys.ts`） |
 | `src/components/WorldMap.astro` | 地图：国家页「全国→地区→州/县」缩放 + 侧栏；州/县/地区页固定视角；景点悬停/轻点弹出照片 |
-| `src/components/PlacePage.astro`、`CountryHome.astro`、`TripPage.astro`、`GuidePage.astro`、`ClimateTable.astro` | 三国共用的州/县页、国家首页、行程页、出行须知、天气表 |
-| `src/pages/[...lang]/` | 全部页面，`lang` 为空（中文）/`en`/`ja`；`src/middleware.ts` 设定渲染语言，并给英日页面里的站内链接加前缀 |
+| `src/components/PostFeed.astro` | 社交论坛式攻略信息流（国家/板块/地区/话题/收藏筛选、排序、多图卡片、本地收藏与每日更新侧栏） |
+| `src/components/PlacePage.astro`、`CountryHome.astro`、`TripPage.astro`、`GuidePage.astro`、`ClimateTable.astro` | 三国共用的州/县页、国家首页（默认攻略流 + 探索地图双标签）、行程页、出行须知、天气表 |
+| `src/pages/[...lang]/` | 全部页面（含 `posts/[slug].astro` 分步图文攻略详情页），`lang` 为空（中文）/`en`/`ja`；`src/middleware.ts` 设定渲染语言，并给英日页面里的站内链接加前缀 |
 | `src/pages/[...lang]/quick.astro` + `src/scripts/quick.ts` | 一分钟生成攻略：选择题 → 按天排好的草稿行程 |
 | `src/scripts/share-image.ts` | 行程长图（canvas 绘制 PNG） |
-| `src/scripts/` | 全站脚本：搜索、加入行程、行程存储与分享编码 |
-| `public/img/` | 日本高清木刻风插画 WebP（960/1920 宽，首页长图 1280/2560）；`photos/` 高清写实配图（景点/美食 640/1280，澳美州封面 960/1920） |
+| `src/scripts/` | 全站脚本：明暗模式、搜索、加入行程、行程存储与分享编码 |
+| `public/img/` | 日本高清木刻风插画 WebP（960/1920 宽，首页长图 1280/2560）；`photos/` 高清写实配图（景点/美食 640/1280，澳美州封面 960/1920）；`posts/` 攻略帖配图（封面 960/1920，步骤图 640/1280） |
 | `public/fonts/wenkai/` | 自托管霞鹜文楷屏幕版（LXGW WenKai Screen，按 `unicode-range` 拆片加载，SIL OFL 1.1） |
 | `art-src/` | 插画原图 PNG，**不进 Git**（体积大）；本机另有备份时可删 |
 | `research/` | Natural Earth 日本子集原始数据 |
@@ -87,7 +88,7 @@ npm run post:images                     # 将 art-src/posts/ 下的手工原图�
 
 ## 部署
 
-公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效；每天北京时间 06:00 由 `.github/workflows/daily-posts.yml` 自动调研、写作、AI 生图、三语翻译并提交新攻略帖（需在仓库 Secrets 配置 `CBT_API_KEY`，可选配置 `TAVILY_API_KEY` / `SERPER_API_KEY` / `BRAVE_API_KEY` 扩展中文社媒检索），随后 06:17 的 `pages.yml` 自动重建上线（同步更新汇率和当季推荐）。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
+公开仓库 `Jaaay50/cloudborne-travel`，推送 `main` 后由 `.github/workflows/pages.yml` 构建（`npm ci && npm run build`）并发布到 GitHub Pages，约 1–2 分钟生效；每天北京时间 06:00 由 `.github/workflows/daily-posts.yml` 自动调研、写作、AI 生图、三语翻译并提交新攻略帖（需在仓库 Secrets 配置 `CBT_API_KEY`，可选配置 `TAVILY_API_KEY` / `SERPER_API_KEY` / `BRAVE_API_KEY` 扩展中文社媒检索），完成后通过 `workflow_run` 自动触发 `pages.yml` 拉取最新 `main` 重建上线（另保留 06:17 定时构建以刷新汇率和当季推荐）。自定义域名 `travel.cloudborne.cn`（`public/CNAME`；DNSPod `travel` CNAME → `jaaay50.github.io.`），HTTPS 强制。`art-src/` 不在仓库里，插画以 `public/img/` 的 WebP 为准。
 
 **国内线路**（2026-11-24 起）：DNSPod `travel` 分线路解析——「境内」CNAME → `travel.cloudborne.cn.eo.dnse0.com.`（腾讯云 EdgeOne 个人版，站点 `zone-3xsll1v25wlu`，加速区域中国大陆，免费证书由 EdgeOne 自动续期），「默认」继续 → GitHub Pages。EdgeOne 回源到广州服务器（`175.178.188.85`，nginx `sites-available/cloudborne-travel.conf`，文件在 `/srv/travel/current` → `releases/<时间>`，保留最近 5 版）。同一个工作流的 `mirror` 任务把构建产物 rsync 到广州并 `publish`；仓库 secret `GZ_DEPLOY_KEY` 只能写 `/srv/travel/stage` 和执行 `publish`（服务器 `/usr/local/sbin/cbt-deploy` 强制命令）。缓存跟随源站：页面 `no-cache`，`/_astro/` 一年，`/img/` 七天；改了图片要在 EdgeOne 刷新 `/img/` 目录。页脚备案号 粤ICP备2026056740号-1。
 

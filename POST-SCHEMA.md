@@ -46,9 +46,9 @@ npm run post:auto -- --count 1 --country auto --translate
 3. 图像 API 返回 Base64 或 HTTPS 下载地址。用 `cwebp` 生成两档尺寸并重建索引。`--skip-images` 允许发布没有图片文件的数据。
 4. 校验新稿，按需执行英日翻译并更新发布历史。运行失败时回滚本次新稿、图片、索引和缓存变化。
 
-Python 3.9+ 使用标准库。生成图片需要 Node.js 和 `cwebp`。脚本依次使用 `CBT_API_KEY`、`OPENAI_API_KEY`、`CBT_API_KEY_FILE`。兼容 API 的默认地址是 `https://api.cloudborne.cn/v1`，通过 `OPENAI_BASE_URL` 配置。`CBT_POST_MODEL` 默认为 `gpt-6.1-sol`，`CBT_IMAGE_MODEL` 默认为 `gpt-image-2.6`。可选搜索凭据变量为 `TAVILY_API_KEY`、`SERPER_API_KEY` 和 `BRAVE_API_KEY`。
+Python 3.9+ 使用标准库。生成图片需要 Node.js 和 `cwebp`。外链采集与图像下载仅允许公网 HTTPS（拒绝私网/回环/保留地址并对每次重定向复核）。脚本依次使用 `CBT_API_KEY`、`OPENAI_API_KEY`、`CBT_API_KEY_FILE`。兼容 API 的默认地址是 `https://api.cloudborne.cn/v1`，通过 `OPENAI_BASE_URL` 配置。`CBT_POST_MODEL` 默认为 `gpt-6.1-sol`，`CBT_IMAGE_MODEL` 默认为 `gpt-image-2.6`。可选搜索凭据变量为 `TAVILY_API_KEY`、`SERPER_API_KEY` 和 `BRAVE_API_KEY`。
 
-GitHub Actions 每日 22:00 UTC（次日 06:00 北京时间）运行，也支持手动输入 `count`、`country`、`topic`。配置仓库的 `CBT_API_KEY` secret 后，工作流生成、验证、构建，并把内容、索引、图片、翻译缓存和历史推到 `main`。缺少 secret 时工作流发出跳过通知。由 `GITHUB_TOKEN` 推送的提交不会触发另一条推送工作流。已有 Pages 定时构建会读取届时的 `main`。
+GitHub Actions 每日 22:00 UTC（次日 06:00 北京时间）运行，也支持手动输入 `count`、`country`、`topic`。配置仓库的 `CBT_API_KEY` secret 后，工作流生成、验证、构建，并把内容、索引、图片、翻译缓存和历史推到 `main`。缺少 secret 时工作流发出跳过通知。由 `GITHUB_TOKEN` 推送的提交不会触发另一条 `push` 工作流，因此 `.github/workflows/pages.yml` 已配置 `workflow_run` 监听 `Publish daily travel posts` 成功完成并自动签出最新 `main` 构建发布到 GitHub Pages 与广州境内源站。
 
 ### 导入离线翻译
 

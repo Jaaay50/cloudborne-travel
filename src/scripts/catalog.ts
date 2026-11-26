@@ -5,7 +5,9 @@ export interface CatPref { s: string; c: string; n: string; k: string; e: string
 export interface CatSpot { k: string; n: string; l: string; e: string; d: string; t: string; h: [number, number]; x: number; ll: [number, number]; th: string[]; f: string; ph?: number; o?: number[] }
 export interface CatFood { k: string; n: string; l: string; w: string; pr: string; ph?: number }
 export interface CatLink { n: string; u: string; d: string; k?: string }
+export interface CatPost { s: string; c: string; n: string; d: string; cat: string; dt: string; tg: string[]; pl: string[]; i: string; u: string }
 export interface Catalog {
+  po?: CatPost[];
   p: CatPref[]; s: CatSpot[]; f: CatFood[]; r: CatLink[]; th: CatLink[]; tr: CatLink[]; to: CatLink[];
   /** themes per country, theme best months per country, regions per country */
   tm: Record<string, Record<string, { n: string; c: string }>>;

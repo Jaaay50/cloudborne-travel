@@ -1,6 +1,7 @@
 import { getRegion } from '../../lib/content';
 import { REGIONS, THEMES, THEME_SLUGS, SINGLE_PREF_REGIONS } from '../../lib/japan';
 import { catalogData, tripsAll, regionsOf } from '../../lib/world';
+import { allPosts } from '../../lib/posts';
 
 import { langPaths, t, lang, hasPage } from '../../lib/i18n';
 
@@ -39,5 +40,9 @@ export function GET() {
     { n: t('美国出行须知'), u: '/usa/guide/', d: t('签证 EVUS 小费 自驾 紧急电话'), k: '美国 签证 B1/B2 EVUS 911' },
     { n: t('算预算'), u: '/budget/', d: t('机票 住宿 交通 吃喝 一页算清'), k: '预算 费用 花多少钱' },
   ];
-  return new Response(JSON.stringify({ ...base, r, th, tr, to, tp }), { headers: { 'Content-Type': 'application/json' } });
+  const po = allPosts().map((p) => ({
+    s: p.slug, c: p.country, n: p.title, d: p.excerpt, cat: p.categoryLabel, dt: p.date,
+    tg: p.tags, pl: p.placeNames, i: p.coverImg?.prefix ?? '', u: p.href,
+  }));
+  return new Response(JSON.stringify({ ...base, r, th, tr, to, tp, po }), { headers: { 'Content-Type': 'application/json' } });
 }

@@ -694,6 +694,120 @@ def post_photo_keys():
     return set(json.loads(path.read_text(encoding="utf-8"))) if path.exists() else set()
 
 
+def check_tips(r, d):
+    if not isinstance(d, dict):
+        r.err("tips.json must be an object")
+        return
+    if not post_date(d.get("checked"), monthly=True):
+        r.err("checked must be a valid YYYY-MM")
+    seen_ids = set()
+    for i, item in enumerate(post_list(r, d.get("platforms"), "platforms", minimum=3)):
+        w = f"platforms[{i}]"
+        if not isinstance(item, dict):
+            r.err(f"{w} must be an object")
+            continue
+        iid = item.get("id")
+        if not post_id(iid) or iid in seen_ids:
+            r.err(f"{w}.id invalid or duplicated")
+        else:
+            seen_ids.add(iid)
+        for k in ("category", "badge", "title", "summary", "verdict"):
+            need_str(r, item, k, w, 2, 260)
+        post_list(r, item.get("tips"), f"{w}.tips", minimum=1, text=True)
+        for j, lk in enumerate(post_list(r, item.get("links"), f"{w}.links", minimum=1)):
+            if not isinstance(lk, dict):
+                r.err(f"{w}.links[{j}] must be an object")
+                continue
+            need_str(r, lk, "label", f"{w}.links[{j}]", 2, 80)
+            plat = lk.get("platform")
+            if plat not in {"official", "xiaohongshu", "xianyu", "ctrip", "internal"}:
+                r.err(f"{w}.links[{j}].platform invalid")
+            u = lk.get("url", "")
+            if plat == "internal":
+                if not isinstance(u, str) or not u.startswith("/"):
+                    r.err(f"{w}.links[{j}].url must start with /")
+            elif not is_https(u):
+                r.err(f"{w}.links[{j}].url must be a valid HTTPS URL")
+    phases = d.get("phases")
+    if not isinstance(phases, dict):
+        r.err("phases must be an object")
+    else:
+        for pk in ("before", "departure"):
+            pg = phases.get(pk)
+            if not isinstance(pg, dict):
+                r.err(f"phases.{pk} missing")
+                continue
+            need_str(r, pg, "title", f"phases.{pk}", 2, 80)
+            need_str(r, pg, "subtitle", f"phases.{pk}", 4, 140)
+            for i, it in enumerate(post_list(r, pg.get("items"), f"phases.{pk}.items", minimum=3)):
+                w = f"phases.{pk}.items[{i}]"
+                if not isinstance(it, dict):
+                    r.err(f"{w} must be an object")
+                    continue
+                iid = it.get("id")
+                if not post_id(iid) or iid in seen_ids:
+                    r.err(f"{w}.id invalid or duplicated")
+                else:
+                    seen_ids.add(iid)
+                for k in ("tag", "title", "detail"):
+                    need_str(r, it, k, w, 2, 260)
+                if "link" in it:
+                    lk = it["link"]
+                    if not isinstance(lk, dict):
+                        r.err(f"{w}.link must be an object")
+                    else:
+                        plat = lk.get("platform")
+                        u = lk.get("url", "")
+                        if plat == "internal":
+                            if not isinstance(u, str) or not u.startswith("/"):
+                                r.err(f"{w}.link.url must start with /")
+                        elif not is_https(u):
+                            r.err(f"{w}.link.url must be a valid HTTPS URL")
+    xy = d.get("xianyu")
+    if not isinstance(xy, dict):
+        r.err("xianyu missing")
+    else:
+        need_str(r, xy, "intro", "xianyu", 10, 200)
+        for i, g in enumerate(post_list(r, xy.get("goodBuys"), "xianyu.goodBuys", minimum=2)):
+            w = f"xianyu.goodBuys[{i}]"
+            if not isinstance(g, dict):
+                r.err(f"{w} must be an object")
+                continue
+            iid = g.get("id")
+            if not post_id(iid) or iid in seen_ids:
+                r.err(f"{w}.id invalid or duplicated")
+            else:
+                seen_ids.add(iid)
+            for k in ("tag", "title", "detail"):
+                need_str(r, g, k, w, 2, 240)
+            if not is_https(g.get("searchUrl")):
+                r.err(f"{w}.searchUrl must be HTTPS")
+        for i, a in enumerate(post_list(r, xy.get("avoid"), "xianyu.avoid", minimum=2)):
+            w = f"xianyu.avoid[{i}]"
+            if not isinstance(a, dict):
+                r.err(f"{w} must be an object")
+                continue
+            for k in ("title", "detail"):
+                need_str(r, a, k, w, 4, 240)
+    for i, f in enumerate(post_list(r, d.get("foods"), "foods", minimum=6)):
+        w = f"foods[{i}]"
+        if not isinstance(f, dict):
+            r.err(f"{w} must be an object")
+            continue
+        iid = f.get("id")
+        if not post_id(iid) or iid in seen_ids:
+            r.err(f"{w}.id invalid or duplicated")
+        else:
+            seen_ids.add(iid)
+        for k in ("city", "cityName", "area", "category", "categoryName", "name", "local", "dish", "price", "tip"):
+            need_str(r, f, k, w, 1, 220)
+        if not is_https(f.get("mapsUrl")):
+            r.err(f"{w}.mapsUrl must be HTTPS")
+        if "xhsUrl" in f and not is_https(f.get("xhsUrl")):
+            r.err(f"{w}.xhsUrl must be HTTPS")
+    check_sources(r, d)
+
+
 def check_file(path):
     r = Report(path)
     try:
@@ -705,7 +819,9 @@ def check_file(path):
     fname = os.path.basename(path)
     kind = os.path.basename(os.path.dirname(path))
     parent = os.path.basename(os.path.dirname(os.path.dirname(path)))
-    if kind == "posts":
+    if kind == "toolkit" and fname == "tips.json":
+        check_tips(r, d)
+    elif kind == "posts":
         check_post(r, d, fname, post_photo_keys())
     elif fname == "guide.json" and kind in COUNTRY_STATES:
         check_guide(r, d, kind)
@@ -725,6 +841,9 @@ def check_file(path):
 def main(argv):
     if argv == ["--all"]:
         files = sorted(str(p) for p in Path(DATA_ROOT, "posts").glob("*.json") if p.is_file())
+        tips_file = os.path.join(DATA_ROOT, "toolkit", "tips.json")
+        if os.path.exists(tips_file):
+            files.append(tips_file)
         for sub in ("regions", "prefectures", "trips"):
             p = os.path.join(DATA, sub)
             if not os.path.isdir(p):

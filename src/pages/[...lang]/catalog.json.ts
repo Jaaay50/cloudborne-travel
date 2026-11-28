@@ -28,7 +28,8 @@ export function GET() {
     days: x.days.map((d) => d.items.flatMap((i) => ('spot' in i ? [`s:${i.pref}/${i.spot}`] : 'food' in i ? [`f:${i.pref}/${i.food}`] : []))),
   }));
   const to = [
-    { n: t('快速攻略'), u: '/quick/', d: t('选几个选项，马上生成一份行程'), k: '攻略 生成 规划 推荐' },
+    { n: t('AI 旅行规划师'), u: '/quick/', d: t('用 Cloudborne API 对话式定制按天行程，也可切回离线问卷'), k: 'AI 攻略 生成 规划 推荐 Agent 对话' },
+    { n: t('旅行小技巧'), u: '/tips/', d: t('西瓜卡、流量卡比价、出发与返程清单、闲鱼避坑与美食 Google 地图'), k: '小技巧 西瓜卡 Suica 闲鱼 小红书 携程 Google 地图 美食 避坑 省钱' },
     ...(hasPage(lang(), '/japan/tools/phrases/') ? [{ n: t('日语大字卡'), u: '/japan/tools/phrases/', d: t('点餐、忌口、购物、交通、求助'), k: '日语 翻译 点餐 过敏 香菜' }] : []),
     { n: t('机场进城'), u: '/japan/tools/airports/', d: t('成田 羽田 关西 中部 新千岁 福冈 那霸'), k: '机场 交通 成田 羽田 关西' },
     { n: t('退税计算'), u: '/japan/tools/tax-free/', d: t('日本 2026 年 11 月起出境退税'), k: '退税 免税 消费税' },

@@ -77,8 +77,20 @@
 "01240baa7bac67e8d5e0": {
 "s": "Tottori"
 },
+"012aa1e5df8fa4f00461": {
+"area": "Hakata Station East Main Shop",
+"categoryName": "Ramen / Tsukemen",
+"cityName": "Fukuoka",
+"dish": "Foamy tonkotsu ramen with seasoned egg",
+"name": "Hakata Issou (Hakata Station East)",
+"price": "About ¥900–1,200",
+"tip": "Nicknamed 'tonkotsu cappuccino' for its ultra-rich frothy pork broth (prefer lighter Hakata ramen? Try Shin-Shin); top with free spicy mustard greens and pickled ginger."
+},
 "013a22ddcb8b4df0859b": {
 "s": "Starting November 2026, tax refunds will be issued on departure"
+},
+"014b1a3e3b56f9de4117": {
+"s": "All stops here are custom recommendations—use Copy text or Export MD to save them."
 },
 "0169f76c3b9c6fa21862": {
 "s": "Filter by topic"
@@ -219,11 +231,17 @@
 "tip": "Next door, Tenju-an pairs crimson maples with a jewel-box white-gravel rock garden—stunning, though lines build fast after 10:30. If the wait tops 15 minutes, skip it and head straight to lunch.",
 "title": "Walk over to Nanzen-ji for the monumental Sanmon Gate, brick Suirokaku aqueduct, and open maple groves"
 },
+"0275c5ee5a65179bee15": {
+"s": "Edit day"
+},
 "027a1f739523b05cc3db": {
 "s": "Try “Kyoto,” “Great Barrier Reef,” “Yellowstone,” “hot springs,” or “ramen”"
 },
 "02cd1e4565058cee4e59": {
 "s": "Save money"
+},
+"02cdf87695675a69fd1a": {
+"s": "Add with AI →"
 },
 "033c6ece5d3ba727b08d": {
 "cost": "Free entry",
@@ -293,11 +311,17 @@
 "4.detail": "Boxed Toshimaya Hato Sabure butter cookies",
 "4.item": "Souvenirs (optional)"
 },
+"03f7159b5dd0e49121a1": {
+"s": "Add rail pass advice, rough budget, and 2026 airport tax-refund reminders for this trip."
+},
 "0441325db292a0e51f70": {
 "s": "Search Posts & Spots"
 },
 "0452f67e6f46ec07693a": {
 "s": "Move to…"
+},
+"046f23a07999e5a1fe73": {
+"s": "Sapporo"
 },
 "04ee5b4c86562bfbfa04": {
 "s": "Generous"
@@ -391,6 +415,9 @@
 "tips.3": "There is little shade on the Mall, so bring water, a hat, and sunscreen in summer. Most museums close around 17:30.",
 "tips.4": "Security is strict at federal buildings. Knives, sprays, selfie sticks, and similar items may be stopped at the entrance."
 },
+"0603722d24cfdb207bc6": {
+"s": "Relay or upstream model service error ({status}). Please try again shortly."
+},
 "066451b996773aa5e2fc": {
 "s": "Southern Hemisphere seas,<br />red earth, and cities."
 },
@@ -402,6 +429,9 @@
 },
 "074a6fcb04c970a86355": {
 "s": "Your browser can't save this (private mode or storage is full). Your itinerary will be lost when you close the page. Use “Share link” to save a copy first."
+},
+"075412dde6b02c8a3373": {
+"s": "Or enter model ID manually"
 },
 "079a6f59fd9711c3d2f2": {
 "s": "Text copied. Paste it directly into WeChat"
@@ -417,6 +447,9 @@
 },
 "085ab4fac027af20e504": {
 "s": "Pitfalls"
+},
+"08728d4cf737f0a26c82": {
+"s": "AI Chat"
 },
 "08a704e0a530c56ac283": {
 "access.0.from": "Kansai International Airport",
@@ -559,11 +592,26 @@
 "sources.2.title": "JR Group · Hayabusa stops and travel times",
 "tagline": "Fall foliage, snowy hot springs, and summer festivals with fewer crowds than Kanto or Kansai"
 },
+"0944e973d06ac0dafdb1": {
+"area": "Shinjuku / Shibuya / Harajuku",
+"categoryName": "Yakiniku / Cutlet",
+"cityName": "Tokyo",
+"dish": "Crispy rare beef cutlet set + grated yam barley rice",
+"name": "Gyukatsu Motomura",
+"price": "About ¥2,000–2,800",
+"tip": "Sear each crispy slice to your liking on a personal hot stone; skip 12:00 and 18:30 peaks to shave 30 minutes off the wait."
+},
+"09a1a2aa7d61cba39abf": {
+"s": "Add one well-reviewed nearby restaurant per day with signature dishes, budget, and reservation tips."
+},
 "09cee8bef2c01adcd4b3": {
 "s": "{n} prefectures · {spots} sights"
 },
 "09e29ec49ab7e51c6331": {
 "s": "South Dakota"
+},
+"0aa20a89d56b02d3d81f": {
+"s": "All cities"
 },
 "0ab0a5221fdf1b425ae3": {
 "s": "Volcanoes, lakes, gorges, and plateau trails. Many mountain areas close roads in winter, so late spring through fall is best. Check opening dates in advance."
@@ -574,6 +622,12 @@
 "0b16bc2f96d9feba40f0": {
 "s": "Flights · stays · transport · food — all in one place"
 },
+"0bda827dc4a1c32748af": {
+"s": "02 Departure & return"
+},
+"0c372f1d9f44eb4c60ed": {
+"s": "Current"
+},
 "0c74f2cc6cfab88084b9": {
 "s": "Cloudborne Travel · Itinerary"
 },
@@ -583,11 +637,20 @@
 "0ca10cf6c8dc46942921": {
 "s": "Kansai"
 },
+"0d7805848815fec9dbf9": {
+"s": "Imported to the itinerary canvas—chat to refine it with AI"
+},
 "0d98ee7900dfb5795f1d": {
 "s": "December–February"
 },
 "0dbc5d426d86d27c3574": {
 "s": "Hawaii"
+},
+"0e09c1f4873d9ab5c9a8": {
+"s": "Transit"
+},
+"0e14a661ca33d0fc76a4": {
+"s": "Order"
 },
 "0e3c7c051f04c366c5b4": {
 "s": "All"
@@ -604,6 +667,9 @@
 "0f2104ca021593e12dcc": {
 "s": "Destinations"
 },
+"0f39a7cc31e2bfb5cb59": {
+"s": "Send"
+},
 "0faac010dd0dedc6a69f": {
 "s": "West Virginia"
 },
@@ -615,6 +681,9 @@
 },
 "101d8bde3e847e346269": {
 "s": "Massachusetts"
+},
+"10b3c9fa883c90a94b90": {
+"s": "Preferred pace"
 },
 "10df745c6c36ecd4840d": {
 "bases.0": "Lake Kawaguchi · 1 night",
@@ -738,6 +807,9 @@
 "13abc4c69b9a4e008a36": {
 "s": "Winery"
 },
+"13d8f0f88d052176426d": {
+"s": "Chat on the left with your destination, length, and travel style—the agent searches verified catalog spots and builds each day here."
+},
 "14068ceb6f4d9c501464": {
 "s": "Free time, or explore nearby"
 },
@@ -757,6 +829,9 @@
 "tip": "Jigokudani's boardwalks get slick in winter and deeper trails toward Oyunuma close during heavy snow—stick to the main overlook and Tessen-ike path and stay behind railings.",
 "title": "Travel Light on the Hokuto Express, Hike Steaming Jigokudani & Soak in Milky Sulfur Springs"
 },
+"1444649d0f68bb489500": {
+"s": "Export MD"
+},
 "145f5b78df759841b710": {
 "s": "Guides"
 },
@@ -766,6 +841,9 @@
 "149491a422d68cd4d97a": {
 "s": "A$"
 },
+"14b1e9f7c90faf5eaf5f": {
+"s": "Comparing official portals and booking channels for Suica, eSIMs, airport expresses, and theme parks."
+},
 "1507363f11391664c1e5": {
 "s": "Delete this day"
 },
@@ -774,6 +852,18 @@
 },
 "15518a09c53a31bc8b01": {
 "s": "Wakayama"
+},
+"155356e71e967da4c1e7": {
+"area": "Dotonbori Arcade",
+"categoryName": "Okonomiyaki / Local",
+"cityName": "Osaka",
+"dish": "Yamaimo-yaki (100% mountain yam pancake) & seafood okonomiyaki",
+"name": "Mizuno Okonomiyaki",
+"price": "About ¥1,600–2,500",
+"tip": "Over 70 years in Dotonbori and a longtime Michelin Bib Gourmand pick; arrive before the 11:00 opening to catch the first seating."
+},
+"15ef751eeb89405fef1d": {
+"s": "Save profile"
 },
 "15fc3ea62e7582186a9e": {
 "0.amount": "About A$180 / person",
@@ -791,6 +881,9 @@
 "4.amount": "A$0–175 / person",
 "4.detail": "15-minute Twelve Apostles helicopter flight or Cape Otway Lightstation ticket",
 "4.item": "Optional activities"
+},
+"16518c8b003d12aea0eb": {
+"s": "Request failed. Please check your connection and API key."
 },
 "169d0c4f1ad9a4cb9645": {
 "s": "Fukui"
@@ -925,11 +1018,17 @@
 "18756697b6ca919227a2": {
 "s": "Theme"
 },
+"187fde8f2c7e1877c35a": {
+"s": "Practical Travel Tips"
+},
 "18bf02cf8762e9f4627a": {
 "s": "Itinerary"
 },
 "1942b0fb390011ef03f5": {
 "s": "Transportation"
+},
+"19dfb2de5e256047aafc": {
+"s": "Secondhand travel finds & what to avoid"
 },
 "1a17260fc11e7d024a92": {
 "0": "If you had to pick one global metropolis where you can skip the rental car completely and still pull off a dream coastal vacation on foot and public transit, Sydney easily lands in the top three. Trains, metro, light rail, harbor ferries, and beach buses all tie together seamlessly—and you can tap Apple Pay, Google Pay, or any contactless Visa/Mastercard straight at the gates without ever buying a physical Opal card.",
@@ -944,11 +1043,20 @@
 "1aa89965912e3ec00bd1": {
 "s": "From {from}"
 },
+"1ab8f174bd4f8502c59f": {
+"s": "Plan with AI"
+},
 "1b0e511b2747562a582e": {
 "s": "Snow Country"
 },
 "1b14bbfed80210dadfd8": {
 "s": "1-Min Trip Builder"
+},
+"1b2104358cd273b0ec43": {
+"s": "Travel profile cleared"
+},
+"1b4946b69a767980ce21": {
+"s": "Tips"
 },
 "1b4c863b378a602a623e": {
 "s": "To be arranged"
@@ -973,6 +1081,9 @@
 },
 "1c91d2cbeaae46b94d04": {
 "s": "{n} photos"
+},
+"1cd42f1276cc16baa109": {
+"s": "Catalog sights include thumbnails and guide links"
 },
 "1d30952edd9d9e8b0c75": {
 "s": "Tools"
@@ -1019,6 +1130,9 @@
 },
 "1e3d3ccd51968bea3a67": {
 "s": "Tax-inclusive price"
+},
+"1e55d7af7e90963c494e": {
+"s": "Custom restaurants and shops get instant Google Maps links"
 },
 "1e6c996500cbb55ae209": {
 "s": "Oita"
@@ -1128,6 +1242,9 @@
 "1fba487f55a9e2ae6ecd": {
 "s": "Kentucky"
 },
+"1fd62e35ecdce09f908d": {
+"s": "Tips & food map →"
+},
 "200ed1a47e7ec89a9a66": {
 "s": "Departure date"
 },
@@ -1175,6 +1292,9 @@
 "2": "Scheduling outdoor sights after 15:30—winter twilight ends around 16:00 and temperatures plunge fast.",
 "3": "Commuting from Toya or Noboribetsu on the morning of an international flight—always sleep in Sapporo or the airport on night 4."
 },
+"20e65a362c2728053174": {
+"s": "This request could not be completed."
+},
 "212b6bcec4943740741c": {
 "s": "<b>Maps & Weather</b>: Boundaries come from Natural Earth (public domain) for overview only; monthly temperature and rainfall come from <a href=\"https://open-meteo.com/\" target=\"_blank\" rel=\"noopener\">Open-Meteo</a> (ERA5 reanalysis, 1996–2025 averages). Use the map links next to each spot for turn-by-turn navigation."
 },
@@ -1209,6 +1329,9 @@
 },
 "21e6cfbe1161cd31a1dd": {
 "s": "Local transportation"
+},
+"22590dbd9b37dc3efc57": {
+"s": "01 Smart booking"
 },
 "2287dfd59460a8a6c40f": {
 "s": "Quickly create an itinerary"
@@ -1385,6 +1508,9 @@
 },
 "252ca34a5f6c532cb2a9": {
 "s": "{n} states · {spots} attractions"
+},
+"2543f00a5aa20eac046b": {
+"s": "Cloudborne API key not configured"
 },
 "25627f92363be8f4e5e2": {
 "s": "Cloudborne Travel · Japan, Australia, and U.S. travel guides"
@@ -1571,6 +1697,9 @@
 "297cf9d283579805ce55": {
 "s": "Category"
 },
+"2983786720333990fd56": {
+"s": "Fetched {n} available models. You are ready to chat!"
+},
 "298efaaee9c5eaf7d3be": {
 "s": "Source ({date})"
 },
@@ -1735,6 +1864,9 @@
 "tags.5": "West Coast Road Trip",
 "title": "San Francisco to Los Angeles on California Highway 1: smart US-101 Big Sur detours and dodging Bixby Bridge parking tickets"
 },
+"2c5b37636ff791a966e9": {
+"s": "Personal travel profile (Memory)"
+},
 "2c65c04baab29e7aa861": {
 "s": "Reset to default"
 },
@@ -1762,6 +1894,9 @@
 "2d7ab2e2dd709f018f43": {
 "s": "No guides match the current filters yet."
 },
+"2dd0b00c8024f7e380e9": {
+"s": "Practical Japan travel tips: Suica, eSIM, and ticket comparisons, departure and 2026 tax-refund checklists, and curated food picks with Google Maps links."
+},
 "2df56f54ce975a6df743": {
 "s": "Fall colors"
 },
@@ -1778,6 +1913,9 @@
 "2e5171a7c94dc2845e2d": {
 "s": "Average high (°C)"
 },
+"2e556ab81511bd213927": {
+"s": "AI Agent chat"
+},
 "2e5ab20a59013ec9d40d": {
 "s": "Chugoku region"
 },
@@ -1789,6 +1927,9 @@
 },
 "2f1b2f37d7f5f9fcd6ec": {
 "s": "New Mexico"
+},
+"2f4fd6b3ea0bb68c6e51": {
+"s": "Your trip already has saved items. Replace them with {n} catalog stops from this AI itinerary?"
 },
 "2f6f1669bc5cbaa8cbb1": {
 "bases.0": "Jackson: 2 nights",
@@ -1843,8 +1984,17 @@
 "2": "Blindly trusting a GPS detour onto unpaved mountain dirt roads during a closure—you risk scraping the undercarriage or blowing a tire, and rental insurance rarely covers off-pavement damage. Stick to US-101.",
 "3": "Leaving backpacks or luggage visible inside your parked car around San Francisco and Bay Area sights—smash-and-grab thefts happen fast, so keep the cabin completely empty and valuables on you."
 },
+"301c2843aa59091185c4": {
+"s": "You"
+},
+"3025b9ff98678c63df91": {
+"s": "Official"
+},
 "303f93ecc60dd657666d": {
 "s": "Not decided yet"
+},
+"3071e1a8642ea8daf7f7": {
+"s": "Show or hide API key"
 },
 "30b13cc1e6d376b506cf": {
 "city": "Okinawa",
@@ -1877,6 +2027,73 @@
 },
 "310ee2be8153eb7c06cc": {
 "s": "October–April"
+},
+"31851cf2ea632e6ec273": {
+"s": "API key authentication failed (401). Please check that you entered a valid Cloudborne API key."
+},
+"3208357f76890fa01762": {
+"phases.before.items.0.detail": "Submit passport, flight, and first-night hotel details at least 6 hours before departure. Open the live web page on arrival rather than relying on old screenshots, and activate the tax-free QR code too.",
+"phases.before.items.0.link.label": "Visit Japan Web official site",
+"phases.before.items.0.tag": "Faster entry",
+"phases.before.items.0.title": "Complete Visit Japan Web (immigration, customs & tax-free QR)",
+"phases.before.items.1.detail": "Carry roughly ¥3,000–5,000 per person per day in cash for ramen ticket machines, shrines, and small shops; bring Visa/Mastercard/JCB plus a backup card. 7-Eleven ATMs reliably dispense yen for foreign cards.",
+"phases.before.items.1.link.label": "Pre-trip packing & payment checklist",
+"phases.before.items.1.tag": "Payments",
+"phases.before.items.1.title": "Pack cash + 2 credit/debit cards + a transit IC card",
+"phases.before.items.2.detail": "Add the eSIM profile on home Wi-Fi and keep cellular data switching off until touchdown in Japan so you don't start the day counter early. Download offline Google Maps areas for Tokyo and Kansai.",
+"phases.before.items.2.tag": "Stay online",
+"phases.before.items.2.title": "Install your eSIM before departure, activate data roaming on landing",
+"phases.before.items.3.detail": "Power banks are banned in checked luggage (max 160Wh, up to 2 per person). Flights departing Japan require keeping them near your seat—not in overhead bins—and forbid using or charging them on board. Meat products and fresh fruit are strictly prohibited on entry.",
+"phases.before.items.3.tag": "Security rules",
+"phases.before.items.3.title": "Keep power banks in carry-on; never charge or use them in-flight from Japan",
+"phases.before.items.4.detail": "Suitcases with total dimensions of 160–250 cm require a free oversized baggage seat reservation (bringing them without one incurs a ¥1,000 fee). Alternatively, ship bags hotel-to-hotel via Yamato Transport.",
+"phases.before.items.4.tag": "Large bags",
+"phases.before.items.4.title": "Reserve oversized baggage seats on Tokaido/Sanyo Shinkansen for big suitcases",
+"phases.before.subtitle": "Clear documents, data, payment cards, and baggage rules before boarding for a smooth arrival.",
+"phases.before.title": "Before you fly (72-hour checklist)",
+"phases.departure.items.0.detail": "Under the Nov 1, 2026 refund system, you pay tax-inclusive prices in-store and receive refunds after customs confirms export. Scan your passport before bag drop (green clears immediately; red requires showing the items to customs). Checked bags cannot be inspected retroactively.",
+"phases.departure.items.0.link.label": "2026 tax-refund steps & calculator",
+"phases.departure.items.0.tag": "2026 rule",
+"phases.departure.items.0.title": "Scan your passport at the airport tax-refund kiosk before checking luggage",
+"phases.departure.items.1.detail": "Although sealed bags are gone, customs verifies per receipt—consuming even one snack from a receipt disqualifies the entire receipt. Pack liquids over 100 ml into checked luggage only after customs verification.",
+"phases.departure.items.1.tag": "Packing order",
+"phases.departure.items.1.title": "Pack tax-free items together and leave them unused and unopened",
+"phases.departure.items.2.detail": "Welcome Suica balances are non-refundable and regular card refunds carry a fee. At airport 7-Eleven, Lawson, drugstores, or souvenir shops, ask to pay the remaining IC balance first and cover the difference by card or cash.",
+"phases.departure.items.2.tag": "Zero balance",
+"phases.departure.items.2.title": "Spend remaining Suica balance via split payment at airport shops",
+"phases.departure.items.3.detail": "Evening international peaks at Narita, Haneda, and Kansai can take 90+ minutes across tax-free kiosks, check-in, and security. If forwarding luggage to the airport via Yamato, ship 2–3 days ahead.",
+"phases.departure.items.3.tag": "Buffer time",
+"phases.departure.items.3.title": "Arrive at least 3 hours early for tax verification and security queues",
+"phases.departure.items.4.detail": "Refund timing varies by store and refund operator, so retain receipts until credited. Pour leftover ¥1–¥100 coins into convenience-store self-checkout coin trays or airport capsule machines.",
+"phases.departure.items.4.tag": "Wrap-up",
+"phases.departure.items.4.title": "Keep tax-free receipts until refunds post; clear loose coins at self-checkout",
+"phases.departure.subtitle": "Since Nov 2026 Japan uses departure-time tax refunds—do not check your bags before customs verification!",
+"phases.departure.title": "Leaving Japan (24 hours before flight to gate)",
+"sources.0.title": "JR East Welcome Suica official page",
+"sources.1.title": "JR-West HARUKA one-way tourist ticket",
+"sources.2.title": "Digital Agency Visit Japan Web",
+"sources.3.title": "Japan Tourism Agency Nov 2026 tax-refund system guide",
+"sources.4.title": "SHIBUYA SKY official ticketing info",
+"sources.5.title": "Government of Japan flight battery & baggage rules",
+"xianyu.avoid.0.detail": "Many 30–50% off third-party hotel or USJ bookings rely on stolen credit cards or fraudulent points, risking last-minute cancellations or being turned away at the gate.",
+"xianyu.avoid.0.title": "Never buy deeply discounted unofficial hotel bookings or theme-park passes",
+"xianyu.avoid.1.detail": "Fraudulent top-ups can trigger card suspension or account locks; official wallet reloads use transparent exchange rates.",
+"xianyu.avoid.1.title": "Avoid unofficial cheap Suica top-up services",
+"xianyu.avoid.2.detail": "Venues frequently check passport names against ticket holders, leaving resold tickets unusable with little recourse.",
+"xianyu.avoid.2.title": "Do not buy secondhand ID-checked tickets (e.g., Ghibli Museum or named events)",
+"xianyu.goodBuys.0.detail": "Lightly used multi-port GaN chargers, compression cubes, luggage scales, and Hokkaido ski accessories can often be picked up secondhand at roughly half retail price.",
+"xianyu.goodBuys.0.tag": "Travel gear",
+"xianyu.goodBuys.0.title": "Pre-owned travel accessories: compact kettles, plug adapters, luggage scales & snow gear",
+"xianyu.goodBuys.1.detail": "Check current secondhand market prices before browsing Map Camera in Shinjuku or Nakano shops so you can immediately tell whether tax-free pricing in Japan is a genuine bargain.",
+"xianyu.goodBuys.1.tag": "Cameras",
+"xianyu.goodBuys.1.title": "Compact prime lenses, Ricoh GR / Pocket 3 price checks before visiting Tokyo camera shops",
+"xianyu.goodBuys.2.detail": "Compare asking price against stored yen plus the ¥500 deposit, and verify the actual balance with an NFC card-reader app before confirming delivery.",
+"xianyu.goodBuys.2.tag": "IC cards",
+"xianyu.goodBuys.2.title": "Collectible physical Suica / ICOCA cards for Android travelers or collectors",
+"xianyu.goodBuys.3.detail": "Checking secondhand listings while shopping in Akihabara, Nakano Broadway, or Osaka Namba helps spot overpriced goods quickly—and lets you resell unused travel gear afterward.",
+"xianyu.goodBuys.3.tag": "Price anchor",
+"xianyu.goodBuys.3.title": "Benchmarking collectibles, Switch games, and vintage goods in Akihabara or Den-Den Town",
+"xianyu.intro": "Secondhand marketplaces can save money on pre-trip gear and serve as a price benchmark for Japanese vintage items, as long as you avoid high-risk ticket or hotel resellers."
 },
 "3208dc8a1c1411d20ed5": {
 "cost": "Monorail ¥300; museum permanent exhibition about ¥530",
@@ -1914,6 +2131,9 @@
 "options.1.price": "Check the operator's website",
 "options.1.time": "Considerably slower than JR; depends on traffic",
 "options.1.to": "Central Sapporo (Sapporo Station, Odori, Susukino, and nearby areas)"
+},
+"33006dffd2f7e7b040e3": {
+"s": "Home departure city"
 },
 "33c015b628207bb18637": {
 "access.0.from": "Miyazaki Airport",
@@ -2071,6 +2291,9 @@
 "348b23e310ec02ada5f5": {
 "s": "Budget details copied"
 },
+"34f5ef24e31ae80bb2fb": {
+"s": "Session only (cleared on close)"
+},
 "35081e54c26cb42d2b41": {
 "s": "Rhode Island"
 },
@@ -2156,8 +2379,14 @@
 "4.detail": "Station coin lockers or Tokyo-to-Kawaguchiko Takkyubin",
 "4.item": "Lockers / Luggage Forwarding"
 },
+"3954aa13f6f97fd3282d": {
+"s": "Travel Tips"
+},
 "396b325a9d5d92cc5b77": {
 "s": "Emergency contacts"
+},
+"397ad97ea642d0923e1f": {
+"s": "Show"
 },
 "398365df490059b8b48e": {
 "s": "When will you travel?"
@@ -2296,11 +2525,17 @@
 "3b94ebd1fab0ac1035e6": {
 "s": "Field Tip"
 },
+"3bcbe5d60b45f93ebdbc": {
+"s": "Yakiniku / Cutlet"
+},
 "3c099a8c321dd895f99d": {
 "s": "Japanese yen"
 },
 "3c83e972a542279d93ff": {
 "s": "{country} {days}-day · {people}-person budget ({cur})"
+},
+"3c85e5b329307b575712": {
+"s": "Use"
 },
 "3caf27b4fd278ddfb8c3": {
 "s": "Pick a few →"
@@ -2352,6 +2587,15 @@
 },
 "3d815f072f9262fd9710": {
 "s": "The cherry blossom front starts in late March from Kyushu and around Tokyo, reaches Tohoku in mid-to-late April, and arrives in Hokkaido in early May. A tree stays in full bloom for only about one week. If you miss the blossoms in the lowlands, head north or up into the mountains."
+},
+"3d8c65a08634dc2414d3": {
+"s": "Filter by category"
+},
+"3da6f02343a9fb5314e4": {
+"s": "Local classics"
+},
+"3dcc638f2bce5c5e108a": {
+"s": "Planning mode"
 },
 "3de859f1bba976079a57": {
 "s": "TL;DR: Key Takeaways & Pitfalls Avoided"
@@ -2421,6 +2665,9 @@
 "tip": "Eat 551 Horai buns right outside—never carry hot buns onto a sealed Shinkansen train, where their legendary onion-pork aroma earns stares from the entire carriage.",
 "title": "Skip Hour-Long Dotonbori Queues—Duck into Mossy Hozenji Alley for Okonomiyaki & 551 Pork Buns"
 },
+"3f58d26c4d7f8d5e9c35": {
+"s": "Request rejected (400): {detail}"
+},
 "3f5b9ff1b675b35a46de": {
 "s": "Departure tax refunds from November 2026"
 },
@@ -2447,6 +2694,9 @@
 },
 "40eb8ffc137ee4b48349": {
 "s": "Where to stay"
+},
+"412d8cd0a796daa8f789": {
+"s": "Price"
 },
 "41467595698bf283e5f5": {
 "s": "Shikoku"
@@ -2477,6 +2727,9 @@
 },
 "41d7e08e39629d4a3db5": {
 "s": "{name} travel guide: {tagline}. Highlights, transportation, passes, and itineraries across {n} prefectures."
+},
+"423fb8005ce26b6eb5cb": {
+"s": "Saved API key cleared from browser."
 },
 "42a5f10b0050978b9a96": {
 "s": "Calculate budget"
@@ -2596,6 +2849,9 @@
 },
 "44adf39c93e207c59d36": {
 "s": "Data SIM / eSIM"
+},
+"45050d0779b65c7017a8": {
+"s": "e.g., 2–3 stops/day, relaxed mornings"
 },
 "456ec5c383829fc09f2e": {
 "s": "Georgia"
@@ -2884,8 +3140,14 @@
 "48ff04bc5d1ee9553865": {
 "s": "System"
 },
+"49040736093cfdc2b33b": {
+"s": "Check whether the selected model supports chat completions"
+},
 "491b031d567156dd4db9": {
 "s": "1-Min Draft Itinerary"
+},
+"49473560be6ba058c942": {
+"s": "Avoid"
 },
 "494ce7a612edb0a4dc9a": {
 "access.0.from": "Narita Airport → Narita",
@@ -3012,6 +3274,12 @@
 "tip": "If heavy snow in Shirakawa-go delays your arrival in Takayama by 1 hour, don't stress: pivot dinner to a cozy izakaya or classic Takayama soy-broth ramen shop near the station open until 21:00, and explore the old town fresh the next morning.",
 "title": "Check into a hot-spring hotel and dive into Sanmachi old town for charcoal-grilled A5 Hida beef"
 },
+"4b0eddb142fd7bf6c754": {
+"s": "{days} days · {stops} stops"
+},
+"4b143f8eb67e46a2c160": {
+"s": "Ramen / Tsukemen"
+},
 "4b58df0956cf78e000df": {
 "s": "Japan emergencies: police 110, fire/ambulance 119, at sea 118, Japan Visitor Hotline, your embassy or consulate in Japan, and what to do if you lose your passport, need medical care, or experience an earthquake."
 },
@@ -3039,6 +3307,15 @@
 },
 "4d23451577b53d53a837": {
 "s": "Tap “Travel information” below for visa and entry requirements."
+},
+"4d7b1578f4a5b37251e2": {
+"area": "Namba · Hozenji Yokocho",
+"categoryName": "Yakiniku / Cutlet",
+"cityName": "Osaka",
+"dish": "Matsusaka beef rare-cut platter & sukiyaki-style wagyu slices",
+"name": "Matsusakagyu Yakiniku M (Hozenji Yokocho)",
+"price": "About ¥7,000–12,000",
+"tip": "Tucked in lantern-lit Hozenji Alley with multilingual menus and attentive service; book online ahead and stroll past moss-covered Hozenji Temple after dinner."
 },
 "4d968f965796b6e8343b": {
 "s": "Share link copied. Send it to your travel companions to view this itinerary."
@@ -3070,6 +3347,12 @@
 },
 "4dced96ab7d0929ee2ee": {
 "s": "Seasonal updates"
+},
+"4df8ecb0c7332fe68116": {
+"s": "Switch conversation"
+},
+"4dff4b688a4eb46b98d7": {
+"s": "e.g., couple / with parents / solo"
 },
 "4e00715bac197dc6e391": {
 "cities.0": "Takamatsu",
@@ -3203,6 +3486,9 @@
 "sources.2.title": "A U.S. embassy or consulate in your country · Nonimmigrant Visas (EVUS, interviews for children under 14)",
 "sources.3.title": "Official EVUS registration website"
 },
+"4f3dd32adb92737c56aa": {
+"s": "ramen, onsen, vintage cameras, autumn leaves, cafes"
+},
 "4f731940b0f12586faf3": {
 "s": "Day {n}"
 },
@@ -3287,6 +3573,21 @@
 "5000210599164d48bc12": {
 "s": "nights (lodging tax charged separately)"
 },
+"502ad9e01ce8e6a0b3a0": {
+"s": "Hand-picked classics across Tokyo, Osaka, Kyoto, Fukuoka, and Sapporo with direct Google Maps links and one-click AI itinerary planning."
+},
+"507cf281133a3e494878": {
+"badge": "Sells fast",
+"links.0.label": "Ctrip USJ & Disney tickets",
+"links.1.label": "SHIBUYA SKY official tickets",
+"links.2.label": "Xiaohongshu USJ live queue updates",
+"summary": "Tracking official ticket release windows beats chasing scalpers: book through official portals or authorized partners and check recent queue reports before going.",
+"tips.0": "SHIBUYA SKY releases timed tickets roughly 2 weeks ahead (verify exact schedule on the official site); sunset slots vanish first—clear mornings or Roppongi Hills / Tokyo Tower are strong backups.",
+"tips.1": "USJ Osaka uses dynamic A–F pricing, making off-peak weekdays noticeably cheaper. Without an Express Pass, arrive about 1 hour before opening to claim a free Area Timed Entry Ticket in the app.",
+"tips.2": "Link your Tokyo Disneyland or DisneySea (home to Fantasy Springs) ticket to the official app before entry so you can book DPA or free 40th Anniversary Priority Passes right at the gate.",
+"title": "Tokyo Disney, USJ & Shibuya Sky: release timing and safe booking channels",
+"verdict": "Shibuya Sky sunset slots, USJ Super Nintendo World Express Passes, and Ghibli Park sell out rapidly—set a reminder for official channels and never buy unverified screenshot tickets."
+},
 "5096e0328f2d1c50515c": {
 "s": "Amount on the receipt (¥)"
 },
@@ -3321,6 +3622,18 @@
 "53336b918321dc5e0e97": {
 "s": "Answer a few questions: where, when, how long, how many people, your budget, and your preferences. Get a day-by-day itinerary right away."
 },
+"534f44257a2b113879ca": {
+"s": "Session only"
+},
+"537e88f59dc63e6eac10": {
+"area": "Tokyo Opera City 53F / Skytree 30F",
+"categoryName": "Yakiniku / Cutlet",
+"cityName": "Tokyo",
+"dish": "Wagyu yakiniku lunch set",
+"name": "Jojoen Yakiniku (Skyline Lunch Set)",
+"price": "Lunch about ¥3,500–6,500",
+"tip": "Dinner is pricey, but weekday and weekend lunch sets are great value—reserve a window seat online ahead for panoramic Tokyo views."
+},
 "53cbca6cb47bc9849a71": {
 "cost": "Free highways",
 "duration": "~2.5 hours if open; ~2 extra hours via US-101 detour",
@@ -3338,6 +3651,9 @@
 },
 "5461235867f0eaf4d898": {
 "s": "How to get a refund"
+},
+"5466d3b2a8ef0272a79c": {
+"s": "Key set—fetch and select a model"
 },
 "5471b6db421e83dccde0": {
 "s": "Total: {total}, {per} per person"
@@ -3365,6 +3681,12 @@
 },
 "563c79c047cc7f8a35c4": {
 "s": "Explore map"
+},
+"5690572056b595a02be0": {
+"s": "Live itinerary canvas"
+},
+"56a015c85377cefe4daf": {
+"s": "Base URL (locked default)"
 },
 "56dca5f1754a3db5d6f7": {
 "s": "National parks,<br />coasts and big cities."
@@ -3561,11 +3883,17 @@
 "58e94bd024ad795bd14c": {
 "s": "Cloudborne Travel is a community-style field guide and destination atlas for Japan, Australia, and the USA—updated daily with light/dark mode and zero tracking."
 },
+"5999d424a8889d8e9557": {
+"s": "Please enter your Cloudborne API key and fetch models before chatting."
+},
 "59ac18d53e0d5c0bf604": {
 "s": "<b>Images</b>: Covers of places across Japan use woodblock-print-style illustrations. Images of sights, food, and Australian and U.S. states are AI-generated from real-world descriptions to help you recognize each place. They are not photos."
 },
 "59afbc37628c36369c7e": {
 "s": "Post"
+},
+"59bf979de12949d2a31e": {
+"s": "First trip"
 },
 "5a0276ab0881c3a4fc09": {
 "access.0.from": "Tokyo (Shinjuku)",
@@ -3672,14 +4000,32 @@
 "4.detail": "Rokkatei, Royce, Shiroi Koibito at New Chitose",
 "4.item": "Airport Souvenirs"
 },
+"5c5ccf44631c26c8b5a1": {
+"badge": "Easiest",
+"links.0.label": "JR East Welcome Suica official guide",
+"links.1.label": "Xiaohongshu Suica tips",
+"links.2.label": "Xianyu Suica price check",
+"summary": "iPhone users can add a digital Suica in Apple Wallet with zero markup; Android travelers or collectors can pick up a Welcome Suica at the airport.",
+"tips.0": "Non-Japanese Android phones rarely support Mobile Suica. Pick up a deposit-free Welcome Suica at Narita or Haneda JR East Travel Service Centers or red vending machines (valid 28 days, non-refundable balance; load ¥1,000–2,000 at a time).",
+"tips.1": "Landing in Kansai (KIX)? Grab an ICOCA card (¥500 deposit, works nationwide including Tokyo; refund fee is ¥220, or deposit-only refund when balance is under ¥220).",
+"tips.2": "If you buy a collectible physical card secondhand, compare the price against face balance plus the ¥500 deposit, and avoid unofficial discounted top-up services.",
+"title": "Suica / PASMO IC cards: where to get them without overpaying",
+"verdict": "On iPhone, skip resellers entirely: open Apple Wallet -> + -> Transit Card -> Japan Suica and top up from ¥1,000 with no deposit and no markup."
+},
 "5c8236cdb8077c486bf1": {
 "s": "Follow a journey in chronological order"
 },
 "5c91a272133642b0453c": {
 "s": "Pennsylvania"
 },
+"5ca30187240c6c63a5d0": {
+"s": "Uses the Cloudborne relay endpoint by default—just enter your API key to start."
+},
 "5ca50b639f64a517485b": {
 "s": "Islands"
+},
+"5cc57b09a3be33658017": {
+"s": "Chat-based AI trip planning via Cloudborne API, plus offline quick quiz"
 },
 "5ccb309475a7f1a67c1c": {
 "s": "Quick guide"
@@ -3698,6 +4044,9 @@
 },
 "5da543ee264a2e83ca84": {
 "s": "North Carolina"
+},
+"5dbe617ca3ae17f6b4c5": {
+"s": "All categories"
 },
 "5df8ed3df540eb34e929": {
 "author.avatar": "AZ",
@@ -3720,6 +4069,12 @@
 },
 "5e0ec24fe07b66ff61b0": {
 "s": "Cloudborne Travel is a guide by Cloudborne: Japan, Australia, and the United States. Original content. No login or tracking."
+},
+"5e2a5e1162f016985348": {
+"s": "Text itinerary copied to clipboard"
+},
+"5e2c0d6fdcacbb91cd7b": {
+"s": "Shop"
 },
 "5e48555d21b7808ff640": {
 "s": "Updated {date}"
@@ -3902,6 +4257,9 @@
 "tip": "Fresh puddings, nama chocolate with ice packs, and soft custards from Domestic 2F can count as liquids/gels at International security—ask clerks whether your items must go inside checked luggage.",
 "title": "Treat New Chitose as Your Final Stop: Domestic Ramen Dojo, Farm Soft-Serve & All Hokkaido Sweets"
 },
+"5f117dab32bd507c576a": {
+"s": "Stay"
+},
 "5f2837bbbe12e129b759": {
 "s": "{n} days"
 },
@@ -4014,6 +4372,9 @@
 "61b00492d04c7f8b7d8c": {
 "s": "Park"
 },
+"61b22f0e3edf15bd776d": {
+"s": "Page sections"
+},
 "61b2a736d920ba131863": {
 "s": "First, pick a few places to visit."
 },
@@ -4040,6 +4401,9 @@
 "photo.caption": "Catching the airport express 1 hour earlier leaves breathing room for tax verification and last-minute terminal snacks—turning a frantic dash into an easy send-off.",
 "tip": "When department stores route card refunds through third-party operators like Global Blue or Pie VAT, expect a service fee of roughly 1.1%–1.55% deducted from the payout—it's standard policy, not a billing error.",
 "title": "Keep verification records until the refund lands, and lock in airport express seats before rush hour"
+},
+"62607945cfe06237a6cb": {
+"s": "Checkboxes save automatically in your browser for easy pre-flight and airport-day tracking."
 },
 "6320ccf9c561bf80dde4": {
 "s": "Capital Territory"
@@ -4191,6 +4555,12 @@
 "tips.2": "People in Kochi are enthusiastic drinkers and may encourage you to drink at banquets. If you do not drink, say so early.",
 "tips.3": "The city is especially lively during the Yosakoi Festival in August, but book your hotel one or two months ahead."
 },
+"640b6e596d91ebbe5a8d": {
+"s": "With parents"
+},
+"6435ddbb5d377d5e8362": {
+"s": "Suica & eSIM tips, departure/return checklists, and Google Maps food picks"
+},
 "6444f1c53bbbd2251a8b": {
 "author.avatar": "LC",
 "author.name": "Lu Chen",
@@ -4213,14 +4583,23 @@
 "650a16ae391fc27877aa": {
 "s": "Beaches"
 },
+"650d399cc8ce010cbe58": {
+"s": "Site tool"
+},
 "6532f8164038640bfb6d": {
 "s": "Book accommodations and transportation more than a month ahead; prices can vary widely."
+},
+"659aa6265551cdb9f18f": {
+"s": "Synced {matched} catalog stops to My Trip ({custom} custom restaurants/notes remain in this canvas)."
 },
 "664190ca64c2aab661fd": {
 "s": "Offline tools for Japan: airport-to-city guides, transit basics, a tax refund calculator, a pre-trip checklist, emergency help, and 2026 rules."
 },
 "665822ddeacbde959559": {
 "s": "Photo viewer"
+},
+"667432e4edeae6d93325": {
+"s": "Reset checks"
 },
 "668b41a0d6475a00b75c": {
 "s": "Monthly weather"
@@ -4340,6 +4719,9 @@
 "tips.3": "Nevada uses Pacific Time; set your clock forward 1 hour when entering Utah. You must be at least 21 to drink alcohol or enter casinos. Carry your passport.",
 "tips.4": "The Grand Canyon West Skywalk, a common day trip from Las Vegas, is on Hualapai tribal land and is separate from the national park’s South Rim. Choose based on what you want to see."
 },
+"67dee7fea74daffdfd66": {
+"s": "Kansai 5 days easy pace with parents"
+},
 "67f0865cbba4ee4d801d": {
 "s": "On the map,<br />find your Japan."
 },
@@ -4449,14 +4831,32 @@
 "69399502074680cabef4": {
 "s": "Checked {date}"
 },
+"694cddbb30ac54f86b71": {
+"area": "Harajuku / Ebisu",
+"categoryName": "Ramen / Tsukemen",
+"cityName": "Tokyo",
+"dish": "Yuzu shio ramen + charcoal-grilled pork rice bowl",
+"name": "AFURI (Yuzu Shio Ramen)",
+"price": "About ¥1,300–1,800",
+"tip": "Bright citrusy chicken broth that never feels heavy; pick light (Tanrei) or rich (Maroaji) at the cashless ticket machine."
+},
 "6953fe980bcf3b5c444c": {
 "s": "Other themes"
 },
 "6965dfe5dc91da29a518": {
 "s": "Japan tax refunds on departure from November 2026"
 },
+"69982c317e04ef428b69": {
+"s": "Xiaohongshu"
+},
 "699ee0a2e16029805053": {
 "s": "Data / insurance / tax"
+},
+"6a02b105ec38b08037db": {
+"s": "AI Planner"
+},
+"6a2febbaf466bcd8008f": {
+"s": "Filter models, e.g. gpt / claude / gemini…"
 },
 "6a44bc53a08920f601b1": {
 "access.0.from": "Mainland China",
@@ -4719,6 +5119,9 @@
 "tip": "Check the Fuji-san Visibility Index the day before departure: if Day 1 is crystal clear and Day 2 looks cloudy, flip the loop—rush straight to Kawaguchiko on Day 1 and unwind in Hakone's museums and onsen on Day 2!",
 "title": "Warm Up with Hoto Noodles & Onsen, Then Hit Ubuyagasaki at 06:30 for Mirror-Still Reverse Fuji"
 },
+"6cdff027ec39bf23715e": {
+"s": "Recommended chat models"
+},
 "6d199b85b7b0bc9a8382": {
 "s": "Best For"
 },
@@ -4727,6 +5130,9 @@
 },
 "6d8688790a1d95f62fa6": {
 "s": "An original travel guide to Australia's 8 states and territories: interactive maps, photo-style images of sights and food, itinerary templates, visa and entry information."
+},
+"6db6fea6d4600ce71b7e": {
+"s": "Generation stopped."
 },
 "6df06299ccd4b4e61826": {
 "access.0.from": "Mainland China",
@@ -4804,8 +5210,14 @@
 "6dfea1df7c31323d934b": {
 "s": "Stay in Kyoto"
 },
+"6e01798dc2807902021c": {
+"s": "Bottom line"
+},
 "6e1905c6ebe1050d9044": {
 "s": "47 Prefectures Map + Field Guides"
+},
+"6e3334d6177604e4fed6": {
+"s": "Selected model: {model}"
 },
 "6e890f0cb2a3d2963241": {
 "s": "Queensland"
@@ -4822,6 +5234,9 @@
 "days": "Universal · Pre-trip essential",
 "pace": "15-minute pre-departure read",
 "season": "Year-round from November 2026"
+},
+"6f3679564b2877d02053": {
+"s": "Smart booking & ticket channels"
 },
 "6f6a800cc26304ac1ffa": {
 "s": "Attractions for this theme are still being added."
@@ -4926,6 +5341,9 @@
 "tips.1": "Karato Market's sushi stalls operate only on Friday through Sunday mornings and holiday mornings. They will not be open on other weekdays.",
 "tips.2": "Eat fugu only at reputable restaurants. Do not buy fish from unknown sources to prepare yourself.",
 "tips.3": "The ferry from Shimonoseki to Mojiko takes about 5 minutes, so you can visit two prefectures in one day."
+},
+"7238e83a598c8d5e7487": {
+"s": "Saved locally"
 },
 "7297b6190180fbe45bde": {
 "bases.0": "San Francisco · 2 nights",
@@ -5052,11 +5470,17 @@
 "731a34da83d1a6e7fe4d": {
 "s": "Chiba"
 },
+"7357b5e3955a696a6cfc": {
+"s": "3 bargain traps to avoid"
+},
 "739cee4edb111758a29c": {
 "s": "Wisconsin"
 },
 "73e2514875320089514b": {
 "s": "+ Add a day"
+},
+"7446b2ff64a2285af291": {
+"s": "e.g., no raw fish / avoid steep hills / dislike long lines"
 },
 "74958881fc0d1dc50e2d": {
 "0": "Waking up early for Kizu Market on a Wednesday or Sunday—it's normally closed! Always double-check the official market calendar.",
@@ -5069,6 +5493,9 @@
 },
 "74b2f3636219e48f6714": {
 "s": "Select multiple"
+},
+"74b7ad25709d0a58120d": {
+"s": "Budget style"
 },
 "75c05339a5d6cec49498": {
 "s": "Travel information"
@@ -5253,6 +5680,9 @@
 "773f07485bb4f8eb09d2": {
 "s": "Move up"
 },
+"781daed5312cf73b6627": {
+"s": "Refine any single day in chat without starting over"
+},
 "791aba5f82c5533f4941": {
 "s": "Calculate your Japan, Australia, or U.S. trip costs on one page: flights, lodging, transportation, meals, tickets, and shopping, split by number of travelers and days. Exchange rates update daily."
 },
@@ -5354,6 +5784,9 @@
 "2": "[16:00 sunset clock] Light fades sharply by 15:30 and hits full night by 16:15 in winter Hokkaido; schedule all outdoor snow scenery and Otaru canal walks before 15:00.",
 "3": "[Airport as an attraction] Arrive 3.5 hours early at New Chitose Airport! The Domestic Terminal's Ramen Dojo, Royce Chocolate World, and Rokkatei/Kitakaro sweet hall rival downtown."
 },
+"7af83625e41e74f4435e": {
+"s": "Other chat models"
+},
 "7afc12ccc1b2bae256ee": {
 "0": "Board a Kyoto city bus toward Eikando or Tofuku-ji at 10:30 AM in late November and you'll mostly see two things: frozen red brake lights outside the window and a wall of heads on Tsutenkyo Bridge. Peak-season Kyoto isn't ruined—it's just that 90% of visitors pile into the exact same flagship temples during the five-hour window from 10:00 to 15:00.",
 "1": "This eastern-to-southern Kyoto route is the sharpest version I've honed across three autumn seasons, built on two iron rules: skip cross-town buses completely in favor of the Tozai Subway Line, walking, and the JR Nara Line; hit crowd-sensitive Eikando right at its 08:30 opening, retreat to spacious Nanzen-ji for midday yudofu, and handle Tofuku-ji or evening illuminations with smart timing."
@@ -5369,6 +5802,9 @@
 "1": "Heading out on a winter whale boat without seasickness medication or in a thin T-shirt—open-ocean swells and sharp wind will leave you shivering and queasy within an hour.",
 "2": "Riding northern public buses without checking the final departure—Okinawa's highway buses wrap up early, and losing track of time at the aquarium leaves you stuck.",
 "3": "Eating every meal directly on Kokusai-dori—step into side alleys, Makishi Market's second floor, or local Shintoshin spots for better flavor at lower prices."
+},
+"7bf840442fd1fba864e9": {
+"s": "Remember in this browser"
 },
 "7c87a2b62674d5d24cb0": {
 "s": "How much will this trip cost?"
@@ -5471,6 +5907,12 @@
 "7d3286964ddc3d9bc04a": {
 "s": "Featured"
 },
+"7d81c06f7f6b64b49429": {
+"s": "Stored locally in your browser. The agent uses these preferences automatically and updates them as you chat."
+},
+"7d868613931d912678e4": {
+"s": "e.g., prefer hotels near major stations, half day in Akihabara"
+},
 "7d8bb8d695611ea7b106": {
 "s": "Australia Board"
 },
@@ -5541,6 +5983,9 @@
 },
 "7fb6668e1829527d908a": {
 "s": "Flights"
+},
+"80150531141f9b0e81e5": {
+"s": "Make the overall pace more relaxed with free time for strolling and rest each day."
 },
 "802d1517f1d2ae3c78e6": {
 "s": "{n} items still need a day."
@@ -5639,6 +6084,12 @@
 "options.1.time": "about 38 minutes to Meitetsu Nagoya",
 "options.1.to": "Kanayama / Meitetsu Nagoya"
 },
+"81008197e5549ff5c8eb": {
+"s": "Key storage preference updated"
+},
+"811bb5d5e13938d5e48d": {
+"s": "Itinerary canvas ready"
+},
 "81dc22abf7130ef0bb2a": {
 "cost": "All transit included in pass; 5 black eggs ~¥500",
 "duration": "~3.5 hours",
@@ -5690,6 +6141,9 @@
 "summary": "Spend 4 nights in Sydney: one day each for the harbor, coastal walks, and the Blue Mountains. On Day 5, fly to Melbourne, explore its laneways and markets, then head to Phillip Island in the evening to see the penguins come ashore. Spend the last 2 days driving the Great Ocean Road. Stay 1 night in Port Campbell, then see the Twelve Apostles early the next morning before driving back to Melbourne.",
 "title": "Sydney, Melbourne and the Great Ocean Road · 8 days"
 },
+"8246058df8c375245286": {
+"s": "Hide"
+},
 "826bed3f7d711e6d86fc": {
 "s": "Osaka"
 },
@@ -5718,11 +6172,26 @@
 "summary": "Stay 3 nights in Kyoto and 1 night in Osaka, changing hotels just once. Explore Kyoto by area: visit Fushimi Inari Taisha in the early evening on day 1, Higashiyama on day 2, and Arashiyama and Kinkaku-ji on day 3. On day 4, take your luggage through Nara to Osaka, feed the deer, see the Great Buddha, and explore Dotonbori at night. Spend the final half day at Osaka Castle, then head to the airport from Namba.",
 "title": "Kansai for your first visit · 5 days"
 },
+"83520bf24215bde013f3": {
+"s": "Enter your Cloudborne API key, fetch models, and chat with a personal AI travel planner to build and refine day-by-day trips."
+},
 "8397979384f8c8fcfc40": {
 "s": "Stay: {bases}"
 },
 "839c77c9c51eff8dd8d4": {
 "s": "Okayama"
+},
+"841147bc63d969334d9d": {
+"badge": "Book ahead",
+"links.0.label": "Ctrip Skyliner & HARUKA tickets",
+"links.1.label": "JR-West official HARUKA ticket page",
+"links.2.label": "Xiaohongshu Tokyo Subway 72h pass guide",
+"summary": "Advance tourist tickets for Keisei Skyliner, JR HARUKA, and Tokyo Subway 24/48/72-hour passes often beat walk-up station fares and redeem cleanly via QR code.",
+"tips.0": "Narita to Ueno/Nippori/Asakusa: advance foreign-visitor Skyliner tickets typically save ¥200–300 compared to the ¥2,580 walk-up fare.",
+"tips.1": "Kansai Airport to Kyoto: HARUKA tourist discount tickets must be booked online via JR-West or overseas agents before arrival (fares updated Nov 2026; check live official pricing).",
+"tips.2": "Riding the Tokyo subway 3+ times a day? The Tokyo Subway Ticket (24h ¥800 / 48h ¥1,200 / 72h ¥1,500) covers Tokyo Metro and Toei lines (excludes JR Yamanote).",
+"title": "Airport expresses & regional rail passes: advance discounts vs station counters",
+"verdict": "After the nationwide JR Pass price hike, most single-region trips do not break even; Skyliner discount tickets, HARUKA one-way tourist tickets, Kansai WIDE Pass, and Tokyo Subway 72h passes deliver far better value."
 },
 "8452a4c218caf9bf9314": {
 "s": "How many days?"
@@ -5950,6 +6419,9 @@
 "tags.5": "Ticket math",
 "title": "Kamakura & Enoshima day loop from Tokyo: ride the suspended monorail to the island, beat Enoden queues, and do the ticket math"
 },
+"86622c1c8482bf975181": {
+"s": "03 Food map (Google Maps)"
+},
 "8664c7ced13bfda424a8": {
 "s": "Travel tools"
 },
@@ -5965,6 +6437,9 @@
 "870a2b2d83caca952a62": {
 "s": "No results for “{q}”. Try different wording."
 },
+"87134bb718117c77360b": {
+"s": "Select model"
+},
 "871ab42ef312875717cf": {
 "cost": "Okinawa soba about ¥900; Naminoue Shrine free",
 "duration": "About 3.5 hours",
@@ -5976,6 +6451,9 @@
 "photo.caption": "Back on dry land after whale watching, a bowl of tender pork-rib Okinawa soba in bonito-pork broth with crisp sea grapes is the quintessential Okinawan afternoon recharge.",
 "tip": "Tabletop koregusu chili oil packs both fiery heat and strong awamori alcohol—start with just 2–3 drops to lift the broth, because pouring half a spoonful will knock your socks off.",
 "title": "Warm up with steaming Okinawa soba, then ride the monorail to Shuri Castle and Naminoue Shrine"
+},
+"8738f4da0bcf99ffc89d": {
+"s": "Enter your key and click Fetch models"
 },
 "8763ae0759471c438468": {
 "cost": "Elephant seal beach & harbor boardwalk free",
@@ -5995,11 +6473,23 @@
 "876acfda9744fadf1267": {
 "s": "Open and use it as soon as you arrive in Japan"
 },
+"876fed7e684b8c6222ad": {
+"s": "Browser could not connect to {base}. Check your network/proxy or confirm CORS allows this site origin on the relay."
+},
+"87e4f36c8051992f8fcf": {
+"s": "6 days in Hokkaido in January without a car (JR & buses only), covering Sapporo, Otaru, and Noboribetsu onsen with winter transit tips."
+},
 "87f6fa1deb5631c53b53": {
 "s": "Save to my itinerary and keep editing"
 },
 "883a387efa7bb6319553": {
 "s": "{n} states and territories · {spots} attractions"
+},
+"884c86d59f5554b18a94": {
+"s": "Fetching…"
+},
+"885e5c98c44e2a4ac389": {
+"s": "Tokyo 4-day food, shopping & 2026 tax refund"
 },
 "8870945f5f598dbcc548": {
 "s": "Travel with parents"
@@ -6122,8 +6612,26 @@
 "8a7bc03fd3006fde2f38": {
 "s": "Alabama"
 },
+"8a826a83cd3ad5b3923b": {
+"area": "Nakasu / Nishinakasu",
+"categoryName": "Regional Classic",
+"cityName": "Fukuoka",
+"dish": "Whole kombu-wrapped mentaiko rice box & dipping noodles",
+"name": "Ganso Hakata Mentaiju",
+"price": "About ¥1,900–3,200",
+"tip": "Opens at 7:00 AM, making it a stellar Fukuoka breakfast with minimal lines before 8:00 AM; pair with Nakasu yatai food stalls at night."
+},
+"8a9cfb6e023e9954ed8f": {
+"s": "Interests (comma-separated)"
+},
 "8ae72d3f0ddc5034b037": {
 "s": "Popular states and national parks"
+},
+"8bb90969396574a65bee": {
+"s": "Please enter your Cloudborne API key first."
+},
+"8bf7a0ae77a2648f24ad": {
+"s": "Get Key ↗"
 },
 "8c12fe7cf6154749806e": {
 "s": "Before tax: ¥{pre}, below ¥{min}. Same-store purchases that day must total at least this amount for a refund."
@@ -6170,6 +6678,9 @@
 "season": "September–November and March–May are most comfortable",
 "summary": "Stay 3 nights in Perth and 2 nights in Margaret River, changing hotels only once. Use the first day to adjust to the time difference, then visit Kings Park in the evening. On day 2, take the ferry from Fremantle to Rottnest Island, cycle around and see quokkas. On day 3, drive north to the Pinnacles and stop for lobster along the way. Then head south to Margaret River for 2 days. On the last day, return to Perth via Fremantle for a late-night flight.",
 "title": "Perth and the Western Australia coast · 6 days"
+},
+"8c9eb74b31c656298486": {
+"s": "Check live listings"
 },
 "8ca0ac55acaeef7d3e5f": {
 "0": "Skipping the 30-day advance Nohi Bus booking and walking up to Kanazawa Station hoping for tickets—there is a 90% chance winter buses are sold out, wiping out your Shirakawa-go stop.",
@@ -6263,6 +6774,9 @@
 "8cd2cf3e7e963164368c": {
 "s": "Tickets & experiences"
 },
+"8cea76bfc522c1327c0b": {
+"s": "Please fetch models or enter a model ID manually first."
+},
 "8cf8b6df4d037aabc7c3": {
 "s": "Shimane"
 },
@@ -6348,6 +6862,9 @@
 "8d24659c67a8a8f2b465": {
 "s": "<b>Light/Dark Mode & Privacy</b>: Switch freely between light and dark themes in the header (or return to System mode from the footer or mobile menu). No account or login is required—your trip planner, saved posts, checklists, and theme preference stay solely in your browser's local storage."
 },
+"8d3912a3ebacb58a1186": {
+"s": "Matcha / Cafe"
+},
 "8d8ffb72e0a2caaa8417": {
 "s": "{n} photos in this guide · Click to zoom"
 },
@@ -6390,14 +6907,43 @@
 "8eea76662737d216be1b": {
 "s": "photos"
 },
+"8f13e58e0bad0e9679db": {
+"badge": "Key tip",
+"links.0.label": "Ctrip Japan eSIM search",
+"links.1.label": "Xiaohongshu Japan eSIM reviews",
+"summary": "Solo travelers are best off with a local Japan-routed eSIM (Docomo / KDDI / SoftBank) so Google Maps and booking sites load reliably; use a physical SIM if your phone lacks eSIM.",
+"tips.0": "Check whether your phone is unlocked and supports eSIM before buying; dual-SIM models without eSIM need a physical Japan data SIM.",
+"tips.1": "Look for native Japanese carrier routing (Docomo, KDDI, or SoftBank) and clear daily high-speed allowances (1–2 GB/day or fixed high-speed buckets instead of plans throttled to 128 kbps after 500 MB).",
+"tips.2": "Compare airport pickup, mail-order SIMs, and instant eSIMs 2–3 days before departure, then activate on airport Wi-Fi upon arrival.",
+"title": "Mobile data in Japan: choosing eSIM, SIM cards, or pocket Wi-Fi",
+"verdict": "Avoid relying solely on expensive or home-routed carrier roaming if it slows down or blocks Google Maps, Tabelog, and restaurant reservation portals."
+},
 "8f535fffc45032c88187": {
 "s": "Find Japan travel inspiration by season and interest: cherry blossoms, flower fields, autumn foliage, snow country, hot springs, islands, historic sites, mountains and countryside, and art. Each theme lists the top sights to visit."
 },
 "8f5fc2556fd2e0685100": {
 "s": "Iwate"
 },
+"8f911e999ea0473cbdbc": {
+"s": "Dietary / avoid"
+},
+"8fa0f4c8e09b3eb86bfd": {
+"s": "Please adjust Day {n}:"
+},
 "8fec647e852954771b2e": {
 "s": "Active filter: {parts} ({n} posts)"
+},
+"901d0667b1dca7159966": {
+"s": "Ctrip"
+},
+"901e8505a0980d8b746f": {
+"area": "Tokyo Station Ramen Street",
+"categoryName": "Ramen / Tsukemen",
+"cityName": "Tokyo",
+"dish": "Special rich tonkotsu-seafood tsukemen dipping noodles",
+"name": "Rokurinsha (Tokyo Station)",
+"price": "About ¥1,100–1,400",
+"tip": "Opens at 7:30 AM for lighter morning tsukemen with far shorter queues than the 45-minute lunch rush; super convenient before a Shinkansen."
 },
 "9030b2d2a3e99753afda": {
 "access.0.from": "Fukuoka",
@@ -6482,14 +7028,26 @@
 "904bd1bd2a98695e6228": {
 "s": "Share link"
 },
+"907673ee66d847c88aa4": {
+"s": "Tell me your destination, trip length, or rough ideas—I will ask clarifying questions, search our site catalog, and build an editable day-by-day plan on the right."
+},
 "90a39512285c04bbde1d": {
 "s": "North Dakota"
+},
+"90b8d1921c09fe26a545": {
+"s": "No models match “{q}”"
 },
 "90bd371743a8405d8457": {
 "s": "Winter"
 },
+"90bd9372df38aaac5ad1": {
+"s": "Tip"
+},
 "90edd2863fc335dff6c5": {
 "s": "Wyoming"
+},
+"91578b75b83990a5284c": {
+"s": "Extra notes"
 },
 "919179670662d3693536": {
 "cost": "¥200–¥260 per Enoden hop",
@@ -6518,6 +7076,12 @@
 },
 "927c1dc1c44958c0c879": {
 "s": "Budget for {n} days →"
+},
+"92fa96374f8938f51f86": {
+"s": "Sources & verification"
+},
+"930db4fd578b4616be24": {
+"s": "Guide page →"
 },
 "931b53ccb79290c84cc8": {
 "s": "{days} days, {spots} sights, {foods} foods"
@@ -6599,6 +7163,9 @@
 "9827621e54b7c6ccd7a5": {
 "s": "Print"
 },
+"988acc3b577c9c7a3b5d": {
+"s": "+ New chat"
+},
 "988ca9f8261c3f81bb64": {
 "s": "Art"
 },
@@ -6610,6 +7177,9 @@
 },
 "9941d0e5e4c8ce87f78f": {
 "s": "Clear all"
+},
+"994f916554f0161208b7": {
+"s": "Connects to the Cloudborne relay; your API key stays in your browser."
 },
 "995351418a8250a15a81": {
 "passes.0.name": "JAPAN RAIL PASS",
@@ -6702,6 +7272,9 @@
 "9a5799a09dcacff740a0": {
 "s": "Iowa"
 },
+"9aa7ca72d038f7559d8b": {
+"s": "Thinking and checking travel catalog…"
+},
 "9aa8e6e1d6012c2bccc3": {
 "s": "Plan each day with saved sights and food, view routes, estimate travel, and create a share link. No signup; saved in your browser."
 },
@@ -6787,6 +7360,18 @@
 "9c01023d4d7b0932a23f": {
 "s": "Days with 1 mm or more of precipitation"
 },
+"9c335a92452cbc208b3e": {
+"area": "Dotonbori / Kansai Airport",
+"categoryName": "Ramen / Tsukemen",
+"cityName": "Osaka",
+"dish": "Oishii Ramen (sweet napa-cabbage clear broth) + karaage",
+"name": "Dotonbori Kamukura Ramen",
+"price": "About ¥900–1,400",
+"tip": "Osaka's beloved comfort ramen with a light, subtly sweet cabbage soy broth—open late for post-Shinsaibashi suppers."
+},
+"9c809e2dc7d549c877e9": {
+"s": "Hide setup"
+},
 "9d9a06462b0bedf08c12": {
 "access.0.from": "Tokyo",
 "access.0.how": "JR Joban Line limited express trains run directly from Tokyo, Ueno, and Shinagawa stations to Mito in a little over 1 hour. For Hitachi Seaside Park, get off at Katsuta Station and transfer to a bus.",
@@ -6853,6 +7438,9 @@
 "9dd4e256f6dce0fdc921": {
 "s": "Cherry blossom viewing"
 },
+"9e81a97d719455af911b": {
+"s": "Winter snow"
+},
 "9ea0b4d31b4ffa874e76": {
 "s": "Interactive Map & Atlas"
 },
@@ -6887,12 +7475,18 @@
 "9fe240e138343528b1f8": {
 "s": "<b>Travel Posts & Daily Updates</b>: Every guide in the community cross-checks real public trip reports (including Xiaohongshu, Mafengwo, Qyer, Reddit, and official transit/tourism bulletins) before being rewritten from scratch as step-by-step walkthroughs covering connections, timing, costs, and pitfalls, with sources and check dates at the bottom. Columns use editorial traveler personas paired with an automated daily research pipeline."
 },
+"9ff658279eabbbae9b67": {
+"s": "Delete"
+},
 "a1150bbb55537c1d6425": {
 "audience": "Photographers / independent travelers who hate crowds",
 "budget": "~CNY 520/day (includes admission & yudofu)",
 "days": "1 packed day (easily split into 2 days)",
 "pace": "Early start, brisk walk · ~16,000 steps",
 "season": "Mid-November – early December"
+},
+"a14cf67703bc7a7b57d0": {
+"s": "Sushi / Seafood"
 },
 "a15998bbb260d89cb25a": {
 "author.avatar": "AZ",
@@ -6915,6 +7509,9 @@
 },
 "a1790845394be6795cea": {
 "s": "Nagano"
+},
+"a179e539ecd8ba27923e": {
+"s": "Smart booking comparisons, departure and airport tax-refund checklists, and a curated food map with Google Maps links—ready to drop into your AI plan."
 },
 "a1caeac79a453e244779": {
 "0": "Every December (12), social feeds fill up with winter Hokkaido rental cars sliding straight into snowbanks. Unless you have years of deep-winter ice driving under your belt, take this honest advice: Central Hokkaido's classic Sapporo + Otaru + Noboribetsu + Lake Toya loop has a superb rail network—riding heated JR trains and highway buses is ten times safer and lets you soak in snowy sea views.",
@@ -7168,6 +7765,9 @@
 "a686c4d2a58fbc0ab055": {
 "s": "Filter by country"
 },
+"a68c417378722aee3083": {
+"s": "Live notes ↗"
+},
 "a6e085d9d8016b329b47": {
 "s": "Feed"
 },
@@ -7326,6 +7926,9 @@
 "aa44a40ea8af4ed32b20": {
 "s": "This share link won't open. It may not have been copied in full. Ask them to send it again."
 },
+"aa5a1b7a1d982001fe4c": {
+"s": "Tips & food map"
+},
 "aacb31d07e6fd7799b4d": {
 "audience": "Fairytale snow-scenery lovers / repeat Japan travelers skipping Tokyo and Osaka",
 "budget": "About CNY 3,600 per person (excl. international flights)",
@@ -7339,6 +7942,9 @@
 "ab1296ec3ecb6b88b717": {
 "s": "Live Budget Calculator"
 },
+"ab1432c2f3ec01654df9": {
+"s": "Sync to My Trip stamp book with one click to drag and share"
+},
 "ab8ea72415234eac0f72": {
 "s": "Clear the entire itinerary? This action can't be undone."
 },
@@ -7348,8 +7954,14 @@
 "aba618e1dfdaabd73380": {
 "s": "Midwest"
 },
+"ac352ef02c2e8a89ebee": {
+"s": "Itinerary"
+},
 "ac47758febd749369f57": {
 "s": "Previous"
+},
+"ac84ec7247b801fb1215": {
+"s": "04 Food map (Google Maps)"
 },
 "ac8af54a9369f203bbb5": {
 "s": "Art museum"
@@ -7357,8 +7969,14 @@
 "acc207d5f3e69f19f414": {
 "s": "Best months: {months}"
 },
+"aced20d016b8d2b63944": {
+"s": "Travel companions"
+},
 "ad032f184fcecfbd5607": {
 "s": "Stop by"
+},
+"ad0708f2e5dee441b0d8": {
+"s": "03 Secondhand & anti-scam"
 },
 "ad25056406c00e3e031f": {
 "s": "Prepare before going to Japan: passport and visa, Visit Japan Web, cash and payment, eSIM, IC card, plugs, prohibited items, and etiquette. Check items off; saved automatically."
@@ -7438,11 +8056,20 @@
 "adbd96d77a5a47e997e9": {
 "s": "Sources & Image Note (Checked {date})"
 },
+"adbda9a09c1e69f70f23": {
+"s": "Filter and pick a model"
+},
 "ade56e69693e6e3d568e": {
 "s": "{name} in {region}"
 },
 "ae6592e501fb332aff75": {
 "s": "What to know before going to Australia: visas and entry, customs declarations, payment and tipping, transportation and driving, phone and internet, safety and weather, and emergency numbers."
+},
+"ae6f703b9a881f4556f1": {
+"s": "New trip chat"
+},
+"aebd301cc729f7889957": {
+"s": "Optimize routes"
 },
 "aedd8c8e80aa8cf855eb": {
 "s": "In these situations"
@@ -7470,6 +8097,9 @@
 },
 "af7ff5313ec5e84f9fea": {
 "s": "Post Tags"
+},
+"af96a7a18e297b686ff0": {
+"s": "Rate limited or insufficient balance (429). Try again later or check your Cloudborne quota."
 },
 "afae06dec95631eb50a2": {
 "s": "Spending tier"
@@ -7588,6 +8218,9 @@
 },
 "b23ee5865cd2a2472983": {
 "s": "Washington, D.C."
+},
+"b2791e24fd8c12890caa": {
+"s": "e.g., comfortable mid-range / budget"
 },
 "b27da0f7cdfabcaa1547": {
 "s": "U.S. travel guide"
@@ -7712,6 +8345,9 @@
 "tip": "If you do want to set foot on Liberty Island or climb the crown, Statue City Cruises is the ONLY official seller, and crown tickets sell out 2–3 months ahead. Ignore sidewalk hawkers in bright vests pushing overpriced 'Statue of Liberty cruise' tickets.",
 "title": "Catch the free orange ferry past the Statue of Liberty, visit the 9/11 Memorial and Wall Street, and walk the Brooklyn Bridge at dusk"
 },
+"b460ba386641507161ec": {
+"s": "Hokkaido 6-day car-free snow & onsen"
+},
 "b470b20bcb2a7c63f355": {
 "contacts.0.hours": "Check the hours published by the Tokyo Metropolitan Police Department",
 "contacts.0.name": "Tokyo Metropolitan Police Department General Consultation Center",
@@ -7768,6 +8404,15 @@
 "b4f41f250752980d9c57": {
 "s": "Read walkthrough →"
 },
+"b53ebc26c0c882281de8": {
+"area": "Uji Main Shop / Kyoto Station 3F",
+"categoryName": "Matcha / Cafe",
+"cityName": "Kyoto",
+"dish": "Nama-cha matcha jelly parfait & matcha soba",
+"name": "Nakamura Tokichi (Uji / Kyoto Station)",
+"price": "About ¥1,400–2,000",
+"tip": "Historic Uji tea merchant famous for bamboo-cup matcha jelly parfaits; pull a ticket on arrival before visiting Byodo-in, or drop by the Kyoto Station branch."
+},
 "b55a3e323989419624af": {
 "bases.0": "1 night in Nagoya",
 "bases.1": "1 night in Takayama",
@@ -7801,17 +8446,32 @@
 "b62db8afd324cc90674d": {
 "s": "Search destinations, sights, or food"
 },
+"b64f4813dbe1a480e36a": {
+"s": "No restaurants match this city and category filter yet—try another filter."
+},
 "b68ac68199d3607d3e15": {
 "s": "Garden"
 },
 "b6b5ce4918056c356ad7": {
 "s": "Generate an itinerary in one minute"
 },
+"b6c427728ffdc7f65927": {
+"area": "Shijo Kawaramachi · Teramachi",
+"categoryName": "Ramen / Tsukemen",
+"cityName": "Kyoto",
+"dish": "Dashi white shoyu ramen + seared wagyu rice bowl",
+"name": "Menya Inoichi",
+"price": "About ¥1,400–2,000",
+"tip": "Perennial Michelin Bib Gourmand pick famed for crystal-clear freshly shaved bonito dashi paired with sansho pepper and tororo kombu. Morning numbered tickets are often handed out—check current queuing rules before going."
+},
 "b6e3ca9bab1d21f4bc62": {
 "s": "Refundable consumption tax"
 },
 "b70f1262f0d4c27ac86f": {
 "s": "Montana"
+},
+"b725f4754ed90267aad5": {
+"s": "Sync to My Trip"
 },
 "b7c956c4327ffcda0a93": {
 "s": "Remove"
@@ -7916,6 +8576,9 @@
 "b822448c07e949322580": {
 "s": "February–May harvest season"
 },
+"b82ac2b672145f05902c": {
+"s": "5 days in Osaka and Kyoto with parents: minimize stairs and hotel switches, keep daily routes easy and include good food stops."
+},
 "b88c04a59f1c7ef7033e": {
 "s": "The long image failed to generate. Try again."
 },
@@ -7930,6 +8593,9 @@
 },
 "ba9285cdb32f6c711129": {
 "s": "Japanese large-character flashcards"
+},
+"baacf0ac8da351090531": {
+"s": "Enter to send · Shift+Enter for newline"
 },
 "bae20100d80af61d4bcb": {
 "s": "Save as my itinerary"
@@ -8210,6 +8876,15 @@
 "tips.3": "The morning commute peaks from 7:30 to 9:30. Avoid boarding with a rolling suitcase; take an airport bus instead or travel outside those hours.",
 "tips.4": "Public trash cans are scarce. Throw away convenience-store purchases outside the store or take them back to your hotel."
 },
+"bd930d3e275e323b1816": {
+"area": "Kiyamachi / Pontocho / Kyoto Station",
+"categoryName": "Yakiniku / Cutlet",
+"cityName": "Kyoto",
+"dish": "Whole-cow butcher wagyu assortment, thick beef tongue, marinated ribs",
+"name": "Kyoto Yakiniku Hiro",
+"price": "About ¥5,000–7,500",
+"tip": "Run directly by a Kyoto butcher for standout wagyu value; the Kiyamachi branch even offers Kamo River terrace seating in summer—book online 2–3 weeks ahead."
+},
 "beb532cf5bad33c8e9d8": {
 "bases.0": "Fukuoka · 2 nights",
 "bases.1": "Yufuin · 1 night",
@@ -8253,6 +8928,9 @@
 "pace": "Avg. 18,000 steps/day (~1.8 × 10k) · Zone-by-zone subway routing",
 "season": "April–June (4–6) / September–November (9–11) — ideal spring & fall"
 },
+"bf40e7b190e4a31fe44c": {
+"s": "Prompt filled in—enter your Cloudborne API key, choose a model, and hit Send."
+},
 "bf46b29bb2f9556338ba": {
 "s": "Mie"
 },
@@ -8267,6 +8945,9 @@
 "photo.caption": "Starting from snow-draped Odori Park in Sapporo, the 40-minute west-bound JR ride whisks you straight to Otaru Canal and the wintry Sea of Japan.",
 "tip": "Otaru sidewalks thaw slightly at noon and refreeze into invisible 'black ice' by dusk! Walk like a local penguin: lean slightly forward, take short steps, land flat-footed, and keep your hands out of your pockets for balance.",
 "title": "Take the Sea-Side JR to Otaru, Stroll Sakaimachi Sweets at 14:00 & Catch 16:00 Canal Lamps"
+},
+"c010fce0d11c6f7ebaa7": {
+"s": "Open AI Planner"
 },
 "c0c4e16a482f7dbee4f5": {
 "audience": "Travelers without an IDP / budget-minded winter-sun seekers",
@@ -8283,6 +8964,9 @@
 },
 "c0e770bebf16c0dd8321": {
 "s": "Miyagi"
+},
+"c1033cb275a2b5799590": {
+"s": "Japan toolkit"
 },
 "c1486b6bb90f9ea12bf9": {
 "s": "Arkansas"
@@ -8383,6 +9067,12 @@
 "c22bff8e5422e9662b3f": {
 "s": "Is the pass worth it?"
 },
+"c2331f779aba6b4dc6e1": {
+"s": "I imported this draft trip from the quick quiz—please check the pacing and add nearby restaurant picks and transit tips for each day."
+},
+"c23469f7334dea68ae67": {
+"s": "Other models"
+},
 "c287647b5cdf9918a967": {
 "s": "Copy details for travel companions"
 },
@@ -8392,6 +9082,9 @@
 "days": "2 Days, 1 Night",
 "pace": "Crisp & efficient · Seamless transfers",
 "season": "Nov – Apr (11–4, highest clear-sky odds)"
+},
+"c2a97ef5f64591d815db": {
+"s": "Refine with AI Agent →"
 },
 "c330a8aa90089e6f2189": {
 "s": "Visa & Practical Info"
@@ -8538,6 +9231,9 @@
 "tip": "Based in Shinjuku, Yoyogi, or Shimokitazawa? Odakyu's Enoshima-Kamakura Freepass (~¥1,640, covering Shinjuku round trip plus unlimited Enoden rides) wins on value—just change to the Enoden at Fujisawa or ride direct to Katase-Enoshima.",
 "title": "Ride JR straight to Ofuna, then switch to the 'upside-down roller coaster' Shonan Monorail"
 },
+"c5fc0ba3f56563a020bb": {
+"s": "Travel profile saved"
+},
 "c66a42e58f0c40d4519a": {
 "s": "Delaware"
 },
@@ -8670,6 +9366,12 @@
 "options.2.time": "About 60 minutes to Umeda and 85–90 minutes to Kyoto Station",
 "options.2.to": "Osaka Station (Umeda) / Kyoto Station"
 },
+"c85afc2bebac8bd73c8d": {
+"s": "Could not load site catalog—please check your connection."
+},
+"c8a06d3df1c33b92c2bd": {
+"s": "This key does not have access to the model or endpoint (403). Check your account group or pick another model."
+},
 "c912aa7ae0f556441af1": {
 "s": "Starting November 1, 2026, Japan’s tax-free system will switch to refunds at departure: pay the tax-included price first, then receive a consumption tax refund after customs confirms your departure. Rules, steps, FAQs, and quick calculations."
 },
@@ -8684,6 +9386,15 @@
 },
 "ca1b168ed36b861c6925": {
 "s": "days"
+},
+"ca27cefbcfd60992cbaf": {
+"area": "Omotesando / Aoyama",
+"categoryName": "Tonkatsu / Classics",
+"cityName": "Tokyo",
+"dish": "Kurobuta black-pork loin cutlet set & mini katsu sando",
+"name": "Tonkatsu Maisen (Aoyama Honten)",
+"price": "About ¥2,000–3,500",
+"tip": "Set inside a restored historic bathhouse with soaring wooden ceilings; grab their famous mini katsu sandwiches at department-store food halls for Shinkansen snacks."
 },
 "ca5754a3b8e2437537a2": {
 "s": "Close"
@@ -8780,8 +9491,14 @@
 "tips.3": "Daylight saving time runs from the first Sunday in October to the first Sunday in April of the following year. Sydney uses UTC+11 during this period and UTC+10 otherwise.",
 "tips.4": "December–February is bushfire season. Before visiting the Blue Mountains or other mountain areas, check the NSW Rural Fire Service (RFS) for fire and road closure information."
 },
+"cafc501d577c8e3dafa0": {
+"s": "4 days in Tokyo focusing on Ginza/Shinjuku/Shibuya shopping, Akihabara secondhand finds, classic food spots, and a 2026 tax-refund airport departure plan."
+},
 "cafc5e26464ce2b5362b": {
 "s": "Yamaguchi"
+},
+"cb03622dcf9a990035ef": {
+"s": "Stay: {stay}"
 },
 "cb7c25064c43625a09b4": {
 "0": "[The car-free hotel rule] Book all 3 nights within a 5-minute walk of Naha's Asahibashi or Kenchomae Station. You never change hotels with luggage, and every northbound highway bus and day-tour pickup departs right outside your door.",
@@ -8845,6 +9562,15 @@
 },
 "cc50bab7259a86af10d1": {
 "s": "Kansas"
+},
+"cc55486babc2a4be5552": {
+"s": "Checklist cleared"
+},
+"cc658ef2d22627474d17": {
+"s": "Relax the pace"
+},
+"cc807b4bf255125e619c": {
+"s": "Xianyu"
 },
 "cca45b1c3644fceee573": {
 "s": "Est. Budget"
@@ -8930,6 +9656,9 @@
 },
 "cfae4e2940b8b57d53d0": {
 "s": "Best in {months}"
+},
+"cfdae5e6fe268f1dc445": {
+"s": "Where to eat (with Google Maps links)"
 },
 "cfeeb8e35beaadf61d6c": {
 "s": "Travel tips for {name}"
@@ -9078,8 +9807,14 @@
 "d1ee78b9b87a59be1871": {
 "s": "Save \"{title}\""
 },
+"d20a38e416602d6dafc2": {
+"s": "Add nearby food"
+},
 "d22895c47ac78584e388": {
 "s": "Colorado"
+},
+"d23c267bd0115882e8c4": {
+"s": "e.g., Shanghai / Tokyo / San Francisco"
 },
 "d251afebbd8362592365": {
 "s": "Places in this step · Stamp directly into your trip"
@@ -9104,6 +9839,9 @@
 },
 "d3517e35d285b356ff21": {
 "s": "Most photos"
+},
+"d3671d6b2a1a3900977b": {
+"s": "First trip to Japan for two in November (7 days): Tokyo + Kyoto at a comfortable pace, with great ramen, yakiniku, and matcha spots."
 },
 "d3791b3b6654c58c600f": {
 "s": "Show this to the other person"
@@ -9144,6 +9882,9 @@
 "d50363e7cefb3e6d585d": {
 "s": "The Great Barrier Reef, Uluru, the Great Ocean Road—and an Aussie flat white."
 },
+"d51d65be4d99f9ce3fe4": {
+"s": "2026 Tax Refund"
+},
 "d53f651679e2d7d89fe3": {
 "0": "Mixing your physical credit card with the same card in Apple Pay at subway gates—OMNY treats them as two separate cards, costing you the $35 / 7-day fare cap.",
 "1": "Staring down at your phone right along the yellow subway platform strip—always wait further back or with your back against a pillar and stay alert.",
@@ -9174,6 +9915,9 @@
 "d61364319877c2753ed7": {
 "s": "Ehime"
 },
+"d6249562b5e7b0a5cd34": {
+"s": "Offline quick quiz"
+},
 "d6a809118051486d9518": {
 "s": "All Topics"
 },
@@ -9196,11 +9940,23 @@
 "tip": "Headed south toward Nagoya on the Limited Express Hida, seats on the left side (A/B) get the best views down the snowy Hida River gorge—just ask for a \"window seat\" on that side at the station ticket office.",
 "title": "Ride the JR Limited Express Hida down snowy river gorges to Nagoya with a 1.5-hour buffer"
 },
+"d760db0137c422656ec6": {
+"s": "Workspace view"
+},
 "d7e1cf85bea9b9d64a13": {
 "s": "Shopping budget"
 },
+"d7ec3f138a20125c0d51": {
+"s": "Before departure & heading home"
+},
 "d82660d2c5d459a21d1c": {
 "s": "Tokushima"
+},
+"d858c127b7d4105dff9d": {
+"s": "Clear saved key"
+},
+"d85f8e3f767f2a307caa": {
+"s": "Add budget & transit"
 },
 "d87158d56a4d34654923": {
 "access.0.from": "Mainland China",
@@ -9433,6 +10189,9 @@
 "dcae953016e178afdcd6": {
 "s": "Traveling with children"
 },
+"dcd604ad801c2d00cbea": {
+"s": "Delete current chat"
+},
 "dd4b9b4a877a4e24f2cd": {
 "s": "Suggested {days}"
 },
@@ -9444,6 +10203,18 @@
 },
 "dde4ccbc2ee8b71a15d4": {
 "s": "Getting there and lodging"
+},
+"de07d02e018f7f297cc7": {
+"s": "Fetch models"
+},
+"deaa8e3a254a695beb75": {
+"area": "Tokyu Plaza Ginza 10F / KITTE Marunouchi 5F",
+"categoryName": "Sushi / Seafood",
+"cityName": "Tokyo",
+"dish": "Double-stacked scallop, sujiko salmon roe, Hokkaido seasonal fish",
+"name": "Nemuro Hanamaru Conveyor Belt Sushi",
+"price": "About ¥2,500–4,000",
+"tip": "Beloved Hokkaido chain with 1+ hour waits at meal peaks—grab a queue ticket first, track your turn via QR code, and explore Ginza or KITTE while waiting."
 },
 "decbbb92005010026988": {
 "s": "Round trip per person · {cur}"
@@ -9465,6 +10236,12 @@
 },
 "dfc8ea4a28572b523f06": {
 "s": "Tax refund calculator"
+},
+"dfeaea47522e790866a5": {
+"s": "Updates live as you chat"
+},
+"e03ce8a2118865d2face": {
+"s": "Use the route optimizer to reorder each day's sights and minimize backtracking."
 },
 "e0555b1c44f469200ce0": {
 "s": "{spots} attractions · {foods} foods"
@@ -9922,6 +10699,9 @@
 "summary": "Stay at one hotel in Tokyo and focus on one or two neighboring areas each day: old Tokyo's Asakusa and Ueno, Tsukiji and Ginza for food lovers, and Harajuku and Shibuya for a younger vibe. Spend half a day hiking Mount Takao for fall colors or views of Mount Fuji. On the last day, head to Tsukishima for monjayaki and Odaiba for ocean views, then go straight to the airport in the evening.",
 "title": "Your first time in Tokyo · 5 days"
 },
+"e586c4bef484f4d084cd": {
+"s": "Please add {name} ({city}, {area}; signature: {dish}) to my {city} itinerary and suggest a nearby half-day route."
+},
 "e5981785c098d3e8a3dc": {
 "s": "New York"
 },
@@ -9930,6 +10710,12 @@
 },
 "e659d864be16ff3af4b3": {
 "s": "Australia-wide"
+},
+"e66bd5f0a0c57c761777": {
+"s": "Ready · {model}"
+},
+"e6d07e6daf1aba16c924": {
+"s": "Share your ideas and shape the itinerary together"
 },
 "e6d2236272d1348d0592": {
 "s": "Per room per night"
@@ -9951,6 +10737,12 @@
 },
 "e734002af5e7ee4b4526": {
 "s": "Alaska"
+},
+"e7458264ab2dcf11a93c": {
+"s": "AI Travel Planner"
+},
+"e75478a1ab0bdca3a18f": {
+"s": "Checked {date}"
 },
 "e766de94433d0682ded4": {
 "s": "Includes: {list}"
@@ -10030,6 +10822,9 @@
 "eab5f5871aa46fe0e270": {
 "s": "Old street"
 },
+"eacba53bce8f84275a3d": {
+"s": "{n} spots"
+},
 "ead25314a3ec50460037": {
 "s": "Narita Haneda Kansai Chubu New Chitose Fukuoka Naha"
 },
@@ -10064,6 +10859,15 @@
 "eba982f7c8a14eea06d4": {
 "s": "Yellowstone, the Grand Canyon, Highway 1, and New York nights."
 },
+"ec21d00ffa0624b6aed6": {
+"area": "Susukino (multiple branches)",
+"categoryName": "Yakiniku / Jingisukan",
+"cityName": "Sapporo",
+"dish": "Charcoal-grilled lamb Jingisukan + sweet onions & draft beer",
+"name": "Jingisukan Daruma",
+"price": "About ¥3,500–5,500",
+"tip": "Multiple branches within a 3-minute walk in Susukino (Main, 4.4, 5.5, 6.4)—skip the main-branch line by heading to 4.4 or 5.5, and stash coats in the lockers."
+},
 "ec32980db39805c5f60a": {
 "0": "Scroll Xiaohongshu or Reddit for Osaka food advice and eight out of ten threads warn about Kuromon Market—three strawberries for ¥1,500, wagyu skewers priced like Ginza, and local Osaka shoppers haven't bought groceries there in a decade. Plenty of visitors blow a whole morning in Kuromon without ever tasting real everyday Osaka.",
 "1": "Just one subway stop from Namba sits Kizu Wholesale Market, the real kitchen of Osaka: open from 6 AM with overflowing sea-urchin and tuna bowls at roughly half of Kuromon's tourist prices. Follow these 6 chronological stops from dawn Kizu Market through the only 2 Kuromon old-timers still worth visiting, all the way to Shinsekai skewers and late-night Ura-Namba standing bars."
@@ -10071,11 +10875,31 @@
 "ece04001c711519d5082": {
 "s": "Cloudborne Travel home"
 },
+"ece903bda3cba8f92f71": {
+"badge": "Price compare",
+"links.0.label": "Ctrip Japan hotel search",
+"links.1.label": "Xiaohongshu hotel neighborhood picks",
+"summary": "Compare aggregators with airline websites for baggage rules, and check whether hotel quotes include Kyoto, Osaka, or Hokkaido lodging taxes.",
+"tips.0": "Budget carriers (Peach, Jetstar, ZIPAIR, Spring) enforce strict carry-on weight checks (often 7 kg); add 20 kg checked baggage before comparing against full-service airlines.",
+"tips.1": "From 2026, Kyoto's lodging tax climbs up to ¥10,000 per person per night for top-tier stays (¥200–1,000 for standard rooms), and Hokkaido and Osaka also collect lodging tax—often paid at check-in.",
+"tips.2": "Visiting two regions? Book an open-jaw flight (e.g., into Tokyo, out of Osaka) to save around ¥14,000 on a return Shinkansen ticket and half a travel day.",
+"title": "Flights & hotels: smart comparisons and 2026 lodging tax watchouts",
+"verdict": "Japanese business hotels (Toyoko Inn, Dormy Inn, Mitsui Garden, APA) have compact rooms but prime transit access—staying within 5 minutes of a major JR/metro hub beats saving a small amount farther out."
+},
+"ed0ff0ff7eea3a429c31": {
+"s": "Enter your Cloudborne API key, pick a model, and co-create a day-by-day plan in chat with live itinerary cards and one-click sync to My Trip."
+},
+"ed9894d911c176816770": {
+"s": "Model list updated"
+},
 "ed9d66a94f3a9de03fe8": {
 "s": "Domestic flights / car rental"
 },
 "edad2d300c3525f026d2": {
 "s": "Kumamoto"
+},
+"edae5935fe487eccfb65": {
+"s": "Cloudborne only"
 },
 "edc7765612aac9d66c55": {
 "s": "Hiroshima"
@@ -10091,6 +10915,9 @@
 },
 "eea0739040b359688649": {
 "s": "March–May, September–October"
+},
+"ef2babd70dc43c600466": {
+"s": "Filter by city"
 },
 "ef5d5c18560c8852b42b": {
 "s": "All {n} →"
@@ -10251,6 +11078,9 @@
 "f1a7f43d69eb02651a5b": {
 "s": "Mississippi"
 },
+"f1c30e22aced44868b8b": {
+"s": "Unexpected API response format. Please retry or switch models."
+},
 "f2277be5f3d209e57c8f": {
 "s": "Set aside time for lunch each day, and make long trips in the morning whenever possible."
 },
@@ -10259,6 +11089,21 @@
 },
 "f26149c10740d5070c56": {
 "s": "Search guides, Kyoto autumn, tax-free, Great Ocean Road, OMNY…"
+},
+"f2d0974c5bc0e82a161d": {
+"area": "Tanukikoji / Odori Park",
+"categoryName": "Hokkaido Classic",
+"cityName": "Sapporo",
+"dish": "Tender chicken leg & roasted vegetable soup curry + torched cheese rice",
+"name": "Soup Curry GARAKU",
+"price": "About ¥1,400–1,900",
+"tip": "Iconic dashi-infused Sapporo soup curry with customizable spice levels from 1 upward; arrive 30 minutes before opening to scan the queue QR on snowy days."
+},
+"f30579f631ae0622b03f": {
+"s": "My profile"
+},
+"f378f00de18e21ee00a9": {
+"s": "e.g. gpt-6.2-sol"
 },
 "f3918a2600ae20192510": {
 "s": "Connecticut"
@@ -10640,6 +11485,9 @@
 "f85f5087db17808d0471": {
 "s": "All regions"
 },
+"f88f206a7bcfbb01978f": {
+"s": "Google Maps ↗"
+},
 "f89657c433627542eb12": {
 "s": "Food"
 },
@@ -10692,8 +11540,14 @@
 "fa1208810dcbbcba8944": {
 "s": "Check to save automatically"
 },
+"fa2813d59474068c4bc0": {
+"s": "Stop"
+},
 "fa2d305bfeeb3311c2aa": {
 "s": "For trips over a week across several prefectures, compare JR Pass and regional pass prices."
+},
+"fa3eb63429e7ab9b8ac8": {
+"s": "e.g., 6 days in Kansai in November for two: one night at Arima Onsen, autumn leaves in Kyoto, yakiniku in Osaka..."
 },
 "fa5a4e250f75b086696b": {
 "s": "Seasons & themes"
@@ -10864,6 +11718,9 @@
 "fd1127ec22f453489638": {
 "s": "A full season of flowers follows the cherry blossoms: wisteria and nemophila in late April, hydrangeas in June, and Hokkaido lavender in July. Bloom periods are more stable, and crowds are lighter."
 },
+"fd7dc51d21ea955232c1": {
+"s": "Clear profile"
+},
 "fda093091112bbfecb7b": {
 "s": "Pitfall guide"
 },
@@ -10873,11 +11730,17 @@
 "fe0a54370005dbf98b31": {
 "s": "Japan emergencies: police 110, fire/ambulance 119, at sea 118, Japan Visitor Hotline, and what to do if you lose your passport, need medical care, or experience an earthquake."
 },
+"fe34f314f988f622ac9f": {
+"s": "Key & Model"
+},
 "fe50ce9d10d0448ecb4f": {
 "s": "Key rules"
 },
 "fe81342251c1b65e9c3c": {
 "s": "From Chichu Art Museum on Naoshima to city architecture, Japan’s contemporary art and architecture deserve a dedicated day. Many museums require reservations and are often closed Mondays."
+},
+"ff248adca21bc830f4ee": {
+"s": "Tokyo + Kyoto 7-day classic"
 },
 "ff6b7f68309b32ecb504": {
 "s": "Nothing planned yet"

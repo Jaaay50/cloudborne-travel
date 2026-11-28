@@ -1,108 +1,540 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { themesOf } from '../../lib/world';
-import { t, langPaths, monthSpan } from '../../lib/i18n';
+import { t, langPaths, monthSpan, L } from '../../lib/i18n';
 
 export const getStaticPaths = langPaths;
 
 const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa: themesOf('usa') };
+const starters = [
+  {
+    tag: t('经典首刷'),
+    title: t('东京 + 京都 7 天首刷'),
+    prompt: t('我想 11 月去日本玩 7 天，两个人第一次去，想走东京加京都，节奏舒服不要太赶，爱吃拉面、烤肉和抹茶甜品，请帮我规划按天行程。'),
+  },
+  {
+    tag: t('家庭长辈'),
+    title: t('关西 5 天带父母轻松游'),
+    prompt: t('打算带父母去大阪和京都玩 5 天，尽量少爬坡、少换酒店，帮我安排顺路又省体力的每天行程和美食推荐。'),
+  },
+  {
+    tag: t('冬季雪景'),
+    title: t('北海道 6 天非自驾温泉雪景'),
+    prompt: t('1 月去北海道玩 6 天，不开车纯靠 JR 和巴士，想去札幌、小樽和登别泡温泉，帮我排一份稳妥的行程并提醒冬季交通注意。'),
+  },
+  {
+    tag: t('购物新规'),
+    title: t('东京 4 天吃逛买 + 2026 退税动线'),
+    prompt: t('周末加年假去东京 4 天，主打银座/新宿/涩谷逛街、秋叶原淘二手和吃地道老店，请按 2026 年出境退税新规帮我排好最后一天机场路线。'),
+  },
+];
 ---
-<Base title={t('快速生成攻略')} description={t('回答几个选择题：去哪、什么时候、几天、几个人、预算和喜好，马上生成一份按天排好的行程。')} nav="quick">
-  <div class="qk wrap">
-    <div class="qk-progress" aria-hidden="true"><i id="qk-bar"></i></div>
-    <form id="qk" autocomplete="off">
-      <section class="qs" data-step="0">
-        <h1>{t('去哪儿？')}</h1>
-        <div class="opts big">
-          <label><input type="radio" name="country" value="japan" checked /><span><b>{t('日本')}</b></span></label>
-          <label><input type="radio" name="country" value="australia" /><span><b>{t('澳大利亚')}</b></span></label>
-          <label><input type="radio" name="country" value="usa" /><span><b>{t('美国')}</b></span></label>
+<Base
+  title={t('AI 旅行规划师')}
+  description={t('填入你的 Cloudborne API Key，拉取模型并与专属 AI 旅行顾问多轮对话，实时生成和微调按天行程、查站内景点并一键同步到我的行程。')}
+  nav="quick"
+>
+  <div class="wrap ai-shell">
+    <!-- Top bar & Mode switch -->
+    <header class="ai-top">
+      <div class="ai-top-copy">
+        <p class="eyebrow">PERSONAL TRAVEL AGENT · CLOUDBORNE API</p>
+        <h1>{t('AI 旅行规划师')}</h1>
+        <p class="ai-sub">{t('填上你的 Cloudborne 中转站 API Key，选好模型就能通过多轮对话共创行程，右侧实时更新按天卡片并一键同步到「我的行程」。')}</p>
+      </div>
+      <div class="ai-top-right">
+        <div class="mode-switch" role="tablist" aria-label={t('规划方式')}>
+          <button type="button" role="tab" class="mode-btn" id="tab-ai" aria-selected="true" data-mode="ai">{t('AI 对话规划')}</button>
+          <button type="button" role="tab" class="mode-btn" id="tab-quiz" aria-selected="false" data-mode="quiz">{t('离线快速问卷')}</button>
         </div>
-      </section>
+        <a class="btn sm ghost" href={L('/tips/')}>{t('省钱小技巧 & 美食地图 →')}</a>
+      </div>
+    </header>
 
-      <section class="qs" data-step="1" hidden>
-        <h2>{t('几月出发？')}</h2>
-        <div class="opts months">
-          {Array.from({ length: 12 }, (_, i) => <label><input type="radio" name="month" value={i + 1} /><span>{monthSpan(i + 1)}</span></label>)}
-          <label class="wide"><input type="radio" name="month" value="0" /><span>{t('还没定')}</span></label>
-        </div>
-      </section>
-
-      <section class="qs" data-step="2" hidden>
-        <h2>{t('玩几天？')}</h2>
-        <div class="opts">
-          {[3, 5, 7, 10, 14].map((d) => <label><input type="radio" name="days" value={d} checked={d === 5} /><span><b>{t('{n} 天', { n: d })}</b></span></label>)}
-        </div>
-      </section>
-
-      <section class="qs" data-step="3" hidden>
-        <h2>{t('和谁一起？')}</h2>
-        <div class="opts">
-          <label><input type="radio" name="people" value="solo" /><span>{t('一个人')}</span></label>
-          <label><input type="radio" name="people" value="couple" checked /><span>{t('两个人')}</span></label>
-          <label><input type="radio" name="people" value="friends" /><span>{t('朋友结伴')}</span></label>
-          <label><input type="radio" name="people" value="family" /><span>{t('带孩子')}</span></label>
-          <label><input type="radio" name="people" value="elders" /><span>{t('带父母')}</span></label>
-        </div>
-        <h2 class="sub">{t('预算')}</h2>
-        <div class="opts">
-          <label><input type="radio" name="budget" value="save" /><span>{t('省着花')}</span></label>
-          <label><input type="radio" name="budget" value="mid" checked /><span>{t('舒服就好')}</span></label>
-          <label><input type="radio" name="budget" value="lux" /><span>{t('不太在意')}</span></label>
-        </div>
-      </section>
-
-      <section class="qs" data-step="4" hidden>
-        <h2>{t('喜欢什么？')}<small>{t('可多选')}</small></h2>
-        {Object.entries(themes).map(([c, th]) => (
-          <div class="opts likes" data-for={c} hidden={c !== 'japan'}>
-            {Object.entries(th).map(([k, v]) => <label><input type="checkbox" name="likes" value={k} /><span style={`--dot:${v.tone}`}><i></i>{v.name}</span></label>)}
-            <label><input type="checkbox" name="likes" value="food" /><span style="--dot:var(--gold)"><i></i>{t('美食')}</span></label>
+    <!-- ==================== AI AGENT WORKSPACE ==================== -->
+    <section id="pane-ai" class="ai-workspace">
+      <!-- Compact status strip / collapsible BYOK config card -->
+      <div class="card cfg-card" id="cfg-card">
+        <div class="cfg-bar">
+          <div class="cfg-status" id="cfg-status">
+            <span class="st-dot" id="cfg-dot" aria-hidden="true"></span>
+            <b id="cfg-status-text">{t('尚未配置 Cloudborne API Key')}</b>
+            <small id="cfg-status-sub">{t('默认接入 Cloudborne 中转站，密钥仅保存在你的浏览器本地')}</small>
           </div>
-        ))}
-        <h2 class="sub">{t('节奏')}</h2>
-        <div class="opts">
-          <label><input type="radio" name="pace" value="easy" /><span>{t('慢慢玩')}</span></label>
-          <label><input type="radio" name="pace" value="normal" checked /><span>{t('正常')}</span></label>
-          <label><input type="radio" name="pace" value="packed" /><span>{t('多看几个')}</span></label>
+          <div class="cfg-bar-acts">
+            <a class="btn sm ghost" href="https://cloudborne.cn" target="_blank" rel="noopener noreferrer">{t('获取 Key ↗')}</a>
+            <button type="button" class="btn sm" id="cfg-toggle" aria-expanded="true">{t('收起配置')}</button>
+          </div>
         </div>
-        <label class="first"><input type="checkbox" name="first" checked /> {t('第一次去')}</label>
+
+        <div class="cfg-body" id="cfg-body">
+          <div class="cfg-grid">
+            <div class="cfg-field">
+              <label for="ai-base">{t('Base URL（默认锁定）')}</label>
+              <div class="input-lock">
+                <input id="ai-base" type="url" value="https://api.cloudborne.cn/v1" readonly aria-readonly="true" />
+                <span class="lock-pill">{t('Cloudborne 专用')}</span>
+              </div>
+              <small>{t('仅支持 Cloudborne 中转站接口，填入你的 API Key 即可使用。')}</small>
+            </div>
+
+            <div class="cfg-field">
+              <label for="ai-key">{t('Cloudborne API Key')}</label>
+              <div class="input-row">
+                <input id="ai-key" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false" />
+                <button type="button" class="btn sm ghost" id="ai-key-eye" aria-label={t('显示或隐藏密钥')}>{t('显示')}</button>
+                <button type="button" class="btn sm primary" id="ai-fetch-models">{t('拉取模型')}</button>
+              </div>
+              <div class="key-opts">
+                <label class="inline-opt">
+                  <input type="radio" name="ai-persist" value="local" checked />
+                  <span>{t('本机浏览器记住')}</span>
+                </label>
+                <label class="inline-opt">
+                  <input type="radio" name="ai-persist" value="session" />
+                  <span>{t('仅本次会话（关闭即清除）')}</span>
+                </label>
+                <button type="button" class="link-btn" id="ai-key-clear">{t('清除已存 Key')}</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cfg-model-row">
+            <div class="cfg-field">
+              <label for="ai-model-filter">{t('筛选并选择模型')}</label>
+              <div class="model-pick-row">
+                <input id="ai-model-filter" type="search" placeholder={t('输关键词过滤模型，如 gpt / claude / gemini…')} autocomplete="off" />
+                <select id="ai-model-select" aria-label={t('选择模型')}>
+                  <option value="">{t('请先填入 Key 并点「拉取模型」')}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cfg-field cfg-manual">
+              <label for="ai-model-manual">{t('或手动指定模型 ID')}</label>
+              <div class="input-row">
+                <input id="ai-model-manual" type="text" placeholder={t('例如 gpt-6.2-sol')} autocomplete="off" spellcheck="false" />
+                <button type="button" class="btn sm" id="ai-model-apply">{t('使用')}</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cfg-alert" id="cfg-alert" hidden role="alert"></div>
+        </div>
+      </div>
+
+      <!-- Mobile view switcher (Chat vs Canvas) -->
+      <div class="mobile-pane-tabs" role="tablist" aria-label={t('工作区视图')}>
+        <button type="button" role="tab" class="mp-tab" data-mpane="chat" aria-selected="true">{t('对话顾问')}</button>
+        <button type="button" role="tab" class="mp-tab" data-mpane="canvas" aria-selected="false">
+          {t('行程画布')} <span class="mp-badge" id="mp-day-count">0</span>
+        </button>
+      </div>
+
+      <!-- Main 2-column Agent Workbench -->
+      <div class="agent-grid" id="agent-grid" data-active-pane="chat">
+        <!-- LEFT: Chat & Session / Profile Controls -->
+        <div class="card chat-col">
+          <div class="chat-bar">
+            <div class="sess-ctl">
+              <select id="sess-select" aria-label={t('切换对话')}></select>
+              <button type="button" class="btn sm" id="sess-new">{t('+ 新对话')}</button>
+              <button type="button" class="btn sm ghost" id="sess-del" title={t('删除当前对话')}>{t('删除')}</button>
+            </div>
+            <button type="button" class="btn sm ghost" id="profile-toggle" aria-expanded="false">
+              {t('我的偏好')}
+            </button>
+          </div>
+
+          <!-- Collapsible Personal Profile memory panel -->
+          <div class="profile-drawer" id="profile-drawer" hidden>
+            <div class="pf-hd">
+              <b>{t('专属旅行画像（Personal Memory）')}</b>
+              <small>{t('保存在本机，Agent 每次帮你排行程都会自动参考，也会在聊天中记住你的新偏好。')}</small>
+            </div>
+            <div class="pf-grid">
+              <label><span>{t('常驻出发城市')}</span><input id="pf-city" type="text" placeholder={t('如 上海 / 广州 / 北京')} /></label>
+              <label><span>{t('同行人习惯')}</span><input id="pf-comp" type="text" placeholder={t('如 两个人 / 带父母 / 独行')} /></label>
+              <label><span>{t('预算偏好')}</span><input id="pf-budget" type="text" placeholder={t('如 舒适性价比 / 省着花')} /></label>
+              <label><span>{t('旅行节奏')}</span><input id="pf-pace" type="text" placeholder={t('如 每天2-3个点，不早起')} /></label>
+              <label class="pf-wide"><span>{t('兴趣标签（逗号分隔）')}</span><input id="pf-interests" type="text" placeholder={t('拉面, 温泉, 中古相机, 红叶, 咖啡店')} /></label>
+              <label class="pf-wide"><span>{t('雷区 / 忌口')}</span><input id="pf-avoid" type="text" placeholder={t('如 不吃生鱼片 / 不想走太多坡路 / 怕排队')} /></label>
+              <label class="pf-wide"><span>{t('补充备注')}</span><input id="pf-notes" type="text" placeholder={t('如 尽量住地铁大站旁，留半天逛秋叶原')} /></label>
+            </div>
+            <div class="pf-acts">
+              <button type="button" class="btn sm primary" id="pf-save">{t('保存偏好')}</button>
+              <button type="button" class="btn sm ghost" id="pf-clear">{t('清空偏好')}</button>
+            </div>
+          </div>
+
+          <!-- Messages stream -->
+          <div class="chat-feed" id="chat-feed" aria-live="polite">
+            <div class="chat-empty" id="chat-empty">
+              <div class="ce-head">
+                <span class="ce-badge">AGENT</span>
+                <h2>{t('告诉我你的想法，我们一边聊一边把行程敲定')}</h2>
+                <p>{t('你可以先随口说目的地和天数，我会按需追问偏好、检索本站景点库，并在右侧实时生成可修改的按天行程。')}</p>
+              </div>
+              <div class="starter-grid">
+                {starters.map((s) => (
+                  <button type="button" class="starter-card" data-starter={s.prompt}>
+                    <span class="tag">{s.tag}</span>
+                    <b>{s.title}</b>
+                    <small>{s.prompt}</small>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div class="chat-list" id="chat-list"></div>
+          </div>
+
+          <!-- Follow-up quick suggestions (shown when a plan exists) -->
+          <div class="quick-prompts" id="quick-prompts" hidden>
+            <button type="button" class="qp-chip" data-qp={t('整体节奏再松一点，每天留出自由逛街和休息时间')}>{t('节奏再松一点')}</button>
+            <button type="button" class="qp-chip" data-qp={t('请帮我用路线优化工具把每天的景点顺路重排一下，减少折返')}>{t('顺路优化路线')}</button>
+            <button type="button" class="qp-chip" data-qp={t('给每天补充一家顺路的高口碑餐厅（注明必点、人均和预约提醒）')}>{t('补充顺路餐厅')}</button>
+            <button type="button" class="qp-chip" data-qp={t('请结合 2026 日本新规，补充这份行程的交通券建议、大致预算和返程退税提醒')}>{t('补充预算与交通')}</button>
+          </div>
+
+          <!-- Input composer -->
+          <form class="chat-composer" id="chat-form">
+            <textarea
+              id="chat-input"
+              rows="2"
+              placeholder={t('例如：11 月去关西 6 天，两个人，想住一晚有马温泉，京都多看红叶，大阪吃烤肉…')}
+            ></textarea>
+            <div class="comp-acts">
+              <span class="comp-hint">{t('Enter 发送 · Shift+Enter 换行')}</span>
+              <button type="button" class="btn sm ghost" id="chat-stop" hidden>{t('停止生成')}</button>
+              <button type="submit" class="btn sm primary" id="chat-send">{t('发送')}</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Live Itinerary Canvas -->
+        <aside class="card canvas-col" id="canvas-col">
+          <div class="cv-bar">
+            <div>
+              <b id="cv-head-title">{t('实时行程画布')}</b>
+              <small id="cv-head-meta">{t('对话生成后自动出现在这里')}</small>
+            </div>
+            <div class="cv-acts no-print" id="cv-acts" hidden>
+              <button type="button" class="btn sm primary" id="cv-sync">{t('同步到我的行程')}</button>
+              <button type="button" class="btn sm" id="cv-copy">{t('复制文字')}</button>
+              <button type="button" class="btn sm ghost" id="cv-export">{t('导出 MD')}</button>
+              <button type="button" class="btn sm ghost" onclick="print()">{t('打印')}</button>
+            </div>
+          </div>
+
+          <div class="cv-body" id="cv-body">
+            <div class="cv-empty" id="cv-empty">
+              <div class="cv-empty-ico" aria-hidden="true">✦</div>
+              <h3>{t('行程画布待生成')}</h3>
+              <p>{t('在左侧和 AI 说清楚你想去哪、玩几天、和谁去，它会自动检索站内景点坐标并排好每天的动线与餐厅。')}</p>
+              <ul class="cv-features">
+                <li>{t('站内景点直接附实景缩略图与详情链接')}</li>
+                <li>{t('站外精选餐厅/店铺自动生成 Google 地图导航')}</li>
+                <li>{t('可随时说「改第 2 天」局部微调，不必推倒重来')}</li>
+                <li>{t('支持一键导入「我的行程」集章本继续拖拽分享')}</li>
+              </ul>
+            </div>
+            <div id="cv-plan" hidden></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== OFFLINE QUESTIONNAIRE FALLBACK ==================== -->
+    <section id="pane-quiz" class="qk" hidden>
+      <div class="qk-progress" aria-hidden="true"><i id="qk-bar"></i></div>
+      <form id="qk" autocomplete="off">
+        <section class="qs" data-step="0">
+          <h2>{t('去哪儿？')}</h2>
+          <div class="opts big">
+            <label><input type="radio" name="country" value="japan" checked /><span><b>{t('日本')}</b></span></label>
+            <label><input type="radio" name="country" value="australia" /><span><b>{t('澳大利亚')}</b></span></label>
+            <label><input type="radio" name="country" value="usa" /><span><b>{t('美国')}</b></span></label>
+          </div>
+        </section>
+
+        <section class="qs" data-step="1" hidden>
+          <h2>{t('几月出发？')}</h2>
+          <div class="opts months">
+            {Array.from({ length: 12 }, (_, i) => <label><input type="radio" name="month" value={i + 1} /><span>{monthSpan(i + 1)}</span></label>)}
+            <label class="wide"><input type="radio" name="month" value="0" /><span>{t('还没定')}</span></label>
+          </div>
+        </section>
+
+        <section class="qs" data-step="2" hidden>
+          <h2>{t('玩几天？')}</h2>
+          <div class="opts">
+            {[3, 5, 7, 10, 14].map((d) => <label><input type="radio" name="days" value={d} checked={d === 5} /><span><b>{t('{n} 天', { n: d })}</b></span></label>)}
+          </div>
+        </section>
+
+        <section class="qs" data-step="3" hidden>
+          <h2>{t('和谁一起？')}</h2>
+          <div class="opts">
+            <label><input type="radio" name="people" value="solo" /><span>{t('一个人')}</span></label>
+            <label><input type="radio" name="people" value="couple" checked /><span>{t('两个人')}</span></label>
+            <label><input type="radio" name="people" value="friends" /><span>{t('朋友结伴')}</span></label>
+            <label><input type="radio" name="people" value="family" /><span>{t('带孩子')}</span></label>
+            <label><input type="radio" name="people" value="elders" /><span>{t('带父母')}</span></label>
+          </div>
+          <h2 class="sub">{t('预算')}</h2>
+          <div class="opts">
+            <label><input type="radio" name="budget" value="save" /><span>{t('省着花')}</span></label>
+            <label><input type="radio" name="budget" value="mid" checked /><span>{t('舒服就好')}</span></label>
+            <label><input type="radio" name="budget" value="lux" /><span>{t('不太在意')}</span></label>
+          </div>
+        </section>
+
+        <section class="qs" data-step="4" hidden>
+          <h2>{t('喜欢什么？')}<small>{t('可多选')}</small></h2>
+          {Object.entries(themes).map(([c, th]) => (
+            <div class="opts likes" data-for={c} hidden={c !== 'japan'}>
+              {Object.entries(th).map(([k, v]) => <label><input type="checkbox" name="likes" value={k} /><span style={`--dot:${v.tone}`}><i></i>{v.name}</span></label>)}
+              <label><input type="checkbox" name="likes" value="food" /><span style="--dot:var(--gold)"><i></i>{t('美食')}</span></label>
+            </div>
+          ))}
+          <h2 class="sub">{t('节奏')}</h2>
+          <div class="opts">
+            <label><input type="radio" name="pace" value="easy" /><span>{t('慢慢玩')}</span></label>
+            <label><input type="radio" name="pace" value="normal" checked /><span>{t('正常')}</span></label>
+            <label><input type="radio" name="pace" value="packed" /><span>{t('多看几个')}</span></label>
+          </div>
+          <label class="first"><input type="checkbox" name="first" checked /> {t('第一次去')}</label>
+        </section>
+
+        <div class="qk-nav">
+          <button type="button" class="btn ghost" id="qk-back" hidden>{t('上一步')}</button>
+          <button type="button" class="btn primary" id="qk-next">{t('下一步')}</button>
+        </div>
+      </form>
+
+      <section class="qk-result" id="qk-result" hidden aria-live="polite">
+        <div class="qr-head">
+          <h2 id="qr-title"></h2>
+          <p id="qr-bases"></p>
+        </div>
+        <ol class="qr-days" id="qr-days"></ol>
+        <ul class="qr-tips" id="qr-tips"></ul>
+        <div class="qr-actions">
+          <button type="button" class="btn primary" id="qr-to-ai">{t('导入 AI 规划师继续精修 →')}</button>
+          <button type="button" class="btn" id="qr-save">{t('存成我的行程，接着改')}</button>
+          <button type="button" class="btn" id="qr-again">{t('换一版')}</button>
+          <button type="button" class="btn ghost" id="qr-reset">{t('重新选')}</button>
+        </div>
+        <p class="qr-more" id="qr-more"></p>
       </section>
-
-      <div class="qk-nav">
-        <button type="button" class="btn ghost" id="qk-back" hidden>{t('上一步')}</button>
-        <button type="button" class="btn primary" id="qk-next">{t('下一步')}</button>
-      </div>
-    </form>
-
-    <section class="qk-result" id="qk-result" hidden aria-live="polite">
-      <div class="qr-head">
-        <h2 id="qr-title"></h2>
-        <p id="qr-bases"></p>
-      </div>
-      <ol class="qr-days" id="qr-days"></ol>
-      <ul class="qr-tips" id="qr-tips"></ul>
-      <div class="qr-actions">
-        <button type="button" class="btn primary" id="qr-save">{t('存成我的行程，接着改')}</button>
-        <button type="button" class="btn" id="qr-again">{t('换一版')}</button>
-        <button type="button" class="btn ghost" id="qr-reset">{t('重新选')}</button>
-      </div>
-      <p class="qr-more" id="qr-more"></p>
     </section>
   </div>
 </Base>
 
 <style>
-  .qk { max-width: 760px; padding: 40px 0 30px; }
-  .qk-progress { height: 3px; border-radius: 0; background: var(--line); overflow: hidden; margin-bottom: 30px; }
+  .ai-shell { padding: 26px 0 36px; display: grid; gap: 18px; }
+  .ai-top {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap;
+    padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .ai-top-copy { max-width: 680px; display: grid; gap: 6px; }
+  .ai-top-copy h1 { font-size: clamp(26px, 3.6vw, 38px); line-height: 1.18; }
+  .ai-sub { color: var(--ink-2); font-size: 14.5px; line-height: 1.65; }
+  .ai-top-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+  .mode-switch {
+    display: inline-flex; padding: 3px; border-radius: var(--r-sm);
+    background: var(--paper-2); border: 1px solid var(--line-2);
+  }
+  .mode-btn {
+    height: 32px; padding: 0 14px; border: 0; border-radius: var(--r-xs);
+    background: transparent; color: var(--ink-2); font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .mode-btn[aria-selected="true"] { background: var(--indigo); color: var(--on-ink); }
+
+  /* Config card */
+  .ai-workspace { display: grid; gap: 14px; }
+  .cfg-card { padding: 14px 16px; display: grid; gap: 12px; }
+  .cfg-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .cfg-status { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .st-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--mut); flex-shrink: 0; }
+  .st-dot.ok { background: var(--moss); }
+  .st-dot.warn { background: var(--vermilion); }
+  .cfg-status b { font-size: 14px; }
+  .cfg-status small { font-size: 12.5px; color: var(--mut); }
+  .cfg-bar-acts { display: flex; align-items: center; gap: 8px; }
+
+  .cfg-body { padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+  .cfg-grid { display: grid; grid-template-columns: minmax(260px, .9fr) minmax(300px, 1.35fr); gap: 14px; }
+  .cfg-model-row { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(240px, .85fr); gap: 14px; }
+  @media (max-width: 820px) { .cfg-grid, .cfg-model-row { grid-template-columns: 1fr; } }
+
+  .cfg-field { display: grid; gap: 6px; align-content: start; }
+  .cfg-field > label { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .cfg-field > small { font-size: 12px; color: var(--mut); }
+  .cfg-field input[type="text"],
+  .cfg-field input[type="url"],
+  .cfg-field input[type="password"],
+  .cfg-field input[type="search"],
+  .cfg-field select {
+    width: 100%; height: 36px; padding: 0 11px; border-radius: var(--r-sm);
+    border: 1px solid var(--line-2); background: var(--input-bg); color: var(--ink);
+    font: 13.5px var(--sans); min-width: 0;
+  }
+  .cfg-field input[readonly] { background: var(--paper); color: var(--ink-2); font-family: var(--mono); font-size: 12.5px; }
+  .input-lock { display: flex; align-items: center; gap: 8px; }
+  .lock-pill {
+    flex-shrink: 0; font: 600 11px/1 var(--mono); padding: 6px 8px; border-radius: var(--r-xs);
+    background: var(--indigo-bg); color: var(--indigo); border: 1px solid color-mix(in srgb, var(--indigo) 25%, transparent);
+  }
+  .input-row { display: flex; gap: 6px; align-items: center; }
+  .input-row input { flex: 1; }
+  .model-pick-row { display: grid; grid-template-columns: minmax(150px, .85fr) minmax(180px, 1.15fr); gap: 6px; }
+  @media (max-width: 560px) { .model-pick-row { grid-template-columns: 1fr; } }
+
+  .key-opts { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+  .inline-opt { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+  .inline-opt input { accent-color: var(--indigo); }
+  .link-btn {
+    margin-left: auto; border: 0; background: none; padding: 0; cursor: pointer;
+    font-size: 12.5px; color: var(--vermilion); text-decoration: underline;
+  }
+
+  .cfg-alert {
+    padding: 10px 13px; border-radius: var(--r-sm); font-size: 13px; line-height: 1.6;
+    background: var(--warn-bg); color: var(--warn-ink); border: 1px solid color-mix(in srgb, var(--vermilion) 32%, var(--line));
+  }
+  .cfg-alert.ok { background: var(--indigo-bg); color: var(--indigo); border-color: color-mix(in srgb, var(--indigo) 30%, var(--line)); }
+
+  /* Mobile tabs */
+  .mobile-pane-tabs { display: none; gap: 8px; }
+  .mp-tab {
+    flex: 1; height: 38px; border-radius: var(--r-sm); border: 1px solid var(--line-2);
+    background: var(--card); color: var(--ink-2); font-size: 13.5px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .mp-tab[aria-selected="true"] { background: var(--indigo); border-color: var(--indigo); color: var(--on-ink); }
+  .mp-badge {
+    font: 700 11px/1 var(--mono); padding: 3px 6px; border-radius: var(--r-xs);
+    background: color-mix(in srgb, currentColor 18%, transparent);
+  }
+
+  /* Two-column workbench */
+  .agent-grid {
+    display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .95fr); gap: 16px;
+    align-items: stretch;
+  }
+  @media (max-width: 980px) {
+    .mobile-pane-tabs { display: flex; }
+    .agent-grid { grid-template-columns: 1fr; }
+    .agent-grid[data-active-pane="chat"] .canvas-col { display: none; }
+    .agent-grid[data-active-pane="canvas"] .chat-col { display: none; }
+  }
+
+  /* Chat column */
+  .chat-col {
+    display: flex; flex-direction: column; min-height: 620px; max-height: 78vh; overflow: hidden;
+  }
+  @media (max-width: 980px) { .chat-col { max-height: none; min-height: 540px; } }
+  .chat-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+    padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--paper);
+  }
+  .sess-ctl { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+  .sess-ctl select {
+    max-width: 220px; min-width: 120px; flex: 1; height: 32px; padding: 0 8px;
+    border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--card); color: var(--ink); font-size: 13px;
+  }
+
+  .profile-drawer {
+    padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--tip-bg); display: grid; gap: 10px;
+  }
+  .pf-hd { display: grid; gap: 2px; }
+  .pf-hd b { font-size: 13.5px; }
+  .pf-hd small { font-size: 12px; color: var(--mut); }
+  .pf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pf-grid label { display: grid; gap: 4px; font-size: 12px; color: var(--ink-2); }
+  .pf-grid .pf-wide { grid-column: span 2; }
+  @media (max-width: 560px) { .pf-grid { grid-template-columns: 1fr; } .pf-grid .pf-wide { grid-column: auto; } }
+  .pf-grid input {
+    height: 32px; padding: 0 9px; border-radius: var(--r-xs);
+    border: 1px solid var(--line-2); background: var(--input-bg); color: var(--ink); font-size: 13px;
+  }
+  .pf-acts { display: flex; gap: 8px; }
+
+  .chat-feed {
+    flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px;
+    overscroll-behavior: contain;
+  }
+  .chat-empty { display: grid; gap: 16px; margin: auto 0; }
+  .ce-head { display: grid; gap: 6px; }
+  .ce-badge {
+    justify-self: start; font: 700 10.5px/1 var(--mono); letter-spacing: .12em;
+    padding: 4px 8px; border-radius: var(--r-xs); background: var(--indigo); color: var(--on-ink);
+  }
+  .ce-head h2 { font-size: 21px; }
+  .ce-head p { font-size: 14px; color: var(--ink-2); }
+  .starter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 600px) { .starter-grid { grid-template-columns: 1fr; } }
+  .starter-card {
+    text-align: left; padding: 12px; border-radius: var(--r-sm); border: 1px solid var(--line);
+    background: var(--paper); cursor: pointer; display: grid; gap: 5px; align-content: start;
+    transition: border-color var(--t-fast), background var(--t-fast);
+  }
+  .starter-card:hover { border-color: var(--indigo); background: var(--card); }
+  .starter-card b { font-size: 14px; color: var(--ink); }
+  .starter-card small { font-size: 12.5px; color: var(--mut); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .quick-prompts {
+    display: flex; gap: 6px; flex-wrap: wrap; padding: 8px 14px;
+    border-top: 1px solid var(--line); background: var(--paper);
+  }
+  .qp-chip {
+    padding: 4px 10px; border-radius: var(--r-xs); border: 1px solid var(--line-2); background: var(--card);
+    font-size: 12px; color: var(--ink-2); cursor: pointer; transition: border-color var(--t-fast), color var(--t-fast);
+  }
+  .qp-chip:hover { border-color: var(--indigo); color: var(--indigo); }
+
+  .chat-composer {
+    padding: 10px 14px 12px; border-top: 1px solid var(--line); background: var(--card); display: grid; gap: 8px;
+  }
+  .chat-composer textarea {
+    width: 100%; resize: vertical; min-height: 54px; max-height: 160px; padding: 9px 11px;
+    border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--input-bg);
+    color: var(--ink); font: 14px/1.6 var(--sans);
+  }
+  .comp-acts { display: flex; align-items: center; gap: 8px; }
+  .comp-hint { font-size: 12px; color: var(--mut); margin-right: auto; }
+
+  /* Canvas column */
+  .canvas-col {
+    display: flex; flex-direction: column; min-height: 620px; max-height: 78vh; overflow: hidden;
+  }
+  @media (max-width: 980px) { .canvas-col { max-height: none; min-height: 460px; } }
+  .cv-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--paper);
+  }
+  .cv-bar b { display: block; font-family: var(--serif); font-size: 16px; }
+  .cv-bar small { display: block; font-size: 12px; color: var(--mut); }
+  .cv-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+  .cv-body { flex: 1; overflow-y: auto; padding: 16px; overscroll-behavior: contain; }
+  .cv-empty { padding: 28px 12px; display: grid; gap: 10px; color: var(--ink-2); }
+  .cv-empty-ico {
+    width: 36px; height: 36px; border-radius: var(--r-sm); display: grid; place-items: center;
+    background: var(--indigo-bg); color: var(--indigo); font-size: 16px;
+  }
+  .cv-empty h3 { font-size: 19px; color: var(--ink); }
+  .cv-empty p { font-size: 14px; line-height: 1.65; }
+  .cv-features { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 13.5px; color: var(--mut); }
+
+  /* Offline quiz styles (kept clean & scoped) */
+  .qk { max-width: 760px; margin-inline: auto; width: 100%; padding: 14px 0 24px; }
+  .qk-progress { height: 3px; background: var(--line); overflow: hidden; margin-bottom: 26px; }
   .qk-progress i { display: block; height: 100%; width: 20%; background: var(--indigo); transition: width 420ms var(--ease-out); }
-  .qs h1, .qs h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 18px; }
-  .qs h2.sub { font-size: 20px; margin: 26px 0 12px; }
+  .qs h2 { font-size: clamp(24px, 3.2vw, 34px); margin-bottom: 16px; }
+  .qs h2.sub { font-size: 19px; margin: 24px 0 12px; }
   .qs h2 small { font: 400 14px var(--sans); color: var(--mut); margin-left: 10px; }
-  .qs:not([hidden]) { animation: stepIn 380ms var(--ease-out) both; }
-  .qs.back:not([hidden]) { animation-name: stepBack; }
-  @keyframes stepIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
-  @keyframes stepBack { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: none; } }
   .opts { display: flex; flex-wrap: wrap; gap: 8px; }
   .opts label { position: relative; cursor: pointer; }
   .opts input { position: absolute; opacity: 0; pointer-events: none; }
@@ -113,28 +545,121 @@ const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa
   .opts span i { width: 7px; height: 7px; border-radius: 1px; background: var(--dot); }
   .opts label:hover span { border-color: var(--indigo); }
   .opts input:checked + span { border-color: var(--indigo); background: var(--indigo); color: var(--on-ink); }
-  .opts input:focus-visible + span { outline: 2px solid var(--indigo); outline-offset: 2px; }
   .opts.big { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .opts.big span { min-height: 96px; justify-content: center; font-size: 22px; font-family: var(--serif); width: 100%; }
+  .opts.big span { min-height: 88px; justify-content: center; font-size: 21px; font-family: var(--serif); width: 100%; }
   .opts.big label { display: block; }
   .opts.months { display: grid; grid-template-columns: repeat(6, 1fr); }
   .opts.months span { width: 100%; justify-content: center; padding: 0; }
   .opts.months .wide { grid-column: span 2; }
-  .first { display: inline-flex; gap: 8px; align-items: center; margin-top: 22px; font-size: 15px; color: var(--ink-2); cursor: pointer; }
+  .first { display: inline-flex; gap: 8px; align-items: center; margin-top: 20px; font-size: 15px; color: var(--ink-2); cursor: pointer; }
   .first input { width: 18px; height: 18px; accent-color: var(--vermilion); }
-  .qk-nav { display: flex; justify-content: space-between; margin-top: 34px; }
+  .qk-nav { display: flex; justify-content: space-between; margin-top: 30px; }
   .qk-nav .primary { margin-left: auto; min-width: 140px; }
-  @media (max-width: 560px) { .opts.months { grid-template-columns: repeat(4, 1fr); } .opts.big { grid-template-columns: 1fr; } .opts.big span { min-height: 64px; } }
-
+  @media (max-width: 560px) { .opts.months { grid-template-columns: repeat(4, 1fr); } .opts.big { grid-template-columns: 1fr; } .opts.big span { min-height: 60px; } }
 </style>
 
 <style is:global>
-  /* The result is rendered by the script (innerHTML), so these rules cannot be scoped. */
-  .qk-result { animation: stepIn 520ms var(--ease-out) both; }
-  .qr-head h2 { font-size: clamp(26px, 3.6vw, 36px); }
+  /* Dynamically rendered chat bubbles, traces, canvas cards & offline quiz results */
+  .chat-list { display: grid; gap: 14px; }
+  .msg { display: grid; gap: 6px; }
+  .msg-user { justify-items: end; }
+  .msg-role { font: 600 11px/1 var(--mono); color: var(--mut); letter-spacing: .08em; text-transform: uppercase; }
+  .msg-bubble {
+    max-width: 92%; padding: 11px 14px; border-radius: var(--r); font-size: 14px; line-height: 1.72;
+    word-break: break-word;
+  }
+  .msg-user .msg-bubble {
+    background: var(--indigo); color: var(--on-ink); border-bottom-right-radius: var(--r-xs); white-space: pre-wrap;
+  }
+  .msg-assistant .msg-bubble {
+    background: var(--paper); border: 1px solid var(--line); color: var(--ink); border-bottom-left-radius: var(--r-xs);
+    max-width: 100%;
+  }
+  .msg-bubble h3, .msg-bubble h4 { font-size: 15.5px; margin: 10px 0 4px; }
+  .msg-bubble h3:first-child, .msg-bubble h4:first-child { margin-top: 0; }
+  .msg-bubble p + p { margin-top: 8px; }
+  .msg-bubble ul, .msg-bubble ol { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
+  .msg-bubble code { font: 12.5px var(--mono); padding: 1px 5px; border-radius: var(--r-xs); background: var(--paper-2); }
+  .msg-bubble a { color: var(--indigo); text-decoration: underline; }
+  .msg-err {
+    padding: 9px 12px; border-radius: var(--r-sm); background: var(--warn-bg); color: var(--warn-ink);
+    font-size: 13px; border: 1px solid color-mix(in srgb, var(--vermilion) 30%, var(--line));
+  }
+  .msg-traces { display: flex; flex-wrap: wrap; gap: 5px; }
+  .trace-chip {
+    display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: var(--r-xs);
+    font: 500 11.5px/1.3 var(--mono); background: var(--indigo-bg); color: var(--indigo);
+    border: 1px solid color-mix(in srgb, var(--indigo) 22%, transparent);
+  }
+  .trace-chip.fail { background: var(--warn-bg); color: var(--warn-ink); border-color: color-mix(in srgb, var(--vermilion) 30%, transparent); }
+  .msg-typing::after { content: "▋"; margin-left: 2px; animation: blink 900ms steps(1) infinite; color: var(--indigo); }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Canvas Plan cards */
+  .cv-head { display: grid; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .cv-head h2 { font-size: 22px; line-height: 1.3; }
+  .cv-bases { font-size: 13px; font-weight: 600; color: var(--indigo); }
+  .cv-summary { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+  .cv-budget { font-size: 13px; padding: 8px 10px; border-radius: var(--r-xs); background: var(--tip-bg); color: var(--ink); }
+
+  .cv-days { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .cv-day {
+    border: 1px solid var(--line); border-left: 3px solid var(--indigo); border-radius: var(--r-sm);
+    background: var(--paper); padding: 12px 13px; display: grid; gap: 10px;
+  }
+  .cv-day-hd { display: flex; align-items: flex-start; gap: 9px; }
+  .cv-dn {
+    width: 30px; height: 24px; border-radius: var(--r-xs); background: var(--indigo); color: var(--on-ink);
+    display: grid; place-items: center; font: 700 11.5px var(--mono); flex-shrink: 0; margin-top: 2px;
+  }
+  .cv-day-meta { flex: 1; min-width: 0; display: grid; gap: 2px; }
+  .cv-day-meta b { font-family: var(--serif); font-size: 16px; }
+  .cv-day-meta small { font-size: 12px; color: var(--mut); }
+  .cv-day-edit {
+    border: 1px solid var(--line-2); background: var(--card); color: var(--ink-2); border-radius: var(--r-xs);
+    padding: 3px 8px; font-size: 11.5px; cursor: pointer; white-space: nowrap;
+  }
+  .cv-day-edit:hover { border-color: var(--indigo); color: var(--indigo); }
+
+  .cv-stops { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .cv-stop {
+    display: grid; grid-template-columns: 48px 1fr auto; gap: 10px; align-items: start;
+    padding: 8px 9px; border-radius: var(--r-xs); background: var(--card); border: 1px solid var(--line);
+  }
+  .cv-thumb {
+    width: 48px; height: 38px; border-radius: var(--r-xs); overflow: hidden; display: grid; place-items: center;
+    background: var(--paper-2); color: var(--ink-2); font: 700 12px var(--sans); flex-shrink: 0;
+  }
+  .cv-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .cv-thumb.k-food { background: color-mix(in srgb, var(--gold) 20%, var(--card)); color: var(--gold); }
+  .cv-thumb.k-spot { background: var(--indigo-bg); color: var(--indigo); }
+  .cv-thumb.k-transport { background: var(--paper-2); color: var(--ink-2); }
+  .cv-thumb.k-hotel { background: color-mix(in srgb, var(--moss) 18%, var(--card)); color: var(--moss); }
+  .cv-thumb.k-shopping { background: var(--vermilion-bg); color: var(--vermilion); }
+
+  .cv-stop-info { min-width: 0; display: grid; gap: 3px; }
+  .cv-stop-title { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+  .cv-stop-title a, .cv-stop-title strong { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .cv-stop-title a:hover { color: var(--vermilion); }
+  .cv-time { font: 600 11px var(--mono); color: var(--indigo); }
+  .cv-stop-tags { display: flex; flex-wrap: wrap; gap: 5px; font-size: 11.5px; color: var(--mut); }
+  .cv-stop-note { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+  .cv-stop-links { display: flex; gap: 10px; align-items: center; margin-top: 2px; }
+  .cv-map-link { font-size: 12px; font-weight: 600; color: var(--indigo); }
+  .cv-map-link:hover { color: var(--vermilion); text-decoration: underline; }
+  .cv-stop-del {
+    border: 0; background: transparent; color: var(--mut); cursor: pointer; width: 22px; height: 22px;
+    border-radius: var(--r-xs); font-size: 14px; line-height: 1;
+  }
+  .cv-stop-del:hover { background: var(--paper-2); color: var(--vermilion); }
+
+  .cv-tips { margin: 14px 0 0; padding: 12px 14px 12px 30px; border-radius: var(--r-sm); background: var(--tip-bg); font-size: 13px; color: var(--ink-2); display: grid; gap: 5px; }
+
+  /* Offline quiz results */
+  .qr-head h2 { font-size: clamp(24px, 3.2vw, 34px); }
   .qr-head p { color: var(--mut); margin-top: 6px; }
-  .qr-days { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
-  .qr-day { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; animation: stepIn 420ms var(--ease-out) both; animation-delay: calc(var(--i) * 40ms); }
+  .qr-days { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+  .qr-day { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 15px 17px; }
   .qr-day header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .qr-day .dn { width: 32px; height: 32px; border-radius: var(--r-xs); background: var(--indigo); color: var(--on-ink); display: grid; place-items: center; font: 700 12px var(--mono); flex-shrink: 0; }
   .qr-day header b { font-family: var(--serif); font-size: 18px; }
@@ -145,33 +670,805 @@ const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa
   .qr-items a { font-weight: 600; }
   .qr-items a:hover { color: var(--vermilion); }
   .qr-items small { display: block; color: var(--mut); font-size: 12.5px; }
-  .qr-tips { margin: 18px 0 0; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; display: grid; gap: 4px; }
-  .qr-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .qr-tips { margin: 16px 0 0; padding-left: 20px; color: var(--ink-2); font-size: 14px; display: grid; gap: 4px; }
+  .qr-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
   .qr-more { margin-top: 14px; font-size: 14px; }
   .qr-more a { color: var(--vermilion); }
+
+  @media print {
+    .ai-top, .cfg-card, .mobile-pane-tabs, .chat-col, .cv-bar, .cv-day-edit, .cv-stop-del, .qk-nav, .qr-actions { display: none !important; }
+    .agent-grid { grid-template-columns: 1fr !important; }
+    .canvas-col { border: 0 !important; max-height: none !important; overflow: visible !important; }
+    .cv-body { overflow: visible !important; padding: 0 !important; }
+  }
 </style>
 
 <script>
   import { getCatalog, photoUrl, type Catalog } from '../../scripts/catalog';
-  import { buildPlan, type QuickAnswers } from '../../scripts/quick';
-  import { load, save } from '../../scripts/trip';
-  import { placeHref, parseItem } from '../../lib/keys';
-  import { ct, lp } from '../../scripts/i18n';
+  import { buildPlan, type QuickAnswers, type QuickPlan } from '../../scripts/quick';
+  import { load as loadTrip, save as saveTrip } from '../../scripts/trip';
+  import { parseItem } from '../../lib/keys';
+  import { ct, lp, LANG } from '../../scripts/i18n';
+  import {
+    CLOUDBORNE_BASE_URL,
+    loadAiConfig,
+    saveAiConfig,
+    clearAiKey,
+    maskApiKey,
+    loadProfile,
+    saveProfile,
+    emptyProfile,
+    loadSessions,
+    saveSessions,
+    createSession,
+    fetchModels,
+    googleMapsUrl,
+    runAgentTurn,
+    importQuickPlanToAgentPlan,
+    exportAgentPlanToTripState,
+    exportAgentPlanToMarkdown,
+    AiApiError,
+    type AiConfig,
+    type AgentPlan,
+    type AgentSession,
+    type KeyStorageMode,
+    type ModelInfo,
+    type PersonalProfile,
+    type StopKind,
+    type ToolTrace,
+  } from '../../scripts/ai/index';
 
-  const form = document.getElementById('qk') as HTMLFormElement;
-  const steps = [...form.querySelectorAll<HTMLElement>('.qs')];
-  const bar = document.getElementById('qk-bar')!;
-  const back = document.getElementById('qk-back') as HTMLButtonElement;
-  const next = document.getElementById('qk-next') as HTMLButtonElement;
-  const result = document.getElementById('qk-result')!;
-  let step = 0;
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const toast = (msg: string, ms = 2800) => (window as unknown as { cbtToast?: (h: string, t?: number) => void }).cbtToast?.(msg, ms);
+
   let cat: Catalog | null = null;
-  let seed = 0;
-  // Warm the catalogue; generate() asks again so a failed first load can be retried.
-  getCatalog().then((c) => (cat = c)).catch(() => {});
+  getCatalog().then((c) => { cat = c; renderCanvas(); }).catch(() => {});
 
-  // Preselect from ?c= and today's month (+1, people plan ahead).
-  const qc = new URLSearchParams(location.search).get('c');
+  /* ==================== Mode Switching (AI vs Offline Quiz) ==================== */
+  const tabAi = $<HTMLButtonElement>('tab-ai');
+  const tabQuiz = $<HTMLButtonElement>('tab-quiz');
+  const paneAi = $('pane-ai');
+  const paneQuiz = $('pane-quiz');
+
+  function setMode(mode: 'ai' | 'quiz') {
+    const isAi = mode === 'ai';
+    tabAi.setAttribute('aria-selected', String(isAi));
+    tabQuiz.setAttribute('aria-selected', String(!isAi));
+    paneAi.hidden = !isAi;
+    paneQuiz.hidden = isAi;
+  }
+  tabAi.addEventListener('click', () => setMode('ai'));
+  tabQuiz.addEventListener('click', () => setMode('quiz'));
+
+  /* ==================== Mobile Chat / Canvas Pane Tabs ==================== */
+  const agentGrid = $('agent-grid');
+  const mpTabs = [...document.querySelectorAll<HTMLButtonElement>('.mp-tab')];
+  function setMobilePane(pane: 'chat' | 'canvas') {
+    agentGrid.dataset.activePane = pane;
+    mpTabs.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.mpane === pane)));
+  }
+  mpTabs.forEach((b) => b.addEventListener('click', () => setMobilePane((b.dataset.mpane as 'chat' | 'canvas') || 'chat')));
+
+  /* ==================== Safe Markdown Renderer ==================== */
+  function renderInlineMd(raw: string): string {
+    let s = esc(raw);
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/\[([^\]]+)\]\((https:\/\/(?:[^\s)<>"'&]|&amp;)+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    return s;
+  }
+
+  function renderMarkdown(md: string): string {
+    const lines = md.replace(/\r\n/g, '\n').split('\n');
+    const out: string[] = [];
+    let listType: 'ul' | 'ol' | null = null;
+    const closeList = () => { if (listType) { out.push(`</${listType}>`); listType = null; } };
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line) { closeList(); continue; }
+      const h = line.match(/^#{1,4}\s+(.+)$/);
+      if (h) { closeList(); out.push(`<h4>${renderInlineMd(h[1])}</h4>`); continue; }
+      const ul = line.match(/^[-*•]\s+(.+)$/);
+      if (ul) {
+        if (listType !== 'ul') { closeList(); out.push('<ul>'); listType = 'ul'; }
+        out.push(`<li>${renderInlineMd(ul[1])}</li>`);
+        continue;
+      }
+      const ol = line.match(/^\d+[.)]\s+(.+)$/);
+      if (ol) {
+        if (listType !== 'ol') { closeList(); out.push('<ol>'); listType = 'ol'; }
+        out.push(`<li>${renderInlineMd(ol[1])}</li>`);
+        continue;
+      }
+      closeList();
+      out.push(`<p>${renderInlineMd(line)}</p>`);
+    }
+    closeList();
+    return out.join('') || `<p>${esc(md)}</p>`;
+  }
+
+  /* ==================== Error Localization ==================== */
+  function formatAiError(err: unknown): string {
+    if (err instanceof AiApiError) {
+      switch (err.code) {
+        case 'missing_key':
+          return ct('请先填写你的 Cloudborne API Key。');
+        case 'unauthorized':
+          return ct('API Key 校验失败（401），请确认填写的是有效的 Cloudborne 中转站 Key。');
+        case 'forbidden':
+          return ct('当前 Key 无权访问该模型或接口（403），请检查账号分组或换一个模型试试。');
+        case 'rate_limit':
+          return ct('请求过于频繁或余额/限额不足（429），请稍后再试或检查 Cloudborne 账户额度。');
+        case 'cors_or_network':
+          return ct('浏览器无法直连 {base}：请检查网络/代理，或确认中转站已放行本站域名跨域（CORS）。', { base: CLOUDBORNE_BASE_URL });
+        case 'bad_request':
+          return ct('请求参数被上游拒绝（400）：{detail}', { detail: err.detail || ct('请检查所选模型是否支持对话接口') });
+        case 'server_error':
+          return ct('中转站或上游模型服务暂时异常（{status}），请稍后重试。', { status: err.status ?? 500 });
+        case 'aborted':
+          return ct('已停止生成。');
+        default:
+          return ct('返回格式异常，请稍后重试或切换模型。');
+      }
+    }
+    return ct('请求失败，请检查网络与 API Key 后重试。');
+  }
+
+  /* ==================== BYOK Cloudborne Config State ==================== */
+  let cfg: AiConfig = loadAiConfig();
+  let models: ModelInfo[] = cfg.cachedModels ?? [];
+
+  const cfgBody = $('cfg-body');
+  const cfgToggle = $<HTMLButtonElement>('cfg-toggle');
+  const cfgDot = $('cfg-dot');
+  const cfgStatusText = $('cfg-status-text');
+  const cfgStatusSub = $('cfg-status-sub');
+  const cfgAlert = $('cfg-alert');
+  const baseInput = $<HTMLInputElement>('ai-base');
+  const keyInput = $<HTMLInputElement>('ai-key');
+  const keyEye = $<HTMLButtonElement>('ai-key-eye');
+  const fetchBtn = $<HTMLButtonElement>('ai-fetch-models');
+  const filterInput = $<HTMLInputElement>('ai-model-filter');
+  const modelSelect = $<HTMLSelectElement>('ai-model-select');
+  const manualInput = $<HTMLInputElement>('ai-model-manual');
+  const manualApply = $<HTMLButtonElement>('ai-model-apply');
+
+  baseInput.value = CLOUDBORNE_BASE_URL;
+  keyInput.value = cfg.apiKey;
+  manualInput.value = cfg.model;
+  const persistRadio = document.querySelector<HTMLInputElement>(`input[name="ai-persist"][value="${cfg.persist}"]`);
+  if (persistRadio) persistRadio.checked = true;
+
+  function showCfgAlert(msg: string, ok = false) {
+    if (!msg) { cfgAlert.hidden = true; return; }
+    cfgAlert.hidden = false;
+    cfgAlert.classList.toggle('ok', ok);
+    cfgAlert.textContent = msg;
+  }
+
+  function setCfgOpen(open: boolean) {
+    cfgBody.hidden = !open;
+    cfgToggle.setAttribute('aria-expanded', String(open));
+    cfgToggle.textContent = open ? ct('收起配置') : ct('配置 Key / 模型');
+  }
+
+  function renderCfgStatus() {
+    const ready = !!(cfg.apiKey.trim() && cfg.model.trim());
+    cfgDot.classList.toggle('ok', ready);
+    cfgDot.classList.toggle('warn', !!cfg.apiKey.trim() && !cfg.model.trim());
+    if (ready) {
+      cfgStatusText.textContent = ct('已就绪 · {model}', { model: cfg.model });
+      cfgStatusSub.textContent = `${maskApiKey(cfg.apiKey)} · ${cfg.persist === 'session' ? ct('仅本次会话') : ct('本机保存')}`;
+    } else if (cfg.apiKey.trim()) {
+      cfgStatusText.textContent = ct('已填 Key，请拉取并选择模型');
+      cfgStatusSub.textContent = maskApiKey(cfg.apiKey);
+    } else {
+      cfgStatusText.textContent = ct('尚未配置 Cloudborne API Key');
+      cfgStatusSub.textContent = ct('默认接入 Cloudborne 中转站，密钥仅保存在你的浏览器本地');
+    }
+  }
+
+  function renderModelOptions() {
+    const q = filterInput.value.trim().toLowerCase();
+    const list = q ? models.filter((m) => m.id.toLowerCase().includes(q)) : models;
+    if (!list.length) {
+      const label = models.length
+        ? ct('没有匹配「{q}」的模型', { q: filterInput.value.trim() })
+        : cfg.model
+          ? cfg.model
+          : ct('请先填入 Key 并点「拉取模型」');
+      modelSelect.innerHTML = `<option value="${esc(cfg.model)}">${esc(label)}</option>`;
+      return;
+    }
+    const rec = list.filter((m) => m.category === 'chat' && m.recommended);
+    const chat = list.filter((m) => m.category === 'chat' && !m.recommended);
+    const other = list.filter((m) => m.category !== 'chat');
+    const optHtml = (arr: ModelInfo[]) => arr.map((m) => `<option value="${esc(m.id)}" ${m.id === cfg.model ? 'selected' : ''}>${esc(m.id)}</option>`).join('');
+    let html = '';
+    if (cfg.model && !list.some((m) => m.id === cfg.model)) {
+      html += `<option value="${esc(cfg.model)}" selected>${esc(cfg.model)} (${ct('当前')})</option>`;
+    }
+    if (rec.length) html += `<optgroup label="${esc(ct('推荐对话模型'))}">${optHtml(rec)}</optgroup>`;
+    if (chat.length) html += `<optgroup label="${esc(ct('其他对话模型'))}">${optHtml(chat)}</optgroup>`;
+    if (other.length) html += `<optgroup label="${esc(ct('其他模型'))}">${optHtml(other)}</optgroup>`;
+    modelSelect.innerHTML = html;
+    if (cfg.model) modelSelect.value = cfg.model;
+  }
+
+  function persistConfig() {
+    const mode = (document.querySelector<HTMLInputElement>('input[name="ai-persist"]:checked')?.value as KeyStorageMode) || 'local';
+    cfg = { ...cfg, apiKey: keyInput.value.trim(), persist: mode, cachedModels: models, cachedAt: models.length ? Date.now() : cfg.cachedAt };
+    saveAiConfig(cfg);
+    renderCfgStatus();
+  }
+
+  cfgToggle.addEventListener('click', () => setCfgOpen(Boolean(cfgBody.hidden)));
+  keyEye.addEventListener('click', () => {
+    const show = keyInput.type === 'password';
+    keyInput.type = show ? 'text' : 'password';
+    keyEye.textContent = show ? ct('隐藏') : ct('显示');
+  });
+  keyInput.addEventListener('change', () => { persistConfig(); showCfgAlert(''); });
+  document.querySelectorAll<HTMLInputElement>('input[name="ai-persist"]').forEach((r) => {
+    r.addEventListener('change', () => { persistConfig(); toast(ct('密钥存储方式已更新')); });
+  });
+  $('ai-key-clear').addEventListener('click', () => {
+    clearAiKey();
+    keyInput.value = '';
+    cfg.apiKey = '';
+    models = [];
+    renderModelOptions();
+    renderCfgStatus();
+    showCfgAlert(ct('已清除保存在浏览器中的 API Key。'), true);
+  });
+  filterInput.addEventListener('input', renderModelOptions);
+  modelSelect.addEventListener('change', () => {
+    if (!modelSelect.value) return;
+    cfg.model = modelSelect.value;
+    manualInput.value = cfg.model;
+    persistConfig();
+  });
+  manualApply.addEventListener('click', () => {
+    const m = manualInput.value.trim();
+    if (!m) return;
+    cfg.model = m;
+    persistConfig();
+    renderModelOptions();
+    showCfgAlert(ct('已选用模型：{model}', { model: m }), true);
+  });
+
+  fetchBtn.addEventListener('click', async () => {
+    const key = keyInput.value.trim();
+    if (!key) {
+      showCfgAlert(ct('请先填写你的 Cloudborne API Key。'));
+      keyInput.focus();
+      return;
+    }
+    fetchBtn.disabled = true;
+    fetchBtn.textContent = ct('拉取中…');
+    showCfgAlert('');
+    try {
+      models = await fetchModels(key);
+      if (!cfg.model || !models.some((m) => m.id === cfg.model)) {
+        const pick = models.find((m) => m.recommended) ?? models.find((m) => m.category === 'chat') ?? models[0];
+        if (pick) {
+          cfg.model = pick.id;
+          manualInput.value = pick.id;
+        }
+      }
+      persistConfig();
+      renderModelOptions();
+      showCfgAlert(ct('拉取成功，共 {n} 个可用模型。现在可以直接开始对话！', { n: models.length }), true);
+      toast(ct('模型列表已更新'));
+    } catch (err) {
+      showCfgAlert(formatAiError(err));
+    } finally {
+      fetchBtn.disabled = false;
+      fetchBtn.textContent = ct('拉取模型');
+    }
+  });
+
+  renderModelOptions();
+  renderCfgStatus();
+  if (cfg.apiKey && cfg.model) setCfgOpen(false);
+
+  // Sync key clearing or config changes from other tabs so stale tabs never resurrect a cleared key.
+  window.addEventListener('storage', (e) => {
+    if (e.key !== 'cbt.ai.config.v1') return;
+    cfg = loadAiConfig();
+    models = cfg.cachedModels ?? [];
+    keyInput.value = cfg.apiKey;
+    manualInput.value = cfg.model;
+    const pr = document.querySelector<HTMLInputElement>(`input[name="ai-persist"][value="${cfg.persist}"]`);
+    if (pr) pr.checked = true;
+    renderModelOptions();
+    renderCfgStatus();
+  });
+
+  /* ==================== Personal Profile Memory ==================== */
+  let profile: PersonalProfile = loadProfile();
+  const profileToggle = $<HTMLButtonElement>('profile-toggle');
+  const profileDrawer = $('profile-drawer');
+  const pfCity = $<HTMLInputElement>('pf-city');
+  const pfComp = $<HTMLInputElement>('pf-comp');
+  const pfBudget = $<HTMLInputElement>('pf-budget');
+  const pfPace = $<HTMLInputElement>('pf-pace');
+  const pfInterests = $<HTMLInputElement>('pf-interests');
+  const pfAvoid = $<HTMLInputElement>('pf-avoid');
+  const pfNotes = $<HTMLInputElement>('pf-notes');
+
+  function syncProfileInputs() {
+    pfCity.value = profile.departureCity;
+    pfComp.value = profile.companions;
+    pfBudget.value = profile.budget;
+    pfPace.value = profile.pace;
+    pfInterests.value = profile.interests.join(', ');
+    pfAvoid.value = profile.avoid;
+    pfNotes.value = profile.notes;
+  }
+  syncProfileInputs();
+
+  profileToggle.addEventListener('click', () => {
+    const open = profileDrawer.hidden;
+    profileDrawer.hidden = !open;
+    profileToggle.setAttribute('aria-expanded', String(open));
+  });
+  $('pf-save').addEventListener('click', () => {
+    profile = {
+      departureCity: pfCity.value.trim(),
+      companions: pfComp.value.trim(),
+      budget: pfBudget.value.trim(),
+      pace: pfPace.value.trim(),
+      interests: pfInterests.value.split(/[,，、\s]+/).map((x) => x.trim()).filter(Boolean).slice(0, 12),
+      avoid: pfAvoid.value.trim(),
+      notes: pfNotes.value.trim(),
+    };
+    saveProfile(profile);
+    profileDrawer.hidden = true;
+    profileToggle.setAttribute('aria-expanded', 'false');
+    toast(ct('已保存你的旅行偏好'));
+  });
+  $('pf-clear').addEventListener('click', () => {
+    profile = emptyProfile();
+    saveProfile(profile);
+    syncProfileInputs();
+    toast(ct('已清空旅行偏好'));
+  });
+
+  /* ==================== Sessions & Conversation State ==================== */
+  let sessions: AgentSession[] = loadSessions();
+  if (!sessions.length) {
+    sessions = [createSession(ct('新旅行规划'))];
+    saveSessions(sessions);
+  }
+  let activeId = sessions[0].id;
+  const activeSession = () => sessions.find((s) => s.id === activeId) ?? sessions[0];
+
+  const sessSelect = $<HTMLSelectElement>('sess-select');
+  const chatEmpty = $('chat-empty');
+  const chatList = $('chat-list');
+  const chatFeed = $('chat-feed');
+  const quickPrompts = $('quick-prompts');
+  const chatForm = $<HTMLFormElement>('chat-form');
+  const chatInput = $<HTMLTextAreaElement>('chat-input');
+  const chatSend = $<HTMLButtonElement>('chat-send');
+  const chatStop = $<HTMLButtonElement>('chat-stop');
+
+  function renderSessionSelect() {
+    sessSelect.innerHTML = sessions.map((s) => `<option value="${esc(s.id)}" ${s.id === activeId ? 'selected' : ''}>${esc(s.title)}</option>`).join('');
+  }
+
+  function renderTraces(traces?: ToolTrace[]): string {
+    if (!traces?.length) return '';
+    return `<div class="msg-traces">${traces.map((tr) => `<span class="trace-chip ${tr.ok ? '' : 'fail'}">${tr.ok ? '✓' : '!'} ${esc(tr.summary)}</span>`).join('')}</div>`;
+  }
+
+  function renderMessages() {
+    const sess = activeSession();
+    chatEmpty.hidden = sess.messages.length > 0;
+    quickPrompts.hidden = !sess.plan;
+    chatList.innerHTML = sess.messages.map((m) => `
+      <div class="msg msg-${m.role}">
+        <span class="msg-role">${m.role === 'user' ? ct('你') : ct('AI 旅行规划师')}</span>
+        ${m.role === 'assistant' ? renderTraces(m.traces) : ''}
+        <div class="msg-bubble">${m.role === 'user' ? esc(m.content) : renderMarkdown(m.content)}</div>
+        ${m.error ? `<div class="msg-err">${esc(m.error)}</div>` : ''}
+      </div>
+    `).join('');
+    chatFeed.scrollTop = chatFeed.scrollHeight;
+  }
+
+  /* ==================== Live Itinerary Canvas Rendering ==================== */
+  const cvHeadTitle = $('cv-head-title');
+  const cvHeadMeta = $('cv-head-meta');
+  const cvActs = $('cv-acts');
+  const cvEmpty = $('cv-empty');
+  const cvPlan = $('cv-plan');
+  const mpDayCount = $('mp-day-count');
+
+  const KIND_LABEL: Record<StopKind, string> = {
+    spot: ct('景'),
+    food: ct('食'),
+    transport: ct('行'),
+    hotel: ct('住'),
+    shopping: ct('购'),
+    tip: ct('贴'),
+  };
+
+  function renderCanvas() {
+    const plan = activeSession().plan;
+    mpDayCount.textContent = String(plan?.days.length ?? 0);
+    if (!plan || !plan.days.length) {
+      cvHeadTitle.textContent = ct('实时行程画布');
+      cvHeadMeta.textContent = ct('对话生成后自动出现在这里');
+      cvActs.hidden = true;
+      cvEmpty.hidden = false;
+      cvPlan.hidden = true;
+      return;
+    }
+    const totalStops = plan.days.reduce((n, d) => n + d.stops.length, 0);
+    cvHeadTitle.textContent = plan.title;
+    cvHeadMeta.textContent = ct('{days} 天 · {stops} 项安排', { days: plan.days.length, stops: totalStops });
+    cvActs.hidden = false;
+    cvEmpty.hidden = true;
+    cvPlan.hidden = false;
+
+    const spotMap = cat ? Object.fromEntries(cat.s.map((s) => [`s:${s.k}`, s])) : {};
+    const foodMap = cat ? Object.fromEntries(cat.f.map((f) => [`f:${f.k}`, f])) : {};
+    const placeMap = cat ? Object.fromEntries(cat.p.map((p) => [p.s, p.n])) : {};
+
+    const basesLine = plan.bases.length
+      ? plan.bases.map((b) => ct('{place} {n} 晚', { place: placeMap[b.place] ?? b.place, n: b.nights })).join(' → ')
+      : '';
+
+    cvPlan.innerHTML = `
+      <div class="cv-head">
+        <h2>${esc(plan.title)}</h2>
+        ${basesLine ? `<p class="cv-bases">${esc(basesLine)}</p>` : ''}
+        ${plan.summary ? `<p class="cv-summary">${esc(plan.summary)}</p>` : ''}
+        ${plan.budgetNote ? `<p class="cv-budget">${esc(plan.budgetNote)}</p>` : ''}
+      </div>
+      <ol class="cv-days">
+        ${plan.days.map((d, di) => `
+          <li class="cv-day">
+            <div class="cv-day-hd">
+              <span class="cv-dn">D${di + 1}</span>
+              <div class="cv-day-meta">
+                <b>${esc(d.title || ct('第 {n} 天', { n: di + 1 }))}</b>
+                ${(d.stay || d.move || d.note) ? `<small>${esc([d.stay ? ct('住：{stay}', { stay: d.stay }) : '', d.move || '', d.note || ''].filter(Boolean).join(' · '))}</small>` : ''}
+              </div>
+              <button type="button" class="cv-day-edit" data-edit-day="${di + 1}">${ct('改这天')}</button>
+            </div>
+            <ul class="cv-stops">
+              ${d.stops.map((st, si) => {
+                const key = st.catalogKey;
+                const spot = key ? spotMap[key] : undefined;
+                const food = key ? foodMap[key] : undefined;
+                const hasPh = !!(spot?.ph || food?.ph);
+                const href = key ? parseItem(key).href : '';
+                const thumb = hasPh && key
+                  ? `<span class="cv-thumb"><img src="${esc(photoUrl(key))}" alt="" loading="lazy"></span>`
+                  : `<span class="cv-thumb k-${esc(st.kind)}">${esc(KIND_LABEL[st.kind] ?? '·')}</span>`;
+                const mapHref = googleMapsUrl(st.mapQuery || `${st.name} ${d.place ?? ''}`.trim());
+                const metaBits = [st.duration, st.cost].filter(Boolean);
+                return `
+                  <li class="cv-stop">
+                    ${thumb}
+                    <div class="cv-stop-info">
+                      <div class="cv-stop-title">
+                        ${st.timeSlot ? `<span class="cv-time">${esc(st.timeSlot)}</span>` : ''}
+                        ${href ? `<a href="${esc(href)}">${esc(st.name)}</a>` : `<strong>${esc(st.name)}</strong>`}
+                      </div>
+                      ${metaBits.length ? `<div class="cv-stop-tags">${metaBits.map((b) => `<span>${esc(b!)}</span>`).join(' · ')}</div>` : ''}
+                      ${st.note ? `<p class="cv-stop-note">${esc(st.note)}</p>` : ''}
+                      <div class="cv-stop-links">
+                        <a class="cv-map-link" href="${esc(mapHref)}" target="_blank" rel="noopener noreferrer">${esc(ct('Google 地图 ↗'))}</a>
+                        ${href ? `<a class="cv-map-link" href="${esc(href)}">${esc(ct('站内百科 →'))}</a>` : ''}
+                      </div>
+                    </div>
+                    <button type="button" class="cv-stop-del" data-del-stop="${di}:${si}" aria-label="${esc(ct('移除'))}">×</button>
+                  </li>`;
+              }).join('') || `<li><small style="color:var(--mut)">${ct('自由活动')}</small></li>`}
+            </ul>
+          </li>
+        `).join('')}
+      </ol>
+      ${plan.tips.length ? `<ul class="cv-tips">${plan.tips.map((tip) => `<li>${esc(tip)}</li>`).join('')}</ul>` : ''}
+    `;
+  }
+
+  cvPlan.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const editBtn = t.closest<HTMLElement>('[data-edit-day]');
+    if (editBtn) {
+      const dayNum = editBtn.dataset.editDay!;
+      setMobilePane('chat');
+      chatInput.value = ct('请帮我调整第 {n} 天的安排：', { n: dayNum });
+      chatInput.focus();
+      return;
+    }
+    const delBtn = t.closest<HTMLElement>('[data-del-stop]');
+    if (delBtn) {
+      const [di, si] = delBtn.dataset.delStop!.split(':').map(Number);
+      const sess = activeSession();
+      if (!sess.plan?.days[di]) return;
+      sess.plan.days[di].stops.splice(si, 1);
+      sess.plan.updatedAt = Date.now();
+      sess.updatedAt = Date.now();
+      saveSessions(sessions);
+      renderCanvas();
+    }
+  });
+
+  /* ==================== Canvas Export / Sync to /plan/ ==================== */
+  $('cv-sync').addEventListener('click', async () => {
+    const plan = activeSession().plan;
+    if (!plan) return;
+    if (!cat) {
+      try { cat = await getCatalog(); } catch { toast(ct('站内景点库加载失败，请检查网络。')); return; }
+    }
+    const cur = loadTrip();
+    const { trip, matchedCount, customCount } = exportAgentPlanToTripState(plan, cat, cur.start);
+    if (matchedCount === 0) {
+      toast(ct('这份行程里的地点都是站外自由推荐，可直接点「复制文字」或「导出 MD」保存。'), 4000);
+      return;
+    }
+    if (cur.days.flat().length + cur.pool.length > 0 && !confirm(ct('你的行程里已经有内容。用这份 AI 行程里的 {n} 个站内地点替换掉吗？', { n: matchedCount }))) return;
+    saveTrip(trip);
+    if (customCount > 0) {
+      toast(ct('已同步 {matched} 个站内地点到「我的行程」（另有 {custom} 条站外餐厅/贴士保留在本页画布）', { matched: matchedCount, custom: customCount }), 3800);
+    }
+    location.href = lp('/plan/');
+  });
+
+  $('cv-copy').addEventListener('click', async () => {
+    const plan = activeSession().plan;
+    if (!plan) return;
+    const md = exportAgentPlanToMarkdown(plan, LANG);
+    try {
+      await navigator.clipboard.writeText(md);
+      toast(ct('已复制文字版行程，可直接粘贴到微信或备忘录'));
+    } catch {
+      prompt(ct('复制下面的文字：'), md);
+    }
+  });
+
+  $('cv-export').addEventListener('click', () => {
+    const plan = activeSession().plan;
+    if (!plan) return;
+    const md = exportAgentPlanToMarkdown(plan, LANG);
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(plan.title || 'trip').replace(/[\\/:*?"<>|]/g, '-')}.md`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+
+  /* ==================== Session Switching ==================== */
+  sessSelect.addEventListener('change', () => {
+    activeId = sessSelect.value;
+    renderMessages();
+    renderCanvas();
+  });
+  $('sess-new').addEventListener('click', () => {
+    const s = createSession(ct('新旅行规划'));
+    sessions.unshift(s);
+    activeId = s.id;
+    saveSessions(sessions);
+    renderSessionSelect();
+    renderMessages();
+    renderCanvas();
+    chatInput.focus();
+  });
+  $('sess-del').addEventListener('click', () => {
+    const deletingId = activeId;
+    if (sending && activeTurnSessionId === deletingId) activeAbort?.abort();
+    if (sessions.length <= 1) {
+      const fresh = createSession(ct('新旅行规划'));
+      sessions = [fresh];
+      activeId = fresh.id;
+    } else {
+      sessions = sessions.filter((s) => s.id !== deletingId);
+      activeId = sessions[0].id;
+    }
+    saveSessions(sessions);
+    renderSessionSelect();
+    renderMessages();
+    renderCanvas();
+  });
+
+  /* ==================== Agent Chat Send & Streaming ==================== */
+  let activeAbort: AbortController | null = null;
+  let sending = false;
+  let activeTurnSessionId = '';
+
+  async function sendMessage(rawText: string) {
+    const text = rawText.trim();
+    if (!text || sending) return;
+
+    persistConfig();
+    if (!cfg.apiKey.trim()) {
+      setCfgOpen(true);
+      showCfgAlert(ct('请先填写你的 Cloudborne API Key 并拉取模型，再开始对话。'));
+      keyInput.focus();
+      return;
+    }
+    if (!cfg.model.trim()) {
+      setCfgOpen(true);
+      showCfgAlert(ct('请先点击「拉取模型」或手动填写一个模型 ID。'));
+      fetchBtn.focus();
+      return;
+    }
+
+    sending = true;
+    chatSend.disabled = true;
+    try {
+      if (!cat) {
+        try { cat = await getCatalog(); } catch { toast(ct('站内景点库加载失败，请检查网络。')); return; }
+      }
+
+      const sess = activeSession();
+      const targetSessionId = sess.id;
+      activeTurnSessionId = targetSessionId;
+      const isAlive = () => sessions.some((s) => s.id === targetSessionId);
+      const isVisible = () => activeId === targetSessionId && isAlive();
+
+      if (sess.messages.length === 0) {
+        sess.title = text.slice(0, 22);
+        renderSessionSelect();
+      }
+      const userMsg = { id: `u_${Date.now()}`, role: 'user' as const, content: text, createdAt: Date.now() };
+      sess.messages.push(userMsg);
+      sess.updatedAt = Date.now();
+      saveSessions(sessions);
+      chatInput.value = '';
+      renderMessages();
+
+      // Mount live streaming assistant bubble
+      const liveWrap = document.createElement('div');
+      liveWrap.className = 'msg msg-assistant';
+      liveWrap.innerHTML = `<span class="msg-role">${esc(ct('AI 旅行规划师'))}</span><div class="msg-traces" id="live-traces"></div><div class="msg-bubble msg-typing" id="live-bubble">${esc(ct('正在思考并检索攻略…'))}</div>`;
+      chatList.appendChild(liveWrap);
+      chatFeed.scrollTop = chatFeed.scrollHeight;
+
+      const liveTraces = liveWrap.querySelector<HTMLElement>('#live-traces')!;
+      const liveBubble = liveWrap.querySelector<HTMLElement>('#live-bubble')!;
+      const collectedTraces: ToolTrace[] = [];
+      let streamedText = '';
+
+      activeAbort = new AbortController();
+      chatStop.hidden = false;
+
+      const turn = await runAgentTurn({
+        apiKey: cfg.apiKey,
+        model: cfg.model,
+        lang: LANG,
+        catalog: cat,
+        session: sess,
+        userMessage: text,
+        profile,
+        signal: activeAbort.signal,
+        onToken: (chunk) => {
+          streamedText += chunk;
+          if (isVisible() && liveBubble.isConnected) {
+            liveBubble.innerHTML = renderMarkdown(streamedText);
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+          }
+        },
+        onTrace: (tr) => {
+          collectedTraces.push(tr);
+          if (isVisible() && liveTraces.isConnected) {
+            liveTraces.innerHTML = collectedTraces.map((x) => `<span class="trace-chip ${x.ok ? '' : 'fail'}">${x.ok ? '✓' : '!'} ${esc(x.summary)}</span>`).join('');
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+          }
+        },
+        onPlanUpdate: (nextPlan: AgentPlan) => {
+          if (!isAlive()) return;
+          sess.plan = nextPlan;
+          if (nextPlan.title) sess.title = nextPlan.title.slice(0, 24);
+          renderSessionSelect();
+          if (isVisible()) renderCanvas();
+        },
+        onProfileUpdate: (nextProfile: PersonalProfile) => {
+          profile = nextProfile;
+          saveProfile(profile);
+          syncProfileInputs();
+        },
+      });
+      if (isAlive()) {
+        sess.messages.push(turn.assistantMessage);
+        sess.plan = turn.plan;
+        sess.updatedAt = Date.now();
+        saveSessions(sessions);
+        renderSessionSelect();
+        if (isVisible()) {
+          renderMessages();
+          renderCanvas();
+        }
+      }
+    } catch (err) {
+      const errMsg = formatAiError(err);
+      const sess = sessions.find((s) => s.id === activeTurnSessionId);
+      if (err instanceof AiApiError && err.code === 'aborted') {
+        toast(errMsg);
+      } else if (sess) {
+        sess.messages.push({
+          id: `a_${Date.now()}`,
+          role: 'assistant',
+          content: ct('这次请求没能完成。'),
+          createdAt: Date.now(),
+          error: errMsg,
+        });
+        saveSessions(sessions);
+        if (err instanceof AiApiError && (err.code === 'unauthorized' || err.code === 'cors_or_network')) {
+          setCfgOpen(true);
+          showCfgAlert(errMsg);
+        }
+      }
+      if (activeId === activeTurnSessionId) renderMessages();
+    } finally {
+      activeAbort = null;
+      sending = false;
+      activeTurnSessionId = '';
+      chatSend.disabled = false;
+      chatStop.hidden = true;
+    }
+  }
+
+  chatStop.addEventListener('click', () => activeAbort?.abort());
+  chatForm.addEventListener('submit', (e) => { e.preventDefault(); sendMessage(chatInput.value); });
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      sendMessage(chatInput.value);
+    }
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-starter]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const prompt = btn.dataset.starter || '';
+      chatInput.value = prompt;
+      if (cfg.apiKey && cfg.model) sendMessage(prompt);
+      else {
+        setCfgOpen(true);
+        showCfgAlert(ct('已为你填好提问，填上 Cloudborne API Key 并选好模型后点发送即可。'), true);
+        keyInput.focus();
+      }
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-qp]').forEach((btn) => {
+    btn.addEventListener('click', () => sendMessage(btn.dataset.qp || ''));
+  });
+
+  // Support deep link from /tips/ ("交给 AI 排进行程 →") via ?ask=...
+  const params = new URLSearchParams(location.search);
+  const askParam = params.get('ask');
+  if (askParam) {
+    setMode('ai');
+    chatInput.value = askParam;
+    chatInput.focus();
+  }
+  if (params.get('mode') === 'quiz') setMode('quiz');
+
+  renderSessionSelect();
+  renderMessages();
+  renderCanvas();
+
+  /* ==================== Offline 5-Step Questionnaire Fallback ==================== */
+  const form = $<HTMLFormElement>('qk');
+  const steps = [...form.querySelectorAll<HTMLElement>('.qs')];
+  const bar = $('qk-bar');
+  const back = $<HTMLButtonElement>('qk-back');
+  const next = $<HTMLButtonElement>('qk-next');
+  const result = $('qk-result');
+  let step = 0;
+  let seed = 0;
+  let lastQuickPlan: QuickPlan | null = null;
+  let lastQuickCountry: QuickAnswers['country'] = 'japan';
+
+  const qc = params.get('c');
   if (qc && ['japan', 'australia', 'usa'].includes(qc)) (form.querySelector(`[name=country][value=${qc}]`) as HTMLInputElement).checked = true;
   const nm = (new Date().getMonth() + 1) % 12 + 1;
   (form.querySelector(`[name=month][value="${nm}"]`) as HTMLInputElement).checked = true;
@@ -189,15 +1486,14 @@ const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa
   });
 
   const go = (to: number) => {
-    const backwards = to < step;
     step = to;
-    steps.forEach((s, i) => { s.hidden = i !== step; s.classList.toggle('back', backwards); });
+    steps.forEach((s, i) => { s.hidden = i !== step; });
     bar.style.width = `${((step + 1) / (steps.length + 1)) * 100}%`;
     back.hidden = step === 0;
     next.textContent = step === steps.length - 1 ? ct('生成攻略') : ct('下一步');
     form.querySelectorAll<HTMLElement>('.likes').forEach((l) => (l.hidden = l.dataset.for !== val('country')));
   };
-  // Single-choice questions advance by themselves after a short beat (pointer only: arrow keys just select).
+
   let pointerPick = false, advanceT = 0;
   form.addEventListener('pointerdown', () => (pointerPick = true));
   form.addEventListener('keydown', () => (pointerPick = false));
@@ -211,22 +1507,23 @@ const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa
   back.addEventListener('click', () => go(Math.max(0, step - 1)));
   next.addEventListener('click', () => (step < steps.length - 1 ? go(step + 1) : generate()));
 
-  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   const COUNTRY_NAME: Record<string, string> = { japan: ct('日本'), australia: ct('澳大利亚'), usa: ct('美国') };
 
   async function generate() {
     next.disabled = true;
     next.textContent = ct('生成中…');
-    try { cat = await getCatalog(); } catch { next.disabled = false; next.textContent = ct('再试一次'); (window as any).cbtToast?.(ct('数据没加载上，检查一下网络。')); return; }
+    try { cat = await getCatalog(); } catch { next.disabled = false; next.textContent = ct('再试一次'); toast(ct('数据没加载上，检查一下网络。')); return; }
     const a = answers();
     const plan = buildPlan(cat, a, seed);
+    lastQuickPlan = plan;
+    lastQuickCountry = a.country;
     const place = Object.fromEntries(cat.p.map((p) => [p.s, p]));
     const spot = Object.fromEntries(cat.s.map((s) => [s.k, s]));
     const food = Object.fromEntries(cat.f.map((f) => [f.k, f]));
-    document.getElementById('qr-title')!.textContent = plan.title;
-    document.getElementById('qr-bases')!.textContent = plan.bases.map((b) => ct('{place} {n} 晚', { place: place[b.place]?.n ?? b.place, n: b.nights })).join(' → ');
-    document.getElementById('qr-days')!.innerHTML = plan.days.map((d, i) => `
-      <li class="qr-day" style="--i:${i}">
+    $('qr-title').textContent = plan.title;
+    $('qr-bases').textContent = plan.bases.map((b) => ct('{place} {n} 晚', { place: place[b.place]?.n ?? b.place, n: b.nights })).join(' → ');
+    $('qr-days').innerHTML = plan.days.map((d, i) => `
+      <li class="qr-day">
         <header><span class="dn">D${i + 1}</span><b>${esc(place[d.place]?.n ?? '')}</b>${d.note ? `<small>${esc(d.note)}</small>` : ''}</header>
         <ul class="qr-items">${d.items.map((it) => {
           const p = parseItem(it);
@@ -238,29 +1535,42 @@ const themes = { japan: themesOf('japan'), australia: themesOf('australia'), usa
           return `<li>${ph}<span><a href="${p.href}">${p.kind === 'food' ? ct('吃 {name}', { name: esc(name) }) : esc(name)}</a><small>${esc(sub)}</small></span></li>`;
         }).join('') || `<li><span class="ph">·</span><span><small>${ct('自由活动')}</small></span></li>`}</ul>
       </li>`).join('');
-    document.getElementById('qr-tips')!.innerHTML = plan.tips.map((t) => `<li>${esc(t)}</li>`).join('');
+    $('qr-tips').innerHTML = plan.tips.map((t) => `<li>${esc(t)}</li>`).join('');
     const c = a.country;
-    document.getElementById('qr-more')!.innerHTML = c === 'japan'
+    $('qr-more').innerHTML = c === 'japan'
       ? `<a href="${lp(`/budget/?c=japan&days=${a.days}`)}">${ct('按 {n} 天算预算 →', { n: a.days })}</a>`
       : `<a href="${lp(`/${c}/guide/`)}">${ct('{country}出行须知 →', { country: COUNTRY_NAME[c] })}</a>　<a href="${lp(`/budget/?c=${c}&days=${a.days}`)}">${ct('按 {n} 天算预算 →', { n: a.days })}</a>`;
     form.hidden = true;
     result.hidden = false;
     bar.style.width = '100%';
-    (result as HTMLElement & { _plan?: typeof plan })._plan = plan;
     next.disabled = false;
     scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  document.getElementById('qr-again')!.addEventListener('click', () => { seed++; generate(); });
-  document.getElementById('qr-reset')!.addEventListener('click', () => { seed = 0; result.hidden = true; form.hidden = false; go(0); });
-  document.getElementById('qr-save')!.addEventListener('click', () => {
-    const plan = (result as HTMLElement & { _plan?: ReturnType<typeof buildPlan> })._plan;
-    if (!plan) return;
-    const cur = load();
+  $('qr-again').addEventListener('click', () => { seed++; generate(); });
+  $('qr-reset').addEventListener('click', () => { seed = 0; result.hidden = true; form.hidden = false; go(0); });
+  $('qr-save').addEventListener('click', () => {
+    if (!lastQuickPlan) return;
+    const cur = loadTrip();
     if (cur.days.flat().length + cur.pool.length > 0 && !confirm(ct('你的行程里已经有内容。用这份攻略替换掉吗？'))) return;
-    save({ v: 1, title: plan.title.slice(0, 40), start: cur.start, days: plan.days.map((d) => d.items), pool: [], notes: {} });
+    saveTrip({ v: 1, title: lastQuickPlan.title.slice(0, 40), start: cur.start, days: lastQuickPlan.days.map((d) => d.items), pool: [], notes: {} });
     location.href = lp('/plan/');
   });
-  void placeHref;
+  $('qr-to-ai').addEventListener('click', () => {
+    if (!lastQuickPlan || !cat) return;
+    const imported = importQuickPlanToAgentPlan(lastQuickPlan, cat, lastQuickCountry);
+    const s = createSession(imported.title.slice(0, 24));
+    s.plan = imported;
+    sessions.unshift(s);
+    activeId = s.id;
+    saveSessions(sessions);
+    renderSessionSelect();
+    renderMessages();
+    renderCanvas();
+    setMode('ai');
+    chatInput.value = ct('我刚从快速问卷导入了这份草稿行程，请帮我检查节奏是否合理，并补充每日顺路餐厅与交通贴士。');
+    chatInput.focus();
+    toast(ct('已导入右侧行程画布，现在可以让 AI 继续精修'));
+  });
   go(0);
 </script>

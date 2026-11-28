@@ -1,0 +1,537 @@
+---
+import Base from '../../layouts/Base.astro';
+import { travelTips, visibleLinks, type TipPlatform } from '../../lib/tips';
+import { t, lang, langPaths, L } from '../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const l = lang();
+const data = travelTips;
+const isZh = l === 'zh';
+
+const platformMeta: Record<TipPlatform, { name: string; cls: string }> = {
+  official: { name: t('官方'), cls: 'pl-official' },
+  xiaohongshu: { name: t('小红书'), cls: 'pl-xhs' },
+  xianyu: { name: t('闲鱼'), cls: 'pl-xy' },
+  ctrip: { name: t('携程'), cls: 'pl-ctrip' },
+  internal: { name: t('站内工具'), cls: 'pl-internal' },
+};
+
+const cities = [
+  { id: 'all', label: t('全部城市') },
+  { id: 'tokyo', label: t('东京') },
+  { id: 'osaka', label: t('大阪') },
+  { id: 'kyoto', label: t('京都') },
+  { id: 'fukuoka', label: t('福冈') },
+  { id: 'sapporo', label: t('札幌') },
+];
+
+const foodCats = [
+  { id: 'all', label: t('全部品类') },
+  { id: 'ramen', label: t('拉面 / 沾面') },
+  { id: 'meat', label: t('烤肉 / 炸牛排') },
+  { id: 'sushi', label: t('寿司 / 海鲜') },
+  { id: 'izakaya', label: t('名物 / 食堂') },
+  { id: 'cafe', label: t('抹茶 / 甜品') },
+];
+
+const askHref = (prompt: string) => `${L('/quick/')}?ask=${encodeURIComponent(prompt)}`;
+---
+<Base
+  title={t('旅行小技巧')}
+  description={t('日本自由行实操省钱与避坑指南：西瓜卡/流量卡/门票渠道比价、出发与返程注意事项、闲鱼选物与防坑提醒、以及附 Google 地图直达链接的高口碑美食清单。')}
+  nav="tips"
+>
+  <section class="wrap tips-hero">
+    <div class="th-copy">
+      <p class="eyebrow">FIELD NOTES · SAVINGS & FOOD MAP · {t('核对至 {date}', { date: data.checked })}</p>
+      <h1>{t('实用旅行小技巧')}</h1>
+      <p class="th-lead">{t('把出发前怎么买更省、走的时候别踩什么坑、以及高口碑老店的 Google 地图导航收在一页，看到想吃的可以直接交给 AI 排进你的行程。')}</p>
+    </div>
+    <div class="th-actions">
+      <a class="btn primary" href={L('/quick/')}>{t('打开 AI 旅行规划师')}</a>
+      <a class="btn" href={L('/japan/tools/')}>{t('日本随身工具')}</a>
+    </div>
+  </section>
+
+  <nav class="wrap tips-toc" aria-label={t('页面目录')}>
+    <a href="#deals">{t('01 省钱买票与渠道')}</a>
+    <a href="#phases">{t('02 出发与回程必看')}</a>
+    {isZh && <a href="#xianyu">{t('03 闲鱼怎么买与防坑')}</a>}
+    <a href="#food-map">{isZh ? t('04 美食地图（附 Google 地图）') : t('03 美食地图（附 Google 地图）')}</a>
+  </nav>
+
+  <!-- 1. Deals & Platform Guide -->
+  <section class="section wrap" id="deals">
+    <div class="section-hd">
+      <div>
+        <p class="eyebrow">01 · SMART BOOKING</p>
+        <h2>{t('省钱买票 & 渠道怎么选')}</h2>
+        <p>{t('西瓜卡、流量卡、机场快线与热门门票对比：哪些走官方最省，哪些适合提前比价或查实时实况。')}</p>
+      </div>
+    </div>
+
+    <div class="deal-grid">
+      {data.platforms.map((item) => {
+        const links = visibleLinks(item.links);
+        return (
+          <article class="card deal-card">
+            <div class="deal-hd">
+              <span class="deal-badge">{item.badge}</span>
+              <h3>{item.title}</h3>
+            </div>
+            <p class="deal-summary">{item.summary}</p>
+            <div class="deal-verdict">
+              <strong>{t('结论')}</strong>
+              <p>{item.verdict}</p>
+            </div>
+            <ul class="deal-tips">
+              {item.tips.map((tip) => <li>{tip}</li>)}
+            </ul>
+            {links.length > 0 && (
+              <div class="deal-links">
+                {links.map((lk) => {
+                  const pm = platformMeta[lk.platform];
+                  const internal = lk.platform === 'internal';
+                  return (
+                    <a
+                      class={`pl-link ${pm.cls}`}
+                      href={internal ? L(lk.url) : lk.url}
+                      target={internal ? undefined : '_blank'}
+                      rel={internal ? undefined : 'noopener noreferrer'}
+                    >
+                      <span class="pl-tag">{pm.name}</span>
+                      <span>{lk.label}</span>
+                      <span class="pl-arr" aria-hidden="true">{internal ? '→' : '↗'}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- 2. Before Departure & Return Checklist -->
+  <section class="section wrap" id="phases">
+    <div class="section-hd">
+      <div>
+        <p class="eyebrow">02 · DEPARTURE & RETURN</p>
+        <h2>{t('出发前 & 回程走的时候该注意什么')}</h2>
+        <p>{t('勾选进度自动保存在本机浏览器里，方便你出发前和去机场前逐条打钩。')}</p>
+      </div>
+      <button type="button" class="btn sm ghost" id="tips-check-reset">{t('清空勾选')}</button>
+    </div>
+
+    <div class="phase-grid">
+      <div class="card phase-col">
+        <div class="phase-hd">
+          <span class="phase-no">OUTBOUND</span>
+          <h3>{data.phases.before.title}</h3>
+          <p>{data.phases.before.subtitle}</p>
+        </div>
+        <ul class="phase-list">
+          {data.phases.before.items.map((it) => {
+            const showLink = it.link && (isZh || it.link.platform === 'official' || it.link.platform === 'internal');
+            return (
+              <li class="phase-item" data-tip-row={it.id}>
+                <label class="phase-check">
+                  <input type="checkbox" data-tip-check={it.id} />
+                  <span class="phase-body">
+                    <span class="phase-meta"><span class="tag">{it.tag}</span><b>{it.title}</b></span>
+                    <small>{it.detail}</small>
+                  </span>
+                </label>
+                {showLink && it.link && (
+                  <a
+                    class="phase-link"
+                    href={it.link.platform === 'internal' ? L(it.link.url) : it.link.url}
+                    target={it.link.platform === 'internal' ? undefined : '_blank'}
+                    rel={it.link.platform === 'internal' ? undefined : 'noopener noreferrer'}
+                  >
+                    {it.link.label} {it.link.platform === 'internal' ? '→' : '↗'}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div class="card phase-col phase-col-return">
+        <div class="phase-hd">
+          <span class="phase-no phase-no-warn">RETURN · 2026</span>
+          <h3>{data.phases.departure.title}</h3>
+          <p>{data.phases.departure.subtitle}</p>
+        </div>
+        <ul class="phase-list">
+          {data.phases.departure.items.map((it) => {
+            const showLink = it.link && (isZh || it.link.platform === 'official' || it.link.platform === 'internal');
+            return (
+              <li class="phase-item" data-tip-row={it.id}>
+                <label class="phase-check">
+                  <input type="checkbox" data-tip-check={it.id} />
+                  <span class="phase-body">
+                    <span class="phase-meta"><span class="tag">{it.tag}</span><b>{it.title}</b></span>
+                    <small>{it.detail}</small>
+                  </span>
+                </label>
+                {showLink && it.link && (
+                  <a
+                    class="phase-link"
+                    href={it.link.platform === 'internal' ? L(it.link.url) : it.link.url}
+                    target={it.link.platform === 'internal' ? undefined : '_blank'}
+                    rel={it.link.platform === 'internal' ? undefined : 'noopener noreferrer'}
+                  >
+                    {it.link.label} {it.link.platform === 'internal' ? '→' : '↗'}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Xianyu Guide (CN-specific practical shopping & anti-scam) -->
+  {isZh && (
+    <section class="section wrap" id="xianyu">
+      <div class="section-hd">
+        <div>
+          <p class="eyebrow">03 · SECONDHAND & LOCAL DEALS</p>
+          <h2>{t('去日本在闲鱼上买什么比较好？哪些千万别碰？')}</h2>
+          <p>{data.xianyu.intro}</p>
+        </div>
+      </div>
+
+      <div class="xy-layout">
+        <div class="xy-goods">
+          {data.xianyu.goodBuys.map((g) => (
+            <article class="card xy-card">
+              <span class="tag">{g.tag}</span>
+              <h3>{g.title}</h3>
+              <p>{g.detail}</p>
+              <a class="pl-link pl-xy" href={g.searchUrl} target="_blank" rel="noopener noreferrer">
+                <span class="pl-tag">{t('闲鱼')}</span>
+                <span>{t('去闲鱼看实时行情')}</span>
+                <span class="pl-arr" aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <aside class="card xy-avoid">
+          <div class="xy-avoid-hd">
+            <span class="xy-warn-badge">{t('避坑红线')}</span>
+            <h3>{t('这 3 类闲鱼低价千万别贪便宜')}</h3>
+          </div>
+          <ul>
+            {data.xianyu.avoid.map((a) => (
+              <li>
+                <b>{a.title}</b>
+                <p>{a.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </section>
+  )}
+
+  <!-- 4. Curated Food Map with Google Maps links -->
+  <section class="section wrap" id="food-map">
+    <div class="section-hd">
+      <div>
+        <p class="eyebrow">{isZh ? '04' : '03'} · CURATED FOOD MAP</p>
+        <h2>{t('哪里有好吃的？（附 Google 地图直达）')}</h2>
+        <p>{t('精选东京、大阪、京都、福冈、札幌高口碑老店与名物，点开即可跳 Google 地图看营业时间与路线，或一键交给 AI 排进当天行程。')}</p>
+      </div>
+      <span class="food-count" id="food-count">{t('共 {n} 家', { n: data.foods.length })}</span>
+    </div>
+
+    <div class="food-filters">
+      <div class="filter-row" role="group" aria-label={t('按城市筛选')}>
+        {cities.map((c, idx) => (
+          <button type="button" class="chip" data-food-city={c.id} aria-pressed={idx === 0 ? 'true' : 'false'}>
+            {c.label}
+          </button>
+        ))}
+      </div>
+      <div class="filter-row" role="group" aria-label={t('按品类筛选')}>
+        {foodCats.map((fc, idx) => (
+          <button type="button" class="chip" data-food-cat={fc.id} aria-pressed={idx === 0 ? 'true' : 'false'}>
+            {fc.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="food-grid" id="food-grid">
+      {data.foods.map((f) => {
+        const askPrompt = t('请帮我把「{name}」（{city}·{area}，招牌：{dish}）安排进我的{city}行程里，并顺路推荐附近半天玩法。', {
+          name: f.name,
+          city: f.cityName,
+          area: f.area,
+          dish: f.dish,
+        });
+        return (
+          <article class="card food-card" data-city={f.city} data-cat={f.category}>
+            <div class="fc-top">
+              <span class="fc-city">{f.cityName}</span>
+              <span class="fc-area">{f.area}</span>
+              <span class="tag">{f.categoryName}</span>
+            </div>
+            <h3>{f.name}</h3>
+            <p class="fc-local">{f.local}</p>
+            <dl class="fc-meta">
+              <div><dt>{t('必点')}</dt><dd>{f.dish}</dd></div>
+              <div><dt>{t('人均')}</dt><dd>{f.price}</dd></div>
+            </dl>
+            <p class="fc-tip">{f.tip}</p>
+            <div class="fc-acts">
+              <a class="btn sm primary" href={f.mapsUrl} target="_blank" rel="noopener noreferrer">
+                {t('Google 地图 ↗')}
+              </a>
+              {isZh && f.xhsUrl && (
+                <a class="btn sm" href={f.xhsUrl} target="_blank" rel="noopener noreferrer">
+                  {t('小红书搜实况 ↗')}
+                </a>
+              )}
+              <a class="btn sm ghost" href={askHref(askPrompt)}>
+                {t('交给 AI 排进行程 →')}
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+    <p class="food-empty" id="food-empty" hidden>{t('当前城市和品类组合下暂时没有收录取店，换个筛选试试。')}</p>
+  </section>
+
+  <!-- Sources -->
+  <section class="wrap tips-sources">
+    <h3>{t('政策与信息核对来源')}</h3>
+    <ul>
+      {data.sources.map((s) => (
+        <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a></li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .tips-hero {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 28px; flex-wrap: wrap;
+    padding: 36px 0 22px;
+  }
+  .th-copy { max-width: 720px; display: grid; gap: 8px; }
+  .th-copy h1 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.18; }
+  .th-lead { color: var(--ink-2); font-size: 15.5px; line-height: 1.75; }
+  .th-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .tips-toc {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 12px 0 6px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .tips-toc a {
+    padding: 6px 12px; border-radius: var(--r-sm); border: 1px solid var(--line-2);
+    background: var(--card); font-size: 13.5px; font-weight: 600; color: var(--ink-2);
+    transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+  }
+  .tips-toc a:hover { border-color: var(--indigo); color: var(--indigo); }
+
+  /* 1. Deals */
+  .deal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  @media (max-width: 860px) { .deal-grid { grid-template-columns: 1fr; } }
+  .deal-card { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .deal-hd { display: grid; gap: 6px; }
+  .deal-badge {
+    justify-self: start; font: 700 11px/1 var(--mono); letter-spacing: .08em;
+    padding: 4px 8px; border-radius: var(--r-xs); background: var(--indigo); color: var(--on-ink);
+  }
+  .deal-card h3 { font-size: 19px; line-height: 1.35; }
+  .deal-summary { color: var(--ink-2); font-size: 14.5px; }
+  .deal-verdict {
+    background: var(--tip-bg); border-left: 3px solid var(--vermilion); border-radius: var(--r-xs);
+    padding: 10px 13px; display: grid; gap: 4px;
+  }
+  .deal-verdict strong { font-size: 12px; color: var(--vermilion); letter-spacing: .08em; }
+  .deal-verdict p { font-size: 14px; color: var(--ink); line-height: 1.65; }
+  .deal-tips { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
+  .deal-links { margin-top: auto; padding-top: 8px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .pl-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: var(--r-sm);
+    border: 1px solid var(--line-2); background: var(--paper); font-size: 12.5px; font-weight: 600; color: var(--ink);
+    transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+  }
+  .pl-link:hover { border-color: var(--indigo); background: var(--card); color: var(--indigo); }
+  .pl-tag {
+    font: 700 10.5px/1 var(--mono); padding: 3px 6px; border-radius: var(--r-xs);
+    background: var(--indigo); color: var(--on-ink);
+  }
+  .pl-xhs .pl-tag { background: var(--vermilion); color: var(--on-ink); }
+  .pl-xy .pl-tag { background: var(--gold); color: var(--on-ink); }
+  .pl-ctrip .pl-tag { background: var(--indigo); color: var(--on-ink); }
+  .pl-internal .pl-tag { background: var(--moss); color: var(--on-ink); }
+  .pl-arr { font-family: var(--mono); opacity: .75; }
+
+  /* 2. Phases */
+  .phase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  @media (max-width: 860px) { .phase-grid { grid-template-columns: 1fr; } }
+  .phase-col { padding: 20px; display: grid; gap: 16px; align-content: start; }
+  .phase-col-return { border-top: 3px solid var(--vermilion); }
+  .phase-hd { display: grid; gap: 5px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .phase-no {
+    justify-self: start; font: 700 10.5px/1 var(--mono); letter-spacing: .12em;
+    padding: 4px 8px; border-radius: var(--r-xs); background: var(--indigo); color: var(--on-ink);
+  }
+  .phase-no-warn { background: var(--vermilion); color: var(--on-ink); }
+  .phase-hd h3 { font-size: 19px; }
+  .phase-hd p { font-size: 13.5px; color: var(--mut); }
+  .phase-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .phase-item {
+    padding: 12px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--paper);
+    display: grid; gap: 8px; transition: opacity var(--t-fast), border-color var(--t-fast);
+  }
+  .phase-item.done { opacity: .62; }
+  .phase-item.done b { text-decoration: line-through; }
+  .phase-check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+  .phase-check input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--indigo); flex-shrink: 0; }
+  .phase-body { display: grid; gap: 5px; }
+  .phase-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+  .phase-meta b { font-size: 14.5px; line-height: 1.45; }
+  .phase-body small { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+  .phase-link {
+    justify-self: start; margin-left: 28px; font-size: 13px; font-weight: 600; color: var(--indigo);
+  }
+  .phase-link:hover { color: var(--vermilion); text-decoration: underline; }
+
+  /* 3. Xianyu */
+  .xy-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+  @media (max-width: 900px) { .xy-layout { grid-template-columns: 1fr; } }
+  .xy-goods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 600px) { .xy-goods { grid-template-columns: 1fr; } }
+  .xy-card { padding: 18px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .xy-card h3 { font-size: 17px; line-height: 1.4; }
+  .xy-card p { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+  .xy-card .pl-link { margin-top: auto; }
+
+  .xy-avoid { padding: 20px; border-color: color-mix(in srgb, var(--vermilion) 42%, var(--line)); background: var(--warn-bg); display: grid; gap: 14px; }
+  .xy-avoid-hd { display: grid; gap: 6px; }
+  .xy-warn-badge {
+    justify-self: start; font: 700 11px/1 var(--mono); letter-spacing: .08em;
+    padding: 4px 8px; border-radius: var(--r-xs); background: var(--vermilion); color: var(--on-ink);
+  }
+  .xy-avoid h3 { font-size: 18px; color: var(--ink); }
+  .xy-avoid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .xy-avoid li { padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--vermilion) 22%, var(--line)); display: grid; gap: 4px; }
+  .xy-avoid li:first-child { padding-top: 0; border-top: 0; }
+  .xy-avoid b { font-size: 14.5px; color: var(--ink); }
+  .xy-avoid p { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+
+  /* 4. Food Map */
+  .food-count { font: 600 13px var(--mono); color: var(--mut); white-space: nowrap; }
+  .food-filters { display: grid; gap: 10px; margin-bottom: 18px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .food-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 1020px) { .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .food-grid { grid-template-columns: 1fr; } }
+  .food-card { padding: 18px; display: flex; flex-direction: column; gap: 9px; }
+  .fc-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .fc-city {
+    font: 700 11.5px/1 var(--mono); padding: 4px 7px; border-radius: var(--r-xs);
+    background: var(--indigo); color: var(--on-ink);
+  }
+  .fc-area { font-size: 12.5px; color: var(--mut); margin-right: auto; }
+  .food-card h3 { font-size: 18px; line-height: 1.35; }
+  .fc-local { font: 400 12.5px var(--jp); color: var(--mut); margin-top: -4px; }
+  .fc-meta { margin: 2px 0; display: grid; gap: 5px; padding: 9px 11px; border-radius: var(--r-xs); background: var(--paper); font-size: 13px; }
+  .fc-meta > div { display: grid; grid-template-columns: 38px 1fr; gap: 8px; }
+  .fc-meta dt { color: var(--mut); font-weight: 600; }
+  .fc-meta dd { margin: 0; color: var(--ink); }
+  .fc-tip { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+  .fc-acts { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 7px; }
+  .food-empty { padding: 28px; text-align: center; color: var(--mut); border: 1px dashed var(--line-2); border-radius: var(--r); }
+
+  /* Sources */
+  .tips-sources { padding: 20px 0 10px; border-top: 1px solid var(--line); }
+  .tips-sources h3 { font-size: 15px; color: var(--mut); margin-bottom: 10px; }
+  .tips-sources ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--ink-2); }
+  .tips-sources a:hover { color: var(--indigo); text-decoration: underline; }
+</style>
+
+<script>
+  import { ct } from '../../scripts/i18n';
+
+  // Persistent departure/return checklist (uses its own key, never touching existing localStorage keys)
+  const CHECK_KEY = 'cbt.tips-check.v1';
+  const loadChecked = (): Record<string, boolean> => {
+    try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '{}') || {}; } catch { return {}; }
+  };
+  const saveChecked = (m: Record<string, boolean>) => {
+    try { localStorage.setItem(CHECK_KEY, JSON.stringify(m)); } catch { /* private mode */ }
+  };
+  const checked = loadChecked();
+  const boxes = [...document.querySelectorAll<HTMLInputElement>('[data-tip-check]')];
+  const syncRow = (box: HTMLInputElement) => {
+    box.closest<HTMLElement>('[data-tip-row]')?.classList.toggle('done', box.checked);
+  };
+  boxes.forEach((box) => {
+    const id = box.dataset.tipCheck!;
+    box.checked = !!checked[id];
+    syncRow(box);
+    box.addEventListener('change', () => {
+      checked[id] = box.checked;
+      syncRow(box);
+      saveChecked(checked);
+    });
+  });
+  document.getElementById('tips-check-reset')?.addEventListener('click', () => {
+    for (const key of Object.keys(checked)) delete checked[key];
+    boxes.forEach((b) => { b.checked = false; syncRow(b); });
+    saveChecked({});
+    (window as unknown as { cbtToast?: (s: string) => void }).cbtToast?.(ct('已清空本页勾选'));
+  });
+
+  // Food map filters (city + category)
+  let activeCity = 'all';
+  let activeCat = 'all';
+  const cards = [...document.querySelectorAll<HTMLElement>('.food-card')];
+  const countEl = document.getElementById('food-count');
+  const emptyEl = document.getElementById('food-empty');
+
+  function applyFoodFilter() {
+    let shown = 0;
+    cards.forEach((card) => {
+      const ok = (activeCity === 'all' || card.dataset.city === activeCity)
+        && (activeCat === 'all' || card.dataset.cat === activeCat);
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    if (countEl) countEl.textContent = ct('共 {n} 家', { n: shown });
+    if (emptyEl) emptyEl.hidden = shown > 0;
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-food-city]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCity = btn.dataset.foodCity || 'all';
+      document.querySelectorAll<HTMLButtonElement>('[data-food-city]').forEach((b) => {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      applyFoodFilter();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-food-cat]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCat = btn.dataset.foodCat || 'all';
+      document.querySelectorAll<HTMLButtonElement>('[data-food-cat]').forEach((b) => {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      applyFoodFilter();
+    });
+  });
+</script>

@@ -9,7 +9,7 @@ export const getStaticPaths = langPaths;
 
 export function GET() {
   const l = lang();
-  const shell = ['/', '/plan/', '/budget/', '/quick/', '/japan/tools/', ...TOOLS.map((t) => `/japan/tools/${t.slug}/`), '/australia/guide/', '/usa/guide/']
+  const shell = ['/', '/plan/', '/budget/', '/quick/', '/tips/', '/japan/tools/', ...TOOLS.map((t) => `/japan/tools/${t.slug}/`), '/australia/guide/', '/usa/guide/']
     .filter((p) => hasPage(l, p)).map((p) => L(p));
   const precache = [...shell, L('/catalog.json'), '/favicon.svg', L('/manifest.webmanifest')];
   const home = L('/');

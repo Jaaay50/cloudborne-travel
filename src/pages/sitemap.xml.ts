@@ -8,7 +8,7 @@ import { LANGS, L, HTML_LANG, hasPage } from '../lib/i18n';
 // Every page in every language it exists in, with hreflang alternates (Google's sitemap form).
 export function GET({ site }: { site: URL }) {
   const paths = [
-    '/', '/japan/', '/australia/', '/usa/', '/australia/guide/', '/usa/guide/', '/quick/', '/trips/',
+    '/', '/japan/', '/australia/', '/usa/', '/australia/guide/', '/usa/guide/', '/quick/', '/tips/', '/trips/',
     '/japan/themes/', '/japan/tools/', '/budget/', '/about/',
     ...allPosts().map((p) => p.href),
     ...REGIONS.filter((r) => !SINGLE_PREF_REGIONS.has(r.slug)).map((r) => `/japan/region/${r.slug}/`),

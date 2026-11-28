@@ -1,0 +1,467 @@
+{
+  "checked": "2026-11",
+  "platforms": [
+    {
+      "id": "suica-ic",
+      "category": "transport",
+      "badge": "最省事",
+      "title": "西瓜卡 Suica / PASMO：怎么买最省、别多花冤枉钱",
+      "summary": "iPhone 直接在「钱包」里零手续费开数字 Suica，最便宜也最方便；安卓或想留实体卡再考虑机场 Welcome Suica 或闲鱼比价。",
+      "verdict": "iPhone 用户不需要在闲鱼或代购加价买实体卡：打开手机「钱包 → + → 交通卡 → 日本 Suica」，直接用银联借记卡或支持的外币信用卡充 1,000 日元起即可，0 押金、0 溢价，进站手机一碰就能刷。",
+      "tips": [
+        "安卓手机（非日版）一般不支持手机 Suica，落地成田/羽田机场的 JR 东日本旅行服务中心或红色自助机直接买游客版 Welcome Suica（免 500 日元押金，有效期 28 天，余额不退，按需每次充 1,000–2,000 日元）。",
+        "去关西落地大阪（KIX）买关西版 ICOCA（含 500 日元押金，全国通用，东京一样能刷；退卡扣 220 日元手续费，余额低于 220 日元时只退押金）。",
+        "如果为了收藏实体企鹅卡在闲鱼买普通 Suica，先核对卡内余额 + 500 日元押金折合人民币，避免溢价过高；且不要买来历不明的「低价代充」服务。"
+      ],
+      "links": [
+        { "label": "JR 东日本 Welcome Suica 官网", "platform": "official", "url": "https://www.jreast.co.jp/multi/en/welcomesuica/welcomesuica.html" },
+        { "label": "小红书搜「西瓜卡 Apple Pay / Welcome Suica 最新」", "platform": "xiaohongshu", "url": "https://www.xiaohongshu.com/search_result?keyword=%E6%97%A5%E6%9C%AC%E8%A5%BF%E7%93%9C%E5%8D%A1%E6%94%BB%E7%95%A5" },
+        { "label": "闲鱼搜「日本西瓜卡 Suica」比价", "platform": "xianyu", "url": "https://www.goofish.com/search?q=%E6%97%A5%E6%9C%AC%E8%A5%BF%E7%93%9C%E5%8D%A1Suica" }
+      ]
+    },
+    {
+      "id": "esim-data",
+      "category": "network",
+      "badge": "避坑重点",
+      "title": "日本上网：eSIM / 流量卡 / 随身 WiFi 怎么选",
+      "summary": "单人优先选日本原生线路 eSIM（Docomo / KDDI / SoftBank），落地即用且能顺畅打开 Google 地图；国行无 eSIM 手机买实体 SIM 卡。",
+      "verdict": "别直接开国内运营商国际漫游当主力网——漫游流量绕回国内出口，Google 地图、餐厅官网预约页和 Tabelog 经常打不开。",
+      "tips": [
+        "买流量卡前先看清手机是否支持 eSIM（中国大陆行货 iPhone 通常为双实体 SIM、不支持 eSIM，需要买实体日本流量卡）。",
+        "选卡看两件事：标注「日本原生 IP / Docomo 或 SoftBank 线路」、标明每天高速流量（建议每天 1–2 GB 或总量包，避免所谓无限流量但 500 MB 后降速到 128 kbps）。",
+        "携程和电商平台常有「机场自取 / 包邮实体卡 / eSIM 秒发」对比，出发前 2–3 天买好，落地连机场 Wi-Fi 激活最稳。"
+      ],
+      "links": [
+        { "label": "携程搜「日本 eSIM 流量卡」", "platform": "ctrip", "url": "https://m.ctrip.com/webapp/vacations/tour/list?kwd=%E6%97%A5%E6%9C%ACeSIM%E6%B5%81%E9%87%8F%E5%8D%A1" },
+        { "label": "小红书搜「日本 eSIM / 流量卡 实测避坑」", "platform": "xiaohongshu", "url": "https://www.xiaohongshu.com/search_result?keyword=%E6%97%A5%E6%9C%AC%E6%B5%81%E9%87%8F%E5%8D%A1eSIM%E9%81%BF%E5%9D%91" }
+      ]
+    },
+    {
+      "id": "airport-rail-tickets",
+      "category": "transport",
+      "badge": "提前买更省",
+      "title": "机场快线 & JR 地区券：携程比价 vs 官网直出",
+      "summary": "京成 Skyliner、JR HARUKA 优惠单程票、东京地铁 24/48/72 小时券在海外平台提前买往往比窗口现买便宜，还能扫码直接换票。",
+      "verdict": "全国 JR Pass 涨价后普通行程大多不回本；反而是 Skyliner 优惠票、HARUKA 外国游客单程票、关西广域周游券、东京地铁 72 小时券性价比更高。",
+      "tips": [
+        "成田进东京住上野/日暮里/浅草：提前在携程或京成官网买 Skyliner 外国游客优惠票，常比现场 2,580 日元省 200–300 日元。",
+        "关西机场去京都：HARUKA 外国游客优惠票必须在 JR 西日本官网或海外代理平台提前订，日本国内车站现场不卖该优惠价（2026 年 11 月起已调价，下单看清现价）。",
+        "在东京市区每天坐地铁 3 趟以上，买 Tokyo Subway Ticket（24h 800 / 48h 1,200 / 72h 1,500 日元），覆盖东京 Metro + 都营地铁，但不含 JR 山手线。"
+      ],
+      "links": [
+        { "label": "携程搜「日本 Skyliner / HARUKA 车票」", "platform": "ctrip", "url": "https://m.ctrip.com/webapp/vacations/tour/list?kwd=%E6%97%A5%E6%9C%ACSkyliner%20HARUKA" },
+        { "label": "JR 西日本 HARUKA 官方预约页", "platform": "official", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" },
+        { "label": "小红书搜「东京地铁72小时券 / 关西周游券」", "platform": "xiaohongshu", "url": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E5%9C%B0%E9%93%8172%E5%B0%8F%E6%97%B6%E5%88%B8" }
+      ]
+    },
+    {
+      "id": "theme-parks",
+      "category": "tickets",
+      "badge": "热门必抢",
+      "title": "迪士尼 / USJ 环球影城 / 涩谷 SKY：抢票与渠道对比",
+      "summary": "热门门票看准放票时间比到处找代拍更靠谱：官网和携程官方旗舰渠道最稳，小红书用来查当天排队实况与开园时间。",
+      "verdict": "涩谷 SKY 日落场、USJ 任天堂快速通、吉卜力公园都属于手慢无项目，定好闹钟走官方或携程等正规授权渠道，不要为了便宜几十元买来路不明的二手截屏票。",
+      "tips": [
+        "SHIBUYA SKY（涩谷 SKY）提前 2 周左右开放预约（以官网实时放票规则为准），日落前后 1 小时最抢手，订不到日落场可考虑晴天上午场或转去六本木森大楼/东京铁塔。",
+        "大阪 USJ 门票实行浮动定价（分 A–F 档），淡季工作日便宜不少；想进超级任天堂世界但不想买高价快通，提前 1 小时到门口排队抢免费整理券（可在小红书搜最近一周的实测入园时间）。",
+        "东京迪士尼分为陆地（Land）和海洋（Sea，含梦幻泉乡 Fantasy Springs），门票绑入官方 App 后进园才能抢 DPA / 40 周年免费优先卡。"
+      ],
+      "links": [
+        { "label": "携程搜「日本 USJ 迪士尼 涩谷SKY 门票」", "platform": "ctrip", "url": "https://m.ctrip.com/webapp/vacations/tour/list?kwd=%E6%97%A5%E6%9C%AC%E7%8E%AF%E7%90%83%E5%BD%B1%E5%9F%8E%E9%97%A8%E7%A5%A8" },
+        { "label": "SHIBUYA SKY 官方购票", "platform": "official", "url": "https://www.shibuya-scramble-square.com/sky/ticket/" },
+        { "label": "小红书搜「USJ / 涩谷SKY 最新排队实况」", "platform": "xiaohongshu", "url": "https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E9%98%AAUSJ%E5%85%A5%E5%9B%AD%E6%8E%92%E9%98%9F%E5%AE%9E%E5%86%B5" }
+      ]
+    },
+    {
+      "id": "hotels-flights",
+      "category": "booking",
+      "badge": "比价技巧",
+      "title": "机票 & 酒店怎么订：多平台比价 + 避开新住宿税盲区",
+      "summary": "携程查国内直飞与中文售后方便，Google Flights / 航司官网查转机与行李额；日本酒店订房时务必看清是否含京都/大阪/北海道住宿税。",
+      "verdict": "日本商旅酒店（东横 INN、Dormy Inn、三井花园、APA 等）房型偏小但交通极好，选在 JR 环线/地铁大站步行 5 分钟内比单纯便宜 100 元重要得多。",
+      "tips": [
+        "廉航（春秋、乐桃、捷星、ZIPAIR 等）裸票便宜，但手提行李称重严格（常限 7 kg），加完 20 kg 托运额后记得和全服务航司对比总价。",
+        "2026 年起京都住宿税最高升至每人每晚 10,000 日元（普通房 200–1,000 日元），北海道与大阪也已开征或调高住宿税，多数酒店到店前台现付。",
+        "如果行程跨 2 个以上城市，尽量买「开口机票」（例如东京进、大阪出），省掉一程约 14,000 日元的新干线和半天回头路。"
+      ],
+      "links": [
+        { "label": "携程搜「日本酒店比价」", "platform": "ctrip", "url": "https://hotels.ctrip.com/" },
+        { "label": "小红书搜「东京 / 大阪酒店选址避坑」", "platform": "xiaohongshu", "url": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E5%A4%A7%E9%98%AA%E9%85%92%E5%BA%97%E9%80%89%E5%9D%80%E6%94%BB%E7%95%A5" }
+      ]
+    }
+  ],
+  "phases": {
+    "before": {
+      "title": "出发前必做（起飞前 72 小时核对）",
+      "subtitle": "把证件、网络、支付和行李雷区一次清完，落地过关丝滑不抓瞎。",
+      "items": [
+        {
+          "id": "before-vjw",
+          "tag": "入境提速",
+          "title": "提前填好 Visit Japan Web（入境 + 海关 + 免税二维码）",
+          "detail": "至少起飞前 6 小时在官网填好护照、航班与第一晚酒店地址，生成二维码。落地联网打开网页出示（官方提示不要只拿旧截图，顺手把免税二维码也激活）。",
+          "link": { "label": "Visit Japan Web 官网", "platform": "official", "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/" }
+        },
+        {
+          "id": "before-cash-card",
+          "tag": "支付组合",
+          "title": "备齐「少量现金 + 2 张外币卡 + 交通卡」三件套",
+          "detail": "按每人每天 3,000–5,000 日元准备现金应对拉面馆投币机、神社御守和老店；主刷 Visa/Mastercard/JCB（多带一张备用）；国内银联借记卡在 7-Eleven ATM 也能直接取现。",
+          "link": { "label": "站内交通常识与支付提示", "platform": "internal", "url": "/japan/tools/checklist/" }
+        },
+        {
+          "id": "before-esim",
+          "tag": "落地有网",
+          "title": "出发前安装好 eSIM，但等落地日本再开启数据漫游",
+          "detail": "在家里 Wi-Fi 环境下先扫码添加 eSIM 配置文件，关闭「数据切换」，到日本滑行后再切过去，避免在国内提前触发计费天数。同时在 Google 地图提前下好东京/关西离线地图。"
+        },
+        {
+          "id": "before-power-luggage",
+          "tag": "安检红线",
+          "title": "充电宝必须随身携带，且日本出境航班机上禁充禁用",
+          "detail": "充电宝严禁托运（单块 ≤160Wh、每人最多 2 个），日本出发航班要求随身放座位附近、不放头顶行李架、机上不得使用或充电。三脚插头记得带转两扁脚转换头；肉干/香肠/水果严禁带入境。"
+        },
+        {
+          "id": "before-shinkansen",
+          "tag": "大件行李",
+          "title": "28 寸以上大箱子坐东海道/山阳新干线，提前订特大行李位",
+          "detail": "三边之和 160–250 cm 的行李箱需要免费预订「特大行李放置处附带座位」，没订直接带上去会被补收 1,000 日元手续费；也可以直接从酒店前台用黑猫宅急便把箱子寄到下一站酒店。"
+        }
+      ]
+    },
+    "departure": {
+      "title": "回程走的时候必看（返程前 24 小时 → 登机口）",
+      "subtitle": "2026 年 11 月日本免税已改为「出境退税」，返程机场动线比以前更关键，千万别先托运箱子！",
+      "items": [
+        {
+          "id": "dep-taxfree-order",
+          "tag": "2026 新规",
+          "title": "托运行李之前，先去出发大厅免税终端刷护照做海关确认",
+          "detail": "2026 年 11 月 1 日起免税改为「先付含税价、出境确认后退款」。必须在值机托运之前先完成护照刷验（绿灯放行，红灯需现场出示免税实物给海关核查），箱子一旦托运就无法查验、整单退不了税。",
+          "link": { "label": "查看 2026 退税详细步骤与计算器", "platform": "internal", "url": "/japan/tools/tax-free/" }
+        },
+        {
+          "id": "dep-taxfree-pack",
+          "tag": "分箱打包",
+          "title": "免税商品集中装在同一只箱子，且千万别拆开用或吃掉",
+          "detail": "虽然新规取消了消耗品封袋，但海关按整张小票核验——同一张小票里只要少了一件（比如提前吃掉一盒零食），整张小票都无法退税。液体超过 100 ml 的免税护肤品/酒类必须在查验后再放进托运行李。"
+        },
+        {
+          "id": "dep-suica-spend",
+          "tag": "清零余额",
+          "title": "把西瓜卡里的零钱花光：便利店、机场伴手礼店都能组合付款",
+          "detail": "Welcome Suica 余额不退，普通卡退卡也要扣手续费。离境前在机场 7-Eleven / Lawson / 药妆店或伴手礼店买东西时，可以让店员先把 Suica 刷到 0 元，差额用现金或信用卡补齐（日语说「残高全部使って、残りはカードで」）。"
+        },
+        {
+          "id": "dep-arrive-early",
+          "tag": "时间预留",
+          "title": "至少提前 3 小时到机场，给退税查验和免税店留余量",
+          "detail": "成田、羽田、关西机场傍晚回国高峰期，海关退税终端 + 值机托运 + 安检排队很容易超过 90 分钟。若要寄黑猫行李去机场，须提前 2 天（部分地区 3 天）在酒店寄出。"
+        },
+        {
+          "id": "dep-coins-receipts",
+          "tag": "收尾清单",
+          "title": "保留免税小票到退税到账；零散硬币可在机场扭蛋或自助结账机清掉",
+          "detail": "退税到账周期因商家/退税机构而异，回国后收到退款前别扔购物小票和退税凭证。剩下的一堆 1–100 日元硬币，可在便利店自助收银机直接一把倒进投币口抵扣。"
+        }
+      ]
+    }
+  },
+  "xianyu": {
+    "intro": "闲鱼在日本旅行中既是「出发前省钱工具」，也是「二手装备 / 门票资讯 / 回国回血」的实用渠道。关键是分清哪些能买、哪些绝对不能碰。",
+    "goodBuys": [
+      {
+        "id": "xy-adapters-gear",
+        "tag": "行前捡漏",
+        "title": "旅行小装备：折叠烧水壶、颈枕、转换插头、一次性防雨鞋套",
+        "detail": "很多人去完一趟日本回来就出闲置，像便携多口氮化镓插头、行李秤、压缩收纳袋、滑雪护具（去北海道/长野雪季）收九成新能省一半。",
+        "searchUrl": "https://www.goofish.com/search?q=%E6%97%A5%E6%9C%AC%E6%97%85%E8%A1%8C%E6%94%B6%E7%BA%B3%E8%BD%AC%E6%8D%A2%E6%8F%92%E5%A4%B4"
+      },
+      {
+        "id": "xy-camera-gear",
+        "tag": "摄影玩家",
+        "title": "出游前租/收轻便定焦镜头、Pocket 3 或胶片机，去日本拍完再平价转手",
+        "detail": "日本街拍非常出片，出发前在闲鱼收一台行情透明的二手富士/理光 GR/Osmo Pocket 3 或在东京中野、新宿 Map Camera 逛中古店前先用闲鱼查国内二手行情，对比汇率+退税一眼看出值不值得在日本买。",
+        "searchUrl": "https://www.goofish.com/search?q=%E7%90%86%E5%85%89GR3%20%E6%97%A5%E6%9C%AC%E4%B8%AD%E5%8F%A4"
+      },
+      {
+        "id": "xy-ic-souvenir",
+        "tag": "实体卡控",
+        "title": "实体纪念版 Suica / ICOCA / 动漫联名交通卡（适合安卓或收藏）",
+        "detail": "如果不方便现场排队买卡、或者想要限定卡面，可以在闲鱼按「卡内余额 + 500 日元押金」估算合理价格入手。收到卡后用手机 NFC 读取 App（如「Suica Reader」）确认余额无误再确认收货。",
+        "searchUrl": "https://www.goofish.com/search?q=ICOCA%20Suica%20%E5%AE%9E%E4%BD%93%E5%8D%A1"
+      },
+      {
+        "id": "xy-coupons-info",
+        "tag": "折扣/回血",
+        "title": "机场免税/百货优惠券攻略、实体电话卡余量、日本本土周边行情参考",
+        "detail": "逛秋叶原、中野百老汇、难波动漫街或古着店时，拿闲鱼当前成交价做「价格锚点」，能快速判断手办、Switch 卡带、CD 或二手包的溢价空间；回国后用不完的剩余实体交通卡或装备也能挂闲鱼回血。",
+        "searchUrl": "https://www.goofish.com/search?q=%E6%97%A5%E6%9C%AC%E4%B8%AD%E5%8F%A4%E6%89%8B%E5%8A%9E%E7%9B%B8%E6%9C%BA"
+      }
+    ],
+    "avoid": [
+      {
+        "title": "远低于官网价的「酒店代订 / 门票代拍 / USJ 快通」千万别贪便宜",
+        "detail": "市场上大量 5–7 折酒店和门票代订涉及盗刷境外信用卡（黑卡）或违规积分套现，轻则入住前夜被取消、门票刷不出二维码，重则现场被酒店或乐园风控拦下甚至影响签证记录。"
+      },
+      {
+        "title": "不要找个人卖家做「低价 Suica 代充 / 余额套现」",
+        "detail": "用盗刷卡给你的交通卡充值会导致卡片被封禁或牵连 Apple ID 风控，官方钱包直接充人民币汇率已经很透明。"
+      },
+      {
+        "title": "实名制或需核验护照的票券（如吉卜力美术馆、部分演唱会/展馆）勿买二手转票",
+        "detail": "很多热门展馆入场会抽查购票人姓名与护照一致性，二手转票被拒入场后维权极难；买任何实体卡或二手数码都坚持走平台担保交易，不要脱离平台微信转账。"
+      }
+    ]
+  },
+  "foods": [
+    {
+      "id": "tokyo-rokuringo-tsukemen",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "东京站一番街 · 地下拉面街",
+      "category": "ramen",
+      "categoryName": "拉面 / 沾面",
+      "name": "六厘舍（东京站拉面街店）",
+      "local": "六厘舎 東京駅",
+      "dish": "特制浓厚豚骨鱼介沾面（特製つけめん）",
+      "price": "约 1,100–1,400 日元",
+      "tip": "早上 7:30 开始就有「朝つけめん」早餐沾面，比中午动辄排 45 分钟快太多；坐新干线前顺路吃刚刚好。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E5%8E%98%E8%88%8E+%E6%9D%B1%E4%BA%AC%E9%A7%85+%E6%9D%B1%E4%BA%AC%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E7%AB%99%E5%85%AD%E5%8E%98%E8%88%8E"
+    },
+    {
+      "id": "tokyo-afuri-harajuku",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "原宿 / 惠比寿",
+      "category": "ramen",
+      "categoryName": "拉面 / 沾面",
+      "name": "AFURI 阿夫利（柚子盐拉面）",
+      "local": "AFURI 原宿",
+      "dish": "柚子盐拉面（ゆず塩らーめん）+ 炙烤叉烧饭",
+      "price": "约 1,300–1,800 日元",
+      "tip": "汤底清爽带柚子清香，怕油腻星人福音；点单机可选「淡丽（清淡）」或「まろ味（醇厚）」，支持无现金支付。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AFURI+%E5%8E%9F%E5%AE%BF+Tokyo",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%ACAFURI%E6%9F%9A%E5%AD%90%E7%9B%90%E6%8B%89%E9%9D%A2"
+    },
+    {
+      "id": "tokyo-gyukatsu-motomura",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "新宿 / 涩谷 / 原宿多店",
+      "category": "meat",
+      "categoryName": "烤肉 / 炸牛排",
+      "name": "炸牛排 もと村（牛かつ もと村）",
+      "local": "牛かつ もと村 新宿南口店",
+      "dish": "现煎半熟炸牛排定食 + 山药泥麦饭",
+      "price": "约 2,000–2,800 日元",
+      "tip": "每人面前有一块小石板，自己把半熟炸牛排煎到喜欢的熟度；避开 12:00 和 18:30 饭点能少排半小时。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%81%8B%E3%81%A4+%E3%82%82%E3%81%A8%E6%9D%91+%E6%96%B0%E5%AE%BF",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E7%82%B8%E7%89%9B%E6%8E%92motomura"
+    },
+    {
+      "id": "tokyo-jojoen-lunch",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "新宿 Opera City 53F / 晴空塔 30F",
+      "category": "meat",
+      "categoryName": "烤肉 / 炸牛排",
+      "name": "叙叙苑烤肉（午市景观套餐）",
+      "local": "叙々苑 東京オペラシティ53店",
+      "dish": "午市和牛烤肉定食（焼肉ランチ）",
+      "price": "午市约 3,500–6,500 日元",
+      "tip": "晚餐人均偏贵，但午市套餐性价比极高！强烈建议提前在官网预约窗边景观位，边看东京全景边吃烤肉。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8F%99%E3%80%85%E8%8B%91+%E6%9D%B1%E4%BA%AC%E3%82%AA%E3%83%9A%E3%83%A9%E3%82%B7%E3%83%86%E3%82%A353",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E5%8F%99%E5%8F%99%E8%8B%91%E5%8D%88%E5%B8%82%E9%A2%84%E7%BA%A6"
+    },
+    {
+      "id": "tokyo-nemuro-hanamaru",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "银座东急广场 10F / 东京站 KITTE 5F",
+      "category": "sushi",
+      "categoryName": "寿司 / 海鲜",
+      "name": "根室花丸回转寿司（回転寿司 根室花まる）",
+      "local": "回転寿司 根室花まる 銀座店",
+      "dish": "双层帆立贝、红鲑鱼筋子、北海道生干贝",
+      "price": "约 2,500–4,000 日元",
+      "tip": "北海道超人气回转寿司在东京的分店，饭点取号后经常要等 1 小时以上；建议先拿号再去银座/KITTE 逛街，手机扫码看叫号进度。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8+%E6%A0%B9%E5%AE%A4%E8%8A%B1%E3%81%BE%E3%82%8B+%E9%8A%80%E5%BA%A7",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E6%A0%B9%E5%AE%A4%E8%8A%B1%E4%B8%B8%E5%AF%BF%E5%8F%B8"
+    },
+    {
+      "id": "tokyo-tonkatsu-maisentokyo",
+      "city": "tokyo",
+      "cityName": "东京",
+      "area": "表参道 / 青山",
+      "category": "izakaya",
+      "categoryName": "炸猪排 / 食堂",
+      "name": "まい泉（MAiSEN 青山总店）",
+      "local": "とんかつ まい泉 青山本店",
+      "dish": "黑豚里脊炸猪排定食、招牌猪排三明治",
+      "price": "约 2,000–3,500 日元",
+      "tip": "老牌澡堂改造的木质挑高大厅，氛围极佳；赶时间的话百货地下食品层也能买到他家招牌迷你猪排三明治当新干线便当。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4+%E3%81%BE%E3%81%84%E6%B3%89+%E9%9D%92%E5%B1%B1%E6%9C%AC%E5%BA%97",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%B8%9C%E4%BA%AC%E8%A1%A8%E5%8F%82%E9%81%93MAiSEN%E7%82%B8%E7%8C%AA%E6%8E%92"
+    },
+    {
+      "id": "osaka-mizuno-okonomiyaki",
+      "city": "osaka",
+      "cityName": "大阪",
+      "area": "道顿堀商店街",
+      "category": "izakaya",
+      "categoryName": "大阪烧 / 街头小食",
+      "name": "美津の（美津大阪烧）",
+      "local": "美津の 道頓堀",
+      "dish": "山药烧（山芋焼）+ 招牌海鲜大阪烧",
+      "price": "约 1,600–2,500 日元",
+      "tip": "道顿堀创业超 70 年的老字号，米其林必比登常客；招牌「山药烧」不加面粉只用山药泥，口感蓬松绵密，建议 11:00 开门前去排第一波。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%BE%8E%E6%B4%A5%E3%81%AE+%E9%81%93%E9%A0%93%E5%A0%80+%E5%A4%A7%E9%98%AA",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E9%98%AA%E7%BE%8E%E6%B4%A5%E5%A4%A7%E9%98%AA%E7%83%A7"
+    },
+    {
+      "id": "osaka-yakiniku-m",
+      "city": "osaka",
+      "cityName": "大阪",
+      "area": "难波 · 法善寺横丁",
+      "category": "meat",
+      "categoryName": "烤肉 / 炸牛排",
+      "name": "松阪牛烧肉 M（法善寺横丁店）",
+      "local": "松阪牛焼肉M 法善寺横丁店",
+      "dish": "松阪牛稀少部位拼盘、和牛寿喜烧风切片",
+      "price": "约 7,000–12,000 日元",
+      "tip": "开在青石板古巷法善寺横丁里，有中文菜单且服务周到；务必提前线上预约，吃完顺路看一眼挂满灯笼的水挂不动尊。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%BE%E9%98%AA%E7%89%9B%E7%84%BC%E8%82%89M+%E6%B3%95%E5%96%84%E5%AF%BA%E6%A8%AA%E4%B8%81",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E9%98%AA%E6%9D%BE%E9%98%AA%E7%89%9B%E7%83%A7%E8%82%89M"
+    },
+    {
+      "id": "osaka-kamukura-ramen",
+      "city": "osaka",
+      "cityName": "大阪",
+      "area": "道顿堀 / 关西机场",
+      "category": "ramen",
+      "categoryName": "拉面 / 沾面",
+      "name": "どうとんぼり神座（神座拉面）",
+      "local": "どうとんぼり神座 道頓堀店",
+      "dish": "おいしいラーメン（白菜清汤拉面）+ 炸鸡",
+      "price": "约 900–1,400 日元",
+      "tip": "大阪国民级拉面，大把清甜白菜熬出的酱油高汤完全不腻，夜宵时段也开着，逛完心斋桥来一碗很舒服。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A9%E3%81%86%E3%81%A8%E3%82%93%E3%81%BC%E3%82%8A%E7%A5%9E%E5%BA%A7+%E9%81%93%E9%A0%93%E5%A0%80",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E9%98%AA%E7%A5%9E%E5%BA%A7%E6%8B%89%E9%9D%A2"
+    },
+    {
+      "id": "kyoto-menya-inoichi",
+      "city": "kyoto",
+      "cityName": "京都",
+      "area": "四条河原町 · 寺町通",
+      "category": "ramen",
+      "categoryName": "拉面 / 沾面",
+      "name": "面屋 猪一（麺屋 猪一）",
+      "local": "麺屋 猪一 京都",
+      "dish": "出汁白酱油拉面（支那そば 白）+ 和牛碎肉饭",
+      "price": "约 1,400–2,000 日元",
+      "tip": "连续多年米其林必比登，用多款鲣鱼节现削熬出清澈出汁，配山椒和とろろ昆布风味绝佳。通常上午会先发整理券，去之前搜一眼当天排号规则。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%B1%8B+%E7%8C%AA%E4%B8%80+%E4%BA%AC%E9%83%BD",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%BA%AC%E9%83%BD%E9%9D%A2%E5%B1%8B%E7%8C%AA%E4%B8%80%E6%95%B4%E7%90%86%E5%88%B8"
+    },
+    {
+      "id": "kyoto-yakiniku-hiro",
+      "city": "kyoto",
+      "cityName": "京都",
+      "area": "木屋町 / 先斗町 / 京都站前",
+      "category": "meat",
+      "categoryName": "烤肉 / 炸牛排",
+      "name": "京の焼肉処 弘（弘烧肉）",
+      "local": "京の焼肉処 弘 木屋町店",
+      "dish": "整头购入和牛拼盘、特选牛舌、壶渍牛小排",
+      "price": "约 5,000–7,500 日元",
+      "tip": "京都精肉店直营的超高人气烧肉，性价比远超网红店；木屋町店夏天还能坐鸭川纳凉床，一定要提前 2–3 周上官网订座。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E3%81%AE%E7%84%BC%E8%82%89%E5%87%A6+%E5%BC%98+%E6%9C%A8%E5%B1%8B%E7%94%BA%E5%BA%97",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%BA%AC%E9%83%BD%E5%BC%98%E7%83%A7%E8%82%89%E9%A2%84%E7%BA%A6"
+    },
+    {
+      "id": "kyoto-nakamura-tokichi",
+      "city": "kyoto",
+      "cityName": "京都",
+      "area": "宇治本店 / 京都站 3F",
+      "category": "cafe",
+      "categoryName": "抹茶 / 咖啡甜品",
+      "name": "中村藤吉（宇治本店 / 京都站店）",
+      "local": "中村藤吉本店 宇治",
+      "dish": "生茶果冻抹茶芭菲（生茶ゼリイ）、抹茶荞麦面",
+      "price": "约 1,400–2,000 日元",
+      "tip": "宇治百年茶商老店，竹筒装生茶果冻配浓抹茶冰激凌非常惊艳；去宇治一早到先拿号再逛平等院，不顺路的话京都站里也有分店。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%9D%91%E8%97%A4%E5%90%89%E6%9C%AC%E5%BA%97+%E5%AE%87%E6%B2%BB",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E4%BA%AC%E9%83%BD%E5%AE%87%E6%B2%BB%E4%B8%AD%E6%9D%91%E8%97%A4%E5%90%89"
+    },
+    {
+      "id": "fukuoka-hakata-issou",
+      "city": "fukuoka",
+      "cityName": "福冈",
+      "area": "博多站东本店",
+      "category": "ramen",
+      "categoryName": "拉面 / 沾面",
+      "name": "博多一双（博多站东本店）",
+      "local": "博多一双 博多駅東本店",
+      "dish": "泡系豚骨拉面（味玉ラーメン）",
+      "price": "约 900–1,200 日元",
+      "tip": "号称「豚骨卡布奇诺」的浓稠绵密泡沫汤底，猪骨香气极重（介意浓豚骨味可转去清淡些的博多拉面 Shin-Shin），桌上的辣高菜和生姜超下饭。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E4%B8%80%E5%8F%8C+%E5%8D%9A%E5%A4%9A%E9%A7%85%E6%9D%B1%E6%9C%AC%E5%BA%97",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E7%A6%8F%E5%86%88%E5%8D%9A%E5%A4%9A%E4%B8%80%E5%8F%8C%E6%8B%89%E9%9D%A2"
+    },
+    {
+      "id": "fukuoka-mentaiko-ju",
+      "city": "fukuoka",
+      "cityName": "福冈",
+      "area": "中洲 / 西中洲",
+      "category": "izakaya",
+      "categoryName": "地方名物",
+      "name": "元祖博多めんたい重（元祖博多明太子重）",
+      "local": "元祖博多めんたい重 西中洲",
+      "dish": "昆布卷整条明太子盖饭 + 明太子沾面套餐",
+      "price": "约 1,900–3,200 日元",
+      "tip": "早上 7:00 就开门，非常适合当福冈精致早餐，早上 8 点前去几乎不用排长队，晚上还能顺路逛中洲屋台。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%85%83%E7%A5%96%E5%8D%9A%E5%A4%9A%E3%82%81%E3%82%93%E3%81%9F%E3%81%84%E9%87%8D+%E7%A6%8F%E5%B2%A1",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E7%A6%8F%E5%86%88%E5%85%83%E7%A5%96%E5%8D%9A%E5%A4%9A%E6%98%8E%E5%A4%AA%E5%AD%90%E9%87%8D"
+    },
+    {
+      "id": "sapporo-soupcurry-garaku",
+      "city": "sapporo",
+      "cityName": "札幌",
+      "area": "狸小路 / 大通公园附近",
+      "category": "izakaya",
+      "categoryName": "北海道名物",
+      "name": "Soup Curry GARAKU（札幌汤咖喱）",
+      "local": "スープカレー GARAKU 札幌本店",
+      "dish": "嫩煮鸡腿蔬菜汤咖喱（やわらかチキンレッグと野菜）+ 炙烤芝士饭",
+      "price": "约 1,400–1,900 日元",
+      "tip": "和风出汁底的札幌代表汤咖喱，辣度可从 1 级自选；营业前半小时到店扫二维码排队，雪天配热乎汤咖喱超级治愈。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC+GARAKU+%E6%9C%AD%E5%B9%8C%E6%9C%AC%E5%BA%97",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E6%9C%AD%E5%B9%8C%E6%B1%A4%E5%92%96%E5%96%B1GARAKU"
+    },
+    {
+      "id": "sapporo-jingisukan-daruma",
+      "city": "sapporo",
+      "cityName": "札幌",
+      "area": "薄野（すすきの）多店",
+      "category": "meat",
+      "categoryName": "烤肉 / 成吉思汗",
+      "name": "成吉思汗 だるま（达摩烤羊肉）",
+      "local": "成吉思汗だるま 本店 札幌",
+      "dish": "鲜嫩小羊肉炭火烤肉 + 烤洋葱 + 生啤",
+      "price": "约 3,500–5,500 日元",
+      "tip": "薄野有多家分店（本店、4.4 店、5.5 店、6.4 店），本店排队最长，嫌久可直接去走路 3 分钟的 4.4 或 5.5 分店；现场炭火味重，外套放门口储物柜。",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%88%90%E5%90%89%E6%80%9D%E6%B1%97%E3%81%A0%E3%82%8B%E3%81%BE+%E6%9C%AC%E5%BA%97+%E6%9C%AD%E5%B9%8C",
+      "xhsUrl": "https://www.xiaohongshu.com/search_result?keyword=%E6%9C%AD%E5%B9%8C%E8%BE%BE%E6%91%A9%E6%88%90%E5%90%89%E6%80%9D%E6%B1%97%E7%83%A4%E7%BE%8A%E8%82%89"
+    }
+  ],
+  "sources": [
+    { "title": "JR 东日本 Welcome Suica 官方说明", "url": "https://www.jreast.co.jp/multi/en/welcomesuica/welcomesuica.html" },
+    { "title": "JR 西日本 HARUKA 优惠单程票", "url": "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" },
+    { "title": "数字厅 Visit Japan Web（简体中文）", "url": "https://services.digital.go.jp/zh-cmn-hans/visit-japan-web/" },
+    { "title": "日本观光厅 2026 年 11 月消费税出境退税方式说明", "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" },
+    { "title": "SHIBUYA SKY 官方票务说明", "url": "https://www.shibuya-scramble-square.com/sky/ticket/" },
+    { "title": "日本政府广报 机内随身/托运充电宝规则", "url": "https://www.gov-online.go.jp/article/201412/entry-7500.html" }
+  ]
+}

@@ -22,6 +22,8 @@ const links = [
   { id: 'japan', href: '/japan/', text: t('日本') },
   { id: 'australia', href: '/australia/', text: t('澳大利亚') },
   { id: 'usa', href: '/usa/', text: t('美国') },
+  { id: 'quick', href: '/quick/', text: t('AI 攻略') },
+  { id: 'tips', href: '/tips/', text: t('小技巧') },
   { id: 'trips', href: '/trips/', text: t('行程模板') },
   { id: 'budget', href: '/budget/', text: t('算预算') },
 ].map((x) => ({ ...x, href: L(x.href) }));
@@ -115,7 +117,6 @@ const dict = clientDict();
     </header>
     <nav class="mobile-nav" aria-label={t('移动端导航')} hidden data-mobile-nav>
       {links.map((x) => <a href={x.href}>{x.text}</a>)}
-      <a href={L('/quick/')}>{t('快速攻略')}</a>
       <a href={L('/plan/')}>{t('我的行程')}</a>
       <div class="mobile-theme" role="group" aria-label={t('明暗主题')}>
         <button type="button" data-theme-set="light" aria-pressed="false">{t('浅色')}</button>
@@ -138,7 +139,7 @@ const dict = clientDict();
           </div>
         </div>
         <div class="row">
-          <a href={L('/')}>{t('攻略广场')}</a><a href={L('/japan/')}>{t('日本')}</a><a href={L('/australia/')}>{t('澳大利亚')}</a><a href={L('/usa/')}>{t('美国')}</a><a href={L('/quick/')}>{t('快速攻略')}</a>
+          <a href={L('/')}>{t('攻略广场')}</a><a href={L('/japan/')}>{t('日本')}</a><a href={L('/australia/')}>{t('澳大利亚')}</a><a href={L('/usa/')}>{t('美国')}</a><a href={L('/quick/')}>{t('AI 攻略')}</a><a href={L('/tips/')}>{t('旅行小技巧')}</a>
           <a href={L('/trips/')}>{t('行程模板')}</a><a href={L('/japan/themes/')}>{t('季节与主题')}</a><a href={L('/japan/tools/')}>{t('随身工具')}</a>
           <a href={L('/plan/')}>{t('我的行程')}</a><a href={L('/budget/')}>{t('算预算')}</a><a href="/rss.xml" data-no-lp>RSS</a><a href={L('/about/')}>{t('关于')}</a>
         </div>
